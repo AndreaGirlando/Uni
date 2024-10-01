@@ -1,1 +1,1 @@
-Questo è del testo di prova1
+Questo è del testo di prova
