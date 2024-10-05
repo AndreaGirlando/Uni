@@ -17,14 +17,9 @@ Un qualsiasi computer moderno segue la seguente architettura:
 ###### <mark style="background: #FF5582A6;">La macchina di Von Neumann</mark>
 
 ![[Pasted image 20241004212308.png]]
-
-Questo tipo di architettura viene chiamata Macchina di Von Neumann (questa è l'architettura alla quale fa riferimento la definizione di algoritmo sopracitata). Di seguito una descrizione di tutti i componenti.
-- La ==**CPU**==, o **Central Processing Unit**, è l'unità centrale di elaborazione di un computer. È il componente principale che esegue le istruzioni dei programmi, gestisce le operazioni logiche e aritmetiche, e coordina il funzionamento delle altre parti del sistema. Come memoria di lavoro usa i registri e la cache. La sua velocita si misura in numero di cicli al secondo (MHz o GHz), è costituito da 4 parti fondamentali:
-	- il **program counter**: una locazione di memoria contenente l'indirizzo dell'istruzione successiva da eseguire
-	- il **registro delle istruzioni**: una locazione di memoria che contiene l'istruzione da eseguire
-	- La **ALU** (Arithmetic logic unit) questo componente esegue tutte le istruzioni logiche e matematiche necessarie per eseguire un'istruzione
-	- La **CU** (Control Unit) questo è il componente che si occupa dirigere e coordinare tutte le operazioni. Si occupa di interpretare le istruzioni del programma, inviare segnali di controllo alle altre componenti del processore (come l'**ALU** e i registri), e gestire il flusso delle informazioni.
-- La ==**memoria**==, è un deposito di dati e di istruzioni da eseguire, ne esistono di 3:
+Questo tipo di architettura viene chiamata [[#Macchina di Von Neumann]] (questa è l'architettura alla quale fa riferimento la definizione di algoritmo sopracitata). Di seguito una descrizione di tutti i componenti.
+- La **CPU**, o **Central Processing Unit**, è l'unità centrale di elaborazione di un computer. È il componente principale che esegue le istruzioni dei programmi, gestisce le operazioni logiche e aritmetiche, e coordina il funzionamento delle altre parti del sistema. Come memoria di lavoro usa i registri e la cache. La sua velocita si misura in numero di cicli al secondo (MHz o GHz)
+- La **memoria**, è un deposito di dati e di istruzioni da eseguire, ne esistono di 3:
 	- **ROM**, o **Read Only Memory**, è una memoria di sola lettura non volatile dove si trovano tutte varie informazioni come le istruzioni usate per l'avvio del pc, o dei parametri necessari per il coretto funzionamento del dispositivo
 	- **RAM**, o **Random Access Memory**, è una memoria volative utilizzato per immagazzinare tutte quelle istruzioni che poi vengono eseguite dal processore
 	- La **cache** è una memoria ad alta velocità che si trova all'interno o vicino alla CPU e viene utilizzata per immagazzinare temporaneamente i dati e le istruzioni più frequentemente utilizzati. La sua funzione principale è quella di ridurre i tempi di accesso alla RAM migliorando così le prestazioni del sistema e quindi riducendo [[#Bottleneck]] tra CPU e RAM.
