@@ -49,14 +49,14 @@ Un altro modello di elaboratore dalla quale Von Neumann prese spunto fu:
 #### *macchina di Turing*
 
 Una **macchina di Turing (o MdT)**  è stata inventata da Alan Turing nel 1936. Questo modello è fondamentale nella teoria della computabilità e fornisce una rappresentazione astratta di come funzionano i calcolatori. Formalmente viene definita in questo modo:
-![[Pasted image 20241005110025.png]]
+![[Pasted image 20241005110025.png  |  center]]
 Di seguito una descrizione di tutti i componenti:
-- **Nastro:** Un'unità di memoria esterna infinita, suddivisa in celle, ogni cella contiene un simbolo oppure è vuota.
-- **Testina di lettura/scrittura (TLS) :** Un dispositivo che interagisce direttamente con il nastro.
-- **Unità di memoria interna:** Una struttura che memorizza lo stato interno della macchina.
-- **Unità di calcolo:** Un componente che esegue le operazioni di base.
-- **Unità di controllo:** Il "cervello" della macchina, che coordina le altre unità.
-- **Unità di logica:** Un componente che si occupa delle operazioni logiche.
+- ==**Nastro==:** Un'unità di memoria esterna infinita, suddivisa in celle, ogni cella contiene un simbolo oppure è vuota.
+- ==**Testina di lettura/scrittura (TLS)== :** Un dispositivo che interagisce direttamente con il nastro.
+- ==**Unità di memoria interna==:** Una struttura che memorizza lo stato interno della macchina.
+- ==**Unità di calcolo==:** Un componente che esegue le operazioni di base.
+- ==**Unità di controllo==:** Il "cervello" della macchina, che coordina le altre unità.
+- ==**Unità di logica==:** Un componente che si occupa delle operazioni logiche.
 Il comportamento di una MdT può essere programmata definendo un'insieme di regole, o quintuple di questo tipo: 
 - ==(stato-interno-corrente, simbolo-letto, prossimo-stato-interno, simbolo- scritto, direzione)== 
 di seguito degli esempi:
