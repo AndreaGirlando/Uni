@@ -3,5 +3,5 @@ Questi sono tutti i comandi utili per obsidian (da configurare nel caso non funz
 - Per fare il pull da github basta cliccare  `ctrl+shift+a`  su qualsiasi dispositvo
 - ABCD
 
-
-
+La dimensione del font perfetta per esportare a PDF è la 15
+La dimensione del font perfetta per scrivere è la 17
