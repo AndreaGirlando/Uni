@@ -1,5 +1,5 @@
 
-Un'**algoritmo** è un insieme finito di istruzioni usate per la risoluzione di un certo lavoro. Quest'ultimo molte volte viene definito come una particolare macchina di Turing (Alan Turing, matematico britannico) oppure come una macchina di [[#Macchina di Von Neumann]] (matematico statunitense).
+Un'**algoritmo** è un insieme finito di istruzioni usate per la risoluzione di un certo lavoro. Quest'ultimo molte volte viene definito come una particolare [[#macchina di Turing]] (Alan Turing, matematico britannico) oppure come una macchina di [[#macchina di Von Neumann]] (matematico statunitense).
 
 Le funzioni di base di un'elaboratore possono essere riassunte in 4 macro aree:
 - memorizzazione dei dati
@@ -14,7 +14,7 @@ Uno esempio di elaboratore è il **computer**, il computer è una macchina che c
 - Tablet/Smartphone
 
 Un qualsiasi computer moderno segue la seguente architettura:
-###### <mark style="background: #FF5582A6;">La macchina di Von Neumann</mark>
+#### *macchina di Von Neumann*
 
 ![[Pasted image 20241004212308.png]]
 Questo tipo di architettura viene chiamata [[#Macchina di Von Neumann]] (questa è l'architettura alla quale fa riferimento la definizione di algoritmo sopracitata). Di seguito una descrizione di tutti i componenti.
@@ -45,18 +45,33 @@ Come possiamo ben notare un programma eseguibile dalla macchina von Neumann cons
 8. ==**Aggiornamento del contatore**==: Il program counter viene incrementato per puntare all'istruzione successiva.
 9. ==**Ripetizione del ciclo**==: Questo ciclo continua fino a quando non viene incontrata un'istruzione speciale che ferma o altera l'esecuzione, come un'istruzione ALT o un salto condizionato che modifica il flusso del programma. 
 
-
 Un altro modello di elaboratore dalla quale Von Neumann prese spunto fu:
-###### <mark style="background: #FF5582A6;">La macchina di Turing</mark>
-Una **macchina di Turing** è stata inventata da Alan Turing nel 1936. Questo modello è fondamentale nella teoria della computabilità e fornisce una rappresentazione astratta di come funzionano i calcolatori. Formalmente viene definita in questo modo:
+#### *macchina di Turing*
+
+Una **macchina di Turing (o MdT)**  è stata inventata da Alan Turing nel 1936. Questo modello è fondamentale nella teoria della computabilità e fornisce una rappresentazione astratta di come funzionano i calcolatori. Formalmente viene definita in questo modo:
 ![[Pasted image 20241005110025.png]]
 Di seguito una descrizione di tutti i componenti:
-- Un nastro
-- TSL (Testina di lettura/scrittura)
-- Memoria di controllo
-- Unità logica
-- Memoria interna
+- **Nastro:** Un'unità di memoria esterna infinita, suddivisa in celle, ogni cella contiene un simbolo oppure è vuota.
+- **Testina di lettura/scrittura (TLS) :** Un dispositivo che interagisce direttamente con il nastro.
+- **Unità di memoria interna:** Una struttura che memorizza lo stato interno della macchina.
+- **Unità di calcolo:** Un componente che esegue le operazioni di base.
+- **Unità di controllo:** Il "cervello" della macchina, che coordina le altre unità.
+- **Unità di logica:** Un componente che si occupa delle operazioni logiche.
+Il comportamento di una MdT può essere programmata definendo un'insieme di regole, o quintuple di questo tipo: 
+- ==(stato-interno-corrente, simbolo-letto, prossimo-stato-interno, simbolo- scritto, direzione)== 
+di seguito degli esempi:
+- (0, A, 1, B, -) se la macchina si trova nello stato 0 e legge il simbolo A passa allo stato 1 e scrive sul nastro B e sta ferma
+- (1, B, 0, A, >) se si trova nello stato 1 e legge il simbolo B passa allo stato 0 e scrive sul nastro A e si muove di una posizione a destra
+
+È importante sottolineare come l'attenzione di Turing sia rivolta al processo di calcolo, **indipendentemente da come esso avviene fisicamente**. Una M.d.T è un dispositivo ideale, cioè indipendente da ogni sua possibile realizzazione fisica. Una funzione si dice Tuing-computabile se almeno una MdT è in grado di computarla con un numero finito di passi
+
+
+
+
+
 
 ---
+Ulteriori informazioni:
+
 ###### <mark style="background: #D2B3FFA6;">Bottleneck</mark>
 La CPU è progettata per operare a velocità estremamente elevate, elaborando milioni di istruzioni al secondo. Tuttavia, la RAM, sebbene veloce, ha tempi di accesso più lunghi quando la CPU richiede dati o istruzioni deve attendere che questi vengano recuperati dalla RAM. Questo processo di attesa genera un rallentamento, poiché la CPU rimane inattiva in attesa dei dati necessari per continuare l'elaborazione. Per mitigare questo problema, le CPU fanno uso della cache, una memoria più veloce e più vicina al processore, dove vengono conservati i dati e le istruzioni più frequentemente utilizzati. Tuttavia, anche con l'uso della cache, il bottleneck rimane una preoccupazione, specialmente in scenari di carico elevato o quando vengono eseguiti più processi contemporaneamente. In questi casi, se la RAM non è in grado di tenere il passo con le richieste della CPU, si crea un rallentamento significativo, influenzando negativamente l'efficienza complessiva del sistema. 
