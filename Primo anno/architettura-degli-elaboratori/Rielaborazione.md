@@ -1,5 +1,5 @@
 
-Un'**algoritmo** è un insieme finito di istruzioni usate per la risoluzione di un certo lavoro. Quest'ultimo molte volte viene definito come una particolare [[#macchina di Turing]] (Alan Turing, matematico britannico) oppure come una macchina di [[#macchina di Von Neumann]] (matematico statunitense).
+Un'**algoritmo** è un insieme finito di istruzioni usate per la risoluzione di un certo lavoro. Quest'ultimo molte volte viene definito come una particolare [[#macchina di Turing]] (Alan Turing, matematico britannico) oppure come una [[#macchina di Von Neumann]] (matematico statunitense).
 
 Le funzioni di base di un'elaboratore possono essere riassunte in 4 macro aree:
 - memorizzazione dei dati
@@ -7,7 +7,7 @@ Le funzioni di base di un'elaboratore possono essere riassunte in 4 macro aree:
 - trasferimento dei dati
 - controllo.
 
-Uno esempio di elaboratore è il **computer**, il computer è una macchina che computa ovvero che esegue un certo algoritmo (ovviamente scritto in modo che la macchina stessa lo possa interpretare). Esistono vari tipi di computer: 
+Un'esempio di elaboratore è il **computer**, il computer è una macchina che computa ovvero che esegue un certo algoritmo (ovviamente scritto in modo che la macchina stessa lo possa interpretare). Esistono vari tipi di computer: 
 - Laptop
 - Server
 - Desktop
@@ -17,12 +17,12 @@ Un qualsiasi computer moderno segue la seguente architettura:
 #### *macchina di Von Neumann*
 
 ![[Pasted image 20241004212308.png]]
-Questo tipo di architettura viene chiamata [[#Macchina di Von Neumann]] (questa è l'architettura alla quale fa riferimento la definizione di algoritmo sopracitata). Di seguito una descrizione di tutti i componenti.
+Questo tipo di architettura viene chiamata Macchina di Von Neuman (questa è l'architettura alla quale fa riferimento la definizione di algoritmo sopracitata). Di seguito una descrizione di tutti i componenti:
 - La **CPU**, o **Central Processing Unit**, è l'unità centrale di elaborazione di un computer. È il componente principale che esegue le istruzioni dei programmi, gestisce le operazioni logiche e aritmetiche, e coordina il funzionamento delle altre parti del sistema. Come memoria di lavoro usa i registri e la cache. La sua velocita si misura in numero di cicli al secondo (MHz o GHz)
-- La **memoria**, è un deposito di dati e di istruzioni da eseguire, ne esistono di 3:
+- La **memoria**, è un deposito di dati e di istruzioni da eseguire, ne esistono di 3 tipi:
 	- **ROM**, o **Read Only Memory**, è una memoria di sola lettura non volatile dove si trovano tutte varie informazioni come le istruzioni usate per l'avvio del pc, o dei parametri necessari per il coretto funzionamento del dispositivo
-	- **RAM**, o **Random Access Memory**, è una memoria volative utilizzato per immagazzinare tutte quelle istruzioni che poi vengono eseguite dal processore
-	- La **cache** è una memoria ad alta velocità che si trova all'interno o vicino alla CPU e viene utilizzata per immagazzinare temporaneamente i dati e le istruzioni più frequentemente utilizzati. La sua funzione principale è quella di ridurre i tempi di accesso alla RAM migliorando così le prestazioni del sistema e quindi riducendo [[#Bottleneck]] tra CPU e RAM.
+	- **RAM**, o **Random Access Memory**, è una memoria volative utilizzata per immagazzinare tutte quelle istruzioni che poi vengono eseguite dal processore
+	- La **cache** è una memoria ad alta velocità che si trova all'interno o vicino alla CPU e viene utilizzata per immagazzinare temporaneamente i dati e le istruzioni più frequentemente utilizzati. La sua funzione principale è quella di ridurre i tempi di accesso alla RAM migliorando così le prestazioni del sistema e quindi riducendo il [[#Bottleneck]] tra CPU e RAM.
 - ==**Dispositivi di input**==: come un tastiera ed un mouse
 - ==**Dispositivi di output**==: come un monitor o una stampante
 - ==**Memoria di massa**==: un tipo di memoria non volatile che viene usata per immagazzinare grandi file, e ovviamente molto più lenta di qualsiasi altro tipo di memoria sopracitata. La memoria di massa è fondamentale per garantire l'archiviazione stabile di software, documenti, immagini e altri dati digitali, rendendoli accessibili nel tempo. Degli esempi sono: 
@@ -33,13 +33,13 @@ Questo tipo di architettura viene chiamata [[#Macchina di Von Neumann]] (questa 
 La macchina di von Neumann viene definita logicamente come una terna, ovvero un'insieme di 3 elementi:
 - **N** = {0,1,2,3} ovvero l'insieme dei numeri naturali (l'alfabeto della macchina)
 - **IS** = {ZERO, INC, SOM, SOT, MOL, DIV, UGUALE, MINORE, SALCOND, ALT} è l’Instruction Set set ovvero un'insieme di istruzioni che la macchina può usare
-- P =  {I0, I1, I2, I3, … , I|P| – 1} è una sequenza finita di istruzioni prese dall'insieme IS
+- P =  {I0, I1, I2, I3, … , I|P| – 1} è una sequenza finita di istruzioni prese dall'insieme IS, questo insieme si chiama programma
 Come possiamo ben notare un programma eseguibile dalla macchina von Neumann consiste in una lista di istruzioni che devono essere eseguite dal processore. Ogni istruzione viene sottoposta al ciclo macchina ovvero una serie di passaggi impiegati per l'esecuzione dell'istruzione stessa, di seguito i passaggi appena citati:
 1. ==**Legge il contenuto del program counter**==: ovvero l'indirizzo della prossima istruzione da eseguire.
 2. ==**Caricamento nel registro delle istruzioni (fetch)**==: Il processore va a recuperare l'istruzione dalla memoria, utilizzando l'indirizzo letto da program counter. Questa istruzione viene quindi inserita nel **registro delle istruzioni**.
 3. ==**Decodifica dell'istruzione**==: Una volta che l'istruzione è stata caricata, il processore la decodifica, per capire di che tipo di istruzione si tratta
 4. ==**Invio all'ALU**==: Se l'istruzione richiede un'operazione aritmetica o logica, la **unità logico-aritmetica** (ALU) riceve l'istruzione e i dati necessari per eseguire l'operazione.
-5. ==**Accesso ai dati**==: Se l'istruzione da eseguire richiede dei dati la control unit li recupera dalla memoria. Se l'istruzione è del tipo SOM(M1, M2), significa che M1 e M2 sono indirizzi in memoria da cui vengono presi i dati. 
+5. ==**Accesso ai dati**==: Se l'istruzione da eseguire richiede dei dati la control unit li recupera dalla memoria. Se l'istruzione è del tipo SOM(M1, M2) ad esempio, significa che M1 e M2 sono indirizzi in memoria da cui vengono presi i dati. 
 6. ==**Esecuzione**==: L'ALU effettua l'operazione richiesta (ad esempio, somma o confronto) utilizzando i dati forniti.
 7. ==**Memorizzazione del risultato**==: Una volta ottenuto il risultato, viene registrato nella **locazione di memoria** specificata dall'istruzione.
 8. ==**Aggiornamento del contatore**==: Il program counter viene incrementato per puntare all'istruzione successiva.
@@ -58,7 +58,7 @@ Di seguito una descrizione di tutti i componenti:
 - ==**Unità di controllo==:** Il "cervello" della macchina, che coordina le altre unità.
 - ==**Unità di logica==:** Un componente che si occupa delle operazioni logiche.
 Il comportamento di una MdT può essere programmata definendo un'insieme di regole, o quintuple di questo tipo: 
-- ==(stato-interno-corrente, simbolo-letto, prossimo-stato-interno, simbolo- scritto, direzione)== 
+- ==(stato-interno-corrente, simbolo-letto, prossimo-stato-interno, simbolo-scritto, direzione)== 
 di seguito degli esempi:
 - (0, A, 1, B, -) se la macchina si trova nello stato 0 e legge il simbolo A passa allo stato 1 e scrive sul nastro B e sta ferma
 - (1, B, 0, A, >) se si trova nello stato 1 e legge il simbolo B passa allo stato 0 e scrive sul nastro A e si muove di una posizione a destra
