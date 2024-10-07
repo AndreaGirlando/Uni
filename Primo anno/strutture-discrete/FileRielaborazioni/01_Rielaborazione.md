@@ -1,3 +1,5 @@
+Questo file è la rielaborazione delle slide [[01_Parte1.pdf]]
+
 La **logica** è un linguaggio formale usato per rappresentare informazioni. Ogni linguaggio è formato da:
 - Sintassi: che definisce le frasi del linguaggio
 - Semantica: che definisce il significato delle frasi
