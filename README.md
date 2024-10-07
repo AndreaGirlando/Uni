@@ -5,3 +5,5 @@ Questi sono tutti i comandi utili per obsidian (da configurare nel caso non funz
 
 La dimensione del font perfetta per esportare a PDF è la 15
 La dimensione del font perfetta per scrivere è la 17
+
+Dentro ogni cartella "FileCondivisiTeams" ci sono i vari contenuti condivisi dai professori, i file rielaborazione avranno un'id uguale ai loro corrispettivi pdf delle slide
