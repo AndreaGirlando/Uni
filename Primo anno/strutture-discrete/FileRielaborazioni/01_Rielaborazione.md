@@ -36,7 +36,7 @@ Questa è la tabella della verità di tutte queste formule:
 | 1     | 1     | 0      | 1             | 1             | 1             | 1             |
 | 1     | 0     | 0      | 1             | 0             | 0             | 0             |
 | 0     | 1     | 1      | 1             | 0             | 1             | 0             |
-| 0     | 0     | 1      | 0             | 0             | 1             | 0             |
+| 0     | 0     | 1      | 0             | 0             | 1             | 1             |
 
 Nomenclature varie:
 - Data una formula diremo che è ==**soddisfacibile**== se esiste almeno un caso in cui sia vera, qualunque siano i valori delle variabili ().
