@@ -38,7 +38,7 @@ Questa è la tabella della verità di tutte queste formule:
 | 0     | 1     | 1      | 1             | 0             | 1             | 0             |
 | 0     | 0     | 1      | 0             | 0             | 1             | 1             |
 
-Nomenclature varie:
+##### Nomenclature varie:
 - Data una formula diremo che è ==**soddisfacibile**== se esiste almeno un caso in cui sia vera, qualunque siano i valori delle variabili ().
 - Data una formula diremo che è **==insoddisfacibile==** se non esiste almeno una caso in cui sia vera, qualunque siano i valori delle variabili (esempio $P_2$ ∧ ¬$P_2$).
 - Data una formula si dice **==tautologia==** se è sempre vera qualunque siano i valori delle variabili (esempio $P_2$ ∨ ¬$P_2$).
@@ -52,3 +52,10 @@ Due formule $P_1$ e $P_2$ si dicono equivalenti se hanno lo stesso valore è si 
 Per la disgiunzione e la congiunzione vale la proprietà commutativa e associativa 
 - p ∨ q ≡ q ∨ p (commutativa della disgiunzione)
 - p ∨ (q ∨ r ) ≡ (p ∨ q) ∨ r (associatività della disgiunzione)
+
+##### Giustificazione o conseguenza logica:
+Sia $P$ un insieme di proporzioni e $p$ una proporzione, diciamo che $P$ giustifica $p$ o che $p$ è una conseguenza logica di $P$ e lo denotiamo con: $P$  |= $p$
+Di seguito un esempio:
+$P$ = { p, p => q }  $P$  |= $q$
+Questa è la tavola di verità
+![[Pasted image 20241008151855.png]]
