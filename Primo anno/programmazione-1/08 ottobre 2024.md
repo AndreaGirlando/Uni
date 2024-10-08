@@ -2,8 +2,8 @@
 I linguaggi di programmazione sono stati creati per facilitare la scrittura dei programmi, sarebbe impossibile scrivere programmi in linguaggio macchina. Un programma scritto in un qualsiasi linguaggio (alto livello) verrà tradotto da un interprete/compilatore in linguaggio macchina (basso livello) prima di essere eseguito.
 
 Differenza tra compilatore e interprete:
-- compilatore:
-- interprete:
+- Compilatore:
+- Interprete:
 ##### Tipi di programmazione:
 - **Programmazione imperativa:** sequenze di istruzioni da "impartire"
 	- Esempio:
