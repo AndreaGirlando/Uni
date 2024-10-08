@@ -1,8 +1,8 @@
 Questo file è la rielaborazione delle slide [[01_Parte1.pdf]]
 
 La **logica** è un linguaggio formale usato per rappresentare informazioni. Ogni linguaggio è formato da:
-- Sintassi: che definisce le frasi del linguaggio
-- Semantica: che definisce il significato delle frasi
+- **Sintassi**: che definisce le frasi del linguaggio
+- **Semantica**: che definisce il significato delle frasi
 La logica più semplice di tutti è la logica proporzionale oggi connessa al mondo binario, viene detta proporzionale perché si occupa di proposizioni più precisamente di variabili proposizionali, quest'ultime possono assumere solo 2 valori: 
 - 1 = VERO
 - 0 = FALSO
@@ -27,8 +27,8 @@ Date 2 formule $P_1$ e $P_2$ che ovviamente posso assumere solo una valore (ques
 - I(¬$P_1$) è vera solo se $P_1$ è vera
 - I($P_1$ ∨ $P_2$) è vera se almeno una tra $P_1$ o $P_2$ è vera
 - I($P_1$ ∧ $P_2$) è vera se entrambe sono vere
-- I($P_1$ ⇒ $P_2$) è vera se I($P_1$) è falsa oppure se I($P_2$) è vera 
-- I($P_1$ ⇔ $P_2$) è vera se e solo se I($P_1$ ⇒ $P_2$) è vera e I($P_2$ ⇒ $P_1$) è
+- I($P_1$ ⇒ $P_2$) è falsa solo quando $P_1$ è vera e $P_2$ è falsa, nei restanti casi è vera
+- I($P_1$ ⇔ $P_2$) è vera se e solo se $P_1$ == $P_2$
 Questa è la tabella della verità di tutte queste formule:
 
 | $P_1$ | $P_2$ | ¬$P_1$ | $P_1$ ∨ $P_2$ | $P_1$ ∧ $P_2$ | $P_1$ ⇒ $P_2$ | $P_1$ ⇔ $P_2$ |
