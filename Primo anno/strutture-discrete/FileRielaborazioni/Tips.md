@@ -1,5 +1,6 @@
 ###### Come creare tutte le combinazioni tra le variabili senza confondersi
 ![[Pasted image 20241009133640.png]]
+Numero variabili da rappresentare: 4 (P,Q,R,S)
 Numero casi possibili: nCasi = $2^4$ = $16$
 Per la prima variabile:
 - scrivi 8 volte V e 8 volte F
