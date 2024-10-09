@@ -68,7 +68,9 @@ $P$  |= p ∨ q
 
 ![[Pasted image 20241008232946.png]]
 
-Come possiamo facilmente notare P giustifica quella disgiunzione (ovvero p ∨ q) solo quando tutte le formule di $P$ e la disgiunzione tra $p$ e $q$ sono vere (attenzione ai vari casi nella tabella)
+Come possiamo facilmente notare P giustifica quella disgiunzione (ovvero p ∨ q) solo quando tutte le formule di $P$ e la disgiunzione tra $p$ e $q$ sono vere (attenzione ai vari casi nella tabella). 
+
+**TIPS**: [[Tips#Come creare tutte le combinazioni tra le variabili senza confondersi]] 
 
 Molte volte formule complesse vengono standardizzate in 2 forme chiamate "normali":
 - CNF (Forma Normale Congiuntiva) che si basa sul fare un AND di vari OR:
