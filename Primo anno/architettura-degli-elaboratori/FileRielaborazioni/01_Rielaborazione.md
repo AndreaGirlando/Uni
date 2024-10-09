@@ -5,7 +5,7 @@ Le funzioni di base di un'elaboratore possono essere riassunte in 4 macro aree:
 - memorizzazione dei dati
 - elaborazione dei dati
 - trasferimento dei dati
-- controllo.
+- controllo
 
 Un'esempio di elaboratore è il **computer**, il computer è una macchina che computa ovvero che esegue un certo algoritmo (ovviamente scritto in modo che la macchina stessa lo possa interpretare). Esistono vari tipi di computer: 
 - Laptop
