@@ -3,7 +3,7 @@ Questo file è la rielaborazione delle slide [[01_Parte1.pdf]]
 La **logica** è un linguaggio formale usato per rappresentare informazioni. Ogni linguaggio è formato da:
 - **Sintassi**: che definisce le frasi del linguaggio
 - **Semantica**: che definisce il significato delle frasi
-La logica più semplice di tutti è la logica proporzionale oggi basata sulla matematica booleana, quest'ultima viene detta proporzionale perché si occupa di proposizioni, più precisamente di variabili proposizionali, quest'ultime possono assumere solo 2 valori: 
+La logica più semplice di tutti è la logica proposizionale oggi basata sulla matematica booleana, quest'ultima viene detta proposizionale perché si occupa di proposizioni, più precisamente di variabili proposizionali, quest'ultime possono assumere solo 2 valori: 
 - 1 = VERO
 - 0 = FALSO
 Ogni variabile proposizionale è già da se una "formula" proposizionale, ovviamente questa è una formula molto basilare. Per creare delle formule più complesse usiamo dei connettivi logici che sono i seguenti:
