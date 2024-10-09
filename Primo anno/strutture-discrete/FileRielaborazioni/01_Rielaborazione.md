@@ -26,7 +26,7 @@ Come per le operazioni normali (somma, moltiplicazione, ecc...) anche queste han
 - ¬(p ∨ q) è la formula dove la negazione si applica alla disgiunzione p ∨ q
 
 Date 2 formule $P_1$ e $P_2$ che ovviamente posso assumere solo una valore (questa cosa la impone una funzione chiamata **interpretazione** che appunto assegna a $P_1$ e $P_2$  i valori 1 o 0) Di seguito si calcola il valore di verità delle seguenti formule: 
-- I(¬$P_1$) è vera solo se $P_1$ è vera
+- I(¬$P_1$) è vera solo se $P_1$ è falsa
 - I($P_1$ ∨ $P_2$) è vera se almeno una tra $P_1$ o $P_2$ è vera
 - I($P_1$ ∧ $P_2$) è vera se entrambe sono vere
 - I($P_1$ ⇒ $P_2$) è falsa solo quando $P_1$ è vera e $P_2$ è falsa, nei restanti casi è vera
