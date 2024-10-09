@@ -11,4 +11,4 @@ Per la terza variabile scrivi:
 Per la quarta variabile scrivi: 
 - VERO - FALSO - VERO - FALSO … fino a quando non arrivi a nCasi 
 
-Se hai una tabella con 6 variabili sono 64 casi e la prima variabile sarà 32 volte vero e 32 volte falso, ogni volta che cambi variabile dividi per 2 i casi veri e quelli falsi
+Se hai una tabella con 6 variabili sono 64 casi e la prima variabile sarà 32 volte vero e 32 volte falso, ogni volta che cambi variabile dividi per 2 i casi veri e quelli falsi.
