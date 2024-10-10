@@ -55,7 +55,7 @@ Per la disgiunzione e la congiunzione vale la proprietà commutativa e associati
 - p ∨ (q ∨ r ) ≡ (p ∨ q) ∨ r (associatività della disgiunzione)
 
 ##### Giustificazione o conseguenza logica:
-Sia $P$ un insieme di proporzioni e $p$ una proporzione generica, ci chiediamo quando $P$ giustifica $p$ questa domanda la denotiamo con: $P$  |= $p$
+Sia $P$ un insieme di proposizioni e $p$ una proposizione generica, ci chiediamo quando $P$ giustifica $p$ questa domanda la denotiamo con: $P$  |= $p$
 Di seguito un esempio:
 $P$ = { p, p => q }  
 $P$  |= $q$
