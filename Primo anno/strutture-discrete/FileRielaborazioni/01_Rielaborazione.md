@@ -21,6 +21,7 @@ Ogni variabile proposizionale è già da se una "formula" proposizionale, ovviam
 - P ∧ Q = "P e Q"
 - P ⇒ Q = "se P allora Q"
 - P ⇔ Q = P se e solo se Q
+
 Come per le operazioni normali (somma, moltiplicazione, ecc...) anche queste hanno delle precedenze,  la negazione (¬) ha la precedenza su tutto mentre congiunzione (∨) e disgiunzione (∧) hanno la stessa priorità infatti:
 - ¬p ∨ q è la formula dove la negazione si applica solo a p 
 - ¬(p ∨ q) è la formula dove la negazione si applica alla disgiunzione p ∨ q
