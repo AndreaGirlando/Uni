@@ -95,7 +95,7 @@ Molte volte formule complesse vengono standardizzate in 2 forme chiamate "normal
 - DNF (Forma Normale Disgiuntiva) che si basa sul fare un OR di vari AND:
 	- (p ∧ q) ∨ (¬p ∧ ¬r ∧ s)
 
-Una qualunque formala P si può trasformare in una delle 2 forme normali, questo si fa seguendo questi step:
+Una qualunque formala $P$ si può trasformare in una delle 2 forme normali sopracitate, questo si fa seguendo questi step:
 1. Elimina le coimplicazioni p ⇔ q dalla formula sostituendole con (p ⇒ q) ∧ (q ⇒ p)
 2. Elimina le implicazioni p ⇒ q dalla formula sostituendole con ¬p ∨ q
 3. Sposta le negazioni a ridosso delle variabili proposizionali ed elimina le doppie negazioni.
@@ -104,7 +104,7 @@ Una qualunque formala P si può trasformare in una delle 2 forme normali, questo
 	1. Per costruire una CNF distribuiamo le congiunzioni sulle disgiunzioni, di seguito un'esempio:
 		1. $(p ∧ q) ∨ (¬p ∧ ¬r ∧ s)$
 		2. $(p ∨ ...) ∧ (q ∨ ...)$ Scrivo entrambe le variabili separate con l'operatore logico che trovo tra le parentesi
-		3. $(p ∨ (¬p ∧ ¬r ∧ s)) ∧ (q ∨ (¬p ∧ ¬r ∧ s))$ Sostituisco le parentesi ai puntini
+		3. $(p ∨ (¬p ∧ ¬r ∧ s)) ∧ (q ∨ (¬p ∧ ¬r ∧ s))$ Sostituisco la seconda parentesi ai puntini
 		4. $(p ∨ ¬p) ∧ (p ∨ ¬r ) ∧ (p ∨ s) ∧ (q ∨ ¬p) ∧ (q ∨ ¬r ) ∧ (q ∨ s)$ distribuisco p e q sulla parentesi $(¬p ∧ ¬r ∧ s)$ 
 		5. $(p ∨ ¬r ) ∧ (p ∨ s) ∧ (q ∨ ¬p) ∧ (q ∨ ¬r ) ∧ (q ∨ s)$ elimino la formula $(p ∨ ¬p)$ perché sarebbe sempre falsa
 	2. Per costruire una DNF distribuiamo le disgiunzioni sulle congiunzioni, di seguito un'esempio
