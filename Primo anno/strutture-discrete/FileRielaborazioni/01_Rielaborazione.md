@@ -225,6 +225,6 @@ Supponiamo di avere l'insieme A definito come: A = {x ∈ N | x è pari e x è d
 Vogliamo dimostrare che A è vuoto.
 1. **Assumiamo il contrario:** Supponiamo che esista un elemento x in A.
 2. **Cerchiamo una contraddizione:** Se x è in A, allora x è sia pari che dispari. Ma un numero non può essere contemporaneamente pari e dispari. Questa è una contraddizione.
-3. **Conclusione:** Poiché abbiamo trovato una contraddizione, l'assunzione iniziale (che esiste un elemento in A) deve essere falsa. Quindi, A è vuoto.
+3. **Conclusione:** Poiché abbiamo trovato una contraddizione, l'assunzione iniziale (che esiste un elemento in A) deve essere falsa. Quindi, A è vuoto
 
 
