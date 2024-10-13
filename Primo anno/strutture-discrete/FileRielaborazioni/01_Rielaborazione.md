@@ -99,7 +99,7 @@ Una qualunque formala $P$ si può trasformare in una delle 2 forme normali sopra
 1. Elimina le coimplicazioni p ⇔ q dalla formula sostituendole con (p ⇒ q) ∧ (q ⇒ p)
 2. Elimina le implicazioni p ⇒ q dalla formula sostituendole con ¬p ∨ q
 3. Sposta le negazioni a ridosso delle variabili proposizionali ed elimina le doppie negazioni.
-	- ¬(¬p ∨ ¬r ∨ s) diventa (p ∧ r ∧ ¬s) ([[ExcelProof.png |Veridicità di questa cosa]])
+	- ¬(¬p ∨ ¬r ∨ s) diventa (p ∧ r ∧ ¬s) ([[ExcelProof1.png |Veridicità di questa cosa]])
 4. Di questo step abbiamo 2 casi:
 	1. Per costruire una CNF distribuiamo le congiunzioni sulle disgiunzioni, di seguito un'esempio:
 		1. $(p ∧ q) ∨ (¬p ∧ ¬r ∧ s)$
