@@ -7,7 +7,7 @@ Da questa immagine riusciamo ad indentificare vari tipi di collegamenti:
 - da memoria a processore
 - da processore a I/0 
 - da I/O a processore
-Considerando il processore come master. un'operazione che trasporta un dato dal processore alla memoria è detta operazione di ***Write***, nel verso opposto viene chiamata operazione di ***Read***. Per riuscire a gestire il trasferimento dei dati il bus è diviso in tre diversi tipi di linea:
+Considerando il processore come master. un'operazione che trasporta un dato dal processore alla memoria è detta operazione di ***Write***, nel verso opposto viene chiamata operazione di ***Read*** il tempo che intercorre tra il segnale di invio dell'operazione e l'operazione stessa si chiama **Lantenza**. Per riuscire a gestire il trasferimento dei dati il bus è diviso in tre diversi tipi di linea:
 - ***Address bus*** (ABus)
 - ***Data bus*** (DBus)
 - ***Control bus*** (CBus)
