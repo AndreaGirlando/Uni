@@ -98,3 +98,8 @@ Turing cercò di rispondere alla domanda "can machines think?", per fare ciò fo
 ---
 ##### Funzione parziale
 Una funzione parziale è una funzione che non è necessariamente definita per ogni possibile input. Questo significa che per alcuni input, la funzione potrebbe non restituire alcun output. Quest'ultime vengono utilizzate nella definizione di una macchina di Turing universale perché riflettono la realtà infatti non tutte le computazioni terminano con successo. Questo rende il modello più realistico e potente perché è in grado di rappresentare qualsiasi tipo di computazione, sia quelle che vanno bene che quelle che vanno male
+
+---
+##### Processi sincroni/asincroni
+- ***Processi sincroni***: sono processi che hanno bisogno di essere "sincronizzati" perché sono propedeutici tra di loro.
+- ***Processi asincroni***: sono processi che non hanno bisogno di essere sincronizzati perché "lavorano da soli". La maggior parte dei processi asincroni vengono eseguiti dalle GPU quest'ultime hanno moltissimi core rispetto alle CPU proprio perché devono svolgere solo processi asincroni e quindi parallelizzabili, un'esempio dove questa proprietà è fondamentale è nella renderizzazione dello schermo, quest'ultimo è formato da matrici (la risoluzione ci indica quanto sono grandi Es: 720x480) dalla quale è possibile creare delle sottomatrici che vengono lavorate da processi indipendenti (e quindi asincroni), tutte queste sottomatrici vengono riunite nella matrice finale che sarà l'immagine che visualizzeremo a schermo (lo schermo a colori è formato da 3 matrici Red, Green, Blue che definiscono lo standard RGB).
