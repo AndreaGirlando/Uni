@@ -134,7 +134,7 @@ Più in generale possiamo specificare un'insieme esprimendo la proprietà che ca
 - Supponiamo $P$ sia la proprietà di essere "alti", allora ${x : P(x)}$ non è un insieme.
 In questo caso parliamo di un non-insieme perché la proprietà di essere alti non è una proprietà ben definita in termini matematici infatti è una nozione che può variare in base al contesto.
 --- 
-Si dice **Cardinalità** il numero di elementi che costituisce un'insieme e si denota con il simbolo: $|A|$ questo potrebbe assumere anche il valore di $\infty$, ad esempio l'insieme dei numeri pari ha una cardinalità uguale ad $\infty$.
+Si dice **Cardinalità** il numero di elementi che costituisce un'insieme e si denota con il simbolo: $|A|$ questo potrebbe assumere anche il valore di $\infty$, un'esempio potrebbe essere l'insieme dei numeri pari che ha una cardinalità uguale ad $\infty$.
 
 ---
 Nomenclature: 
@@ -150,14 +150,14 @@ facendo rifermento allo stesso caso potremmo dire che B è un ***sovrainsieme***
 
 <mark class="hltr-purple">Nota bene</mark> tra le due espressioni scritte qua sopra cambia la direzione del segno
 
-Le relazioni A ⊆ B è verificata anche nel caso A = B, se volessimo esprimere il A ⊆ B ma specificando che A è diverso da B (quindi che in B ci sono elementi che in A non ci sono) scriviamo in questo modo A ⊂ B, in questo caso diciamo che A è un ***sottoinsieme proprio*** di B (tutta questa affermazione vale anche per il sovrainsieme).
+Le relazioni A ⊆ B è verificata anche nel caso A = B, se volessimo esprimere il concetto A ⊆ B ma specificando che A è diverso da B (quindi che in B ci sono elementi che in A non ci sono) scriviamo in questo modo A ⊂ B, in questo caso diciamo che A è un ***sottoinsieme proprio*** di B (tutta questa affermazione vale anche per il sovrainsieme).
 
 Anche in questo caso possiamo definire un sottoinsieme definendo la proprietà che caratterizza ogni singolo elemento. Supponendo che $T$ sia un insieme, $Q$ è un sottoinsieme definito in questo modo:
 - $Q$ = { $x :$ $x ∈ T$ e $P(x)$ } (==ogni elemento del sottoinsieme $Q$ deve appartenere sia a $T$ sia rispettare la proprietà $P(x)$==) 
 	- $T$ è l'insieme dei numeri interi positivi da 1 a 100, la proprietà $P(x)$ per essere vera un numero deve essere multiplo di 10. Allora un sottoinsieme definito cosi: { $x :$ $x ∈ T$ e $P(x)$ } sarà uguale {10, 20, 30, 40, 50, 60, 70, 80, 90, 100}.
 
 ---
-Un'insieme di dice discreto se è possibile ordinare i suoi elementi in maniera tale che tra un qualunque elemento è il suo successivo non ci siano altri elementi. Ricordando:
+Un'insieme si dice **discreto** se è possibile ordinare i suoi elementi in maniera tale che tra un qualunque elemento è il suo successivo non ci siano altri elementi. Ricordando:
 - N = {0, 1, 2, 3, 4, . . .} è un insieme discreto
 - Z = {. . . , −4, −3, −2, −1, 0, 1, 2, 3, 4, . . .} è un insieme discreto
 - Q = {$\frac{n}{m}$ : n, m ∈ Z} non è un'insieme discreto
