@@ -8,3 +8,4 @@ Questa repository contiene i miei appunti di studio, che includono anche eventua
 
 # [Versione web delle note](https://uni-notes-girlando.netlify.app/)
 - Non ci sono i pdf
+- Alcune espressioni sono buggate, perciò si consiglia di clonare la repo ed usare obisidian per una visualizzazione ottimale
