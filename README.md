@@ -6,5 +6,5 @@ Questa repository contiene i miei appunti di studio, che includono anche eventua
 - Tutti i file sono scritti usando [Obsidian](https://obsidian.md/), tranne i file pdf che sono delle note prese a mano da me durante le lezioni
 - All'interno di ciascuna cartella denominata `FileCondivisiTeams`, troverai i contenuti condivisi dai professori. I file di rielaborazione sono associati alle slide originali attraverso un ID corrispondente.
 
-# [Versione web delle note]([https://obsidian.md/](https://uni-notes-girlando.netlify.app/))
+#[Versione web delle note]([https://obsidian.md/](https://uni-notes-girlando.netlify.app/))
 
