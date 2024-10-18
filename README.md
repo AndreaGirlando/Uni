@@ -1,4 +1,4 @@
-# Appunti Personali
+# Appunti L-31 UNICT
 
 Questa repository contiene i miei appunti di studio, che includono anche eventuali errori. Per questo motivo, non mi assumo alcuna responsabilità riguardo l'accuratezza o la completezza del materiale.
 
