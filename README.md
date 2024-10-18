@@ -7,4 +7,4 @@ Questa repository contiene i miei appunti di studio, che includono anche eventua
 - All'interno di ciascuna cartella denominata `FileCondivisiTeams`, troverai i contenuti condivisi dai professori. I file di rielaborazione sono associati alle slide originali attraverso un ID corrispondente.
 
 # [Versione web delle note](https://uni-notes-girlando.netlify.app/)
-
+- Non ci sono i pdf
