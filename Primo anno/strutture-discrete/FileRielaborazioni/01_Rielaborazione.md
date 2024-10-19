@@ -319,7 +319,7 @@ Consideriamo 2 elementi x e y. Creiamo una coppia ordinata dove il primo element
 Dati 2 insiemi non vuoti $A$ e $B$, l'insieme prodotto da $A$ per $B$ (che indichiamo con $A × B$) è l'insieme di tutte le coppie ordinate $(x, y)$ con $x ∈ A$ e $y ∈ B$
 - A × B = {(x, y) : x ∈ A e y ∈ B} A×B è l'insieme di tutte le coppie $(x, y)$ con $x$ che appartiene ad $A$ e $y$ che appartiene a $B$
 	- Un'esempio di questo prodotto è il piano cartesiano che definiamo come $\mathfrak{R} \times \mathfrak{R}$ che è un insieme formato da tutte le coppie ordinate di numeri reali.
-	 ![[Pasted image 20241019135757.png]]
+	 ![[Pasted image 20241019143758.png]]
 	- Dati, in un certo ordine, tre insiemi A, B, C, si chiama loro prodotto, e si indica con A × B × C l’insieme di tutte le terne ordinate (x, y, z) con x ∈ A, y ∈ B, z ∈ C.
 ---
 ##### Paradosso di Russell
