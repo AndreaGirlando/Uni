@@ -331,4 +331,21 @@ Usando questa definizione S ∈ S?
 Evitiamo questa contraddizione imponendo nella definizione dell'insieme che quest'ultimo deve essere sottoinsieme di un'insieme conosciuto, la nuova definizione di $S$ diventa: $S = \{A \mid A \subseteq U, A \notin A\}$ 
 Con questa nuova definizione, il paradosso svanisce. Se proviamo a chiedere se S appartiene a se stesso, ci rendiamo conto che S è un sottoinsieme di U, ma non possiamo dire con certezza se S appartiene o meno a U. In questo modo, evitiamo il circolo vizioso che portava alla contraddizione.
 
-# Relazioni e funzioni
+# `Relazioni e funzioni`
+---
+##### Relazioni
+Sia $U$ un insieme non vuoto. Con il termine relazione indichiamo un insieme formato in questo modo: (per capire meglio questo insieme guarda: [[#Insieme prodotto]])
+- $R ⊆ U × U$ ovvero $\{(x, y) \in U \times U : R(x, y)\}$ cioè un insieme formato da tutte le coppie che rendono vera la relazione, questo insieme viene chiamato ***grafico della relazione***
+	- Considera l'insieme U = {1, 2, 3}. Una possibile relazione R su U potrebbe essere "è minore di". In questo caso, il grafico di R sarebbe {(1, 2), (1, 3), (2, 3)}, perché 1 è minore di 2 e 3, e 2 è minore di 3, questi sono gli unici 3 casi che rendono vera la relazione "è minore di".
+---
+##### Funzioni
+Una relazione f definita su $A × A$ si dice funzione di $A$ (dominio) in $B$ (codominio), se per ogni $x ∈ A$ esiste uno ed uno solo $y ∈ A$ tale che $(x, y) ∈ f$. La notazione classica per esprimere f è la seguente: $f : A → B$ per ogni x ∈ A l’unico elemento $y ∈ B$ tale che (x, y) ∈ $f$ si indica con $f(x)$
+
+Casi particolari:
+- $f : A → B$  per ogni x, f(x) = $x$ si dice **applicazione identica** di $A$
+- $f : A × B → A$ tale che per ogni $(x, y)$ $f(x, y)$ = $x$ si dice **proiezione canonica** su $A$.
+- $f : A × B → B$ tale che per ogni $(x, y)$ $f(x, y)$ = $y$ si dice **proiezione canonica** su $B$.
+
+Dato $f : A → B$ e anche un sottoinsieme di A chiamato X
+
+==Continua da slide 94==
