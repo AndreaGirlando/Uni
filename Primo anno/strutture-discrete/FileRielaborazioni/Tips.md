@@ -24,3 +24,10 @@ Formula iniziale: $p ∧ (q ∨ r )$
 	-  ($p ∧ q$) ∨ ($p∧r$)
 
 Formula finale: ($p ∧ q$) ∨ ($p∧r$)
+
+##### Come calcolare la chiusura di una famiglia rispetto ad unione/intersezione
+$F$  = {1, 2, … , m}
+$\mathcal{F}_U$ = ??? famiglia più piccola che contiene $F$ ed è chiusa rispetto all'unione
+1. Costruiamo la famiglia $F^1$ mettendoci tutti gli elementi di $F$.
+2. Per ogni i (partendo da 2) sino a m calcoliamo $F_i$ utilizzando tutte le coppie di elementi $X$ , $Y$ con $X ∈ F$ e $Y ∈ \mathcal{F}_{i-1}$ e mettendo $X ∪ Y$ in $F_i$ .
+3. Poniamo infine $\mathcal{F}_U = \bigcup_{i=1}^{m} \mathcal{F}_i$ 
