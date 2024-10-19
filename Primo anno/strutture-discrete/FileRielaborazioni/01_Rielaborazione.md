@@ -118,7 +118,7 @@ Esempio:
 
 ---
 --- 
-# `Insiemi fino a slide 64` 
+# `Insiemi fino a slide` 
 Gli insiemi vengono considerati una collezione ben definita di oggetti. 
 1. Per esprimere l'**appartenenza** ad un insieme usiamo la seguente espressione: 
 	- x ∈ T (x è un elemento generico e T è un'insieme generico)
@@ -134,6 +134,7 @@ Più in generale possiamo specificare un'insieme esprimendo la proprietà che ca
 - Supponiamo $P$ sia la proprietà di essere "alti", allora ${x : P(x)}$ non è un insieme.
 In questo caso parliamo di un non-insieme perché la proprietà di essere alti non è una proprietà ben definita in termini matematici infatti è una nozione che può variare in base al contesto.
 --- 
+##### Cardinalità
 Si dice **Cardinalità** il numero di elementi che costituisce un'insieme e si denota con il simbolo: $|A|$ questo potrebbe assumere anche il valore di $\infty$, un'esempio potrebbe essere l'insieme dei numeri pari che ha una cardinalità uguale ad $\infty$.
 
 ---
@@ -143,6 +144,7 @@ Nomenclature:
 	- ∅ (la cardinalità del seguente insieme è uguale a 0)
 
 ---
+##### Sottoinsieme e sovrainsieme
 Se abbiamo 2 insiemi A e B, e tutti gli elementi di A appartengono a B, diciamo che A è un ***sottoinsieme*** di B e lo denotiamo così:
 - A ⊆ B ⇔ (∀x)(x ∈ A ⇒ x ∈ B) ==(A è un sottoinsieme di B se e solo se qualunque x che appartiene ad A, appartiene anche a B)==
 facendo rifermento allo stesso caso potremmo dire che B è un ***sovrainsieme*** e lo denotiamo così:
@@ -227,4 +229,106 @@ Vogliamo dimostrare che A è vuoto.
 2. **Cerchiamo una contraddizione:** Se x è in A, allora x è sia pari che dispari. Ma un numero non può essere contemporaneamente pari e dispari. Questa è una contraddizione.
 3. **Conclusione:** Poiché abbiamo trovato una contraddizione, l'assunzione iniziale (che esiste un elemento in A) deve essere falsa. Quindi, A è vuoto.
 
+---
+##### Insieme delle parti
+Dato un'insieme T, consideriamo insieme delle parti di T un'insieme che contiene tutti i sottoinsiemi di T, lo indichiamo così:
+- $P(T)$ oppure $pow(T)$
+	- Sia $T$ = {1, 2, 3} allora $P(T)$ = {∅, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}}
+[[01_Rielaborazione#Cardinalità|Cardinalità]] dell'insieme delle parti:
+- Se $T$ = ∅  allora $P(T)$ = {∅}
+- Se $|T|$ = 1  quindi $T$ = {a} allora $P(T)$ = { ∅ , {a} } = 2 elementi
+- Se $|T|$ = 2  quindi $T$ = {a, b} allora $P(T)$ = { ∅ , {a}, {b}, {ab} } = 4 elementi
+- Se $|T|$ = 3  quindi $T$ = {a, b, c} allora $P(T)$ = 8 elementi
+Come possiamo ben notare la cardinalità di $P(T)$ = $2^n$ dove $n$ è il numero di elementi di T
+Proprietà: (Per capire le proprietà di consiglia prima di vedere bene:[[#Sottoinsieme e sovrainsieme| spiegazione ⊂ e ⊃]])
+- $P(A ∩ B) = P(A) ∩ P(B)$
+	- Dimostrazione: Per dimostrare che è vera l'equivalenza dobbiamo dimostrare 2 casi
+		1. Caso ⊂: supponendo che $x ∈ P(A ∩ B)$  e quindi che $X ⊂ A$ e $X ⊂ B$ da questo capiamo facilmente che  $X ∈ P(A)$ e $X ∈ P(B)$ e quindi che $X ∈ P(A) ∩ P(B)$
+		2. Caso ⊂: supponiamo che $X ∈ P(A) ∩ P(B)$ e quindi che $X ⊆ A$ e $X ⊆ B$ quindi $X ⊆ A ∩ B$ ciò implica che $X ∈ P(A ∩ B)$
+- $P(A ∪ B) ⊃ P(A) ∪ P(B)$ 
+	- Dimostrazione: Per dimostrare questa formula dobbiamo dimostrare che $P(A ∪ B) ⊃ P(A) ∪ P(B)$ ma anche che un generico elemento di $P(A ∪ B)$ non appartenga a $P(A) ∪ P(B)$ 
+		1. Caso ⊃: Supponiamo che $X ∈ P(A) ∪ P(B)$, allora $X ∈ P(A)$ oppure $X ∈ P(B)$.Nel primo caso $X ⊆ A$ mentre nel secondo caso $X ⊆ B$. In entrambi i casi, quindi, $X ⊆ A ∪ B$ da cui $X ∈ P(A ∪ B)$.
+		2. Caso $\neq$ : Sia A = {1, 2} e B = {1, 3}. L’insieme $A ∪ B$ = {1, 2, 3} appartiene a $P(A ∪ B)$ ma non appartiene a $P(A)$ ∪ $P(B)$ ( ricordiamo che P(A) = { ∅, {1}, {2}, {1,2} }  invece P(B) = { ∅, {1}, {3}, {1,3} } ) 
 
+> [!Famiglia di Insiemi]
+> Un insieme di insiemi, come ad esempio l’insieme delle parti, è anche detto ***"famiglia di insiemi"***
+
+---
+##### Diagramma di Venn di famiglie di insiemi
+Data una famiglia di n insiemi detta F, le regioni del diagramma di Venn sono $2^n$. Una famiglia di insiemi che un numero infinito di elementi è una ***famiglia infinita***. Se invece ha un numero finito di elementi allora è una ***famiglia infinita***.
+- Sia $F$ = {P, D} dove P è l’insieme dei numeri pari (infinito) e D è l’insieme dei numeri dispari (infinito). La famiglia F è una famiglia finita di insiemi.
+- Sia $F$ = {$P_1$, $P_2$, $P_3$, . . .} dove $P_i$ = {$2^1$, · · · , $2^i$ }. La famiglia è infinita, ma tutti i suoi elementi sono insiemi finiti.
+Le operazioni di unione ed intersezione si possono estendere alle famiglie infinite. 
+
+Sia $F$ una famiglia qualunque di insiemi si indica con: $\bigcup_{ X \in F} X$  l'insieme degli elementi di $X$ che appartengono ad F e viene detto insieme unione della famiglia $F$. Quindi:
+- $\bigcup_{X \in \mathcal{F}} X = \{x : \exists X, X \in \mathcal{F}$ e $x \in X\}$ L'insieme unione della famiglia $F$ è uguale all'insieme di tutte le $x$ appartenenti a $X$ che rispettano la condizione che $X$ esista ed  appartenga ad $F$. ==Tutto ciò si traduce nel dire che l'insieme unione della famiglia $F$ è uguale all'unione tra tutti gli insiemi appartenenti a $F$ stesso e quindi da tutti gli elementi degli insiemi (ripetuti una volta sola)==
+- **Esempio:**
+	- **La famiglia di insiemi $F$:** Rappresenta tutti gli studenti di una scuola, divisi per classe. Ogni classe è un insieme di studenti.
+	- **L'insieme $X$ :** Rappresenta una singola classe.
+	- **L'elemento $x$ :** Rappresenta un singolo studente.
+	- **L'espressione:**
+		In questo caso significherebbe "Se prendi tutti gli studenti da tutte le classi e li metti insieme, otterrai l'insieme di tutti gli studenti della scuola."
+Sia $F$ una famiglia qualunque di insiemi si indica con $\bigcap_{X \in \mathcal{F}} X$ l'insieme degli elementi che appartengono a tutti gli insiemi $X$ che appartengono ad $F$ e viene detto insieme intersezione della famiglia $F$. Quindi:
+- $\bigcap_{X \in \mathcal{F}} X = \{x : \forall X \in \mathcal{F}, x \in X\}$ L'insieme intersezione della famiglia $F$ è uguale all'insieme di tutti gli elementi $x$ tali che per ogni $X$ appartenente a F, x appartiene a X. ==Tutto ciò si traduce nel dire che l'insieme intersezione della famiglia F è uguale all'intersezione tra tutti gli insiemi appartenenti a F stesso e quindi dagli elementi comuni a tutti gli insiemi.==
+
+---
+##### Insiemi chiusi
+Sia dato un insieme $U$ ed un operazione, se quest'ultima può essere definita o completata in $U$ allora possiamo dire che $U$ e chiuso rispetto a quell'operazione
+- Sia $U = \mathbb{N}$ e l'operazione che consideriamo è la somma, allora possiamo dire che U è un'insieme chiuso rispetto alla somma (la somma di 2 qualsiasi valori ci da un valore positivo e quindi che appartiene a $\mathbb{N}$)
+-  Sia $U = \mathbb{N}$ e l'operazione che consideriamo è la sottrazione, allora possiamo dire che U **non** è un'insieme chiuso rispetto alla sottrazione (la sottrazione di 2 qualsiasi valori ci potrebbe dare un valore negativo che non appartiene $\mathbb{N}$)
+###### Chiusura rispetto all'unione ed intersezione
+Sia $F$ una famiglia di insiemi
+- diciamo che $F$  è chiusa rispetto all’unione se per ogni coppia di insiemi $X$ e $Y$ appartenenti a $F$ anche $X ∪ Y$ appartiene a $F$.
+- diciamo che $F$ è chiusa rispetto all’intersezione se per ogni coppia di insiemi $X$ e $Y$ appartenenti a $F$ anche $X ∩ Y$ appartiene a $F$.
+- Sia F = { {1, 2, 3}, {1, 2}, {1, 3} } abbiamo che $F$ è chiuso rispetto all’unione ma non è chiuso rispetto all’intersezione, perché {1, 2 } ∩ {1, 3} = {1} che non appartiene ad F.
+Considerando $F$ una famiglia di insiemi composta da sotto insiemi di un insieme universo detto $U$, possiamo dire che per ogni X ∈ $F$ il complemento di X rispetto ad U ovvero $X^C = U \backslash X$ appartiene ad a $pow(U)$. Quindi possiamo dire che $F^C$ è una famiglia di insiemi dove ogni insieme viene complementato rispetto ad $U$ 
+-  $U$ = {1, 2, 3}
+- $F$ = {{1}, {2, 3}, {1, 2}}
+- $F^C$ = { {2,3}, {1}, {3} }
+la famiglia complemento viene definita cosi:
+- $F^C$ = {$X^C$ : $X$ ∈ $F$ } 
+ovvero come l'insieme di tutti le $X$ ∈ $F$ però complementate.
+
+Teoremi:
+- La famiglia $F$ è chiusa rispetto all’unione se e solo se la famiglia $F^C$ è chiusa rispetto all’intersezione.
+- La famiglia $F$ è chiusa rispetto all’intersezione se e solo se la famiglia $F^C$ è chiusa rispetto all’unione.
+![[Pasted image 20241019115203.png]]
+
+Sia data:
+- $F$ una famiglia finita di insiemi su un insieme $U$
+- * una generica operazione sull'insieme
+
+> [!Chiusura di una famiglia rispetto ad un'operazione generica] 
+> Definiamo chiusura di $F$ rispetto ad * la più piccola famiglia $F_*$ che contiene $F$ ed è chiusa rispetto a * .
+
+- Esempio: sia data $F$ = {{1, 2, 3}, {1, 2}, {1, 3}, {2, 4}} ovvero famiglia non chiusa rispetto all'operazione di unione. La famiglia più piccola che contiene $F$ ed è chiusa rispetto all'operazione di unione è la famiglia $F^I$ = {{1, 2, 3}, {1, 2}, {1, 3}, {2, 4}, {1, 2, 3, 4}, {1, 2, 4}} [[Tips#Come calcolare la chiusura di una famiglia rispetto ad unione/intersezione]] 
+---
+##### Partizioni
+Una famiglia di insiemi $F$ formata da sottoinsiemi dell'insieme universo $U$ può essere chiamata anche partizione di $U$ 
+- Sia $U$ = {1,2,3,4,5,6,7,8,9,10,11,12} $F$ = { {1, 3, 5, 7, 8, 10, 12}, {2}, {4, 6, 9, 11} }, $F$ è una partizione di $U$
+---
+##### Coppie ordinate
+Consideriamo 2 elementi x e y. Creiamo una coppia ordinata dove il primo elemento è x ed il secondo elemento è y. Denotiamo tale coppia con (x, y).
+- la coppia (x, y) è diversa dalla coppia (y, x) (a meno che x = y).
+- (x, y) = (x′, y′) se e solo se x = x′ e y = y′
+> [!Nota bene]
+> la coppia (x, y) è diversa dall’insieme {x, y} costituito dagli elementi x e y
+
+----
+##### Insieme prodotto
+Dati 2 insiemi non vuoti $A$ e $B$, l'insieme prodotto da $A$ per $B$ (che indichiamo con $A × B$) è l'insieme di tutte le coppie ordinate $(x, y)$ con $x ∈ A$ e $y ∈ B$
+- A × B = {(x, y) : x ∈ A e y ∈ B} A×B è l'insieme di tutte le coppie $(x, y)$ con $x$ che appartiene ad $A$ e $y$ che appartiene a $B$
+	- Un'esempio di questo prodotto è il piano cartesiano che definiamo come $\mathfrak{R} \times \mathfrak{R}$ che è un insieme formato da tutte le coppie ordinate di numeri reali.
+	 ![[Pasted image 20241019135757.png]]
+	- Dati, in un certo ordine, tre insiemi A, B, C, si chiama loro prodotto, e si indica con A × B × C l’insieme di tutte le terne ordinate (x, y, z) con x ∈ A, y ∈ B, z ∈ C.
+---
+##### Paradosso di Russell
+Partendo dal concetto di insieme, possiamo benissimo costruire un insieme formato da tutti quegli elementi che non appartengono a se stessi e lo definiamo in questo modo:
+- $S = \{A {:} A \text{ è un insieme, e } A \notin A\}$  $S$ è l'insieme di tutti gli insiemi che non appartengono a se stessi. Per esempio, l'insieme di tutti i frutti non è un frutto, quindi potrebbe appartenere a $S$.
+Usando questa definizione S ∈ S?
+- **Se diciamo SI:** Se S appartiene a se stesso, allora per definizione di S, S non dovrebbe appartenere a se stesso (perché S contiene solo insiemi che non appartengono a se stessi). Questo è una contraddizione.
+- **Se diciamo NO:** Se S non appartiene a se stesso, allora per definizione di S, S dovrebbe appartenere a se stesso (perché S contiene tutti gli insiemi che non appartengono a se stessi). Anche in questo caso abbiamo una contraddizione.
+Evitiamo questa contraddizione imponendo nella definizione dell'insieme che quest'ultimo deve essere sottoinsieme di un'insieme conosciuto, la nuova definizione di $S$ diventa: $S = \{A \mid A \subseteq U, A \notin A\}$ 
+Con questa nuova definizione, il paradosso svanisce. Se proviamo a chiedere se S appartiene a se stesso, ci rendiamo conto che S è un sottoinsieme di U, ma non possiamo dire con certezza se S appartiene o meno a U. In questo modo, evitiamo il circolo vizioso che portava alla contraddizione.
+
+# Relazioni e funzioni
