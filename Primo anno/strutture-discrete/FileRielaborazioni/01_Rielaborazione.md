@@ -1,3 +1,4 @@
+
 Questo file è la rielaborazione delle slide [[01_Parte1.pdf]]
 
 # `Logica proposizionale`
@@ -342,10 +343,29 @@ Sia $U$ un insieme non vuoto. Con il termine relazione indichiamo un insieme for
 Una relazione f definita su $A × A$ si dice funzione di $A$ (dominio) in $B$ (codominio), se per ogni $x ∈ A$ esiste uno ed uno solo $y ∈ A$ tale che $(x, y) ∈ f$. La notazione classica per esprimere f è la seguente: $f : A → B$ per ogni x ∈ A l’unico elemento $y ∈ B$ tale che (x, y) ∈ $f$ si indica con $f(x)$
 
 Casi particolari:
-- $f : A → B$  per ogni x, f(x) = $x$ si dice **applicazione identica** di $A$
-- $f : A × B → A$ tale che per ogni $(x, y)$ $f(x, y)$ = $x$ si dice **proiezione canonica** su $A$.
-- $f : A × B → B$ tale che per ogni $(x, y)$ $f(x, y)$ = $y$ si dice **proiezione canonica** su $B$.
+- $f : A → B$  per ogni x, f(x) = $x$ si dice ==**applicazione identica**== di $A$
+- $f : A × B → A$ tale che per ogni $(x, y)$ $f(x, y)$ = $x$ si dice ==**proiezione canonica**== su $A$.
+- $f : A × B → B$ tale che per ogni $(x, y)$ $f(x, y)$ = $y$ si dice ==**proiezione canonica**== su $B$.
 
-Dato $f : A → B$ e anche un sottoinsieme di A chiamato X
+Dato $f : A → B$ e anche un sottoinsieme di A chiamato X si dice ***immagine di X*** il sottoinsieme di B costituito dagli elementi che provengono da X. Questo insieme si indica con f(X) e anche con la seguente definizione:
+- $f(X) = \{y: y \in B \land (\exists x \in X) (f(x) = y)\}$  ==L'immagine di X è l'insieme di tutti gli y appartenenti a B tali che esiste un x appartenente a X per cui f(x) è uguale a y==
+$F(A)$ si dirà ***immagine dell'applicazione f***, ovvero tutti i possibili valori che la funzione può assumere.
 
-==Continua da slide 94==
+###### Funzione iniettiva
+Data un'applicazione $f$: $A$ → $B$ se porta punti distinti del dominio su su punti distinti del codominio la funzione si dice ==***iniettiva***== formalmente la definiamo così:
+- $\forall x, y \in A, \text{ se } x \neq y, \text{ allora } f(x) \neq f(y).$ Per tutti x e y appartenenti ad A se x è diverso da y allora f(x) è diverso da f(y). Questo tipo di funzione viene definita funzione "uno a uno"
+appunto perché associa ad ogni elemento di B(codominio) **soltanto** un elemento di A(dominio)
+- Esempio: ![[Pasted image 20241020160345.png]]
+- $X$ è l'insieme delle $x$ del piano cartesiano corrisponde a $A$ nella definizione precedente
+- $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde a $B$ nella definizione precedente
+- ***nel primo grafico ad ogni valore di $Y$***  ***posso associare un solo elemento di $X$*** ***e quindi è surgettiva, nel secondo invece ad ogni valore di $Y$ posso associare più elementi di $X$***
+---
+###### Funzione surgettiva
+Data un'applicazione $f$: $A$ → $B$ se l'immagine $f(A)$ $=$ $B$ la funzione si dice ==***surgettiva***== ovvero un funzione che associa ad ogni elemento di B (codominio) **almeno** un'elemento di A(dominio).
+- Esempio:![[Pasted image 20241020161146.png]]
+- $X$ è l'insieme delle $x$ del piano cartesiano corrisponde a $A$ nella definizione precedente
+- $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde a $B$ nella definizione precedente
+- nel primo grafico ad ogni valore di $Y$ posso associare almeno un elemento di $X$, nel secondo grafico invece ad ogni valore di $Y$ non posso associare sempre almeno un valore di $X$ (dove c'è la linea rossa non posso associare $Y$ a nessuna $X$).
+
+
+Data un'applicazione $f$: $A$ → $B$ si dice *==biiettiva==* se è sia iniettiva che surgettiva.
