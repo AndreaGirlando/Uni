@@ -1,4 +1,4 @@
-
+TEST
 Questo file è la rielaborazione delle slide [[01_Parte1.pdf]]
 
 # `Logica proposizionale`
