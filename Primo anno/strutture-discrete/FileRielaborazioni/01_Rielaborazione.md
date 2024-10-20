@@ -113,13 +113,12 @@ Una qualunque formala $P$ si può trasformare in una delle 2 forme normali sopra
 		2. $(p ∧ ...) ∨ (p ∧ ...) ∨ (q ∧ ...) ∨ (q ∧ ...)$ Prendo una variabile della prima parentesi, gli metto vicino l'operatore logico fuori dalla parentesi, faccio questa cosa una volta per ogni variabile della della seconda parentesi. Il segno che c'è tra le nuove parentesi e quello dentro la parentesi iniziale. 
 		3. $(p ∧ ¬p) ∨ (p ∧ ¬r ) ∨ (q ∧ ¬p) ∨ (q ∧ ¬r )$ Sostituisco ogni variabile della seconda parentesi iniziale ai puntini
 		4. $(p ∧ ¬r ) ∨ (q ∧ ¬p) ∨ (q ∧ ¬r )$ elimino la formula $(p ∨ ¬p)$ perché sarebbe sempre falsa
-
+Per fare questa cosa in modo più veloce esiste [[Tips#Come trasformare una qualsiasi formula in CNF e DNF|✨metodo Di Bella ✨]]
 Esempio:
 ![[Pasted image 20241012123046.png]]
 
 ---
---- 
-# `Insiemi fino a slide` 
+# `Insiemi` 
 Gli insiemi vengono considerati una collezione ben definita di oggetti. 
 1. Per esprimere l'**appartenenza** ad un insieme usiamo la seguente espressione: 
 	- x ∈ T (x è un elemento generico e T è un'insieme generico)
@@ -358,14 +357,21 @@ appunto perché associa ad ogni elemento di B(codominio) **soltanto** un element
 - Esempio: ![[Pasted image 20241020160345.png]]
 - $X$ è l'insieme delle $x$ del piano cartesiano corrisponde a $A$ nella definizione precedente
 - $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde a $B$ nella definizione precedente
-- ***nel primo grafico ad ogni valore di $Y$***  ***posso associare un solo elemento di $X$*** ***e quindi è surgettiva, nel secondo invece ad ogni valore di $Y$ posso associare più elementi di $X$***
+- ***nel primo grafico ad ogni valore di $Y$*** ***posso sempre associare un solo elemento di $X$*** ***e quindi è surgettiva, nel secondo invece ad ogni valore di $Y$ posso associare più elementi di $X$***
 ---
 ###### Funzione surgettiva
 Data un'applicazione $f$: $A$ → $B$ se l'immagine $f(A)$ $=$ $B$ la funzione si dice ==***surgettiva***== ovvero un funzione che associa ad ogni elemento di B (codominio) **almeno** un'elemento di A(dominio).
 - Esempio:![[Pasted image 20241020161146.png]]
-- $X$ è l'insieme delle $x$ del piano cartesiano corrisponde a $A$ nella definizione precedente
-- $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde a $B$ nella definizione precedente
-- nel primo grafico ad ogni valore di $Y$ posso associare almeno un elemento di $X$, nel secondo grafico invece ad ogni valore di $Y$ non posso associare sempre almeno un valore di $X$ (dove c'è la linea rossa non posso associare $Y$ a nessuna $X$).
+- $X$ è l'insieme delle $x$ del piano cartesiano corrisponde al dominio
+- $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde al codominio
+- ***nel primo grafico ad ogni valore di $Y$ posso associare almeno un elemento di $X$, nel secondo grafico invece ad ogni valore di $Y$ non posso associare un valore di $X$ (dove c'è la linea rossa non posso associare $Y$ a nessuna $X$)**.*
 
+---
+###### Funzione biiettiva
+Data un'applicazione $f$: $A$ → $B$ si dice *==biiettiva==* se è sia iniettiva che surgettiva. Questo tipo di funzione associa sempre ogni elemento di A ad ogni elemento di B
+Esempio: ![[Pasted image 20241020164744.png]] 
+- $X$ è l'insieme delle $x$ del piano cartesiano corrisponde al dominio
+- $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde al codominio
+- ad ogni elemento di $X$ posso associare soltanto un elemento di $Y$ questo posso farlo sempre
 
-Data un'applicazione $f$: $A$ → $B$ si dice *==biiettiva==* se è sia iniettiva che surgettiva.
+==Continuare da slide 100==
