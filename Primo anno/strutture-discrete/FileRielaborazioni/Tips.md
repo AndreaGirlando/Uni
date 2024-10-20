@@ -31,3 +31,11 @@ $\mathcal{F}_U$ = ??? famiglia più piccola che contiene $F$ ed è chiusa rispet
 1. Costruiamo la famiglia $F^1$ mettendoci tutti gli elementi di $F$.
 2. Per ogni i (partendo da 2) sino a m calcoliamo $F_i$ utilizzando tutte le coppie di elementi $X$ , $Y$ con $X ∈ F$ e $Y ∈ \mathcal{F}_{i-1}$ e mettendo $X ∪ Y$ in $F_i$ .
 3. Poniamo infine $\mathcal{F}_U = \bigcup_{i=1}^{m} \mathcal{F}_i$ 
+
+
+
+##### Come trasformare una qualsiasi formula in CNF e DNF
+1. Elimina le coimplicazioni p ⇔ q dalla formula sostituendole con (p ⇒ q) ∧ (q ⇒ p)
+2. Elimina le implicazioni p ⇒ q dalla formula sostituendole con ¬p ∨ q
+3. Sposta le negazioni a ridosso delle variabili proposizionali ed elimina le doppie negazioni.
+4. Di Bella move: ![[Pasted image 20241020173502.png]]Questo passaggio consiste nel trasformare il tutto in moltiplicazione e somme per rendere tutto più intuitivo.
