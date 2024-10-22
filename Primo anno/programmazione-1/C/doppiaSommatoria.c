@@ -29,7 +29,6 @@ int main() {
         i++;
     }
 
-    printf("\n\nLa sommatoria e': %f", y);
+    printf("\n\nLa sommatoria e': %f\n", y);
 
-    getchar();
 }
