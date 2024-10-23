@@ -39,3 +39,10 @@ $\mathcal{F}_U$ = ??? famiglia più piccola che contiene $F$ ed è chiusa rispet
 2. Elimina le implicazioni p ⇒ q dalla formula sostituendole con ¬p ∨ q
 3. Sposta le negazioni a ridosso delle variabili proposizionali ed elimina le doppie negazioni.
 4. Di Bella move: ![[Pasted image 20241020173502.png]]Questo passaggio consiste nel trasformare il tutto in moltiplicazione e somme per rendere tutto più intuitivo.
+##### Differenza tra applicazione e funzione
+In matematica, i termini **"applicazione"** e **"funzione"** sono praticamente sinonimi, ma ci sono alcune sottili differenze di uso e di contesto che spiegano perché in certi casi si preferisce usare uno rispetto all'altro.
+
+1. **Funzione**: La parola "funzione" è il termine più generico e formale per descrivere una corrispondenza tra due insiemi, dove ad ogni elemento del primo insieme (detto **dominio**) corrisponde **uno e un solo** elemento del secondo insieme (detto **codominio**). Quindi, una funzione è una regola che associa elementi del dominio al codominio. Formalmente, una funzione $f ⁣:A→B$ è una relazione che associa ad ogni elemento di $A$ un unico elemento di $B$.
+
+2. **Applicazione**: Il termine "applicazione" è usato in contesti più specifici o pratici. Spesso viene utilizzato quando si vuole enfatizzare il **processo** o **l'atto** di associare un elemento del dominio al suo corrispondente nel codominio, piuttosto che la funzione come oggetto matematico in astratto. "Applicazione" sottolinea l'idea di "applicare" una regola o un'operazione a un elemento per ottenere un risultato.
+
