@@ -337,6 +337,7 @@ Con questa nuova definizione, il paradosso svanisce. Se proviamo a chiedere se S
 Sia $U$ un insieme non vuoto. Con il termine relazione indichiamo un insieme formato in questo modo: (per capire meglio questo insieme guarda: [[#Insieme prodotto]])
 - $R ⊆ U × U$ ovvero $\{(x, y) \in U \times U : R(x, y)\}$ cioè un insieme formato da tutte le coppie che rendono vera la relazione, questo insieme viene chiamato ***grafico della relazione***
 	- Considera l'insieme U = {1, 2, 3}. Una possibile relazione R su U potrebbe essere "è minore di". In questo caso, il grafico di R sarebbe {(1, 2), (1, 3), (2, 3)}, perché 1 è minore di 2 e 3, e 2 è minore di 3, questi sono gli unici 3 casi che rendono vera la relazione "è minore di".
+[[#Proprietà delle relazioni]]
 ---
 ##### Funzioni
 Una relazione f definita su $A × A$ si dice funzione di $A$ (dominio) in $B$ (codominio), se per ogni $x ∈ A$ esiste uno ed uno solo $y ∈ A$ tale che $(x, y) ∈ f$. La notazione classica per esprimere f è la seguente: $f : A → B$ per ogni x ∈ A l’unico elemento $y ∈ B$ tale che (x, y) ∈ $f$ si indica con $f(x)$
@@ -366,6 +367,10 @@ Data un'applicazione $f$: $A$ → $B$ se l'immagine $f(A)$ $=$ $B$ la funzione s
 - $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde al codominio
 - ***nel primo grafico ad ogni valore di $Y$ posso associare almeno un elemento di $X$, nel secondo grafico invece ad ogni valore di $Y$ non posso associare un valore di $X$ (dove c'è la linea rossa non posso associare $Y$ a nessuna $X$)**.*
 
+> [!Nota bene]
+> 1. Una ***funzione iniettiva*** può avere elementi del codominio che non vengono raggiunti.
+> 2. Una ***funzione suriettiva***, invece, raggiunge tutti gli elementi del codominio.
+
 ---
 ###### Funzione biiettiva
 Data un'applicazione $f$: $A$ → $B$ si dice *==biiettiva==* se è sia iniettiva che surgettiva. Questo tipo di funzione associa sempre ogni elemento di A ad ogni elemento di B
@@ -374,4 +379,55 @@ Esempio: ![[Pasted image 20241020164744.png]]
 - $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde al codominio
 - ad ogni elemento di $X$ posso associare soltanto un elemento di $Y$ questo posso farlo sempre
 
-==Continuare da slide 100==
+La cardinalità di un insieme è definita come il numero di elementi che appartengono all'insieme, per riuscire a contare questi elementi si cerca una corrispondenza biunivoca tra l'insieme e un insieme "campione" fatto da numeri naturali detto $l_n$ ovvero l'insieme dei numeri naturali interi che precedono $n$ ( es: {0, 1, 2, · · · , n − 1} ), infatti:
+- ***Insieme finito***: si dice che un insieme $X$ è finito se esiste un $n ∈ N$ tale che $X$ si possa mettere in corrispondenza biunivoca con $I_n$ ; 
+- ***Insieme infinito***: Se non esiste un numero naturale $n$ tale da costruire un insieme $l_n$ grande quanto $X$, l'insieme è infinito.
+
+***Teorema***: Se $A$ e $B$ sono due insiemi finiti ed esiste una funzione **iniettiva** $f:A→B$, allora la cardinalità di $A$ è minore o uguale alla cardinalità di $B$, cioè $∣A∣≤∣B∣$ 
+
+***Dimostrazione***:  Si considera l'immagine $f(A)$, cioè l'insieme di elementi di $B$ a cui $A$ viene mappato. Poiché $f$ è iniettiva, ogni elemento di $A$ corrisponde a un elemento unico di $f(A)$, quindi $∣A∣=∣f(A)∣$. Tuttavia, $f(A)$ è un sottoinsieme di $B$ (cioè tutti gli elementi di $f(A)$ appartengono a $B$), quindi $∣f(A)∣≤∣B∣$. Da qui segue che $∣A∣≤∣B∣$. (Ricordiamo che essendo iniettiva la funzione non tutti gli elementi di B(codominio) hanno un immagine in A(dominio))
+
+---
+##### Proprietà delle relazioni
+Sia dato un insieme U diremo che una relazione $R(x, y)$ definita in $U×U$ è:
+- ***Riflessiva***: se $∀x∈U$ risulta vero che $R(x, x)$.
+- ***Simmetrica***: se $∀x, y ∈ U$ risulta vero che $R(x, y)$ e anche $R(y, x)$;
+- ***Transitiva***: se $∀x,y,z ∈ U$ risulta vero che $R(x, y)$ e $R(y, z)$ allora ci deve essere anche una $R(x, z)$ 
+- ***Esempio fatto durante l'esercitazione:***![[Pasted image 20241023101548.png]]
+
+> [!Nota bene]
+> Una relazione che è sia riflessiva, simmetrica e transitiva si dice relazione di ***equivalenza***. Più in generale una **relazione di equivalenza** è una relazione tra elementi di un insieme che li "raggruppa" in base a certe proprietà comuni. si indica in questo modo:
+> - $x ≈ y$ 
+
+
+Se hai un insieme $U$ e una relazione di equivalenza su questo insieme, puoi prendere un elemento $x$ di $U$ e formare un sottoinsieme di $U$, che contiene tutti gli elementi che sono equivalenti a $x$. Questo sottoinsieme è chiamato ***classe di equivalenza*** di $x$, e si indica con $[x]$. 
+
+Per le classi di equivalenza vale il seguente teorema:
+***Teorema***: Due classi di equivalenza o sono disgiunte o coincidono.
+***Dimostrazione***: Siano $[x]$ e $[z]$ due classi di equivalenza e supponiamo che esse abbiano un elemento $w$ in comune: pertanto è $w ≈ x$ e $w ≈ z$. Allora, per la proprietà transitiva è $x ≈ z$. Sia ora $y ∈ [x]$, cioè $y ≈ x$. Per la proprietà transitiva è $y ≈ z$, cioè $y ∈ [z]$. Quindi, $[x] ⊆ [z]$. Analogamente si dimostra che $[z] ⊆ [x]$. 
+**Spiegazione della dimostrazione**:
+1. **Prima parte**: Supponiamo che le classi $[x]$ e $[z]$ abbiano un elemento $w$ in comune
+    - Se $w$ è in comune, significa che $w ≈ x$ e $w ≈ z$
+    - Per la proprietà transitiva della relazione di equivalenza, se $w ≈ x$ e $w ≈ z$, allora $x ≈ z$
+2. **Seconda parte**: Dimostriamo che $[x]$ ⊆ $[z]$
+    - Prendiamo un elemento qualsiasi $y ∈ [x]$
+    - Per definizione di classe di equivalenza, $y ∈ [x]$ significa che $y ≈ x$
+    - Sappiamo già che $x ≈ z$ (dalla prima parte)
+    - Per la proprietà transitiva, se $y ≈ x$ e $x ≈ z$, allora $y ≈ z$
+    - Quindi $y ∈ [z]$
+    - Poiché questo vale per ogni $y ∈ [x]$, abbiamo dimostrato che $[x] ⊆ [z]$
+3. **Terza parte**: Analogamente si dimostra che $[z] ⊆ [x]$
+    - Il ragionamento è lo stesso ma invertendo x e z
+4. **Conclusione**:
+    - Se $[x] ⊆ [z]$ e $[z] ⊆ [x]$, allora $[x] = [z]$
+    - Questo dimostra che **se** due classi di equivalenza non sono disgiunte (cioè hanno un elemento in comune), allora devono necessariamente coincidere. In altre parole, non possono "sovrapporsi parzialmente" o non hanno elementi in comune (sono disgiunte) o sono esattamente le stesse (coincidono).
+
+Data una relazione $R$ su un insieme $U$, consideriamo ora la famiglia di insiemi $F$ formata da tutte le classi di equivalenza create dalla relazione $R$ su $U$. $F$ è un sottoinsieme di [[#Insieme delle parti|pow]](U) tale che:
+- L'unione di tutte le classi di equivalenza che appartengono ad $F$ ci da $U$
+- per ogni X , Y ∈ F, X $\neq$ Y si ha X ∩ Y = ∅ (vedi teorema precedente)
+Quindi, una relazione di equivalenza $R$ individua una partizione $F$ su $U$ che viene detta ***Insieme Quoziente*** e lo denotiamo con $U/R$ 
+***Esempio***: Immagina U come l'insieme dei numeri interi e R come la relazione "avere lo stesso resto nella divisione per 3" :
+$[0]$ = {…, -3, 0, 3, 6, …}
+$[1]$ = {…, -2, 1, 4, 7, …}
+$[2]$ = {…, -1, 2, 5, 8, …} 
+Queste tre classi formano una partizione di $U$ ovvero $F$, che si può anche chiamare ***Insieme quoziente di U***.
