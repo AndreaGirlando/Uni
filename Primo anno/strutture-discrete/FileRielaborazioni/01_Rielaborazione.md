@@ -430,4 +430,13 @@ Quindi, una relazione di equivalenza $R$ individua una partizione $F$ su $U$ che
 $[0]$ = {…, -3, 0, 3, 6, …}
 $[1]$ = {…, -2, 1, 4, 7, …}
 $[2]$ = {…, -1, 2, 5, 8, …} 
-Queste tre classi formano una partizione di $U$ ovvero $F$, che si può anche chiamare ***Insieme quoziente di U***.
+Queste tre classi formano una partizione di $U$ ovvero $F$, che si può anche chiamare ***Insieme quoziente di U***. Quindi capiamo subito che 
+- $F = U/R$
+
+Individuato l'insieme quoziente (che denotiamo con $U/R$), l'applicazione $U → U/R$, ovvero un'applicazione che associa ogni $x ∈ U$ alla sua classe di equivalenza. Questa è un'applicazione surgettiva perché ogni classe di equivalenza è effettivamente "raggiunta" da almeno un elemento di $U$. Questa applicazione viene anche chiamata ***applicazione canonica sul quoziente***. 
+
+> [!Nota bene]
+> [[Tips#Differenza tra applicazione e funzione]] 
+> Nel contesto specifico dell'**applicazione canonica sul quoziente**, si parla di **applicazione** perché si vuole mettere in evidenza il fatto che stiamo "applicando" una trasformazione sugli elementi dell'insieme $U$. In particolare, stiamo usando una regola (la relazione di equivalenza) per trasformare ogni elemento xxx di $U$ nella sua **classe di equivalenza** $[x]$.
+
+==Continua da slide 107==
