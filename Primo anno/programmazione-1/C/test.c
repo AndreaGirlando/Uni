@@ -1,5 +1,9 @@
 #include <stdio.h>
 main() /* in C */
 {
-    printf("Ciao Mondo\n");
+    int i = 0;
+    while(i != 1){
+        printf("Test");
+        printf("\a");
+    }
 }
