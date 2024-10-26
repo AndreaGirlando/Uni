@@ -147,7 +147,7 @@ Nomenclature:
 ##### Sottoinsieme e sovrainsieme
 Se abbiamo 2 insiemi A e B, e tutti gli elementi di A appartengono a B, diciamo che A è un ***sottoinsieme*** di B e lo denotiamo così:
 - A ⊆ B ⇔ (∀x)(x ∈ A ⇒ x ∈ B) ==(A è un sottoinsieme di B se e solo se qualunque x che appartiene ad A, appartiene anche a B)==
-facendo rifermento allo stesso caso potremmo dire che B è un ***sovrainsieme*** e lo denotiamo così:
+facendo rifermento allo stesso caso potremmo dire che B è un ***sovrainsieme*** di A e lo denotiamo così:
 - B ⊇ A ⇔ (∀x)(x ∈ A ⇒ x ∈ B) ==(A è un sovrainsieme di B se e solo se qualunque x che appartiene ad A, appartiene anche a B)==
 
 <mark class="hltr-purple">Nota bene</mark> tra le due espressioni scritte qua sopra cambia la direzione del segno
@@ -243,8 +243,8 @@ Come possiamo ben notare la cardinalità di $P(T)$ = $2^n$ dove $n$ è il numero
 Proprietà: (Per capire le proprietà di consiglia prima di vedere bene:[[#Sottoinsieme e sovrainsieme| spiegazione ⊂ e ⊃]])
 - $P(A ∩ B) = P(A) ∩ P(B)$
 	- Dimostrazione: Per dimostrare che è vera l'equivalenza dobbiamo dimostrare 2 casi
-		1. Caso ⊂: supponendo che $x ∈ P(A ∩ B)$  e quindi che $X ⊂ A$ e $X ⊂ B$ da questo capiamo facilmente che  $X ∈ P(A)$ e $X ∈ P(B)$ e quindi che $X ∈ P(A) ∩ P(B)$
-		2. Caso ⊂: supponiamo che $X ∈ P(A) ∩ P(B)$ e quindi che $X ⊆ A$ e $X ⊆ B$ quindi $X ⊆ A ∩ B$ ciò implica che $X ∈ P(A ∩ B)$
+		1. Caso ⊂: supponendo che $X ∈ P(A ∩ B)$  e quindi che $X ⊂ A$ e $X ⊂ B$ da questo capiamo facilmente che  $X ∈ P(A)$ e $X ∈ P(B)$ e quindi che $X ∈ P(A) ∩ P(B)$
+		2. Caso ⊃: supponiamo che $X ∈ P(A) ∩ P(B)$ e quindi che $X ⊆ A$ e $X ⊆ B$ quindi $X ⊆ A ∩ B$ ciò implica che $X ∈ P(A ∩ B)$
 - $P(A ∪ B) ⊃ P(A) ∪ P(B)$ 
 	- Dimostrazione: Per dimostrare questa formula dobbiamo dimostrare che $P(A ∪ B) ⊃ P(A) ∪ P(B)$ ma anche che un generico elemento di $P(A ∪ B)$ non appartenga a $P(A) ∪ P(B)$ 
 		1. Caso ⊃: Supponiamo che $X ∈ P(A) ∪ P(B)$, allora $X ∈ P(A)$ oppure $X ∈ P(B)$.Nel primo caso $X ⊆ A$ mentre nel secondo caso $X ⊆ B$. In entrambi i casi, quindi, $X ⊆ A ∪ B$ da cui $X ∈ P(A ∪ B)$.
@@ -255,13 +255,13 @@ Proprietà: (Per capire le proprietà di consiglia prima di vedere bene:[[#Sotto
 
 ---
 ##### Diagramma di Venn di famiglie di insiemi
-Data una famiglia di n insiemi detta F, le regioni del diagramma di Venn sono $2^n$. Una famiglia di insiemi che un numero infinito di elementi è una ***famiglia infinita***. Se invece ha un numero finito di elementi allora è una ***famiglia infinita***.
+Data una famiglia di n insiemi detta F, le regioni del diagramma di Venn sono $2^n$. Una famiglia di insiemi con un numero infinito di elementi è una ***famiglia infinita***. Se invece ha un numero finito di elementi allora è una ***famiglia infinita***.
 - Sia $F$ = {P, D} dove P è l’insieme dei numeri pari (infinito) e D è l’insieme dei numeri dispari (infinito). La famiglia F è una famiglia finita di insiemi.
 - Sia $F$ = {$P_1$, $P_2$, $P_3$, . . .} dove $P_i$ = {$2^1$, · · · , $2^i$ }. La famiglia è infinita, ma tutti i suoi elementi sono insiemi finiti.
 Le operazioni di unione ed intersezione si possono estendere alle famiglie infinite. 
 
 Sia $F$ una famiglia qualunque di insiemi si indica con: $\bigcup_{ X \in F} X$  l'insieme degli elementi di $X$ che appartengono ad F e viene detto insieme unione della famiglia $F$. Quindi:
-- $\bigcup_{X \in \mathcal{F}} X = \{x : \exists X, X \in \mathcal{F}$ e $x \in X\}$ L'insieme unione della famiglia $F$ è uguale all'insieme di tutte le $x$ appartenenti a $X$ che rispettano la condizione che $X$ esista ed  appartenga ad $F$. ==Tutto ciò si traduce nel dire che l'insieme unione della famiglia $F$ è uguale all'unione tra tutti gli insiemi appartenenti a $F$ stesso e quindi da tutti gli elementi degli insiemi (ripetuti una volta sola)==
+- $\bigcup_{X \in \mathcal{F}} X = \{x : \exists X, X \in \mathcal{F}$ e $x \in X\}$ L'insieme unione della famiglia $F$ è uguale all'insieme di tutte le $x$ appartenenti a $X$ che rispettano la condizione che $X$ esista ed appartenga ad $F$. ==Tutto ciò si traduce nel dire che l'insieme unione della famiglia $F$ è uguale all'unione tra tutti gli insiemi appartenenti a $F$ stesso e quindi da tutti gli elementi degli insiemi (ripetuti una volta sola)==
 - **Esempio:**
 	- **La famiglia di insiemi $F$:** Rappresenta tutti gli studenti di una scuola, divisi per classe. Ogni classe è un insieme di studenti.
 	- **L'insieme $X$ :** Rappresenta una singola classe.
@@ -269,7 +269,7 @@ Sia $F$ una famiglia qualunque di insiemi si indica con: $\bigcup_{ X \in F} X$ 
 	- **L'espressione:**
 		In questo caso significherebbe "Se prendi tutti gli studenti da tutte le classi e li metti insieme, otterrai l'insieme di tutti gli studenti della scuola."
 Sia $F$ una famiglia qualunque di insiemi si indica con $\bigcap_{X \in \mathcal{F}} X$ l'insieme degli elementi che appartengono a tutti gli insiemi $X$ che appartengono ad $F$ e viene detto insieme intersezione della famiglia $F$. Quindi:
-- $\bigcap_{X \in \mathcal{F}} X = \{x : \forall X \in \mathcal{F}, x \in X\}$ L'insieme intersezione della famiglia $F$ è uguale all'insieme di tutti gli elementi $x$ tali che per ogni $X$ appartenente a F, x appartiene a X. ==Tutto ciò si traduce nel dire che l'insieme intersezione della famiglia F è uguale all'intersezione tra tutti gli insiemi appartenenti a F stesso e quindi dagli elementi comuni a tutti gli insiemi.==
+- $\bigcap_{X \in \mathcal{F}} X = \{x : \forall X \in \mathcal{F}, x \in X\}$ L'insieme intersezione della famiglia $F$ è uguale all'insieme di tutti gli elementi $x$ tali che per ogni $X$ appartenente a F, x appartiene a X. ==Tutto ciò si traduce nel dire che l'insieme intersezione della famiglia F è uguale all'intersezione tra tutti gli insiemi appartenenti a F stesso e quindi avremo come risultato un insieme fatto dagli elementi comuni a tutti gli insiemi.==
 
 ---
 ##### Insiemi chiusi
@@ -282,7 +282,8 @@ Sia $F$ una famiglia di insiemi
 - diciamo che $F$ è chiusa rispetto all’intersezione se per ogni coppia di insiemi $X$ e $Y$ appartenenti a $F$ anche $X ∩ Y$ appartiene a $F$.
 - Sia F = { {1, 2, 3}, {1, 2}, {1, 3} } abbiamo che $F$ è chiuso rispetto all’unione ma non è chiuso rispetto all’intersezione, perché {1, 2 } ∩ {1, 3} = {1} che non appartiene ad F.
 Considerando $F$ una famiglia di insiemi composta da sotto insiemi di un insieme universo detto $U$, possiamo dire che per ogni X ∈ $F$ il complemento di X rispetto ad U ovvero $X^C = U \backslash X$ appartiene ad a $pow(U)$. Quindi possiamo dire che $F^C$ è una famiglia di insiemi dove ogni insieme viene complementato rispetto ad $U$ 
--  $U$ = {1, 2, 3}
+- $U$ = {1, 2, 3}
+- pow($U$)= $\{\emptyset, \{1\}, \{2\}, \{3\}, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\}\}$
 - $F$ = {{1}, {2, 3}, {1, 2}}
 - $F^C$ = { {2,3}, {1}, {3} }
 la famiglia complemento viene definita cosi:
@@ -298,8 +299,7 @@ Sia data:
 - $F$ una famiglia finita di insiemi su un insieme $U$
 - * una generica operazione sull'insieme
 
-> [!Chiusura di una famiglia rispetto ad un'operazione generica] 
-> Definiamo chiusura di $F$ rispetto ad * la più piccola famiglia $F_*$ che contiene $F$ ed è chiusa rispetto a * .
+***Definiamo chiusura di $F$ rispetto ad * la più piccola famiglia $F^{*}$ che contiene $F$ ed è chiusa rispetto a * .***
 
 - Esempio: sia data $F$ = {{1, 2, 3}, {1, 2}, {1, 3}, {2, 4}} ovvero famiglia non chiusa rispetto all'operazione di unione. La famiglia più piccola che contiene $F$ ed è chiusa rispetto all'operazione di unione è la famiglia $F^I$ = {{1, 2, 3}, {1, 2}, {1, 3}, {2, 4}, {1, 2, 3, 4}, {1, 2, 4}} [[Tips#Come calcolare la chiusura di una famiglia rispetto ad unione/intersezione]] 
 ---
