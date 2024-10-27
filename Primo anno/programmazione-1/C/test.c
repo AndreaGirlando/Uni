@@ -1,5 +1,6 @@
 #include <stdio.h>
-main() /* in C */
-{
-    printf("Ciao Mondo\n");
+
+int main() {
+    printf("Questo è un suono di allarme\a\n");
+    return 0;
 }
