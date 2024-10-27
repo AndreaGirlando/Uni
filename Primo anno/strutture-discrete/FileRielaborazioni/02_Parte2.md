@@ -54,10 +54,27 @@ Dati due interi $a, b ∈ Z$, chiamati rispettivamente dividendo e divisore, esi
 
 In questo tipo di divisione noi abbiamo 4 casi:
 - Nel primo caso assumiamo che il dividendo a ed il divisore b siano entrambi non negativi
-	- É sempre possibile trovare un unico quoziente `q` e un unico resto `r` tali che:
-		- `a = qb + r`
-		- `r = a + qb`
-		- `0 <= r < b`
+	- É sempre possibile trovare un unico quoziente $q$ e un unico resto $r$ tali che:
+		- $a = qb + r$
+		- $q = \frac{a}{b}$ come risultato prendo solo la parte intera
+		- $r = a + qb$
+		- $0 <= r < b$
+	- $a = 1$, $b = 10$:  $q = \frac{1}{10} = 0$ e $r = \frac{1}{10} \times 10 = 1$ quindi ==1 mod 10 = 1==
 - Nel secondo caso assumiamo che il dividendo a sia negativo ma il divisore b positivo
+	- Assumiamo allora che $a<0$ mentre $b>0$, chiameremo $q'$ e $r'$ i risultati del primo caso da cui otteniamo:
+		- $a = (-q')b + (-r')$
+		- $q = -q' - 1$ 
+		- $r = b - r'$
+	- $a = -1$, $b = 10$: per $a = 1$ abbiamo $q' = 0$ e $r' = 1$ e quindi per a = -1 abbiamo $q' = -1$ e $r' = 10 - 1 = 9$ quindi ==-1 mod 10 = 9==
 - Nel terzo caso assumiamo che il dividendo a sia positivo e il divisore b negativo
+	- Assumiamo allora che $a > 0$  e $b < 0$, chiameremo $q'$ e $r'$ i risultati del primo caso da cui otteniamo:
+		- $a = (-q')b + (-r')$
+		- $q = -q'$ 
+		- $r = r'$
+	- $a = 1$, $b = -10$: per $b = 10$ abbiamo $q' = 0$ e $r' = 1$ e quindi per b = -10 abbiamo $q' = 0$ e $r' = 1$ quindi ==1 mod -10 = 1==
 - Nel quarto caso assumiamo che il dividendo a ed il divisore b siano entrambi negativi
+	- Adesso assumiamo che $a < 0$ e $b < 0$, chiameremo $q'$ e $r'$ i risultati del primo caso da cui otteniamo:
+		- $a = (q'+1)b -b -r'$
+		- $q = -q'+1$ 
+		- $r = -b -r'$
+	- $a = -1$, $b = -10$: per $a = 1$ e $b = 10 abbiamo $q' = 0$ e $r' = 1$ e quindi per $a = -1$ e $b = -10$ abbiamo $q' = 1$ e $r' = 10 - 1 = 9$ quindi ==-1 mod -10 = 9== 
