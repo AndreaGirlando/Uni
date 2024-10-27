@@ -2,10 +2,10 @@
 
 [[1 ottobre 2024.pdf]]
 [[3 ottobre 2024.pdf]]
-[[Uni/Primo anno/algebra-lineare-e-geometria/Lezioni/8 ottobre 2024.pdf|8 ottobre 2024]]
+[[Uni/Primo anno/algebra-lineare-e-geometria/Lezioni/8 ottobre 2024.pdf|8 ottobre 2024.pdf]]
 [[10 ottobre 2024.pdf]]
 [[15 ottobre 2024.pdf]]
-[[Uni/Primo anno/algebra-lineare-e-geometria/Lezioni/17 ottobre 2024.pdf|17 ottobre 2024]]
+[[Uni/Primo anno/algebra-lineare-e-geometria/Lezioni/17 ottobre 2024.pdf|17 ottobre 2024.pdf]]
 [[22 ottobre 2024.pdf]]
 
 ---
