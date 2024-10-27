@@ -147,7 +147,7 @@ Nomenclature:
 ##### Sottoinsieme e sovrainsieme
 Se abbiamo 2 insiemi A e B, e tutti gli elementi di A appartengono a B, diciamo che A è un ***sottoinsieme*** di B e lo denotiamo così:
 - A ⊆ B ⇔ (∀x)(x ∈ A ⇒ x ∈ B) ==(A è un sottoinsieme di B se e solo se qualunque x che appartiene ad A, appartiene anche a B)==
-facendo rifermento allo stesso caso potremmo dire che B è un ***sovrainsieme*** e lo denotiamo così:
+facendo rifermento allo stesso caso potremmo dire che B è un ***sovrainsieme*** di A e lo denotiamo così:
 - B ⊇ A ⇔ (∀x)(x ∈ A ⇒ x ∈ B) ==(A è un sovrainsieme di B se e solo se qualunque x che appartiene ad A, appartiene anche a B)==
 
 <mark class="hltr-purple">Nota bene</mark> tra le due espressioni scritte qua sopra cambia la direzione del segno
@@ -243,8 +243,8 @@ Come possiamo ben notare la cardinalità di $P(T)$ = $2^n$ dove $n$ è il numero
 Proprietà: (Per capire le proprietà di consiglia prima di vedere bene:[[#Sottoinsieme e sovrainsieme| spiegazione ⊂ e ⊃]])
 - $P(A ∩ B) = P(A) ∩ P(B)$
 	- Dimostrazione: Per dimostrare che è vera l'equivalenza dobbiamo dimostrare 2 casi
-		1. Caso ⊂: supponendo che $x ∈ P(A ∩ B)$  e quindi che $X ⊂ A$ e $X ⊂ B$ da questo capiamo facilmente che  $X ∈ P(A)$ e $X ∈ P(B)$ e quindi che $X ∈ P(A) ∩ P(B)$
-		2. Caso ⊂: supponiamo che $X ∈ P(A) ∩ P(B)$ e quindi che $X ⊆ A$ e $X ⊆ B$ quindi $X ⊆ A ∩ B$ ciò implica che $X ∈ P(A ∩ B)$
+		1. Caso ⊂: supponendo che $X ∈ P(A ∩ B)$  e quindi che $X ⊂ A$ e $X ⊂ B$ da questo capiamo facilmente che  $X ∈ P(A)$ e $X ∈ P(B)$ e quindi che $X ∈ P(A) ∩ P(B)$
+		2. Caso ⊃: supponiamo che $X ∈ P(A) ∩ P(B)$ e quindi che $X ⊆ A$ e $X ⊆ B$ quindi $X ⊆ A ∩ B$ ciò implica che $X ∈ P(A ∩ B)$
 - $P(A ∪ B) ⊃ P(A) ∪ P(B)$ 
 	- Dimostrazione: Per dimostrare questa formula dobbiamo dimostrare che $P(A ∪ B) ⊃ P(A) ∪ P(B)$ ma anche che un generico elemento di $P(A ∪ B)$ non appartenga a $P(A) ∪ P(B)$ 
 		1. Caso ⊃: Supponiamo che $X ∈ P(A) ∪ P(B)$, allora $X ∈ P(A)$ oppure $X ∈ P(B)$.Nel primo caso $X ⊆ A$ mentre nel secondo caso $X ⊆ B$. In entrambi i casi, quindi, $X ⊆ A ∪ B$ da cui $X ∈ P(A ∪ B)$.
@@ -255,13 +255,13 @@ Proprietà: (Per capire le proprietà di consiglia prima di vedere bene:[[#Sotto
 
 ---
 ##### Diagramma di Venn di famiglie di insiemi
-Data una famiglia di n insiemi detta F, le regioni del diagramma di Venn sono $2^n$. Una famiglia di insiemi che un numero infinito di elementi è una ***famiglia infinita***. Se invece ha un numero finito di elementi allora è una ***famiglia infinita***.
+Data una famiglia di n insiemi detta F, le regioni del diagramma di Venn sono $2^n$. Una famiglia di insiemi con un numero infinito di elementi è una ***famiglia infinita***. Se invece ha un numero finito di elementi allora è una ***famiglia infinita***.
 - Sia $F$ = {P, D} dove P è l’insieme dei numeri pari (infinito) e D è l’insieme dei numeri dispari (infinito). La famiglia F è una famiglia finita di insiemi.
 - Sia $F$ = {$P_1$, $P_2$, $P_3$, . . .} dove $P_i$ = {$2^1$, · · · , $2^i$ }. La famiglia è infinita, ma tutti i suoi elementi sono insiemi finiti.
 Le operazioni di unione ed intersezione si possono estendere alle famiglie infinite. 
 
 Sia $F$ una famiglia qualunque di insiemi si indica con: $\bigcup_{ X \in F} X$  l'insieme degli elementi di $X$ che appartengono ad F e viene detto insieme unione della famiglia $F$. Quindi:
-- $\bigcup_{X \in \mathcal{F}} X = \{x : \exists X, X \in \mathcal{F}$ e $x \in X\}$ L'insieme unione della famiglia $F$ è uguale all'insieme di tutte le $x$ appartenenti a $X$ che rispettano la condizione che $X$ esista ed  appartenga ad $F$. ==Tutto ciò si traduce nel dire che l'insieme unione della famiglia $F$ è uguale all'unione tra tutti gli insiemi appartenenti a $F$ stesso e quindi da tutti gli elementi degli insiemi (ripetuti una volta sola)==
+- $\bigcup_{X \in \mathcal{F}} X = \{x : \exists X, X \in \mathcal{F}$ e $x \in X\}$ L'insieme unione della famiglia $F$ è uguale all'insieme di tutte le $x$ appartenenti a $X$ che rispettano la condizione che $X$ esista ed appartenga ad $F$. ==Tutto ciò si traduce nel dire che l'insieme unione della famiglia $F$ è uguale all'unione tra tutti gli insiemi appartenenti a $F$ stesso e quindi da tutti gli elementi degli insiemi (ripetuti una volta sola)==
 - **Esempio:**
 	- **La famiglia di insiemi $F$:** Rappresenta tutti gli studenti di una scuola, divisi per classe. Ogni classe è un insieme di studenti.
 	- **L'insieme $X$ :** Rappresenta una singola classe.
@@ -269,7 +269,7 @@ Sia $F$ una famiglia qualunque di insiemi si indica con: $\bigcup_{ X \in F} X$ 
 	- **L'espressione:**
 		In questo caso significherebbe "Se prendi tutti gli studenti da tutte le classi e li metti insieme, otterrai l'insieme di tutti gli studenti della scuola."
 Sia $F$ una famiglia qualunque di insiemi si indica con $\bigcap_{X \in \mathcal{F}} X$ l'insieme degli elementi che appartengono a tutti gli insiemi $X$ che appartengono ad $F$ e viene detto insieme intersezione della famiglia $F$. Quindi:
-- $\bigcap_{X \in \mathcal{F}} X = \{x : \forall X \in \mathcal{F}, x \in X\}$ L'insieme intersezione della famiglia $F$ è uguale all'insieme di tutti gli elementi $x$ tali che per ogni $X$ appartenente a F, x appartiene a X. ==Tutto ciò si traduce nel dire che l'insieme intersezione della famiglia F è uguale all'intersezione tra tutti gli insiemi appartenenti a F stesso e quindi dagli elementi comuni a tutti gli insiemi.==
+- $\bigcap_{X \in \mathcal{F}} X = \{x : \forall X \in \mathcal{F}, x \in X\}$ L'insieme intersezione della famiglia $F$ è uguale all'insieme di tutti gli elementi $x$ tali che per ogni $X$ appartenente a F, x appartiene a X. ==Tutto ciò si traduce nel dire che l'insieme intersezione della famiglia F è uguale all'intersezione tra tutti gli insiemi appartenenti a F stesso e quindi avremo come risultato un insieme fatto dagli elementi comuni a tutti gli insiemi.==
 
 ---
 ##### Insiemi chiusi
@@ -282,7 +282,8 @@ Sia $F$ una famiglia di insiemi
 - diciamo che $F$ è chiusa rispetto all’intersezione se per ogni coppia di insiemi $X$ e $Y$ appartenenti a $F$ anche $X ∩ Y$ appartiene a $F$.
 - Sia F = { {1, 2, 3}, {1, 2}, {1, 3} } abbiamo che $F$ è chiuso rispetto all’unione ma non è chiuso rispetto all’intersezione, perché {1, 2 } ∩ {1, 3} = {1} che non appartiene ad F.
 Considerando $F$ una famiglia di insiemi composta da sotto insiemi di un insieme universo detto $U$, possiamo dire che per ogni X ∈ $F$ il complemento di X rispetto ad U ovvero $X^C = U \backslash X$ appartiene ad a $pow(U)$. Quindi possiamo dire che $F^C$ è una famiglia di insiemi dove ogni insieme viene complementato rispetto ad $U$ 
--  $U$ = {1, 2, 3}
+- $U$ = {1, 2, 3}
+- pow($U$)= $\{\emptyset, \{1\}, \{2\}, \{3\}, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\}\}$
 - $F$ = {{1}, {2, 3}, {1, 2}}
 - $F^C$ = { {2,3}, {1}, {3} }
 la famiglia complemento viene definita cosi:
@@ -298,8 +299,7 @@ Sia data:
 - $F$ una famiglia finita di insiemi su un insieme $U$
 - * una generica operazione sull'insieme
 
-> [!Chiusura di una famiglia rispetto ad un'operazione generica] 
-> Definiamo chiusura di $F$ rispetto ad * la più piccola famiglia $F_*$ che contiene $F$ ed è chiusa rispetto a * .
+***Definiamo chiusura di $F$ rispetto ad * la più piccola famiglia $F^{*}$ che contiene $F$ ed è chiusa rispetto a * .***
 
 - Esempio: sia data $F$ = {{1, 2, 3}, {1, 2}, {1, 3}, {2, 4}} ovvero famiglia non chiusa rispetto all'operazione di unione. La famiglia più piccola che contiene $F$ ed è chiusa rispetto all'operazione di unione è la famiglia $F^I$ = {{1, 2, 3}, {1, 2}, {1, 3}, {2, 4}, {1, 2, 3, 4}, {1, 2, 4}} [[Tips#Come calcolare la chiusura di una famiglia rispetto ad unione/intersezione]] 
 ---
@@ -391,7 +391,11 @@ La cardinalità di un insieme è definita come il numero di elementi che apparte
 ##### Proprietà delle relazioni
 Sia dato un insieme U diremo che una relazione $R(x, y)$ definita in $U×U$ è:
 - ***Riflessiva***: se $∀x∈U$ risulta vero che $R(x, x)$.
-- ***Simmetrica***: se $∀x, y ∈ U$ risulta vero che $R(x, y)$ e anche $R(y, x)$;
+	- R = { (1,1), (2,2) } è riflessivo
+	- R = { (1,1), (2,2), (1,3) } non è riflessivo
+- ***Simmetrica***: se $∀x, y ∈ U$ risulta vero che $R(x, y)$ e anche $R(y, x)$ 
+	- R = {(1,2),(2,1)} è simmetrico
+	- R = {(1,2),(2,1),(1,3)} non è simmetrico
 - ***Transitiva***: se $∀x,y,z ∈ U$ risulta vero che $R(x, y)$ e $R(y, z)$ allora ci deve essere anche una $R(x, z)$ 
 - ***Esempio fatto durante l'esercitazione:***![[Pasted image 20241023101548.png]]
 
@@ -400,7 +404,7 @@ Sia dato un insieme U diremo che una relazione $R(x, y)$ definita in $U×U$ è:
 > - $x ≈ y$ 
 
 
-Se hai un insieme $U$ e una relazione di equivalenza su questo insieme, puoi prendere un elemento $x$ di $U$ e formare un sottoinsieme di $U$, che contiene tutti gli elementi che sono equivalenti a $x$. Questo sottoinsieme è chiamato ***classe di equivalenza*** di $x$, e si indica con $[x]$. 
+Se hai un insieme $U$ e una relazione di equivalenza su questo insieme, puoi prendere un elemento $x$ di $U$ e formare un sottoinsieme di $U$, che contiene tutti gli elementi che sono equivalenti a $x$. Questo sottoinsieme è chiamato ***classe di equivalenza*** di $x$, e si indica con  $[x]$. 
 
 Per le classi di equivalenza vale il seguente teorema:
 ***Teorema***: Due classi di equivalenza o sono disgiunte o coincidono.
@@ -439,4 +443,59 @@ Individuato l'insieme quoziente (che denotiamo con $U/R$), l'applicazione $U →
 > [[Tips#Differenza tra applicazione e funzione]] 
 > Nel contesto specifico dell'**applicazione canonica sul quoziente**, si parla di **applicazione** perché si vuole mettere in evidenza il fatto che stiamo "applicando" una trasformazione sugli elementi dell'insieme $U$. In particolare, stiamo usando una regola (la relazione di equivalenza) per trasformare ogni elemento xxx di $U$ nella sua **classe di equivalenza** $[x]$.
 
-==Continua da slide 107==
+Di seguito delle definizioni:
+
+1. Si dice che una relazione binaria si ***antisimmetrica*** se:
+	- $∀x, ∀y ∈ U$ si ha che: $(R(x, y) e R(y, x)) → x = y$. il sussistere di entrambe le relazioni $R(x, y)$ e $R(y, x)$ è possibile solo quando $x$ e $y$ coincidono.
+
+2. Si dice ***preordinamento*** una relazione binaria assegnata in un insieme che goda della proprietà riflessiva e transitiva
+
+3. Si dice ***ordinata*** una relazione binaria assegnata in un insieme che goda della proprietà riflessiva, transitiva e antisimmetrica
+
+Un insieme $U$ su cui è definita un relazione di pre-ordine si dice pre-ordinato. 
+Un insieme $U$ su cui è definita un relazione d’ordine si dice ordinato.
+
+Dato un pre-ordinamento oppure un ordinamento (rappresentato dal simbolo ≤) in un insieme U, si pone
+- $x < y \quad \text{se} \quad x \leq y \quad \text{e} \quad x \neq y$  ovvero x è minore di y, se x è minore/uguale a y però con x diverso da y
+
+Un ordinamento $≤$ definito in un insieme $U$ si dice totale o lineare se per ogni coppia $(x, y)$ di elementi di $U$ si ha $x ≤ y$ oppure $y ≤ x$. Altrimenti si dirà parziale.
+
+---
+###### Massimi e minimi
+- Un elemento M di un insieme ordinato U si dice ***massimo*** se per ogni $x ∈ U$ si ha $x ≤ M$
+- Si dice invece ***massimale*** se non vi è alcun elemento di U che lo supera.
+- Un elemento m di un insieme ordinato U si dice ***minimo*** se per ogni $x ∈ U$ si ha $m ≤ x$. 
+- Si dice invece ***minimale*** se non vi è alcun elemento di U ad esso inferiore
+
+Il massimo (minimo) in un insieme è unico, il massimale (minimale) invece si può riscontrare più volte, questo accade perché potrebbe succedere che due elementi non siano confrontabili tra loro e quindi sono dei massimali.
+
+Sia $A ⊆ N$ quindi $c(A) = n$ dal momento che A è finito, possiamo dire che A ⊆ $I_m$ per qualche intero $m$. con $I_m$ intendiamo un insieme fatto cosi {0,1,2, … , m-1}. Esistono diversi modi per rappresentare A ⊆ $I_m$
+- ***Rappresentazione binaria***: la struttura dati più semplice che potremmo usare è un'array fatto da valori binari
+	- $X[i]$ = 1 se $i ∈ A$
+	- $X[i]$ = 0 se $i \notin A$
+- ***Rappresentazione estesa***: si può anche usare un'array di interi Y con |A| = n elementi tale che se A = {$x_0$, $x_1$, . . . , $x_{n-1}$} allora per ogni $0 ≤ i ≤ n − 1$ $Y[i]$ = $x_i$ 
+
+Se utilizziamo la rappresentazione binaria, verificare che un elemento i ∈ A prende tempo costante. Se utilizziamo la rappresentazione estesa, invece, ed A non è ordinato, dobbiamo scorrere tutta l’array e quindi tempo lineare. Se l’array è ordinata invece si può fare in tempo logaritmico. D’altro canto, se utilizziamo la rappresentazione binaria, per l’insieme A = {10, 3, 99} serve un’array di dimensione 100, mentre, se utilizziamo la rappresentazione estesa, serve un’array di dimensione 3.
+
+Se prendiamo $U$ ovvero {0, 1, 2, . . . , n − 1}  gli elementi di $pow(U)$ sono i numeri binari esprimibili con $|U|$ bits. Quindi $2^{|U|}$.
+
+---
+Siano $U$ un insieme finito, $H ⊆ U$, e sia $A$ una famiglia di sottoinsiemi di U tutti diversi dall’insieme vuoto. Diciamo che $H$ è un hitting set ($HS$) per $A$ se e solo se per ogni $A ∈ A$ si ha $A ∩ H$ $\neq$ ∅
+
+Sia $U$ = {a, b, c, d, e} e sia A = {{a, b, c, }, {a, d, e}, {b, c, d, }, {c, d, e}}. 
+L’insieme {a, b, c} è un $HS$ per $A$ mentre {b, c} o {d, e} non lo sono.
+- **{a, b, c} è un hitting set** perché:
+    - Contiene 'a', che è presente anche in {a, d, e}.
+    - Contiene 'b', che è presente anche in {b, c, d}.
+    - Contiene 'c', che è presente anche in {c, d, e}.
+    - In altre parole, questa scatola più piccola "colpisce" (interseca) tutte le altre scatole.
+- **{b, c} e {d, e} non sono hitting set** perché:
+	- **{b, c}** non contiene alcun elemento presente in {a, d, e}.
+	- **{d, e}** non contiene alcun elemento presente in {a, b, c}.
+
+Possono esistere diversi hitting set dentro un'insieme, si definisce **hitting set minimo** l'hitting set con meno elementi, nell'esempio sopra descritto un hitting set minimo sarebbe {a, c} visto che contiene almeno un elemento di ogni insieme contenuto in $A$
+
+Il problema di trovare un $HS$ minimo per una famiglia di insiemi è facilmente risolvibile: basta provare per tutti i sottoinsiemi di $U$. Questo però vorrebbe dire che il numero di operazioni da fare è esponenziale visto che i sottoinsiemi non vuoti di $U$ sono esattamente $2|U| − 1$
+- Per |U| = 100 il numero totale di operazioni sarebbe dell’ordine di 1, 26 · $10^{30}$ 
+Esiste un modo migliore? ***non si sa!***
+L'unico modo per cercare di risolvere questo tipo di problematiche è usare degli algoritmi detti greedy ciò vuol dire nello specifico, che potremmo prendere l’elemento $x_1$ di U che appartiene al maggior numero di elementi di $A$ Poi, per tutti gli elementi di $A$ a cui $x_1$ non appartiene, scegliamo l’elemento $x_2$ che appartiene alla maggior parte di essi, e così via.
