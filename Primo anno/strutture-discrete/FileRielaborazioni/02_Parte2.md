@@ -10,12 +10,8 @@ Sull'insieme Z sono definite 3 operazioni:
 - **Somma e prodotto** come definite per N
 - **Differenza**: operazione che ad ogni coppia di numeri $(n,m)$ associa il numero $n-m$ ∈ Z
 - In Z definiamo anche il valore assoluto in questo modo 
-$$
-	|n| = \begin{cases}
-	n & \text{se } n \geq 0 \\
-	-n & \text{se } n < 0
-	\end{cases}
-$$Giuseppe Peano dà una definizione dell'insieme dei numeri naturali in questo modo:
+$|n| = \begin{cases} n & \text{se } n \geq 0 \\ -n & \text{se } n < 0 \end{cases}$
+Giuseppe Peano dà una definizione dell'insieme dei numeri naturali in questo modo:
 - Esiste un numero naturale 0
 - Ogni numero naturale $a$ ha un numero naturale successore denotato come $S(a)$
 - Non esiste il successo di 0
