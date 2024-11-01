@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<time.h>
-#define Size 500
+#define Size 100
 int main() {
     srand(time(NULL));
     int defaultArray[Size];
