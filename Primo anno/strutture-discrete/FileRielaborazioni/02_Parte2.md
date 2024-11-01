@@ -157,5 +157,14 @@ $= -156 + 9 (330 - 2 * 156)$
 $= -19 * 156 + 9 * 330$ 
 
 ---
-###### Numeri primi
-Si definisce numero primo un intero che ha come divisori quelli banali ovvero 1 e se stesso
+###### Numeri primi e coprimi
+Si definisce **numero primo** un intero che ha come divisori quelli banali ovvero 1 e se stesso. Due numeri $a,b \in Z$ si dicono **coprimi** se $MCD(a, b) = 1$ quindi esistono $h, k \in Z$ tali che (a · h + b · k) = 1
+
+Come conseguenza del seguente teorema abbiamo le seguenti proprietà
+1. Due numeri interi consecutivi sono coprimi
+2. Siano $a,b,c \in Z$ tali che $c| a * b$ con $c$ ed $a$ coprimi allora $c|b$ 
+	1. Abbiamo che $9|3 * 6$ però notiamo che $9 \nmid 3$ infatti $c$ ed $a$ non sono coprimi
+3. Siano $a,b,c \in Z$ tali che $a|c$ e $b|c$  se $a$ e $b$ sono coprimi allora $a*b | c$ 
+	1. Abbiamo che $4|12$ e $6|12$ ma $24 \nmid 12$ infatti $a$ e $b$ non sono coprimi
+
+Dimostrazioni
