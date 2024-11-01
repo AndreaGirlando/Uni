@@ -103,12 +103,59 @@ $(5-1)^2 + 2(n-1) + 1 = 16 + 9 = 25$
 - **Somma**: Se $a|b$ e $a|c$ allora $a | (b+c)$ 
 - **Prodotto**: Se $a|b$ allora $a | bc$.
 - **Transitività**: Se $a|b$ e $b|c$ allora $a|c$ 
-![[Pasted image 20241031092542.png]]
+![[Pasted image 20241101091611.png]]
 - **Quadrato**: Se $a|b$ allora $a|b^2$ 
 	- ***Dimostrazione***: Dato che $a|b$ esiste $x$ tale che $b = ax$, quindi $bc = axc$ questi dimostra che $a | b*b$ 
 - **Combinazione lineare**: Se $a|b$ e $a|c$ allora $a | (hb + kc)$ per ogni $h,k \in Z$ 
 	- **Dimostrazione**: Se $a | b$ allora $a | hb$, se $a | c$ allora $a | kc$ ovviamente valgono per ogni $h,k \in Z$ e quindi è vero che a | (hb + kc)
 - **Proprietà del numero 0**: Ogni $a \in Z$ è divisore di 0
 	- **Dimostrazione**: $a \in Z$ abbiamo che $a * 0 = 0$ quindi $a | 0$ 
-- **Antisimmetrica**: Siano $a,b \in Z$ se $a | b$ e $b|a$ allora $|b| = |b|$ ossia $a = \pm b$  
-	- 
+- **Antisimmetrica**: Siano $a,b \in Z$ se $a | b$ e $b|a$ allora $|a| = |b|$ ossia $a = \pm b$  
+	- Dalle ipotesi abbiamo che $b = ax$ e $a = by$. Quindi $a = axy$, raccogliendo a arriviamo ad $a(xy - 1)$ questo implica che $a$ sia $0$ oppure che $xy = 1$ da questo capiamo che:
+		- Se $a = 0$ allora anche b = 0 (perché b = 0x)
+		- Se $xy = 1$ allora a o b sono uguali a $\pm 1$ 
+- **Divisori banali**: Siano a $\in$ Z allora $\pm a | a$  e $\pm 1 | a$ 
+	- Avendo che $a=a⋅1$ oppure che $a=(−a)⋅(−1)$ possiamo affermare che $\pm a | a$ 
+		- Seguendo la definizione capiamo che $a = b ⋅ k$ in questo caso $b = \pm a$ il k che soddisfa le nostre equazioni è k = 1
+	- Avendo che $a = 1 * a$ possiamo dire che 1 è sempre un divisore di $a$
+---
+##### Minimo Comune Multiplo
+Dati $a,b \in Z$ si chiama minimo comune multiplo fra a e b un terzo intero positivo m che è il più piccolo multiplo sia di $a$ che di $b$, quindi possiamo affermare che $a|m$ e $b|m$ 
+###### Massimo Comune Divisore
+Dati $a,b \in Z$ si chiama Massimo Comune Divisore un terzo intero $d \in Z$ tale che $d|a$ e $d|b$ cioè $d$ è il più grande divisore comune tra $a$ e $b$.
+
+Il metodo migliore per calcolare il massimo comune divisore è l'algoritmo di euclide, che si basa su questa osservazione siano $a,b \in N$ e sia $b <= a$ (di seguito la dimostrazione per induzione):
+- **Caso base** se b = 0 allora il $MCD(a,b) = a$ 
+- **Passo induttivo**: visto che $a = qb + r$ con $0<r<b$ allora $MCD(a,b)$ = $MCD(b,r)$
+Da questo notiamo che se $b|a$ allora $a = qb$ ($q$ sarebbe $\dfrac{a}{b}$) perché abbiamo resto 0 quindi la formula diventa $MCD(a,b)$ = $MCD(b,0)$ = $b$. In conclusione se $b|a$ otteniamo che $MCD(a,b) = b$  
+
+Dimostriamo che $MCD(a,b)$ = $MCD(b,r)$ 
+- Se $d$ è un divisore di $a$ e $b$ allora esistono $h$ e $k$ tali che $d$ sia un divisore di $r$ (la formula base per calcolare $r$ è $r = a - qb$ )
+	- $a = hd$
+	- $b = kd$ 
+	- $r = hd - qkd = d(h - qk)$ (essendo che r può essere scritto come $d$ * un'intero allora è vero che $d$ è un divisore di $r$ [[#Definizione di divisibilità]]) 
+- Se invece $d$ è un divisore di $b$ e di $r$ allora esistono $h$ e $k$ tali che $a$ è un divisore di $m$ (ricordiamo che la formula base per calcolare $a$ è $a = qb +r$):
+	- $b = kd$
+	- $r = hd$
+	- $a = qkd + hd$ = $d(qk + h)$ (essendo che $a$ può essere scritto come d * un intero allora è vero che è un divisore di b [[#Definizione di divisibilità]])
+Esempio
+$x_1 = 330$ e $x_2 = 156$ 
+$x_3 = 330\mod156 = 18$ 
+$x_4 = 156\mod18=12$
+$x_5 = 18 \mod 12 = 6$
+$x_6 = 12 \mod 6 = 0$
+Quindi $MCD(330, 156) = 6$. 
+Da questo capiamo che il minimo comune divisore tra 2 numeri può essere calcolato trovando ripetutamente il modulo tra b ed il resto
+
+Siano $a,b \in N$ allora esistono  $h, k \in Z$ tali che $MDC(a,b) = a * h + b*k$ 
+Questo vuol dire che il MCD tra due numeri si può scrivere come una loro combinazione lineare
+Esempio partendo dall'esempio precedente e andando a ritroso:
+$6 = 18-12$
+$= 18 - (156 - 8 * 18)$ 
+$= -156 + 9 * 18$ 
+$= -156 + 9 (330 - 2 * 156)$
+$= -19 * 156 + 9 * 330$ 
+
+---
+###### Numeri primi
+Si definisce numero primo un intero che ha come divisori quelli banali ovvero 1 e se stesso
