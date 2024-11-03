@@ -167,4 +167,84 @@ Come conseguenza del seguente teorema abbiamo le seguenti proprietà
 3. Siano $a,b,c \in Z$ tali che $a|c$ e $b|c$  se $a$ e $b$ sono coprimi allora $a*b | c$ 
 	1. Abbiamo che $4|12$ e $6|12$ ma $24 \nmid 12$ infatti $a$ e $b$ non sono coprimi
 
-Dimostrazioni
+![[Pasted image 20241102092847.png]]
+
+---
+###### Fattorizzazione degli interi
+Ogni intero n > 1 si può esprimere come prodotto di numeri primi positivi ed in modo unico
+**Dimostrazione**: la dimostrazione di questo teorema deve essere fatta in 2 passi distinti
+1. Prima dimostriamo che preso un qualunque n > 1 esiste una fattorizzazione di n;
+	- Se per assurdo esistessero interi > 1 che non sono prodotto di numeri primi positivi potremmo costruire l'insieme $S = {n: n \in N }$ con n che è un numero non prodotto di numeri primi. Per l'assioma del buon ordinamento, dentro questo insieme abbiamo un minimo che chiameremo $s$, $s$ non è primo (perché senno sarebbe un prodotto di numeri primi positivi) quindi vuol dire che ha almeno un divisore non banale positivo chiamato $d$, avendo un divisore vuol dire che esiste un intero positivo che $c$ che moltiplicato per $d$ ci da $s$, $c$ e $d$ sono prodotti di primi positivi, e quindi anche $s$ lo è 
+2. successivamente dimostriamo che quella fattorizzazione è unica
+	- Se $n = p_1 \cdot p_2 \cdots p_r = q_1 \cdot q_2 \cdots q_s$ ovvero $n$ è la somma dei primi $r$ o $s$ numeri interi ($p_i$ e $q_i$ sono gli i-esimi numeri primi ). La dimostrazione che va fatta è che $r$ = $s$, di seguito la dimostrazione per induzione.
+		- **Caso base**: $r = 1$ Se $n = p_1$ allora $n$ è primo, da $p_1 = q_1 \cdot q_2 \cdots q_s$  otteniamo che $s = 1$ e $q_1 = p_1$ 
+		- **Caso induttivo**: supponendo che sia vera questa tesi per r, dimostriamola per r+1, quindi: $n = p_1 \cdot p_2 \cdots p_{r+1} = q_1 \cdot q_2 \cdots q_s$ , dal caso base sappiamo che $q_1$ è divisore di $p_1$ e che quindi dividendo membro a membro per $p_1$ otteniamo $p_2 \cdots p_r \cdot p_{r+1} = q_2 \cdots q_s$ da questo capiamo che $r = s - 1$ e quindi che $s = r + 1$ quindi i fattori coincidono a meno dell'ordine e quindi che sono uguali.
+
+ ---
+ 
+###### Teorema di euclide
+I numeri primi sono infiniti.
+Dimostrazione:
+1. **Ipotesi di assurdo**: Supponiamo che ci sia un numero finito di numeri primi. Se così fosse, potremmo elencarli tutti. Chiamiamo questi numeri primi $p_1, p_2, \dots, p_n$, dove $p_1 = 2$, $p_2 = 3$, e così via fino a $p_n$, che rappresenterebbe l’ultimo numero primo.
+2. **Costruzione di un nuovo numero**: Consideriamo il numero $h$ definito come il prodotto di tutti questi numeri primi più uno:
+   $h = p_1 \cdot p_2 \cdots p_n + 1$
+3. **Proprietà di $h$**:
+   - Per costruzione, $h$ è maggiore di tutti i numeri primi $p_1, p_2, \dots, p_n$.
+   - Inoltre, $h$ non è divisibile da nessuno dei numeri primi $p_1, p_2, \dots, p_n$. Infatti, se dividiamo $h$ per uno qualsiasi di questi numeri primi $p_i$, otteniamo un resto di 1. In altre parole, $h \mod p_i = 1$, per ogni $i = 1, 2, \dots, n$.
+4. **Contraddizione**:
+   - A questo punto, possiamo concludere che $h$ o è primo oppure è divisibile da un numero primo non presente nella lista $p_1, p_2, \dots, p_n$.
+   - Se $h$ è primo, allora abbiamo trovato un nuovo numero primo che non era incluso nella lista originale, il che contraddice l’ipotesi che $p_1, p_2, \dots, p_n$ fossero tutti i numeri primi.
+   - Se $h$ non è primo, allora deve avere un divisore primo che non è nessuno dei $p_1, p_2, \dots, p_n$, il che ancora una volta contraddice l’ipotesi che $p_1, p_2, \dots, p_n$ siano tutti i numeri primi.
+
+I numeri primi non solo sono infiniti, ma sono anche distribuiti in maniera tale da essere molto frequenti
+Sia $n \in N$ sia $\pi(n)$ il numero di numeri primi minori o uguali ad n. Allora
+$\lim_{n \to \infty} \frac{\pi(n)}{\frac{n}{\ln n}} = 1$ da questo estraiamo la seguente formula: $\frac{n}{\ln n}$ che ci va ad indicare il numero di numeri primi < di n
+- per n = 100 stimati $\frac{100}{\ln 100}\approx 22$ 
+- per n = 1000 stimati $\frac{1000}{\ln 1000}\approx 145$ 
+
+---
+###### Come verificare se un numero n è primo?
+Verificando che non abbia divisore diversi da quelli banali. Ciò può essere fatto in maniera più efficiente se durante la verifica consideriamo i numeri compresi tra 2 e $\sqrt{\smash[b]{n}}$  
+
+---
+###### Crivello di Eratostene
+Se abbiamo la necessità di calcolare tutti i numeri primi minori o uguali ad un numero n, possiamo usare il crivello di Eratostene, questi sono i passaggi da seguire:
+1. Scriviamo in sequenza tutti i numeri naturali compresi tra 2 e n.
+2. Partiamo dal numero 2 e cancelliamo tutti i suoi multipli
+3. Ad ogni passo prendiamo il primo numero tra i numeri che seguono e cancelliamo i suoi multipli
+4. Quando abbiamo cancellato tutti i multipli del numero più grande che sia minore o uguale $a\sqrt{\smash[b]{n}}$ ci fermiamo.
+[Esempio](https://youtu.be/0MDvEByNGic?t=83||) 
+
+---
+
+###### Criteri di divisibilità
+Esistono delle regole molto semplici per verificare la divisibilità di un numero $a$ per un numero $b$ 
+- **Divisibilità per 2**: un numero è divisibile per $2$ se è pari
+	- 4 è divisibile per 2
+- **Divisibilità per 3**: un numero è divisibile per $3$ se la somma delle sue cifre è un numero divisibile per $3$
+	- 81 = 8 + 1 = 9 è divisibile per 3
+- **Divisibilità per 5**: un numero è divisibile per $5$ se l''ultima cifra è $0$ o $5$
+	- 105 è divisibile per 5
+- **Divisibilità per 7**: un numero è divisibile per $7$ se $q - 2r$ è divisibile per $7$
+	- $q =$ quoziente della divisione con 10
+	- $r =$ resto della divisione con 10
+	- $161: 16 - 2*1 = 14$ che è divisibile per 7  
+- **Divisibilità per un generico n primo:** un numero è divisibile per $n$ se $q+xr$ è divisibile per $n$  
+	- $q =$ quoziente della divisione con 10
+	- $r =$ resto della divisione con 10
+	- $x =$ resto della divisione di n con 10
+	- Verifico la divisibilità per 13 del numero 130: 
+		- $q =$  13
+		- $r =$ 2
+		- $x = 13 \mod 10 = 3$
+		- $13 + 3*2$ = 19 non è divisibile per 130
+- **Divisibilità per 11**:  un numero è divisibile per $11$ se $a - b$ è divisibile per 11
+	- $a =$ somma dei numeri nelle posizioni dispari
+	- $b =$ somma dei numeri nelle posizioni pari
+		- 2805 quindi con
+			- $a = 2+0$
+			- $b = 8+5$
+			- $a-b = -11$ che è divisibile per 11
+- **Divisibilità per 9:** un numero $n$ è divisibile per $9$ se $n-m$ è divisibile per 9
+	- $m$ è il numero delle sue cifre.
+		- 333 è divisibile per 9 perché $m=9$ 

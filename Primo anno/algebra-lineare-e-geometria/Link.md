@@ -7,6 +7,9 @@
 [[15 ottobre 2024.pdf]]
 [[Uni/Primo anno/algebra-lineare-e-geometria/Lezioni/17 ottobre 2024.pdf|17 ottobre 2024.pdf]]
 [[22 ottobre 2024.pdf]]
+[[24 ottobre 2024.pdf]]
+[[29 ottobre 2024.pdf]]
+[[31 ottobre 2024.pdf]]
 
 ---
 #### Approfondimenti/Rielaborazioni
