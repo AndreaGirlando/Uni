@@ -4,7 +4,7 @@ int main() /* in C */
 {
     int nAgenti = 0;
     float percentuale = 0.09;
-    int fasce[9] = {0,0,0,0,0,0,0,0,0};
+    int fasce[10] = {0,0,0,0,0,0,0,0,0,0};
     printf("Di quanti agenti vuoi calcolare le commissioni?");
     scanf("%d", &nAgenti);
 
@@ -19,12 +19,12 @@ int main() /* in C */
         scanf("%d", &lordo);
 
         int stipendio = (lordo*percentuale) + 200;
-        int index = stipendio/100 - 1;
+        int index = stipendio/100;
         if(index > 9){
             index = 9;
         }
-        printf("\nLo stipendio finale di questo agente e': %d indice: %d", stipendio,index);
-
+        printf("\nLo stipendio finale di questo agente e': %d", stipendio);
+        printf("\n\n%d", index);
         fasce[ index ] = fasce[ index ] + 1;
 
         i++;
