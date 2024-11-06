@@ -1,0 +1,1 @@
+L'operazione NOP è l'istruzione vuota o inattiva la quale non esegue nessuna operazione, la sua funzione principale è quella di occupare uno slot in modo da ordinare, questo permette alle operazioni sincrone di completare il loro ciclo senza creare problemi di dipendenza del dato. Viene usata per creare delle pause controllate.
