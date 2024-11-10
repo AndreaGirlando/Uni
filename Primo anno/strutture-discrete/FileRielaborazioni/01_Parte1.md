@@ -441,7 +441,7 @@ Individuato l'insieme quoziente (che denotiamo con $U/R$), l'applicazione $U →
 
 > [!Nota bene]
 > [[Tips#Differenza tra applicazione e funzione]] 
-> Nel contesto specifico dell'**applicazione canonica sul quoziente**, si parla di **applicazione** perché si vuole mettere in evidenza il fatto che stiamo "applicando" una trasformazione sugli elementi dell'insieme $U$. In particolare, stiamo usando una regola (la relazione di equivalenza) per trasformare ogni elemento xxx di $U$ nella sua **classe di equivalenza** $[x]$.
+> Nel contesto specifico dell'**applicazione canonica sul quoziente**, si parla di **applicazione** perché si vuole mettere in evidenza il fatto che stiamo "applicando" una trasformazione sugli elementi dell'insieme $U$. In particolare, stiamo usando una regola (la relazione di equivalenza) per trasformare ogni elemento x di $U$ nella sua **classe di equivalenza** $[x]$.
 
 Di seguito delle definizioni:
 

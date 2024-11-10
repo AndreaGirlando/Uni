@@ -1,6 +1,6 @@
 Questo file è la rielaborazione delle slide [[02_Parte2.pdf]] 
 
-
+# `Numeri interi`
 ![[Pasted image 20241026111409.png]]
 
 Sull'insieme N sono definite 2 operazione: 
@@ -216,7 +216,9 @@ Se abbiamo la necessità di calcolare tutti i numeri primi minori o uguali ad un
 [Esempio](https://youtu.be/0MDvEByNGic?t=83||) 
 
 ---
-
+###### Radice numerica
+Dato un numero $n$ la sua radice numerica di $n$, la denotiamo con $ρ(n)$ ed è la somma delle sue cifre reiterata sono ad ottenere una sola cifra
+- $198 : 1 + 9 + 8 = 18 → 1 + 8 = 9$ e quindi $ρ(198) = 9$.
 ###### Criteri di divisibilità
 Esistono delle regole molto semplici per verificare la divisibilità di un numero $a$ per un numero $b$ 
 - **Divisibilità per 2**: un numero è divisibile per $2$ se è pari
@@ -229,15 +231,6 @@ Esistono delle regole molto semplici per verificare la divisibilità di un numer
 	- $q =$ quoziente della divisione con 10
 	- $r =$ resto della divisione con 10
 	- $161: 16 - 2*1 = 14$ che è divisibile per 7  
-- **Divisibilità per un generico n primo:** un numero è divisibile per $n$ se $q+xr$ è divisibile per $n$  
-	- $q =$ quoziente della divisione con 10
-	- $r =$ resto della divisione con 10
-	- $x =$ resto della divisione di n con 10
-	- Verifico la divisibilità per 13 del numero 130: 
-		- $q =$  13
-		- $r =$ 2
-		- $x = 13 \mod 10 = 3$
-		- $13 + 3*2$ = 19 non è divisibile per 130
 - **Divisibilità per 11**:  un numero è divisibile per $11$ se $a - b$ è divisibile per 11
 	- $a =$ somma dei numeri nelle posizioni dispari
 	- $b =$ somma dei numeri nelle posizioni pari
@@ -245,6 +238,139 @@ Esistono delle regole molto semplici per verificare la divisibilità di un numer
 			- $a = 2+0$
 			- $b = 8+5$
 			- $a-b = -11$ che è divisibile per 11
-- **Divisibilità per 9:** un numero $n$ è divisibile per $9$ se $n-m$ è divisibile per 9
-	- $m$ è il numero delle sue cifre.
-		- 333 è divisibile per 9 perché $m=9$ 
+- **Divisibilità per 9:** un numero $n$ è divisibile per $9$ se la sua radice numerica è divisibile per 9
+	- $198 : 1 + 9 + 8 = 18 → 1 + 8 = 9$ e quindi 198 è divisibile per 9
+- **Divisibilità per altri numeri primi:** 
+	- $13$ divide n se $q + 4r$ è divisibile per $13$
+	- $17$ divide n se $q − 5r$ è divisibile per $17$ 
+	- $19$ divide n se $q + 2r$ è divisibile per $19$ 
+	- $23$ divide n se $q + 7r$ è divisibile per $23$
+		- $q =$ quoziente della divisione con $10$
+		- $r =$ resto della divisione con $10$
+	- [[6 novembre 2024.pdf | Esempi qui]]
+
+---
+###### Dimostrazione per assurdo che $\sqrt{2}$ non è razionale
+Assumendo che esistano 2 numeri naturali $a$ e $b$  tale che $\sqrt{2} = \frac{a}{b}$, assumendo anche che sia ridotta ai minimi termini almeno uno dei 2 è dispari. Elevando al quadrato otteniamo $a^2 = 2b^2$ essendo $a^2$ il doppio di un altro numero sarà per forza pari, detto ciò anche $a$ è pari è quindi esiste un numero $k$ tale che $a = 2k$ da questo avremo allora:
+- $2b^2 = a^2 = 4k^2$ e quindi che anche $b$ è pari visto che $b^2 = 2k^2$ 
+questa affermazione contraddice la nostra ipotesi inziale
+---
+# `Aritmetica modulare`
+L'aritmetica modulare riguarda il calcolo sui resti delle divisioni tra interi rispetto ad un divisore fissato. Ricordiamo la [[#Divisione tra interi]] e diciamo che con la dicitura n mod m, indichiamo con $n$ la base e con $m$ il modulo. Fissando un intero relativo $m$, possiamo definire la congruenza modulo $m$ in questo modo:
+- un intero $a \in Z$ è in relazione con $b \in Z$ se $m | (a-b)$ e quindi che $a-b$ è un multiplo di $m$. In modo equivalente potemmo dire che $a$ è in relazione con $b$ se $a$ mod $b$ = $b$ mod $m$ 
+- Se si verificano queste condizioni, la relazione tra a e b si scrive così:
+	- $a \equiv b \pmod{m}$ 
+		- **12 ≡ 9(mod 3)** : $12$ mod $3$ = $9$ mod $3$ = $0$ entrambi per il primo caso del teorema della divisione
+- Se non si verificano queste condizioni, la relazione tra a e b si scrive così:
+	- $a \not\equiv b \pmod{m}$ 
+		- $7 \not\equiv 1\pmod{4}$ infatti $7$ mod $4$ = $3$ mentre $1$ mod $4$ = $1$ 
+
+Da tutto ciò notiamo che per ogni $a \in Z$ ed ogni $m \in N$ abbiamo che:
+-  **$a\equiv a\mod{m} \pmod{m}$** 
+	- $5\equiv 5\mod{10} \pmod{10}$  se risolvi $5 \mod 10$ si capisce in modo intuitivo la proprietà 
+
+La relazione di congruenza è una relazione di equivalenza e ciò implica che abbiamo un infinità di relazioni di equivalenza, di seguito la dimostrazione:
+- **Riflessiva:** per ogni $a \in Z$ è vero che $a\equiv a\mod{m}$  perché essendo che $0 = a-a$ e $0$  è divisibile per qualsiasi numero anche $a$ è divisibile per qualsiasi numero (Ricordiamo che la congruenza è vera se $m | (a-b)$ (**questa formula è importante per tutte le spiegazioni successive**) dove in questo caso $b = a$) 
+- **Simmetrica:**  Se $a ≡ b(\mod m)$ allora $a − b = km$ per qualche $k ∈ Z$ e quindi, moltiplicando per $−1$ otteniamo $−a + b  = (−k)m$ ossia $b ≡ a(\mod m)$ 
+- **Transitiva:** Se $a ≡ b(\mod m)$ e b ≡ $c(\mod m)$ abbiamo che esistono $h, k ∈ Z$ tali che $a − b$ = $hm$ e $b − c = km$. Sommando membro a membro le ultime due uguaglianze otteniamo: $a − c = (h + k)m$ e quindi $a ≡ c(\mod m)$.
+
+###### Classi di equivalenza definite dalla congruenza
+- **Congruenza modulo 0**: $a ≡ b(\mod 0)$ se e solo se $a − b = k · 0$ ovvero $a − b = 0$ quindi se $a = b$ 
+	- Tutte le classi di equivalenza create dalla congruenza modulo 0 sono delle classi contenenti un solo elemento (ovvero quello preso in esame)
+		- In questo caso la classe di equivalenza di $a$ è {$a$} 
+- **Congruenza modulo 1**: $a ≡ b(\mod 1)$ se e solo se $a − b = k · 1$ ovvero $a − b$ è multiplo di 1
+	- Essendo che ogni numero è multiplo di 1 la classe di equivalenza creata dalla congruenza modulo 1 contiene tutti gli interi $\in Z$ 
+- **Congruenza modulo 2**: $a ≡ b(\mod 2)$ se e solo se $a − b = k · 2$ ovvero $a − b$ è un numero pari
+	- Se $a$ è pari abbiamo che $a = 2 * h$ e quindi che $b = 2h - k*2 = 2(h - k)$ e quindi anche $b$ è pari
+	- Se $a$ è dispari abbiamo che $a = 2*h+1$ e quindi che $b = 2h + 1 - k*2 = 2(h-k)+1$ e quindi anche $b$ è dispari
+	- Le classi di equivalenza create sono 2 una con tutti i numeri dispari e una con tutti i numeri pari
+Dato un intero m >= 0 indicheremo con $[a]_m$ la classe di rappresentata dall'intero $a$ nella relazione di congruenza modulo $m$ ovvero:
+- $[a]_m = \{b \in \mathbb{Z} : a \equiv b \pmod{m}\}$  
+
+**Teorema**
+Fissato un intero m > 1 le sue classi di equivalenza sono: $[0]_m, [1]_m, [2]_m, \dots, [m-1]_m.$ 
+**Dimostrazione**
+Sia $a ∈ Z$ e sia $r$ il resto della divisione intera di $a$ per $m$, ovvero, applicando l’algoritmo di divisione 
+- $a = qm + r$ con $0 ≤ r < m$. 
+Dal momento che $a − r = qm$ abbiamo che $a ≡ r (mod m)$. Quindi, dal momento che $r$ può assumere solo i valori che vanno da $0$ a $m − 1$ le classi di equivalenza sono solo quelle dell’enunciato del teorema.
+
+**Dimostrazione che le classi sono distinte**
+Ragioniamo per assurdo e supponiamo che esistano $x, y ∈ Z$, $x \not= y$ e $0 ≤ x$, $y < m -1$ tali che $[x]_m$ = $[y]_m$ . Senza perdita di generalità supponiamo che $x > y$. Dall’ipotesi possiamo scrivere $x − y = km$ cioè $x − y$ è un multiplo di $m$. Da $0 ≤ x, y < m − 1$ e $x > y$ segue che $0 < x − y < m − 1$, che è una contraddizione visto che non esistono multipli di m in tra $0$ e $m − 1$.
+
+Sia $m = 5$ (congruenza modulo $5$). Le classi resto modulo $5$ sono $[0]_5, [1]_5, [2]_5, [3]_5, [4]_5.$ 
+
+> [!Nota bene]
+> Esempio:
+> - $[2]_5$ Sono tutti quei numeri che divisi per 5 ci danno resto 2
+> - $[5]_10$ Sono tutti quei numeri che divisi per 10 ci danno resto 5
+
+Dato a ∈ Z come facciamo a stabilire in quale classe resto sta?
+- La risposta ci viene fornita dal teorema appena dimostrato: $[a]_m$ = $[r ]_m$ dove r è il resto della divisione di a per m. 
+- Quindi se m = 5 e a = 22 allora eseguendo la divisione abbiamo 22 : 5 = 4 con resto di 2, ottenendo che $[22]_5$ = $[2]_5$. 
+- Ricordiamo che la notazione $[a]_m$ indica la classe di equivalenza modulo $n$, cioè l'insieme di tutti i numeri interi che, divisi per $n$, lasciano lo stesso resto di $a$.
+	Nel nostro caso:
+	- $[22]_5$: Questa classe contiene tutti i numeri che, divisi per 5, lasciano resto 2. Alcuni esempi sono: 2, 7, 12, 17, 22, ...
+	- $[2]_5$​: Questa classe contiene tutti i numeri che, divisi per 5, lasciano resto 2. Alcuni esempi sono: 2, 7, 12, 17, ...
+	- le due classi contengono esattamente gli stessi elementi
+- In altre parole potremmo dire che $22 ≡ 2 (\mod 5)$
+
+Notiamo che in classe $[0]_5$ ci sono tutti i multipli di 5 ed in generale in $[0]_m$ ci sono tutti i multipli di m.
+
+---
+###### Invarianza rispetto a somma e prodotto
+Dato $m \in N$ e dati $a,b \in Z$ tali che $a \equiv b \pmod{m}$ allora prendendo $c,d \in Z$ tali che $c \equiv d \pmod{m}$ abbiamo che:
+- $a + c \equiv b + d (\mod m)$ 
+- $a * c \equiv b * d (\mod m)$ 
+
+**Dimostrazione**: 
+Ipotizziamo che per ipotesi esistono $k_1$,$k_2$ tale che $a-b = k_1m$ e $c-d =k_2m$, da questo possiamo dimostrare che:
+1. $(a+c) - (b+d) = (a-b) + (c-d) = (k_1$ + $k_2$)m (da questo capiamo che qualsiasi sia l'ordine delle lettere avremo sempre dei multipli di m)
+2. Abbiamo $a = b+k_1m$ e $c = d + k_2m$ quindi $ac-bd = (b + k_1m)(d + k_2m) - bd = bk_2m+dk_1m+k_1k_2m^2 = (bk_2 + dk_1 + k_1k_2m)m$
+	- **Come si arriva a questa conclusione?**
+		1. **Sfruttiamo le ipotesi:** Ricordiamo che per ipotesi abbiamo:
+		    - $a ≡ b (\mod m),$ quindi $a = b + k₁m$
+		    - $c ≡ d (\mod m),$ quindi $c = d + k₂m$
+		2. **Sostituiamo nella moltiplicazione:** Moltiplichiamo membro a membro le due equazioni ottenute al punto precedente:
+		    - $ac = (b + k₁m)(d + k₂m)$
+		3. **Sviluppiamo il prodotto:** Svolgendo i calcoli otteniamo:
+		    - $ac = bd + bk₂m + dk₁m + k₁k₂m²$
+		    - $ac - bd = bk₂m + dk₁m + k₁k₂m²$
+		4. **Evidenziamo m:** Mettiamo in evidenza `m` a secondo membro:
+			-  $ac - bd = m(bk₂ + dk₁ + k₁k₂m)$
+		5.  **Cosa significa questo risultato?**
+			-  Abbiamo dimostrato che la differenza tra $ac$ e $bd$ è un multiplo di $m$. Quindi, per definizione di congruenza modulo $m$, si ha: $ac ≡ bd (\mod m)$
+
+Questo teorema ha dei casi particolari:
+- **Invarianza rispetto alla somma**: Se sommiamo ad entrambi i membri di una congruenza uno stesso numero intero, la congruenza non cambia
+	- $a ≡ b(\mod m)$ allora $a + c ≡ b + c(\mod m)$
+- **Invarianza rispetto al prodotto**: Se moltiplichiamo ambo i membri di una congruenza per uno stesso numero intero, la congruenza non cambia.
+	- $a ≡ b(\mod m)$ allora $ac ≡ bc(\mod m)$
+
+Come conseguenza di questi 2 casi particolari, dati $a,b,m \in N$ e visto che $a ≡ a \mod m (\mod m)$ e $b ≡ b \mod m(\mod m)$
+valgono le seguenti proprietà:
+1. $(a+b)$ ≡ $(a \mod m + b \mod m)(\mod m)$ 
+   ossia $(a+b) \mod m$ = $(a \mod m + b \mod m)(\mod m$)
+2. $(a \times b)$ ≡ $(a \mod m \times b \mod m)(\mod m)$
+   ossia $(a \times b) \mod m = ((a \mod m)(b \mod m))(\mod m)$
+Come conseguenze del punto 2 abbiamo:
+3. Dati $a,n,m \in N, a^2 ≡ (a \mod m)^2(\mod m)$ 
+4. Dati $a,b,h,k,m \in N$ allora $a^h \times b^k ≡ (a^h \mod m) \times (b^k \mod m)(\mod m)$ 
+   ossia $a^h \times b^k \mod m = (a \mod m)^h \times (b \mod m)^k \mod m$ 
+
+- **Invarianza rispetto alla somma**: Se sottraiamo ad entrambi i membri di una congruenza uno stesso numero intero, la congruenza non cambia
+	- $a ≡ b(\mod m)$ allora $a − c ≡ b − c(\mod m)$
+- **Invarianza rispetto al prodotto**: Se dividiamo ambo i membri di una congruenza per uno stesso numero intero, la congruenza potrebbe non valere più.
+	- $6 ≡ 0 (\mod 3)$  è vera
+	- se dividiamo tutto per 2 diventa $2 \not≡ 0 (\mod 3)$ che è falsa
+
+Come diretta conseguenza dell'invarianza rispetto alla somma abbiamo il seguente **teorema**:
+- Per ogni $m \in N, m>1$ , prendendo una qualunque sequenza di m interi questa contiene un intero divisibile per m
+**Dimostrazione:**
+Consideriamo allora m interi consecutivi, dove il più piccolo è n, Come abbiamo già dimostrato, le classi di equivalenza della relazione di congruenza modulo m sono $[0]_m , [1]_m , [2]_m , . . . [m − 1]_m$ , il nostro numero $n$ si trova in una di queste classi di equivalenza, supponiamo stia nella classe $[i]_m$ per $0 ≤ i ≤ m − 1$. Quindi n ≡ i(mod m) ed allora $n + 1 ≡ i + 1(\mod m)$ ovvero $n + 1 ∈ [i + 1]m$ 
+**Dimostrazione cont.** 
+Notiamo allora che se $i = 0$ ovvero $n ∈ [0]_m$ abbiamo dimostrato il teorema. Se invece $i > 0$, visto che $0 < i < m$ incrementando $i$ esattamente $m − i$ volte, con $m − i < m$ otteniamo che n + (m − i) ≡ i + (m − i)(mod m) ossia $n + (m − i) ≡ m(\mod m) ≡ 0(\mod m)$. In conclusione, $n + (m − i)$ è il numero multiplo di $m$ nella sequenza di $m$ numeri consecutivi.
+**Esercizi** 
+![[Pasted image 20241109153607.png]]
+![[Pasted image 20241109153614.png]]
+
+==Continuare da slide 107== 

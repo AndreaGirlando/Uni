@@ -31,5 +31,3 @@ la velocità del bus è determinata da un "orologio" interno, chiamato "clock" c
 - **DBus**: la dimensione di questo tipo di Bus rappresenta invece il grado di parallelismo del processore, ovvero la quantità di dati che è in grado di elaborare simultaneamente
 ***<mark class="hltr-green">NB: stiamo parlando della dimensione dei gruppi di bus, infatti un singolo bus porta solo un bit come giù scritto all'inizio</mark>***
 All'interno di una scheda madre è difficile vedere i bus di sistema, quindi tutto quello che è dedicato ai bus che siano le linee fisiche o i chip vengono indicati con il nome ***Chipset***. Ovviamente esistono vari tipi di bus ma quello più importanti è il PCI ultimamente molto diffuso e soprattutto la sua variante express usato principalmente per le schede video.
-
-# Ci sono delle cose nuove nel pdf specificato, devono essere aggiunte
