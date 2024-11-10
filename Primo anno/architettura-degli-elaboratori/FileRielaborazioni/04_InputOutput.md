@@ -1,7 +1,21 @@
-Questa è una rielaborazione di [[04_InputOutput]]
-La parte input/output di un calcolatore parte dall'acquisizione di dati e programmi, e alla rappresentazione di quest'ultimi in varie forme. Ogni dispositivo possiede un proprio range di indirizzi, inoltre hanno delle linee di sincronizzazione dette interrupt, ne esistono di 2 tipi:
-- **INTR**: che segnala la richiesta di un'interruzione
-- **INTA**: che segnala il suo completamento
-Con il segnale INTR il dispositivo  chiede al processore di sospendere temporaneamente la sua esecuzione per eseguire un interrupt (sotto forma di una procedura **Interrupt Service Routine**), esistono anche delle routine che permettono agli interrupt di non passare dalla CPU, ed arrivare direttamente alla memoria, queste routine vengono chiamate **Direct Memory Access** (DMA), la circuiteria che è dedicata a collegarsi al bus e quindi di sincronizzarsi con altre periferiche si chiama scheda controller della periferica. Questi dispostivi prima erano fisicamente visibili ora si trovano all'interno dei circuiti interni del calcolatore 
+Questo file è la rielaborazione delle slide [[04_InputOutput]]
+I dispositivi di input/output sono essenziali per acquisire dati dall’utente e per rappresentarli. Ogni dispositivo è associato a un proprio intervallo di indirizzi e utilizza linee di sincronizzazione, chiamate **interrupt**, per comunicare con il processore. Esistono due principali tipi di interrupt:
 
-==FINIRE CON IL RESTO DELLE SLIDE==
+- **INTR**: segnala una richiesta di interruzione al processore.
+- **INTA**: conferma l’avvenuta gestione dell’interruzione.
+
+Quando il dispositivo invia un segnale **INTR**, richiede al processore di sospendere temporaneamente la sua esecuzione per gestire l’interrupt, eseguendo una specifica procedura chiamata **Interrupt Service Routine** (ISR). Esistono anche modalità che permettono agli interrupt di bypassare la CPU e accedere direttamente alla memoria, tramite una procedura chiamata **Direct Memory Access** (DMA). La circuiteria dedicata a collegare il dispositivo al bus e a sincronizzarlo con le altre periferiche è detta **controller della periferica**.
+
+Un tempo, questi dispositivi erano fisicamente visibili all'esterno del computer, mentre oggi si trovano integrati nei circuiti interni. In passato, indirizzi, canali e linee dovevano essere configurati manualmente dall'utente o da un tecnico. Tuttavia, grazie alla tecnologia **Plug&Play**, BIOS, sistema operativo e firmware cooperano per gestire automaticamente la configurazione delle periferiche, sia all’avvio del computer che durante l’installazione di nuovi dispositivi.
+
+Tra gli standard di connessione più diffusi, troviamo: **USB** (Universal Serial Bus), **FireWire** (o IEEE 1394), e **Ethernet** (802.x).
+I dispositivi di input/output sono essenziali per acquisire dati dall’utente e per rappresentarli. Ogni dispositivo è associato a un proprio intervallo di indirizzi e utilizza linee di sincronizzazione, chiamate **interrupt**, per comunicare con il processore. Esistono due principali tipi di interrupt:
+
+- **INTR**: segnala una richiesta di interruzione al processore.
+- **INTA**: conferma l’avvenuta gestione dell’interruzione.
+
+Quando il dispositivo invia un segnale **INTR**, richiede al processore di sospendere temporaneamente la sua esecuzione per gestire l’interrupt, eseguendo una specifica procedura chiamata **Interrupt Service Routine** (ISR). Esistono anche modalità che permettono agli interrupt di bypassare la CPU e accedere direttamente alla memoria, tramite una procedura chiamata **Direct Memory Access** (DMA). La circuiteria dedicata a collegare il dispositivo al bus e a sincronizzarlo con le altre periferiche è detta **controller della periferica**.
+
+Un tempo, questi dispositivi erano fisicamente visibili all'esterno del computer, mentre oggi si trovano integrati nei circuiti interni. In passato, indirizzi, canali e linee dovevano essere configurati manualmente dall'utente o da un tecnico. Tuttavia, grazie alla tecnologia **Plug&Play**, BIOS, sistema operativo e firmware cooperano per gestire automaticamente la configurazione delle periferiche, sia all’avvio del computer che durante l’installazione di nuovi dispositivi.
+
+Tra gli standard di connessione più diffusi, troviamo: **USB** (Universal Serial Bus), **FireWire** (o IEEE 1394), e **Ethernet** (802.x).
