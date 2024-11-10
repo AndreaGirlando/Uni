@@ -80,8 +80,10 @@ Queste fasi, sequenziali e talvolta sovrapposte, permettono al processore di ese
 Alla coda di prefetch, è stato affiancato un sistema detto **pipeline** che ha lo scopo di sfruttare il concetto di catena di montaggio e quindi di parallelizzare più istruzioni possibili invece di eseguire un'istruzione completamente prima di eseguire la sua successiva. Basta che la prima istruzione sia in fase di decode che la seconda possa essere portata in fase di fetch.
 - **Senza pipeline**
   ![[Pasted image 20241109183412.png]]
+  
 - **Con pipeline**
   ![[Pasted image 20241109183430.png]]
+  
 Come possiamo ben notare una pipeline a 5 stadi esegue 5 fasi contemporaneamente, questa tecnica sopperisce al problema dell'accesso alla memoria precedentemente discusso. 
 L'uso della pipeline introduce anche delle problematiche:
 - **Data hazards**: si verifica quando un istruzione richiede dei dati che vengono forniti da un altra istruzione che non ha ancora finito (ritardi di elaborazione o blocchi)
