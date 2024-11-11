@@ -7,7 +7,7 @@ Il processo di programmazione consiste nel seguente paradigma:
 3. L'**assemblatore** traduce il programma in linguaggio assemblativo in **sequenze binarie** 
 	- trasforma una serie di file sorgenti assembly in file oggetto
 4. Il **linker** collega assieme vari file oggetto e file di libreria in un unico programma oggetto 
-![[Pasted image 20241111102227.png]]
+![[Pasted image 20241111144953.png]]
 Per generare il file oggetto l'assemblatore esegue i seguenti passi:
 1. Genera la codifica delle istruzioni espresse in assembly
 2. Riconosce le direttive di assemblatore per l’allocazione di memoria mettendo queste informazioni nell’header del file oggetto
