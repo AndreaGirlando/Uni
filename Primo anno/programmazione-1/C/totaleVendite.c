@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#define nDistinte 3*30
+#define nDistinte 3*4*30
 #define nProdotti 5
 #define nAgenti 4
 
