@@ -14,7 +14,7 @@ $|n| = \begin{cases} n & \text{se } n \geq 0 \\ -n & \text{se } n < 0 \end{cases
 Giuseppe Peano dà una definizione dell'insieme dei numeri naturali in questo modo:
 - Esiste un numero naturale 0
 - Ogni numero naturale $a$ ha un numero naturale successore denotato come $S(a)$
-- Non esiste il successo di 0
+- Non esiste un numero naturale il cui successore è 0
 - Numeri naturali distinti hanno successori distinti
 
 Introducendo la funzione successore (***S(a)***) è possibile definire una relazione di ordinamento sui numeri naturali, questo viene chiamato **assioma del buon ordinamento** infatti in un generico insieme S esiste un elemento minimo ovvero esiste un elemento s ∈ S tale che s ≤ t per ogni t ∈ S.

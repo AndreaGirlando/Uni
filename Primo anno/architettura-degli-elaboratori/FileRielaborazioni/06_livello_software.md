@@ -20,7 +20,7 @@ Nel caso in cui l'assemblatore fosse del tipo "a due passi", man mano che incont
 
 ---
 ###### Loader
-File sorgente, file oggetto e dati sono memorizzati nella memoria secondari, per essere caricati in memoria facciamo uso del loader, per fare ciò esegue i seguenti step:
+File sorgente, file oggetto e dati sono memorizzati nella memoria secondaria, per essere caricati in memoria facciamo uso del loader, per fare ciò esegue i seguenti step:
 1. Leggere le informazioni quali la lunghezza del programma e la locazione dell'header del file oggetto.
 2. Caricare il programma in memoria sulla base di tali informazioni
 3. Saltare alla prima istruzione del programma da eseguire
