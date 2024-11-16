@@ -373,4 +373,61 @@ Notiamo allora che se $i = 0$ ovvero $n ∈ [0]_m$ abbiamo dimostrato il teorema
 ![[Pasted image 20241109153607.png]]
 ![[Pasted image 20241109153614.png]]
 
-==Continuare da slide 107== 
+---
+###### Divisione modulare
+Nei numeri razionali esiste il concetto di "inverso" ovvero preso $a \in Q$ e $a \not=$ 0 esiste un $x \in Q$ tale che $a * x = 1$, $x$ viene anche denotato con la dicitura $a^{-1}$.
+- se $a = 2$ allora $a^{-1} = \frac{1}{2}$ 
+Il seguente teorema introduce una nozione simile per l'aritmetica modulare.
+
+**Teorema**
+Siano $a, b ∈ N$ entrambi maggiori di zero. Allora, esiste un elemento $x ∈ N$ tale che $a · x ≡ 1(\mod b)$ se e solo se $a$ e $b$ sono [[#Numeri primi e coprimi|coprimi]]. Anche in questo caso l'elemento x viene detto "inverso di a modulo b" e si denota con $a^{-1}$ 
+- con $a = 5$, $b = 3$ abbiamo che $a^{−1}$ = $2$, 
+	- infatti $2 · 5$ mod $3$ = $10$ mod $3$ = $1$ che è congruo con $1$ mod $3$ 
+-  con $a = 9$, $b = 7$ abbiamo che $a^{−1}$ = $4$, 
+	- infatti $4 · 9$ mod $7$ = $36$ mod $7$ = $1$ che è congruo con $1$ mod $7$ 
+
+**Dimostrazione**
+![[Pasted image 20241116095002.png]]
+
+---
+# `Funzione di Eulero` 
+Sia $n$ un intero positivo, cioè $n>0$ e vogliamo definire quanti sono i numeri che precedono $n$ e che siano coprimi con $n$, da qui definiamo la funzione detta di Eulero:
+- **$\phi(n) = |\{x: x \in \mathbb{N}, 0 < x \leq n, MCD(n,x) = 1\}|$** La funzione phi di Eulero di n è uguale al numero di numeri naturali x, compresi tra 0 e n (estremi inclusi), tali che il massimo comune divisore tra n e x sia uguale a 1.
+	- n = 5 : φ(5) = 4 poiché MCD(5, x) = 1, per x = 1, 2, 3, 4.
+
+##### Formule generali per il calcolo del $\phi(n)$ usata negli esercizi 
+Ci sono delle formule generali per il calcolo del phi di un numero:
+1. Se $n$ è un numero primo tutti i predecessori di n sono ad esso coprimi quindi $\phi(n) = n - 1$
+	- φ(5) = 4
+	- φ(11) = 10
+
+2. Il caso $n$ potenza di numero primo, ovvero $n = p^k$ dove $k ≥ 2$ e $p$ è primo, tutti i divisori di $n$ vanno da $p^1, p^2, \ldots, p^k$ e i multipli di $p$ sono $p, 2p, 3p, \ldots, p^{k-1}$ i multipli di $p$ sono i numeri non coprimi con $n$, quindi facendo la differenza tra $p^k$ e $p^{k-1}$ otteniamo tutti i numeri coprimi con n ovvero $φ(n) = φ(p^k) = n − p^{k−1} = p^k − p^{k−1}$ 
+	- φ(8) = φ($2^3$) = $2^3$ − $2^2$ = 8 − 4 = 4
+	- φ(27) = φ($3^3$) = $3^3$ − $3^2$ = 27 − 9 = 18
+
+3. Analizziamo il caso $n$ prodotto di due numeri distinti, ovvero n = $p_1 * p_2$ con $p_1, p_2$ entrambi primi. Tra gli interi $1, 2, 3, . . . p_1 · p_2$ = $n$ ci sono $p_2$ multipli di $p_1$, ossia $p_1$, $2p_1$, $3p_1$, . . . , $p_2$ · $p_1$ e, analogamente $p_1$ multipli di $p_2$. Tolti i multipli di $p_1$ e di $p_2$ tutti gli altri interi sono ovviamente coprimi con $n$ e quindi φ(n) = n − $p_1$ − $p_2$ + 1 = $p_1p_2$ − $p_1$ − $p_2$ + 1 = ($p_1$ − 1) · ($p_2$ − 1)
+	- φ(2 · 3) = (2-1) · (3-1) = 2
+	- φ(3 · 5) = (3-1) · (5-1) = 8
+
+Il caso numero 3 può essere generalizzato nel seguente modo:
+Sia $n = h · k$ dove $h$ e $k$ sono interi maggiori di zero e coprimi tra di loro. Allora $φ(n) = φ(h) · φ(k)$ 
+- φ(4 · 9) = φ($2^2$) · φ($3^2$) = 2 · 6 = 12
+- φ(5 · 8) = φ($5$) · φ($2^3$) = 4 · 4 = 16
+###### Formula generale per il calcolo della funzione di Eulero
+
+Utilizzando il [[#Fattorizzazione degli interi |teorema di fattorizzazione degli interi]] possiamo ricavare la formula generale per il calcolo della funzione φ di Eulero.
+Sia n > 1, consideriamo la sua fattorizzazione $n = p_1^{k_1} · p_2^{k_2} · . . . · p_m^{k_m}$ Allora 
+- $\phi(n) = (p_1^{k_1} - p_1^{k_1 - 1}) \cdot (p_2^{k_2} - p_2^{k_2 - 1}) \cdot \ldots \cdot (p_m^{k_m} - p_m^{k_m - 1})$ 
+
+**Dimostrazione:** dimostriamo il teorema per induzione sul numero dei fattori primi presenti nella fattorizzazione di n.
+**Caso base:**  se $m = 1$ allora $p_1^{k_1}$ sappiamo che è vera per il [[#Formule generali per il calcolo del $ phi(n)$ usata negli esercizi|caso 2]] 
+**Passo induttivo:** Supponiamo il teorema sia vero per ogni intero $n'$ la cui fattorizzazione presenta $m-1$ primi diversi campiamo che $n' = p_1^{k_1} · p_2^{k_2} · . . . · p_{m-1}^{k_{m-1}}$ a questo punto la fattorizzazione per $m$ sarà uguale a:
+- $n = n′ · p^{k_m}_m$ 
+dal teorema abbiamo che: $\phi(n') = (p_1^{k_1} - p_1^{k_1 - 1}) \cdot (p_2^{k_2} - p_2^{k_2 - 1}) \cdot \ldots \cdot (p_{m-1}^{k_{m-1}} - p_{m-1}^{k_{m-1} - 1})$  e quindi $\phi(n) = \phi(n') * (p_{m}^{k_{m}} - p_{m}^{k_{m} - 1})$.
+
+Come possiamo notare il teorema vale sia nel caso base, sia nel passo induttivo e quindi il teorema è dimostrato.
+- $φ(42) : 42 = (2^1 - 2^{1-1}) · (3^1 - 3^{1-1}) · (7^1 - 7^{1-1}) = (2^1 - 2^0) · (3^1 - 3^0) · (7^1 - 7^0)$ Quindi $φ(42) = 1 · 2 · 6 = 12$. (in questo esempio ho preferito specificare ogni singolo esponente per renderlo più esemplificativo)
+
+###### Teorema di Eulero
+Il seguente teorema, detto Teorema di Eulero, dimostra come la funzione φ di Eulero si possa applicare alla esponenziazione modulare. Siano $n, m$ > $0$, se $MCD(n, m) = 1$ allora $n^{φ(m)} ≡ 1(\mod m)$ 
+- $n = 12, m = 5 : 124 ≡ 1(\mod 5)$ infatti $124 = 20736$ e $20736 \mod 5 = 1$.
