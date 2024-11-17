@@ -1,11 +1,8 @@
 
-##### Algebra Lineare
-$f:R \to R$ si legge "$f$ definita in $R$ a valori in $R$".
-
----
+### Algebra Lineare
 ##### Strutture Algebriche
 - **Insieme**: collezione di un elementi che hanno tutti una stessa caratteristica
-- **Funzione**: dati due insiemi $A$ e $B$, si dice $f$ (funzione) una legge che associa ad ogni elemento di $A$ uno di $B$. [[01_Parte1#Funzioni |Spiegazione approfondita delle funzioni]]
+- **Funzione**: dati due insiemi $A$ e $B$, si dice $f$ (funzione) una legge che associa ad ogni elemento di $A$ uno di $B$. [[01_Parte1#Funzioni |Spiegazione approfondita delle funzioni]] $f:R \to R$ si legge "$f$ definita in $R$ a valori in $R$".
 ---
 ##### Matrici
 
@@ -43,13 +40,9 @@ Ogni entrata della matrice "Risultato" è il risultato di una moltiplicazione tr
 **Matrice identità:** denotiamo la matrice identità come $Id_m$. Definiamo matrice identità la matrice che rende vera questa cosa:
 - $Id_m * A = A$
 - $A * Id_m = A$
-La matrice identità è una matrice quadrata che segue questa forma
-$$\begin{pmatrix}
-1 & 0 & 0 \\
-0 & 1 & 0 \\
-0 & 0 & 1
-\end{pmatrix}
-$$
+La matrice identità è una matrice quadrata che segue questa forma:
+
+$\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}$
 
 **Forma di echelon:** una matrice si dice in forma di echelon se:
 1. Se tutte le righe nulle sono in fondo
@@ -129,7 +122,58 @@ Dove:
     - b) se $\det A \neq 0$ allora la matrice inversa è: $A^{-1} = \frac{1}{\det A} \cdot A_{a} = \frac{1}{\det A} \cdot (A_{ij})^{T}$
     - c) se $A$ è invertibile allora $\det A^{-1} = \frac{1}{{\det A}}$
 ---
-**==Continuare dalla lezione del 15 ottobre 2024 in specifico dai sistemi lineari==**
+##### Sistemi Lineari
+
+**Sistema Lineare**: è un sistema di equazioni a più incognite (sempre di grado 1) per risolvere un sistema lineare possiamo trasformarlo in una matrice, la matrice che ne esce avrà questa forma: $A*X = B$ (questa è la definizione della matrice associata al sistema lineare)
+![[Pasted image 20241117100819.png]]
+Per risolvere un generico sistema lineare possiamo applicare Gauss-Jordan alla matrice completa che ha questa forma:
+![[Pasted image 20241117102740.png]]
+i valori rimasti nella matrice A quando arriviamo in forma di echelon ridotta rappresentano i coefficienti delle incognite, i valori rimasti nella matrice B sono i valori delle incognite.
+![[Pasted image 20241117094917.png]]
+Come possiamo notare da questa immagine facciamo quanto detto prima, le soluzioni che troviamo nella forma finale sono ${x_1 = 0, x_2 = 0, x_3 = 2}$ usando questo metodo la risoluzione di un sistema lineare diventa banale. 
+Ci sono dei casi speciali in cui si può incappare quando si risolvono i sistemi lineari come quelli di seguito:  
+1. **Sistema impossibile**: in uno dei passaggi di G-J siamo arrivati a questo punto (vedi immagine sotto), come possiamo notare le soluzioni dell'ultima riga sarebbero $x_1*0 + x_2*0 +x_3*0 = 1$,  e quindi che $0 = 1$ questa è chiaramente un'affermazione falsa quindi la risultato del sistema è impossibile da calcolare
+   ![[Pasted image 20241117095302.png]]
+2. **Sistema con infinite soluzioni**: Arrivati al punto di prendere le soluzioni ci siamo resi conto che $x_1$ dipende dal valore di $x_4$ e proprio quest'ultima non ha un valore definito, in questo caso si dice che le soluzioni del sistema sono infinite perché dipendono da un parametro, in questo caso $x_4$ (nelle soluzioni $x_4$ viene posto = $t$)
+   ![[Pasted image 20241117095805.png]]
+
+**Teorema di Rouchè Capelli**: Il sistema $A*X = B$ con $n$ variabili e $m$ equazioni ha soluzione se $rkA == rk(A|B) = r$ da qui si sviluppano 2 casi: 
+- se r == n allora il sistema lineare ammette una sola soluzione
+- se r < n allora esistono infinite soluzione che dipendono da $n-r$ parametri 
+
+**Sistemi lineari con parametro $\alpha$**: può succedere che in un'esercizio venga inserito un parametro $\alpha$ la risoluzione non cambia da un normale sistema lineare dobbiamo solo fare attenzione a questo valore, questo implica che dobbiamo fare di tutto per evitare che $\alpha$ sia un pivot, se $\alpha$ è un pivot dobbiamo discutere le varie soluzione della matrice al variare del suo valore
+![[Pasted image 20241117112305.png]]
+
+Il nostro obbiettivo per continuare con G-J è quello di far diventare il pivot 1, per fare ciò dobbiamo essere sicuro che il valore di $\alpha$ sia diverso da zero, quindi vediamo quando è zero in questo modo:
+$2 - \alpha - \alpha^2 = 0$ $=>$ $(\alpha - 1)(\alpha + 2) = 0$ $=>$ $\alpha = 1,-2$ 
+Da questo capiamo che i casi da discutere sono 3:
+1. $\alpha = 1$
+2. $\alpha = 2$
+3. $\alpha \not= 1,2$ 
+Di seguito il continuo dell'esercizio
+![[Pasted image 20241117112339.png]]
+![[Pasted image 20241117113033.png]]
+![[Pasted image 20241117113154.png]]
+Nell'ultimo caso si vede un'applicazione del teorema di Rouchè Capelli (si lascia al lettore il brivido della scoperta delle soluzioni di quest'ultima matrice 😉)
+
+**Sistemi omogenei**: un sistema omogeneo è un sistema lineare che si basa su questo paradigma: $A * X = 0$  e che quindi la matrice B dei termini noti è una matrice nulla (con tutti 0), la risoluzione di questo tipo di sistema lineare non differisce con un sistema lineare normale.
+
+==Continuare dal teorema di Cramer pdf del 17 ottobre 2024==
+
+**Teorema di Cramer**: $\det A \neq 0 \iff$ Sistema determinato (ammette una e una sola ($\exists!$) soluzione).
+    - L'unica soluzione si calcola con:
+    - $$\begin{cases}
+
+x_{1}=\frac{\det B_{1}}{\det A} \\
+
+x_{2}=\frac{\det B_{2}}{\det A} \\
+
+\dots \\
+
+x_{n}=\frac{\det B_{n}}{\det A} \\
+
+\end{cases}$$
+---
 ##### Spazi Vettoriali
 - **Spazio Vettoriale**: si dice spazio vettoriale su un campo K (K-spazio vettoriale) un insieme su cui sono definite due operazioni + e * (G, + \*) e valgono le proprietà:
     - (G, +) è gruppo
@@ -149,35 +193,6 @@ Dove:
 - **Teorema che caratterizza una base**: dato $B = \{ v_{1}, v_{2}, \dots, v_{n} \}$, $B$ è un insieme $\iff$ i vettori sono L.I. e generatori.
 - **Teorema sulle Basi**: tutte le basi di un K-spazio vettoriale hanno lo stesso numero di elementi.
     - **Dimostrazione** (2\*, L10): Si usa il Lemma di Steinitz.
----
-##### Sistemi Lineari
-- **Sistema Lineare**: sistema di equazioni a più incognite di massimo 1° grado (c'è il termine noto)
-- **Teorema di Rouchè Capelli N°1**: $\rho(A) =\rho(A,B) \iff$ Sistema possibile (ammette almeno una soluzione).
-- **Teorema di Rouchè Capelli N° 2**: quando il sistema è possibile ($\rho(A) =\rho(A,B) = \rho$) allora esistono $\infty^{n-\rho}$ soluzioni. $n-\rho$ indica il numero di incognite libere.
-- **Teorema di Cramer**: $\det A \neq 0 \iff$ Sistema determinato (ammette una e una sola ($\exists!$) soluzione).
-    - L'unica soluzione si calcola con:
-    - $$\begin{cases}
-
-x_{1}=\frac{\det B_{1}}{\det A} \\
-
-x_{2}=\frac{\det B_{2}}{\det A} \\
-
-\dots \\
-
-x_{n}=\frac{\det B_{n}}{\det A} \\
-
-\end{cases}$$
-
-        - $B_{1}$ si calcola sostituendo la $1^a$ colonna di $A$ con $B$.
-        - $B_{2}$ si calcola sostituendo la $2^a$ colonna di $A$ con $B$.
-        - $\dots$
-        - $B_{n}$ si calcola sostituendo la $n^a$ colonna di $A$ con $B$.
-    - **Dimostrazione** (3\*, L13):
-        - Nell'andata si dimostrano unicità, esistenza e formula.
-        - L'unicità e l'esistenza si dimostrano con il **Teorema delle matrici invertibili**.
-        - La formula si dimostra svolgendo l'equazione dell'esistenza.
-        - Il ritorno si dimostra con il teorema di **Rouchè Capelli N°2**.
-- **Sistema lineare omogeneo**: sistema lineare con $B$ nullo (non esistono termini noti).
 ---
 ##### Applicazioni Lineari
 - **Applicazione Lineare**: corrispondenza (funzione) tra due K-spazi vettoriali.
