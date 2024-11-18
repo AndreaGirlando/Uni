@@ -10,6 +10,7 @@ Non è sempre possibile avere la situazione ideale infatti possono avvenire dei 
   In questo modo l'istruzione Substract inizia solo quando Add ha finito. 
   Per evitare cicli della CPU a vuoto si fa uso della tecnica dell'**operand forwarding**, il risultato viene salvato nei registri interstadio sin dalla fase di execute in questo modo l'istruzione che ha bisogno di quel dato non deve aspettare che l'istruzione dalla quale dipende finisca tutte le fasi ma basta che arrivi alla fase di execute.
   ![[Pasted image 20241118134101.png]]
+  Esistono 3 tipi di dipendenze del dato che abbiamo già discusso [[05_Processore#Esistono 3 tipi di dipendenza del dato|qui]]
 - **Ritardi nell'accesso alla memoria**
   Gli accessi alla memoria alcune volte necessitano di diversi cicli di clock infatti nel caso un dato non si trovi nella **cache** si possono avere ritardi di 10 o più cicli di clock, questo crea dei ritardi nell'esecuzione delle istruzioni.
   ![[Pasted image 20241118150648.png]]
@@ -37,4 +38,39 @@ Non è sempre possibile avere la situazione ideale infatti possono avvenire dei 
 - **Limiti di risorse**
   La pipeline va in stallo quando una risorsa viene richiesta da più istruzioni, per evitare questo problema l'unica soluzione è quella di avere cache separate per istruzione e dati.
 
-==CONTINUARE DA SLIDE 19==
+---
+###### Valutazione prestazioni
+La valutazione delle prestazioni di un processore viene fatta sia per i processori che usano la pipeline sia per quelli che non la usano, la formula chiaramente cambia. Di seguito la legenda per capire le formule successive:
+- $N$: Numero di istruzioni macchina
+- $S$: Numero di cicli di clock per istruzione (CPI - _Cycles Per Instruction_)
+- $T_{clock}$​: Durata di un ciclo di clock ($T_{clock}=\frac{1}{R}​$)
+- $R:$ frequenza di clock del processore 
+La formula per calcolare $T$ (tempo di esecuzione) di $N$ istruzioni è la seguente
+- **Con pipeline**: $T = \frac{N * S}{R}$  
+La formula per calcolare il throughput di un processore la formula è la seguente:
+- **Senza pipeline:** $P_{np} = \frac{R}{S*T_{clock}}$ 
+- **Con pipeline:** $P_p = \frac{R}{S}$ 
+nel caso ottimale con pipeline il throughput è uguale ad R, come abbiamo detto prima la pipeline soffre di conflitti infatti la formula reale diventa: 
+$P_p = \frac{R}{S + \sigma_{dato} + \sigma_{salto} + \sigma_{miss}}$ 
+Ogni tipologia di conflitto indipendente aumenta S di un delta δ dato dal numero di occorrenze del conflitto $p$ per il numero medio di cicli di stallo introdotti $c$ per evitarlo: 
+- Conflitti di dipendenza di dato: $\sigma_{dato}$ = $p_{dato}$ · $c_{dato}$ 
+- Conflitti di salto: $\sigma_{salto}$ = $p_{dato}$ · $c_{dato}$ 
+- Conflitti di cache miss: $\sigma_{miss}$ = $p_{dato}$ · $c_{dato}$
+
+I processori con più unita di elaborazione vengono chiamati **superscalari**, nel caso di un processore con 2 unità di elaborazione:
+- **Unità aritmetica**: esegue le istruzione aritmetico-logiche
+- **Unità Load/Store**: esegue le istruzioni di accesso alla memoria
+Nel seguente caso la pipeline in questo processore è diversa da un normale processore, in specifico cambia così:
+![[Pasted image 20241118213021.png]]
+Le istruzioni aritmetiche e di accesso alla memoria possono essere eseguite in parallelo a coppie e quindi nei primi due cicli di clock si possono mandare in esecuzione le quattro istruzioni
+
+All'entrata di ogni unità di esecuzione troviamo una **stazione di prenotazione** dove sono presenti:
+- Tutte le istruzioni in attesa di esecuzione
+- Informazioni e operandi rilevanti per ogni istruzione che troviamo
+Un’istruzione viene mandata in esecuzione solo quando tutti i suoi operandi sono disponibili
+
+Nella **fase di smistamento** il processore deve assicurarsi che tutte le risorse necessarie ad un’istruzione siano disponibili, in specifico si occupa di verificare la disponibilità dei registri temporanei per contenere i risultati, che ci sia abbastanza spazio nella stazione di prenotazione dell'unità di esecuzione desiderata, e che ci sia una locazione disponibile nel buffer di riordino, inoltre si occupa di prevenire i **deadlock** (casi in cui due istruzioni rimangono bloccate a causa di dipendenze reciproche)
+
+**L'esecuzione fuori ordine** può verificarsi a causa di eventi come cache miss o eccezioni, e questo comporta il rischio che un'istruzione eseguita fuori dal suo ordine previsto possa alterare in modo errato il contenuto di registri o locazioni di memoria, generando così eccezioni imprecise. Per evitare tali problemi, i risultati prodotti dalle unità di esecuzione vengono temporaneamente memorizzati in registri provvisori (che all'occorrenza assumono il ruolo dei registri permanenti grazie al processo di **register renaming**). L'unità di **commitment** si occupa di trasferire i risultati nei registri permanenti rispettando rigorosamente l'ordine di esecuzione delle istruzioni. Per rendere possibile tutto ciò, si utilizza una struttura denominata buffer di riordino, che organizza le istruzioni nel corretto ordine di prelievo, garantendo la coerenza dell'esecuzione.
+
+I processori **CISC** hanno diverse difficoltà nell'utilizzare le pipeline a causa della complessità delle istruzioni, per risolvere questo problema quasi tutti i processori odierni sono si basati su CISC ma le istruzioni vengono dinamicamente convertite in micro-istruzioni RISC che posso essere eseguite nella pipeline in modo più agevole.
