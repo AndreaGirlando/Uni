@@ -111,7 +111,7 @@ Per cercare di arginare il problema delle dipendenze da dato si usa **l'esecuzio
 
 **Per poter riordinare il giusto flusso di esecuzione dopo aver saltato e ricalcolato una istruzione con dipendenza, i processori utilizzano una serie di registri d'appoggio (interni e invisibili al programmatore)** su cui memorizzare i calcoli temporanei delle istruzioni fuori ordine. All'atto del riordinamento, per evitare di spostare i valori dai registri interni a quelli effettivamente usati nel data path, i processori sono in grado di rinominare i registri interni nei nomi dei registri effettivi, risparmiando il tempo del trasferimento (**register renaming**).
 
-Esistono 3 tipi di dipendenza del dato:
+###### Esistono 3 tipi di dipendenza del dato:
 - **RAW (Read After Write)**: Si verifica quando un'istruzione legge un dato che è stato scritto da una precedente istruzione. È chiamata anche dipendenza vera o _data dependency_, perché un dato deve essere prodotto prima di essere letto.
     - Esempio: `Istruzione 1: A = 5`, `Istruzione 2: B = A + 1`. L'istruzione 2 dipende dal valore di `A` prodotto dalla prima.
 
