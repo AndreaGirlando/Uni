@@ -8,7 +8,8 @@ int main()
     system("cls");
     int y = 12458;
 
-    //! Dichiariamo i puntatori mettendo un * prima del nome della variabile, per inserire un valore vuoto dentro ad un puntatore usiamo NULL
+    //! Dichiariamo i puntatori mettendo un * prima del nome della variabile,
+    //! per inserire un valore vuoto dentro ad un puntatore usiamo NULL
     //? L'istruzione sottostante dichiara un puntatore inizializzandolo a NULL
     int *genericPtr = NULL;
 
@@ -30,7 +31,7 @@ int main()
 
     system("cls");
 
-    //Parte del libro
+    //Implementazione dal libro
     int a = 7;
     int *aPtr = &a; // imposta aPtr all'indirizzo di a
 
