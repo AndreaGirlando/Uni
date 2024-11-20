@@ -161,18 +161,8 @@ Nell'ultimo caso si vede un'applicazione del teorema di Rouchè Capelli (si lasc
 ==Continuare dal teorema di Cramer pdf del 17 ottobre 2024==
 
 **Teorema di Cramer**: $\det A \neq 0 \iff$ Sistema determinato (ammette una e una sola ($\exists!$) soluzione).
-    - L'unica soluzione si calcola con:
-    - $$\begin{cases}
+- L'unica soluzione si calcola con:
 
-x_{1}=\frac{\det B_{1}}{\det A} \\
-
-x_{2}=\frac{\det B_{2}}{\det A} \\
-
-\dots \\
-
-x_{n}=\frac{\det B_{n}}{\det A} \\
-
-\end{cases}$$
 ---
 ##### Spazi Vettoriali
 - **Spazio Vettoriale**: si dice spazio vettoriale su un campo K (K-spazio vettoriale) un insieme su cui sono definite due operazioni + e * (G, + \*) e valgono le proprietà:
