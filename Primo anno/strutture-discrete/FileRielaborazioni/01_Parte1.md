@@ -358,7 +358,7 @@ appunto perché associa ad ogni elemento di B(codominio) **soltanto** un element
 - Esempio: ![[Pasted image 20241020160345.png]]
 - $X$ è l'insieme delle $x$ del piano cartesiano corrisponde a $A$ nella definizione precedente
 - $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde a $B$ nella definizione precedente
-- ***nel primo grafico ad ogni valore di $Y$*** ***posso sempre associare un solo elemento di $X$*** ***e quindi è surgettiva, nel secondo invece ad ogni valore di $Y$ posso associare più elementi di $X$***
+- ***nel primo grafico ad ogni valore di $Y$*** ***posso sempre associare un solo elemento di $X$*** ***e quindi è iniettiva, nel secondo invece ad ogni valore di $Y$ posso associare più elementi di $X$***
 ---
 ###### Funzione surgettiva
 Data un'applicazione $f$: $A$ → $B$ se l'immagine $f(A)$ $=$ $B$ la funzione si dice ==***surgettiva***== ovvero un funzione che associa ad ogni elemento di B (codominio) **almeno** un'elemento di A(dominio).
