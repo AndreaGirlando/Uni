@@ -88,9 +88,56 @@ Quello che vediamo in questa immagine può essere riassunto in questo modo:
 in questo stadio il datapath si occupa di prelevare i dati dalla memoria, in questo stadio troviamo un multiplexer che decide se prendere l'indirizzo di memoria o da un registro oppure dal PC, fatto ciò mette decodifica l'istruzione e la mette in esecuzione.
 Esempio:
 ![[Pasted image 20241122190452.png]]
-Non sempre gli accessi alla memoria possono essere eseguiti in un singolo ciclo di clock, infatti se una risorsa non si trova dentro la cache (cache miss) ci voglio molteplici cicli di clock per recuperarla, quando questo succede la CU dei processori si mette in ascolto aspettando un segnale chiamato **MFC(memory function completed)** che indica il coretto caricamento in memoria di un dato.
+Non sempre gli accessi alla memoria possono essere eseguiti in un singolo ciclo di clock, infatti se una risorsa non si trova dentro la cache (cache miss) ci voglio molteplici cicli di clock per recuperarla, quando questo succede la CU dei processori si mette in ascolto aspettando un segnale chiamato **MFC (memory function completed)** che indica il coretto caricamento in memoria di un dato.
 
+Per eseguire le istruzioni macchina il processore deve generare le sequenze di segnali di controllo per ogni stadio, questi segnali si dividono in:
+- Segnali di selezione per i multiplatori
+- Segnali di attivazione di alcuni registri
+- Segnali di condizione
+- Segnali per la gestione della memoria
 
+Un approccio per generare i segnali di controllo consiste nel **controllo cablato** formato dai seguenti componenti:
+- **Contatore dei passi**: modulo 5 che scandisce gli stadi di esecuzione, questo contatore all'inizio dell'esecuzione di un'istruzione ha come valore 0 che aumenta fino a 5 per ogni stadio di esecuzione
+- **Decodificatore di istruzione**: genera un vettore lungo **m** mettendo a 1 solo il bit corrispondente all'istruzione letta su **IR**
+- **Generatore dei segnali di controllo**: produce i segnali di controllo sulla base dell’istruzione in esecuzione, dello stadio attuale (letto dal contatore), dei segnali di condizione e di segnali esterni come le interruzioni. I segnali generati sono predefiniti a livello hardware
+![[Pasted image 20241123094053.png]]
+
+Durante l'accesso alla memoria che richiede svariati cicli di clock il contatore dei passi deve essere bloccato (per garantire la sincronizzazione) per bloccare il contatore dei passi viene generato un segnale **WMFC (Wait for memory function completed)** quando il fetch dalla memoria è finito viene generato un segnale **MFC (memory function completed)**, quindi il segnale di abilitazione del contatore dei passi è questo:
+- AbilitaContattore = $\neg WMFC + MFC$ 
+
+Tutto quello che abbiamo descritto fino ad adesso vale solo per i processori **RISC** infatti quest'ultimi sono gestibili in più stadi grazie alla lunghezza delle istruzioni che è ridotta.
+
+###### Interconnessione
+All'interno di un processore tutti i componenti vengono messi in contatto attraverso il blocco di interconnessione, quest'ultimo è un insieme di [[03_Bus|bus]], la porta logica che invia un segnale su una linea di bus è chiamata **BUS DRIVER**, i dispositivi sono collegati al bus tramite le **porte tri-state**, a differenza delle normali porte logiche che hanno solo due stati (0 e 1), le porte tri-state possono assumere un terzo stato: l'alta impedenza. In pratica, quando una porta è in questo stato, si comporta come se fosse scollegata dal circuito, non influenzando il segnale presente sul bus. Il bus verrà influenzato solo dalle porta non in alta impedenza.
+
+Di solito tutte le componenti usate per l'esecuzione di una istruzione vengono collegate attraverso 3 BUS (Bus A,B usati per i dati in input e il Bus C per i dati in output), il generatore di indirizzi è collegato direttamente al PC.
+![[Pasted image 20241123103623.png]]
+Esempio:
+Passo 1:
+![[Pasted image 20241123103701.png]]
+Passo 2:
+![[Pasted image 20241123103719.png]]
+Passo 3:
+![[Pasted image 20241123103734.png]]
+
+###### Controllo microprogrammato
+I segnali di controllo di ogni passo vengono raccolti in una word di memoria chiamata **microistruzione**. L’insieme di microistruzioni rappresentanti i passi di un’istruzione macchina si chiamano **microroutine**. Le microistruzioni di ciascuna microroutine vengono immagazzinate in locazioni consecutive della **memoria di controllo**, il registro $\mu PC$  contiene l'istruzione della prossima microistruzione da caricare. All’inizio di un istruzione macchina il generatore di indirizzi delle microistruzioni carica sul μPC la prima istruzione della microroutine corrispondente ad ogni passo μPC viene incrementato di un passo per puntare alla microistruzione corretta.
+
+###### Microprogrammato vs Microcablato
+**Controllo microcablato**:
+- **Implementazione**: I segnali di controllo sono generati attraverso un circuito logico cablato.
+- **Velocità**: È generalmente più veloce poiché non dipende dall'accesso a una memoria di controllo.
+- **Flessibilità**: È meno flessibile, perché le modifiche al set di istruzioni richiedono un aggiornamento fisico dell'hardware.
+- **Complessità**: La complessità cresce rapidamente con il numero di istruzioni e segnali di controllo.
+**Controllo microprogrammato**:    
+- **Implementazione**: I segnali di controllo sono memorizzati in una memoria di controllo sotto forma di "microistruzioni" organizzate in "microroutine".
+- **Velocità**: Più lento rispetto al microcablato a causa dei tempi di accesso alla memoria di controllo.
+- **Flessibilità**: Molto più flessibile, perché le modifiche al set di istruzioni possono essere apportate cambiando le microistruzioni nella memoria.
+- **Complessità**: È più scalabile, particolarmente utile per architetture complesse.
+
+É difficile determinare quale sia la migliore infatti questo dipende dall'applicazione:
+- Il **microcablato** è preferibile in sistemi con requisiti di alte prestazioni e dove il set di istruzioni è stabile, come nelle applicazioni embedded o nei processori ad alta velocità.
+- Il **microprogrammato** è ideale per processori generici o complessi (ad esempio, con molte istruzioni) dove è necessaria flessibilità, come nei primi sistemi CISC.
 
 
 ---
@@ -98,4 +145,3 @@ Non sempre gli accessi alla memoria possono essere eseguiti in un singolo ciclo 
 
 **Link Register:** un registro essenziale per la gestione delle chiamate a sottoprogrammi. Quando un programma chiama una funzione o una procedura, l'indirizzo dell'istruzione successiva alla chiamata viene salvato nel link register. Una volta terminata l'esecuzione della sotto procedura, il valore contenuto nel link register viene caricato nel program counter (PC) per far riprendere l'esecuzione del programma principale dal punto esatto in cui era stato interrotto. **Ad esempio**, se un programma principale chiama una funzione per calcolare il fattoriale di un numero, il link register conterrà l'indirizzo dell'istruzione successiva alla chiamata. Al termine del calcolo del fattoriale, il programma tornerà a eseguire l'istruzione successiva alla chiamata iniziale. ^3d471f
 
- 
