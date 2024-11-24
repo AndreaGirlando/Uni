@@ -1,4 +1,3 @@
-
 ### Algebra Lineare
 ##### Strutture Algebriche
 - **Insieme**: collezione di un elementi che hanno tutti una stessa caratteristica
@@ -121,6 +120,7 @@ Dove:
     - a) una matrice A è invertibile $\iff \det A \neq 0$
     - b) se $\det A \neq 0$ allora la matrice inversa è: $A^{-1} = \frac{1}{\det A} \cdot A_{a} = \frac{1}{\det A} \cdot (A_{ij})^{T}$
     - c) se $A$ è invertibile allora $\det A^{-1} = \frac{1}{{\det A}}$
+    - d) $A*A^{-1} = Id_m$
 ---
 ##### Sistemi Lineari
 
@@ -160,9 +160,20 @@ Nell'ultimo caso si vede un'applicazione del teorema di Rouchè Capelli (si lasc
 
 ==Continuare dal teorema di Cramer pdf del 17 ottobre 2024==
 
-**Teorema di Cramer**: $\det A \neq 0 \iff$ Sistema determinato (ammette una e una sola ($\exists!$) soluzione).
-- L'unica soluzione si calcola con:
-
+**Teorema di Cramer**: Per trovare le soluzioni di un sistema lineare del tipo $AX = B$ con $\det A \neq 0$ ovvero un sistema detto **determinato** (ammette una e una sola ($\exists!$) soluzione). Calcoliamo l'unica soluzione delle incognite in questo modo: 
+- $x_i = \frac{\det(B_i)}{\det(A)} \quad \forall i \in \{1, 2, ..., n\}$ dove $n$ è il numero di incognite
+	- $B_{1}$ si calcola sostituendo la $1^a$ colonna di $A$ con $B$.
+	- $B_{2}$ si calcola sostituendo la $2^a$ colonna di $A$ con $B$.
+	- $\dots$
+	- $B_{n}$ si calcola sostituendo la $n^a$ colonna di $A$ con $B$.
+Esempio di come trovare le soluzioni di un sistema lineare usando Cramer
+![[Pasted image 20241123121610.png]]
+Dimostrazione: prendo $Ax = B \Leftrightarrow x = A^{-1}B$ quello che devo dimostrare è che A è uguale a B se e soltanto se moltiplicata per quella x quindi seguo i seguenti passi: 
+- Sostituisco $A^{-1}B$ ad $x$ della prima formula e quindi diventa: $A*(A^{-1}B) = B$
+- Sposto le parantesi: $(A*A^{-1})B = B$ 
+- Per definizione di matrice inversa $A * A^{-1} = Id_m$ 
+- Quindi l'espressione diventa $B = B$
+ 
 ---
 ##### Spazi Vettoriali
 - **Spazio Vettoriale**: si dice spazio vettoriale su un campo K (K-spazio vettoriale) un insieme su cui sono definite due operazioni + e * (G, + \*) e valgono le proprietà:
