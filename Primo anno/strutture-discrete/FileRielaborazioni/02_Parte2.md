@@ -238,7 +238,7 @@ Esistono delle regole molto semplici per verificare la divisibilità di un numer
 			- $a = 2+0$
 			- $b = 8+5$
 			- $a-b = -11$ che è divisibile per 11
-- **Divisibilità per 9:** un numero $n$ è divisibile per $9$ se la sua radice numerica è divisibile per 9
+- **Divisibilità per 9:** un numero $n$ è divisibile per $9$ se la sua radice numerica è divisibile per 9, oppure se $n-ρ(n)$ è divisibile per 9.
 	- $198 : 1 + 9 + 8 = 18 → 1 + 8 = 9$ e quindi 198 è divisibile per 9
 - **Divisibilità per altri numeri primi:**
 	- $13$ divide n se $q + 4r$ è divisibile per $13$
@@ -517,3 +517,33 @@ Per $m = 5$ e $n = 13$ abbiamo che MCD(13,5) = 1, inoltre $C_5$ = $\{1,2,3,4\}$ 
 - $3 · 13 \mod 5$ = $39 \mod 5$ = $4$
 - $4 · 13 \mod 5$ = $52 \mod 5$ = $2$
 Quindi $C_{13,5} = {3,1,4,2}$ 
+
+**==Continuare con le slide da 122 fino a 135==**
+
+---
+# `Applicazioni dell'aritmetica modulare`
+
+##### La prova del 9
+La prova del nove è una verifica di correttezza del risultato di una operazione aritmetica tra numeri interi, ricordando la definizione di [[#Radice numerica|radice numerica]] questo è il teorema che definisce la prova del 9:
+**Teorema:** dati $n,m \in N$ abbiamo che:
+- $ρ(n*m) = ρ(ρ(n)*p(m))$
+- $ρ(n+m) = ρ(ρ(n)+p(m))$
+**Esempio:** $123 * 347 == 42671?$ per verificare che è giusto facciamo così:
+- $ρ(123) = 6$
+- $ρ(347) = 5$ 
+- $ρ( ρ(123) * ρ(347) ) = ρ(30) = 3$
+- $ρ(42671) = ρ(20) = 2$ 
+Gli ultimi 2 risultati sono sbagliati quindi la moltiplicazione è stata fatta nel modo errato (il vero risultato di $123*347$ è $42681$)
+
+**Teorema:** dato $n \in N$ abbiamo che:
+- $n ≡ ρ(n)(\mod 9)$ 
+la radice numeri di un qualsiasi numero è congrua modulo $9$. 
+
+**Dimostrazione**: per il Teorema di divisibilità del $9$ sappiamo che dato $n ∈ N$, se $m$ è la somma delle sue cifre allora $n − m$ è divisibile per $9$, ossia esiste un $k$ tale che $n − m = 9k$. 
+Quindi, ottengo che $n ≡ m(\mod 9)$. 
+Reiterando, se $m′$ è la somma delle cifre di $m$ otteniamo $m ≡ m′(\mod 9)$ quindi $n ≡ m(\mod 9) ≡ m′(\mod 9)$. 
+Fermiamo il processo di somma delle cifre quando otteniamo un numero con una sola cifra (ovvero la radice numeri di $n$) quindi concludiamo che $n ≡ ρ(n)(\mod 9)$
+
+- $250 ≡ 7 \mod 9$ infatti
+	- $250 \mod 9 = 7$
+	- $7 \mod 9 = 7$

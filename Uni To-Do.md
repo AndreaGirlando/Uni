@@ -6,9 +6,10 @@
 
 |      Materia       |                  Doc                   | Fatto? |          Note          |
 | :----------------: | :------------------------------------: | :----: | :--------------------: |
+| Strutture discrete |    Dimostrazione divisibilità per 9    |   ❌    |        Slide 81        |
 | Strutture discrete |          Il teorema di Eulero          |   ❌    | Fatto fino a slide 122 |
 | Strutture discrete |            Inverso modulare            |   ❌    |                        |
-| Strutture discrete |             La prova del 9             |   ❌    |                        |
+| Strutture discrete |             La prova del 9             |   ✅    |                        |
 | Strutture discrete |     Codici ISBN e carte di credito     |   ❌    |                        |
 | Strutture discrete | Cifrari monoalfabetici a trasposizione |   ❌    |                        |
 | Strutture discrete |                Hashing                 |   ❌    |                        |
