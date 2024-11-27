@@ -126,5 +126,4 @@ Nel linguaggio C, l'allocazione della memoria può essere suddivisa in tre categ
 7. Che cosa sono i dangling pointers e come si possono evitare?
 8. Quali sono i rischi associati alla gestione manuale della memoria e come possono essere mitigati?
 
-Spero che questo documento ti sia utile per studiare l'allocazione dinamica della memoria in C!
 
