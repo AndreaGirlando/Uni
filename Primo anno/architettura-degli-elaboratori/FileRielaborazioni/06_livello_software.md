@@ -27,7 +27,7 @@ File sorgente, file oggetto e dati sono memorizzati nella memoria secondaria, pe
 
 ---
 ###### Linker
-Nella maggior parte dei casi un programma è distribuito in più file sorgente, in questi casi l'assemblatore genera un file oggetto incompleto, il file oggetto completo lo genera il **linker** che si occupa di combinare più file oggetto separati risolvendo i riferimenti a nomi esterni
+Nella maggior parte dei casi un programma è distribuito in più file sorgente, in questi casi l'assemblatore genera un file oggetto incompleto, il file oggetto completo lo genera il **linker** che si occupa di combinare più file oggetto separati risolvendo i riferimenti a nomi esterni, inoltre crea il file eseguibile e lo salva sul disco.
 
 ---
 ###### Librerie
