@@ -20,20 +20,27 @@ int main()
     //! Per stampare un'indirizzo usiamo il segnaposto %p
     //? L'istruzione sottostante stampa 'La variabile y con il valore 12458 si trova nell'indirizzo 0061FF14'
     printf("\n\nLa variabile y con il valore %d si trova nell'indirizzo %p",y,yPtr);
-    //? La stessa cosa poteva essere scritta in questo modo
+    //? La stessa cosa può essere scritta in questo modo
     printf("\n\nLa variabile y con il valore %d si trova nell'indirizzo %p",y,&y);
 
     system("cls");
 
-    //! Con l'operando * indichiamo il valore della variabile puntato da quella variabile indirizzo
+    //! Con l'operando * indichiamo il valore della variabile puntata da uno specifico puntatore
     //? L'istruzione sottostante stampa '12458 - 12458 - 0061FF14'
     printf("%d - %d - %p",y,*yPtr,yPtr);
 
     system("cls");
 
-    //Implementazione dal libro
+    //! I 2 operandi appena presentati possono essere combinati
+    //? Tutte e 2 le istruzioni sottostanti stampano l'indirizzo della variabile y
+    printf("%p", &*yPtr);
+    printf("%p", *&yPtr);
+
+
+
+    //Di seguito l'esempio implementato dal libro
     int a = 7;
-    int *aPtr = &a; // imposta aPtr all'indirizzo di a
+    int *aPtr = &a; // Inserisce in aPtr l'indirizzo di a
 
     printf("The address of a is %p"
             "\nThe value of aPtr is %p", &a, aPtr);
