@@ -1,5 +1,3 @@
-### Allocazione della Memoria in C
-
 #### Tipi di Allocazione della Memoria
 
 Nel linguaggio C, l'allocazione della memoria può essere suddivisa in tre categorie principali:
