@@ -4,7 +4,8 @@
 /*
     ? In questo file troviamo un'esempio di funzione che usa un puntatore non costante a dati non costanti
     * Il valore puntato da 'stringPtr' può cambiare
-    * Anche il valore contenuto dentro l'array 'string' può essere cambiato
+    * il valore contenuto dentro la locazione di memoria puntata da 'stringPtr' può cambiare
+    * 'char *stringPtr' si legge 'un puntatore a char'
     ! Questo è un semplice passaggio per riferimento ad una funzione di un vettore (in questo caso un vettore di char)
 */
 
