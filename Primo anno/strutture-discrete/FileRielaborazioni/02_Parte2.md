@@ -249,6 +249,20 @@ Esistono delle regole molto semplici per verificare la divisibilità di un numer
 		- $r =$ resto della divisione con $10$
 	- [[6 novembre 2024.pdf | Esempi qui]]
 
+**Teorema (Divisibilità per 9)**
+Sia $n$ un numero naturale e sia $m$ la somma delle sue cifre. Allora $n − m$ è divisibile per 9.
+**Dimostrazione:**
+Sia $n$ un numero, rappresentato come:
+- $n = \sum_{i=0}^{k} a_i \cdot 10^i$
+dove $a_0, a_1, \dots, a_k$ sono le cifre del numero $n$, con $a_0$ che rappresenta le unità, $a_1$ le decine, e così via. Ora consideriamo un altro numero $m$, che ha la forma:
+- $m = \sum_{i=0}^{k} a_i$
+Questo numero $m$ è la somma delle cifre di $n$. La differenza tra $n$ e $m$ è:
+$n - m = \sum_{i=0}^{k} a_i \cdot 10^i - \sum_{i=0}^{k} a_i = \sum_{i=0}^{k} a_i \cdot (10^i - 1) = \sum_{i=0}^{k} a_i \cdot 9 \cdot b_i = 9 \cdot \sum_{i=0}^{k} a_i \cdot b_i$
+**Esempi:**
+1. Consideriamo $n = 199$. La somma delle cifre di $n$ è $m = 1 + 9 + 9 = 19$. La differenza è: $199−19=180$ che è divisibile per 9.
+2. Consideriamo $n = 640$. La somma delle cifre di $n$ è $m = 6 + 4 + 0 = 10$. La differenza è: $640−10=630$ che è divisibile per 9.
+3. Consideriamo $n = 1129$. La somma delle cifre di $n$ è $m = 1 + 1 + 2 + 9 = 13$. La differenza è: $1129−13=1116$ che è divisibile per 9.
+
 ---
 ###### Dimostrazione per assurdo che $\sqrt{2}$ non è razionale
 Assumendo che esistano 2 numeri naturali $a$ e $b$  tale che $\sqrt{2} = \frac{a}{b}$, assumendo anche che sia ridotta ai minimi termini almeno uno dei 2 è dispari. Elevando al quadrato otteniamo $a^2 = 2b^2$ essendo $a^2$ il doppio di un altro numero sarà per forza pari, detto ciò anche $a$ è pari è quindi esiste un numero $k$ tale che $a = 2k$ da questo avremo allora:
@@ -443,10 +457,10 @@ Sia $m>1$ e sia $C_m$ = $\{x: 0<x<m, MCD(x,m) = 1\}$ cioè l'insieme dei numeri 
 **Dimostrazione:**
 
 **Punto (a):** Dimostrare che ogni elemento di $C_m$ ha un inverso moltiplicativo modulo $m$ che appartiene a $C_m$.
-1. **Concetto chiave**
-   Grazie al **teorema di esistenza dell'inverso moltiplicativo**, sappiamo che ogni $x \in C_m$ ha un inverso $y$ tale che:  $x \cdot y \equiv 1 \pmod{m}.$
+1. **Concetto chiave:**
+   Grazie al **teorema di esistenza dell'inverso moltiplicativo** (l'inverso moltiplicativo di $2$ è $\frac{1}{2}$), sappiamo che ogni $x \in C_m$ ha un inverso $y$ tale che:  $x \cdot y \equiv 1 \pmod{m}.$
    Bisogna verificare che $y \in C_m$, cioè che $y$ sia coprimo con $m$.
-2. **Proprietà utilizzate**
+2. **Proprietà utilizzate:**
    - Dalla definizione di $C_m$, $x$ è coprimo con $m$, quindi:
      $\text{MCD}(x, m) = 1.$
    - La proprietà fondamentale dell'inverso moltiplicativo ci garantisce che:
@@ -463,14 +477,14 @@ Sia $m>1$ e sia $C_m$ = $\{x: 0<x<m, MCD(x,m) = 1\}$ cioè l'insieme dei numeri 
    Dal punto (a), sappiamo che ogni elemento di $C_m$ ha un inverso modulo $m$ che appartiene a $C_m$. Questo implica che ogni elemento di $C^{-1}_m$ è un elemento di $C_m$.
 
 3. **Inclusione $C_m \subseteq C^{-1}_m$:**
-   Ogni $x \in C_m$ ha un inverso $y \in C_m$, ma possiamo considerare $y$ a sua volta come un elemento di $C_m$. Siccome l'operazione di inversione è biunivoca (ovvero ogni elemento ha un singolo inverso), ogni elemento di $C_m$ corrisponde a un elemento di $C^{-1}_m$.
+   Ogni $x \in C_m$ ha un inverso $y \in C_m$, ma possiamo considerare $y$ a sua volta come un elemento di $C_m^{-1}$. Siccome l'operazione di inversione è biunivoca (ovvero ogni elemento ha un singolo inverso), ogni elemento di $C_m$ corrisponde a un elemento di $C^{-1}_m$.
 
 4. **Conclusione:**
    Poiché $C^{-1}_m \subseteq C_m$ e $C_m \subseteq C^{-1}_m$, possiamo affermare che: $C^{-1}_m = C_m.$
 
 **Esempio:**
-Per $m = 10$ abbiamo $C_{10} = \{1, 3, 7, 9\}$ e quindi che:
-- $1^{-1} \mod 10 = 1$,
+Per $m = 10$ abbiamo $C_{10} = \{1, 3, 7, 9\}$ e quindi che ( $ϕ(10)=ϕ(5)*ϕ(2)=4$ ):
+- $1^{-1} \mod 10$ -> $1^{-1 \mod 4}\mod 10 = 1$ -> $1^3 \mod 10 = 1$,
 - $3^{-1} \mod 10 = 7,$
 - $7^{−1} \mod 10 = 3,$
 - $9^{−1} \mod 10 = 9$.
@@ -511,7 +525,7 @@ Poiché abbiamo dimostrato sia $C_{n,m} \subseteq C_m$ sia $C_m \subseteq C_{n,m
 $C_{n,m} = C_m.$
 
 **Esempio:**
-Per $m = 5$ e $n = 13$ abbiamo che MCD(13,5) = 1, inoltre $C_5$ = $\{1,2,3,4\}$ applicando la regola otteniamo $C_{13,5} = \{1*13 \mod 5, 2*13 \mod 5, 3*13 \mod 5, 4*13 \mod 5\}$, risolviamo i moduli:
+Per $m = 5$ e $n = 13$ abbiamo che $MCD(13,5) = 1$, inoltre $C_5$ = $\{1,2,3,4\}$ applicando la regola otteniamo $C_{13,5} = \{1*13 \mod 5, 2*13 \mod 5, 3*13 \mod 5, 4*13 \mod 5\}$, risolviamo i moduli:
 - $1 · 13 \mod 5$ = $13 \mod 5$ = $3$
 - $2 · 13 \mod 5$ = $26 \mod 5$ = $1$
 - $3 · 13 \mod 5$ = $39 \mod 5$ = $4$
@@ -543,7 +557,94 @@ la radice numeri di un qualsiasi numero è congrua modulo $9$.
 Quindi, ottengo che $n ≡ m(\mod 9)$. 
 Reiterando, se $m′$ è la somma delle cifre di $m$ otteniamo $m ≡ m′(\mod 9)$ quindi $n ≡ m(\mod 9) ≡ m′(\mod 9)$. 
 Fermiamo il processo di somma delle cifre quando otteniamo un numero con una sola cifra (ovvero la radice numeri di $n$) quindi concludiamo che $n ≡ ρ(n)(\mod 9)$
-
 - $250 ≡ 7 \mod 9$ infatti
 	- $250 \mod 9 = 7$
 	- $7 \mod 9 = 7$
+##### Codice ISBN
+Il codice ISBN è un codice identificativo standard per i libri , oggi è composto da 13 cifre mentre prima del 2007 era composto da 10 cifre. Per controllare la validità del codice si fa in questo modo:
+- **ISBN-10**: Se le cifre sono da $a_{10}$ fino ad $a_{1}$ il codice è formalmente corretto se:
+	- $a_1 + 2a_2 + 3a_3 + \cdots + 9a_9 + 10a_{10} \equiv 0 \pmod{11}$ 
+		- Il codice 2468864212 è corretto?
+		- Abbiamo $10 · 2 + 9 · 4 + 8 · 6 + 7 · 8 + 6 · 8 + 5 · 6 + 4 · 4 + 3 · 2 + 2 · 1 + 2 = 264$
+		- il numero è divisibile per 11 quindi è un codice ISBN-10 corretto.
+- **ISBN-13**: se le cifre sono da $a_1$ fino ad $a_{13}$ il codice è formalmente corretto se:
+	- $a_1 + 3a_2 + a_3 + 3a_4 + \cdots + a_9 + 3a_{10} + a_{11} + 3a_{12} + a_{13} \equiv 0 \pmod{10}$ 
+		- Il codice 2468864211129 è corretto?
+		- Abbiamo $2 + 12 + 6 + 24 + 8 + 18 + 4 + 6 + 1 + 3 + 1 + 6 + 9 = 100$ 
+		- il numero è divisibile per 10 quindi è un codice ISBN-13 corretto
+##### Codice carta di credito
+Anche il codice numerico a 16 cifre si basa sull'aritmetica modulare, assumendo che le cifre siano le seguenti (raggruppate in 4 gruppi):
+- $a_1b_1a_2b_2$
+- $a_3b_3a_3b_3$
+- $a_5b_5a_6b_6$
+- $a_7b_7a_8b_8$
+Il codice numerico della carta di credito è formalmente corretto se $S$ è divisibile per 10 con S:
+- $S = \sum_{i=1}^8 \rho(2a_i) + \sum_{i=1}^8 b_i$ 
+	- 1234-5678-8765-4321
+		- Le cifre di posto dispari, quelle che abbiamo denotato con ai sono allora 1, 3, 5, 7, 8, 6, 4, 2 moltiplicando per 2 e sommando le cifre dei risultati a più di una cifra otteniamo i numeri: 2, 6, 1, 5, 7, 3, 8, 4 la cui somma è 36
+		- Le cifre di posto pari, quelle che abbiamo denotato con bi sono allora 2, 4, 6, 8, 7, 5, 3, 1 e la somma da come risultato di nuovo 36.
+	- Quindi, non è un numero di carta di credito corretto, visto che il risultato finale 36 + 36 = 72 non è un multiplo di 10.
+##### Cifrari a trasposizione
+![[Pasted image 20241203164718.png]]
+# `Teoria dei numeri e problemi aperti`
+
+Ci sono molti problemi della teoria dei numeri che sono ancora irrisolti di seguito i problemi aperti più famosi, la maggior parte dei problemi aperti saranno del tipo "questa sequenza numeri è infinità?". Quasi tutte le sequenze più famose le trovi su questo sito: [OEIS](https://oeis.org) 
+
+##### Numeri primi di Mersenne
+I numeri primi di Mersenne sono numeri primi della forma:
+- $M_p = 2^p - 1$ 
+	- $M_2 = 2^2 - 1 = 3$
+	- $M_3 = 2^3 - 1 = 7$
+Ad oggi conosciamo solo 52 numeri di Mersenne, l'ultimo scoperto ad ottobre 2024 grazie al progetto GIMPS [lista numeri di Mersenne](https://www.mersenne.org/primes/) , il problema aperto è se questa sequenza sia infinita.
+
+##### Numeri perfetti: funzione "Sigma"
+Dato un numero $n \in N$ definiamo la seguente funzione
+- $\sigma(n) = \sum_{0 < d, d|n} d$ ovvero la somma di tutti i divisori positivi di un numero.
+un numero si dice **perfetto** se $\sigma(n) = 2n$ il primo numero perfetto è il 6 infatti:
+- $σ(6) = 1 + 2 + 3 + 6 = 12$ 
+I primi a studiare questi numeri furono i pitagorici. Pitagora si accorse di una proprietà che fu poi dimostrata da Euclide, ossia che se $2^n-1$ è un numero primo allora $2^{n-1}*(2^n - 1)$ è perfetto
+Infatti i numeri perfetti sono strettamente correlati ai numeri di Mersenne, cosi quest'ultimi si ci chiede se i numeri perfetti siano infiniti.
+
+##### Numeri primi gemelli
+I numeri primi gemelli sono coppie di numeri primi che hanno una differenza di $2$, come $(3,5),(5,7)$, ecc. Entrambi i numeri sono dispari, perché la loro differenza è $2$, un numero pari.
+
+La domanda riguarda se esistono infinite coppie di numeri primi la cui differenza è pari a $2k$ per ogni $k≥1$. Questo è legato alla congettura delle coppie di numeri primi, che suggerisce che esistano infinite coppie di numeri primi con differenze fisse, ma non è ancora stata dimostrata. In altre parole, pur essendo noti molti esempi, la dimostrazione formale che esistano infiniti numeri primi gemelli o con differenze maggiori è ancora un mistero aperto.
+
+##### Congettura di Goldbach
+
+La **congettura di Goldbach**, proposta dal matematico prussiano nel 1742 e formulata da Eulero, afferma che **ogni numero pari maggiore di 4 può essere scritto come la somma di due numeri primi**. Ad esempio:
+
+- $6 = 3 + 3$
+- $8 = 3 + 5$
+- $10 = 3 + 7 = 5 + 5$
+- $12 = 5 + 7$
+- $14 = 3 + 11 = 7 + 7$
+
+La congettura non è ancora stata dimostrata, ma non è stato trovato nemmeno un numero pari che non soddisfi questa proprietà.
+
+Esistono **due definizioni equivalenti** della congettura:
+
+1. **G1**: Per ogni numero intero $x \geq 2$, esiste un intero $d \geq 0$ tale che $x - d$ e $x + d$ siano entrambi numeri primi.
+2. **G2**: Per ogni numero intero $x \geq 2$, esistono due numeri primi $p_1$ e $p_2$ tali che $x = \frac{p_1 + p_2}{2}$.
+
+In altre parole, la congettura suggerisce che ogni numero pari può essere rappresentato come la media di due numeri primi.
+
+Un concetto importante nella discussione della congettura di Goldbach è il **concetto di separatori dei numeri primi gemelli**, ovvero gli interi che si trovano a metà tra due numeri primi consecutivi. Per esempio, la sequenza di "interprimi" contiene numeri come $4$, $6$, $9$, $12$, $15$, $18$, $21$, ecc. Questi numeri, che si trovano a metà tra due numeri primi consecutivi, verificano la congettura di Goldbach. Ad esempio, $9$ è la media di $7$ e $11$, che sono numeri primi consecutivi.
+
+Inoltre, grazie ai moderni strumenti di calcolo, la congettura è stata verificata fino a numeri pari molto grandi, fino a circa $10^{17}$, ma non è stata ancora dimostrata in modo generale.
+
+Un'altra parte interessante della congettura riguarda la **distanza di Goldbach**, definita come la distanza minima $d(n)$ per ogni numero $n$, tale che $n - d(n)$ e $n + d(n)$ siano entrambi numeri primi. Per esempio:
+
+- $d(2) = 0$ (poiché $2$ è primo),
+- $d(4) = 1$ (poiché $3$ e $5$ sono primi),
+- $d(6) = 1$ (poiché $5$ e $7$ sono primi),
+- $d(8) = 3$ (poiché $5$ e $11$ sono primi).
+
+Le sequenze di numeri con distanze di Goldbach uguali a un certo valore $k$ formano diverse **classi di numeri**, come la sequenza $G1$ (separatori dei primi gemelli), $G2$, $G3$, ecc. La congettura di Goldbach sarebbe vera se queste sequenze coprissero tutti i numeri naturali (eccetto $0$ e $1$).
+
+Tuttavia, ci sono molte incognite, come la domanda se esistano sequenze infinite (ad esempio, se esistano infiniti separatori di primi gemelli) o sequenze vuote (se esistano valori di $d$ tali che non ci siano numeri $n$ per cui $n - d$ e $n + d$ sono entrambi primi).
+
+In sintesi, la congettura di Goldbach suggerisce che ogni numero pari maggiore di $4$ è la somma di due numeri primi, ma non è ancora stata provata in modo rigoroso.
+
+
+# `Congettura di Collatz`
