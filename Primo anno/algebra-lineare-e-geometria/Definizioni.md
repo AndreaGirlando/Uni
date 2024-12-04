@@ -158,8 +158,6 @@ Nell'ultimo caso si vede un'applicazione del teorema di Rouchè Capelli (si lasc
 
 **Sistemi omogenei**: un sistema omogeneo è un sistema lineare che si basa su questo paradigma: $A * X = 0$  e che quindi la matrice B dei termini noti è una matrice nulla (con tutti 0), la risoluzione di questo tipo di sistema lineare non differisce con un sistema lineare normale.
 
-==Continuare dal teorema di Cramer pdf del 17 ottobre 2024==
-
 **Teorema di Cramer**: Per trovare le soluzioni di un sistema lineare del tipo $AX = B$ con $\det A \neq 0$ ovvero un sistema detto **determinato** (ammette una e una sola ($\exists!$) soluzione). Calcoliamo l'unica soluzione delle incognite in questo modo: 
 - $x_i = \frac{\det(B_i)}{\det(A)} \quad \forall i \in \{1, 2, ..., n\}$ dove $n$ è il numero di incognite
 	- $B_{1}$ si calcola sostituendo la $1^a$ colonna di $A$ con $B$.
@@ -176,12 +174,25 @@ Dimostrazione: prendo $Ax = B \Leftrightarrow x = A^{-1}B$ quello che devo dimos
  
 ---
 ##### Spazi Vettoriali
-- **Spazio Vettoriale**: si dice spazio vettoriale su un campo K (K-spazio vettoriale) un insieme su cui sono definite due operazioni + e * (G, + \*) e valgono le proprietà:
-    - (G, +) è gruppo
-    - Con \* vale associatività.
-    - Con \* esiste elemento neutro.
-    - Vale distributività della somma rispetto al prodotto esterno. $(a+b)\cdot \vec v=a \vec v + b \vec v$
-    - Vale distributività del prodotto esterno rispetto alla somma. $a \cdot (\vec v + \vec w)=a \vec v +a \vec w$
+**Spazio Vettoriale**: si dice spazio vettoriale un [[01_Parte1#`Insiemi`|insieme]] su cui valgono le seguenti proprietà:
+1. **$V$ è un insieme non vuoto** con un'operazione di somma $+$ tale che:
+    - È chiuso rispetto alla somma: $u + v \in V , \forall u, v \in V$.
+    - La somma è **associativa**: $(u + v) + w = u + (v + w) , \forall u, v, w \in V$.
+    - La somma è **commutativa**: $u + v = v + u , \forall u, v \in V$.
+    - Esiste un **elemento neutro** $0 \in V$ tale che $u + 0 = u , \forall u \in V$.
+    - Ogni elemento $u \in V$ ha un **opposto** $-u \in V$ tale che $u + (-u) = 0$.
+2. **$V$ ha un'operazione di prodotto scalare** con un campo (ad esempio, i numeri reali $\mathbb{R}$):
+    - È chiuso rispetto al prodotto scalare: $\forall \lambda \in \mathbb{R}, u \in V, \lambda u \in V$.
+    - Vale la **distributività** rispetto alla somma degli scalari: $(\lambda + \mu)u = \lambda u + \mu u , \forall \lambda, \mu \in \mathbb{R}, u \in V$.
+    - Vale la **distributività** rispetto alla somma dei vettori: $\lambda(u + v) = \lambda u + \lambda v , \forall \lambda \in \mathbb{R}, u, v \in V$.
+    - Vale la **compatibilità** tra prodotto scalare e moltiplicazione scalare: $(\lambda \mu)u = \lambda (\mu u) , \forall \lambda, \mu \in \mathbb{R}, u \in V$.
+    - Il numero $1 \in \mathbb{R}$ (scalare unitario) agisce come identità: $1u = u , \forall u \in V$.
+Ipotizzando un insieme $V$ sulla quale valgono tutte queste proprietà lo chiamiamo **spazio vettoriale**, gli elementi di $V$ si chiamano **vettori**.
+
+
+
+
+
 - **Sottospazio**: $W$ è sottospazio di $V$ se $W \subseteq V$ e  $W$ è un $K$ spazio vettoriale rispetto alle operazioni di somma e prodotto definite su $V$.
 - **Intersezione tra sottospazi**: è sempre un sottospazio
 - **Unione tra sottospazi**: è sottospazio solo se uno dei due è sottoinsieme dell'altro (ovvio)
