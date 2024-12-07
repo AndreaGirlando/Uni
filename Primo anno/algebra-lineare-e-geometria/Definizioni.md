@@ -189,22 +189,66 @@ Dimostrazione: prendo $Ax = B \Leftrightarrow x = A^{-1}B$ quello che devo dimos
     - Il numero $1 \in \mathbb{R}$ (scalare unitario) agisce come identità: $1u = u , \forall u \in V$.
 Ipotizzando un insieme $V$ sulla quale valgono tutte queste proprietà lo chiamiamo **spazio vettoriale**, gli elementi di $V$ si chiamano **vettori**.
 
+$R^n$ = { ($x_1$, $x_2$,..., $x_n$)| $x_i \in R$}  
+$R^n$ è uno spazio vettoriale formato dai vettori con al massimo $n$ volte $x$, ad esempio $R^5 = {x_1,x_2,x_3,x_4,x_5}$, possiamo affermare che questo è uno spazio vettoriale perché valgono tutte le proprietà prima descritte.   
 
+**Combinazione lineare**: un vettore è combinazione lineare degli altri vettori dello spazio vettoriale se esistono dei $\lambda_{1}, \lambda_{2}, \dots, \lambda_{n}$ tale che $v=\lambda_{1}v_{1}+\lambda_{2} v_{2}+\dots+\lambda_{n}v_{n}$
 
-
-
-- **Sottospazio**: $W$ è sottospazio di $V$ se $W \subseteq V$ e  $W$ è un $K$ spazio vettoriale rispetto alle operazioni di somma e prodotto definite su $V$.
+**Sottospazio**: $W$ è sottospazio di $V$ se $W \subseteq V$ e se $W$ rispetta queste proprietà:
+- $\forall v, w \in W, v + w \in W$
+- $\forall w \in W, -w \in W$
+- $0 \in W$ 
+ - $\forall \lambda \in \mathbb{R}, \forall w \in W \implies \lambda \cdot w \in W$
+Nei sottospazi vettoriali definiamo 2 operazioni:
 - **Intersezione tra sottospazi**: è sempre un sottospazio
 - **Unione tra sottospazi**: è sottospazio solo se uno dei due è sottoinsieme dell'altro (ovvio)
-- **Combinazione Lineare**: un vettore è combinazione lineare di $\vec{v_{1}}, \vec{v_{2}}, \dots, \vec{v_{n}}$ se esistono $a_{1}, a_{2}, \dots, a_{n}$ tali che $v=a_{1}\vec{ v_{1}}+a_{2}\vec{ v_{2}}+\dots+a_{n}\vec{ v_{n}}$.
-- **Insieme di Generatori**: dato un K-spazio vettoriale $V$, un insieme $(v_{1}, v_{2}, \dots, v_{n})$ è detto insieme di generatori (indicato con $G \{ v_{1}, v_{2}, \dots, v_{n}\}$) se preso un qualunque vettore $\vec z \in V$ esso si può scrivere come combinazione lineare (C.L.) dei vettori di $G$.
-- **Base**: un insieme  $(v_{1}, v_{2}, \dots, v_{n})$ è detto **Base** di $V$ se ogni elemento di $V$ è combinazione lineare (C.L.) di  $v_{1}, v_{2}, \dots, v_{n}$ in modo **unico**.
-    - $B$ è base $\iff$ i vettori di $B$ sono L.I. e generatori.
-- **Linearmente Indipendenti**: i vettori $v_{1}, v_{2}, \dots, v_{n}$ si dicono linearmente indipendenti se quando $a_{1}\vec{ v_{1}}+a_{2}\vec{ v_{2}}+\dots+a_{n}\vec{ v_{n}}=0$ allora ne deve seguire che $a_1=a_2=\dots=a_n=0$
-- **Lemma di Steinitz**: numero di vettori generatori $\geq$ numero di vettori linearmente indipendenti.
-- **Teorema che caratterizza una base**: dato $B = \{ v_{1}, v_{2}, \dots, v_{n} \}$, $B$ è un insieme $\iff$ i vettori sono L.I. e generatori.
-- **Teorema sulle Basi**: tutte le basi di un K-spazio vettoriale hanno lo stesso numero di elementi.
-    - **Dimostrazione** (2\*, L10): Si usa il Lemma di Steinitz.
+- **Somma diretta**: Definiamo somma diretta la somma tra 2 sottospazi se e solo se la loro intersezione è $\{0\}$ ovvero un'insieme con solo lo 0 dentro, questo ci indica che i 2 insiemi sono completamenti diversi.
+  ![[Pasted image 20241205162115.png]]
+
+**Insieme di Generatori**: dato uno spazio vettoriale $V$, un insieme $(v_{1}, v_{2}, \dots, v_{n})$ è detto insieme di generatori (indicato con $G \{ v_{1}, v_{2}, \dots, v_{n}\}$) se preso un qualunque vettore $v \in V$ esso si può scrivere come combinazione lineare (C.L.) dei vettori di $G$.
+
+**Linearmente Indipendenti**: i vettori $v_{1}, v_{2}, \dots, v_{n}$ si dicono linearmente indipendenti se facendo la combinazione lineare di quest'ultimi l'unico modo per farla venire uguale a 0 è usando dei $\lambda = 0$ 
+
+**Linearmente dipendente**: i vettori $v_{1}, v_{2}, \dots, v_{n}$ si dicono linearmente dipendenti se facendo la combinazione lineare di quest'ultimi per un generico $\lambda$ il risultato è uguale a $0$
+
+> [!Nota bene] Come capire se uno spazio vettoriale è linearmente indipendente
+> Per capire se i vettori di uno spazio vettoriale sono linearmente indipendenti creo una matrice con quest'ultimi e mi calcolo il rango:
+> - Se il rango è massimo allora lo spazio vettoriale è linearmente indipendente
+> - Se il rango non è massimo vuol dire che qualche vettore può essere scritto come combinazione lineare degli altri e quindi che è linearmente dipendente
+
+**Base di uno spazio vettoriale**: un insieme  $(v_{1}, v_{2}, \dots, v_{n})$ è detto **Base** di $V$ se $B$ genera $V$ e soprattutto se $B$ è linearmente indipendente
+- $B = \{ (0,1),(1,0) \}$  è una base di $R^2$  questo perché genera $R^2$ ed è linearmente indipendente  
+Una base che useremo spesso è la base di $R^n$ anche detta **base standard** è si presenta in questa forma:
+![[Pasted image 20241205170539.png]]
+ 
+**Dimensione di uno spazio vettoriale**: la dimensione di uno spazio vettoriale ci indica il numero di vettori che compongono una sua base. V spazio vettoriale, W sottospazio vettoriale di V allora $dim W \le dim V$ sempre tranne quando $W = V$  
+
+**Formula di Grossmann**: $V$ spazio vettoriale $U,W ⊆ V$ allora 
+- $dim(U + W) = dim U + dim W - dim(U ∩ W)$
+
+==**Lemma di Steinitz**: tutte le basi di uno spazio vettoriale hanno la stessa dimensione== 
+
+Per rappresentare la base di sottospazio abbiamo 2 metodi:
+- **Forma parametrica**: ovvero come spazio generato da un insieme di vettori:
+  ![[Pasted image 20241205181133.png]]
+  Di seguito un'esempio:
+  ![[Pasted image 20241205181317.png]]
+- **Forma cartesiana:** come soluzione di un sistema lineare omogeneo
+  ![[Pasted image 20241205184340.png]]
+  Di seguito un'esempio:
+  ![[Pasted image 20241205184655.png]]
+
+**Come passiamo da una rappresentazione ad un'altra?**
+- **Forma cartesiana -> forma parametrica**
+  ![[Pasted image 20241206173139.png]]
+- **Forma parametrica -> forma cartesiana**
+  ![[Pasted image 20241206173319.png]]
+Passare da una forma all'altra è utile per le operazioni che dobbiamo andare a fare, se dobbiamo fare un'intersezione di sottospazi la forma cartesiana risulta più comoda, invece per la somma di sottospazi la parametrica è la più comoda.
+
+**Teorema del rango**: Data una matrice con dimensioni $m*n$ possiamo definire il seguente teorema:
+- $rk A + dim(ker (A)) = n$  
+opzionalmente si fa riferimento alla dimensione del $ker(A)$ indicandolo con $null(A)$ di conseguenza la formula diventa:
+- $rk A + null(A) = n$ 
 ---
 ##### Applicazioni Lineari
 - **Applicazione Lineare**: corrispondenza (funzione) tra due K-spazi vettoriali.

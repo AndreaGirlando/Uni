@@ -2,12 +2,13 @@
 > [!Legenda]
 > Ancora da fare == ❌ 
 > Già fatto == ✅
+> In corso == 🟨
 > 
 
 |      Materia       |                  Doc                   | Fatto? |          Note          |
 | :----------------: | :------------------------------------: | :----: | :--------------------: |
 | Strutture discrete |    Dimostrazione divisibilità per 9    |   ✅    |        Slide 81        |
-| Strutture discrete |          Il teorema di Eulero          |   ❌    | Fatto fino a slide 122 |
+| Strutture discrete |          Il teorema di Eulero          |   🟨   | Fatto fino a slide 122 |
 | Strutture discrete |            Inverso modulare            |   ❌    |                        |
 | Strutture discrete |             La prova del 9             |   ✅    |                        |
 | Strutture discrete |     Codici ISBN e carte di credito     |   ✅    |                        |
@@ -18,11 +19,12 @@
 | Strutture discrete |         Congettura di Goldbach         |   ✅    |                        |
 | Strutture discrete |         Congettura di Collatz          |   ❌    |                        |
 | Strutture discrete |            Tutta la parte 3            |   ❌    |   Sono 120 slide 😒    |
+|      Algebra       |            Spazi vettoriali            |   ✅    |                        |
 |      Algebra       |          Applicazione lineari          |   ❌    |                        |
 |      Algebra       |              Endomorfismi              |   ❌    |                        |
-|      Algebra       |            Esercizi matrici            |   ❌    |                        |
+|      Algebra       |            Esercizi matrici            |   🟨   |                        |
+|      Algebra       |       Esercizi spazi vettoriali        |   🟨   |                        |
 |      Algebra       |     Esercizi applicazioni lineari      |   ❌    |                        |
-|      Algebra       |   Esercizi applicazioni Endomorfismi   |   ❌    |                        |
 |    Architettura    |          09_Algebra-booleana           |   ❌    |                        |
 |    Architettura    |         10_Circuiti-aritmetici         |   ❌    |                        |
 |    Architettura    |   11_Insieme-di-istruzioni-macchina    |   ❌    |                        |
