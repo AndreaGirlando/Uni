@@ -388,7 +388,7 @@ Notiamo allora che se $i = 0$ ovvero $n ∈ [0]_m$ abbiamo dimostrato il teorema
 ![[Pasted image 20241109153614.png]]
 
 ---
-###### Divisione modulare
+###### Inverso modulare
 Nei numeri razionali esiste il concetto di "inverso" ovvero preso $a \in Q$ e $a \not=$ 0 esiste un $x \in Q$ tale che $a * x = 1$, $x$ viene anche denotato con la dicitura $a^{-1}$.
 - se $a = 2$ allora $a^{-1} = \frac{1}{2}$
 Il seguente teorema introduce una nozione simile per l'aritmetica modulare.
@@ -648,3 +648,31 @@ In sintesi, la congettura di Goldbach suggerisce che ogni numero pari maggiore d
 
 
 # `Congettura di Collatz`
+
+La **congettura di Collatz** conosciuta anche come congettura $3x + 1$ questa congettura lega la teoria dei numeri ad un problema di terminazione di un algoritmo iterativo.
+L'algoritmo si basa sulla seguente funzione:
+![[Pasted image 20241207151025.png]]
+Che diventa in pseudocodice:
+```
+Algoritmo di Collatz 
+Leggi un intero x ≥ 1 
+while (x > 1) do 
+	if x mod 2 == 0 x = x/2; 
+	else x = 3 ∗ x + 1; 
+end_while
+```
+
+Il **problema irrisolto**: l'algoritmo si ferma sempre oppure esiste un $x$ partendo dal quale non si raggiunge mai il valore $1$?
+
+L'algoritmo produce una sequenza di interi detta **traiettoria di n** dove n è il numero in input. Di seguito l'output di un'implementazione in C della seguente congettura con la traiettoria dei primi 10 numeri: 
+![[Pasted image 20241207152343.png]]
+Notiamo che per alcuni interi la lunghezza della traiettoria è maggiore del numero stesso ($n = 3$ ad esempio). Con il tempo è stato ideato un algoritmo di collatz semplificato
+```
+Algoritmo di Collatz semplificato 
+Leggi un intero x ≥ 1 
+while (x > 1) do 
+	if x mod 2 == 0 x = x/2; 
+	else x = (3 ∗ x + 1)/2; 
+end_while
+```
+Visto che x è dispari, sicuramente 3x + 1 è pari, e quindi possiamo direttamente assegnare come nuovo valore ad x il valore (3x + 1)/2. In questo modo le traiettorie di accorciano. Sebbene la congettura sia stata formulata nel 1937, gran parte del lavoro "sperimentale" per provare a risolverla è incominciato nel 1970. Ad oggi, la congettura è stata verificata per tutti gli $n < 10^{18}$ 
