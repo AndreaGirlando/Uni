@@ -30,7 +30,7 @@ int main(){
     printf("\n<--------------------------------------------->\n");
 
     char *stringLong = "-1234567abc";
-    long numeroLong = strtod(stringLong, &stringGarbage);
+    long numeroLong = strtol(stringLong, &stringGarbage, 0);
     printf("%ld\n", numeroLong);
     printf("%s", stringGarbage);
 
