@@ -10,7 +10,7 @@ int main(){
     char word[20];
     printf("\nInserisci una stringa: ");
     //? non abbiamo bisogno di mettere & perchè word è gia un indirizzo
-    //scanf("%20s",word);
+    scanf("%20s",word);
     //* Questa istruzione di scanf metterà dentro l'array word una stringa lunga 20 caratteri
     //* Indipedentemente da quanti caratteri l'utente inserisce
     //! scanf legge i caratteri finché non incontra uno spazio, una tabulazione, un newline o l’indicatore della fine del file

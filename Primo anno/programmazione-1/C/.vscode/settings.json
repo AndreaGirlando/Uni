@@ -3,6 +3,8 @@
         "*.embeddedhtml": "html",
         "stdio.h": "c",
         "time.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "cstdlib": "c",
+        "typeinfo": "c"
     }
 }
