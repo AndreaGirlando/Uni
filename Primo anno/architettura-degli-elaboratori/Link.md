@@ -19,8 +19,8 @@
 
 ---
 ##### File condivisi su Teams
-[[00_Introduzione.pdf]]
-[[01_Architettura.pdf]]
+[[Uni/Primo anno/architettura-degli-elaboratori/FileCondivisiTeams/Teoria/00_Introduzione.pdf]]
+[[Uni/Primo anno/architettura-degli-elaboratori/FileCondivisiTeams/Teoria/01_Architettura.pdf]]
 [[02_Memoria.pdf]]
 [[03_Bus.pdf]]
 [[04_InputOutput.pdf]]

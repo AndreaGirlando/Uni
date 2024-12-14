@@ -341,18 +341,18 @@ Sia $U$ un insieme non vuoto. Con il termine relazione indichiamo un insieme for
 ---
 ##### Funzioni
 Una relazione f definita su $A × A$ si dice funzione di $A$ (dominio) in $B$ (codominio), se per ogni $x ∈ A$ esiste uno ed uno solo $y ∈ A$ tale che $(x, y) ∈ f$. La notazione classica per esprimere f è la seguente: $f : A → B$ per ogni x ∈ A l’unico elemento $y ∈ B$ tale che (x, y) ∈ $f$ si indica con $f(x)$
-
+ 
 Casi particolari:
-- $f : A → B$  per ogni x, f(x) = $x$ si dice ==**applicazione identica**== di $A$
+- $f : A → B$  per ogni x, f(x) = $x$ si dice ==**applicazione identica**== di $A$ ^a112e2
 - $f : A × B → A$ tale che per ogni $(x, y)$ $f(x, y)$ = $x$ si dice ==**proiezione canonica**== su $A$.
 - $f : A × B → B$ tale che per ogni $(x, y)$ $f(x, y)$ = $y$ si dice ==**proiezione canonica**== su $B$.
 
 Dato $f : A → B$ e anche un sottoinsieme di A chiamato X si dice ***immagine di X*** il sottoinsieme di B costituito dagli elementi che provengono da X. Questo insieme si indica con f(X) e anche con la seguente definizione:
 - $f(X) = \{y: y \in B \land (\exists x \in X) (f(x) = y)\}$  ==L'immagine di X è l'insieme di tutti gli y appartenenti a B tali che esiste un x appartenente a X per cui f(x) è uguale a y==
-$F(A)$ si dirà ***immagine dell'applicazione f***, ovvero tutti i possibili valori che la funzione può assumere.
+$F(A)$ si dirà ***immagine dell'applicazione f***, ovvero tutti i possibili valori che la funzione può assumere. ^329b13
 
 ###### Funzione iniettiva
-Data un'applicazione $f$: $A$ → $B$ se porta punti distinti del dominio su su punti distinti del codominio la funzione si dice ==***iniettiva***== formalmente la definiamo così:
+Data un'applicazione $f$: $A$ → $B$ se porta punti distinti del dominio su su punti distinti del codominio la funzione si dice ==***iniettiva***== formalmente la definiamo così: ^ccc2e0
 - $\forall x, y \in A, \text{ se } x \neq y, \text{ allora } f(x) \neq f(y).$ Per tutti x e y appartenenti ad A se x è diverso da y allora f(x) è diverso da f(y). Questo tipo di funzione viene definita funzione "uno a uno"
 appunto perché associa ad ogni elemento di B(codominio) **soltanto** un elemento di A(dominio)
 - Esempio: ![[Pasted image 20241020160345.png]]
@@ -361,7 +361,7 @@ appunto perché associa ad ogni elemento di B(codominio) **soltanto** un element
 - ***nel primo grafico ad ogni valore di $Y$*** ***posso sempre associare un solo elemento di $X$*** ***e quindi è iniettiva, nel secondo invece ad ogni valore di $Y$ posso associare più elementi di $X$***
 ---
 ###### Funzione surgettiva
-Data un'applicazione $f$: $A$ → $B$ se l'immagine $f(A)$ $=$ $B$ la funzione si dice ==***surgettiva***== ovvero un funzione che associa ad ogni elemento di B (codominio) **almeno** un'elemento di A(dominio).
+Data un'applicazione $f$: $A$ → $B$ se l'immagine $f(A)$ $=$ $B$ la funzione si dice ==***surgettiva***== ovvero un funzione che associa ad ogni elemento di B (codominio) **almeno** un'elemento di A(dominio). ^cc7f98
 - Esempio:![[Pasted image 20241020161146.png]]
 - $X$ è l'insieme delle $x$ del piano cartesiano corrisponde al dominio
 - $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde al codominio
@@ -400,8 +400,10 @@ Sia dato un insieme U diremo che una relazione $R(x, y)$ definita in $U×U$ è:
 - ***Esempio fatto durante l'esercitazione:***![[Pasted image 20241023101548.png]]
 
 > [!Nota bene]
-> Una relazione che è sia riflessiva, simmetrica e transitiva si dice relazione di ***equivalenza***. Più in generale una **relazione di equivalenza** è una relazione tra elementi di un insieme che li "raggruppa" in base a certe proprietà comuni. si indica in questo modo:
+> Una relazione che è sia riflessiva, simmetrica e transitiva si dice relazione di ***equivalenza***. Più in generale una **relazione di equivalenza** è una relazione tra elementi di un insieme che li "raggruppa" in base a certe proprietà comuni. Si indica in questo modo:
 > - $x ≈ y$ 
+
+^927242
 
 
 Se hai un insieme $U$ e una relazione di equivalenza su questo insieme, puoi prendere un elemento $x$ di $U$ e formare un sottoinsieme di $U$, che contiene tutti gli elementi che sono equivalenti a $x$. Questo sottoinsieme è chiamato ***classe di equivalenza*** di $x$, e si indica con  $[x]$. 
