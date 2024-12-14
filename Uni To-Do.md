@@ -18,8 +18,8 @@
 | Strutture discrete |          Numeri primi gemelli          |   ✅    |                   |
 | Strutture discrete |         Congettura di Goldbach         |   ✅    |                   |
 | Strutture discrete |         Congettura di Collatz          |   ✅    |                   |
-| Strutture discrete |            Iniziare parte 3            |   ❌    | Sono 120 slide 😒 |
-| Strutture discrete |          Calcolo combinatorio          |   ❌    |                   |
+| Strutture discrete |            Iniziare parte 3            |   ✅    | Sono 120 slide 😒 |
+| Strutture discrete |          Calcolo combinatorio          |   🟨   | Guardare esercizi |
 | Strutture discrete |          Probabilità discrete          |   ❌    |                   |
 | Strutture discrete |   Giochi e paradossi probabilistici    |   ❌    |                   |
 |      Algebra       |            Spazi vettoriali            |   ✅    |                   |
@@ -33,5 +33,9 @@
 |    Architettura    |   11_Insieme-di-istruzioni-macchina    |   ❌    |                   |
 |    Architettura    |     12_Tecnologia-microelettronica     |   ❌    |                   |
 |       Prog 1       |        Vedere test anni passati        |   ✅    |  Itinere il 2/12  |
+|       Prog 1       |               Strutture                |   ✅    |                   |
+|       Prog 1       |                  File                  |   ✅    |                   |
+|       Prog 1       |           Liste concatenate            |   🟨   |                   |
+|       Prog 1       |               Pile/Code                |   ❌    |                   |
 |       Extra        |   codice C che moltiplica le matrici   |   ❌    |                   |
 |       Extra        |    codice C che fa il determinante     |   ❌    |                   |
