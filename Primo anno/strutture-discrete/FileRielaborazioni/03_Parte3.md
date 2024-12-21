@@ -64,6 +64,11 @@ Per il lancio di due monete (costituite da testa e croce) lo spazio dei campioni
 
 - Prendendo in esame l'esperimento del lancio del dado e l’evento **"Esce un numero inferiore a 3"** lo spazio dei campioni è costituito da tutte i possibili esiti del lancio, ovvero $S = \{1, 2, 3, 4, 5, 6\}$ e gli esiti favorevoli sono solo $2$ ovvero $\{1, 2\}$. Quindi la probabilità di tale evento è $\frac{2}{6}$ .
 
+> [!TIP] Mutualmente esclusivi
+> Se due eventi A e B non hanno elementi in comune essi sono detti eventi disgiunti o mutualmente esclusivi perché l'occorrenza dell'uno esclude l'altro.
+
+^81d10b
+
 ##### Definizione frequentista
 La definizione classica non considerava la possibilità di eventi non equiprobabili (come un dato truccato ad esempio), fu Richard von Mises a definire la probabilità che accada un evento $A$ come il limite del rapporto tra il numero di volte in cui si è verificato l'esito $f_A$ (l'esito favorevole) e il numero degli esperimenti $n$ ovvero:
 
@@ -106,4 +111,53 @@ Da questa definizione possiamo ricavarci la formula per calcolare la probabilit�
 > **Risposta**: No, le due probabilità sono uguali. 
 > Infatti $P([2,1,6])$ = $P([3,3,3]) = \frac{1}{6}*\frac{1}{6}*\frac{1}{6} = \frac{1}{216}$
  
+
+##### Regola di Bayes
+Dalla definizione di probabilità condizionata, si ricava la regola di Bayes, importante in molti campi come quello dell'intelligenza artificiale. 
+![[Pasted image 20241221153715.png]]
+Come possiamo notare in questa immagine la probabilità di un evento A condizionata dal verificarsi di un evento B è uguale alla probabilità di un evento B condizionata da un evento A ovvero $P(A ∧ B) = P(B ∧ A)$, da qui nasce la **regola di Bayes** ovvero:
+
+> [!TIP] Regola di Bayes
+> $P(B|A) = \frac{ P(A|B) * P(B) }{ P(A) }$ 
+
+Arriviamo a questa formula in questo modo:
+![[Pasted image 20241221155532.png]]
+
+La regola di Bayes ci permette quindi di calcolare P(B|A) usando solo:
+- $P(A)$
+- $P(B)$
+- $P(A|B)$
+**Esempio**: 
+- $P(E) = \frac{1}{10}$ ; $P(S) = \frac{4}{10}$ ;  $P(S|E) = \frac{7}{10}$ 
+Quindi $P(E|S) = \frac{P(S|E) \cdot P(E)}{P(S)} = \frac{\frac{7}{10} \cdot \frac{1}{10}}{\frac{4}{10}} = \frac{7}{40}$ 
+
+##### Teorema della probabilità totale
+Qualche volta il calcolo della probabilità di un evento deve mettere in conto più processi casuali. 
+
+**Teorema:**
+Sia A un evento e siano $B_1,B_2,...,B_n$ eventi mutuamente esclusivi tali che $P(B_i) \not=  0$ per ogni i ed inoltre $P(B_1 || B_2 ||...|| B_n) = 1$
+
+> [!TIP] Formula della probabilità totale
+> $P(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2) + \cdots + P(A|B_n)P(B_n) = \sum_{i=1}^{n} P(A|B_i)P(B_i)$ ovvero la sommatoria di tutte le probabilità che A accada se $B_i$ accade 
+
+**Dimostrazione**
+Dal momento che gli eventi $B_1,B_2,...,B_n$ sono esaustivi ovvero almeno una di loro si deve verificare. Siccome sono anche [[#^81d10b|mutualmente esclusivi]] la probabilità che $A$ si verifichi è la somma che sia $A$ che $B_i$ si verifichi ovvero:
+- $P(A) = P(A \cap B_1) + \cdots + P(A \cap B_n)$
+Dalla definizione di probabilità condizionata sappiamo che per ogni i:
+- $P(A \land B_i) = P(A|B_i) \cdot P(B_i)$ 
+  ![[Pasted image 20241221173203.png]]
+  La formula che usiamo la ricaviamo in questo modo.
+A questo punto il teorema è dimostrato
+**Esempio**
+Supponiamo di divedere un mazzo di carte (52 carte) in due mazzi:
+- $M_1$ con $30$ carte
+- $M_2$ con $22$ carte
+Supponiamo che in $M_1$ ci siano 3 dei 4 assi.  Mentre in $M_2$ c'è il quarto asso. Scegliendo un mazzo a caso quale è la probabilità di pescare un asso? (definiamo questa probabilità con $P(A)$:
+- $P(M_1) = \frac{1}{2}$ probabilità di scegliere $M_1$ tra i due mazzi.
+- $P(M_2) = \frac{1}{2}$ probabilità di scegliere $M_2$ tra i due mazzi.
+- $P(A|M_1) = \frac{3}{30} = \frac{1}{10}$ probabilità di prendere un asso scegliendo il mazzo $M_1$ 
+- $P(A|M_2) = \frac{1}{22}$ probabilità di prendere un asso scegliendo il mazzo $M_1$
+per il teorema della probabilità totale:
+$P(A) = P(M_1) * P(M_2) * P(A|M_1) * P(A|M_2) = \frac{3}{30} \cdot \frac{1}{2} + \frac{1}{22} \cdot \frac{1}{2} = \frac{4}{55}$
+
 
