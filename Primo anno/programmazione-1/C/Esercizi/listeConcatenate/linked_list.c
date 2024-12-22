@@ -14,18 +14,6 @@ void cancellaNodo(nodo **testa, int key);
 
 int main(){
     system("cls");
-    /*
-        ? Creo i nodi, li collego e li stampo tutto manualmente
-        nodo n1 = {5,NULL};
-        nodo n2 = {6,NULL};
-        nodo n3 = {12,NULL};
-        nodo *testa = &n1;
-        n1.next = &n2;
-        n2.next = &n3;
-        printf("n1(%p): {%d,%p}\n",&n1,n1.d,n1.next);
-        printf("n2(%p): {%d,%p}\n",&n2,n2.d,n2.next);
-        printf("n3(%p): {%d,%p}\n",&n3,n3.d,n3.next);
-    */
 
     nodo *testa = NULL;
     int numbers[5] = {2,1,3,8,98};
@@ -48,8 +36,6 @@ int main(){
         cancellaNodo(&testa,numbers[i]);
         printList(testa);
     }
-
-
 
     elementoTrovatoPtr = linearSearchInList(testa,3);
     if(elementoTrovatoPtr == NULL){
@@ -101,9 +87,7 @@ nodo* linearSearchInList(nodo *tempTesta, int key){
         }
         tempTesta = tempTesta->next;
     }
-
     return NULL;
-
 }
 
 //! funzione che inserisce il nodo in testa
