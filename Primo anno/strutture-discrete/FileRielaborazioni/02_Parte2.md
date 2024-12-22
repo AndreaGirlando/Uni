@@ -225,7 +225,7 @@ Esistono delle regole molto semplici per verificare la divisibilità di un numer
 	- 4 è divisibile per 2
 - **Divisibilità per 3**: un numero è divisibile per $3$ se la somma delle sue cifre è un numero divisibile per $3$
 	- 81 = 8 + 1 = 9 è divisibile per 3
-- **Divisibilità per 5**: un numero è divisibile per $5$ se l''ultima cifra è $0$ o $5$
+- **Divisibilità per 5**: un numero è divisibile per $5$ se l'ultima cifra è $0$ o $5$
 	- 105 è divisibile per 5
 - **Divisibilità per 7**: un numero è divisibile per $7$ se $q - 2r$ è divisibile per $7$
 	- $q =$ quoziente della divisione con 10
