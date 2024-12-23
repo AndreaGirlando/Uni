@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "078c42408b00d317",
+        "id": "78fc4f40ef2c4a9f",
         "type": "tabs",
         "children": [
           {
-            "id": "9a4961daf6291078",
+            "id": "82b2884a2bba8b9d",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Uni To-Do.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Uni To-Do"
             }
           }
         ]
@@ -154,23 +158,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9a4961daf6291078",
+  "active": "82b2884a2bba8b9d",
   "lastOpenFiles": [
-    "Primo anno/strutture-discrete/FileCondivisiTeams/02_Parte2.pdf",
+    "Primo anno/programmazione-1/C/Esercizi/a.exe",
+    "Primo anno/programmazione-1/C/Esercizi/stringMatrix.exe",
+    "Primo anno/programmazione-1/C/Esercizi/stringMatrix.c",
+    "Primo anno/programmazione-1/C/Esercizi/algoritmiDiOrdinamento/selectionSort/selectionSortVettore.exe",
+    "Primo anno/programmazione-1/C/Esercizi/algoritmiDiOrdinamento/selectionSort/selectionSortVettore.c",
+    "Primo anno/programmazione-1/C/Esercizi/algoritmiDiOrdinamento/selectionSort",
+    "Primo anno/programmazione-1/C/Esercizi/algoritmiDiOrdinamento/bubbleSort/bubbleSortVettore.exe",
+    "Primo anno/programmazione-1/C/Esercizi/algoritmiDiOrdinamento/SelectionSort",
+    "Primo anno/programmazione-1/C/Esercizi/algoritmiDiOrdinamento/bubbleSort/bubbleSortVettore.c",
+    "Primo anno/programmazione-1/C/Esercizi/algoritmiDiOrdinamento/bubbleSort/bubbleSort.c",
+    "Primo anno/programmazione-1/C/Esercizi/algoritmiDiOrdinamento/bubbleSort",
+    "Primo anno/Modelli/Pasted image 20241222163815.png",
     "Primo anno/programmazione-1/C/Esercizi/listeConcatenate/Pila(Stack)/Stack.md",
     "Primo anno/programmazione-1/C/Esercizi/listeConcatenate/Coda(Queue)/Coda.md",
-    "Pasted image 20241222163815.png",
-    "Primo anno/programmazione-1/C/Esercizi/listeConcatenate/Coda(Queue)/coda.c",
-    "Primo anno/programmazione-1/C/Esercizi/listeConcatenate/Coda(Queue)",
-    "Primo anno/programmazione-1/C/Esercizi/listeConcatenate/Pila(Stack)/stack.exe",
     "Primo anno/Modelli/Pasted image 20241222150740.png",
     "Uni To-Do.md",
-    "Primo anno/programmazione-1/C/Esercizi/listeConcatenate/Pila(Stack)/stack.c",
-    "Primo anno/programmazione-1/C/Esercizi/listeConcatenate/Pila(Stack)",
-    "Primo anno/programmazione-1/C/Esercizi/listeConcatenate/manuallyLinkedList.exe",
-    "Primo anno/programmazione-1/C/Esercizi/listeConcatenate/manuallyLinkedList.c",
-    "Primo anno/programmazione-1/C/Esercizi/algoritmiDiOrdinamento/selection_sort.c",
-    "Primo anno/programmazione-1/C/Esercizi/algoritmiDiOrdinamento/merge_sort.c",
     "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
     "Primo anno/strutture-discrete/Esempi di esercizi.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
