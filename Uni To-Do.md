@@ -35,14 +35,16 @@
 |       Prog 1       |                Vedere test anni passati                |   ✅    |          Itinere il 2/12          |
 |       Prog 1       |                       Strutture                        |   ✅    |                                   |
 |       Prog 1       |                          File                          |   ✅    |                                   |
-|       Prog 1       |                   Liste concatenate                    |   🟨   |     ordered_linked_list.c:93      |
-|       Prog 1       |                          Pile                          |   ❌    |                                   |
-|       Prog 1       |                          Code                          |   ❌    |                                   |
-|       Prog 1       |                Algoritmi di ordinamento                |   ❌    |                                   |
+|       Prog 1       |                   Liste concatenate                    |   ✅    |     ordered_linked_list.c:93      |
+|       Prog 1       |                          Pile                          |   ✅    |                                   |
+|       Prog 1       |                          Code                          |   ✅    |                                   |
+|       Prog 1       |             Argomenti main e formattazione             |   ✅    |                                   |
+|       Prog 1       |                  Matrice di stringhe                   |   ✅    |                                   |
+|       Prog 1       |                Algoritmi di ordinamento                |   🟨   |                                   |
 |       Prog 1       | Implementare gli algoritmi di ordinamento con le liste |   ❌    |                                   |
-|       Prog 1       |                       bubbleSort                       |   ❌    |                                   |
+|       Prog 1       |                       bubbleSort                       |   🟨   |       Fatto con il vettore        |
 |       Prog 1       |                     InsertionSort                      |   ❌    |                                   |
 |       Prog 1       |                       mergeSort                        |   ❌    |                                   |
-|       Prog 1       |                     selectionSort                      |   ❌    |                                   |
+|       Prog 1       |                     selectionSort                      |   🟨   |       Fatto con il vettore        |
 |       Extra        |           codice C che moltiplica le matrici           |   ❌    |                                   |
 |       Extra        |            codice C che fa il determinante             |   ❌    |                                   |
