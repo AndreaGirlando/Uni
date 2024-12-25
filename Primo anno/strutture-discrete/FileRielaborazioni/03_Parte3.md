@@ -1,16 +1,17 @@
 Questo file è la rielaborazione delle slide [[03_Parte3.pdf]]
- 
 # `Calcolo combinatorio`
 Una delle cose più importanti che un informatico deve imparare a fare è **contare** o **calcolare** nel modo giusto, in particolare vogliamo essere in grado di contare il numero di oggetti o casi che ci interessano, senza doverli esplicitare uno per uno. Di seguito delle domande di esempio alla quale risponderemo dopo aver introdotto il calcolo combinatorio:
 - **Domanda 1:** Se sto scrivendo un programma che simula il poker, il mio programma deve fare in modo che la probabilità di un poker d'assi servito sia quella giusta. Ma qual è tale probabilità?
-- **Domanda 2:** Quanti sono i codici PIN di una carta bancomat a 5 cifre e quante sono le probabilità che un ladro riesca ad indovinare entro 3 tentativi? [[#^fec4ef|Risposta 2]]
+- **Domanda 2:** Quanti sono i codici PIN di una carta bancomat a 5 cifre e quante sono le probabilità che un ladro riesca ad indovinare entro 3 tentativi? [[#^fec4ef|Risposta 2]] [[#^b95d26|Continuo]]
 - **Domanda 3:** Quante sono le possibili password fatte di 8 simboli alfa-numerici (maiuscole e minuscole sono diverse) e quanto tempo ci mette un programma che genera 1000 password al secondo a trovare quella giusta? [[#^a39c5a|Risposta 3]]
-- **Domanda 4:** Se dovessi scommettere che in un’aula con 20 persone, ce ne siano almeno 2 che fanno il compleanno lo stesso giorno, scommetterei di si oppure no? E se ce ne sono 30, 40, 50 o più di persone?
+- **Domanda 4:** Se dovessi scommettere che in un’aula con 20 persone, ce ne siano almeno 2 che fanno il compleanno lo stesso giorno, scommetterei di si oppure no? E se ce ne sono 30, 40, 50 o più di persone? [[#^dabca4|Risposta 4]]
 - **Domanda 5:** Quante squadre di calcio diverse posso formare da un gruppo di 50 studenti?
 ---
 ##### Regola della somma
 Questa regola ci dice che se vogliamo contare il numero di elementi dell'unione tra due insiemi ci basta sommare la cardinalità dei due insiemi.
 - Se denotiamo con $A$ tutte le lettere dell'alfabeto minuscole e con $B$ tutte le lettere dell'alfabeto maiuscole allora il numero di elementi di $A ∪ B$ sarà uguale a $|A|+|B|$ e quindi $26+26 = 52$  
+
+---
 ##### Regola del prodotto
 Questa regola ci dice che se vogliamo contare quanti sono le possibili coppie di elementi, il primo scelto da $A$ e il secondo da $B$ ci basta fare $|A|*|B|$.
 - Se denotiamo con $A$ tutte le lettere dell'alfabeto minuscole e con $B$ tutte le lettere dell'alfabeto maiuscole allora il numero di coppie possibili sono $26 *26 = 676$  
@@ -39,15 +40,19 @@ Avendo le definizioni di queste 2 regole possiamo rispondere parzialmente alle d
 ![[Pasted image 20241214170259.png]]
 **Esercizio 4**: Gelato per tutti
 ![[Pasted image 20241214170322.png]]
+
+---
 ##### Teorema binomiale
 Il teorema binomiale è una formula che consente di elevare a qualsiasi numero un binomio così:
 ![[Pasted image 20241214164028.png]]
 Ovvero la sommatoria da $k=0$ fino a $n$ (l’esponente del binomio) della moltiplicazione tra $a^{n-k} * b^k$ 
+
+---
 ##### Pigeonhole principle
 Nella sua forma più semplice, il Principio afferma che se dobbiamo fare entrare $n + 1$ piccioni in una piccionaia che contiene $n$ cassette, allora almeno una cassetta dovrà contenere più di un piccione. Più in generale, se abbiamo $n = km + 1$ oggetti da sistemare in m contenitori, allora almeno un contenitore dovrà contenere $k + 1$ oggetti.
 - se in un cassetto abbiamo solamente calzini bianchi e neri, se peschiamo casualmente 3 volte un calzino, potremo sicuramente formare una coppia abbinata.
 
-
+---
 # `Probabilità discrete`
 
 ##### Introduzione e formalizzazione matematica
@@ -68,7 +73,7 @@ Per il lancio di due monete (costituite da testa e croce) lo spazio dei campioni
 > Se due eventi A e B non hanno elementi in comune essi sono detti eventi disgiunti o mutualmente esclusivi perché l'occorrenza dell'uno esclude l'altro.
 
 ^81d10b
-
+---
 ##### Definizione frequentista
 La definizione classica non considerava la possibilità di eventi non equiprobabili (come un dato truccato ad esempio), fu Richard von Mises a definire la probabilità che accada un evento $A$ come il limite del rapporto tra il numero di volte in cui si è verificato l'esito $f_A$ (l'esito favorevole) e il numero degli esperimenti $n$ ovvero:
 
@@ -77,6 +82,7 @@ La definizione classica non considerava la possibilità di eventi non equiprobab
 
 La definizione frequentista ha un problema di fondo insuperabile: non tutti gli esperimenti sono ripetibili e quindi alcune probabilità non sarebbero calcolabili. Da qui nasce la teoria della probabilità
 
+---
 ##### Teoria della probabilità
 Siano $A$ e $B$ due eventi qualsiasi definiti su uno spazio dei campioni $S$. Di seguito gli assiomi della probabilità:
 
@@ -90,6 +96,7 @@ Il terzo assioma afferma che la probabilità che si verifichi o $A$ o $B$ è ugu
 
 La distribuzione di probabilità è detta **uniforme** se tutti gli eventi sono equiprobabili
 
+---
 ##### Probabilità condizionata e indipendenza
 Il verificarsi di alcuni eventi può cambiare le probabilità che si verifichi un altro evento. La probabilità di un evento A, condizionata al verificarsi di un evento B (non nullo) è definita come:
 > [!TIP] Probabilità di A, dato B già verificato
@@ -111,7 +118,7 @@ Da questa definizione possiamo ricavarci la formula per calcolare la probabilit�
 > **Risposta**: No, le due probabilità sono uguali. 
 > Infatti $P([2,1,6])$ = $P([3,3,3]) = \frac{1}{6}*\frac{1}{6}*\frac{1}{6} = \frac{1}{216}$
  
-
+---
 ##### Regola di Bayes
 Dalla definizione di probabilità condizionata, si ricava la regola di Bayes, importante in molti campi come quello dell'intelligenza artificiale. 
 ![[Pasted image 20241221153715.png]]
@@ -131,6 +138,7 @@ La regola di Bayes ci permette quindi di calcolare P(B|A) usando solo:
 - $P(E) = \frac{1}{10}$ ; $P(S) = \frac{4}{10}$ ;  $P(S|E) = \frac{7}{10}$ 
 Quindi $P(E|S) = \frac{P(S|E) \cdot P(E)}{P(S)} = \frac{\frac{7}{10} \cdot \frac{1}{10}}{\frac{4}{10}} = \frac{7}{40}$ 
 
+---
 ##### Teorema della probabilità totale
 Qualche volta il calcolo della probabilità di un evento deve mettere in conto più processi casuali. 
 
@@ -148,16 +156,88 @@ Dalla definizione di probabilità condizionata sappiamo che per ogni i:
   ![[Pasted image 20241221173203.png]]
   La formula che usiamo la ricaviamo in questo modo.
 A questo punto il teorema è dimostrato
-**Esempio**
-Supponiamo di divedere un mazzo di carte (52 carte) in due mazzi:
-- $M_1$ con $30$ carte
-- $M_2$ con $22$ carte
-Supponiamo che in $M_1$ ci siano 3 dei 4 assi.  Mentre in $M_2$ c'è il quarto asso. Scegliendo un mazzo a caso quale è la probabilità di pescare un asso? (definiamo questa probabilità con $P(A)$:
-- $P(M_1) = \frac{1}{2}$ probabilità di scegliere $M_1$ tra i due mazzi.
-- $P(M_2) = \frac{1}{2}$ probabilità di scegliere $M_2$ tra i due mazzi.
-- $P(A|M_1) = \frac{3}{30} = \frac{1}{10}$ probabilità di prendere un asso scegliendo il mazzo $M_1$ 
-- $P(A|M_2) = \frac{1}{22}$ probabilità di prendere un asso scegliendo il mazzo $M_1$
-per il teorema della probabilità totale:
-$P(A) = P(M_1) * P(M_2) * P(A|M_1) * P(A|M_2) = \frac{3}{30} \cdot \frac{1}{2} + \frac{1}{22} \cdot \frac{1}{2} = \frac{4}{55}$
+> [!EXAMPLE] Esempio:
+>Supponiamo di divedere un mazzo di carte (52 carte) in due mazzi:
+> - $M_1$ con $30$ carte
+> - $M_2$ con $22$ carte
+> Supponiamo che in $M_1$ ci siano 3 dei 4 assi.  Mentre in $M_2$ c'è il quarto asso. Scegliendo un mazzo a caso quale è la probabilità di pescare un asso? (definiamo questa probabilità con $P(A)$:
+> - $P(M_1) = \frac{1}{2}$ probabilità di scegliere $M_1$ tra i due mazzi.
+> - $P(M_2) = \frac{1}{2}$ probabilità di scegliere $M_2$ tra i due mazzi.
+> - $P(A|M_1) = \frac{3}{30} = \frac{1}{10}$ probabilità di prendere un asso scegliendo il mazzo $M_1$ 
+> - $P(A|M_2) = \frac{1}{22}$ probabilità di prendere un asso scegliendo il mazzo $M_1$
+> per il teorema della probabilità totale:
+> $P(A) = P(M_1) * P(M_2) * P(A|M_1) * P(A|M_2) = \frac{3}{30} \cdot \frac{1}{2} + \frac{1}{22} \cdot \frac{1}{2} = \frac{4}{55}$
+
+---
+##### Problemi d'urna
+Tutti gli eventi che si possono formalizzare come "Estraiamo una o più palline numerate, da una o più urna" vengono detti **Problemi d'urna**. É importante che le estrazioni siano non truccate e che ogni estrazione sia indipendente dalla precedente. Le estrazioni da un'urna si possono classificare in 4 modi:
+![[Pasted image 20241214162649.png]]
+Attraverso i problemi dell'urna possiamo rispondere alla seconda domanda iniziale:
+**Risposta 2**:  ^b95d26
+- La probabilità di sbagliare il primo tentativo è $\frac{10^5-1}{10^5}$ 
+- La probabilità di sbagliare il secondo  tentativo è $\frac{10^5-2}{10^5-1}$
+- La probabilità di sbagliare il terzo tentativo è $\frac{10^5-3}{10^5-2}$ 
+la probabilità totale diventa:
+![[Pasted image 20241224143645.png]]
+
+---
+##### Paradosso del compleanno
+Di seguito risponderemo alla domanda 4 posta all'inizio, ovvero "Se dovessi scommettere che in un’aula con 20 persone, ce ne siano almeno 2 che fanno il compleanno lo stesso giorno, scommetterei di si oppure no? E se ce ne sono 30, 40, 50 o più di persone?". In pratica ci stiamo chiedendo se dato un certo numero di persone la probabilità che 2 di esse facciano il compleanno lo stesso giorno sia maggiore di $\frac{1}{2}$. Questo problema è noto con il nome di **paradosso del compleanno** non perché genera un paradosso ma perché la risposta è apparentemente controintuitiva.
+
+> [!TIP]
+> Per il **pigeonhole principle** potremo dire che in un'aula con 366 persone di sicuro almeno 2 fanno il compleanno lo stesso giorno 
+
+**Rispondiamo prima a** "Qual è il numero minimo di persone presenti in un aula tale che la probabilità che due di esse siano nate lo stesso mese è maggiore di $\frac{1}{2}$"
+> [!TIP]
+> Per il **pigeonhole principle** potremo dire che in un'aula con 13 persone di sicuro almeno 2 fanno il compleanno lo stesso mese
+
+Assumiamo che $n$ sia uguale a $3$. Quindi abbiamo tre persone $p_1$,$p_2$ e $p_3$ ed ognuna di esse può essere nata in uno dei $12$ mesi. Il numero di terne ( {mese di nascita di $p_1$, mese di nascita di $p_2$, mese di nascita di $p_3$} ) possibili è dato dal numero di disposizioni semplici ovvero $12^3 = 1728$ (numero casi totali). Il numero di casi dove tutti e 3 i mesi sono diversi è:
+- $3! \cdot \binom{12}{3} = 3! \cdot \frac{12!}{3!9!} = 12 \cdot 11 \cdot 10 = 1320$ 
+  Moltiplichiamo tutto per $3!$ perché sono 6 le combinazioni che possiamo fare dati 3 mesi.
+La probabilità che tre persone siano nate in un mese diverso con $n = 3$ è $\frac{1320}{1728} = 0,76$  
+
+Ritornando alla domanda inziale, dobbiamo prendere in esame i casi in cui in aula ci siano meno di 366 persone. Calcoliamo la probabilità che facciano tutti il compleanno in giorno diverso e partiamo dal caso peggiore ovvero un anno bisestile:
+- Se $n = 2$ abbiamo $365$ su $366$ giorni possibili per la seconda, se devono essere giorni diversi. Quindi, la probabilità che siano nati in giorni diversi è $\frac{365}{366} = 0, 997$.
+- Se $n = 3$ abbiamo $365$ su $366$ giorni possibili per la seconda, e $364$ su $366$ per la terza, se devono essere giorni diversi. Quindi, la probabilità che siano nati in giorni diversi è $\frac{365·364}{366^2} = 0,991$ 
+> [!TIP] Formula paradosso del compleanno
+> Se abbiamo $p$ persone la formula che usiamo per calcolare la probabilità che siano nate in giorni diversi è:
+> - $P_d(p) = \frac{p! \cdot \binom{366}{p}}{366^p}$
+> Quindi la formula per calcolare la probabilità che almeno 2 persone facciano il compleanno lo stesso giorno è:
+> - $P(p) = 1 - P_d(p) = 1 - \frac{365 \cdot 364 \cdot \ldots \cdot (366 - p + 1)}{366^{p-1}}$ 
+
+> [!Example] Esempio
+> Per $p$ = 23
+> $P_d(23) = \frac{365 \cdot 364 \cdot \ldots \cdot 344}{366^{22}} \approx 0.48$
+> $P(23) = 1 - 0.48 = 0.52$
+
+**Risposta 4**: Dall'esempio qua sopra capiamo che basterebbero 23 persone scelte a caso per avere più del 50% di probabilità che 2 persone facciano il compleanno lo stesso giorno. ^dabca4
+
+---
+##### Variabile casuale o valore atteso
+Una **variabile casuale** è una funzione X che associa un numero reale ad un evento. Invece il **valore atteso** è il valore restituito dalla funzione X dato un evento. Se vogliamo associare all'evento "Lancio del dado" una variabile casuale questa avrà valore $3.5$ (il valore atteso dal lancio di un dado si calcola moltiplicando ogni numero di faccia del dado per la probabilità che esca e sommando i risultati). Il valore atteso ha una proprietà di linearità. Ovvero se abbiamo due variabili casuali X e Y e consideriamo la variabile casuale "somma" X + Y allora $E[X + Y ]$ = $E[X]$ +$E[Y]$  
+
+> [!TIP] Formula per il calcolo del valore atteso
+> $E[X] = \sum_{x} x \cdot P[X = x]$
+> 
 
 
+> [!Example] Esempio
+> **Domanda:** Se lanciamo 2 dadi, qual è il valore atteso del massimo dei 2 valori.
+> 
+> In questo caso abbiamo quindi 36 casi possibili $\{(1,1),(1,2),...,(6,5),(6,6)\}$:
+> - Di coppie con "6" ne abbiamo 11 
+> - Di coppie con "5" ma senza "6" ne abbiamo 9 
+> - Di coppie con "4" ma senza "5" o "6" be abbiamo 7 
+> - Di coppie con "3" ma senza "4", "5", o "6" ne abbiamo 5 
+> - Di coppie con "2" ma senza "3", "4", "5" o "6" ne abbiamo 3 
+> - Di coppie con solo "1" ne abbiamo solo 1.
+> 
+> Quindi:
+> ![[Pasted image 20241224154745.png]]
+> 
+
+
+
+
+
+ 
