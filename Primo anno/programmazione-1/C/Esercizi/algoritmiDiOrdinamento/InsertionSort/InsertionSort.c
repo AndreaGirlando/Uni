@@ -22,12 +22,13 @@ int main(){
         {
             array[j + 1] = array[j]; //Sposta l'elemento più grande verso destra
             j--;
+            printArray(array);
         }
 
         // Inserisce temp nella posizione corretta più a sinistra possibile
         array[j + 1] = temp;
 
-        printArray(array);
+        printf("\n<------------------->\n");
     }
 
     return 0;
