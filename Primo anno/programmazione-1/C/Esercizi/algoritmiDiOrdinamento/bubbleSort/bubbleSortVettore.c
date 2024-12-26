@@ -16,7 +16,7 @@ int main(){
 
     printArray(array);
 
-    for(int i = 0; i < dim-1;i++){
+    for(int i = 0; i < dim;i++){
         for(int j = 0; j < dim-1; j++){
             if(array[i] > array[j]){
                 int temp = array[i];

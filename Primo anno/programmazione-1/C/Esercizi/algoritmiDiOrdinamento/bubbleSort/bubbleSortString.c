@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <string.h>
 unsigned int get_random() {
     static unsigned int m_w = 123456;
     static unsigned int m_z = 789123;
@@ -22,18 +23,62 @@ char* genString(int numeroCaratteri){
 }
 
 int main(int argc, char **argv){
-
+    //! Per ordinare il vettore di stringhe in ordine alfabetico lo devo ordinare in modo crescente
+    //! al contrario di come si fa di solito con il bubbleSort
     int stringDim = atoi(argv[1]);
 
     char **stringArray = malloc(stringDim * (sizeof(char*)));
 
     for(int i = 0; i<stringDim;i++){
-        stringArray[i] = genString(stringDim);
+        stringArray[i] = genString(5);
     }
 
+    printf("Vettore generato: \n");
     for(int i = 0; i<stringDim;i++){
-        printf("%20s",stringArray[i]);
+        printf("%10s",stringArray[i]);
     }
+
+
+    for(int i = 0; i<stringDim; i++){
+        for(int j = 0; j<stringDim-1;j++){
+
+            if(strcmp(stringArray[i],stringArray[j])>0){
+                char temp[stringDim];
+                strcpy(temp,stringArray[i]);
+                strcpy(stringArray[i],stringArray[j]);
+                strcpy(stringArray[j],temp);
+            }
+        }
+    }
+
+
+    printf("\nVettore ordinato in ordine decrescente: \n");
+    for(int i = 0; i<stringDim;i++){
+        printf("%10s",stringArray[i]);
+    }
+
+
+
+    for(int i = 0; i<stringDim; i++){
+        for(int j = 0; j<stringDim-1;j++){
+
+            if(strcmp(stringArray[i],stringArray[j])<0){
+                char temp[stringDim];
+                strcpy(temp,stringArray[j]);
+                strcpy(stringArray[j],stringArray[i]);
+                strcpy(stringArray[i],temp);
+            }
+        }
+    }
+
+    printf("\nVettore ordinato in ordine crescente (e quindi alfabetico): \n");
+    for(int i = 0; i<stringDim;i++){
+        printf("%10s",stringArray[i]);
+    }
+
+
+
+
 
     return 0;
 }
