@@ -61,6 +61,7 @@ Per la disgiunzione e la congiunzione vale la proprietà commutativa e associati
 - p ∨ q ≡ q ∨ p (commutativa della disgiunzione)
 - p ∨ (q ∨ r ) ≡ (p ∨ q) ∨ r (associatività della disgiunzione)
 
+---
 ##### Giustificazione o conseguenza logica:
 Sia $P$ un insieme di proposizioni e $p$ una proposizione generica, ci chiediamo quando $P$ giustifica $p$ questa domanda la denotiamo con: $P$  |= $p$
 Di seguito un esempio:
@@ -90,10 +91,10 @@ Come possiamo facilmente notare P giustifica quella disgiunzione (ovvero p ∨ q
 **TIPS:** [[Tips#Come distribuire le congiunzioni sulle disgiunzioni e viceversa]]
 
 ---
-Molte volte formule complesse vengono standardizzate in 2 forme chiamate "normali":
-- CNF (Forma Normale Congiuntiva) che si basa sul fare un AND di vari OR:
+Molte volte formule complesse vengono standardizzate in 2 forme chiamate "normali": ^31c186
+- **CNF (Forma Normale Congiuntiva)** che si basa sul fare un AND di vari OR:
 	- (p ∨ q) ∧ (¬p ∨ ¬r ∨ s)
-- DNF (Forma Normale Disgiuntiva) che si basa sul fare un OR di vari AND:
+- **DNF (Forma Normale Disgiuntiva)** che si basa sul fare un OR di vari AND:
 	- (p ∧ q) ∨ (¬p ∧ ¬r ∧ s)
 
 Una qualunque formala $P$ si può trasformare in una delle 2 forme normali sopracitate, questo si fa seguendo questi step:

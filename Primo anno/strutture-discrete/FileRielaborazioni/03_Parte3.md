@@ -156,6 +156,7 @@ Dalla definizione di probabilità condizionata sappiamo che per ogni i:
   ![[Pasted image 20241221173203.png]]
   La formula che usiamo la ricaviamo in questo modo.
 A questo punto il teorema è dimostrato
+
 > [!EXAMPLE] Esempio:
 >Supponiamo di divedere un mazzo di carte (52 carte) in due mazzi:
 > - $M_1$ con $30$ carte
@@ -214,12 +215,37 @@ Ritornando alla domanda inziale, dobbiamo prendere in esame i casi in cui in aul
 
 ---
 ##### Variabile casuale o valore atteso
-Una **variabile casuale** è una funzione X che associa un numero reale ad un evento. Invece il **valore atteso** è il valore restituito dalla funzione X dato un evento. Se vogliamo associare all'evento "Lancio del dado" una variabile casuale questa avrà valore $3.5$ (il valore atteso dal lancio di un dado si calcola moltiplicando ogni numero di faccia del dado per la probabilità che esca e sommando i risultati). Il valore atteso ha una proprietà di linearità. Ovvero se abbiamo due variabili casuali X e Y e consideriamo la variabile casuale "somma" X + Y allora $E[X + Y ]$ = $E[X]$ +$E[Y]$  
+
+**Variabile Casuale**
+Una **variabile casuale** è una funzione che associa ad ogni risultato possibile di un esperimento casuale un numero reale. In altre parole, ogni volta che si verifica un evento nel contesto di un esperimento (per esempio, lanciando un dado), la variabile casuale restituisce un valore numerico. Un esempio classico è il lancio di un dado. In questo caso, la variabile casuale **X** può rappresentare il numero che appare sulla faccia del dado. Quindi, quando lanci il dado, **X** prenderà uno dei seguenti valori: 1, 2, 3, 4, 5 o 6.
+
+**Valore Atteso**
+Il **valore atteso** (o **media ponderata**) di una variabile casuale è il valore medio che ti aspetti di ottenere se ripeti l'esperimento un numero molto grande di volte. È un concetto che descrive la "tendenza centrale" della variabile casuale. 
+
+Per calcolare il valore atteso $E[X]$ di una variabile casuale **X**, moltiplichi ogni valore possibile che **X** può assumere per la probabilità che quel valore si verifichi e poi sommi tutti i risultati. La formula è la seguente:
 
 > [!TIP] Formula per il calcolo del valore atteso
-> $E[X] = \sum_{x} x \cdot P[X = x]$
+> $E[X]= \sum_{x} x \cdot P[X = x]$
 > 
+> Dove:
+> - $x$ è un possibile valore che la variabile casuale **$X$** può assumere.
+> - $P[X=x]$ è la probabilità che $**X**$ assuma il valore $x$.
 
+> [!EXAMPLE] Lancio di un Dado
+>Nel caso del lancio di un dado, la variabile casuale $X$ rappresenta il numero che appare sulla faccia del dado. I possibili valori di $X$ sono 1, 2, 3, 4, 5, e 6, e ognuno ha una probabilità di $\frac{1}{6}$ di verificarsi, perché il dado è equilibrato. Per calcolare il valore atteso $E[X]$: 
+> $E[X] = 1 \cdot P[X = 1] + 2 \cdot P[X = 2] + 3 \cdot P[X = 3] + 4 \cdot P[X = 4] + 5 \cdot P[X = 5] + 6 \cdot P[X = 6]$
+> Poiché la probabilità di ciascun numero è $\frac{1}{6}$, otteniamo: 
+> - $E[X] = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6} + 3 \cdot \frac{1}{6} + 4 \cdot \frac{1}{6} + 5 \cdot \frac{1}{6} + 6 \cdot \frac{1}{6}$ 
+> Semplificando, otteniamo: 
+> - $E[X] = \frac{1 + 2 + 3 + 4 + 5 + 6}{6} = \frac{21}{6} = 3.5$ 
+> Quindi, il valore atteso del lancio di un dado è **3.5**. Questo significa che, in media, se lanci un dado un numero molto grande di volte, il valore medio dei risultati sarà **3.5**.
+
+ 
+**Linearità del Valore Atteso**
+Una delle proprietà importanti del valore atteso è che è **lineare**, cioè: 
+- $E[X + Y] = E[X] + E[Y]$ 
+Questo significa che se hai due variabili casuali **X** e **Y**, e le sommi, il valore atteso della somma sarà la somma dei valori attesi delle singole variabili. Per esempio, supponiamo di avere due variabili casuali: **X**, che rappresenta il lancio di un dado, e **Y**, che rappresenta un altro lancio di dado. Se calcoliamo il valore atteso della somma $X + Y$, avremo: $E[X + Y] = E[X] + E[Y]$ Poiché ciascun dado ha valore atteso **3.5**, allora: $E[X + Y] = 3.5 + 3.5 = 7$.
+Quindi, se sommiamo i risultati di due lanci di dado, ci aspettiamo che la media dei risultati sia **7**.
 
 > [!Example] Esempio
 > **Domanda:** Se lanciamo 2 dadi, qual è il valore atteso del massimo dei 2 valori.
@@ -236,8 +262,53 @@ Una **variabile casuale** è una funzione X che associa un numero reale ad un ev
 > ![[Pasted image 20241224154745.png]]
 > 
 
+---
+##### Prova di Bernoulli
+La prova di Bernoulli è un esperimento probabilistico che ha esattamente due risultati: **successo(p)** o **fallimento(q = 1 - p)**.
+Il numero atteso dei numeri di tentativi da fare per ottenere “successo” è dato da 1/p.
+**Esempi:**
+![[Pasted image 20241226143158.png]]
 
+Dunque **La legge dei grandi numeri** detta anche **teorema di Bernoulli** ci garantisce che la media dei risultati ottenuti dopo un grande numero di tentativi si avvicina al valore atteso, quindi se lanciamo all’infinito un dado, la media ottenuta
+sarà esattamente $3,5$. 
 
+---
 
+# `Giochi e paradossi probabilistici`
 
- 
+Questo parte esplora quattro famosi paradossi probabilistici: il paradosso dei due bambini, il paradosso delle tre carte (o scatole), il paradosso dei tre prigionieri e il paradosso di Monty Hall.
+
+###### 1. Paradosso dei Due Bambini
+
+*   **Problema:** Un professore di probabilità ha due figli. Uno di loro è un maschio. Qual è la probabilità che anche l'altro figlio sia maschio?
+*   **Soluzione:** Ci sono quattro possibili combinazioni di genere per due figli: FF, FM, MF, MM. Sapendo che almeno uno è maschio, escludiamo FF. Rimangono tre possibilità: FM, MF, MM. Solo una di queste (MM) vede entrambi maschi. Quindi la probabilità è 1/3.
+
+---
+###### 2. Paradosso delle Tre Carte (o Scatole)
+
+*   **Problema (Versione Carte):** Ci sono tre carte: una rossa su entrambi i lati (R), una bianca su entrambi i lati (B) e una rossa da un lato e bianca dall'altro (M). Si sceglie una carta a caso e si mostra un lato. Se il lato visibile è rosso, qual è la probabilità che anche l'altro lato sia rosso?
+*   **Problema (Versione Scatole):** Ci sono tre scatole: una con due monete d'oro (G2), una con due monete d'argento (A2) e una con una moneta d'oro e una d'argento (AG). Si sceglie una scatola a caso e si estrae una moneta. Se la moneta estratta è d'oro, qual è la probabilità che anche l'altra moneta nella scatola sia d'oro?
+*   **Soluzione:** Concentrandoci sulla versione delle carte, ci sono sei possibili scenari considerando entrambi i lati di ogni carta (Ra, Rb, Ma, Mb, Ba, Bb). Se il lato visibile è rosso, le possibilità sono Ra, Rb, Ma. Di queste, due (Ra, Rb) hanno anche l'altro lato rosso. Quindi la probabilità è 2/3.
+
+---
+###### 3. Paradosso dei Tre Prigionieri
+
+*   **Problema:** Tre prigionieri (A, B, C) sono condannati a morte. Il re ne grazierà uno a caso. Il carceriere sa chi sarà graziato. A chiede al carceriere di dirgli quale tra B e C sarà giustiziato. Il carceriere dice che sarà giustiziato B. A pensa che ora la sua probabilità di essere graziato sia aumentata da 1/3 a 1/2.
+*   **Soluzione:** Prima della risposta del carceriere, la probabilità di A di essere graziato è 1/3. Ci sono due scenari in cui il carceriere dice che B sarà giustiziato:
+    *   C è graziato (probabilità 1/3).
+    *   A è graziato e il carceriere sceglie B a caso (probabilità 1/3 * 1/2 = 1/6).
+La probabilità totale che il carceriere dica che B sarà giustiziato è 1/3 + 1/6 = 1/2.
+Dato che il carceriere ha detto che B sarà giustiziato, la probabilità che C sia graziato è (1/3) / (1/2) = 2/3, mentre la probabilità che A sia graziato è (1/6) / (1/2) = 1/3. Quindi A si sbaglia.
+
+---
+###### 4. Paradosso di Monty Hall
+
+*   **Problema:** Ci sono tre porte. Dietro una c'è un'auto, dietro le altre due ci sono delle capre. Il concorrente sceglie una porta. Il conduttore (che sa dove si trova l'auto) apre una delle altre due porte, rivelando una capra. Il conduttore offre al concorrente la possibilità di cambiare la sua scelta con la porta rimanente. Conviene cambiare?
+*   **Soluzione:** Sì, conviene cambiare. Inizialmente, la probabilità di scegliere la porta con l'auto è 1/3. Quindi, la probabilità che l'auto sia dietro una delle altre due porte è 2/3. Quando il conduttore apre una porta con una capra, quella probabilità (2/3) si concentra sulla porta rimanente.
+
+--- 
+###### Domanda Finale
+*   **Problema:** Ci sono 10 buste, una contiene un milione di euro, le altre sono vuote. Si sceglie la busta numero 1. Conviene scambiarla con le altre 9? E se qualcuno apre 8 delle altre 9 buste, rivelando che sono vuote, conviene scambiare la busta 1 con l'unica rimasta?
+*   **Risposta:** Inizialmente, la probabilità di avere il milione è 1/10. Scambiare con le altre 9 aumenta la probabilità a 9/10. Dopo che 8 buste vuote sono state aperte, la probabilità che il milione sia nella busta rimanente è diventata 9/10, mentre la probabilità che sia nella busta 1 è ancora 1/10. Quindi, conviene decisamente scambiare.
+
+Questo riassunto fornisce una panoramica dei concetti chiave discussi nel documento, evidenziando i problemi, le soluzioni e le logiche alla base di ciascun paradosso.
