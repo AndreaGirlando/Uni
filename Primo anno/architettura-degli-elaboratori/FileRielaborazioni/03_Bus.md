@@ -1,4 +1,4 @@
-Questo file è la rielaborazione delle slide [[03_Bus]]
+Questo file è la rielaborazione delle slide [[03_Bus.pdf]]
 
 Il bus è l'unità di interconnessione tra i vari componenti della macchina di von Neumann. Esso si presenta come un fascio ordinato di linee, ognuna delle quali può assumere il significato di un bit. Il bus quindi è come un mezzo di trasporto delle informazioni tra la CPU (detta Master) la memoria e I/O (detti slave). 
 ![[Pasted image 20241013094756.png]]
