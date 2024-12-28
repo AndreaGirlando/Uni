@@ -1,4 +1,4 @@
-Questo file è la rielaborazione delle slide [[02_Memoria]]
+Questo file è la rielaborazione delle slide [[02_Memoria.pdf]]
 
 La memoria dentro i nostri elaboratori viene organizzata in questo modo:
 ![[Pasted image 20241012142813.png]]

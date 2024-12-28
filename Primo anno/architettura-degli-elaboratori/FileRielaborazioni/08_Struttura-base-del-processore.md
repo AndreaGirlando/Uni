@@ -1,9 +1,11 @@
+Questo file è la rielaborazione delle slide [[08_Struttura-base-del-processore.pdf]]
+
 La CPU è un circuito elettronico integrato che ha il ruolo di cervello del calcolatore, e capace di eseguire istruzioni elementari necessarie per eseguire i programmi. É formato da diversi componenti:
 - La **ALU** (Unità logico-aritmetica): esegue le operazioni aritmetiche e logiche necessarie ad eseguire un programma
 - **CU** (Control Unit): genera i bit di controllo per gestire il funzionamento della CPU
 - **Banco di registri**:  blocchi di memoria usati dalla CPU durante l'esecuzione delle istruzioni
-	- **PC** (Program counter):  un registro che contiene l'indirizzo della prossima istruzione da eseguire
-	- **IR** (Istruction Register): un registro che contiene l'indirizzo dell'istruzione in esecuzione
+	- **PC** (Program counter):  un registro che contiene l'indirizzo della prossima istruzione da eseguire ^969586
+	- **IR** (Istruction Register): un registro che contiene l'indirizzo dell'istruzione in esecuzione ^8e6647
 - **Generatore di indirizzi**: un componente che si occupa di aggiornare il contenuto del PC
 - **Interfaccia processore memoria**: gestisce il trasferimento dei dati tra memoria e CPU
 
