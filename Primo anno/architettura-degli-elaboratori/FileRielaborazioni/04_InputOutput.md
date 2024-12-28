@@ -1,4 +1,4 @@
-Questo file è la rielaborazione delle slide [[04_InputOutput]]
+Questo file è la rielaborazione delle slide [[04_InputOutput.pdf]]
 I dispositivi di input/output sono essenziali per acquisire dati dall’utente e per rappresentarli. Ogni dispositivo è associato a un proprio intervallo di indirizzi e utilizza linee di sincronizzazione, chiamate **interrupt**, per comunicare con il processore. Esistono due principali tipi di interrupt:
 
 - **INTR**: segnala una richiesta di interruzione al processore.

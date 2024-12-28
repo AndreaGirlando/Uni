@@ -1,4 +1,4 @@
-Questo file è la rielaborazione delle slide [[05_Processore]], approfondimento con codice assembly qui: [[08_Struttura-base-del-processore]]
+Questo file è la rielaborazione delle slide [[05_Processore.pdf]], approfondimento con codice assembly qui: [[08_Struttura-base-del-processore]]
 
 Un processore è un singolo circuito integrato in grado di effettuare operazioni decisionali, di solito viene indicato con la sigla CPU (Central Processing Unit), il processore viene concettualmente diviso in 3 unità funzionali:
 - **UC** (Control Unit): si affaccia sul [[03_Bus |bus]] e lo arbitra impostando i valori nelle linee ABus, DBus e CBus 

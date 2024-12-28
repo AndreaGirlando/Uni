@@ -31,8 +31,8 @@
 |      Algebra       |             Esercizi applicazioni lineari              |   ❌    |                                                       |
 |    Architettura    |                  09_Algebra-booleana                   |   ✅    |                                                       |
 |    Architettura    |                 10_Circuiti-aritmetici                 |   ✅    |                                                       |
-|    Architettura    |           11_Insieme-di-istruzioni-macchina            |   ❌    |                                                       |
-|    Architettura    |             12_Tecnologia-microelettronica             |   ❌    |                                                       |
+|    Architettura    |           11_Insieme-di-istruzioni-macchina            |   ✅    |                                                       |
+|    Architettura    |             12_Tecnologia-microelettronica             |   🟨   |                                                       |
 |    Architettura    |   Scrivere degli appunti sugli esercizi di assembly    |   ❌    |                                                       |
 |       Prog 1       |                Vedere test anni passati                |   ✅    |                    Itinere il 2/12                    |
 |       Prog 1       |                       Strutture                        |   ✅    |                                                       |
