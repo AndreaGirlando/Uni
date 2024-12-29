@@ -125,3 +125,5 @@ Per poter fare l'inverso modulare dobbiamo prima verificare che i due numeri sia
 
  **Esempio:**
  ![[Pasted image 20241222110302.png]]
+
+# **Calcolo combinatorio**
