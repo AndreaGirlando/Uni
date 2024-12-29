@@ -8,14 +8,14 @@ numd      dcd     1
 risultato fill    4
 
           ;       leggiamo i dati dalla memoria
-          mov     r1,#numa
-          ldr     r1,[r1]
-          mov     r2,#numb
-          ldr     r2,[r2]
-          mov     r3,#numc
-          ldr     r3,[r3]
-          mov     r4,#numd
-          ldr     r4,[r4]
+            mov     r1,#numa
+            ldr     r1,[r1]
+            mov     r2,#numb
+            ldr     r2,[r2]
+            mov     r3,#numc
+            ldr     r3,[r3]
+            mov     r4,#numd
+            ldr     r4,[r4]
 
           ;sommiamo i dati
           mov     r5,#0
