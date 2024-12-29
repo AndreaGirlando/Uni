@@ -354,15 +354,14 @@ $F(A)$ si dirà ***immagine dell'applicazione f***, ovvero tutti i possibili val
 
 ###### Funzione iniettiva
 Data un'applicazione $f$: $A$ → $B$ se porta punti distinti del dominio su su punti distinti del codominio la funzione si dice ==***iniettiva***== formalmente la definiamo così: ^ccc2e0
-- $\forall x, y \in A, \text{ se } x \neq y, \text{ allora } f(x) \neq f(y).$ Per tutti x e y appartenenti ad A se x è diverso da y allora f(x) è diverso da f(y). Questo tipo di funzione viene definita funzione "uno a uno"
-appunto perché associa ad ogni elemento di B(codominio) **soltanto** un elemento di A(dominio)
+- $\forall x, y \in A, \text{ se } x \neq y, \text{ allora } f(x) \neq f(y).$ Per tutti x e y appartenenti ad A se x è diverso da y allora f(x) è diverso da f(y). Questo tipo di funzione viene definita funzione "uno a uno", appunto perché associa ad ogni elemento di B(codominio) **soltanto** un elemento di A(dominio).  $|B|\ge||$
 - Esempio: ![[Pasted image 20241020160345.png]]
 - $X$ è l'insieme delle $x$ del piano cartesiano corrisponde a $A$ nella definizione precedente
 - $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde a $B$ nella definizione precedente
 - ***nel primo grafico ad ogni valore di $Y$*** ***posso sempre associare un solo elemento di $X$*** ***e quindi è iniettiva, nel secondo invece ad ogni valore di $Y$ posso associare più elementi di $X$***
 ---
 ###### Funzione surgettiva
-Data un'applicazione $f$: $A$ → $B$ se l'immagine $f(A)$ $=$ $B$ la funzione si dice ==***surgettiva***== ovvero un funzione che associa ad ogni elemento di B (codominio) **almeno** un'elemento di A(dominio). ^cc7f98
+Data un'applicazione $f$: $A$ → $B$ se l'immagine $f(A)$ $=$ $B$ la funzione si dice ==***surgettiva***== ovvero un funzione che associa ad ogni elemento di B (codominio) **almeno** un'elemento di A(dominio). $|A|\ge|B|$^cc7f98
 - Esempio:![[Pasted image 20241020161146.png]]
 - $X$ è l'insieme delle $x$ del piano cartesiano corrisponde al dominio
 - $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde al codominio
