@@ -10,6 +10,15 @@
 - $P_2$ ∨ ¬$P_2$ è tautologia 
 - $P_2$ ∧ ¬$P_2$ è insoddisfacibile
 
+Altre equivalenze logiche utili durante gli esercizi:
+- $¬(¬p) ≡ p$
+- $p ⇔ q ≡ (p ⇒ q) ∧ (q ⇒ p)$ (eliminazione della doppia implicazione)
+- $p ⇒ q ≡ ¬p ∨ q$ (eliminazione dell'implicazione)
+- $p ∧ (q ∨ r ) ≡ (p ∧ q) ∨ (p ∧ r )$ distributività della congiunzione sulla disgiunzione
+- $p ∨ (q ∧ r ) ≡ (p ∨ q) ∧ (p ∨ r )$ distributività della disgiunzione sulla congiunzione
+- $¬(p ∨ q) ≡ ¬p ∧ ¬q$ ovvero, la negazione della disgiunzione è equivalente alla congiunzione delle negazioni (seconda legge di De Morgan)
+- $¬(p ∧ q) ≡ ¬p ∨ ¬q$ ovvero, la negazione della congiunzione è equivalente alla disgiunzione delle negazioni (seconda legge di De Morgan)
+
 **Esercizio**
 Data una formula generica creare la tabella di verità
 $(P ∨ Q) ∨ (¬P ∧ Q)$
@@ -25,7 +34,17 @@ Data una formula generica trasformare in DNF o CNF [[Uni/Primo anno/strutture-di
 **Esercizio:**
 Data una formula dimostrare se è vera:
 ![[Pasted image 20241222101833.png]]
-Le colonne evidenziate sono uguali quindi l'equivalenza è stata dimostrata
+Le colonne evidenziate sono uguali quindi l'equivalenza è stata dimostrata.
+Di seguito una tabella con delle cose utili per le dimostrazioni di questo tipo:
+
+| Scritta matematicamente                                | Scritta logicamente   |
+| ------------------------------------------------------ | --------------------- |
+| $A^C$                                                  | $¬ A$                 |
+| $A ∪ B$                                                | $A ∨ B$               |
+| $A ∩ B$                                                | $A ∧ B$               |
+| $(A \setminus B)$                                      | $(A∧¬B)$              |
+| $A \triangle B = (A \setminus B) \cup (B \setminus A)$ | $(A△B)≡(A∧¬B)∨(B∧¬A)$ |
+|                                                        |                       |
 
 
 # **Aritmetica modulare**
@@ -127,3 +146,20 @@ Per poter fare l'inverso modulare dobbiamo prima verificare che i due numeri sia
  ![[Pasted image 20241222110302.png]]
 
 # **Calcolo combinatorio**
+
+---
+**Regola somma**: se vogliamo contare il numero di elementi dell'unione tra due insiemi ci basta sommare la cardinalità dei due insiemi.
+
+---
+
+**Regola prodotto:** se vogliamo contare quanti sono le possibili coppie di elementi, il primo scelto da $A$ e il secondo da $B$ ci basta fare $|A|*|B|$.
+
+---
+
+**Disposizioni e combinazioni**
+![[Pasted image 20241230170828.png]]
+
+---
+**Pigeonhole Principle**
+Il Pigeonhole Principle afferma che se dobbiamo fare entrare $n + 1$ piccioni in una piccionaia che contiene $n$ cassette, allora almeno una cassetta dovrà contenere più di un piccione. In generale se abbiamo $n = km + 1$ oggetti da sistemare in m contenitori, allora almeno un contenitore dovrà contenere $k + 1$ oggetti.
+

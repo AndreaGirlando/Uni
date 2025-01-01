@@ -1,5 +1,10 @@
 {
   "theme": "obsidian",
   "baseFontSizeAction": true,
-  "baseFontSize": 18
+  "baseFontSize": 19,
+  "cssTheme": "",
+  "accentColor": "",
+  "enabledCssSnippets": [
+    "righe"
+  ]
 }
