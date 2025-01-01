@@ -31,7 +31,7 @@ Avendo le definizioni di queste 2 regole possiamo rispondere parzialmente alle d
 [[03_Parte3Teoria|La spiegazione teorica dell'immagine che vedi sotto]] la parte teorica qui è abbastanza inutile.
 ![[Pasted image 20241214162649.png]]
 - Se nell'esercizio che sto facendo l'ordine degli elementi è importante guardo le colonne dove "Ordine?" è SI.
-- Se nell'esercizio che sto facendo gli elementi posso essere riinseriti guardo le colonne dove "Reinserimento" è NO.
+- Se nell'esercizio che sto facendo gli elementi possono essere reinseriti guardo le colonne dove "Reinserimento" è NO.
 **Esercizio 1**: Domino
 ![[Pasted image 20241214170145.png]]
 **Esercizio 2**: gruppi di persone
