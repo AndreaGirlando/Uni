@@ -1,12 +1,17 @@
 
 Questo file è la rielaborazione delle slide [[01_Parte1.pdf]]
-# Indice
-- [[#Nomenclature varie:|Nomenclature varie:]]
+
+# `Indice`
+- [[#Nomenclature:|Nomenclature:]]
 - [[#Giustificazione o conseguenza logica:|Giustificazione o conseguenza logica:]]
 - [[#Altre equivalenze logiche|Altre equivalenze logiche]]
+- [[#CNF e DNF|CNF e DNF]]
+- [[#Definizione di un insieme|Definizione di un insieme]]
 - [[#Cardinalità|Cardinalità]]
+- [[#Nomenclature:|Nomenclature:]]
 - [[#Sottoinsieme e sovrainsieme|Sottoinsieme e sovrainsieme]]
 - [[#Operazioni tra insiemi|Operazioni tra insiemi]]
+- [[#Diagramma di Venn|Diagramma di Venn]]
 - [[#Altre operazioni tra insiemi|Altre operazioni tra insiemi]]
 - [[#Dimostrazione diretta|Dimostrazione diretta]]
 - [[#Insieme delle parti|Insieme delle parti]]
@@ -19,12 +24,16 @@ Questo file è la rielaborazione delle slide [[01_Parte1.pdf]]
 - [[#Paradosso di Russell|Paradosso di Russell]]
 - [[#Relazioni|Relazioni]]
 - [[#Funzioni|Funzioni]]
-	- [[#Funzioni#Funzione iniettiva|Funzione iniettiva]]
+	- [[#Funzioni#Casi particolari:|Casi particolari:]]
+	- [[#Funzioni#Funzione iniettiva:|Funzione iniettiva:]]
 	- [[#Funzioni#Funzione surgettiva|Funzione surgettiva]]
 	- [[#Funzioni#Funzione biiettiva|Funzione biiettiva]]
+	- [[#Funzioni#Cardinalità di un insieme|Cardinalità di un insieme]]
 - [[#Proprietà delle relazioni|Proprietà delle relazioni]]
+	- [[#Proprietà delle relazioni#Classe di equivalenza|Classe di equivalenza]]
 	- [[#Proprietà delle relazioni#Massimi e minimi|Massimi e minimi]]
 
+---
 # `Logica proposizionale`
 
 La **logica** è un linguaggio formale usato per rappresentare informazioni. Ogni linguaggio è formato da:
@@ -413,7 +422,7 @@ Usando questa definizione $S ∈ S$?
 - **Se diciamo NO:** Se $S$ non appartiene a se stesso, allora per definizione di $S$, $S$ dovrebbe appartenere a se stesso (perché $S$ contiene tutti gli insiemi che non appartengono a se stessi). Anche in questo caso abbiamo una contraddizione.
 Evitiamo questa contraddizione imponendo nella definizione dell'insieme che quest'ultimo deve essere sottoinsieme di un'insieme conosciuto, la nuova definizione di $S$ diventa: $S = \{A \mid A \subseteq U, A \notin A\}$ 
 Con questa nuova definizione, il paradosso svanisce. Se proviamo a chiedere se $S$ appartiene a se stesso, ci rendiamo conto che $S$ è un sottoinsieme di $U$, ma non possiamo dire con certezza se $S$ appartiene o meno a $U$. In questo modo, evitiamo il circolo vizioso che portava alla contraddizione.
-
+ 
 ---
 
 # `Relazioni e funzioni`
@@ -421,75 +430,99 @@ Con questa nuova definizione, il paradosso svanisce. Se proviamo a chiedere se $
 ##### Relazioni
 Sia $U$ un insieme non vuoto. Con il termine relazione indichiamo un insieme formato in questo modo: (per capire meglio questo insieme guarda: [[#Insieme prodotto]])
 - $R ⊆ U × U$ ovvero $\{(x, y) \in U \times U : R(x, y)\}$ cioè un insieme formato da tutte le coppie che rendono vera la relazione, questo insieme viene chiamato ***grafico della relazione***
-	- Considera l'insieme U = {1, 2, 3}. Una possibile relazione R su U potrebbe essere "è minore di". In questo caso, il grafico di R sarebbe {(1, 2), (1, 3), (2, 3)}, perché 1 è minore di 2 e 3, e 2 è minore di 3, questi sono gli unici 3 casi che rendono vera la relazione "è minore di".
-[[#Proprietà delle relazioni]]
+
+> [!EXAMPLE] Esempio
+> Considera l'insieme U = {1, 2, 3}. Una possibile relazione R su U potrebbe essere "è minore di". In questo caso, il grafico di R sarebbe {(1, 2), (1, 3), (2, 3)}, perché 1 è minore di 2 e 3, e 2 è minore di 3, questi sono gli unici 3 casi che rendono vera la relazione "è minore di".
+
+Qui le [[#Proprietà delle relazioni]]
+
 ---
 ##### Funzioni
-Una relazione f definita su $A × A$ si dice funzione di $A$ (dominio) in $B$ (codominio), se per ogni $x ∈ A$ esiste uno ed uno solo $y ∈ A$ tale che $(x, y) ∈ f$. La notazione classica per esprimere f è la seguente: $f : A → B$ per ogni x ∈ A l’unico elemento $y ∈ B$ tale che (x, y) ∈ $f$ si indica con $f(x)$
+Una relazione $f$ definita su $A × B$ si dice funzione da $A$ (dominio) in $B$ (codominio) se per ogni $x ∈ A$ esiste uno ed uno solo $y ∈ B$ tale che $(x, y) ∈ f$.  La notazione classica per esprimere la funzione $f$ è:  $f : A → B$ dove $f(x)$ rappresenta l'unico elemento $y \in B$ associato a $x \in A$ tale che $(x,y) \in f$ 
  
-Casi particolari:
-- $f : A → B$  per ogni x, f(x) = $x$ si dice ==**applicazione identica**== di $A$ ^a112e2
-- $f : A × B → A$ tale che per ogni $(x, y)$ $f(x, y)$ = $x$ si dice ==**proiezione canonica**== su $A$.
-- $f : A × B → B$ tale che per ogni $(x, y)$ $f(x, y)$ = $y$ si dice ==**proiezione canonica**== su $B$.
+###### Casi particolari:
+- $f : A → B$  per ogni $x$, $f(x) = x$ si dice **applicazione identica** di $A$ ^a112e2
+- $f : A × B → A$ tale che per ogni $(x, y)$ $f(x, y)$ = $x$ si dice **proiezione canonica** su $A$.
+- $f : A × B → B$ tale che per ogni $(x, y)$ $f(x, y)$ = $y$ si dice **proiezione canonica** su $B$.
 
-Dato $f : A → B$ e anche un sottoinsieme di A chiamato X si dice ***immagine di X*** il sottoinsieme di B costituito dagli elementi che provengono da X. Questo insieme si indica con f(X) e anche con la seguente definizione:
-- $f(X) = \{y: y \in B \land (\exists x \in X) (f(x) = y)\}$  ==L'immagine di X è l'insieme di tutti gli y appartenenti a B tali che esiste un x appartenente a X per cui f(x) è uguale a y==
+Data la funzione $f : A → B$ e anche un sottoinsieme di $A$ chiamato $X$ si dice ***immagine di X*** il sottoinsieme di $B$ costituito dagli elementi che provengono da $X$. Questo insieme si indica con $f(X)$ e anche con la seguente definizione:
+- $f(X) = \{y: y \in B \land (\exists x \in X) (f(x) = y)\}$  L'immagine di $X$ è l'insieme di tutti gli $y$ appartenenti a $B$ tali che esiste un $x$ appartenente a $X$ per cui $f(x)$ è uguale a $y$
 $F(A)$ si dirà ***immagine dell'applicazione f***, ovvero tutti i possibili valori che la funzione può assumere. ^329b13
 
-###### Funzione iniettiva
-Data un'applicazione $f$: $A$ → $B$ se porta punti distinti del dominio su su punti distinti del codominio la funzione si dice ==***iniettiva***== formalmente la definiamo così: ^ccc2e0
-- $\forall x, y \in A, \text{ se } x \neq y, \text{ allora } f(x) \neq f(y).$ Per tutti x e y appartenenti ad A se x è diverso da y allora f(x) è diverso da f(y). Questo tipo di funzione viene definita funzione "uno a uno", appunto perché associa ad ogni elemento di B(codominio) **soltanto** un elemento di A(dominio).  $|B|\ge||$
-- Esempio: ![[Pasted image 20241020160345.png]]
-- $X$ è l'insieme delle $x$ del piano cartesiano corrisponde a $A$ nella definizione precedente
-- $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde a $B$ nella definizione precedente
-- ***nel primo grafico ad ogni valore di $Y$*** ***posso sempre associare un solo elemento di $X$*** ***e quindi è iniettiva, nel secondo invece ad ogni valore di $Y$ posso associare più elementi di $X$***
+---
+###### Funzione iniettiva:
+Data un'applicazione $f$: $A$ → $B$ se porta punti distinti del dominio su su punti distinti del codominio la funzione si dice ***iniettiva*** formalmente la definiamo così: ^ccc2e0
+- $\forall x, y \in A, \text{ se } x \neq y, \text{ allora } f(x) \neq f(y).$ Per tutti x e y appartenenti ad A se x è diverso da y allora f(x) è diverso da f(y). 
+Questo tipo di funzione viene definita funzione "uno a uno", appunto perché associa ad ogni elemento di B(codominio) **soltanto** un elemento di A(dominio).  $|A|\le|B|$
+
+> [!EXAMPLE] Esempio
+> ![[Pasted image 20241020160345.png]]
+> - $X$ è l'insieme delle $x$ del piano cartesiano e corrisponde al dominio 
+> - $Y$ è l'insieme delle $y$ del piano cartesiano e corrisponde al codominio
+> - ***nel primo grafico ad ogni valore di $Y$*** ***posso sempre associare un solo elemento di $X$*** ***e quindi è iniettiva, nel secondo invece ad ogni valore di $Y$ posso associare più elementi di $X$***
+
 ---
 ###### Funzione surgettiva
-Data un'applicazione $f$: $A$ → $B$ se l'immagine $f(A)$ $=$ $B$ la funzione si dice ==***surgettiva***== ovvero un funzione che associa ad ogni elemento di B (codominio) **almeno** un'elemento di A(dominio). $|A|\ge|B|$^cc7f98
-- Esempio:![[Pasted image 20241020161146.png]]
-- $X$ è l'insieme delle $x$ del piano cartesiano corrisponde al dominio
-- $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde al codominio
-- ***nel primo grafico ad ogni valore di $Y$ posso associare almeno un elemento di $X$, nel secondo grafico invece ad ogni valore di $Y$ non posso associare un valore di $X$ (dove c'è la linea rossa non posso associare $Y$ a nessuna $X$)**.*
+Data un'applicazione $f$: $A$ → $B$ se l'immagine $f(A)$ $=$ $B$ la funzione si dice ***surgettiva*** ovvero un funzione che associa ad ogni elemento di B (codominio) **almeno** un'elemento di A(dominio). $|A|\ge|B|$^cc7f98
+> [!EXAMPLE] Esempio
+> Esempio:![[Pasted image 20241020161146.png]]
+> - $X$ è l'insieme delle $x$ del piano cartesiano e corrisponde al dominio
+> - $Y$ è l'insieme delle $y$ del piano cartesiano e corrisponde al codominio
+>  - ***nel primo grafico ad ogni valore di $Y$ posso associare almeno un elemento di $X$, nel secondo grafico invece ad ogni valore di $Y$ non posso associare un valore di $X$ (dove c'è la linea rossa non posso associare $Y$ a nessuna $X$)***.
 
-> [!Nota bene]
+
+> [!TIP] Nota bene
 > 1. Una ***funzione iniettiva*** può avere elementi del codominio che non vengono raggiunti.
 > 2. Una ***funzione suriettiva***, invece, raggiunge tutti gli elementi del codominio.
 
 ---
 ###### Funzione biiettiva
 Data un'applicazione $f$: $A$ → $B$ si dice *==biiettiva==* se è sia iniettiva che surgettiva. Questo tipo di funzione associa sempre ogni elemento di A ad ogni elemento di B
-Esempio: ![[Pasted image 20241020164744.png]] 
-- $X$ è l'insieme delle $x$ del piano cartesiano corrisponde al dominio
-- $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde al codominio
-- ad ogni elemento di $X$ posso associare soltanto un elemento di $Y$ questo posso farlo sempre
 
-La cardinalità di un insieme è definita come il numero di elementi che appartengono all'insieme, per riuscire a contare questi elementi si cerca una corrispondenza biunivoca tra l'insieme e un insieme "campione" fatto da numeri naturali detto $l_n$ ovvero l'insieme dei numeri naturali interi che precedono $n$ ( es: {0, 1, 2, · · · , n − 1} ), infatti:
+> [!EXAMPLE] Esempio
+>   
+> ![[Pasted image 20241020164744.png]]
+> - $X$ è l'insieme delle $x$ del piano cartesiano corrisponde al dominio
+> - $Y$ è l'insieme delle $y$ del piano cartesiano corrisponde al codominio
+> - ad ogni elemento di $X$ posso associare soltanto un elemento di $Y$ sempre
+> 
+
+
+> [!TIP] Corrispondenza biunivoca
+> La **corrispondenza biunivoca** è una relazione tra due insiemi che stabilisce un legame univoco tra gli elementi di un insieme e quelli di un altro. In termini formali, una corrispondenza biunivoca è una funzione **biiettiva** (o biezione).
+
+---
+###### Cardinalità di un insieme
+
+La cardinalità di un insieme è definita come il numero di elementi che appartengono all'insieme, per riuscire a contare questi elementi si cerca una corrispondenza biunivoca tra l'insieme e un insieme "campione" fatto da numeri naturali detto $l_n$ ovvero l'insieme dei numeri naturali interi che precedono $n$ ( es: $\{0, 1, 2, · · · , n − 1\}$ ), infatti:
 - ***Insieme finito***: si dice che un insieme $X$ è finito se esiste un $n ∈ N$ tale che $X$ si possa mettere in corrispondenza biunivoca con $I_n$ ; 
 - ***Insieme infinito***: Se non esiste un numero naturale $n$ tale da costruire un insieme $l_n$ grande quanto $X$, l'insieme è infinito.
 
 ***Teorema***: Se $A$ e $B$ sono due insiemi finiti ed esiste una funzione **iniettiva** $f:A→B$, allora la cardinalità di $A$ è minore o uguale alla cardinalità di $B$, cioè $∣A∣≤∣B∣$ 
 
-***Dimostrazione***:  Si considera l'immagine $f(A)$, cioè l'insieme di elementi di $B$ a cui $A$ viene mappato. Poiché $f$ è iniettiva, ogni elemento di $A$ corrisponde a un elemento unico di $f(A)$, quindi $∣A∣=∣f(A)∣$. Tuttavia, $f(A)$ è un sottoinsieme di $B$ (cioè tutti gli elementi di $f(A)$ appartengono a $B$), quindi $∣f(A)∣≤∣B∣$. Da qui segue che $∣A∣≤∣B∣$. (Ricordiamo che essendo iniettiva la funzione non tutti gli elementi di B(codominio) hanno un immagine in A(dominio))
+***Dimostrazione***:  Si considera l'immagine $f(A)$, cioè l'insieme di elementi di $B$ a cui $A$ viene mappato. Poiché $f$ è iniettiva, ogni elemento di $A$ corrisponde a un elemento unico di $f(A)$, quindi $∣A∣=∣f(A)∣$. Tuttavia, $f(A)$ è un sottoinsieme di $B$ (cioè tutti gli elementi di $f(A)$ appartengono a $B$), quindi $∣f(A)∣≤∣B∣$. Da qui segue che $∣A∣≤∣B∣$. (Ricordiamo che essendo iniettiva la funzione non garantisce che tutti gli elementi di B(codominio) hanno un immagine in A(dominio))
 
 ---
 ##### Proprietà delle relazioni
 Sia dato un insieme U diremo che una relazione $R(x, y)$ definita in $U×U$ è:
 - ***Riflessiva***: se $∀x∈U$ risulta vero che $R(x, x)$.
-	- R = { (1,1), (2,2) } è riflessivo
-	- R = { (1,1), (2,2), (1,3) } non è riflessivo
+> [!EXAMPLE] Esempi
+> R = { (1,1), (2,2) } è riflessivo
+> R = { (1,1), (2,2), (1,3) } non è riflessivo
 - ***Simmetrica***: se $∀x, y ∈ U$ risulta vero che $R(x, y)$ e anche $R(y, x)$ 
-	- R = {(1,2),(2,1)} è simmetrico
-	- R = {(1,2),(2,1),(1,3)} non è simmetrico
+> [!EXAMPLE] Esempi
+> R = {(1,2),(2,1)} è simmetrico
+> R = {(1,2),(2,1),(1,3)} non è simmetrico
 - ***Transitiva***: se $∀x,y,z ∈ U$ risulta vero che $R(x, y)$ e $R(y, z)$ allora ci deve essere anche una $R(x, z)$ 
-- ***Esempio fatto durante l'esercitazione:***![[Pasted image 20241023101548.png]]
+> [!EXAMPLE] Esempio fatto durante l'esercitazione
+> ![[Pasted image 20241023101548.png]]
 
-> [!Nota bene]
+> [!TIP] Relazione di equivalenza
 > Una relazione che è sia riflessiva, simmetrica e transitiva si dice relazione di ***equivalenza***. Più in generale una **relazione di equivalenza** è una relazione tra elementi di un insieme che li "raggruppa" in base a certe proprietà comuni. Si indica in questo modo:
 > - $x ≈ y$ 
 
 ^927242
-
-
+###### Classe di equivalenza
 Se hai un insieme $U$ e una relazione di equivalenza su questo insieme, puoi prendere un elemento $x$ di $U$ e formare un sottoinsieme di $U$, che contiene tutti gli elementi che sono equivalenti a $x$. Questo sottoinsieme è chiamato ***classe di equivalenza*** di $x$, e si indica con  $[x]$. 
 
 Per le classi di equivalenza vale il seguente teorema:
@@ -507,7 +540,7 @@ Per le classi di equivalenza vale il seguente teorema:
     - Quindi $y ∈ [z]$
     - Poiché questo vale per ogni $y ∈ [x]$, abbiamo dimostrato che $[x] ⊆ [z]$
 3. **Terza parte**: Analogamente si dimostra che $[z] ⊆ [x]$
-    - Il ragionamento è lo stesso ma invertendo x e z
+    - Il ragionamento è lo stesso ma invertendo $x$ e $z$
 4. **Conclusione**:
     - Se $[x] ⊆ [z]$ e $[z] ⊆ [x]$, allora $[x] = [z]$
     - Questo dimostra che **se** due classi di equivalenza non sono disgiunte (cioè hanno un elemento in comune), allora devono necessariamente coincidere. In altre parole, non possono "sovrapporsi parzialmente" o non hanno elementi in comune (sono disgiunte) o sono esattamente le stesse (coincidono).
@@ -516,16 +549,19 @@ Data una relazione $R$ su un insieme $U$, consideriamo ora la famiglia di insiem
 - L'unione di tutte le classi di equivalenza che appartengono ad $F$ ci da $U$
 - per ogni X , Y ∈ F, X $\neq$ Y si ha X ∩ Y = ∅ (vedi teorema precedente)
 Quindi, una relazione di equivalenza $R$ individua una partizione $F$ su $U$ che viene detta ***Insieme Quoziente*** e lo denotiamo con $U/R$ 
-***Esempio***: Immagina U come l'insieme dei numeri interi e R come la relazione "avere lo stesso resto nella divisione per 3" :
-$[0]$ = {…, -3, 0, 3, 6, …}
-$[1]$ = {…, -2, 1, 4, 7, …}
-$[2]$ = {…, -1, 2, 5, 8, …} 
+
+> [!EXAMPLE] Esempio 
+> Immagina U come l'insieme dei numeri interi e R come la relazione "avere lo stesso resto nella divisione per 3" :
+> $[0]$ = $\{…, -3, 0, 3, 6, …\}$
+> $[1]$ = $\{…, -2, 1, 4, 7, …\}$
+> $[2]$ = $\{…, -1, 2, 5, 8, …\}$ 
+
 Queste tre classi formano una partizione di $U$ ovvero $F$, che si può anche chiamare ***Insieme quoziente di U***. Quindi capiamo subito che 
 - $F = U/R$
 
 Individuato l'insieme quoziente (che denotiamo con $U/R$), l'applicazione $U → U/R$, ovvero un'applicazione che associa ogni $x ∈ U$ alla sua classe di equivalenza. Questa è un'applicazione surgettiva perché ogni classe di equivalenza è effettivamente "raggiunta" da almeno un elemento di $U$. Questa applicazione viene anche chiamata ***applicazione canonica sul quoziente***. 
 
-> [!Nota bene]
+> [!TIP] Nota bene
 > [[Tips#Differenza tra applicazione e funzione]] 
 > Nel contesto specifico dell'**applicazione canonica sul quoziente**, si parla di **applicazione** perché si vuole mettere in evidenza il fatto che stiamo "applicando" una trasformazione sugli elementi dell'insieme $U$. In particolare, stiamo usando una regola (la relazione di equivalenza) per trasformare ogni elemento x di $U$ nella sua **classe di equivalenza** $[x]$.
 
@@ -533,53 +569,52 @@ Di seguito delle definizioni:
 
 1. Si dice che una relazione binaria si ***antisimmetrica*** se:
 	- $∀x, ∀y ∈ U$ si ha che: $(R(x, y) e R(y, x)) → x = y$. il sussistere di entrambe le relazioni $R(x, y)$ e $R(y, x)$ è possibile solo quando $x$ e $y$ coincidono.
-
-2. Si dice ***preordinamento*** una relazione binaria assegnata in un insieme che goda della proprietà riflessiva e transitiva
-
-3. Si dice ***ordinata*** una relazione binaria assegnata in un insieme che goda della proprietà riflessiva, transitiva e antisimmetrica
-
-Un insieme $U$ su cui è definita un relazione di pre-ordine si dice pre-ordinato. 
-Un insieme $U$ su cui è definita un relazione d’ordine si dice ordinato.
+2. Si dice ***preordinamento*** una relazione binaria assegnata in un insieme che goda della proprietà riflessiva e transitiva. Un insieme $U$ su cui è definita un relazione di pre-ordine si dice pre-ordinato. 
+3. Si dice ***ordinata*** una relazione binaria assegnata in un insieme che goda della proprietà riflessiva, transitiva e antisimmetrica. Un insieme $U$ su cui è definita un relazione d’ordine si dice ordinato.
 
 Dato un pre-ordinamento oppure un ordinamento (rappresentato dal simbolo ≤) in un insieme U, si pone
 - $x < y \quad \text{se} \quad x \leq y \quad \text{e} \quad x \neq y$  ovvero x è minore di y, se x è minore/uguale a y però con x diverso da y
 
-Un ordinamento $≤$ definito in un insieme $U$ si dice totale o lineare se per ogni coppia $(x, y)$ di elementi di $U$ si ha $x ≤ y$ oppure $y ≤ x$. Altrimenti si dirà parziale.
+Un ordinamento $≤$ definito in un insieme $U$ si dice **totale o lineare** se per ogni coppia $(x, y)$ di elementi di $U$ si ha $x ≤ y$ oppure $y ≤ x$. Altrimenti si dirà parziale.
 
 ---
 ###### Massimi e minimi
-- Un elemento M di un insieme ordinato U si dice ***massimo*** se per ogni $x ∈ U$ si ha $x ≤ M$
+- Un elemento $M$ di un insieme ordinato $U$ si dice ***massimo*** se per ogni $x ∈ U$ si ha $x ≤ M$
 - Si dice invece ***massimale*** se non vi è alcun elemento di U che lo supera.
 - Un elemento m di un insieme ordinato U si dice ***minimo*** se per ogni $x ∈ U$ si ha $m ≤ x$. 
 - Si dice invece ***minimale*** se non vi è alcun elemento di U ad esso inferiore
 
 Il massimo (minimo) in un insieme è unico, il massimale (minimale) invece si può riscontrare più volte, questo accade perché potrebbe succedere che due elementi non siano confrontabili tra loro e quindi sono dei massimali.
 
-Sia $A ⊆ N$ quindi $c(A) = n$ dal momento che A è finito, possiamo dire che A ⊆ $I_m$ per qualche intero $m$. con $I_m$ intendiamo un insieme fatto cosi {0,1,2, … , m-1}. Esistono diversi modi per rappresentare A ⊆ $I_m$
+Sia $A \subseteq \mathbb{N}$ quindi $c(A) = n$ dal momento che A è finito, possiamo dire che A ⊆ $I_m$ per qualche intero $m$. con $I_m$ intendiamo un insieme fatto cosi {0,1,2, … , m-1}. Esistono diversi modi per rappresentare A ⊆ $I_m$
 - ***Rappresentazione binaria***: la struttura dati più semplice che potremmo usare è un'array fatto da valori binari
 	- $X[i]$ = 1 se $i ∈ A$
 	- $X[i]$ = 0 se $i \notin A$
-- ***Rappresentazione estesa***: si può anche usare un'array di interi Y con |A| = n elementi tale che se A = {$x_0$, $x_1$, . . . , $x_{n-1}$} allora per ogni $0 ≤ i ≤ n − 1$ $Y[i]$ = $x_i$ 
+  per ogni $i \in I_m$
+- ***Rappresentazione estesa***: si può anche usare un'array di interi Y con $|A| = n$ elementi tale che se $A = \{x_0, x_1, . . . , x_{n-1}\}$ allora per ogni $0 ≤ i ≤ n − 1$ $Y[i]$ = $x_i$ 
 
 Se utilizziamo la rappresentazione binaria, verificare che un elemento i ∈ A prende tempo costante. Se utilizziamo la rappresentazione estesa, invece, ed A non è ordinato, dobbiamo scorrere tutta l’array e quindi tempo lineare. Se l’array è ordinata invece si può fare in tempo logaritmico. D’altro canto, se utilizziamo la rappresentazione binaria, per l’insieme A = {10, 3, 99} serve un’array di dimensione 100, mentre, se utilizziamo la rappresentazione estesa, serve un’array di dimensione 3.
 
 Se prendiamo $U$ ovvero {0, 1, 2, . . . , n − 1}  gli elementi di $pow(U)$ sono i numeri binari esprimibili con $|U|$ bits. Quindi $2^{|U|}$.
 
 ---
+# `Il problema dell’Hitting Set`
+
 Siano $U$ un insieme finito, $H ⊆ U$, e sia $A$ una famiglia di sottoinsiemi di U tutti diversi dall’insieme vuoto. Diciamo che $H$ è un hitting set ($HS$) per $A$ se e solo se per ogni $A ∈ A$ si ha $A ∩ H$ $\neq$ ∅
 
-Sia $U$ = {a, b, c, d, e} e sia A = {{a, b, c, }, {a, d, e}, {b, c, d, }, {c, d, e}}. 
-L’insieme {a, b, c} è un $HS$ per $A$ mentre {b, c} o {d, e} non lo sono.
-- **{a, b, c} è un hitting set** perché:
-    - Contiene 'a', che è presente anche in {a, d, e}.
-    - Contiene 'b', che è presente anche in {b, c, d}.
-    - Contiene 'c', che è presente anche in {c, d, e}.
-    - In altre parole, questa scatola più piccola "colpisce" (interseca) tutte le altre scatole.
-- **{b, c} e {d, e} non sono hitting set** perché:
-	- **{b, c}** non contiene alcun elemento presente in {a, d, e}.
-	- **{d, e}** non contiene alcun elemento presente in {a, b, c}.
+> [!EXAMPLE] Esempio
+> Sia $U$ = {a, b, c, d, e} e sia A = {{a, b, c, }, {a, d, e}, {b, c, d, }, {c, d, e}}. 
+> L’insieme {a, b, c} è un $HS$ per $A$ mentre {b, c} o {d, e} non lo sono.
+> - **{a, b, c} è un hitting set** perché:
+>     - Contiene 'a', che è presente anche in {a, d, e}.
+>     - Contiene 'b', che è presente anche in {b, c, d}.
+>     - Contiene 'c', che è presente anche in {c, d, e}.
+>     - In altre parole, questa scatola più piccola "colpisce" (interseca) tutte le altre scatole.
+> - **{b, c} e {d, e} non sono hitting set** perché:
+> 	- **{b, c}** non contiene alcun elemento presente in {a, d, e}.
+> 	- **{d, e}** non contiene alcun elemento presente in {a, b, c}.
 
-Possono esistere diversi hitting set dentro un'insieme, si definisce **hitting set minimo** l'hitting set con meno elementi, nell'esempio sopra descritto un hitting set minimo sarebbe {a, c} visto che contiene almeno un elemento di ogni insieme contenuto in $A$
+Possono esistere diversi hitting set dentro un'insieme, si definisce **hitting set minimo** l'hitting set con meno elementi, nell'esempio un hitting set minimo sarebbe {a, c} visto che contiene almeno un elemento di ogni insieme contenuto in $A$
 
 Il problema di trovare un $HS$ minimo per una famiglia di insiemi è facilmente risolvibile: basta provare per tutti i sottoinsiemi di $U$. Questo però vorrebbe dire che il numero di operazioni da fare è esponenziale visto che i sottoinsiemi non vuoti di $U$ sono esattamente $2|U| − 1$
 - Per |U| = 100 il numero totale di operazioni sarebbe dell’ordine di 1, 26 · $10^{30}$ 
