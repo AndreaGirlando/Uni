@@ -8,10 +8,10 @@
 
 ---
 #### Approfondimenti/Rielaborazioni
-[[01_Architettura]]
-[[02_Memoria]]
-[[03_Bus]]
-[[04_InputOutput]]
+[[Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/05_Processore]]
+[[Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/05_Processore]]
+[[Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/05_Processore]]
+[[Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/05_Processore]]
 
 ---
 #### Esercizi
