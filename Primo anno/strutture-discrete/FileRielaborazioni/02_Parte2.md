@@ -1,46 +1,4 @@
 Questo file è la rielaborazione delle slide [[02_Parte2.pdf]]
-# `Indice`
-- [[#Principio di induzione|Principio di induzione]]
-- [[#Floor e Ceiling|Floor e Ceiling]]
-- [[#Divisione tra interi|Divisione tra interi]]
-- [[#Divisione tra interi#Definizione di divisibilità|Definizione di divisibilità]]
-- [[#Divisione tra interi#Dimostrazione per induzione che la somma dei primi n numeri dispari è $n^2$|Dimostrazione per induzione che la somma dei primi n numeri dispari è $n^2$]]
-- [[#Divisione tra interi#Proprietà della divisibilità|Proprietà della divisibilità]]
-- [[#Minimo Comune Multiplo (MCM)|Minimo Comune Multiplo (MCM)]]
-- [[#Massimo Comune Divisore (MCD)|Massimo Comune Divisore (MCD)]]
-- [[#Massimo Comune Divisore (MCD)#Algoritmo di Euclide|Algoritmo di Euclide]]
-- [[#Massimo Comune Divisore (MCD)#Numeri primi e coprimi|Numeri primi e coprimi]]
-- [[#Massimo Comune Divisore (MCD)#Fattorizzazione degli interi|Fattorizzazione degli interi]]
-- [[#Massimo Comune Divisore (MCD)#Teorema di Euclide|Teorema di Euclide]]
-- [[#Massimo Comune Divisore (MCD)#Come verificare se un numero n è primo?|Come verificare se un numero n è primo?]]
-- [[#Massimo Comune Divisore (MCD)#Crivello di Eratostene|Crivello di Eratostene]]
-- [[#Massimo Comune Divisore (MCD)#Radice numerica|Radice numerica]]
-- [[#Massimo Comune Divisore (MCD)#Criteri di divisibilità|Criteri di divisibilità]]
-- [[#Massimo Comune Divisore (MCD)#Dimostrazione per assurdo che $\sqrt{2}$ non è razionale|Dimostrazione per assurdo che $\sqrt{2}$ non è razionale]]
-- [[#Massimo Comune Divisore (MCD)#Classi di equivalenza definite dalla congruenza|Classi di equivalenza definite dalla congruenza]]
-- [[#Invarianza rispetto a somma e prodotto|Invarianza rispetto a somma e prodotto]]
-- [[#Invarianza rispetto a somma e prodotto#Dimostrazione:|Dimostrazione:]]
-- [[#Invarianza rispetto a somma e prodotto#Casi particolari:|Casi particolari:]]
-- [[#Invarianza rispetto a somma e prodotto#Conseguenza dei casi particolari:|Conseguenza dei casi particolari:]]
-- [[#Invarianza rispetto a somma e prodotto#Diretta conseguenza dell'invarianza rispetto alla somma|Diretta conseguenza dell'invarianza rispetto alla somma]]
-- [[#Invarianza rispetto a somma e prodotto#Inverso modulare|Inverso modulare]]
-- [[#Invarianza rispetto a somma e prodotto#Formule generali per il calcolo del $\phi(n)$ usata negli esercizi|Formule generali per il calcolo del $\phi(n)$ usata negli esercizi]]
-- [[#Invarianza rispetto a somma e prodotto#Formula generale per il calcolo della funzione di Eulero|Formula generale per il calcolo della funzione di Eulero]]
-- [[#Teorema di Eulero|Teorema di Eulero]]
-- [[#Piccolo teorema di Fermat|Piccolo teorema di Fermat]]
-- [[#Altra conseguenza del teorema di Eulero|Altra conseguenza del teorema di Eulero]]
-- [[#Calcolo dell'inverso modulare|Calcolo dell'inverso modulare]]
-- [[#La prova del 9|La prova del 9]]
-- [[#La prova del 9#Codice ISBN|Codice ISBN]]
-- [[#La prova del 9#Codice carta di credito|Codice carta di credito]]
-- [[#La prova del 9#Cifrari a trasposizione|Cifrari a trasposizione]]
-- [[#Numeri primi di Mersenne|Numeri primi di Mersenne]]
-- [[#Numeri perfetti: funzione "Sigma"|Numeri perfetti: funzione "Sigma"]]
-- [[#Numeri primi gemelli|Numeri primi gemelli]]
-- [[#Congettura di Goldbach|Congettura di Goldbach]]
-
-
----
 # `Numeri interi`
 ![[Pasted image 20241026111409.png]]
 
@@ -65,6 +23,7 @@ Ricordiamo:
 - le proprietà fondamentali del prodotto sono Commutatività, Associatività, Distributività, Elemento neutro e Elemento zero
 - inoltre il calcolo avviene rispettando le priorità degli operatori
 
+---
 ###### Principio di induzione
 
 Peano introduce anche il _**Principio di Induzione**_, che afferma: se una proprietà $P$ è valida per il numero $0$ e, ogni volta che è valida per un numero naturale, lo è anche per il suo successore, allora $P$ è valida per tutti i numeri naturali.
@@ -181,6 +140,7 @@ Dati $a,b \in Z$ si chiama minimo comune multiplo fra a e b un terzo intero posi
 ##### Massimo Comune Divisore (MCD)
 Dati $a,b \in Z$ si chiama Massimo Comune Divisore un terzo intero $d \in Z$ tale che $d|a$ e $d|b$ cioè $d$ è il più grande divisore comune tra $a$ e $b$.
 
+---
 ###### Algoritmo di Euclide
 Il metodo migliore per calcolare il massimo comune divisore è l'algoritmo di Euclide, che si basa su questa osservazione siano $a,b \in N$ e sia $b \le a$. Si basa sulla seguente osservazione matematica, che dimostriamo per induzione:
 - **Caso base**:
@@ -325,6 +285,8 @@ Esistono delle regole molto semplici per verificare la divisibilità di un numer
 > 	- $198 : 1 + 9 + 8 = 18 → 1 + 8 = 9$ e quindi 198 è divisibile per 9
 > - **Divisibilità per altri numeri**: [[6 novembre 2024.pdf | Esempi qui]]
 
+---
+
 **Teorema della divisibilità per 9**
 Sia $n$ un numero naturale e sia $m$ la somma delle sue cifre. Allora $n − m$ è divisibile per 9.
 **Dimostrazione:**
@@ -355,7 +317,6 @@ L'aritmetica modulare riguarda il calcolo sui resti delle divisioni tra interi r
 - Se non si verificano queste condizioni, la relazione tra a e b si scrive così:
 	- $a \not\equiv b \pmod{m}$
 
-
 > [!TIP] Formula generale per la congruenza 
 > Diciamo che 2 numeri sono congruenti se è vero che $m | (a-b)$
 
@@ -372,6 +333,7 @@ La relazione di congruenza è una **relazione di equivalenza**, il che implica c
 - **Simmetrica:**  Se $a ≡ b(\mod m)$ allora $a − b = km$ per qualche $k ∈ Z$ e quindi, moltiplicando per $−1$ otteniamo $−a + b  = (−k)m$ ossia $b ≡ a(\mod m)$
 - **Transitiva:** Se $a ≡ b(\mod m)$ e b ≡ $c(\mod m)$ abbiamo che esistono $h, k ∈ Z$ tali che $a − b$ = $hm$ e $b − c = km$. Sommando membro a membro le ultime due uguaglianze otteniamo: $a − c = (h + k)m$ e quindi $a ≡ c(\mod m)$.
 
+---
 ###### Classi di equivalenza definite dalla congruenza
 - **Congruenza modulo 0**: $a ≡ b(\mod 0)$ se e solo se $a − b = k · 0$ ovvero $a − b = 0$ quindi se $a = b$
 	- Tutte le classi di equivalenza create dalla congruenza modulo 0 sono delle classi contenenti un solo elemento (ovvero quello preso in esame)
@@ -462,6 +424,8 @@ Come conseguenze del punto 2 abbiamo:
 3. Dati $a,n,m \in N, a^2 ≡ (a \mod m)^2(\mod m)$
 4. Dati $a,b,h,k,m \in N$ allora $a^h \times b^k ≡ (a^h \mod m) \times (b^k \mod m)(\mod m)$
    ossia $a^h \times b^k \mod m = (a \mod m)^h \times (b \mod m)^k \mod m$
+
+---
 ###### Diretta conseguenza dell'invarianza rispetto alla somma 
 **Teorema**:
 - Per ogni $m \in N, m>1$ , prendendo una qualunque sequenza di m interi questa contiene un intero divisibile per m
@@ -641,6 +605,7 @@ Il codice numerico della carta di credito è formalmente corretto se $S$ è divi
 > 	- Le cifre di posto pari, quelle che abbiamo denotato con $b_i$ sono allora 2, 4, 6, 8, 7, 5, 3, 1 e la somma da come risultato di nuovo 36.
 > - Quindi, non è un numero di carta di credito corretto, visto che il risultato finale 36 + 36 = 72 non è un multiplo di 10.
 
+---
 ###### Cifrari a trasposizione
 ![[Pasted image 20241203164718.png]]
 # `Teoria dei numeri e problemi aperti`

@@ -13,23 +13,30 @@ I passi elementari per eseguire un'istruzione sono:
 - **Decodifica:** decodifica dell'istruzione
 - **Esecuzione:** esecuzione dell'istruzione
 
+---
+
 ##### ISA
 Le istruzioni elementari che un processore è in grado di eseguire sono definite nell'ISA (Istruction Set Architecture), queste istruzioni elementari vengono definite attraverso un alfabeto binario. Il linguaggio assemblativo (**assembly**) è una rappresentazione simbolica del linguaggio macchina. Esistono 2 grandi famiglie di ISA:
 - **CISC** (Complex Istruction Set Architecture): Basata su istruzioni complesse, che possono anche occupare più di una word di memoria.
 - **RISC**(Reduced Istruction Set Architecture): Basata su istruzioni semplici, con le istruzioni che al massimo occupano una word, di solito sono molto efficienti grazie all'utilizzo della [[07_Pipelining|pipeline]]
 
+---
 ##### Memoria
 Il calcolatore lavora su gruppi di bit detti **Parole**(word), ogni parola nella nostra memoria è associata ad un indirizzo binario univoco, parole consecutive sono associate ad indirizzi consecutivi. Un numero binario con $m$ bit potrà indirizzare al massimo $2^m$ indirizzi. L'unità minima di informazione indirizzabile in memoria è il byte, di solito i dati vengono immagazzinati in 2 modi diversi:
 - **Big-endian(Crescente)**: memorizzazione/trasmissione che inizia dal byte più significativo (estremità più grande) per finire col meno significativo
 - **Little-endian(Decrescente)**: memorizzazione/trasmissione che inizia dal byte meno significativo (estremità più piccola) per finire col più significativo.
 ![[Pasted image 20241228143343.png|500]]
 
+---
+
 ##### Programmare in assembly
 Il programmatore scrive i programmi in **linguaggio assemblativo** (assembly), che vengono tradotti in linguaggio macchina dall'**assemblatore**. Il codice risultante in linguaggio macchina viene poi eseguito direttamente dal processore.
 
+---
 ##### Registri e locazioni di memoria
 All'interno del nostro processore abbiamo diverse locazioni di memoria usate per immagazzinare dati di lavoro usati dalla CPU durante l'esecuzione delle istruzioni. Di solito i registri generici del processore vanno da: R0 ad Rn, abbiamo anche dei registri speciali come il [[08_Struttura-base-del-processore#^969586|PC]] (Program Counter) e [[08_Struttura-base-del-processore#^8e6647|IR]] (Istruction Register)
 
+---
 ##### Istruzioni di base in assembly:
 ```
 LOAD destinazione sorgente
@@ -64,7 +71,8 @@ Branch_if condizione destinazione salto.
 Branch_if_[R2]>0 CICLO
 ```
   Istruzione usata per saltare all’esecuzione di un’istruzione specifica nel caso la condizione di salto sia vera
-  
+
+---
 ##### Direttive di assemblatore
 Per aiutare l'assemblatore nella traduzione del nostro programma in codice binario esistono **le direttive all'assemblatore**, queste non vengono tradotte in vero e proprio codice binario ma servono per dare delle informazioni utili all'assemblatore. Ne esistono di vario tipo:
 
@@ -79,7 +87,7 @@ DATAWORD contenuto_da_assegnare
 - **RESERVE**: indica all'assemblatore di riservare uno spazio di memoria espresso in byte
 - **DATAWORD**: Inizializza una word di memoria con il contenuto passato
 
-
+---
 ##### Generiche istruzioni assembly:
 Di solito le istruzioni di assembly seguono la seguente struttura:
 ![[Pasted image 20241228151727.png]]
@@ -91,6 +99,7 @@ Inoltre l'assemblatore ci permette di denotare i numeri in diversi formati:
 - **Esadecimale:** 0x
 	- Add R2, R3, $\#0x5D$
 
+---
 ##### Pila(Stack)
 Per gestire gli aspetti fondamentali di un programma (le chiamate a funzione, allocazione dinamica, ecc...)assembly usa lo stack, questa è una struttura dati basata sul paradigma **LIFO** (Last In First Out), abbiamo un registro speciale del processore chiamato **SP**(Stack pointer) che punta alla cima della lista, in questa struttura dati si possono fare solo 2 operazioni:
 - **PUSH**: aggiunge un elemento in cima alla pila, di solito si implementa così:
@@ -104,6 +113,7 @@ Load Rj, (SP)
 Add SP, SP, #4
 ```
 
+---
 ##### Funzioni
 Una funzione anche detto sottoprogramma è una lista di istruzioni che eseguono un compito specifico e che possono essere richiamate in un qualsiasi momento durante l'esecuzione di un programma, la chiamata alla funzione viene fatta usando una funzione di salto detta **Call Istruction**, nella funzione invece per ritornare alla routine chiamate viene usata l'istruzione **Return Istruction**, l'indirizzo di rientro di una funzione viene salvato nel **Link Register**.
 ```
@@ -121,7 +131,7 @@ Per passare i parametri a queste funzioni ci sono 2 modi:
 
 il blocco dello stack riservato ai sottoprogrammi si chiama **Stack Frame**, il **Frame Pointer** è il puntatore a questa area della memoria, dentro questa area dello stack troviamo molte informazioni come le variabili locali e i loro valori. Quando abbiamo delle chiamate a funzione annidate dobbiamo ricorda di salvare l'indirizzo del link register dentro la pila, in modo da sapere sempre dove ritornare. In alcune architetture questa cosa viene fatta in automatico. 
 
-
+---
 ##### Codifica delle istruzioni
 
 > [!Info] Codice operativo
@@ -141,13 +151,14 @@ Le istruzioni in assembly possono cambiare in base all'architettura del processo
 	- 6 bit vengono usati per il codice operativo
 	- 26 bit per rappresentare l'indirizzo della funzione da chiamare
 
+---
 ##### Register Transfer Notation (RTN)
 La notazione a trasferimento di registro serve a descrivere formalmente il trasferimento di informazioni tra memoria e registri. Il simbolo utilizzato è $\leftarrow$ :
 - A sinistra troviamo un indirizzo di memoria
 - A destra troviamo un valore semplice o un'espressione
 ![[Pasted image 20241228162118.png]]
 
-
+---
 ##### Istruzioni logiche
 ```
 AND destinazione,sorgente1,sorgente2
@@ -156,6 +167,7 @@ OR destinazione,sorgente1,sorgente2
 - **AND**:  fa un and tra le sorgenti
 - **OR**: fa un or tra le sorgenti
 
+---
 ##### Scorrimenti e rotazioni
 **Scorrimento logico**:
 Le operazioni di scorrimento logico fanno scorrere i bit di un registro a destra o a sinistra di n posizioni, i bit in uscita vengono persi, ad eccezione dell’ultimo bit che viene memorizzato nel bit di riporto c
@@ -170,6 +182,7 @@ La rotazione è un’operazione di scorrimento dove i bit in uscita da un lato v
 Nella rotazione con riporto il bit di riporto viene incluso nella sequenza di bit da ruotare. Nel caso di rotazione a sinistra il bit di riporto viene aggiunto alla sinistra dei bit del registro da ruotare. Nel caso di rotazione a destra il bit di riporto viene aggiunto alla destra dei bit del registro da ruotare
 ![[Pasted image 20241228163511.png]]
 
+---
 ##### Altre istruzioni dell'assembly
 ```
 LoadByte Rdst, LOCBYTE
@@ -182,6 +195,7 @@ Divide Rk, Ri, Rj
 - **Multiply**: effettua la moltiplicazione tra i due numeri contenuti nei registri
 - **Divide**: effettua la divisione tra due numeri in complemento a due contenuti in due registri
 
+---
 ##### Istruzioni esclusive delle architteture CISC
 ![[Pasted image 20241228164434.png]]
 
