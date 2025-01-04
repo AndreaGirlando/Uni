@@ -19,7 +19,7 @@ Il **riporto in uscita** della somma precedente viene assegnato come **riporto i
 - **Carry lookahaed adder:** per risolvere il problema del ripple carry adder nasce questo tipo di addizionatore, che va a calcolare il resto in parallelo propagandolo in base a delle formule matematiche (funzioni $G_i$ e $P_i$ spiegato in seguito), tutto ciò lo rende più veloce e quindi viene ancora oggi usato dentro le ALU dei processori moderni.
   ![[Pasted image 20241227103956.png|500]]
 
-> [!Info] Trabocco(Overflow)
+> [!TIP] Trabocco(Overflow)
 >  Si parla di trabocco quando andiamo a sommare dei bit e il risultato dell'operazione aritmetica è un numero che supera le capacità di rappresentazione del circuito. Il trabocco avviene molto spesso nelle operazioni algebriche dove si prendono in considerazioni numeri con segno.
 
 - **Addizionatore algebrico:** è un circuito logico che somma due numeri binari a n bit, considerando anche il segno, la parte importante per questo circuito è la gestione dell'Overflow, infatti viene calcolato utilizzando questo formula: $c_n \oplus c_{n-1}$ con $c_n$ che sarebbe il riporto generato dall'ultimo bit, e $c_{n-1}$ il riporto generatore dal penultimo bit, in pratica se il risultato di questa formula ci da 1 c'è stato un trabocco.
@@ -70,6 +70,7 @@ Per n cicli:
 
 Alla fine del ciclo concatenando i contenuti di A e Q si otterrà il prodotto finale
 ```
+
 ![[Pasted image 20241227115134.png|500]]
 
 Per i numeri con il segno la situazione si complica un po', usiamo **l'algoritmo di Booth**:
@@ -108,5 +109,5 @@ Alla fine $A$ contiene il Resto e $Q$ contiene il Quoziente
 - Un **segno** $s$ per il numero
 - La **mantissa** $m$
 - Un **esponente** $e$ con segno in base 2
-![[Pasted image 20241227143107.png]]
-![[Pasted image 20241227143123.png]]
+![[Pasted image 20241227143107.png|500]]
+![[Pasted image 20241227143123.png|500]]

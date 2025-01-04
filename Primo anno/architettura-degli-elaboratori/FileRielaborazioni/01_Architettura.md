@@ -1,4 +1,6 @@
 Questo file è la rielaborazione delle slide [[01_Architettura.pdf]]
+
+
 Un'**algoritmo** è un insieme finito di istruzioni usate per la risoluzione di un certo lavoro. Quest'ultimo molte volte viene definito come una particolare funzione parziale di una [[#macchina di Turing]] (Alan Turing, matematico britannico) oppure come un programma di una [[#macchina di Von Neumann]] (matematico statunitense).
 
 Le funzioni di base di un'elaboratore possono essere riassunte in 4 macro aree:

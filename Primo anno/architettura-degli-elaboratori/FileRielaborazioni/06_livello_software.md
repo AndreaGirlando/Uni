@@ -7,7 +7,9 @@ Il processo di programmazione consiste nel seguente paradigma:
 3. L'**assemblatore** traduce il programma in linguaggio assemblativo in **sequenze binarie** 
 	- trasforma una serie di file sorgenti assembly in file oggetto
 4. Il **linker** collega assieme vari file oggetto e file di libreria in un unico programma oggetto 
-![[Pasted image 20241111144953.png]]
+
+![[Pasted image 20250103213625.png|500px]]
+
 Per generare il file oggetto l'assemblatore esegue i seguenti passi:
 1. Genera la codifica delle istruzioni espresse in assembly
 2. Riconosce le direttive di assemblatore per l’allocazione di memoria mettendo queste informazioni nell’header del file oggetto
@@ -40,10 +42,10 @@ Questo programma si occupa di trasformare un file sorgente scritto in linguaggio
 ---
 **Debugger**
 il debugger è un programma che ci permette di eseguire il programma oggetto ed interrompere la sua esecuzione in qualsiasi instante, in modo da poterne valutare il suo funzionamento. Esistono 2 tipi di debugger:
-- Trace mode: il programma viene eseguito passo-passo, interrompendosi dopo ogni istruzione
+- **Trace mode**: il programma viene eseguito passo-passo, interrompendosi dopo ogni istruzione
 	- Si genera un’eccezione al termine dell’esecuzione di ogni istruzione del programma, il debugger viene lanciato come routine di servizio dell’istruzione cosicché il programmatore posso controllare il corretto funzionamento di quell'istruzione, una volta che il programmatore seleziona il comando per continuare l’esecuzione viene effettuato un rientro dall’interruzione e viene eseguita l’istruzione successiva
-- breakpoint: l'esecuzione del programma si interrompe in punti di osservazione specifici
-	- Quando il Debugger è in esecuzione, il programmatore può scegliere dei punti di osservazione (breakpoint) dove interrompere il porgramma. il debugger sostituisce e mette da parte le istruzioni in corrispondenza dei breakpoint con speciali interruzioni software (Trap), il programma viene eseguito normalmente fino ad arrivare alla prima Trap, dove l’esecuzione passa al Debugger, una volta che il programmatore seleziona il comando per continuare l’esecuzione il Debugger riprende l’esecuzione del programma
+- **breakpoint**: l'esecuzione del programma si interrompe in punti di osservazione specifici
+	- Quando il Debugger è in esecuzione, il programmatore può scegliere dei punti di osservazione (breakpoint) dove interrompere il programma. il debugger sostituisce e mette da parte le istruzioni in corrispondenza dei breakpoint con speciali interruzioni software (Trap), il programma viene eseguito normalmente fino ad arrivare alla prima Trap, dove l’esecuzione passa al Debugger, una volta che il programmatore seleziona il comando per continuare l’esecuzione il Debugger riprende l’esecuzione del programma
 ---
 **Sistema operativo**
 Il sistema operativo gestisce il coordinamento generale di tutte le attività del calcolatore. Il SO è formato da un insieme di routine essenziali che risiedono nella memoria centrale e un insieme di programmi di utilità che risiedono su disco e vengono caricati in memoria centrale per essere eseguiti. Durante l’inizializzazione del sistema, un processo di avvio (boot-strapping) viene usato per caricare in memoria una porzione iniziale del SO. Sistemi operativi capaci di eseguire più istruzioni contemporaneamente sono chiamati **concorrenti** o **multitasking**, per fare ciò il sistema operativo divide il tempo di esecuzione di un programma in slice di tempo, sarà lo scheduler a scegliere quale slice eseguire. I programmi possono trovarsi in 3 stati: **running**, **runnable** e **blocked**

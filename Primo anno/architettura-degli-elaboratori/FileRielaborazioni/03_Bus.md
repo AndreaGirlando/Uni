@@ -1,33 +1,45 @@
-Questo file è la rielaborazione delle slide [[03_Bus.pdf]]
 
-Il bus è l'unità di interconnessione tra i vari componenti della macchina di von Neumann. Esso si presenta come un fascio ordinato di linee, ognuna delle quali può assumere il significato di un bit. Il bus quindi è come un mezzo di trasporto delle informazioni tra la CPU (detta Master) la memoria e I/O (detti slave). 
-![[Pasted image 20241013094756.png]]
-Da questa immagine riusciamo ad indentificare vari tipi di collegamenti:
-- da processore a memoria
-- da memoria a processore
-- da processore a I/0 
-- da I/O a processore
-Considerando il processore come master. un'operazione che trasporta un dato dal processore alla memoria è detta operazione di ***Write***, nel verso opposto viene chiamata operazione di ***Read*** il tempo che intercorre tra il segnale di invio dell'operazione e l'operazione stessa si chiama **Lantenza**. Per riuscire a gestire il trasferimento dei dati il bus è diviso in tre diversi tipi di linea:
-- ***Address bus*** (ABus)
-- ***Data bus*** (DBus)
-- ***Control bus*** (CBus)
+Il **bus** è l’unità di interconnessione che permette la comunicazione tra i vari componenti della macchina di Von Neumann. Si presenta come un fascio ordinato di linee, ciascuna delle quali può rappresentare un bit. Il bus funziona quindi come un mezzo di trasporto per le informazioni tra la CPU (definita **Master**), la memoria e i dispositivi di I/O (detti **Slave**).
 
-Per una corretto trasferimento dei dati vengono usati tutti e tre i tipi di bus:
-- le linee DBus usate per il trasferimento dei dati
-- le linee ABus contenenti le informazioni su gli indirizzi da utilizzare per il trasferimento
-- e svariate linee CBus ognuna con uno dei seguenti compiti:
-	-  ***I/0-Mem***: un tipo di linea che indica la direzione del trasferimento:
-		- **Dal processore alle periferiche I/O**: il valore del bus viene impostato a 1
-		- **Dal processore alla memoria**: il valore del bus viene impostato a 0
-	- ***R/W***: un tipo di linea che indica il tipo di trasferimento:
-		- **Read**: il valore del bus viene impostato a 1
-		- **Write**: il valore del bus viene impostato a 0
-	- ***WAIT***: un tipo di linea che indica se il trasferimento è stato completato o se il trasferimento è in corso:
-		- **Trasferimento completato**: il valore del bus viene impostato su 1
-		- **Trasferimento in corso** :  il valore del bus viene impostato su 0
+##### Tipologie di collegamenti
+![[Pasted image 20241013094756.png|500]]
+Dalla figura possiamo individuare diversi tipi di collegamenti che si instaurano nel sistema:
+- **Dal processore alla memoria**
+- **Dalla memoria al processore**
+- **Dal processore ai dispositivi di I/O**
+- **Dai dispositivi di I/O al processore**
+Quando il processore agisce come Master:
+- Un’operazione che trasferisce un dato dal processore alla memoria si chiama **Write**.
+- Un’operazione che trasferisce un dato dalla memoria al processore si chiama **Read**.
+Il tempo che intercorre tra il segnale di invio dell’operazione e la sua effettiva esecuzione è chiamato **latenza**.
 
-la velocità del bus è determinata da un "orologio" interno, chiamato "clock" che scandisce il tempo in modo costante, come un metronomo, e sincronizza tutte le operazioni che avvengono sul bus. Le dimensioni dei bus possono variare e soprattutto influenzano [[01_Architettura#Bottleneck|il collo di bottiglia]]:
-- **ABus**: la dimensione di questo tipo di Bus specifica la quantità di memoria raggiungibile dai programmi e si calcola e elevando a 2 il numero di ABus
-- **DBus**: la dimensione di questo tipo di Bus rappresenta invece il grado di parallelismo del processore, ovvero la quantità di dati che è in grado di elaborare simultaneamente
-NB: stiamo parlando della dimensione dei gruppi di bus, infatti un singolo bus porta solo un bit come giù scritto all'inizio
-All'interno di una scheda madre è difficile vedere i bus di sistema, quindi tutto quello che è dedicato ai bus che siano le linee fisiche o i chip vengono indicati con il nome ***Chipset***. Ovviamente esistono vari tipi di bus ma quello più importanti è il PCI ultimamente molto diffuso e soprattutto la sua variante express usato principalmente per le schede video.
+---
+##### Suddivisione del bus
+Per gestire correttamente il trasferimento dei dati, il bus è suddiviso in tre diverse tipologie di linee:
+1. **Address Bus** (_ABus_): trasporta le informazioni sugli indirizzi da utilizzare per il trasferimento.
+2. **Data Bus** (_DBus_): viene utilizzato per trasferire i dati.
+3. **Control Bus** (_CBus_): comprende linee dedicate a controllare il tipo e la direzione del trasferimento.
+
+---
+##### Linee del Control Bus
+Le linee del **Control Bus** hanno compiti specifici:
+- **I/O-Mem**: indica la direzione del trasferimento:
+    - **Dal processore alle periferiche I/O**: valore impostato a **1**.
+    - **Dal processore alla memoria**: valore impostato a **0**.
+- **R/W**: specifica il tipo di trasferimento:
+    - **Read**: valore impostato a **1**.
+    - **Write**: valore impostato a **0**.
+- **WAIT**: segnala lo stato del trasferimento:
+    - **Trasferimento completato**: valore impostato a **1**.
+    - **Trasferimento in corso**: valore impostato a **0**.
+
+---
+##### Sincronizzazione e velocità
+La velocità del bus è regolata da un “orologio” interno, chiamato **clock**, che scandisce il tempo in modo costante, sincronizzando tutte le operazioni sul bus. Le dimensioni dei bus variano e influiscono sulle prestazioni del sistema, contribuendo al **collo di bottiglia** (bottleneck):
+- **Address Bus (ABus)**: determina la quantità di memoria indirizzabile dai programmi. La memoria raggiungibile si calcola elevando 2 al numero di linee dell’ABus (es. un ABus a 32 bit permette di indirizzare 2³² byte di memoria).
+- **Data Bus (DBus)**: rappresenta il grado di parallelismo del processore, ovvero la quantità di dati che può elaborare simultaneamente.
+**Nota Bene**: ogni singolo bus trasporta un solo bit, ma la combinazione di più linee consente il trasferimento parallelo di più bit.
+
+---
+##### Chipset e bus principali
+Sulla scheda madre i bus di sistema sono difficili da identificare visivamente; il loro funzionamento è gestito da linee fisiche e chip dedicati, noti con il nome di **Chipset**. Tra i vari tipi di bus, il più importante è il **PCI** (_Peripheral Component Interconnect_), ormai largamente utilizzato. La sua variante più recente, **PCI Express**, è progettata per gestire elevate velocità di trasferimento ed è particolarmente diffusa per l’uso con schede video.

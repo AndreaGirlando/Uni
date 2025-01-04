@@ -240,6 +240,7 @@ Per calcolare il valore atteso $E[X]$ di una variabile casuale **X**, moltiplich
 > - $E[X] = \frac{1 + 2 + 3 + 4 + 5 + 6}{6} = \frac{21}{6} = 3.5$ 
 > Quindi, il valore atteso del lancio di un dado è **3.5**. Questo significa che, in media, se lanci un dado un numero molto grande di volte, il valore medio dei risultati sarà **3.5**.
 
+---
  
 **Linearità del Valore Atteso**
 Una delle proprietà importanti del valore atteso è che è **lineare**, cioè: 
@@ -269,7 +270,7 @@ Il numero atteso dei numeri di tentativi da fare per ottenere “successo” è 
 **Esempi:**
 ![[Pasted image 20241226143158.png]]
 
-Dunque **La legge dei grandi numeri** detta anche **teorema di Bernoulli** ci garantisce che la media dei risultati ottenuti dopo un grande numero di tentativi si avvicina al valore atteso, quindi se lanciamo all’infinito un dado, la media ottenuta
+Dunque **la legge dei grandi numeri** detta anche **teorema di Bernoulli** ci garantisce che la media dei risultati ottenuti dopo un grande numero di tentativi si avvicina al valore atteso, quindi se lanciamo all’infinito un dado, la media ottenuta
 sarà esattamente $3,5$. 
 
 ---

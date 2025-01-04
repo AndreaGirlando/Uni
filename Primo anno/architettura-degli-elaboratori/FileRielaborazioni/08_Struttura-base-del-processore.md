@@ -12,7 +12,7 @@ La CPU è un circuito elettronico integrato che ha il ruolo di cervello del calc
 Di seguito i componenti in specifico:
 
 **Banco di registri:** un blocco di memoria piccolo e veloce, consiste in vari registri con un circuito per l'accesso in scrittura e lettura. È possibile leggere contemporaneamente i dati da due registri diversi, invece la lettura può avvenire da un registro alla volta, per selezionare il registro da leggere o scrivere, si utilizzano specifici ingressi di indirizzo.
-![[Pasted image 20241122162944.png]]
+![[Pasted image 20241122162944.png|]]
 **ALU**: un componente della CPU che esegue operazioni aritmetiche e logiche quali la somma, sottrazione, AND, OR, XOR, ecc. É formato da 2 porte di input che rappresentano gli operandi in ingresso collegate direttamente al banco dei registri, una porta di uscita contenente il risultato dell'operazione anche questa collegata al banco dei registri. Insieme alla ALU viene usato il MUX (un multiplexer) che è in grado di introdurre un altro valore all'interno della ALU (come vedi nell'immagine di seguito)
 ![[Pasted image 20241122162951.png]]
 **Generatore di indirizzi delle istruzioni**: questo circuito è usato per generare l'indirizzo della prossima istruzione da inserire nel PC. In questo componente troviamo un sommatore che incrementa il valore del PC di una word solitamente (4 byte) o anche di più in caso di salto. Sarà il MuxINC seleziona che tipo di incremento effettuare, il MUXPC seleziona se aggiornare il PC con l'incremento calcolato dal MuxINC o con un indirizzo specifico, inoltre abbiamo PC-Temp che viene usato per salvare il valore di PC da inserire nel [[#^3d471f|LR]] durante una chiamata a sottoprogramma.
@@ -109,23 +109,30 @@ Durante l'accesso alla memoria che richiede svariati cicli di clock il contatore
 
 Tutto quello che abbiamo descritto fino ad adesso vale solo per i processori **RISC** infatti quest'ultimi sono gestibili in più stadi grazie alla lunghezza delle istruzioni che è ridotta.
 
+---
 ###### Interconnessione
-All'interno di un processore tutti i componenti vengono messi in contatto attraverso il blocco di interconnessione, quest'ultimo è un insieme di [[03_Bus|bus]], la porta logica che invia un segnale su una linea di bus è chiamata **BUS DRIVER**, i dispositivi sono collegati al bus tramite le **porte tri-state**, a differenza delle normali porte logiche che hanno solo due stati (0 e 1), le porte tri-state possono assumere un terzo stato: l'alta impedenza. In pratica, quando una porta è in questo stato, si comporta come se fosse scollegata dal circuito, non influenzando il segnale presente sul bus. Il bus verrà influenzato solo dalle porta non in alta impedenza.
+All'interno di un processore tutti i componenti vengono messi in contatto attraverso il blocco di interconnessione, quest'ultimo è un insieme di [[03_Bus|bus]], la porta logica che invia un segnale su una linea di bus è chiamata **BUS DRIVER**, i dispositivi sono collegati al bus tramite le **porte tri-state**, a differenza delle normali porte logiche che hanno solo due stati (0 e 1), le porte tri-state possono assumere un terzo stato: l'alta impedenza. In pratica, quando una porta è in questo stato, si comporta come se fosse scollegata dal circuito, non influenzando il segnale presente sul bus. Il bus verrà influenzato solo dalle porte non in alta impedenza. ^487a6e
 
 Di solito tutte le componenti usate per l'esecuzione di una istruzione vengono collegate attraverso 3 BUS (Bus A,B usati per i dati in input e il Bus C per i dati in output), il generatore di indirizzi è collegato direttamente al PC.
 ![[Pasted image 20241123103623.png]]
-Esempio:
-Passo 1:
-![[Pasted image 20241123103701.png]]
-Passo 2:
-![[Pasted image 20241123103719.png]]
-Passo 3:
-![[Pasted image 20241123103734.png]]
 
+> [!EXAMPLE] Esempio
+> 
+> Passo 1:
+> ![[Pasted image 20241123103701.png|500]]
+> Passo 2:
+> ![[Pasted image 20241123103719.png|500]]
+> Passo 3:
+> ![[Pasted image 20241123103734.png|500]]
+> 
+
+---
 ###### Controllo microprogrammato
 I segnali di controllo di ogni passo vengono raccolti in una word di memoria chiamata **microistruzione**. L’insieme di microistruzioni rappresentanti i passi di un’istruzione macchina si chiamano **microroutine**. Le microistruzioni di ciascuna microroutine vengono immagazzinate in locazioni consecutive della **memoria di controllo**, il registro $\mu PC$  contiene l'istruzione della prossima microistruzione da caricare. All’inizio di un istruzione macchina il generatore di indirizzi delle microistruzioni carica sul μPC la prima istruzione della microroutine corrispondente ad ogni passo μPC viene incrementato di un passo per puntare alla microistruzione corretta.
 
+---
 ###### Microprogrammato vs Microcablato
+
 **Controllo microcablato**:
 - **Implementazione**: I segnali di controllo sono generati attraverso un circuito logico cablato.
 - **Velocità**: È generalmente più veloce poiché non dipende dall'accesso a una memoria di controllo.
@@ -140,7 +147,6 @@ I segnali di controllo di ogni passo vengono raccolti in una word di memoria chi
 É difficile determinare quale sia la migliore infatti questo dipende dall'applicazione:
 - Il **microcablato** è preferibile in sistemi con requisiti di alte prestazioni e dove il set di istruzioni è stabile, come nelle applicazioni embedded o nei processori ad alta velocità.
 - Il **microprogrammato** è ideale per processori generici o complessi (ad esempio, con molte istruzioni) dove è necessaria flessibilità, come nei primi sistemi CISC.
-
 
 ---
 **Ulteriori informazioni**
