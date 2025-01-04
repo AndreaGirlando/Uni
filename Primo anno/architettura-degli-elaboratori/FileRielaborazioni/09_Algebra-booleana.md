@@ -27,12 +27,15 @@ l'algebra booleana della commutazione è un sistema algebrico in cui ogni variab
 
 ---
 ##### Definizioni
+
 **Funzione logica:** definiamo funzione logica una funzione con più variabili binarie di ingresso ed una variabile binaria di uscita.
 **Tabella di verità**: tutte le funzioni logiche possono essere espresse attraverso una tavola di verità, queste tabelle sono formate da $2^n$ righe ed $n+1$ colonne, dove $n$ è il numero di variabili in ingresso.
 **Espressioni logiche:** Unendo più funzioni logiche si ottengono le espressioni logiche, esistono infinite espressioni logiche che danno come risultato la stessa funzione logica. Due espressioni logiche si dicono equivalenti se rappresentano la stessa funzione logica, come in questo esempio:
 ![[Pasted image 20241226153024.png]]
 Nel risolvere un'espressione logica dobbiamo stare attenti alla precedenza tra gli operatori, di seguito gli ordini di precedenza da seguire:
+
 ![[Pasted image 20241226153148.png]]
+
 > [!TIP]
 > Per calcolare i valori assunti da una funzione ci basta calcolare la sua tabella di verità
 

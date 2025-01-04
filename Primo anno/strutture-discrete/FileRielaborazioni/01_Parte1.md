@@ -1,38 +1,6 @@
 
 Questo file è la rielaborazione delle slide [[01_Parte1.pdf]]
 
-# `Indice`
-- [[#Nomenclature:|Nomenclature:]]
-- [[#Giustificazione o conseguenza logica:|Giustificazione o conseguenza logica:]]
-- [[#Altre equivalenze logiche|Altre equivalenze logiche]]
-- [[#CNF e DNF|CNF e DNF]]
-- [[#Definizione di un insieme|Definizione di un insieme]]
-- [[#Cardinalità|Cardinalità]]
-- [[#Nomenclature:|Nomenclature:]]
-- [[#Sottoinsieme e sovrainsieme|Sottoinsieme e sovrainsieme]]
-- [[#Operazioni tra insiemi|Operazioni tra insiemi]]
-- [[#Diagramma di Venn|Diagramma di Venn]]
-- [[#Altre operazioni tra insiemi|Altre operazioni tra insiemi]]
-- [[#Dimostrazione diretta|Dimostrazione diretta]]
-- [[#Insieme delle parti|Insieme delle parti]]
-- [[#Diagramma di Venn di famiglie di insiemi|Diagramma di Venn di famiglie di insiemi]]
-- [[#Insiemi chiusi|Insiemi chiusi]]
-	- [[#Insiemi chiusi#Chiusura rispetto all'unione ed intersezione|Chiusura rispetto all'unione ed intersezione]]
-- [[#Partizioni|Partizioni]]
-- [[#Coppie ordinate|Coppie ordinate]]
-- [[#Insieme prodotto|Insieme prodotto]]
-- [[#Paradosso di Russell|Paradosso di Russell]]
-- [[#Relazioni|Relazioni]]
-- [[#Funzioni|Funzioni]]
-	- [[#Funzioni#Casi particolari:|Casi particolari:]]
-	- [[#Funzioni#Funzione iniettiva:|Funzione iniettiva:]]
-	- [[#Funzioni#Funzione surgettiva|Funzione surgettiva]]
-	- [[#Funzioni#Funzione biiettiva|Funzione biiettiva]]
-	- [[#Funzioni#Cardinalità di un insieme|Cardinalità di un insieme]]
-- [[#Proprietà delle relazioni|Proprietà delle relazioni]]
-	- [[#Proprietà delle relazioni#Classe di equivalenza|Classe di equivalenza]]
-	- [[#Proprietà delle relazioni#Massimi e minimi|Massimi e minimi]]
-
 ---
 # `Logica proposizionale`
 
