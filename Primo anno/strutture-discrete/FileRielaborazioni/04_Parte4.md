@@ -99,3 +99,10 @@ Diciamo che $G = (V,E)$ è completo se ogni coppia di vertici è connessa da un 
 ![[Pasted image 20250107165841.png]]
 
 ---
+###### Torneo
+Sia $G = (V,E)$ un grafo completo. Il grafo orientato ottenuto assegnando uno dei due possibili versi ad ogni arco di $G$, si dice **torneo**, l'arco tra ogni coppia è orientato dal vincitore al perdente
+![[Pasted image 20250107184745.png]]
+
+---
+###### Grafi orientati completi
+La definizione di grafo completo si estende anche ai grafi orientati, sia $G = (V, E)$ un grafo orientato diciamo che è completo se ogni coppia ordinata 
