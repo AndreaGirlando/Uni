@@ -130,7 +130,7 @@ Come possiamo notare in questa immagine la probabilità di un evento A condizion
 Arriviamo a questa formula in questo modo:
 ![[Pasted image 20241221155532.png]]
 
-La regola di Bayes ci permette quindi di calcolare P(B|A) usando solo:
+La regola di Bayes ci permette quindi di calcolare $P(B|A)$ usando solo:
 - $P(A)$
 - $P(B)$
 - $P(A|B)$
