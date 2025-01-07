@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "9669f8b184895932",
+        "id": "35cb5f5b57a645be",
         "type": "tabs",
         "children": [
           {
-            "id": "c29dc59c7b7eb7e1",
+            "id": "a703428e8f89fdab",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "03_Parte3"
+              "title": "Nuova scheda"
             }
           }
         ]
@@ -77,8 +73,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5,
-    "collapsed": true
+    "width": 413.5
   },
   "right": {
     "id": "abf359470799e113",
@@ -160,16 +155,23 @@
       "vscode-editor:Create Code File": false
     }
   },
-  "active": "c29dc59c7b7eb7e1",
+  "active": "4976c61b40586f1c",
   "lastOpenFiles": [
+    "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
+    "Primo anno/Imgs/Pasted image 20250107165841.png",
+    "Primo anno/strutture-discrete/FileCondivisiTeams/04_Parte4.pdf",
+    "Primo anno/Imgs/Pasted image 20250107162647.png",
+    "Primo anno/Imgs/Pasted image 20250107162313.png",
+    "Primo anno/Imgs/Pasted image 20250107160523.png",
+    "Primo anno/Imgs/Pasted image 20250107160321.png",
+    "Primo anno/Imgs/Pasted image 20250107153947.png",
+    "Primo anno/strutture-discrete/FileRielaborazioni/01_Parte1.md",
+    "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
     "Primo anno/strutture-discrete/FileCondivisiTeams/03_Parte3.pdf",
     "Primo anno/architettura-degli-elaboratori/FileCondivisiTeams/Teoria/12_Tecnologia-microelettronica.pdf",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/12_Tecnologia-microelettronica.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/08_Struttura-base-del-processore.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/11_Insieme-di-istruzioni-macchina.md",
-    "Primo anno/strutture-discrete/FileCondivisiTeams/04_Parte4.pdf",
-    "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3Teoria.md",
     "Primo anno/strutture-discrete/Esempi di esercizi.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/10_Circuiti-aritmetici.md",
@@ -180,7 +182,6 @@
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/05_Processore.md",
     "Primo anno/architettura-degli-elaboratori/FileCondivisiTeams/Teoria/00_Introduzione.pdf",
     "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/01_Parte1.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/01_Architettura.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/04_InputOutput.md",
     "Primo anno/architettura-degli-elaboratori/Link.md",
@@ -198,15 +199,8 @@
     "Primo anno/strutture-discrete/Esercizi/eserciziInversoModulareCalcoloCombinatorio.pdf",
     "Primo anno/strutture-discrete/Esercizi/eserciziCalcoloCombinatorio.pdf",
     "Primo anno/strutture-discrete/Esercizi/eserciziInversoModulare.pdf",
-    "Primo anno/programmazione-1/C/Esercizi/algoritmiDiOrdinamento/InsertionSort/InsertionSortList.exe",
     "Primo anno/Imgs/ExcelProof1.png",
     "Primo anno/Imgs/Pasted image 20241230170828.png",
-    "Primo anno/Imgs/Pasted image 20241229113429.png",
-    "Primo anno/Imgs/Pasted image 20241229105220.png",
-    "Primo anno/Imgs/Pasted image 20241229105507.png",
-    "Primo anno/Imgs/Pasted image 20241229105450.png",
-    "Primo anno/Imgs/Pasted image 20241229105432.png",
-    "Primo anno/Imgs/Pasted image 20241229105400.png",
-    "Primo anno/Imgs/Pasted image 20241229105336.png"
+    "Primo anno/Imgs/Pasted image 20241229113429.png"
   ]
 }
