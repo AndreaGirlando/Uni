@@ -4,57 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "cffd3a899bf3a723",
+        "id": "5d504e8078d1e21b",
         "type": "tabs",
         "children": [
           {
-            "id": "5b952d61683e2a2b",
+            "id": "71dbf1a7f463d3ab",
             "type": "leaf",
             "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/strutture-discrete/FileCondivisiTeams/04_Parte4.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "04_Parte4"
-            }
-          },
-          {
-            "id": "86ac4561eea01d81",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "03_Parte3"
-            }
-          },
-          {
-            "id": "5d6b5cc8b7c1b76b",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/strutture-discrete/Lezioni/11 Dicembre 2024.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "11 Dicembre 2024"
-            }
-          },
-          {
-            "id": "acddbeac2173f25d",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/strutture-discrete/FileCondivisiTeams/03_Parte3.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "03_Parte3"
+              "title": "Nuova scheda"
             }
           }
         ]
@@ -88,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tri-state",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -195,36 +155,41 @@
       "vscode-editor:Create Code File": false
     }
   },
-  "active": "5b952d61683e2a2b",
+  "active": "4976c61b40586f1c",
   "lastOpenFiles": [
+    "Uni To-Do.md",
+    "Primo anno/programmazione-1/FileCondivisiTeams/ProveDiLaboratorioSvolte.pdf",
     "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
+    "Primo anno/strutture-discrete/FileCondivisiTeams/04_Parte4.pdf",
+    "Primo anno/architettura-degli-elaboratori/FileCondivisiTeams/Teoria/09_Algebra-booleana.pdf",
+    "Primo anno/architettura-degli-elaboratori/FileCondivisiTeams/Teoria/01_Architettura.pdf",
+    "Primo anno/architettura-degli-elaboratori/FileCondivisiTeams/Teoria/00_Introduzione.pdf",
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/10_Circuiti-aritmetici.md",
+    "Primo anno/Imgs/Pasted image 20250108091716.png",
+    "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
+    "Primo anno/Imgs/Pasted image 20250108165401.png",
+    "Primo anno/Imgs/Pasted image 20250108165309.png",
+    "Primo anno/Imgs/Pasted image 20250108163009.png",
+    "Primo anno/Imgs/Pasted image 20250108163003.png",
+    "Primo anno/Imgs/Pasted image 20250108160028.png",
+    "Primo anno/Imgs/Pasted image 20250108155731.png",
+    "Primo anno/Imgs/Pasted image 20250108153907.png",
+    "Primo anno/Imgs/Pasted image 20250108152956.png",
+    "Primo anno/Imgs/Pasted image 20250108145609.png",
     "Primo anno/strutture-discrete/Esempi di esercizi.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
     "Primo anno/strutture-discrete/Lezioni/11 Dicembre 2024.pdf",
     "Primo anno/strutture-discrete/FileCondivisiTeams/03_Parte3.pdf",
-    "Primo anno/Imgs/Pasted image 20250107184743.png",
-    "Primo anno/strutture-discrete/FileCondivisiTeams/04_Parte4.pdf",
-    "Primo anno/Imgs/Pasted image 20250107184745.png",
-    "Primo anno/Imgs/Pasted image 20250107165841.png",
-    "Primo anno/Imgs/Pasted image 20250107162647.png",
-    "Primo anno/Imgs/Pasted image 20250107162313.png",
-    "Primo anno/Imgs/Pasted image 20250107160523.png",
-    "Primo anno/Imgs/Pasted image 20250107160321.png",
-    "Primo anno/Imgs/Pasted image 20250107153947.png",
     "Primo anno/strutture-discrete/FileRielaborazioni/01_Parte1.md",
     "Primo anno/architettura-degli-elaboratori/FileCondivisiTeams/Teoria/12_Tecnologia-microelettronica.pdf",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/12_Tecnologia-microelettronica.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/08_Struttura-base-del-processore.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/11_Insieme-di-istruzioni-macchina.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3Teoria.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/10_Circuiti-aritmetici.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/09_Algebra-booleana.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/07_Pipelining.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/06_livello_software.md",
-    "Primo anno/Imgs/Pasted image 20250103213625.png",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/05_Processore.md",
-    "Primo anno/architettura-degli-elaboratori/FileCondivisiTeams/Teoria/00_Introduzione.pdf",
-    "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/01_Architettura.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/04_InputOutput.md",
     "Primo anno/architettura-degli-elaboratori/Link.md",
@@ -235,12 +200,7 @@
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/05_Processore.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/12_Tecnologia-microelettronica.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/11_Insieme-di-istruzioni-macchina.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/10_Circuiti-aritmetici.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli",
-    "Primo anno/strutture-discrete/FileCondivisiTeams/02_Parte2.pdf",
-    "Primo anno/strutture-discrete/Lezioni/6 novembre 2024.pdf",
-    "Primo anno/strutture-discrete/Esercizi/eserciziInversoModulareCalcoloCombinatorio.pdf",
-    "Primo anno/strutture-discrete/Esercizi/eserciziCalcoloCombinatorio.pdf",
-    "Primo anno/Imgs/ExcelProof1.png"
+    "Primo anno/strutture-discrete/FileCondivisiTeams/02_Parte2.pdf"
   ]
 }
