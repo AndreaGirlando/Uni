@@ -1,11 +1,11 @@
 Questo file è la rielaborazione delle slide [[04_Parte4]]
-
 # `Teoria dei grafi`
 La teoria dei grafi inizia per risolvere un problema reale, chiamato problema dei sette ponti, questi ponti sono situati in una città Russa attraversata da un fiume e presenta due isolette che sono collegate con le aree principali della città con 7 ponti. Il nostro caro Eulero era in città e venne a sapere di questo problema: “E’ possibile fare una passeggiata che
 attraversi ogni ponte una sola volta?”
 ![[Pasted image 20250107153947.png|500]]
 Eulero sintetizza il tutto in termini astratti, assegnando ad ogni area della città un nodo e ad ogni ponte un arco.
 
+---
 ###### Definizione di grafo non orientato
 Un grafo semplice non orientato denotato con $G = (V,E)$ è formato da:
 - un insieme finito di **nodi/vertici** ($V$) 
@@ -276,3 +276,9 @@ Dato un grafo $G = (V,E)$ con $|V| = n$. La matrice $M$ detta matrice di adiacen
 ###### Matrice associata alle componenti connesse
 ![[Pasted image 20250108165309.png]]
 Come possiamo notare ogni componente connessa crea un blocco $k \times k$ dove $k$ è il numero di vertici della componente. 
+
+---
+###### Cicli in un digrafo
+Sia $G = (V,E)$ un grafo orientato per ogni vertice $i \in V$ siano $\delta^+(i)$ e $\delta^-(i)$ rispettivamente il grado in uscita ed in entrata di i. Se per ogni $i \in V$ siano $\delta^+(i)$ > 0 e $\delta^-(i)$ > 0 allora il grafo G contiene un ciclo
+**Dimostrazione**
+1.  Dal momento che $\delta^+(i)$ > 0 esiste un vertice 
