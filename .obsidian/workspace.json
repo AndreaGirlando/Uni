@@ -11,22 +11,22 @@
             "id": "71dbf1a7f463d3ab",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "image",
               "state": {
-                "file": "Primo anno/strutture-discrete/FileCondivisiTeams/04_Parte4.pdf"
+                "file": "Primo anno/Imgs/Pasted image 20250110144758.png"
               },
-              "icon": "lucide-file-text",
-              "title": "04_Parte4"
+              "icon": "lucide-image",
+              "title": "Pasted image 20250110144758"
             }
           }
         ]
       },
       {
-        "id": "7481125f3fa7ed18",
+        "id": "09d9f81ed876c26b",
         "type": "tabs",
         "children": [
           {
-            "id": "5967bbc4f334f1a6",
+            "id": "9e7d2b64ac6da84d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -95,8 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5,
-    "collapsed": true
+    "width": 413.5
   },
   "right": {
     "id": "abf359470799e113",
@@ -178,9 +177,21 @@
       "vscode-editor:Create Code File": false
     }
   },
-  "active": "5967bbc4f334f1a6",
+  "active": "4976c61b40586f1c",
   "lastOpenFiles": [
+    "Primo anno/Imgs/Pasted image 20250110145015.png",
+    "Primo anno/Imgs/Pasted image 20250110144758.png",
     "Primo anno/strutture-discrete/FileCondivisiTeams/04_Parte4.pdf",
+    "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
+    "Primo anno/Imgs/Pasted image 20250110151742.png",
+    "Primo anno/Imgs/Pasted image 20250110150820.png",
+    "Primo anno/Imgs/Pasted image 20250110150242.png",
+    "Primo anno/Imgs/Pasted image 20250110145941.png",
+    "Primo anno/Imgs/Pasted image 20250110131540.png",
+    "Primo anno/strutture-discrete/Esercizi/Da fare.md",
+    "Primo anno/Imgs/Pasted image 20250110144302.png",
+    "Primo anno/Imgs/Pasted image 20250110143659.png",
+    "Primo anno/Imgs/Pasted image 20250110143432.png",
     "Primo anno/strutture-discrete/Esempi di esercizi.md",
     "Primo anno/programmazione-1/C/LAB05/__MACOSX",
     "Primo anno/programmazione-1/C/LAB05/12_fig07_11.c",
@@ -191,21 +202,9 @@
     "Primo anno/programmazione-1/C/LAB05/07_fig07_03.c",
     "Primo anno/programmazione-1/C/LAB05/04_fig06_15.c",
     "Primo anno/programmazione-1/C/LAB05/05_fig06_17.c",
-    "Primo anno/programmazione-1/C/LAB05/06_fig07_01.c",
     "Uni To-Do.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/10_Circuiti-aritmetici.md",
-    "Primo anno/Imgs/Pasted image 20250108091716.png",
     "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
-    "Primo anno/Imgs/Pasted image 20250108165401.png",
-    "Primo anno/Imgs/Pasted image 20250108165309.png",
-    "Primo anno/Imgs/Pasted image 20250108163009.png",
-    "Primo anno/Imgs/Pasted image 20250108163003.png",
-    "Primo anno/Imgs/Pasted image 20250108160028.png",
-    "Primo anno/Imgs/Pasted image 20250108155731.png",
-    "Primo anno/Imgs/Pasted image 20250108153907.png",
-    "Primo anno/Imgs/Pasted image 20250108152956.png",
-    "Primo anno/Imgs/Pasted image 20250108145609.png",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/01_Parte1.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/12_Tecnologia-microelettronica.md",
@@ -224,7 +223,6 @@
     "Primo anno/Imgs/UnisciNote.md",
     "Primo anno/Imgs/Senza nome.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/05_Processore.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/12_Tecnologia-microelettronica.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/11_Insieme-di-istruzioni-macchina.md"
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/12_Tecnologia-microelettronica.md"
   ]
 }

@@ -216,8 +216,6 @@ Partendo da questi due grafi è impossibile creare un ciclo
 ---
 ###### Componenti connesse
 
-
-
 Dato un grafo $G = (V, E)$ diciamo che due vertici $u, v$ sono connessi se esiste un cammino da $u$ a $v$
 
 **Definizione di componenti connesse**^4e37c4
@@ -281,4 +279,131 @@ Come possiamo notare ogni componente connessa crea un blocco $k \times k$ dove $
 ###### Cicli in un digrafo
 Sia $G = (V,E)$ un grafo orientato per ogni vertice $i \in V$ siano $\delta^+(i)$ e $\delta^-(i)$ rispettivamente il grado in uscita ed in entrata di i. Se per ogni $i \in V$ siano $\delta^+(i)$ > 0 e $\delta^-(i)$ > 0 allora il grafo G contiene un ciclo
 **Dimostrazione**
-1.  Dal momento che $\delta^+(i)$ > 0 esiste un vertice 
+Dal momento che $\delta^+(i)$ > 0 esiste un vertice $i_0$ tale che esiste un arco da $i_0$ a $i_1$, stessa cosa vale per $i_1$ infatti siamo sicuri che esiste un arco da $i_1$ a $i_2$, se iteriamo questo processo sino a quando non abbiamo una sequenza di vertici $i_0,i_1,i_2,...i_n$ tali che ognuno è connesso da un arco al successivo. Se $|V| = n$ per il Pigeonhole Principle almeno 2 di questi n+1 vertici devono coincidere. Questo dimostra il teorema.
+
+> [!EXAMPLE] Esempio
+> ![[Pasted image 20250110131540.png]]
+> Il grafo in figura possiede diversi cicli e, in particolare, un ciclo che coinvolge tutti i vertici: $1−5−4−6−3−7−2−1$. Come si può facilmente calcolare dalla matrice di adiacenza, il grado di ogni vertice è maggiore di zero.
+
+Inoltre possiamo dire che un grafo orientato possiede un ciclo se un suo sottoinsieme lo possiede e quindi riscrivere il teorema così.
+**Rivisitazione del teorema per il sottografo**
+Sia $G = (V,E)$ un grafo orientato. Allora $G$ possiede un ciclo se e solo se esiste un sottoinsieme $V'⊆ V$, tale che il sottografo indotto $G = (V', E')$ verifica la seguente proprietà: per ogni vertice $i \in V'$ siano $\delta^+(i)$ > 0 e $\delta^-(i)$ > 0 allora ha un ciclo
+
+---
+###### Algoritmo per trovare un ciclo in un grafo
+Sia $M$ la matrice del grafo, ed $M'$ la matrice ottenuta da $M$ eliminando la i-esima riga e colonna, sia inoltre $dim(M)$ la dimensione della matrice (il suo numero di righe o colonne)
+1. Se controllando la matrice $M$ tutti i vertici del grafo hanno grado in uscita > 0 e grado in entrata > 0 **terminiamo e diciamo che il grafo possiede un ciclo**
+2. Altrimenti, prendiamo un vertice $i$ con grado di uscita/entrata = 0 e lo eliminiamo sia dalla matrice associata al grafo creando la matrice $M'$
+3. Ripeti passo 2-3
+4. Se la $dim(M)$ = 1  ci fermiamo e diciamo che il grafo è aciclico
+
+> [!EXAMPLE] Esempio
+> ![[Pasted image 20250110133516.png]]
+> I successivi due passi dell’algoritmi ci fanno prima eliminare il vertice 7 che ha grado in uscita ed in ingresso entrambi uguali a 0 e poi eliminare il vertice 5 che ha grado in entrata uguale a 0. Otteniamo così il sottografo in figura che verifica la condizione del teorema e quindi possiede un ciclo.
+> ![[Pasted image 20250110133548.png]]
+> 
+
+---
+###### Percorsi tra nodi
+Dalle matrici matrice associata ad un grafo possiamo notare che la matrice ci dice se esiste un arco tra 2 vertici. Se volessimo cercare dei percorsi più lunghi?
+
+> [!EXAMPLE] Esempio
+> ![[Pasted image 20250110133835.png]]
+> Non esiste un percorso di lunghezza 1 tra il 6 ed il 5 però ne esiste uno di lunghezza 2
+
+> [!TIP] 
+> Come facciamo a trovare questi percorsi più lunghi?
+> Ci basta moltiplicare la matrice per se stessa tante volte quanto è la lunghezza del percorso che devo analizzare:
+> - Se voglio trovare i percorsi di lunghezza 2, mi basta moltiplicare la matrice per se stessa ($M^2$)
+> - Se voglio trovare i percorsi di lunghezza 3, mi basta fare la matrice cubica ($M^3$)
+> - Se voglio trovare i percorsi di lunghezza $k$, basta fare $M^k$
+> In questo modo siamo in grado di trovare il numero di percorsi di lunghezza arbitraria per ogni coppia di nodi
+
+
+> [!EXAMPLE] Esempio
+> ![[Pasted image 20250110134536.png]]
+> Tra i nodi 1 e 4 non esiste un percorso di lunghezza 1, però ne esiste uno di lunghezza 2
+
+---
+###### Rappresentazione di un grafo con liste di adiacenza
+Un grafo può essere rappresentato pure con le liste di adiacenza, ovvero un array i cui elementi sono i nodi e per ogni nodo viene associato un altro array con la lista dei nodi collegati ad esso. Lo spazio di cui abbiamo bisogno per rappresentare un grafo con una lista di adiacenza lo calcoliamo cosi:
+- Grafo non orientato: $|V| + 2|E|$
+![[Pasted image 20250110135330.png|500]]
+- Grafo orientato: $|V| + |E|$
+![[Pasted image 20250110135341.png|500]]
+
+---
+###### Circuito Euleriano
+Un circuito euleriano è un circuito chiuso che passa per ogni ==arco== del grafo esattamente una volta. Un grafo si dice euleriano, se possiede un circuito euleriano.
+> [!EXAMPLE] Esempio
+> ![[Pasted image 20250110140732.png|500]]
+> In questo grafo troviamo un circuito euleriano ovvero: $1-2-3-5-4-3-6-4-1$ 
+
+> [!TIP] 
+> Un qualsiasi grafo $G$ è euleriano se e solo se è connesso ed i suoi vertici hanno tutti grado pari
+
+---
+###### Cammino Euleriano
+Un grafo ammette un cammino euleriano se e solo se è connesso e al massimo due dei suoi vertici hanno grado dispari. In tal caso, i vertici di grado dispari rappresenteranno il punto di inizio e il punto di fine del cammino euleriano.
+> [!EXAMPLE] Esempio
+> ![[Pasted image 20250110141354.png]]
+> Il grafo in figura ha 2 vertici di grado dispari A e C ma possiede un cammino che passa per tutti gli archi una ed una sola volta: A − B − C − D − E − A − C
+
+---
+###### Cammino Hamiltoniano
+Sia $G = (V , E)$ un grafo (digrafo) connesso. 
+Un cammino hamiltoniano di $G$ è un circuito che passa una ed una sola volta per tutti i vertici di $G$. 
+Se il cammino è chiuso, ovvero se è un ciclo, tale ciclo si dice **ciclo Hamiltoniano**. Un grafo si dice hamiltoniano, se possiede un ciclo hamiltoniano.
+![[Pasted image 20250110143230.png]]
+> [!EXAMPLE] Esempio
+> ![[Pasted image 20250110142612.png]]
+> Il grafo A è hamiltoniano, perché possiede il ciclo hamiltoniano $1-5-4-6-3-7-2-1$
+
+---
+###### Grafi pesati
+Per poter usare i grafi come strutture dati abbiamo la necessità di associargli un peso (costo, valore), questi possono essere associati agli archi, ai nodi o ad entrambi
+![[Pasted image 20250110143432.png]]
+Dato un grafo pesato, il costo di un cammino può essere:
+- La somma dei costi associati ai suoi archi, ovvero la somma dei costi di ogni singolo arco che attraversa.
+- La somma dei costi associati ai suoi vertici, ovvero la somma dei costi di ogni singolo vertice che attraversa.
+Da questo ne deduciamo che ci sono cammini che più costosi di altri.
+
+
+> [!EXAMPLE]
+> ![[Pasted image 20250110143659.png]]
+> Nei grafi dell'esempio: il costo del cammino $5 − 4 − 2 − 1$ è:
+> - per il grafo non orientato con peso sugli archi $4 + 1 + 2 = 7$
+> - per il grafo orientato con peso sui vertici: $3 + 1 + 3 + 2 = 9$
+
+> [!TIP]
+> Il cammino con il costo minimo si chiama **shortest path**
+> Il cammino con il costo massimo si chiama **longest path**
+> 
+> Parliamo di cammini perché non abbiamo ripetizioni
+
+---
+###### Rappresentazione dei grafi pesati
+- **Funzione peso sugli archi**: la rappresentazione più semplice per un grafo o digrafo pesato è quella di una matrice, dove però invece di mettere 1 mettiamo il peso dell'arco, e 0 nel caso di un arco mancante.
+  ![[Pasted image 20250110144758.png]]
+- **Funzione peso sui vertici:** La soluzione più semplice è creare una matrice di adiacenza $M$ e ad associargli un vettore $C$ di lunghezza $|V|$ con il peso di ogni vertice
+  ![[Pasted image 20250110145015.png]]
+---
+###### Esercizio completo sui grafi 
+
+==Slide da 111 a 114==
+
+---
+###### Il problema del commesso viaggiatore
+Il problema del commesso viaggiatore anche conosciuto con la sigla TSP è il problema di trovare un circuito hamiltoniano che minimizza il costo totale per un grafo pesato.
+![[Pasted image 20250110145941.png|500]]
+Se un commesso viaggiatore deve attraversare tutti e 4 i nodi, partendo da A e tornando ad A, qual è il percorso che minimizza il costo totale, che supponiamo, per esempio, siano distanze in KM? Possiamo risolvere il problema analizzando tutti i circuiti hamiltoniani
+![[Pasted image 20250110150242.png]]
+Da qui capiamo che ci sono 2 circuiti che il viaggiatore potrebbe usare. All’aumentare dei nodi da attraversare aumenta esponenzialmente il tempo di risoluzione perché si devono banalmente provare più combinazioni. Nessuno ha avuto un idea per risolvere in modo migliore, quindi resta un problema aperto.
+
+---
+###### Grafi planari
+Sia $G = (V,E)$ un grafo non orientato diciamo che è planare se può essere raffigurato in modo che non si abbiano archi che si intersecano.
+![[Pasted image 20250110150820.png]]
+**Teorema di Kuratowski**
+Un grafo è planare se e solo se non contiene alcun sottografo che sia [[04_Parte4#Omeomorfismi|omeomorfo]] a $K_5$ o a $K_{3,3}$ (ricordiamo [[04_Parte4#Grafi bipartiti completi|i grafi bipartiti completi]])
+![[Pasted image 20250110151742.png]]
