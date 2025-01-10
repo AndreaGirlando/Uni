@@ -1,5 +1,7 @@
 Questo file è la rielaborazione delle slide [[02_Memoria.pdf]]
 
+---
+
 La memoria dentro i nostri elaboratori ha una struttura piramidale, più si va in alto in questa piramide più la memoria diventa veloce ma si riduce di dimensione:
 ![[Pasted image 20241012142813.png|500]]
 

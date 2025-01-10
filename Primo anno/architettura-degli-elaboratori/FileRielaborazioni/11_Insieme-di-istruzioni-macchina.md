@@ -1,4 +1,7 @@
 Questo file è la rielaborazione delle slide [[11_Insieme-di-istruzioni-macchina.pdf]]
+
+---
+
 Come ricordiamo dai capitoli passati l'architettura di base di un calcolatore è formata da:
 - **CPU**: esegue istruzioni
 - **Memoria**: contiene il programma che la CPU deve eseguire

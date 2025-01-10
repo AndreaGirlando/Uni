@@ -1,4 +1,7 @@
 Questo file è la rielaborazione delle slide [[10_Circuiti-aritmetici.pdf]]
+
+---
+
 La somma tra due numeri binari avviene in questo modo:
 ![[Pasted image 20241227092441.png]]
 Il **riporto in uscita** della somma precedente viene assegnato come **riporto in entrata** alla somma successiva. Questo tipo di addizioni vengono fatte continuamente all'interno della nostra macchina, e questo viene fatto attraverso gli addizionatori, esistono vari tipi di addizionatore:

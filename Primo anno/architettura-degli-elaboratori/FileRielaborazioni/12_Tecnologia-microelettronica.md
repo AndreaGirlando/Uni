@@ -1,4 +1,6 @@
 Questo file è la rielaborazione delle slide [[12_Tecnologia-microelettronica.pdf]]
+
+---
 ###### Rappresentazione delle variabili binarie
 - Nei circuiti elettronici, i valori binari 0 e 1 sono rappresentati da livelli di tensione.
 - La soglia separa gli 0 dagli 1. Ad esempio, in un sistema a 5V:
