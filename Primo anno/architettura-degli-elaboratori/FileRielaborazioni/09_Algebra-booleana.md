@@ -1,4 +1,7 @@
 Questo file è la rielaborazione delle slide [[09_Algebra-booleana.pdf]]
+
+---
+
 l'algebra booleana della commutazione è un sistema algebrico in cui ogni variabile può assumere solo 2 valori (0 o 1). Possiede $3$ operazioni basilari:
 
 - **Somma logica** o **OR**

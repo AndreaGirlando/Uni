@@ -1,5 +1,7 @@
 Questo file è la rielaborazione delle slide [[06_Livello-software.pdf]]
 
+---
+
 Il processo di programmazione consiste nel seguente paradigma:
 1. Il programmatore scrive il programma in **linguaggio ad alto livello**
 2. Il **compilatore** traduce il linguaggio ad alto in **linguaggio macchina assemblativo**

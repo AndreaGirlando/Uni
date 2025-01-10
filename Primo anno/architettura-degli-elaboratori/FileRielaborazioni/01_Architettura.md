@@ -1,5 +1,6 @@
 Questo file è la rielaborazione delle slide [[01_Architettura.pdf]]
 
+---
 
 Un'**algoritmo** è un insieme finito di istruzioni usate per la risoluzione di un certo lavoro. Quest'ultimo molte volte viene definito come una particolare funzione parziale di una [[#macchina di Turing]] (Alan Turing, matematico britannico) oppure come un programma di una [[#macchina di Von Neumann]] (matematico statunitense).
 
@@ -15,8 +16,10 @@ Un'esempio di elaboratore è il **computer**, il computer è una macchina che co
 - Desktop
 - Tablet/Smartphone
 
-Un qualsiasi computer moderno segue la seguente architettura:
-#### *macchina di Von Neumann*
+Un qualsiasi computer moderno segue l'architettura della macchina di Von Neumann
+
+---
+#### Macchina di Von Neumann
 
 ![[Pasted image 20241004212308.png]]
 Questo tipo di architettura viene chiamata Macchina di Von Neuman (questa è l'architettura alla quale fa riferimento la definizione di algoritmo sopracitata). Di seguito una descrizione di tutti i componenti:
@@ -51,9 +54,11 @@ Come possiamo ben notare un programma eseguibile dalla macchina von Neumann cons
 8. ==**Aggiornamento del contatore**==: Il program counter viene incrementato per puntare all'istruzione successiva.
 9. ==**Ripetizione del ciclo**==: Questo ciclo continua fino a quando non viene incontrata un'istruzione speciale che ferma o altera l'esecuzione, come un'istruzione ALT o un salto condizionato che modifica il flusso del programma. 
 
-Un altro modello di elaboratore dalla quale Von Neumann prese spunto fu:
-#### *macchina di Turing*
+Un altro modello di elaboratore dalla quale Von Neumann prese spunto fu la macchina di Turing
 
+---
+
+##### Macchina di Turing
 Una **macchina di Turing (o MdT)**  è stata inventata da Alan Turing nel 1936. Questo modello è fondamentale nella teoria della computabilità e fornisce una rappresentazione astratta di come funzionano i calcolatori. Formalmente viene definita in questo modo:
 ![[Pasted image 20241005110025.png  |  center]]
 Di seguito una descrizione di tutti i componenti:
@@ -70,6 +75,8 @@ di seguito degli esempi:
 - (1, B, 0, A, >) se si trova nello stato 1 e legge il simbolo B passa allo stato 0 e scrive sul nastro A e si muove di una posizione a destra
 
 È importante sottolineare come l'attenzione di Turing sia rivolta al processo di calcolo, **indipendentemente da come esso avviene fisicamente**. Una M.d.T è un dispositivo ideale, cioè indipendente da ogni sua possibile realizzazione fisica. Una funzione si dice **Tuing-computabile** se almeno una MdT è in grado di computarla con un numero finito di passi. 
+
+---
 ##### Condizioni di finitezza 
 Una MdT per essere tale deve rispettare le condizioni di finitezza che sono:
 - il numero di simboli che usa deve essere fissato e finito
@@ -80,16 +87,18 @@ Una MdT per essere tale deve rispettare le condizioni di finitezza che sono:
 	2. Cambiare le caselle osservate
 	3. Cambiare il proprio stato
 	4. Osservare nuove caselle che si trovano ad una distanza prefissata dalla casella osservata
+
+---
 ##### Macchina di Turing universale
 Se supponiamo di avere una macchina di Turing senza limiti di spazio, di tempo e che non possa commettere errori quest'ultima sarà in grado di calcolare tutte le funzioni calcolabili in ogni singola macchina di Turing, questa macchina la chiamiamo **==Macchina di Turing Universale (MdTU)==**, inoltre deve rispettare sia la condizione di finitezza sopracitata ma anche la condizione di determinatezza spiegata di seguito
+
+---
 ##### Condizione di determinatezza 
 le azioni di una MdTU devono dipendere solo dai simboli contenuti nella casella osservata in quell'instante e dallo "Stato mentale" corrente, cioè da quello che ricorda dei calcoli precedenti
 
 Da tutto questo Turing formula la seguente Tesi: "*ogni funzione parziale calcolabile con un algoritmo è una funzione parziale calcolabile da una macchina di Turing.*" (appunto per questo all'inizio si parla dell'algoritmo come una funzione parziale della macchina di Turing). Questa tesi ci dice che **ogni [[#Funzione parziale]] calcolabile da un algoritmo può essere calcolata da una macchina di Turing**, poiché ogni algoritmo può essere descritto in termini di un insieme finito di regole.
 
 ---
-Ulteriori informazioni:
-
 ##### Bottleneck
 La CPU è progettata per operare a velocità estremamente elevate, elaborando milioni di istruzioni al secondo. Tuttavia, la RAM, sebbene veloce, ha tempi di accesso più lunghi quando la CPU richiede dati o istruzioni deve attendere che questi vengano recuperati dalla RAM. Questo processo di attesa genera un rallentamento, poiché la CPU rimane inattiva in attesa dei dati necessari per continuare l'elaborazione. Per mitigare questo problema, le CPU fanno uso della cache, una memoria più veloce e più vicina al processore, dove vengono conservati i dati e le istruzioni più frequentemente utilizzati. Tuttavia, anche con l'uso della cache, il bottleneck rimane una preoccupazione, specialmente in scenari di carico elevato o quando vengono eseguiti più processi contemporaneamente. In questi casi, se la RAM non è in grado di tenere il passo con le richieste della CPU, si crea un rallentamento significativo, influenzando negativamente l'efficienza complessiva del sistema. 
 

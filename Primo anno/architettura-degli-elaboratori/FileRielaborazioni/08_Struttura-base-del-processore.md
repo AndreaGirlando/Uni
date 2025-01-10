@@ -1,5 +1,7 @@
 Questo file è la rielaborazione delle slide [[08_Struttura-base-del-processore.pdf]]
 
+---
+
 La CPU è un circuito elettronico integrato che ha il ruolo di cervello del calcolatore, e capace di eseguire istruzioni elementari necessarie per eseguire i programmi. É formato da diversi componenti:
 - La **ALU** (Unità logico-aritmetica): esegue le operazioni aritmetiche e logiche necessarie ad eseguire un programma
 - **CU** (Control Unit): genera i bit di controllo per gestire il funzionamento della CPU

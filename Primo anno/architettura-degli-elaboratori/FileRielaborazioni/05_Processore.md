@@ -1,5 +1,7 @@
 Questo file è la rielaborazione delle slide [[05_Processore.pdf]], approfondimento con codice assembly qui: [[08_Struttura-base-del-processore]]
 
+---
+
 Un processore è un singolo circuito integrato in grado di effettuare operazioni decisionali, di solito viene indicato con la sigla CPU (Central Processing Unit), il processore viene concettualmente diviso in 3 unità funzionali:
 - **UC** (Control Unit): si affaccia sul [[03_Bus |bus]] e lo arbitra impostando i valori nelle linee ABus, DBus e CBus 
 - **Registri**: sono delle memorie di lavoro dove vengono conservati i dati presi dall'UC sul bus per poi poterli far usare dalla ALU durante l'esecuzione
@@ -8,7 +10,7 @@ Un processore è un singolo circuito integrato in grado di effettuare operazioni
 Ogni processore viene progettato con un set di istruzioni specifico denominato ISA (**Instruction Set Architecture**) o IS (**Instruction Set**), ogni istruzione dell'ISA è contraddistinta da un numero specifico denominato **Operation Code(OP)** ad ogni OP si associa una breve descrizione in lingua naturale che ne ricorda la funzione. 
 
 L'ALU, i registri e molti bus costituiscono il **data path**, che si presenta in questo modo:
-![[Pasted image 20241109164814.png]]
+![[Pasted image 20241109164814.png|500]]
 Le istruzioni che devono essere usate dalla ALU, vengono caricate nei registri di input (che solitamente sono 2), la ALU fornisce il suo risultato nel registro di output (che solitamente è 1), infine il risultato verrà memorizzato nei registri, quello appena descritto è il ciclo del data path, ovvero la sequenza di passaggi che il computer esegue per eseguire un'operazione tramite la ALU (corrisponde alla fase di execute del ciclo macchina) ^73f111
 
 In base al tipo di Instruction set vengono definiti vari tipi di processore
