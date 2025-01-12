@@ -390,7 +390,35 @@ Da questo ne deduciamo che ci sono cammini che più costosi di altri.
 ---
 ###### Esercizio completo sui grafi 
 
-==Slide da 111 a 114==
+**Sapendo che:** Le seguenti coppie di città sono collegate da una linea aerea, che fornisce un servizio di A/R:
+- Parigi-New York
+- Parigi-Roma
+- New York-Rio de Janeiro
+- Roma-Londra
+- Parigi-Londra
+- Rio de Janeiro-Madrid
+- Madrid-Parigi
+- Madrid-Londra
+**Rispondi alle seguenti domande:**
+1. Qual è la strada più breve (numero di scali) da NY a Roma?
+2. Quella più lunga?
+3. Trovare (se esiste) un cammino che tocchi tutte le città, ossia un cammino hamiltoniano.
+4. Trovare (se esiste) un ciclo che tocchi tutte le città, ossia un ciclo hamiltoniano.
+5. Trovare (se esiste) un ciclo euleriano, ossia che percorre tutte le tratte una sola volta.
+6. Il grafo è k-connesso? Se si, qual è il valore massimo di k?
+
+**Rappresentazione del grafo:**
+![[Pasted image 20250111112952.png]]
+
+**Risposte alle domande:**
+1. NY-PG-RM
+2. NY-RJ-MD-LN-PG-RM
+3. Si questo: NY-RJ-MD-LN-PG-RM
+4. RM-PG-NY-RJ-MD-LN-RM
+5. La trovi sotto
+6. Il grado minimo di ogni vertice è 2 e quindi il grafo è 2-connesso
+
+**Risposta alla domanda 5**: Il Teorema di Eulero ci dice che un grafo ha un ciclo euleriano se e solo se tutti i vertici hanno grado pari. I vertici LN e MD hanno grado dispari quindi la risposta è no. Però sono solo 2 i vertici di grado dispari e quindi possiamo utilizzare l’altro teorema di Eulero che ci dice che possiamo trovare un cammino euleriano che comincia da uno dei due vertici e finisce nell’altro. Ecco il cammino: LN-PG-NY-RJ-MD-PG-RM-LN-MD ^81d618
 
 ---
 ###### Il problema del commesso viaggiatore
@@ -407,3 +435,104 @@ Sia $G = (V,E)$ un grafo non orientato diciamo che è planare se può essere raf
 **Teorema di Kuratowski**
 Un grafo è planare se e solo se non contiene alcun sottografo che sia [[04_Parte4#Omeomorfismi|omeomorfo]] a $K_5$ o a $K_{3,3}$ (ricordiamo [[04_Parte4#Grafi bipartiti completi|i grafi bipartiti completi]])
 ![[Pasted image 20250110151742.png]]
+**Criteri più semplici**
+Se $G = (V,E)$ è un grafo connesso e planare se $|V| \ge 3$ allora $|E| \le 3 |V|-6$ 
+**oppure**
+Se $G = (V,E)$ è un grafo connesso e planare se $|V| \ge 3$ e non ci sono cicli di lunghezza 3 allora  $|E| \le 3 |V|-4$ 
+
+---
+###### Formula di Eulero
+Se prendiamo un grafo planare e lo disegniamo sul piano possiamo individuare le **facce** ovvero il numero di regioni chiuse delimitate da archi del grafo (dobbiamo contrare anche la regione esterna, quella infinita).
+![[Pasted image 20250111093757.png]]
+
+> [!TIP] Formula di Eulero
+> Se indichiamo con:
+> - $v$ il numero di vertici
+> - $e$ il numero di archi
+> - $f$ è il numero di facce
+> 
+>vale la seguente formula: $v-e+f = 2$ dalla quale possiamo ricavare le formule inverse:
+> $v = e-f+2$
+> $f = e-v+2$
+> $e = v+f-2$
+
+---
+###### Dimostrazioni vari teoremi
+**Teorema**
+Sia $G = (V , E)$ un grafo connesso con $|V | ≥ 3$. Supponiamo che $δ(v ) ≥ 2$ per ogni $v$. Allora $G$ possiede un ciclo.
+**Dimostrazione**
+Ordiniamo i vertici e chiamiamoli $v_1, v_2, . . . , v_n$ con $n = |V| ≥ 3$. Partiamo da v_1 e costruiamo il cammino più lungo possibile senza ripetizioni di vertici, supponiamo che il cammino più lungo senza ripetizioni sia $v_1, v_2, . . . , v_k$, dal vertice $v_k$ possiamo ancora raggiungere un altro vertice, dato il grado di almeno 2, dato che ci siamo fermati vuol dire che possiamo raggiungere solo un vertice già visto il che dimostra l'esistenza di un ciclo
+
+---
+**Teorema**
+Sia $G = (V , E)$ un grafo connesso e aciclico. Allora $|E| = |V | − 1$
+**Dimostrazione**
+Il teorema è banalmente vero se $|V|\le2$. Supponiamo allora $|V| \ge 3$, essendo il grafo connesso ed aciclico deve esiste un vertice di grado $1$ altrimenti il grafo avrebbe un ciclo, prendiamo questo vertice $v$ e l'arco ad esso incidente il grafo e li rimuoviamo, il grafo indotto $V \backslash \{ v\}$ è connesso ed aciclico altrimenti dovremmo avere 2 vertici, $u, w$ che sono connessi solo da un cammino passante per $v$ ma ciò implicherebbe che $v$ ha grado maggiore di $1$ e quindi per induzione ha $|E| = |V| - 2$. Aggiungendo $v$ e l'arco ad esso incidente, abbiamo quindi che $|E| = |V|-1$
+
+---
+**Teorema**
+Sia $G = (V , E)$ un grafo planare connesso, con $v$ vertici, $e$ archi e $f$ facce. Allora $v − e + f = 2$
+**Dimostrazione**
+Se il grafo possiede un ciclo, allora togliamo uno degli archi che completa tale ciclo, il numero di archi e di facce si abbassa allora di una unità e quindi la quantità $v − e + f$ rimane invariata. Ripetiamo tali sottrazioni di archi, sino a quando non eliminiamo tutti i cicli dall’albero, a questo punto avremo un grafo connesso ed aciclico con $e = v-1$ con $f=1$ visto che non ci sono cicli. Quindi $v-e+f = 2$
+
+---
+###### Grafi planari massimali o triangolare
+Un grafo planare si dice massimale (o triangolare), se è planare e se aggiungendo un nuovo arco ad una qualunque coppia di vertici il grafo non è più planare. Ogni sua faccia è racchiusa da 3 archi. Dunque un grafo planare massimale ha $3v – 6$ archi e $2v – 4$ facce.
+![[Pasted image 20250111101935.png]]
+
+---
+###### Colorazione di un grafo
+Colorare un grafo vuol dire assegnare un colore ad ogni vertice in maniera tale che due vertici collegati da un arco abbiano colori distinti, un grafo è k-colorabile se è possibile colorare i suoi vertici rispettando il vincolo appena descritto usando al più $k$ colori. Il numero cromato di un grafo è denotato con $χ(G)$
+![[Pasted image 20250111102250.png|500]]
+Per un grafo completo con $n$ vertici, in cui ogni nodo è collegato ad ogni altro nodo, avremo bisogno di $n$ colori distinti, in figura possiamo vedere una colorazione di $K_5$
+![[Pasted image 20250111102608.png|500]]
+Per un grafo bipartito basterà usare 2 colori diversi, uno per $V_1$ e uno per $V_2$ come di seguito
+![[Pasted image 20250111102741.png]]
+Per un grafo con un semplice ciclo con $n$ vertici ci basterà usare:
+- **n pari**: Possiamo usare sempre 2 colori diversi
+  ![[Pasted image 20250111102843.png]]
+- **n dispari**: Possiamo usare $2 + n \mod 2$ colori diversi
+  ![[Pasted image 20250111103123.png]]
+
+---
+###### Teorema di Brooks
+Una colorazione ottimale di un grafo $G$ è una colorazione dei vertici di $G$ che usa il numero minimo possibile di colori, ossia $χ(G)$. 
+**Teorema**
+Sia $G = (V,E)$ un grafo connesso con $n$ vertici $\delta_1 \ge \delta_2 \ge ... \ge \delta_n$ i gradi dei vertici del grafo in ordine crescente. Allora $χ(G) ≤ δ_1 + 1$ 
+**Dimostrazione**
+Il Teorema si può facilmente dimostrare per induzione. Se togliamo infatti il vertice di grado maggiore $v_1$, rimaniamo con un grafo con un vertice in meno e colorabile, per ipotesi induttiva, con al più $δ_2 + 1 ≤ δ_1 + 1$ colori. Quando aggiungiamo il vertice tolto, il caso peggiore è che i $δ_1$ vertici a lui connessi, siano tutti di colore diverso e quindi gli dobbiamo dare il colore rimasto dei $δ_1 + 1$.
+
+---
+###### Teorema di Brooks (versione forte)
+Sia $G = (V , E)$ un grafo connesso con n vertici, e siano $δ_1 ≥ δ_2 ≥ · · · ≥ δ_n$ i gradi dei vertici del grafo in ordine decrescente. Se $G$ non è un grafo completo e $G$ non è un ciclo semplice con numero dispari di vertici, allora $χ(G) ≤ δ_1$
+
+---
+###### Teorema dei 4 colori
+Sia $G = (V , E)$ un grafo planare, allora $χ(G) ≤ 4$.
+
+---
+###### Albero libero
+Un albero libero (che di solito indichiamo con $T$) è un grafo $G = (V,E)$ connesso e aciclico, questo ha esattamente $|V| - 1$ archi, inoltre essendo connesso ogni vertice ha grado almeno $1$ e deve esistere almeno un vertice di grado $1$ altrimenti avrebbe un ciclo.
+![[Pasted image 20250111111522.png]]
+- Se $T$ ha un vertice allora questi si chiamano **vertici terminali**
+- Se $T$ ha più di 2 vertici, i vertici di grado 1 sono detti **terminali o foglie**, mentre i vertici di grado maggiore di 1 sono detti **vertici interni** (il grafo sopra ha 6 foglie e 3 vertici interni)
+---
+###### Foresta
+Una foresta è un insieme di uno o più alberi quindi un grafo $G = (V,E)$ aciclico ma non necessariamente connesso. Ogni componente connessa del grafo è un albero della foresta.
+- Se $T$ ha solo 1 o 2 vertici allora tutti i vertici sono detti **Terminali**
+- Se $T$ ha più di 2 vertici, i vertici di grado 1 sono detti foglie, mentre i vertici di grado maggiore sono detti vertici interni
+Di seguito un grafo con 6 foglie e 3 nodi interni:
+![[Pasted image 20250111112219.png]]
+
+---
+###### Alberi radicati
+Dato un albero $T$ se scegliamo un nodo come radice e immaginiamo di impiantarlo con un chiodo per gravità tutti gli altri nodi cadono, così otteniamo un albero radicato
+![[Pasted image 20250111112405.png]]
+Dato un albero radicato:
+- l'altezza è la lunghezza del cammino più lungo
+- Il fattore di ramificazione dell’albero è il numero massimo di figli che ognuno dei nodi ha
+- I nodi sottostanti un nodo e collegato con esso sono i **nodi figli** invece il nodo sovrastante è chiamato **nodo padre**
+![[Pasted image 20250111112642.png]]
+---
+
+# `Problemi combinatori sui grafi`

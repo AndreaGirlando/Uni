@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "26f464d48435169b",
+        "id": "687b38c546d5cd73",
         "type": "tabs",
         "children": [
           {
-            "id": "8ae2ef04fba00527",
+            "id": "acc0eb5c18b35da6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/07_Pipelining.md",
+                "file": "Primo anno/strutture-discrete/FileRielaborazioni/Sunto.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07_Pipelining"
+              "title": "Sunto"
             }
           }
         ]
@@ -43,7 +43,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-folder-closed",
-              "title": "Esplora risorse"
+              "title": "Files"
             }
           },
           {
@@ -111,12 +111,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/07_Pipelining.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Collegamenti in uscita da 07_Pipelining"
+              "title": "Collegamenti in uscita"
             }
           },
           {
@@ -137,11 +136,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/07_Pipelining.md"
-              },
+              "state": {},
               "icon": "lucide-list",
-              "title": "Struttura di 07_Pipelining"
+              "title": "Struttura"
             }
           },
           {
@@ -150,8 +147,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
             }
           }
         ],
@@ -164,18 +161,49 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Apri selezione rapida": false,
-      "graph:Apri vista grafo": false,
-      "canvas:Crea nuova lavagna": false,
-      "daily-notes:Apri nota del giorno": false,
-      "templates:Inserisci modello": false,
-      "command-palette:Apri riquadro comandi": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
       "vscode-editor:Create Code File": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8ae2ef04fba00527",
+  "active": "acc0eb5c18b35da6",
   "lastOpenFiles": [
+    "Primo anno/strutture-discrete/Esempi di esercizi.md",
+    "Primo anno/strutture-discrete/FileRielaborazioni/Sunto.md",
+    "Primo anno/strutture-discrete/FileRielaborazioni/01_Parte1.md",
+    "Primo anno/programmazione-1/C/Esercizi/listeConcatenate/orderedString_linked_list.c",
+    "Primo anno/strutture-discrete/FileCondivisiTeams/01_Parte1.pdf",
+    "Primo anno/strutture-discrete/FileRielaborazioni/Tips.md",
+    "Primo anno/strutture-discrete/FileCondivisiTeams/04_Parte4.pdf",
+    "Primo anno/strutture-discrete/FileCondivisiTeams/03_Parte3.pdf",
+    "Primo anno/strutture-discrete/FileCondivisiTeams/02_Parte2.pdf",
+    "Primo anno/strutture-discrete/FileCondivisiTeams/00_Parte0.pdf",
+    "Primo anno/programmazione-1/FileCondivisiTeams/ProveDiLaboratorioSvolte.pdf",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/10-01-2023/prova.pdf",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/10-01-2023",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/Nuova cartella",
+    "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
+    "Primo anno/Imgs/Pasted image 20250111112952.png",
+    "Primo anno/Imgs/Pasted image 20250111112642.png",
+    "Primo anno/Imgs/Pasted image 20250111112405.png",
+    "Primo anno/Imgs/Pasted image 20250111112219.png",
+    "Primo anno/Imgs/Pasted image 20250111111522.png",
+    "Primo anno/strutture-discrete/Esercizi/Da fare.md",
+    "Primo anno/Imgs/Pasted image 20250111111147.png",
+    "Primo anno/Imgs/Pasted image 20250111111143.png",
+    "Primo anno/Imgs/Pasted image 20250111103123.png",
+    "Primo anno/Imgs/Pasted image 20250111102843.png",
+    "Primo anno/Imgs/Pasted image 20250111102741.png",
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/11_Insieme-di-istruzioni-macchina.md",
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/10_Circuiti-aritmetici.md",
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/09_Algebra-booleana.md",
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/08_Struttura-base-del-processore.md",
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/07_Pipelining.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/06_livello_software.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/05_Processore.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/04_InputOutput.md",
@@ -183,43 +211,12 @@
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/02_Memoria.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/01_Architettura.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/12_Tecnologia-microelettronica.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/11_Insieme-di-istruzioni-macchina.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/10_Circuiti-aritmetici.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/09_Algebra-booleana.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/08_Struttura-base-del-processore.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/07_Pipelining.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
-    "Primo anno/Imgs/Pasted image 20250110144758.png",
-    "Primo anno/Imgs/Pasted image 20250110145015.png",
-    "Primo anno/strutture-discrete/FileCondivisiTeams/04_Parte4.pdf",
-    "Primo anno/Imgs/Pasted image 20250110151742.png",
-    "Primo anno/Imgs/Pasted image 20250110150820.png",
-    "Primo anno/Imgs/Pasted image 20250110150242.png",
-    "Primo anno/Imgs/Pasted image 20250110145941.png",
-    "Primo anno/Imgs/Pasted image 20250110131540.png",
-    "Primo anno/strutture-discrete/Esercizi/Da fare.md",
-    "Primo anno/Imgs/Pasted image 20250110144302.png",
-    "Primo anno/Imgs/Pasted image 20250110143659.png",
-    "Primo anno/Imgs/Pasted image 20250110143432.png",
-    "Primo anno/strutture-discrete/Esempi di esercizi.md",
-    "Primo anno/programmazione-1/C/LAB05/__MACOSX",
-    "Primo anno/programmazione-1/C/LAB05/12_fig07_11.c",
-    "Primo anno/programmazione-1/C/LAB05/11_dynamic_allocation.c",
-    "Primo anno/programmazione-1/C/LAB05/10_fig07_14.c",
-    "Primo anno/programmazione-1/C/LAB05/09_fig07_12.c",
-    "Primo anno/programmazione-1/C/LAB05/08_fig07_06.c",
-    "Primo anno/programmazione-1/C/LAB05/07_fig07_03.c",
-    "Primo anno/programmazione-1/C/LAB05/04_fig06_15.c",
-    "Primo anno/programmazione-1/C/LAB05/05_fig06_17.c",
     "Uni To-Do.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/01_Parte1.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3Teoria.md",
     "Primo anno/architettura-degli-elaboratori/Link.md",
     "Primo anno/Imgs/UnisciNote.md",
-    "Primo anno/Imgs/Senza nome.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/05_Processore.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/singoli/12_Tecnologia-microelettronica.md"
+    "Primo anno/Imgs/Senza nome.md"
   ]
 }

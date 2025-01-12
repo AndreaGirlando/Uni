@@ -10,7 +10,7 @@ Come ricordiamo dai capitoli passati l'architettura di base di un calcolatore è
   
 Il calcolatore esegue le **istruzioni** in modo **sequenziale**, le istruzioni definiscono le operazioni da eseguire e sono raggruppate in **programmi**, le varie operazioni hanno bisogno di **dati** che vengono immagazzinati nella memoria, l'utente interagisce con il programma attraverso le periferiche di input/output.
 
-##### Ciclo macchina
+###### Ciclo macchina
 I passi elementari per eseguire un'istruzione sono:
 - **Prelievo:** viene prelevata la prossima istruzione da eseguire dalla memoria
 - **Decodifica:** decodifica dell'istruzione

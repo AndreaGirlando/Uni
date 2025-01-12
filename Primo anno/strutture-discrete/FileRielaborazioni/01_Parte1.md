@@ -291,7 +291,7 @@ Proprietà dell'insieme delle parti:
 ---
 ##### Diagramma di Venn di famiglie di insiemi
 Data una famiglia di $n$ insiemi detta $F$, le regioni del diagramma di Venn sono $2^n$. Una famiglia di insiemi con un numero infinito di elementi è una ***famiglia infinita***. Se invece ha un numero finito di elementi allora è una ***famiglia infinita***.
-- Sia $F$ = {P, D} dove P è l’insieme dei numeri pari (infinito) e D è l’insieme dei numeri dispari (infinito). La famiglia F è una famiglia finita di insiemi.
+- Sia $F$ = ${P, D}$ dove P è l’insieme dei numeri pari (infinito) e D è l’insieme dei numeri dispari (infinito). La famiglia F è una famiglia finita di insiemi.
 - Sia $F$ = {$P_1$, $P_2$, $P_3$, . . .} dove $P_i$ = {$2^1$, · · · , $2^i$ }. La famiglia è infinita, ma tutti i suoi elementi sono insiemi finiti.
 Le operazioni di unione ed intersezione si possono estendere alle famiglie infinite. 
 
@@ -369,7 +369,7 @@ Consideriamo 2 elementi $x$ e $y$. Creiamo una coppia ordinata dove il primo ele
 - $(x, y)$ = $(x′, y′)$ se e solo se $x = x′$ e $y = y′$
   
 > [!DANGER]
-> la coppia $(x, y)$ è diversa dall’insieme ${x, y}$ costituito dagli elementi $x$ e $y$
+> la coppia $(x, y)$ è diversa dall’insieme $\{x, y\}$ costituito dagli elementi $x$ e $y$
 
 ----
 ##### Insieme prodotto
@@ -396,7 +396,7 @@ Con questa nuova definizione, il paradosso svanisce. Se proviamo a chiedere se $
 # `Relazioni e funzioni`
 
 ##### Relazioni
-Sia $U$ un insieme non vuoto. Con il termine relazione indichiamo un insieme formato in questo modo: (per capire meglio questo insieme guarda: [[#Insieme prodotto]])
+Sia $U$ un insieme non vuoto. Con il termine relazione indichiamo un insieme formato in questo modo:
 - $R ⊆ U × U$ ovvero $\{(x, y) \in U \times U : R(x, y)\}$ cioè un insieme formato da tutte le coppie che rendono vera la relazione, questo insieme viene chiamato ***grafico della relazione***
 
 > [!EXAMPLE] Esempio
@@ -413,9 +413,10 @@ Una relazione $f$ definita su $A × B$ si dice funzione da $A$ (dominio) in $B$ 
 - $f : A × B → A$ tale che per ogni $(x, y)$ $f(x, y)$ = $x$ si dice **proiezione canonica** su $A$.
 - $f : A × B → B$ tale che per ogni $(x, y)$ $f(x, y)$ = $y$ si dice **proiezione canonica** su $B$.
 
-Data la funzione $f : A → B$ e anche un sottoinsieme di $A$ chiamato $X$ si dice ***immagine di X*** il sottoinsieme di $B$ costituito dagli elementi che provengono da $X$. Questo insieme si indica con $f(X)$ e anche con la seguente definizione:
-- $f(X) = \{y: y \in B \land (\exists x \in X) (f(x) = y)\}$  L'immagine di $X$ è l'insieme di tutti gli $y$ appartenenti a $B$ tali che esiste un $x$ appartenente a $X$ per cui $f(x)$ è uguale a $y$
-$F(A)$ si dirà ***immagine dell'applicazione f***, ovvero tutti i possibili valori che la funzione può assumere. ^329b13
+Data una funzione $f: A \to B$ e un sottoinsieme $X \subseteq A$, si definisce **immagine di $X$** il sottoinsieme di $B$ formato da tutti gli elementi di $B$ che sono immagini di almeno un elemento di $X$ attraverso $f$. L'immagine di $X$ si indica con $f(X)$ ed è definita formalmente come:  $f(X) = \{ y \in B \;|\; \exists x \in X \; \text{tale che} \; f(x) = y \}.$ $f(X)$ è l'insieme di tutti gli $y \in B$ per cui esiste almeno un $x \in X$ tale che $f(x) = y$.
+
+Inoltre, l'insieme $f(A)$, cioè l'immagine dell'intero dominio $A$, è chiamato **immagine dell'applicazione $f$**. Questo insieme rappresenta tutti i valori che la funzione può assumere e si scrive come:  $f(A) = \{ y \in B \;|\; \exists x \in A \; \text{tale che} \; f(x) = y \}.$
+
 
 ---
 ###### Funzione iniettiva:
@@ -472,7 +473,7 @@ La cardinalità di un insieme è definita come il numero di elementi che apparte
 
 ---
 ##### Proprietà delle relazioni
-Sia dato un insieme U diremo che una relazione $R(x, y)$ definita in $U×U$ è:
+Sia dato un insieme $U$ diremo che una relazione $R(x, y)$ definita in $U×U$ è:
 - ***Riflessiva***: se $∀x∈U$ risulta vero che $R(x, x)$.
 > [!EXAMPLE] Esempi
 > R = { (1,1), (2,2) } è riflessivo
@@ -535,8 +536,8 @@ Individuato l'insieme quoziente (che denotiamo con $U/R$), l'applicazione $U →
 
 Di seguito delle definizioni:
 
-1. Si dice che una relazione binaria si ***antisimmetrica*** se:
-	- $∀x, ∀y ∈ U$ si ha che: $(R(x, y) e R(y, x)) → x = y$. il sussistere di entrambe le relazioni $R(x, y)$ e $R(y, x)$ è possibile solo quando $x$ e $y$ coincidono.
+1. Si dice che una relazione binaria sia ***antisimmetrica*** se:
+	- $∀x, ∀y ∈ U$ si ha che: $(R(x, y)$ e $R(y, x)) → x = y$. il sussistere di entrambe le relazioni $R(x, y)$ e $R(y, x)$ è possibile solo quando $x$ e $y$ coincidono.
 2. Si dice ***preordinamento*** una relazione binaria assegnata in un insieme che goda della proprietà riflessiva e transitiva. Un insieme $U$ su cui è definita un relazione di pre-ordine si dice pre-ordinato. 
 3. Si dice ***ordinata*** una relazione binaria assegnata in un insieme che goda della proprietà riflessiva, transitiva e antisimmetrica. Un insieme $U$ su cui è definita un relazione d’ordine si dice ordinato.
 
