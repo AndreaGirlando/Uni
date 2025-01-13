@@ -4,7 +4,53 @@
     "type": "split",
     "children": [
       {
-        "id": "687b38c546d5cd73",
+        "id": "d35a9ca4af168cb4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "13ff01301c41005d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "02_Parte2"
+            }
+          },
+          {
+            "id": "ed71da79d383b472",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Primo anno/strutture-discrete/FileCondivisiTeams/02_Parte2.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "02_Parte2"
+            }
+          },
+          {
+            "id": "d2e9dc0ff4bb64d8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Primo anno/strutture-discrete/Esempi di esercizi.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Esempi di esercizi"
+            }
+          }
+        ]
+      },
+      {
+        "id": "d8cd5e8980adbffd",
         "type": "tabs",
         "children": [
           {
@@ -19,6 +65,32 @@
               },
               "icon": "lucide-file",
               "title": "Sunto"
+            }
+          },
+          {
+            "id": "b1d9f69e7bfaef3c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "04_Parte4"
+            }
+          },
+          {
+            "id": "23fd7ac50393b55f",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Primo anno/strutture-discrete/FileCondivisiTeams/01_Parte1.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "01_Parte1"
             }
           }
         ]
@@ -77,7 +149,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5
+    "width": 413.5,
+    "collapsed": true
   },
   "right": {
     "id": "abf359470799e113",
@@ -173,6 +246,15 @@
   },
   "active": "acc0eb5c18b35da6",
   "lastOpenFiles": [
+    "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
+    "Primo anno/strutture-discrete/FileRielaborazioni/Sunto.md",
+    "Pasted image 20250113180306.png",
+    "Pasted image 20250113180305.png",
+    "Primo anno/strutture-discrete/FileCondivisiTeams/02_Parte2.pdf",
+    "Primo anno/strutture-discrete/Esempi di esercizi.md",
+    "Primo anno/strutture-discrete/FileCondivisiTeams/01_Parte1.pdf",
+    "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
+    "Sunto.pdf",
     "Primo anno/architettura-degli-elaboratori/Assembly/AppuntiLaboratorio/PilaEs1.s",
     "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.2-Algebra Booleana.pdf",
     "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.1-Algebra Booleana.pdf",
@@ -180,15 +262,8 @@
     "Primo anno/architettura-degli-elaboratori/Assembly/4.0-Pila/2.3-IstruzioniMacchina.pdf",
     "Primo anno/architettura-degli-elaboratori/Assembly/4.0-Pila",
     "Primo anno/architettura-degli-elaboratori/Assembly/2.3-IstruzioniMacchina/2.3-IstruzioniMacchina.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/2.3-IstruzioniMacchina/esempioPila.s",
-    "Primo anno/architettura-degli-elaboratori/Assembly/2.3-IstruzioniMacchina",
-    "Primo anno/strutture-discrete/Esempi di esercizi.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/Sunto.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/01_Parte1.md",
-    "Primo anno/programmazione-1/C/Esercizi/listeConcatenate/orderedString_linked_list.c",
-    "Primo anno/strutture-discrete/FileCondivisiTeams/01_Parte1.pdf",
     "Primo anno/strutture-discrete/FileRielaborazioni/Tips.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
     "Primo anno/Imgs/Pasted image 20250111112952.png",
     "Primo anno/Imgs/Pasted image 20250111112642.png",
     "Primo anno/Imgs/Pasted image 20250111112405.png",
@@ -198,8 +273,6 @@
     "Primo anno/Imgs/Pasted image 20250111111147.png",
     "Primo anno/Imgs/Pasted image 20250111111143.png",
     "Primo anno/Imgs/Pasted image 20250111103123.png",
-    "Primo anno/Imgs/Pasted image 20250111102843.png",
-    "Primo anno/Imgs/Pasted image 20250111102741.png",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/11_Insieme-di-istruzioni-macchina.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/10_Circuiti-aritmetici.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/09_Algebra-booleana.md",
@@ -213,7 +286,6 @@
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/01_Architettura.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/12_Tecnologia-microelettronica.md",
     "Uni To-Do.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3Teoria.md",
     "Primo anno/architettura-degli-elaboratori/Link.md",

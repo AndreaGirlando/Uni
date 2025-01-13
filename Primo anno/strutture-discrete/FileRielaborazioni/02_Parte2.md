@@ -352,10 +352,10 @@ Fissato un intero m > 1 le sue classi di equivalenza sono: $[0]_m, [1]_m, [2]_m,
 **Dimostrazione**
 Sia $a ∈ Z$ e sia $r$ il resto della divisione intera di $a$ per $m$, ovvero, applicando l’algoritmo di divisione
 - $a = qm + r$ con $0 ≤ r < m$.
-Dal momento che $a − r = qm$ abbiamo che $a ≡ r (mod m)$. Quindi, dal momento che $r$ può assumere solo i valori che vanno da $0$ a $m − 1$ le classi di equivalenza sono solo quelle dell’enunciato del teorema.
+Dal momento che $a − r = qm$ abbiamo che $a ≡ r (\mod m)$. Quindi, dal momento che $r$ può assumere solo i valori che vanno da $0$ a $m − 1$ le classi di equivalenza sono solo quelle dell’enunciato del teorema.
 
 **Dimostrazione che le classi sono distinte**
-Ragioniamo per assurdo e supponiamo che esistano $x, y ∈ Z$, $x \not= y$ e $0 ≤ x$, $y < m -1$ tali che $[x]_m$ = $[y]_m$ . Senza perdita di generalità supponiamo che $x > y$. Dall’ipotesi possiamo scrivere $x − y = km$ cioè $x − y$ è un multiplo di $m$. Da $0 ≤ x, y < m − 1$ e $x > y$ segue che $0 < x − y < m − 1$, che è una contraddizione visto che non esistono multipli di m in tra $0$ e $m − 1$.
+Ragioniamo per assurdo e supponiamo che esistano $x, y ∈ Z$, $x \not= y$ e $0 ≤ x$, $y < m -1$ tali che $[x]_m$ = $[y]_m$ . Senza perdita di generalità supponiamo che $x > y$. Dall’ipotesi possiamo scrivere $x − y = km$ cioè $x − y$ è un multiplo di $m$. Da $0 ≤ x, y < m − 1$ e $x > y$ segue che $0 < x − y < m − 1$, che è una contraddizione visto che non esistono multipli di $m$ in tra $0$ e $m − 1$.
 
 Sia $m = 5$ (congruenza modulo $5$). Le classi resto modulo $5$ sono $[0]_5, [1]_5, [2]_5, [3]_5, [4]_5.$
 
@@ -387,7 +387,7 @@ Dato $m \in N$ e dati $a,b \in Z$ tali che $a \equiv b \pmod{m}$ allora prendend
 Ipotizziamo che per ipotesi esistono $k_1$,$k_2$ tale che $a-b = k_1m$ e $c-d =k_2m$, da questo possiamo dimostrare che:
 1. $(a+c) - (b+d) = (a-b) + (c-d) = (k_1$ + $k_2$)m (da questo capiamo che qualsiasi sia l'ordine delle lettere avremo sempre dei multipli di m)
 2. Abbiamo $a = b+k_1m$ e $c = d + k_2m$ quindi $ac-bd = (b + k_1m)(d + k_2m) - bd = bk_2m+dk_1m+k_1k_2m^2 = (bk_2 + dk_1 + k_1k_2m)m$
-	- **Come si arriva a questa conclusione?**
+- **Come si arriva a questa conclusione?**
 		1. **Sfruttiamo le ipotesi:** Ricordiamo che per ipotesi abbiamo:
 		    - $a ≡ b (\mod m),$ quindi $a = b + k₁m$
 		    - $c ≡ d (\mod m),$ quindi $c = d + k₂m$
@@ -430,9 +430,7 @@ Come conseguenze del punto 2 abbiamo:
 **Teorema**:
 - Per ogni $m \in N, m>1$ , prendendo una qualunque sequenza di m interi questa contiene un intero divisibile per m
 **Dimostrazione:**
-Consideriamo allora m interi consecutivi, dove il più piccolo è n, Come abbiamo già dimostrato, le classi di equivalenza della relazione di congruenza modulo m sono $[0]_m , [1]_m , [2]_m , . . . [m − 1]_m$ , il nostro numero $n$ si trova in una di queste classi di equivalenza, supponiamo stia nella classe $[i]_m$ per $0 ≤ i ≤ m − 1$. Quindi n ≡ i(mod m) ed allora $n + 1 ≡ i + 1(\mod m)$ ovvero $n + 1 ∈ [i + 1]m$
-**Dimostrazione cont.**
-Notiamo allora che se $i = 0$ ovvero $n ∈ [0]_m$ abbiamo dimostrato il teorema. Se invece $i > 0$, visto che $0 < i < m$ incrementando $i$ esattamente $m − i$ volte, con $m − i < m$ otteniamo che n + (m − i) ≡ i + (m − i)(mod m) ossia $n + (m − i) ≡ m(\mod m) ≡ 0(\mod m)$. In conclusione, $n + (m − i)$ è il numero multiplo di $m$ nella sequenza di $m$ numeri consecutivi.
+Consideriamo allora $m$ interi consecutivi, dove il più piccolo è $n$, Come abbiamo già dimostrato, le classi di equivalenza della relazione di congruenza modulo $m$ sono $[0]_m , [1]_m , [2]_m , . . . [m − 1]_m$ , il nostro numero $n$ si trova in una di queste classi di equivalenza, supponiamo stia nella classe $[i]_m$ per $0 ≤ i ≤ m − 1$. Quindi $n ≡ i(\mod m)$ ed allora $n + 1 ≡ i + 1(\mod m)$ ovvero $n + 1 ∈ [i + 1]m$. Notiamo allora che se $i = 0$ ovvero $n ∈ [0]_m$ abbiamo dimostrato il teorema. Se invece $i > 0$, visto che $0 < i < m$ incrementando $i$ esattamente $m − i$ volte, con $m − i < m$ otteniamo che $n + (m − i) ≡ i + (m − i)(\mod m)$ ossia $n + (m − i) ≡ m(\mod m) ≡ 0(\mod m)$. In conclusione, $n + (m − i)$ è il numero multiplo di $m$ nella sequenza di $m$ numeri consecutivi.
 
 ---
 **Esercizi**:
