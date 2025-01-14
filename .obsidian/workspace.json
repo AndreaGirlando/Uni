@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "4299911c646f1c97",
+        "id": "ba364daa6908c282",
         "type": "tabs",
         "children": [
           {
-            "id": "83a35b1cdffefe8d",
+            "id": "510a3427f2d156e9",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -73,7 +73,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5
+    "width": 413.5,
+    "collapsed": true
   },
   "right": {
     "id": "abf359470799e113",
@@ -167,19 +168,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "83a35b1cdffefe8d",
+  "active": "510a3427f2d156e9",
   "lastOpenFiles": [
+    "Primo anno/strutture-discrete/FileCondivisiTeams/02_Parte2.pdf",
+    "Primo anno/strutture-discrete/Esempi di esercizi.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/Sunto.md",
-    "Uni To-Do.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
+    "Uni To-Do.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/01_Parte1.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3Teoria.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
     "Pasted image 20250113180306.png",
     "Pasted image 20250113180305.png",
-    "Primo anno/strutture-discrete/FileCondivisiTeams/02_Parte2.pdf",
-    "Primo anno/strutture-discrete/Esempi di esercizi.md",
     "Primo anno/strutture-discrete/FileCondivisiTeams/01_Parte1.pdf",
     "Sunto.pdf",
     "Primo anno/architettura-degli-elaboratori/Assembly/AppuntiLaboratorio/PilaEs1.s",

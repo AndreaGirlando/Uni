@@ -382,3 +382,48 @@ La relazione di congruenza è una relazione di equivalenza:
 > **Teorema:** definizione di inverso modulare
 > **Dimostrazione:** ![[Pasted image 20241116095002.png]] 
 ## Funzione di Eulero
+
+Dato $n$ un intero positivo per definire quanti sono i numeri che precedono $n$ e che sono anche comprimi con $n$ dobbiamo usare la funzione di Eulero definita così:
+-  $\phi(n) = |\{x: x \in \mathbb{N}, 0 < x \leq n, MCD(n,x) = 1\}|$
+Calcoliamo questo numero in questo modo:
+1. **Per n numero primo** allora $φ(n) = n -1$
+	- **Esempio:** $φ(11) = 11-1 = 10$
+2. **Con n multiplo di un numero primo** φ(n) = $n^{k_1}$ - $n^{k_2-1}$
+	-  **Esempio:** φ(16) = $2^4$ - $2^3$
+3. **Con n prodotto di numeri primi** $φ(n) = φ(k)\timesφ(q)...$ ($k$ e $q$ sono numeri primi)
+	- **Esempio:** $φ(10) = φ(2\times5) = (2 - 1) · (5 - 1) = 1 · 4 = 4$
+
+---
+
+> [!WARNING] Dimostrazione
+> **Teorema**: Sia n > 1, consideriamo la sua fattorizzazione $n = p_1^{k_1} · p_2^{k_2} · . . . · p_m^{k_m}$ allora
+> $\phi(n) = (p_1^{k_1} - p_1^{k_1 - 1}) \cdot (p_2^{k_2} - p_2^{k_2 - 1}) \cdot \ldots \cdot (p_m^{k_m} - p_m^{k_m - 1})$
+> **Dimostrazione:**  
+> 
+> **Caso base:** se $m=1$ allora $p_1^{k_1}$ sappiamo che è vera
+> 
+> **Passo induttivo:** Supponiamo il teorema sia vero per ogni intero $n'$ la cui fattorizzazione presenta $m-1$ primi diversi e quindi abbiamo che $n' = p_1^{k_1} · p_2^{k_2} · . . . · p_{m-1}^{k_{m-1}}$ a questo punto la fattorizzazione per $n$ sarà uguale a:
+> - $n = n′ · p^{k_m}_m$
+>   
+>   
+dal ipotesi induttiva abbiamo che: $\phi(n') = (p_1^{k_1} - p_1^{k_1 - 1}) \cdot (p_2^{k_2} - p_2^{k_2 - 1}) \cdot \ldots \cdot (p_{m-1}^{k_{m-1}} - p_{m-1}^{k_{m-1} - 1})$  e quindi $\phi(n) = \phi(n') * (p_{m}^{k_{m}} - p_{m}^{k_{m} - 1})$.
+   Come possiamo notare il teorema vale sia nel caso base, sia nel passo induttivo e quindi il teorema è dimostrato.
+
+---
+**Teorema di Eulero applicato alla esponenziazione modulare**: Siano $n, m$ > $0$, se $MCD(n, m) = 1$ allora $n^{φ(m)} ≡ 1(\mod m)$
+
+---
+**Altro teorema di Eulero:** Se $MCD(a, n) = 1$, allora per ogni $x > 0$ vale la seguente cosa: $a^x ≡ a^{x \mod φ(n)}(\mod n)$
+
+---
+**Piccolo teorema di Fermat:** Se $p$ è primo e $MCD(a, p) = 1$, ovvero $a$ non è un multiplo di $p$, allora $a^{p−1} ≡ 1(\mod p)$
+
+---
+**Calcolo dell'inverso modulare**: se n ed m sono comprimi, allora esiste l'inverso di n modulo m ossia esiste k tale che $n * k ≡ 1(\mod m)$, per calcolare l'inverso di $n$ modulo $m$ è: $(n \mod m)^{φ(m) - 1} \mod m$ 
+
+---
+Numeri perfetti
+Congettura di Goldbach
+Congettura di Collatz
+ 
+ 
