@@ -1,4 +1,3 @@
-
 # Parte 1
 ## Logica
 Operatori logici:
