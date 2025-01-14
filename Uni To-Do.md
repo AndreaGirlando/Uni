@@ -5,28 +5,37 @@
 > In corso == 🟨
 > 
 
-|      Materia       |                          Doc                           | Fatto? |                Note                 |
-| :----------------: | :----------------------------------------------------: | :----: | :---------------------------------: |
-| Strutture discrete |                  Calcolo combinatorio                  |   ✅    | [[eserciziCalcoloCombinatorio.pdf]] |
-| Strutture discrete |                  Probabilità discrete                  |   ✅    |       Da finire gli esercizi        |
-| Strutture discrete |                    Teoria dei grafi                    |   🟨   |                                     |
-| Strutture discrete |             Problemi combinatori su grafi              |   ❌    |                                     |
-|   Archittettura    |             Studiare bene le prime 5 parti             |   ❌    |                                     |
-|       Prog 1       |                Algoritmi di ordinamento                |   🟨   |             Da rivedere             |
-|       Prog 1       | Implementare gli algoritmi di ordinamento con le liste |   ✅    |                                     |
-|       Prog 1       |               bubbleSort con le stringhe               |   ✅    |                                     |
-|       Prog 1       |                       bubbleSort                       |   ✅    |        Fatto con il vettore         |
-|       Prog 1       |                     InsertionSort                      |   ✅    |        Fatto con il vettore         |
-|       Prog 1       |                       mergeSort                        |   ❌    |  Da capire se è utile per l'esame   |
-|       Prog 1       |                     selectionSort                      |   ✅    |        Fatto con il vettore         |
-|       Prog 1       |              Fare qualche prova di esame               |   ❌    |                                     |
-|                    |                                                        |        |                                     |
-|                    |                                                        |        |                                     |
-|                    |                                                        |        |                                     |
-|      Algebra       |                    Spazi vettoriali                    |   ✅    |                                     |
-|      Algebra       |                  Applicazione lineari                  |   ❌    |                                     |
-|      Algebra       |                      Endomorfismi                      |   ❌    |                                     |
-|      Algebra       |                    Esercizi matrici                    |   ✅    |                                     |
-|      Algebra       |               Esercizi spazi vettoriali                |   🟨   |                                     |
-|      Algebra       |             Esercizi applicazioni lineari              |   ❌    |                                     |
+**ESAMI:**
+- Architettura il 27/01/25
+- Programmazione il 28/01/25
+- Strutture il 31/01/25
+- Algebra ???
+
+|   Materia    |              Doc              | Fatto? |    Note     |
+| :----------: | :---------------------------: | :----: | :---------: |
+|    Prog 1    |   Algoritmi di ordinamento    |   🟨   | Da rivedere |
+|    Prog 1    |          Coda e pila          |   ❌    |             |
+|    Prog 1    |       Fare prove a spam       |   🟨   |  Count: 3   |
+|              |                               |        |             |
+| Architettura |      Studiare la teoria       |   🟨   |             |
+| Architettura |      3.0 AlgebraBooleana      |   ❌    |             |
+| Architettura |           4.0 Pila            |   ❌    |             |
+| Architettura |   Qualche video assembly(?)   |   ❌    |             |
+|              |                               |        |             |
+|  Strutture   |         Sunto parte 1         |   ✅    |             |
+|  Strutture   |         Sunto parte 2         |   🟨   |             |
+|  Strutture   |         Sunto parte 3         |   ❌    |             |
+|  Strutture   |         Sunto parte 4         |   ❌    |             |
+|  Strutture   |        Studiare sunto         |   ❌    |             |
+|  Strutture   |       Fare prove a spam       |   🟨   |  Count: 4   |
+
+---
+
+|   Algebra    |       Spazi vettoriali        |   ✅    |             |
+| :----------: | :---------------------------: | :----: | :---------: |
+|   Algebra    |     Applicazione lineari      |   ❌    |             |
+|   Algebra    |         Endomorfismi          |   ❌    |             |
+|   Algebra    |       Esercizi matrici        |   ✅    |             |
+|   Algebra    |   Esercizi spazi vettoriali   |   🟨   |             |
+|   Algebra    | Esercizi applicazioni lineari |   ❌    |             |
 
