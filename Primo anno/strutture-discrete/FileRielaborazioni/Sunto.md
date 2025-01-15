@@ -422,8 +422,21 @@ dal ipotesi induttiva abbiamo che: $\phi(n') = (p_1^{k_1} - p_1^{k_1 - 1}) \cdot
 **Calcolo dell'inverso modulare**: se n ed m sono comprimi, allora esiste l'inverso di n modulo m ossia esiste k tale che $n * k ≡ 1(\mod m)$, per calcolare l'inverso di $n$ modulo $m$ è: $(n \mod m)^{φ(m) - 1} \mod m$ 
 
 ---
-Numeri perfetti
-Congettura di Goldbach
-Congettura di Collatz
- 
- 
+**Numeri perfetti**: Un numero si dice perfetto se è la somma di tutti i suoi divisori propri. Esempi: $6 = 1 + 2 + 3$ o $28 = 1 + 2 + 4 + 7 + 14$
+
+---
+**Congettura di Goldbach**: la congettura di goldbach afferma che qualsiasi numero pari può essere scritto come somma di due numeri primi, quindi $2n = P_1 + P_2$  da questo deduciamo che qualsiasi numero $n\ge4$ $n = \frac{P_1+P_2}{2}$ si pensa che questa congettura sia vera per la distribuzione dei numeri primi. 
+
+---
+**Congettura di Collatz**:  la congettura di collatz anche detta congettura $3x+1$ afferma che eseguendo questo algoritmo:
+```
+Algoritmo di Collatz 
+Leggi un intero x ≥ 1 
+while (x > 1) do 
+	if x mod 2 == 0 x = x/2; 
+	else x = 3 ∗ x + 1; 
+end_while
+```
+la congettura afferma che l’algoritmo si ferma sempre qualunque sia $x$, ossia non esiste un intero $x ≥ 1$ partendo dal quale non si raggiunge mai il valore $1$, ad esempio partendo da 5 l'algoritmo produce le seguenti cifre: $5-16-8-4-2-1$
+
+---
