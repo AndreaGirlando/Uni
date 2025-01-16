@@ -28,8 +28,9 @@ Avendo le definizioni di queste 2 regole possiamo rispondere parzialmente alle d
 	- Un computer che genera 1000 password al secondo ci metterà circa 2,8 miliardi di secondi a generarle tutte
 ---
 ##### Disposizioni e combinazioni
+![[Pasted image 20250115190854.png]]
 [[03_Parte3Teoria|La spiegazione teorica dell'immagine che vedi sotto]] la parte teorica qui è abbastanza inutile.
-![[Pasted image 20241214162649.png]]
+
 - Se nell'esercizio che sto facendo l'ordine degli elementi è importante guardo le colonne dove "Ordine?" è SI.
 - Se nell'esercizio che sto facendo gli elementi possono essere reinseriti guardo le colonne dove "Reinserimento" è NO.
 **Esercizio 1**: Domino
@@ -172,7 +173,7 @@ A questo punto il teorema è dimostrato
 ---
 ##### Problemi d'urna
 Tutti gli eventi che si possono formalizzare come "Estraiamo una o più palline numerate, da una o più urna" vengono detti **Problemi d'urna**. É importante che le estrazioni siano non truccate e che ogni estrazione sia indipendente dalla precedente. Le estrazioni da un'urna si possono classificare in 4 modi:
-![[Pasted image 20241214162649.png]]
+![[Pasted image 20250115190826.png]]
 Attraverso i problemi dell'urna possiamo rispondere alla seconda domanda iniziale:
 **Risposta 2**:  ^b95d26
 - La probabilità di sbagliare il primo tentativo è $\frac{10^5-1}{10^5}$ 
