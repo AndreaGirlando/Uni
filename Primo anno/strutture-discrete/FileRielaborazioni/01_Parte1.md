@@ -213,6 +213,9 @@ Sia per l'unione che per l'intersezione valgono le proprietà commutativa e asso
 
 ---
 ##### Diagramma di Venn
+
+^2b9dff
+
 Una rappresentazione classica delle relazioni tra insiemi è il diagramma di Venn
 ![[Pasted image 20241012110411.png]]
 Come possiamo notare ci sono 8 regioni e sono le seguenti:

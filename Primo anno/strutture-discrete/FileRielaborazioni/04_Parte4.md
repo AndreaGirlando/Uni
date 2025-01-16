@@ -17,7 +17,7 @@ dove ogni elemento di $E$ è un sottoinsieme di cardinalità 2 di $V$ fatto in q
 
 ---
 ###### Definizione di grafo orientato
-Un grafo semplice non orientato denotato con $G = (V,E)$ consiste:
+Un grafo semplice orientato denotato con $G = (V,E)$ consiste:
 - un insieme finito di **nodi/vertici** $(V)$
 - un insieme finito di **archi** $(E)$
 in questo caso però gli elementi che appartengono ad $E$ sono delle coppie ordinate. Di conseguenza gli archi avranno un verso.
@@ -224,7 +224,7 @@ Sia $G = (V,E)$ un grafo. Consideriamo una partizione indotta dalla relazione di
 
 ---
 ###### Grafo connesso
-Un grafo si dice connesso se ha una sola componente connessa, ovvero se per ogni coppia di vertici esiste un percorso che li collega.
+Un **grafo** (non orientato) si dice **connesso** se, per ogni coppia di vertici del grafo, esiste un percorso che li collega. In altre parole, il grafo ha una sola componente connessa, ovvero tutti i vertici appartengono alla stessa componente.
 
 ---
 ###### Grafo orientato debolmente connesso
