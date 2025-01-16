@@ -5,6 +5,9 @@
   "cssTheme": "",
   "accentColor": "",
   "enabledCssSnippets": [
-    "righe"
-  ]
+    "righe",
+    "style"
+  ],
+  "interfaceFontFamily": "Montserrat",
+  "textFontFamily": "Montserrat"
 }

@@ -77,6 +77,17 @@ Sia $F$ una famiglia di insiemi (Tipica forma di $F$ = $\{\{1\}, \{2, 3\}, \{1, 
 ---
 - **Insieme prodotto:** $A \times B$ = $\{(x, y) : x ∈ A$ e $y ∈ B\}$ $A×B$ è l'insieme di tutte le coppie $(x, y)$ con $x$ che appartiene ad $A$ e $y$ che appartiene a $B$
 
+---
+**Diagramma di Venn**: le regioni del diagramma di Venn sono $2^n$ [[01_Parte1#^2b9dff|qui]]
+
+---
+**Paradosso di Russell**: Partendo dal concetto di insieme, possiamo benissimo costruire un insieme formato da tutti quegli elementi che non appartengono a se stessi e lo definiamo in questo modo:
+- $S = \{A {:} A \text{ è un insieme, e } A \notin A\}$  $S$ è l'insieme di tutti gli insiemi che non appartengono a se stessi.
+Usando questa definizione $S ∈ S$?
+- **Se diciamo SI:** Se $S$ appartiene a se stesso, allora per definizione di S, S non dovrebbe appartenere a se stesso (perché S contiene solo insiemi che non appartengono a se stessi). Questo è una contraddizione.
+- **Se diciamo NO:** Se $S$ non appartiene a se stesso, allora per definizione di $S$, $S$ dovrebbe appartenere a se stesso (perché $S$ contiene tutti gli insiemi che non appartengono a se stessi). Anche in questo caso abbiamo una contraddizione.
+
+---
 ## Relazioni e funzioni
 
 **Relazione**: $R ⊆ U × U$ ovvero un sottoinsieme dell'insieme prodotto $U \times U$ ovvero: $\{(x, y) \in U \times U : R(x, y)$ è vera$\}$ in altre parole un insieme formato da tutte le coppie ordinate che rendono vera la relazione. [[Sunto#^e57522|Proprietà qui]]
@@ -136,6 +147,7 @@ In un insieme, non sempre tutti gli elementi sono confrontabili. Il **massimo/mi
 **Problema dell'hitting set**
 Siano $U$ un insieme finito, $H ⊆ U$, e sia $A$ una famiglia di sottoinsiemi di $U$ tutti diversi dall’insieme vuoto. Diciamo che $H$ è un hitting set ($HS$) per $A$ se e solo se per ogni $A ∈ A$ si ha $A ∩ H$ $\neq$ ∅.
 **Hitting set minimo e minimale**: Siano $U$ un insieme finito, $H ⊆ U$, e sia $A$ una famiglia di sottoinsiemi di $U$ tutti diversi dall’insieme vuoto. Se $H$ è un hitting set e per ogni $x ∈ H$ l’insieme $H \backslash \{x\}$ non è un hitting set, diciamo che $H$ è un hitting set minimale. Se $H$ è un hitting set tale che $|H| = min\{|K | : K$ è un hitting set $A\}$ allora $H$ è un hitting set minimo
+![[Pasted image 20250115171201.png]]
 
 # Parte 2
 ## Numeri Interi
@@ -288,8 +300,12 @@ L'insieme dei numeri naturali viene definito da:
 > - Se $h$ non è primo, allora deve avere un divisore primo che non è nessuno dei $p_1, p_2, \dots, p_n$, il che ancora una volta contraddice l’ipotesi che $p_1, p_2, \dots, p_n$ siano tutti i numeri primi.
 
 ---
-**Crivello di Eratostene**: metodo migliore per calcolare tutti i numeri primi minori o uguali ad un numero $n$ [Esempio](https://youtu.be/0MDvEByNGic?t=83||)
-
+**Crivello di Eratostene**: Il crivello di Eratostene è un algoritmo utile per calcolare tutti i numeri primi minori o uguali ad un numero prefissato $n$. L’algoritmo funziona in questo modo. Supponiamo di voler calcolare tutti i numeri primi compresi tra $2$ e $n$. Allora
+- Scriviamo in sequenza tutti i numeri naturali compresi tra $2$ e $n$.
+- Partiamo dal numero $2$, e cancelliamo dalla sequenza tutti i multipli di $2$.
+- Ad ogni passo successivo, prendiamo il primo tra i numeri che seguono e che non è stato cancellato e cancelliamo tutti i suoi multipli.
+- Quando abbiamo cancellato tutti i multipli del numero più grande che sia minore o uguale a $\sqrt(n)$ ci fermiamo.
+Tutti i numeri rimasti sono primi compresi tra $2$ e $n$. [Esempio](https://youtu.be/0MDvEByNGic?t=83||)
 ---
 **Radice numerica**: dato un numero $n$ la sua radice numerica di $n$, la denotiamo con $ρ(n)$ ed è la somma delle sue cifre reiterata sono ad ottenere una sola cifra
 
@@ -422,6 +438,7 @@ dal ipotesi induttiva abbiamo che: $\phi(n') = (p_1^{k_1} - p_1^{k_1 - 1}) \cdot
 **Calcolo dell'inverso modulare**: se n ed m sono comprimi, allora esiste l'inverso di n modulo m ossia esiste k tale che $n * k ≡ 1(\mod m)$, per calcolare l'inverso di $n$ modulo $m$ è: $(n \mod m)^{φ(m) - 1} \mod m$ 
 
 ---
+## Teoria dei numeri
 **Numeri perfetti**: Un numero si dice perfetto se è la somma di tutti i suoi divisori propri. Esempi: $6 = 1 + 2 + 3$ o $28 = 1 + 2 + 4 + 7 + 14$
 
 ---
@@ -438,5 +455,243 @@ while (x > 1) do
 end_while
 ```
 la congettura afferma che l’algoritmo si ferma sempre qualunque sia $x$, ossia non esiste un intero $x ≥ 1$ partendo dal quale non si raggiunge mai il valore $1$, ad esempio partendo da 5 l'algoritmo produce le seguenti cifre: $5-16-8-4-2-1$
+
+---
+**Numeri primi gemelli**: I numeri primi gemelli sono coppie di numeri primi che hanno una differenza di $2$, come $(3,5),(5,7)$, ecc. 
+
+---
+# Parte 3
+## Calcolo combinatorio
+**Regola della somma:** Questa regola ci dice che se vogliamo contare il numero di elementi dell'unione tra due insiemi ci basta sommare la cardinalità dei due insiemi. 
+
+---
+**Regola del prodotto**: Questa regola ci dice che se vogliamo contare quanti sono le possibili coppie di elementi, il primo scelto da $A$ e il secondo da $B$ ci basta fare $|A|*|B|$.
+
+---
+**Disposizioni e combinazioni**:
+![[Pasted image 20250115190824.png]]
+
+---
+**Teorema binomiale**: il teorema binomiale è una formula che consente di elevare a qualsiasi numero un binomio così: 
+![[Pasted image 20241214164028.png]]
+Ovvero la sommatoria da $k=0$ fino a $n$ (l’esponente del binomio) della moltiplicazione tra $a^{n-k} * b^k$ 
+
+> [!WARNING] Dimostrazione
+> **Teorema**: definizione teorema binomiale
+> **Dimostrazione**: 
+> ![[Pasted image 20250115185008.png]]
+
+---
+**Pigeonhole principle**: Nella sua forma più semplice, il Principio afferma che se dobbiamo fare entrare $n + 1$ piccioni in una piccionaia che contiene $n$ cassette, allora almeno una cassetta dovrà contenere più di un piccione. Più in generale, se abbiamo $n = km + 1$ oggetti da sistemare in m contenitori, allora almeno un contenitore dovrà contenere $k + 1$ oggetti.
+
+---
+## Probabilità discrete
+
+**Formula generale per la probabilità**: $P(A) = \frac{casi favorevoli}{casi totali}$ 
+
+---
+**Mutualmente esclusivi**: Se due eventi A e B non hanno elementi in comune essi sono detti eventi disgiunti o mutualmente esclusivi perché l'occorrenza dell'uno esclude l'altro.
+
+---
+**Assiomi della probabilità**: Siano $A$ e $B$ due eventi qualsiasi gli assiomi della probabilità sono:
+- $0 \le P(A) \le 1$
+- $P(S) = 1$ e $P(∅) = 0$
+- $P(A∪B)=P(A)+P(B) - P(A ∩ B)$
+---
+**Probabilità condizionata**: 
+- ovvero la  probabilità di A, dato B già verificato: $P(A|B) = \frac{P(A \cap B)}{P(B)}$
+- probabilità che sia l'evento $A$ che l'evento $B$ accadano: $P(A ∧ B) = P(A)*P(B)$
+---
+**Regola di Bayes**: se sappiamo che un certo evento E causa certi effetti S, se osserviamo gli effetti S possiamo risalire alla causa $P(B|A) = \frac{ P(A|B) * P(B) }{ P(A) }$ 
+![[Pasted image 20250115205955.png]]
+
+---
+**Probabilità totale**: $P(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2) + \cdots + P(A|B_n)P(B_n) = \sum_{i=1}^{n} P(A|B_i)P(B_i)$ ovvero la sommatoria di tutte le probabilità che A accada se $B_i$ accade 
+
+
+> [!WARNING] Dimostrazione
+> **Teorema**: Definizione di probabilità totale
+> **Dimostrazione**: Dal momento che gli eventi $B_1,B_2,...,B_n$ sono esaustivi ovvero almeno una di loro si deve verificare. Siccome sono anche [[#^81d10b|mutualmente esclusivi]] la probabilità che $A$ si verifichi è la somma che sia $A$ che $B_i$ si verifichi ovvero:
+> -  $P(A) = P(A \cap B_1) + \cdots + P(A \cap B_n)$
+> 
+> Dalla definizione di probabilità condizionata sappiamo che per ogni i:
+> 
+> - $P(A \land B_i) = P(A|B_i) \cdot P(B_i)$ 
+> ![[Pasted image 20241221173203.png]]
+> La formula che usiamo la ricaviamo in questo modo.
+> 
+> A questo punto il teorema è dimostrato
+
+---
+**Problemi d'urna**:
+![[Pasted image 20250115190944.png]]
+
+---
+**Paradosso del compleanno:** Per il **Pigeonhole principle** potremo dire che in un'aula con 13 persone di sicuro almeno 2 fanno il compleanno lo stesso mese
+
+---
+**Variabile casuale:** Una **variabile casuale** è una funzione che associa ad ogni risultato possibile di un esperimento casuale un numero reale
+**Valore atteso**: Il **valore atteso** (o **media ponderata**) di una variabile casuale è il valore medio che ti aspetti di ottenere se ripeti l'esperimento un numero molto grande di volte.
+![[Pasted image 20250115204524.png]]
+Dove:
+- $x$ è un possibile valore che la variabile **$X$** può assumere
+- $P[X=x]$ è la probabilità che $X$ assuma il valore $x$.
+Una delle proprietà importanti del valore atteso è che è **lineare**, cioè:  $E[X + Y] = E[X] + E[Y]$ 
+> [!Example] Esempio
+> **Domanda:** Se lanciamo 2 dadi, qual è il valore atteso del massimo dei 2 valori.
+> 
+> In questo caso abbiamo quindi 36 casi possibili $\{(1,1),(1,2),...,(6,5),(6,6)\}$:
+> - Di coppie con "6" ne abbiamo 11 
+> - Di coppie con "5" ma senza "6" ne abbiamo 9 
+> - Di coppie con "4" ma senza "5" o "6" be abbiamo 7 
+> - Di coppie con "3" ma senza "4", "5", o "6" ne abbiamo 5 
+> - Di coppie con "2" ma senza "3", "4", "5" o "6" ne abbiamo 3 
+> - Di coppie con solo "1" ne abbiamo solo 1.
+> 
+> Quindi:
+> ![[Pasted image 20241224154745.png]]
+
+---
+**Prova di Bernoulli**: La prova di Bernoulli è un esperimento probabilistico che ha esattamente due risultati: **successo(p)** o **fallimento(q = 1 - p)**. Il numero atteso dei numeri di tentativi da fare per ottenere “successo” è dato da 1/p.
+
+---
+## Paradossi
+**Paradosso dei Tre Prigionieri**: 
+Tre prigionieri (A, B, C) sono condannati a morte, ma uno sarà graziato a caso. Il carceriere sa chi sarà graziato. A chiede al carceriere quale tra B e C sarà giustiziato. Il carceriere risponde "B". A pensa che la sua probabilità di essere graziato sia passata da **1/3** a **1/2**. In realtà, la probabilità che A sia graziato resta **1/3**, mentre la probabilità che C sia graziato diventa **2/3**.
+
+# Parte 4
+## Teoria dei Grafi
+
+**grafo semplice non orientato**: denotato con $G = (V,E)$ è formato da:
+- un insieme finito di **nodi/vertici** ($V$) 
+- un insieme finito di **archi** ($E$) 
+dove ogni elemento di $E$ è un sottoinsieme di cardinalità 2 di $V$ fatto in questo modo $e_k = \{i,j\}$ con $i,j \in V$ 
+---
+**grafo semplice orientato:** denotato con $G = (V,E)$ consiste:
+- un insieme finito di **nodi/vertici** $(V)$
+- un insieme finito di **archi** $(E)$
+in questo caso però gli elementi che appartengono ad $E$ sono delle coppie ordinate, e quindi gli archi hanno un verso.
+![[Pasted image 20250107160321.png| 500]]
+
+---
+**Multigrafo:** grafi dove troviamo più di un arco che collega coppie di vertici
+
+---
+**Grado di un grafo non orientato**: Dato un grafo $G = (V,E)$ il grado di un nodo $v$ denotato con $\delta(v)$ è il numero di archi ad esso incidenti, ovvero al numero di archi che lo hanno come uno dei 2 estremi. La somma di tutti i gradi di un grafo è il doppio del numero di archi.
+
+**Grado di un grafo orientato:** in questo caso abbiamo 2 definizione di grado:
+- **Grado di ingresso $δ^−(v )$**: ovvero il numero di archi orientati che "entrano" in $v$
+- **Grado di uscita $δ^+(v )$**: ovvero il numeri di archi orientati che "escono" da $v$
+La somma di tutti i gradi (ingresso + uscita) di un grafo è il doppio del numero di archi.
+---
+**Grafo regolare**: un grafo si dice regolare se tutti i suoi vertici hanno lo stesso grado $r$ da questo possiamo dedurre che: $|V| = \frac{2|E|}{r}$  
+
+---
+**Grafo non orientato completo**: diciamo che un grafo è completo se ogni coppia di vertici è connessa da un arco
+**Grafo orientato completo**: diciamo che un grafo orientato $G = (V,E)$ è completo se ogni coppia ordinata è connessa da un arco. 
+
+---
+**Torneo**: ovvero il grafo orientato ottenuto assegnando uno dei due possibili versi ad ogni arco di $G$, l'arco tra ogni coppia è orientato dal vincitore al perdente.
+
+---
+**Grafo bipartito**: Sia $G = (V,E)$ diciamo che questo arco è bipartito se possiamo partizionare $V$ in 2 insiemi solitamente denotati con $V_1$ e $V_2$ in maniera tale che ogni arco abbia almeno un estremo in entrambi gli insiemi
+
+**Grafo bipartito completo**: un grafo bipartito si dice completo se definiti $V_1$ e $V_2$ esiste un arco per ogni coppia di vertici, questo tipo di grafo si indica con $K_{n,m}$ dove $n = |V_1|$ e $m = |V_2|$ 
+
+---
+**Sottografo**: Sia $G = (V,E)$ diciamo che $G' = (V',E')$ è un sottografo di $G$ se:
+- $V' ⊆ V$
+- $E' ⊆ E$
+- Ogni arco $(u,v) \in E'$ ha i suoi estremi entrambi in $V'$
+Ovviamente un sottografo può essere anche orientato
+
+**Sottografo indotto:** Sia $G = (V,E)$ e dato $V'⊆V$, il sottografo che otteniamo se eliminiamo tutti i vertici $\in V'$ e tutti gli archi incidenti ad almeno uno dei vertici eliminati viene detto sottografo indotto
+
+---
+**Grafi isomorfi**: Due grafi $G_1 = (V_1,E_1)$ e $G_2 = (V_2, E_2)$ si dicono isomorfi se esiste una applicazione biunivoca $f$ dall'insieme dei vertici $V_1$ all'insieme dei vertici $V_2$ tale che ($f(u), f(v)$) è un arco di $E_2$ se e solo se $(u,v)$ è un arco di $E_1$. Da questa definizione abbiamo le seguenti conseguenze:
+- $|V_1| = |V_2|$ e $|E_1| = |E_2|$ 
+- essendo $f(u) = v$ allora $\delta(u)=\delta(v)$
+- essendo $f(u) = v$ allora $\delta^+(u) = \delta^+(v)$ e $\delta^-(u) = \delta^-(v)$
+
+---
+**Suddivisone di un arco non orientato:** Sia $G = (V,E)$ un grafo non orientato e sia $e = (u,v)$ un arco di G. Una suddivisione dell'arco $e = (u,v)$ è ottenuta introducendo un nuovo vertice w e sostituendo in $G$ l'arco $(u, v)$ con gli archi $e_1 = (u, w)$ e $e_2 = (w, v)$   
+
+**Suddivisione di un arco orientato:** Sia $G = (V,E)$ un grafo orientato e sia $e = (u,v)$ un arco di G. Una suddivisione dell'arco $e = (u,v)$ è ottenuta introducendo un nuovo vertice w e sostituendo in $G$ l'arco orientato $(u, v)$ con gli archi orientati $e_1 = (u, w)$ e $e_2 = (w, v)$
+
+---
+**Omeomorfismo tra grafi**: Due grafi orientati $G_1 = (V_1,E_1)$ e $G_2 = (V_2,E_2)$ si dicono omeomorfi se attraverso una serie di suddivisioni di archi $G_1$ e $G_2$ si possono ottenere due grafi $G^{'}_1$ e $G^{'}_2$ che sono isomorfi
+![[Pasted image 20250108112648.png]]
+
+---
+- **Percorso**: Un percorso in un grafo $G = (V,E)$ è una sequenza di nodi $v_1,...,v_k$ adiacenti ossia tali che per ogni $1 \leq i < k$ avrò una coppia $(v_i, v_{i+1})$ che è un arco del grafo. Nel caso di un grafo orientato il percorso deve seguire il verso dell'arco.
+- **Cammino**: Un percorso si dice cammino quando tutti i nodi che attraversa sono differenti.
+- **Circuito:** Un percorso si dice circuito se è del tipo $v_1,...,v_k$ tale che $v_1 = v_k$
+- **Ciclo**: Un circuito dove tutti i vertici sono diversi.
+---
+**Grafo aciclico:** un grafo si dice aciclico se non possiede cicli
+
+---
+**Grafo sottostante:** ovvero il grafo ottenuto eliminando da un grafo orientato l'orientamento degli archi
+
+---
+**Vertici connessi**: Dato un grafo orientato $G = (V , E)$, diciamo che 2 vertici $u,v$ sono connessi se esiste un cammino a $u$ a $v$
+
+**Vertici fortemente connessi**: Dato un grafo orientato $G = (V , E)$, diciamo che due vertici $u, v$ sono fortemente connessi se esiste un cammino da $u$ a $v$ e da $v$ ad $u$.
+
+---
+**Componente connessa**: Sia $G = (V,E)$ un grafo. Consideriamo una partizione indotta dalla relazione di connessione tra i vertici $V$ che crea dei sottoinsiemi $V_1, V_2,...,V_k$ dove ciascun $V_i​$ rappresenta un insieme di vertici connessi tra loro tramite percorsi all'interno del grafo $G$. Per ogni sottoinsieme $V_i$, definiamo il sottografo $G_i = (V_i, E_i)$, dove $E_i$ è l'insieme degli archi di $E$ che collegano i vertici di $V_i$. Ciascun sottografo $G_i$​ viene detto **componente connessa** di $G$.
+
+**Componente fortemente connessa**: Sia $G = (V,E)$ un grafo. Consideriamo una partizione indotta dalla relazione di connessione forte tra i vertici $V$ che crea dei sottoinsiemi $V_1, V_2,...,V_k$ dove ciascun $V_i​$ rappresenta un insieme di vertici connessi tra loro tramite percorsi all'interno del grafo $G$. Per ogni sottoinsieme $V_i$, definiamo il sottografo $G_i = (V_i, E_i)$, dove $E_i$ è l'insieme degli archi di $E$ che collegano i vertici di $V_i$. Ciascun sottografo $G_i$​ viene detto **componente connessa fortemente connessa** di $G$.
+
+---
+**Grafo connesso**: Sia $G = (V,E)$  un grafo **non orientato** si dice connesso se, per ogni coppia di vertici del grafo, esiste un percorso che li collega. In altre parole, il grafo ha una sola componente connessa, ovvero tutti i vertici appartengono alla stessa componente.
+**Grafo debolmente connesso**: Sia $G = (V,E)$  un grafo orientato si dice debolmente connesso se prendendo il suo grafo sottostante quest'ultimo è connesso.
+**Grafo fortemente connesso**: Sia $G = (V,E)$ un grafo orientato. $G$ si dice fortemente connesso se ha una sola componente fortemente connessa.
+
+---
+**Grafo k-connesso**: Dato un grafo $G = (V,E)$:
+ - Il grafo $G$ si dice k-connesso rispetto agli archi se dati comunque due vertici $u, v ∈ V$ esistono $k$ cammini ad archi disgiunti tra $u, v$. 
+ - Il grafo $G$ si dice k-connesso rispetto ai vertici se dati comunque due vertici $u, v ∈ V$ esistono k cammini a nodi disgiunti tra $u, v$.
+---
+**Rappresentazione di un grafo non orientato come matrice**: Dato un grafo $G = (V,E)$ con $|V| = n$. La matrice di adiacenza del grafo ha dimensione $n \times n$ ed è formata in questo modo:
+- $M[i, j] = 1$ se i vertici $i$  e $j$ sono connessi da un arco
+- $M[i, j] = 0$ se i vertici $i$  e $j$ non sono connessi da un arco
+è importante ricordare che: 
+- La somma dei valori di ogni riga è il grado del vertice $i$
+- Se ci sono degli uno nella diagonale principale vuol dire che nel grafo ci sono dei cappi
+- La matrice è simmetrica ovvero per ogni $i$ e $j$: $M[i, j] = M[j, i]$.
+**Rappresentazione di un grafo orientato come matrice**: è uguale a quella appena descritta ma dobbiamo fare attenzione al verso delle frecce ed è importante ricordare che:
+- La somma degli 1 in ogni riga è il grado in uscita del nodo corrispondente
+- La somma degli 1 in ogni colonna indica il grado in entrata del nodo corrispondente
+-  La matrice non è simmetrica
+
+---
+**Ciclo in un grafo orientato**: Sia $G = (V,E)$ un grafo orientato se per ogni vertice $i \in V$ $\delta^+(i) > 0$ e $\delta^-(i)>0$ allora il grafo $G$ contiene un ciclo.
+
+> [!WARNING] Dimostrazione
+> **Teorema**: definizione ciclo in un grafo orientato
+> **Dimostrazione**:   Dal momento che $\delta^+(i)$ > 0 esiste un vertice $i_0$ tale che esiste un arco da $i_0$ a $i_1$, stessa cosa vale per $i_1$ infatti siamo sicuri che esiste un arco da $i_1$ a $i_2$, se iteriamo questo processo sino a quando non abbiamo una sequenza di vertici $i_0,i_1,i_2,...i_n$ tali che ognuno è connesso da un arco al successivo. Se $|V| = n$ per il Pigeonhole Principle almeno 2 di questi n+1 vertici devono coincidere. Questo dimostra il teorema.
+
+---
+**Algoritmo per trovare un ciclo in un grafo**:
+Sia $M$ la matrice del grafo, ed $M'$ la matrice ottenuta da $M$ eliminando la i-esima riga e colonna, sia inoltre $dim(M)$ la dimensione della matrice (il suo numero di righe o colonne)
+1. Se controllando la matrice $M$ tutti i vertici del grafo hanno grado in uscita > 0 e grado in entrata > 0 **terminiamo e diciamo che il grafo possiede un ciclo**
+2. Altrimenti, prendiamo un vertice $i$ con grado di uscita/entrata = 0 e lo eliminiamo sia dalla matrice associata al grafo creando la matrice $M'$
+3. Ripeti passo 2-3
+4. Se la $dim(M)$ = 1  ci fermiamo e diciamo che il grafo è aciclico
+
+---
+**Percorsi tra nodi**: La matrice associata $M$ con ogni entrata ci dice se esiste un percorso di lunghezza uno tra due nodi, se voglio trovare i percorsi di lunghezza k  basta fare $M^k$ ovvero moltiplicare k-volte per se stessa la matrice $M$
+
+---
+**Rappresentazione di un grafo con le liste di adiacenza**: Un grafo può essere rappresentato pure con le liste di adiacenza, ovvero un array i cui elementi sono i nodi e per ogni nodo viene associato un altro array con la lista dei nodi collegati ad esso. 
+![[Pasted image 20250110135330.png|500]]
+
+---
+**Rappresentazioni standard**: Le due rappresentazioni standard per un grafo sono le matrici di adiacenza e le liste di adiacenza. Nel primo caso, si può verificare se due vertici sono connessi da un arco con una sola operazione, ossia controllando che il corrispondente ingresso nella matrice di adiacenza sia uguale ad 1. Nel secondo caso, invece, bisogna scorrere la lista di adiacenza del primo vertice (che può contenere tanti vertici quanti ce ne sono nel grafo) e verificare se il secondo vertice si trova nella lista. 
+
+---
+**Circuito Euleriano**: Un circuito euleriano è un circuito chiuso che passa per ogni **arco** del grafo esattamente una volta
+**Cammino Euleriano**: Un grafo possiede un cammino Euleriano se tutti i nodi hanno grado pari tranne 2, che saranno quelli connessi. In questo modo esisterà un cammino che passa per tutti gli archi una sola volta.
 
 ---
