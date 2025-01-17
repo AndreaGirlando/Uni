@@ -536,3 +536,7 @@ Dato un albero radicato:
 ---
 
 # `Problemi combinatori sui grafi`
+Due problemi sui grafi che ricadono nella classe N P- hard sono:
+1. Il problema della colorazione di un grafo utilizzando il numero minimo di colori;
+2. il problema della eliminazione del numero minimo di vertici di un grafo, per renderlo aciclico.
+==Approfondire un minimo==
