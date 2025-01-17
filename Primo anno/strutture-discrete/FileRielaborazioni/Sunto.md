@@ -162,7 +162,7 @@ L'insieme dei numeri naturali viene definito da:
 **Assioma del buon ordinamento**: Introducendo la funzione successore $S(a)$ è possibile definire una relazione di buon ordinamento sui numeri naturali, questo viene chiamato **assioma del buon ordinamento** quindi dato un generico insieme $S$ esiste un elemento minimo $s \in S$
 
 ---
-**Principio di induzione**: se una proprietà $P$ è valida per il numero $0$ e, ogni volta che è valida per $n$ è valida anche per $n+1$ allora $P$ è valida per tutti i numeri naturali
+**Principio di induzione**: Sia $P$ una proprietà sui numeri naturali. Il principio di induzione afferma che se $P$ vale per il numero $0$ (caso base) e, inoltre, se la proprietà $P$ vale anche per il successore di ogni numero naturale per cui vale, ossia se $P (n)$ è vera allora è vera anche $P (n + 1)$ allora la proprietà $P$ è posseduta da tutti i numeri naturali.
 
 > [!WARNING] Dimostrazione
 > **Teorema**: Sia $P$ una affermazione riguardante i numeri naturali. Se:
@@ -681,7 +681,7 @@ Sia $M$ la matrice del grafo, ed $M'$ la matrice ottenuta da $M$ eliminando la i
 4. Se la $dim(M)$ = 1  ci fermiamo e diciamo che il grafo è aciclico
 
 ---
-**Percorsi tra nodi**: La matrice associata $M$ con ogni entrata ci dice se esiste un percorso di lunghezza uno tra due nodi, se voglio trovare i percorsi di lunghezza k  basta fare $M^k$ ovvero moltiplicare k-volte per se stessa la matrice $M$
+**Percorsi tra nodi**: La matrice associata $M$ con ogni entrata ci dice se esiste un percorso di lunghezza uno tra due nodi, se voglio trovare i percorsi di lunghezza k  basta fare $M^k$ ovvero moltiplicare k-volte per se stessa la matrice $M$. [[Definizioni#^5de7b3|Moltiplicazione tra matrici]] 
 
 ---
 **Rappresentazione di un grafo con le liste di adiacenza**: Un grafo può essere rappresentato pure con le liste di adiacenza, ovvero un array i cui elementi sono i nodi e per ogni nodo viene associato un altro array con la lista dei nodi collegati ad esso. 
@@ -695,3 +695,36 @@ Sia $M$ la matrice del grafo, ed $M'$ la matrice ottenuta da $M$ eliminando la i
 **Cammino Euleriano**: Un grafo possiede un cammino Euleriano se tutti i nodi hanno grado pari tranne 2, che saranno quelli connessi. In questo modo esisterà un cammino che passa per tutti gli archi una sola volta.
 
 ---
+
+**Cammino Hamiltoniano**: Sia $G = (V , E)$ un grafo (digrafo) connesso. 
+Un cammino hamiltoniano di $G$ è un circuito che passa una ed una sola volta per tutti i vertici di $G$.  Se il cammino è chiuso, ovvero se è un ciclo, tale ciclo si dice **ciclo Hamiltoniano**.
+
+---
+**Grafi pesati**: Per poter usare i grafi come strutture dati abbiamo la necessita di associargli un peso, il peso può essere associato agli archi, ai nodi o ad entrambi. Il costo di un cammino quindi può essere dato dalla somma dei costi degli archi, o dalla somma dei costi dei vertici.
+
+---
+**Rappresentazione dei grafi pesati:** i grafi pesati possono essere rappresentati in due modi:
+- **Peso sugli archi**: come quella di un grafo normale, ma al posto di 1 mettiamo il peso dell'arco.
+- **Peso sui nodi**: creiamo una matrice come quella che creeremo per un grafo normale e gli associamo un vettore con i valori dei nodi.
+
+---
+**Problema del commesso viaggiatore**: anche conosciuto come TSP è il problema di trovare un circuito hamiltoniano che minimizza il costo totale per un grafo pesato
+![[Pasted image 20250110145941.png|500]]
+Se un commesso viaggiatore deve attraversare tutti e 4 i nodi, partendo da A e tornando ad A, qual è il percorso che minimizza il costo totale, che supponiamo, per esempio, siano distanze in KM? Possiamo risolvere il problema analizzando tutti i circuiti hamiltoniani
+![[Pasted image 20250110150242.png]]Da qui capiamo che ci sono 2 circuiti che il viaggiatore potrebbe usare. All’aumentare dei nodi da attraversare aumenta esponenzialmente il tempo di risoluzione perché si devono banalmente provare più combinazioni. Nessuno ha avuto un idea per risolvere in modo migliore, quindi resta un problema aperto.
+
+---
+**Grafo planare**: Sia $G = (V,E)$ un grafo non orientato diciamo che è planare se può essere raffigurato in modo che non si abbiano archi che si intersecano.
+
+---
+**Teorema di Kuratowski**: Un grafo è planare se non contiene alcun sottografo omeomorfo a $K_5$ o a $K_{3,3}$ 
+**Criteri più semplici**: Se $G = (V,E)$ è un grafo connesso e planare:
+- Se $|V| \ge 3$ allora $|E| \le 3 |V|-6$
+- Se $|V| \ge 3$ e non ci sono cicli di lunghezza 3 allora $|E| \le 3 |V|-4$ 
+---
+**Facce di un grafo planare**: le facce sono il numero di regioni chiuse delimitate da archi.
+![[Pasted image 20250111093757.png]]
+**Formula di Eulero**: se indichiamo con: $v$ il numero di vertici, $e$ il numero di archi e con $f$ il numero di facce allora vale la seguente formula: $v-e+f=2$ dalla quale possiamo ricavare queste formule inverse: 
+$v = e-f+2$
+$f = e-v+2$
+$e = v+f-2$ 

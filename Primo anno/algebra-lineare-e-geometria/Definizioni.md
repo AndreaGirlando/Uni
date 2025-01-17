@@ -27,7 +27,7 @@ Per trasporre una matrice basta scrivere le sue righe sotto forma di colonne. Il
 **Moltiplicazioni tra un numero e una matrice:** il numero per la quale moltiplichiamo la matrice viene detto scalare (nell'esempio sottostante lo scalare si chiama c)
 ![[Pasted image 20241116152547.png]]
 **Sottrazione tra matrici:** per poter fare la differenza tra 2 matrici devo avere lo stesso numero di righe e di colonne in entrambe le matrici
-**Moltiplicazioni tra matrici**: date 2 matrici A e B per poter fare la moltiplicazione tra queste deve essere vera **almeno una** delle 2 condizioni sottostanti:
+**Moltiplicazioni tra matrici**: date 2 matrici A e B per poter fare la moltiplicazione tra queste deve essere vera **almeno una** delle 2 condizioni sottostanti: ^5de7b3
 1. numero di colonne di A  = numero di righe di B
 2. numero di colonne di B = numero di righe di A
 ![[Pasted image 20241116153231.png]]
