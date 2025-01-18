@@ -14,8 +14,8 @@ L'ALU, i registri e molti bus costituiscono il **data path**, che si presenta in
 Le istruzioni che devono essere usate dalla ALU, vengono caricate nei registri di input (che solitamente sono 2), la ALU fornisce il suo risultato nel registro di output (che solitamente è 1), infine il risultato verrà memorizzato nei registri, quello appena descritto è il ciclo del data path, ovvero la sequenza di passaggi che il computer esegue per eseguire un'operazione tramite la ALU (corrisponde alla fase di execute del ciclo macchina) ^73f111
 
 In base al tipo di Instruction set vengono definiti vari tipi di processore
-- **CISC (Complex Istruction Set Computer)**: basati su molte istruzioni complicate
-- **RISC (Reduced Istruction Set Computer)**: basati su poche e semplici istruzioni
+- **CISC (Complex Instruction Set Computer)**: basati su molte istruzioni complicate
+- **RISC (Reduced Instruction Set Computer)**: basati su poche e semplici istruzioni
 - **CRISC (Complex Reduced Instruction Set Code)**: quello più usato attualmente, è un architettura ibrida tra CISC e RISC
 
 > [!Nota bene] 
@@ -88,7 +88,7 @@ Alla coda di prefetch, è stato affiancato un sistema detto **pipeline** che ha 
   
 Come possiamo ben notare una pipeline a 5 stadi esegue 5 fasi contemporaneamente, questa tecnica sopperisce al problema dell'accesso alla memoria precedentemente discusso. 
 L'uso della pipeline introduce anche delle problematiche:
-- **Data hazards**: si verifica quando un istruzione richiede dei dati che vengono forniti da un altra istruzione che non ha ancora finito (ritardi di elaborazione o blocchi)
+1. **Data hazards**: si verifica quando un istruzione richiede dei dati che vengono forniti da un altra istruzione che non ha ancora finito (ritardi di elaborazione o blocchi)
 2. **Control hazards:** si verifica quando la pipeline deve gestire dei salti condizionali (tipo il go-to)
 3. **Structural hazards:** si verifica quando più istruzioni cercano di accedere alla stessa risorsa (problemi dei filosofi a cena)
 
@@ -100,18 +100,14 @@ Dopo aver dotato i primi processori di pipeline si ci è resi conto che la fase 
 Tutte queste tecniche vengono vanificate da 2 situazioni:
 - Istruzioni di salto: la pipeline viene del tutto persa se il salto ci porta ad un'istruzione lontana da quella che si trova attualmente in pipeline
 - Dipendenza dei dati tra le istruzioni: la pipeline viene interrotta
-Esempio:
-- Istruzione1: A = B + C.
-- Istruzione2: D = A + 1. 
-- La pipeline che sta servendo l'Istruzione 2 deve interrompersi allo stadio di operand fetch, dato che A non è disponibile se non quando l'Istruzione 1 non è del tutto terminata.
 
 Per cercare di arginare il problema delle istruzioni di salto sono stati introdotti nel processore dei moduli chiamati **Dynamic Branch Prediction** che si occupano di implementare l'**esecuzione predicativa**, una tecnica che fa uso di tabelle simili a memorie cache, per cercare di capire se un'istruzione di salto avverrà o meno (questa tecnica non è deterministica infatti si basa solo su una statistica storica), il problema principale di questa tecnica si ha quando la previsione fatta è sbagliata, infatti in quel caso la pipeline va ripristinata. L'esecuzione predicativa è anche nota come **esecuzione speculativa** quando va a fare una predizione sul codice che potrebbe non essere mai utilizzato.  
 
-Per cercare di arginare il problema delle dipendenze da dato si usa **l'esecuzione fuori ordine (out of order execution)** ovvero: quando il processore individua una dipendenza in un pipeline al posto di buttarla salta l'istruzione dipendente per eseguire istruzioni future, in questo modo la pipeline viene quasi del tutto conservata (un solo stadio rimane fermo fino all'arrivo del dato mancante), alla risoluzione della dipendenza saranno già state eseguite altre istruzioni (quelle che avevamo chiamato istruzioni «future»), con conseguente risalita delle prestazioni. Ci sono però delle condizioni critiche:
+Per cercare di arginare il problema delle dipendenze da dato si usa una tecnica chiamata **out of order execution** ovvero una tecnica che permette l'esecuzione delle istruzioni non necessariamente nell'ordine in cui sono state emesse, ma eseguendo le istruzioni prive di dipendenze mentre si attende il completamento di quelle con dipendenze, in questo modo la pipeline viene quasi del tutto conservata e non è necessario eseguire un flush con conseguente perdita di prestazioni. Ci sono però delle condizioni critiche:
 - Le istruzioni "future" possono essere eseguite solo se non sono dipendenti a loro volta
 - Quando il processore si trova fuori ordine e arriva un interrupt, il processore deve ripristinare il suo stato e riordinare anche il giusto flusso di esecuzione 
 
-**Per poter riordinare il giusto flusso di esecuzione dopo aver saltato e ricalcolato una istruzione con dipendenza, i processori utilizzano una serie di registri d'appoggio (interni e invisibili al programmatore)** su cui memorizzare i calcoli temporanei delle istruzioni fuori ordine. All'atto del riordinamento, per evitare di spostare i valori dai registri interni a quelli effettivamente usati nel data path, i processori sono in grado di rinominare i registri interni nei nomi dei registri effettivi, risparmiando il tempo del trasferimento (**register renaming**).
+Per poter riordinare il giusto flusso di esecuzione i processori utilizzano una serie di registri d'appoggio (interni e invisibili al programmatore) su cui memorizzare i calcoli temporanei delle istruzioni fuori ordine. All'atto del riordinamento, per evitare di spostare i valori dai registri interni a quelli effettivamente usati nel data path, i processori sono in grado di rinominare i registri interni nei nomi dei registri effettivi, risparmiando il tempo del trasferimento questa tecnica si chiama **register renaming**.
 
 ###### Esistono 3 tipi di dipendenza del dato:
 - **RAW (Read After Write)**: Si verifica quando un'istruzione legge un dato che è stato scritto da una precedente istruzione. È chiamata anche dipendenza vera o _data dependency_, perché un dato deve essere prodotto prima di essere letto.

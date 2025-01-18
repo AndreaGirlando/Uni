@@ -1,27 +1,10 @@
 Questo file è la rielaborazione delle slide [[11_Insieme-di-istruzioni-macchina.pdf]]
 
 ---
-
-Come ricordiamo dai capitoli passati l'architettura di base di un calcolatore è formata da:
-- **CPU**: esegue istruzioni
-- **Memoria**: contiene il programma che la CPU deve eseguire
-- **Interfacce di I\O**: circuiti che connettono la CPU al mondo esterno
-- **Bus di sistema**: insieme di collegamenti elettrici che interconnettono i vari componenti
-  
-Il calcolatore esegue le **istruzioni** in modo **sequenziale**, le istruzioni definiscono le operazioni da eseguire e sono raggruppate in **programmi**, le varie operazioni hanno bisogno di **dati** che vengono immagazzinati nella memoria, l'utente interagisce con il programma attraverso le periferiche di input/output.
-
-###### Ciclo macchina
-I passi elementari per eseguire un'istruzione sono:
-- **Prelievo:** viene prelevata la prossima istruzione da eseguire dalla memoria
-- **Decodifica:** decodifica dell'istruzione
-- **Esecuzione:** esecuzione dell'istruzione
-
----
-
 ##### ISA
-Le istruzioni elementari che un processore è in grado di eseguire sono definite nell'ISA (Istruction Set Architecture), queste istruzioni elementari vengono definite attraverso un alfabeto binario. Il linguaggio assemblativo (**assembly**) è una rappresentazione simbolica del linguaggio macchina. Esistono 2 grandi famiglie di ISA:
-- **CISC** (Complex Istruction Set Architecture): Basata su istruzioni complesse, che possono anche occupare più di una word di memoria.
-- **RISC**(Reduced Istruction Set Architecture): Basata su istruzioni semplici, con le istruzioni che al massimo occupano una word, di solito sono molto efficienti grazie all'utilizzo della [[07_Pipelining|pipeline]]
+Le istruzioni elementari che un processore è in grado di eseguire sono definite nell'ISA (Instruction Set Architecture), queste istruzioni elementari vengono definite attraverso un alfabeto binario. Il linguaggio assemblativo (**assembly**) è una rappresentazione simbolica del linguaggio macchina. Esistono 2 grandi famiglie di ISA:
+- **CISC** (Complex Instruction Set Architecture): Basata su istruzioni complesse, che possono anche occupare più di una word di memoria.
+- **RISC**(Reduced Instruction Set Architecture): Basata su istruzioni semplici, con le istruzioni che al massimo occupano una word, di solito sono molto efficienti grazie all'utilizzo della [[07_Pipelining|pipeline]]
 
 ---
 ##### Memoria
@@ -68,12 +51,13 @@ Nel linguaggio assemblativo, gli operandi e il risultato delle istruzioni posson
 	   ![[Pasted image 20241228150052.png]]
 - **Con base e indice**: l'indirizzo effettivo è ottenuto sommando il contenuto di 2 registri.
 
+---
 ##### Istruzione condizionale:
 ```
 Branch_if condizione destinazione salto. 
 Branch_if_[R2]>0 CICLO
 ```
-  Istruzione usata per saltare all’esecuzione di un’istruzione specifica nel caso la condizione di salto sia vera
+Istruzione usata per saltare all’esecuzione di un’istruzione specifica nel caso la condizione di salto sia vera
 
 ---
 ##### Direttive di assemblatore
@@ -137,7 +121,7 @@ il blocco dello stack riservato ai sottoprogrammi si chiama **Stack Frame**, il 
 ---
 ##### Codifica delle istruzioni
 
-> [!Info] Codice operativo
+> [!TIP] Codice operativo
 > Il codice operativo o OpCode corrisponde alla procedura da mettere in esecuzione quando si deve eseguire un'istruzione 
 
 Le istruzioni in assembly possono cambiare in base all'architettura del processore, nel caso di una CPU a 32 bit possono essere usate le seguenti codifiche:
@@ -211,13 +195,11 @@ Questo tipo di istruzioni hanno un formato a 2 indirizzi, dove l'indirizzo di de
 Operazione destinazione, sorgente
 ADD B,A
 ```
-
 **MOVE**
 ```
 Move destinazione, sorgente
 ```
 L'istruzione Move permette il trasferimento di dati tra registri ed indirizzi di memoria
-
 **Indirizzamento per autoincremento**
 Nell’indirizzamento per autoincremento, l’indirizzo dell’operando è contenuto in un registro il cui nome viene specificato nell’istruzione. Alla fine dell’istruzione il contenuto del registro viene incrementato di un’unità. Può essere usata per eseguire l’operazione di Pop:
 ```
@@ -229,7 +211,7 @@ Nell’indirizzamento per autoincremento, l’indirizzo dell’operando è conte
 Move -(SP), NUOVOELEMENTO
 ```
 
-**Bit di esito**
+---
+###### Bit di esito
 sono bit speciali immagazzinati a in un registro interno al processore, e vengono usati per tenere traccia dell'esito di svariate operazioni. Quelli più comuni sono:
 ![[Pasted image 20241228165236.png]]
-

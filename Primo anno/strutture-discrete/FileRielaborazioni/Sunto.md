@@ -41,6 +41,15 @@ Un insieme è una collezione ben definita di oggetti
 3. **Differenza:** $A \backslash B$ = {x : x ∈ A e $x \notin B$.} $A$ differenza $B$ è formato dalle $x$ che appartengono ad $A$ ma non appartengono a B
 4. **Complemento**: $U \backslash A$ dove $U$ è l'insieme universo
 5. **Differenza simmetrica**: $A∆B = (A \backslash B) ∪ (B \backslash A)$ è l'unione tra la differenza fra gli insiemi
+
+| Scritta matematicamente                                | Scritta logicamente   |
+| ------------------------------------------------------ | --------------------- |
+| $A^C$                                                  | $¬ A$                 |
+| $A ∪ B$                                                | $A ∨ B$               |
+| $A ∩ B$                                                | $A ∧ B$               |
+| $(A \setminus B)$                                      | $(A∧¬B)$              |
+| $A \triangle B = (A \setminus B) \cup (B \setminus A)$ | $(A△B)≡(A∧¬B)∨(B∧¬A)$ |
+
 ---
 - $A ⊆ B$ o $B ⊆ A$: Per dimostrarlo si considera un elemento generico x ∈ A e si dimostra che x ∈ B
 - $A = B$: Per dimostrarlo dobbiamo dimostrare che hanno gli stessi elementi. Quindi si dimostra che A ⊆ B e B ⊆ A. 
@@ -202,36 +211,44 @@ L'insieme dei numeri naturali viene definito da:
 > **Somma**
 > **Teorema:** Se $a|b$ e $a|c$ allora $a | (b+c)$
 > **Dimostrazione:** Dato che $a | b$ esiste $x$ tale che $b = ax$, e dato che $a | c$ esiste $y$ tale che $c = ay$. Quindi $b + c = ax + ay = a(x + y)$ e ponendo $z = x + y$ abbiamo trovato un intero tale che $b + c = az$ dimostrando che $a | (b + c)$.
+> 
 > ---
 > **Prodotto**
 > **Teorema:** Se $a | b$ allora $a | bc$
 > **Dimostrazione:** Dato che $a | b$ esiste $x$ tale che $b = ax$, quindi $bc = axc$ il che dimostra che $a | bc$
+> 
 > ---
 > **Transitività**
 > **Teorema:** Se $a | b$ e $b | c$ allora $a | c$
 > **Dimostrazione:** Dato che $a | b$ esiste $x$ tale che $b = ax$, e dato che $b | c$ esiste $y$ tale che $c = yb$. Quindi $by = axy$ ossia $c = axy$ e ponendo $z = xy$ abbiamo trovato un intero tale che $c = az$ dimostrando che $a | c$
+> 
 > ---
 > **Quadrato**
 > **Teorema**: Se $a|b$ allora $a|b^2$
 > **Dimostrazione**: Dato che $a|b$ esiste $x$ tale che $b = ax$, quindi $bc = axc$ questi dimostra che $a | b*b$
+> 
 > ---
 > **Combinazione lineare**
 > **Teorema**: Se $a|b$ e $a|c$ allora $a | (hb + kc)$ per ogni $h,k \in Z$
 > **Dimostrazione**: Se $a | b$ allora $a | hb$, se $a | c$ allora $a | kc$ ovviamente valgono per ogni $h,k \in Z$ e quindi è vero che $a | (hb + kc)$
+> 
 > ---
 > **Proprietà del numero 0** 
 > **Teorema:** Ogni $a \in Z$ è divisore di $0$
 > **Dimostrazione**: $a \in Z$ abbiamo che $a * 0 = 0$ quindi $a | 0$
+> 
 > ---
 > **Antisimmetrica**
 > **Teorema:** Siano $a,b \in Z$ se $a | b$ e $b|a$ allora $|a| = |b|$ ossia $a = \pm b$
 > **Dimostrazione**: Dalle ipotesi abbiamo che $b = ax$ e $a = by$. Quindi $a = axy$, raccogliendo a arriviamo ad $a(xy - 1)$ questo implica che $a$ sia $0$ oppure che $xy = 1$ da questo capiamo che: 
 > - Se $a = 0$ allora anche $b = 0$ (perché b = 0x)
 > - Se $xy = 1$ allora $a$ o $b$ sono uguali a $\pm 1$
+> - 
 > ---
 > **Divisori banali**
 > **Teorema**: Siano a $\in$ Z allora $\pm a | a$  e $\pm 1 | a$
 > **Dimostrazione:** Avendo che $a=a⋅1$ oppure che $a=(−a)⋅(−1)$ possiamo affermare che $\pm a | a$
+> 
 > - Seguendo la definizione capiamo che $a = b ⋅ k$ in questo caso $b = \pm a$ il k che soddisfa le nostre equazioni è k = 1
 > Avendo che $a = 1 * a$ possiamo dire che 1 è sempre un divisore di $a$
 
@@ -728,3 +745,78 @@ Se un commesso viaggiatore deve attraversare tutti e 4 i nodi, partendo da A e t
 $v = e-f+2$
 $f = e-v+2$
 $e = v+f-2$ 
+
+---
+**Dimostrazioni vari teoremi**:  
+
+> [!WARNING] Dimostrazione
+> **Teorema**
+Sia $G = (V , E)$ un grafo connesso con $|V | ≥ 3$. Supponiamo che $δ(v ) ≥ 2$ per ogni $v$. Allora $G$ possiede un ciclo.
+**Dimostrazione**
+Ordiniamo i vertici e chiamiamoli $v_1, v_2, . . . , v_n$ con $n = |V| ≥ 3$. Partiamo da v_1 e costruiamo il cammino più lungo possibile senza ripetizioni di vertici, supponiamo che il cammino più lungo senza ripetizioni sia $v_1, v_2, . . . , v_k$, dal vertice $v_k$ possiamo ancora raggiungere un altro vertice, dato il grado di almeno 2, dato che ci siamo fermati vuol dire che possiamo raggiungere solo un vertice già visto il che dimostra l'esistenza di un ciclo
+
+> [!WARNING] Dimostrazione
+> **Teorema**
+Sia $G = (V , E)$ un grafo connesso e aciclico. Allora $|E| = |V | − 1$
+**Dimostrazione**
+Il teorema è banalmente vero se $|V|\le2$. Supponiamo allora $|V| \ge 3$, essendo il grafo connesso ed aciclico deve esiste un vertice di grado $1$ altrimenti il grafo avrebbe un ciclo, prendiamo questo vertice $v$ e l'arco ad esso incidente il grafo e li rimuoviamo, il grafo indotto $V \backslash \{ v\}$ è connesso ed aciclico altrimenti dovremmo avere 2 vertici, $u, w$ che sono connessi solo da un cammino passante per $v$ ma ciò implicherebbe che $v$ ha grado maggiore di $1$ e quindi per induzione ha $|E| = |V| - 2$. Aggiungendo $v$ e l'arco ad esso incidente, abbiamo quindi che $|E| = |V|-1$
+
+> [!WARNING] Dimostrazione
+> **Teorema**
+Sia $G = (V , E)$ un grafo planare connesso, con $v$ vertici, $e$ archi e $f$ facce. Allora $v − e + f = 2$
+**Dimostrazione**
+Se il grafo possiede un ciclo, allora togliamo uno degli archi che completa tale ciclo, il numero di archi e di facce si abbassa allora di una unità e quindi la quantità $v − e + f$ rimane invariata. Ripetiamo tali sottrazioni di archi, sino a quando non eliminiamo tutti i cicli dall’albero, a questo punto avremo un grafo connesso ed aciclico con $e = v-1$ con $f=1$ visto che non ci sono cicli. Quindi $v-e+f = 2$
+> 
+> 
+> 
+> 
+> 
+> 
+
+---
+**Grafo planare massimale**: Un grafo planare si dice massimale (o triangolare), se è planare e se aggiungendo un nuovo arco ad una qualunque coppia di vertici il grafo non è più planare. Ogni sua faccia è racchiusa da 3 archi. Dunque un grafo planare massimale ha $3v – 6$ archi e $2v – 4$ facce.
+
+---
+**Colorazione di un grafo**: Colorare un grafo vuol dire assegnare un colore ad ogni vertice in maniera tale che due vertici collegati da un arco abbiano colori distinti. Il numero cromato del grafo è denotato con $χ(G)$:
+- **Grafo completo**: in un grafo completo con $n$ vertici $χ(G)$ = $n$ 
+- **Grafo bipartito**: 2 colori uno per $V_1$ e uno per $V_2$
+- **Grafo semplice**: con un ciclo che comprende $n$ vertici:
+	- **n pari**: 2 colori diversi
+	- **n dispari**: $2+n\mod2$ colori diversi
+---
+**Teorema di Brooks**: Una colorazione ottimale di un grafo $G$ è una colorazione dei vertici di $G$ che usa il numero minimo possibile di colori, ossia $χ(G)$. 
+
+> [!WARNING] Dimostrazione
+> **Teorema**
+Sia $G = (V,E)$ un grafo connesso con $n$ vertici $\delta_1 \ge \delta_2 \ge ... \ge \delta_n$ i gradi dei vertici del grafo in ordine crescente. Allora $χ(G) ≤ δ_1 + 1$ 
+**Dimostrazione**
+Il Teorema si può facilmente dimostrare per induzione. Se togliamo infatti il vertice di grado maggiore $v_1$, rimaniamo con un grafo con un vertice in meno e colorabile, per ipotesi induttiva, con al più $δ_2 + 1 ≤ δ_1 + 1$ colori. Quando aggiungiamo il vertice tolto, il caso peggiore è che i $δ_1$ vertici a lui connessi, siano tutti di colore diverso e quindi gli dobbiamo dare il colore rimasto dei $δ_1 + 1$.
+> 
+> 
+> 
+> 
+
+**Teorema di Brooks (versione forte)**: Sia $G = (V , E)$ un grafo connesso con n vertici, e siano $δ_1 ≥ δ_2 ≥ · · · ≥ δ_n$ i gradi dei vertici del grafo in ordine decrescente. Se $G$ non è un grafo completo e $G$ non è un ciclo semplice con numero dispari di vertici, allora $χ(G) ≤ δ_1$
+
+---
+**Teorema dei 4 colori**: Sia $G = (V , E)$ un grafo planare, allora $χ(G) ≤ 4$.
+
+---
+**Albero libero**: è un grafo connesso e aciclico (denotato di solito con $T$) che ha $|V|-1$ archi, i vertici di grado 1 si chiamano nodi **terminali o foglia**, mentre i vertici di grafo maggiore di 1 sono detti **vertici interni**. ((il grafo sotto ha 6 foglie e 3 vertici interni))
+![[Pasted image 20250111111522.png]]
+
+---
+**Foresta**: è un insieme di uno o più alberi quindi un grafo $G = (V,E)$ aciclico ma non necessariamente connesso. Ogni componente connessa del grafo è un albero della foresta, i vertici di grado 1 sono detti **vertici foglia** mentre i vertici di grado maggiore sono detti **vertici interni**. (il grafo sotto ha 6 foglie e 3 vertici interni)
+![[Pasted image 20250111112219.png]]
+
+---
+**Alberi radicati**: Dato un albero $T$ se scegliamo un nodo come radice e immaginiamo di impiantarlo con un chiodo, per gravità tutti gli altri nodi cadranno, così otteniamo un albero radicato:
+- **Altezza**: lunghezza del cammino più lungo dal nodo radice ai nodi foglia
+- **Fattore di ramificazione**: Il fattore di ramificazione di un albero è il numero massimo di figli che un singolo nodo nell'albero può avere.
+- i **nodi figli** di un nodo sono quelli immediatamente sottostanti a esso e direttamente collegati tramite un arco. Il nodo che li collega dall'alto è chiamato **nodo padre**.
+![[Pasted image 20250111112642.png]]
+---
+## Problemi combinatori sui grafi
+Due problemi sui grafi che ricadono nella classe N P- hard sono:
+1. Il problema della colorazione di un grafo utilizzando il numero minimo di colori;
+2. il problema della eliminazione del numero minimo di vertici di un grafo, per renderlo aciclico.
