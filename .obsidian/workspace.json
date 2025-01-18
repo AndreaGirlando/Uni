@@ -11,12 +11,56 @@
             "id": "7b0192345e3bdfbf",
             "type": "leaf",
             "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/13_Laboratorio.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "13_Laboratorio"
+            }
+          },
+          {
+            "id": "57d41bdd58d2fa08",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.1-Algebra Booleana.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "3.1-Algebra Booleana"
+            }
+          },
+          {
+            "id": "58b37d6b75402b72",
+            "type": "leaf",
+            "state": {
               "type": "pdf",
               "state": {
                 "file": "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.2-Algebra Booleana.pdf"
               },
               "icon": "lucide-file-text",
               "title": "3.2-Algebra Booleana"
+            }
+          }
+        ]
+      },
+      {
+        "id": "b1ff87e2e0c8707e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e72c6b639aa6165e",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Primo anno/Imgs/Pasted image 20250118143402.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20250118143402"
             }
           }
         ]
@@ -50,7 +94,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "Modi di indirizzamento",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -169,35 +213,35 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7b0192345e3bdfbf",
+  "active": "4976c61b40586f1c",
   "lastOpenFiles": [
-    "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.1-Algebra Booleana.pdf",
     "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.0-Algebra Booleana.pdf",
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/13_Laboratorio.md",
+    "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.2-Algebra Booleana.pdf",
+    "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.1-Algebra Booleana.pdf",
+    "Primo anno/Imgs/Pasted image 20250118154119.png",
+    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.2/2.2-IstruzioniMacchina.pdf",
+    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.2/esempio1.s",
     "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.1/2.1-IstruzioniMacchina.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.1/esempio1.s",
-    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.0/2.0-IstruzioniMacchina.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.0/esempio1.s",
-    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.0/esempio2.s",
-    "Primo anno/architettura-degli-elaboratori/Assembly/1.0-SistemiNumerazione/1.1-Sistemi di numerazione e rappresentazione binaria dei numeri.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/1.0-SistemiNumerazione/1.0-Sistemi di numerazione e rappresentazione binaria dei numeri.pdf",
-    "Primo anno/architettura-degli-elaboratori/FileCondivisiTeams/00_Introduzione.pdf",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/12_Tecnologia-microelettronica.md",
+    "Primo anno/Imgs/Pasted image 20250118153228.png",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/11_Insieme-di-istruzioni-macchina.md",
-    "Primo anno/Imgs/Pasted image 20250118095222.png",
+    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.0/2.0-IstruzioniMacchina.pdf",
+    "asciitable.gif",
+    "Primo anno/Imgs/Screenshot_20250118_150816_Samsung capture.jpg",
+    "Primo anno/architettura-degli-elaboratori/Assembly/1.0-SistemiNumerazione/1.1-Sistemi di numerazione e rappresentazione binaria dei numeri.pdf",
+    "Primo anno/Imgs/Pasted image 20250118150511.png",
+    "Primo anno/Imgs/Pasted image 20250118150509.png",
+    "Primo anno/Imgs/Pasted image 20250118150508.png",
+    "Primo anno/architettura-degli-elaboratori/Assembly/1.0-SistemiNumerazione/1.0-Sistemi di numerazione e rappresentazione binaria dei numeri.pdf",
+    "Primo anno/Imgs/Pasted image 20250118145253.png",
+    "Primo anno/Imgs/Pasted image 20250118145134.png",
+    "Primo anno/Imgs/Pasted image 20250118144836.png",
+    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.1/esempio1.s",
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/12_Tecnologia-microelettronica.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/10_Circuiti-aritmetici.md",
-    "Primo anno/architettura-degli-elaboratori/FileCondivisiTeams/10_Circuiti-aritmetici.pdf",
-    "Primo anno/Imgs/Pasted image 20250118114209.png",
-    "Primo anno/Imgs/Pasted image 20241227100546.png",
-    "Primo anno/Imgs/Pasted image 20241227101227.png",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/09_Algebra-booleana.md",
-    "Primo anno/Imgs/Pasted image 20250118113327.png",
-    "Primo anno/Imgs/Pasted image 20250118113323.png",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/08_Struttura-base-del-processore.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/05_Processore.md",
-    "Primo anno/Imgs/Pasted image 20250118111950.png",
-    "Primo anno/Imgs/Pasted image 20250118102251.png",
-    "Primo anno/Imgs/Pasted image 20250118102135.png",
-    "Primo anno/Imgs/Pasted image 20250118102056.png",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/07_Pipelining.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/06_livello_software.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/04_InputOutput.md",
@@ -215,7 +259,6 @@
     "Primo anno/strutture-discrete/FileRielaborazioni/Tips.md",
     "Uni To-Do.md",
     "Primo anno/strutture-discrete/Esercizi/Da fare.md",
-    "Primo anno/architettura-degli-elaboratori/Link.md",
-    "Primo anno/Imgs/UnisciNote.md"
+    "Primo anno/architettura-degli-elaboratori/Link.md"
   ]
 }
