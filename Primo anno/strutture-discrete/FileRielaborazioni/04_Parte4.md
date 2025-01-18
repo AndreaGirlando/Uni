@@ -526,12 +526,12 @@ Di seguito un grafo con 6 foglie e 3 nodi interni:
 
 ---
 ###### Alberi radicati
-Dato un albero $T$ se scegliamo un nodo come radice e immaginiamo di impiantarlo con un chiodo per gravità tutti gli altri nodi cadono, così otteniamo un albero radicato
+Dato un albero $T$ se scegliamo un nodo come radice e immaginiamo di impiantarlo con un chiodo, per gravità tutti gli altri nodi cadranno, così otteniamo un albero radicato
 ![[Pasted image 20250111112405.png]]
 Dato un albero radicato:
 - l'altezza è la lunghezza del cammino più lungo
 - Il fattore di ramificazione dell’albero è il numero massimo di figli che ognuno dei nodi ha
-- I nodi sottostanti un nodo e collegato con esso sono i **nodi figli** invece il nodo sovrastante è chiamato **nodo padre**
+- In un albero radicato, i **nodi figli** di un nodo sono quelli immediatamente sottostanti a esso e direttamente collegati tramite un arco. Il nodo che li collega dall'alto è chiamato **nodo padre**.
 ![[Pasted image 20250111112642.png]]
 ---
 
@@ -539,4 +539,3 @@ Dato un albero radicato:
 Due problemi sui grafi che ricadono nella classe N P- hard sono:
 1. Il problema della colorazione di un grafo utilizzando il numero minimo di colori;
 2. il problema della eliminazione del numero minimo di vertici di un grafo, per renderlo aciclico.
-==Approfondire un minimo==

@@ -42,12 +42,12 @@ i file sorgente esterni di cui parlavamo nel linker, molte volte fanno parte di 
 Questo programma si occupa di trasformare un file sorgente scritto in linguaggio ad alto livello in un file scritto in assembly, un compilatore che riorganizza le istruzioni per ottimizzare il codice viene detto ottimizzante. Un programma ad alto livello può chiamare sottoprogrammi presenti in altri file assembly o scritti in altri linguaggi (il linker gestirà i collegamenti). Il compilatore è in grado di rilevare errori sintattici e nomi sconosciuti nel codice sorgente, ma non errori di programmazione (bug)
 
 ---
-**Debugger**
+###### Debugger
 il debugger è un programma che ci permette di eseguire il programma oggetto ed interrompere la sua esecuzione in qualsiasi instante, in modo da poterne valutare il suo funzionamento. Esistono 2 tipi di debugger:
 - **Trace mode**: il programma viene eseguito passo-passo, interrompendosi dopo ogni istruzione
 	- Si genera un’eccezione al termine dell’esecuzione di ogni istruzione del programma, il debugger viene lanciato come routine di servizio dell’istruzione cosicché il programmatore posso controllare il corretto funzionamento di quell'istruzione, una volta che il programmatore seleziona il comando per continuare l’esecuzione viene effettuato un rientro dall’interruzione e viene eseguita l’istruzione successiva
 - **breakpoint**: l'esecuzione del programma si interrompe in punti di osservazione specifici
 	- Quando il Debugger è in esecuzione, il programmatore può scegliere dei punti di osservazione (breakpoint) dove interrompere il programma. il debugger sostituisce e mette da parte le istruzioni in corrispondenza dei breakpoint con speciali interruzioni software (Trap), il programma viene eseguito normalmente fino ad arrivare alla prima Trap, dove l’esecuzione passa al Debugger, una volta che il programmatore seleziona il comando per continuare l’esecuzione il Debugger riprende l’esecuzione del programma
 ---
-**Sistema operativo**
+###### Sistema operativo
 Il sistema operativo gestisce il coordinamento generale di tutte le attività del calcolatore. Il SO è formato da un insieme di routine essenziali che risiedono nella memoria centrale e un insieme di programmi di utilità che risiedono su disco e vengono caricati in memoria centrale per essere eseguiti. Durante l’inizializzazione del sistema, un processo di avvio (boot-strapping) viene usato per caricare in memoria una porzione iniziale del SO. Sistemi operativi capaci di eseguire più istruzioni contemporaneamente sono chiamati **concorrenti** o **multitasking**, per fare ciò il sistema operativo divide il tempo di esecuzione di un programma in slice di tempo, sarà lo scheduler a scegliere quale slice eseguire. I programmi possono trovarsi in 3 stati: **running**, **runnable** e **blocked**
