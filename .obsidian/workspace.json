@@ -4,93 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "134124233925fc4e",
+        "id": "614c5083d48d4308",
         "type": "tabs",
         "children": [
           {
-            "id": "3e40e8ca1fc0c4a8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Primo anno/algebra-lineare-e-geometria/Definizioni.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Definizioni"
-            }
-          },
-          {
-            "id": "e98304d1e1a76260",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Primo anno/strutture-discrete/FileRielaborazioni/Sunto.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Sunto"
-            }
-          },
-          {
-            "id": "8b504972c68eef15",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3Teoria.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "03_Parte3Teoria"
-            }
-          },
-          {
-            "id": "968b07f85d98fe9e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "03_Parte3"
-            }
-          },
-          {
-            "id": "f8b39be24b723bfc",
+            "id": "7b0192345e3bdfbf",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Primo anno/strutture-discrete/FileCondivisiTeams/03_Parte3.pdf"
+                "file": "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.2-Algebra Booleana.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "03_Parte3"
-            }
-          },
-          {
-            "id": "e7a10f1151c32aa0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "04_Parte4"
+              "title": "3.2-Algebra Booleana"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -121,7 +50,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Data hazard",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -129,7 +58,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Ricerca"
+              "title": "Search"
             }
           },
           {
@@ -240,53 +169,53 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e98304d1e1a76260",
+  "active": "7b0192345e3bdfbf",
   "lastOpenFiles": [
-    "Primo anno/algebra-lineare-e-geometria/Definizioni.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/Sunto.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
-    "Primo anno/strutture-discrete/FileCondivisiTeams/04_Parte4.pdf",
-    "Primo anno/strutture-discrete/FileCondivisiTeams/03_Parte3.pdf",
-    "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3Teoria.md",
-    "Primo anno/strutture-discrete/Esempi di esercizi.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/01_Parte1.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
-    "Primo anno/strutture-discrete/FileCondivisiTeams/02_Parte2.pdf",
-    "Primo anno/strutture-discrete/FileCondivisiTeams/01_Parte1.pdf",
-    "Primo anno/strutture-discrete/FileRielaborazioni/Tips.md",
+    "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.1-Algebra Booleana.pdf",
+    "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.0-Algebra Booleana.pdf",
+    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.1/2.1-IstruzioniMacchina.pdf",
+    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.1/esempio1.s",
+    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.0/2.0-IstruzioniMacchina.pdf",
+    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.0/esempio1.s",
+    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.0/esempio2.s",
+    "Primo anno/architettura-degli-elaboratori/Assembly/1.0-SistemiNumerazione/1.1-Sistemi di numerazione e rappresentazione binaria dei numeri.pdf",
+    "Primo anno/architettura-degli-elaboratori/Assembly/1.0-SistemiNumerazione/1.0-Sistemi di numerazione e rappresentazione binaria dei numeri.pdf",
+    "Primo anno/architettura-degli-elaboratori/FileCondivisiTeams/00_Introduzione.pdf",
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/12_Tecnologia-microelettronica.md",
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/11_Insieme-di-istruzioni-macchina.md",
+    "Primo anno/Imgs/Pasted image 20250118095222.png",
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/10_Circuiti-aritmetici.md",
+    "Primo anno/architettura-degli-elaboratori/FileCondivisiTeams/10_Circuiti-aritmetici.pdf",
+    "Primo anno/Imgs/Pasted image 20250118114209.png",
+    "Primo anno/Imgs/Pasted image 20241227100546.png",
+    "Primo anno/Imgs/Pasted image 20241227101227.png",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/09_Algebra-booleana.md",
+    "Primo anno/Imgs/Pasted image 20250118113327.png",
+    "Primo anno/Imgs/Pasted image 20250118113323.png",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/08_Struttura-base-del-processore.md",
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/05_Processore.md",
+    "Primo anno/Imgs/Pasted image 20250118111950.png",
+    "Primo anno/Imgs/Pasted image 20250118102251.png",
+    "Primo anno/Imgs/Pasted image 20250118102135.png",
+    "Primo anno/Imgs/Pasted image 20250118102056.png",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/07_Pipelining.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/06_livello_software.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/05_Processore.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/04_InputOutput.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/03_Bus.md",
-    "Primo anno/Imgs/Pasted image 20250115184902.png",
-    "Primo anno/Imgs/Pasted image 20250115205955.png",
-    "Primo anno/Imgs/Pasted image 20250115204524.png",
-    "Primo anno/Imgs/Pasted image 20250115190944.png",
-    "Primo anno/Imgs/Pasted image 20250115190942.png",
-    "Primo anno/Imgs/Pasted image 20250115190854.png",
-    "Primo anno/Imgs/Pasted image 20250115190826.png",
-    "Primo anno/Imgs/Pasted image 20250115190824.png",
-    "Primo anno/Imgs/Pasted image 20250115185008.png",
-    "Primo anno/Imgs/Pasted image 20250115171201.png",
-    "Uni To-Do.md",
-    "Sunto.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/AppuntiLaboratorio/PilaEs1.s",
-    "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.2-Algebra Booleana.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.1-Algebra Booleana.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/4.0-Pila/esempioPila.s",
-    "Primo anno/architettura-degli-elaboratori/Assembly/4.0-Pila/2.3-IstruzioniMacchina.pdf",
-    "Primo anno/strutture-discrete/Esercizi/Da fare.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/11_Insieme-di-istruzioni-macchina.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/10_Circuiti-aritmetici.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/02_Memoria.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/01_Architettura.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/12_Tecnologia-microelettronica.md",
+    "Primo anno/strutture-discrete/Esempi di esercizi.md",
+    "Primo anno/strutture-discrete/FileRielaborazioni/Sunto.md",
+    "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
+    "Primo anno/algebra-lineare-e-geometria/Definizioni.md",
+    "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
+    "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3Teoria.md",
+    "Primo anno/strutture-discrete/FileRielaborazioni/01_Parte1.md",
+    "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
+    "Primo anno/strutture-discrete/FileRielaborazioni/Tips.md",
+    "Uni To-Do.md",
+    "Primo anno/strutture-discrete/Esercizi/Da fare.md",
     "Primo anno/architettura-degli-elaboratori/Link.md",
-    "Primo anno/Imgs/UnisciNote.md",
-    "Primo anno/Imgs/Senza nome.md"
+    "Primo anno/Imgs/UnisciNote.md"
   ]
 }
