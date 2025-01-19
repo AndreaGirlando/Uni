@@ -26,7 +26,7 @@ risultato fill    4
           sub     r5,r5,r3 ; 30 - 15 => r5 = 15
           mov     r1,#risultato
           str     r5,[r1]
-          ldmfd  sp!, {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12}
-          
+          ldmfd   sp!, {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12}
+
 
 
