@@ -1,4 +1,4 @@
-# 1.Sistemi di numerazione
+# 1. Sistemi di numerazione
 Per contare noi usiamo un sistema posizionale in base 10, invece i nostri dispositivi elettronici usano un sistema posizionale in base 2. 
 
 ---
@@ -118,3 +118,118 @@ Le lettere usate sono le lettere dei corrispondenti bit di esito.
 
 ---
 # 3. Algebra Booleana
+
+###### Operatori logici
+L'algebra booleana è un sistema algebrico in cui ogni variabile può assumere solo 2 valori ($0$ e $1$) le principali operazioni definite sono:
+- **OR**: che si denota con "+" o "V" ed è una funzione che vale 1 se almeno uno dei suoi ingressi è 1
+- **AND**: che si denota con "$*$" o "˄" ed è un funzione che vale 1 se entrambi i suoi ingressi valgono 1
+- **NOT**: che si denota con  "ˉ" o "¬" ed è una funzione che inverte il valore del suo ingresso
+- **XOR**: che si denota con "$\oplus$" è una funzione che vale 1 solo se il numero di uno nei suoi ingressi è dispari
+ ![[Pasted image 20250119094414.png]]
+ Abbiamo anche altre proprietà importanti che riguardano questi operatori logici:
+ ![[Pasted image 20250119094741.png]]
+ Ricordiamo anche il teorema di De Morgan che ci dice:
+ - $¬(x+y) = ¬x * ¬y$
+ - $¬(x*y) = ¬x+¬y$
+
+---
+###### Prima forma canonica (somma di prodotti)
+Si crea la tabella di verità di un'espressione logica e poi si seguono i seguenti step:
+1. Si individuano i casi in cui il risultato è pari a **1**
+2. Per ogni caso si costruisce un prodotto delle $n$ variabili, ogni variabile è
+	- se uguale a 1 la scriviamo direttamente
+	- se uguale a 0 la scriviamo negata
+3. Si sommano tra loro i prodotti ottenuti
+![[Pasted image 20250119095719.png]]
+###### Seconda forma canonica (prodotto di somme)
+Si crea la tabella di verità di un'espressione logica e poi si seguono i seguenti step:
+1. Si individuano tutti i casi in cui il risultato è pari a **0**
+2. Per ogni caso, si costruisce una somma delle $n$ variabili, ogni variabile è:
+	- se uguale a 0 la scriviamo direttamente
+	- se uguale a 1 la scriviamo negata
+3. Moltiplichiamo le somme ottenute.
+![[Pasted image 20250119100003.png]]
+---
+###### Forma minima
+Due espressioni logiche si dicono equivalenti se hanno la medesima tabella di verità, un'espressione di dice in **forma minima** quando non esiste un'altra espressione equivalente ma di costo inferiore, il costo di un'espressione si calcola contando il numero di volte in cui le variabili compaiono, per noi è molto importante ridurre un'espressione perché un'espressione minima produrrà un circuito logico più semplice.
+ 
+> [!EXAMPLE] Esempio
+> $(x_1 + x_2) · (x_1 + x_2) · (x_1 + x_2) \rightarrow$ costo 6
+> $x_1 · x_2 \rightarrow$ costo 2
+
+Di seguito un'esempio di minimizzazione
+![[Pasted image 20250119103529.png]]
+
+---
+###### Mappe di Karnaugh
+Le mappe di Karnaugh sono un metodo di tipo geometrico che permettono di ricavare l'espressione logica di costo minimo data una funzione
+![[Pasted image 20250119104103.png]]
+**Come si usano:**
+1. Trasformare la tavola di verità in una mappa di Karnaugh
+2. Raggruppare le caselle di valore 1 adiacenti orizzontalmente o verticalmente
+3. Ogni gruppo rappresenta il prodotto delle sue variabili con lo stesso valore (forma diretta se 1 e negata se 0). Identificare quali variabili non contribuiscono ed eliminarle nella forma analitica.
+4. Somma dei gruppi creati
+
+**Condizione di indifferenza**: spesso accade che una funzione logica non sia definita su tutte le combinazioni di valori delle sue variabili, nella tabella di verità sono indicate con il simbolo "X" e quindi anche nella mappa di karnaugh corrispondente avranno un x, il loro valore va scelto in modo arbitrario cercando di creare una semplificazione a costo minimo.
+
+---
+###### Circuiti logici
+Le operazioni logiche possono essere realizzate da semplici circuiti elettronici chiamati porte. Collegando varie porte tra di loro si possono rappresentare le espressioni logiche. Questi sono i simboli principali.
+![[Pasted image 20250119104802.png|500]]
+Altre porte molto importanti sono le porte NAND e NOR, si denota tramite gli operatori a due argomenti "↑" o "↓" rispettivamente
+![[Pasted image 20250119105002.png|500]]
+![[Pasted image 20250119105336.png]]
+Queste 2 porte godono della proprietà commutativa ma non di quella associativa e appunto per questo non si possono creare degli alberi di porte. Grazie alle leggi di De Morgan e alla legge di involuzione possiamo passare da una SOP ad una rete di NAND
+
+# 4. La pila
+La pila consiste in una lista di elementi alla quale però si può lavorare solo agendo sulla cima della pila. É possibile eseguire solo 2 operazioni:
+- **PUSH**:  aggiungiamo un elemento in cima
+```
+Subtract SP, SP,#4 ;diminuire l’indirizzo contenuto in SP di una parola per puntare alla nuova cima
+Store Rj, (SP) ; scrivere il valore richiesto nella parola puntata da SP
+```
+- **POP**: togliere un elemento dalla cima
+```
+Load Rj, (SP) ;copiare il valore contenuto nella locazione di memoria puntata da SP in un registro del processore 
+Add SP, SP,#4 ;aumentare l’indirizzo contenuto in SP di una parola per puntare alla nuova cima
+```
+
+###### La pila in Visual
+![[Pasted image 20250119110510.png]]
+Questi 2 comandi vanno a salvare nella pila la lista dei registri che inseriamo, l'ordine con la quale vengono inseriti si basa sul codice passato, i codici disponibili sono:
+![[Pasted image 20250119110724.png]]
+
+
+> [!EXAMPLE] Esempio
+> I valori nei nostri registri sono:
+> - R0 = 18
+> - R1 = 20
+> - R2 = 22
+> - R3 = 24
+> - R4 = 26
+> - R5 = 28
+> Questo succede se uso STM con i vari codici:
+> ![[Pasted image 20250119111130.png]]
+> Questo succede se uso LDM:
+> ![[Pasted image 20250119111224.png]]
+
+---
+###### Area di attivazione in pila
+Il blocco di programma riservato ai sottoprogrammi è anche essa una pila ed è chiamato **Stack Frame**, il **Frame Pointer** è un registro che punta allo stack frame del sottoprogramma in esecuzione.
+
+---
+###### Gestione dei sottoprogrammi
+Un sottoprogramma è una lista di istruzioni che eseguono un compito specifico e che possono essere richiamate in un qualsiasi punto del programma.
+- **Chiamata a sottoprogramma**: viene fatta attraverso l'istruzione `call INDIRIZZO`, l'operazione di chiamata esegue 2 step:
+	1. Salva il contenuto del registro PC nel Link Register;
+	2. Salta all'indirizzo di destinazione indicato nell'istruzione di chiamata
+- **Rientro da sottoprogramma**: viene fatta attraverso l'istruzione `RETURN`, quello che fa questa istruzione è salvare il contenuto del link register nel registro PC
+In Visual facciamo così:
+![[Pasted image 20250119112656.png]]
+Il passaggio di parametri ai sottoprogrammi può essere fatto attraverso i registri o usando la pila.
+![[Pasted image 20250119113125.png]]
+
+# 5. Shifting e comandi vari
+![[Pasted image 20250119113759.png]]
+![[Pasted image 20250119113806.png]]
+![[Pasted image 20250119113814.png]]
