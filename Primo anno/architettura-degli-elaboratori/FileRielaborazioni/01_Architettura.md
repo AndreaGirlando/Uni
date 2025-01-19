@@ -1,4 +1,5 @@
 Questo file è la rielaborazione delle slide [[01_Architettura.pdf]]
+Questo file è la rielaborazione delle slide [[01_Architettura.pdf]]
 
 ---
 
