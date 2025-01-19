@@ -1,5 +1,5 @@
           ;       Data la lista [1,2,3,4,5,6,7,8,9,10]
-          ;contare tutti i numeri dispari e
+          ;contaretutti i numeri dispari e
           ;maggiori di 5 e salvare il risultato in memoria.
 
 lista     dcd     1,2,3,4,5,6,7,8,9,10

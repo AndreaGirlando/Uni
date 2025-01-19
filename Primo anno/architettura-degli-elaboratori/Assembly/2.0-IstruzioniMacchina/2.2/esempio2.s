@@ -19,10 +19,11 @@ ciclo     ldr     r3,[r2]
           add     r2,r2,#4
           subs    r1,r1,#1
           bgt     ciclo
-          ;mov    r10,#risultato
+
+          mov     r10,#risultato
           mov     r2,#-1
-          ;str    r2,[r10]
-          ;end
+          str     r2,[r10]
+          end
 
 found     mov     r10,#risultato
           str     r2,[r10]
