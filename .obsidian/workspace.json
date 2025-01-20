@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "6df697c34bbe100d",
+        "id": "406656768a6df273",
         "type": "tabs",
         "children": [
           {
-            "id": "39e24b6dcc5491cc",
+            "id": "6ada474b753fd9d0",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Primo anno/architettura-degli-elaboratori/Architettura.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Architettura"
             }
           }
         ]
@@ -167,12 +171,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "39e24b6dcc5491cc",
+  "active": "6ada474b753fd9d0",
   "lastOpenFiles": [
-    "Primo anno/architettura-degli-elaboratori/Architettura.md",
-    "Primo anno/strutture-discrete/Strutture.md",
-    "Primo anno/strutture-discrete/GuidaEsercizi.md",
     "Primo anno/strutture-discrete/Sunto.md",
+    "Primo anno/strutture-discrete/Strutture.md",
+    "Primo anno/strutture-discrete/Link.md",
+    "Primo anno/strutture-discrete/GuidaEsercizi.md",
+    "Primo anno/strutture-discrete/FileCondivisiTeams/04_Parte4.pdf",
+    "Primo anno/architettura-degli-elaboratori/Architettura.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/01_Architettura.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/13_Laboratorio.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/12_Tecnologia-microelettronica.md",
@@ -205,7 +211,6 @@
     "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.2/esempio1.s",
     "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.1/2.1-IstruzioniMacchina.pdf",
     "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.0/2.0-IstruzioniMacchina.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/1.0-SistemiNumerazione/1.1-Sistemi di numerazione e rappresentazione binaria dei numeri.pdf",
     "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
     "Primo anno/algebra-lineare-e-geometria/Definizioni.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
@@ -213,7 +218,6 @@
     "Primo anno/strutture-discrete/FileRielaborazioni/01_Parte1.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/Tips.md",
-    "Uni To-Do.md",
-    "Primo anno/strutture-discrete/Esercizi/Da fare.md"
+    "Uni To-Do.md"
   ]
 }
