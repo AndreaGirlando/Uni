@@ -14,21 +14,21 @@
 |   Materia    |            Doc            | Fatto? |    Note     |
 | :----------: | :-----------------------: | :----: | :---------: |
 |    Prog 1    | Algoritmi di ordinamento  |   🟨   | Da rivedere |
-|    Prog 1    |        Coda e pila        |   ❌    |             |
-|    Prog 1    |     Fare prove a spam     |   🟨   |  Count: 3   |
-|              |                           |        |             |
+|    Prog 1    |        Coda e pila        |   ❌    |   Pila ok   |
+|    Prog 1    |     Fare prove a spam     |   🟨   |  Count: 5   |
+|    Prog 1    |      Studiare teoria      |        |             |
 | Architettura |    Studiare la teoria     |   🟨   |             |
-| Architettura |    3.0 AlgebraBooleana    |   ❌    |             |
-| Architettura |         4.0 Pila          |   ❌    |             |
-| Architettura |  5.0-OperazioniEShifting  |   ❌    |             |
+| Architettura |         Karnaugh          |   ❌    |             |
+| Architettura |   Esercizi logici vari    |   ❌    |             |
+| Architettura |     Esercizi assembly     |   ❌    |             |
 | Architettura | Qualche video assembly(?) |   ❌    |             |
 |              |                           |        |             |
-|  Strutture   |       Sunto parte 1       |   ✅    |             |
-|  Strutture   |       Sunto parte 2       |   ✅    |             |
-|  Strutture   |       Sunto parte 3       |   ❌    |             |
-|  Strutture   |       Sunto parte 4       |   ❌    |             |
+|              |                           |        |             |
+|              |                           |        |             |
+|              |                           |        |             |
+|              |                           |        |             |
 |  Strutture   |      Studiare sunto       |   ❌    |             |
-|  Strutture   |     Fare prove a spam     |   🟨   |  Count: 4   |
+|  Strutture   |     Fare prove a spam     |   🟨   |  Count: 7   |
 
 ---
 
