@@ -45,7 +45,7 @@ Di seguito una tabella con delle cose utili per le dimostrazioni di questo tipo:
 | $(A \setminus B)$                                      | $(A∧¬B)$              |
 | $A \triangle B = (A \setminus B) \cup (B \setminus A)$ | $(A△B)≡(A∧¬B)∨(B∧¬A)$ |
 |                                                        |                       |
-
+$A \triangle B = (A \setminus B) \cup (B \setminus A)$ equivale ad uno XOR
 
 # **Aritmetica modulare (parte 2)**
 ##### Come calcolare i moduli
