@@ -25,12 +25,14 @@
             "id": "1fbf0b4f0f2572a9",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "Primo anno/strutture-discrete/FileCondivisiTeams/04_Parte4.pdf"
+                "file": "Primo anno/strutture-discrete/Strutture.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "04_Parte4"
+              "icon": "lucide-file",
+              "title": "Strutture"
             }
           }
         ],
@@ -186,12 +188,24 @@
   },
   "active": "1fbf0b4f0f2572a9",
   "lastOpenFiles": [
-    "Primo anno/strutture-discrete/Strutture.md",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/16-02-2024/FattoDaMe/soluzione.c",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/16-02-2024/FattoDaMe/output.txt",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/16-02-2024/FattoDaMe/input.txt",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/16-02-2024/FattoDaMe/16-02-2024.pdf",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/16-02-2024/FattoDaMe",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/16-02-2024/FattoDalProf - Copia/soluzione.c",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/16-02-2024/FattoDalProf - Copia/output.txt",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/16-02-2024/FattoDalProf - Copia/input.txt",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/16-02-2024/FattoDalProf - Copia/16-02-2024.pdf",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/16-02-2024/FattoDalProf - Copia",
+    "Primo anno/programmazione-1/C/Esercizi/EsamePratico/16-02-2024/FattoDalProf/soluzione.c",
+    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/05_Processore.md",
     "Primo anno/strutture-discrete/GuidaEsercizi.md",
-    "Primo anno/architettura-degli-elaboratori/Architettura.md",
+    "Uni To-Do.md",
     "Primo anno/strutture-discrete/Sunto.md",
+    "Primo anno/strutture-discrete/Strutture.md",
+    "Primo anno/architettura-degli-elaboratori/Architettura.md",
     "Primo anno/strutture-discrete/Link.md",
-    "Primo anno/strutture-discrete/FileCondivisiTeams/04_Parte4.pdf",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/01_Architettura.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/13_Laboratorio.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/12_Tecnologia-microelettronica.md",
@@ -201,14 +215,12 @@
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/08_Struttura-base-del-processore.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/07_Pipelining.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/06_livello_software.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/05_Processore.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/04_InputOutput.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/03_Bus.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/02_Memoria.md",
     "Primo anno/Imgs/Pasted image 20250119113759.png",
     "Primo anno/Imgs/Pasted image 20250119113814.png",
     "Primo anno/Imgs/Pasted image 20250119113806.png",
-    "Primo anno/architettura-degli-elaboratori/Assembly/5.0-OperazioniEShifting/2.4-IstruzioniMacchina.pdf",
     "Primo anno/Imgs/asciitable.gif",
     "Primo anno/Imgs/Pasted image 20250119113125.png",
     "Primo anno/Imgs/Pasted image 20250119112656.png",
@@ -216,21 +228,11 @@
     "Primo anno/Imgs/Pasted image 20250119112239.png",
     "Primo anno/Imgs/Pasted image 20250119111224.png",
     "Primo anno/Imgs/Pasted image 20250119111130.png",
-    "Primo anno/architettura-degli-elaboratori/Assembly/4.0-Pila/2.3-IstruzioniMacchina.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.2-Algebra Booleana.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.1-Algebra Booleana.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/3.0-AlgebraBooleana/3.0-Algebra Booleana.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.2/2.2-IstruzioniMacchina.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.2/esempio1.s",
-    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.1/2.1-IstruzioniMacchina.pdf",
-    "Primo anno/architettura-degli-elaboratori/Assembly/2.0-IstruzioniMacchina/2.0/2.0-IstruzioniMacchina.pdf",
     "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
     "Primo anno/algebra-lineare-e-geometria/Definizioni.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3Teoria.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/01_Parte1.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/Tips.md",
-    "Uni To-Do.md"
+    "Primo anno/strutture-discrete/FileRielaborazioni/02_Parte2.md"
   ]
 }
