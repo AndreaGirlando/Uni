@@ -1,0 +1,10 @@
+Emma Jones 42 81 160 F
+Bob Wilson 29 102 182 M
+Alice Davis 35 70 175 F
+Hannah Smith 55 63 149 F
+Frank Brown 67 92 198 M
+Charlie Williams 48 118 168 M
+Grace Taylor 23 105 185 F
+David Johnson 31 79 172 M
+Julia Moore 41 48 150 F
+Ian Miller 63 67 145 M
