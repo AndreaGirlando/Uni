@@ -169,6 +169,7 @@ Le mappe di Karnaugh sono un metodo di tipo geometrico che permettono di ricavar
 2. Raggruppare le caselle di valore 1 adiacenti orizzontalmente o verticalmente
 3. Ogni gruppo rappresenta il prodotto delle sue variabili con lo stesso valore (forma diretta se 1 e negata se 0). Identificare quali variabili non contribuiscono ed eliminarle nella forma analitica.
 4. Somma dei gruppi creati
+![[Pasted image 20250123081550.png]]
 
 **Condizione di indifferenza**: spesso accade che una funzione logica non sia definita su tutte le combinazioni di valori delle sue variabili, nella tabella di verità sono indicate con il simbolo "X" e quindi anche nella mappa di karnaugh corrispondente avranno un x, il loro valore va scelto in modo arbitrario cercando di creare una semplificazione a costo minimo.
 
@@ -233,3 +234,47 @@ Il passaggio di parametri ai sottoprogrammi può essere fatto attraverso i regis
 ![[Pasted image 20250119113759.png]]
 ![[Pasted image 20250119113806.png]]
 ![[Pasted image 20250119113814.png]]
+
+---
+# 6. Circuiti integrati
+###### Transistor
+Nei circuiti elettronici, per rappresentare i valori 0 e 1 delle variabili binarie si usano i valori di tensione elettrica, si stabilisce una **tensione di soglia** dove tutti i valori di tensione rappresentano un 1 mentre quelli inferiori rappresentano uno 0, i valori vicini alla soglia sono ambigui e quindi per evitare incertezze nasce la **banda vietata** dove i valori non vengono presi in considerazione. 
+![[Pasted image 20250123082311.png]]
+I transistor sono delle componenti elettroniche che svolgono il compito di interruttori, in specifico i transistor MOS (transistore a metallo-ossido semiconduttore) sono quelli più utilizzati nei nostri dispositivi, questo tipo di transistor hanno 3 collegamenti: **Base**, **Pozzo** e **Sorgente**, a seconda della tensione in ingresso nella Base il transistore collegherà o meno la sorgente al pozzo, se il transistor sta conducendo allora la tensione in entrata è uguale alla tensione in uscita, esistono 2 tipi di transistor MOS:
+- **NMOS**: 
+	- il transistor è in conduzione (vale 1) se $V_b = V_{cc}$
+	- il transistor è in interdizione (vale 0) se $V_b$ = 0
+- **PMOS**: 
+	- il transistor è in conduzione (vale 1) se $V_b = 0$ 
+	- il transistor è in interdizione (vale 0) se $V_b$ = $V_{cc}$
+Attraverso questi 2 transistor possiamo costruire le seguenti porte logiche: 
+- **NOT**: si ottiene una porta NOT con un transistor NMOS collegando la sorgente alla massa e il pozzo all'alimentazione tramite una resistenza, per una tensione di ingresso di "1" in uscita avremo una tensione di "0" e viceversa.
+- **NOR**: si ottiene collegando due transistor NMOS in parallelo, solo se entrambi i transistori sono in interdizione la tensione in uscita sarà uno altrimenti sarà sempre 0
+- **NAND**: collegando due transistor NMOS in serie si ottiene una porta NAND
+- **AND**: collegando in serie una NAND e NOT
+- **OR**: collegando in serie una NOR e NOT
+
+L'unico problema dei transistor NMOS è che consumano tanta corrente, cosi nascono i transistor CMOS che hanno un consumo di potenza ridotto e soprattutto dimensioni ridotte infatti da quando sono nati abbiamo componenti con miliardi di transistor all'interno
+
+---
+###### Definizioni nelle porte logiche
+- il **tempo di transizione** in un circuito è il tempo impiegato da un segnale per transitare di livello
+- il **ritardo di propagazione** è il tempo che ci mette il nostro circuito ad adattarsi ai nuovi valor in input
+- la **frequenza di lavoro** è il numero di volte che esso commuta in un determinato tempo.
+- **Fan-in** è il numero di ingressi di una porta logica
+- **Fan-out** è il numero di uscite di una porta logica
+
+> [!TIP] 
+> Tipicamente il fan-in e fan-out si limita a meno di 10 per porta perché un numero più elevato inciderebbe sul ritardo di propagazione
+
+---
+###### Circuiti integrati
+**Decodificatore**: un blocco funzionale in grado di decodificare un codice binario in ingresso
+**Multiplatore**: un blocco funzionale dotato di molteplici ingressi di selezione e altrettanti ingressi dato e di una sola uscita, quello che fa questo blocco funzionale è selezionare uno degli ingressi dato basandosi sui segnalo che arrivano negli ingressi selezione e inviarlo in uscita
+
+---
+###### Reti sequenziali
+Le reti che riescono a memorizzare informazioni sono chiamate **reti sequenziali**, queste reti logiche sono basati su dei cicli, una rete sequenziale in grado di memorizzare dei bit viene anche detta **bistabile** ne esistono di 3 tipi:
+- **Bistabile asincrono**: Sono privi di un segnale di sincronismo e modificano il loro stato in seguito al cambiamento degli ingressi.
+- **Bistabile sincrono**: Sono sensibili ad un segnale di controllo e i cambiamenti di stato avvengono solo in corrispondenza di un impulso del segnale di controllo
+- **Bistabile di tipo D**: Memorizza un bit unificando gli ingressi S e R in un unico ingresso D. Quando il segnale di clock $CLK$ è alto ($CLK=1$), l’uscita segue il valore di D; quando è basso ($CLK=0$), lo stato rimane invariato.

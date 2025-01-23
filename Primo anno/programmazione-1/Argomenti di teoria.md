@@ -1,0 +1,9 @@
+- File ✅
+- terminazione di un programma ✅
+- suddividere in più file sorgente ✅
+- liste ✅
+- pile ✅
+- code ✅
+- bubble sort
+- selection sort
+- insertion
