@@ -1,7 +1,0 @@
-{
-    "C_Cpp.default.compilerPath": "C:\\MinGW\\bin\\gcc.exe",
-    "files.associations": {
-        "*.embeddedhtml": "html",
-        "string.h": "c"
-    }
-}
