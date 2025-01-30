@@ -1,0 +1,19 @@
+Punto A - Parametri inseriti: n=5, m=7
+Inserisci un numero compreso tra 10 e 100:
+
+Punto B - Contenuto di A:
+   18   16   19    2   18   11   10
+    7    9   17   11    7   15    9
+    1    7    7   16   11   17    9
+   17    3    1   13   12    2    3
+    3   12    5   17    5    8   16
+
+Punto C - Contenuto di A dopo la modifica:
+    *    *    *    2    *    *    *
+    *    *    *   11    7    *    *
+    1    7    *    *    *    *    9
+    *    3    1    *    *    2    3
+    3    *    5    *    5    8    *
+
+Punto D - Riga con minor numero di NULL:
+    *    3    1    *    *    2    3
