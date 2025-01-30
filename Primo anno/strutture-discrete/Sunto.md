@@ -725,9 +725,9 @@ Un cammino hamiltoniano di $G$ è un circuito che passa una ed una sola volta pe
 - **Peso sui nodi**: creiamo una matrice come quella che creeremo per un grafo normale e gli associamo un vettore con i valori dei nodi.
 
 ---
-**Problema del commesso viaggiatore**: anche conosciuto come TSP è il problema di trovare un circuito hamiltoniano che minimizza il costo totale per un grafo pesato
+**Problema del commesso viaggiatore**: anche conosciuto come TSP è il problema di trovare un ciclo hamiltoniano che minimizza il costo totale per un grafo pesato
 ![[Pasted image 20250110145941.png|500]]
-Se un commesso viaggiatore deve attraversare tutti e 4 i nodi, partendo da A e tornando ad A, qual è il percorso che minimizza il costo totale, che supponiamo, per esempio, siano distanze in KM? Possiamo risolvere il problema analizzando tutti i circuiti hamiltoniani
+Se un commesso viaggiatore deve attraversare tutti e 4 i nodi, partendo da A e tornando ad A, qual è il percorso che minimizza il costo totale, che supponiamo, per esempio, siano distanze in KM? Possiamo risolvere il problema analizzando tutti i cicli hamiltoniani
 ![[Pasted image 20250110150242.png]]Da qui capiamo che ci sono 2 circuiti che il viaggiatore potrebbe usare. All’aumentare dei nodi da attraversare aumenta esponenzialmente il tempo di risoluzione perché si devono banalmente provare più combinazioni. Nessuno ha avuto un idea per risolvere in modo migliore, quindi resta un problema aperto.
 
 ---
