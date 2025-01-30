@@ -1,4 +1,4 @@
-# **Operatori logici (parte 1)**
+ # **Operatori logici (parte 1)**
 
 - $¬P$ = "Non P"  
 - $P ∨ Q$  = "P o Q"
