@@ -1,4 +1,4 @@
-### Algebra Lineare
+# Algebra Lineare
 ##### Strutture Algebriche
 - **Insieme**: collezione di un elementi che hanno tutti una stessa caratteristica
 - **Funzione**: dati due insiemi $A$ e $B$, si dice $f$ (funzione) una legge che associa ad ogni elemento di $A$ uno di $B$. [[01_Parte1#Funzioni |Spiegazione approfondita delle funzioni]] $f:R \to R$ si legge "$f$ definita in $R$ a valori in $R$".
@@ -166,7 +166,7 @@ Nell'ultimo caso si vede un'applicazione del teorema di Rouchè Capelli (si lasc
 	- $B_{n}$ si calcola sostituendo la $n^a$ colonna di $A$ con $B$.
 Esempio di come trovare le soluzioni di un sistema lineare usando Cramer
 ![[Pasted image 20241123121610.png]]
-Dimostrazione: prendo $Ax = B \Leftrightarrow x = A^{-1}B$ quello che devo dimostrare è che A è uguale a B se e soltanto se moltiplicata per quella x quindi seguo i seguenti passi: 
+**Dimostrazione**: prendo $Ax = B \Leftrightarrow x = A^{-1}B$ quello che devo dimostrare è che A è uguale a B se e soltanto se moltiplicata per quella x quindi seguo i seguenti passi: 
 - Sostituisco $A^{-1}B$ ad $x$ della prima formula e quindi diventa: $A*(A^{-1}B) = B$
 - Sposto le parantesi: $(A*A^{-1})B = B$ 
 - Per definizione di matrice inversa $A * A^{-1} = Id_m$ 
@@ -274,7 +274,6 @@ opzionalmente si fa riferimento alla dimensione del $ker(A)$ indicandolo con $nu
     - $f$ e $g$ devono essere suriettive e iniettive.
  ---
 ##### Endomorfismi
-
 - **Endomorfismo**: applicazione lineare dove dominio $=$ codominio.
 - **Isomorfismo**: un'applicazione lineare biettiva (iniettiva e suriettiva), quindi necessariamente endomorfismo.
 - **Autovalore**: dato un endomorfismo $f: V \to V$, $\lambda$ si dice **autovalore** se esiste un vettore $v \in V$ con $v \neq 0$ tale che $f(v)=\lambda v$. $\qquad\lambda \space\text{autovalore} \iff \exists v \in V, v \neq 0 \space|\space f(v) = \lambda v$
@@ -293,6 +292,6 @@ opzionalmente si fa riferimento alla dimensione del $ker(A)$ indicandolo con $nu
 - **Teorema Autospazio**: sia $V$ un K-spazio vettoriale e $f: V \to W$ un endormofismo. Allora ne segue che $V_{\lambda} = \ker f_{\lambda}$.
     - **Dimostrazione** (7\*, L19): si usa la definizione dell'autospazio.
  ---
-##### Geometria
+# Geometria
 
 ---
