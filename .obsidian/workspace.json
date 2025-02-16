@@ -6,19 +6,18 @@
       {
         "id": "e0f930c53c23ca17",
         "type": "tabs",
+        "dimension": 61.664641555285534,
         "children": [
           {
             "id": "0fa0b74c73cd86f7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "Primo anno/algebra-lineare-e-geometria/Definizioni.md",
-                "mode": "source",
-                "source": false
+                "file": "Primo anno/algebra-lineare-e-geometria/Lezioni/3 ottobre 2024.pdf"
               },
-              "icon": "lucide-file",
-              "title": "Definizioni"
+              "icon": "lucide-file-text",
+              "title": "3 ottobre 2024"
             }
           }
         ]
@@ -26,6 +25,7 @@
       {
         "id": "738d65d6cfbcef0b",
         "type": "tabs",
+        "dimension": 38.33535844471446,
         "children": [
           {
             "id": "f2b3eaef87ef6e26",
@@ -241,19 +241,21 @@
   },
   "active": "0fa0b74c73cd86f7",
   "lastOpenFiles": [
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/5 novembre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/31 ottobre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/29 ottobre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/10 ottobre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/FormularioLia.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/7 novembre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Definizioni.md",
-    "immagine.md",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/14 novembre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/15 novembre 2024.pdf",
     "Primo anno/algebra-lineare-e-geometria/Lezioni/8 ottobre 2024.pdf",
+    "Primo anno/algebra-lineare-e-geometria/Lezioni/10 ottobre 2024.pdf",
+    "Primo anno/algebra-lineare-e-geometria/Lezioni/15 ottobre 2024.pdf",
+    "Primo anno/algebra-lineare-e-geometria/Lezioni/10 Dicembre 2024.pdf",
+    "Primo anno/algebra-lineare-e-geometria/Lezioni/5 novembre 2024.pdf",
+    "Primo anno/algebra-lineare-e-geometria/Lezioni/7 novembre 2024.pdf",
     "Primo anno/algebra-lineare-e-geometria/Lezioni/3 ottobre 2024.pdf",
     "Primo anno/algebra-lineare-e-geometria/Lezioni/1 ottobre 2024.pdf",
+    "Primo anno/algebra-lineare-e-geometria/Definizioni.md",
+    "Metodo di Gauss-Jordan.pdf.md",
+    "Primo anno/algebra-lineare-e-geometria/FormularioLia.pdf",
+    "Primo anno/architettura-degli-elaboratori[✅30L]/Architettura.md",
+    "Primo anno/algebra-lineare-e-geometria/FileCondivisiTeams/Esercizi_Algebra_Lineare.pdf",
+    "Primo anno/algebra-lineare-e-geometria/Lezioni/31 ottobre 2024.pdf",
+    "immagine.md",
     "Primo anno/architettura-degli-elaboratori/Assembly/Leggi per la minimizzazione.md",
     "Primo anno/strutture-discrete/Sunto.md",
     "Primo anno/Untitled.md",
@@ -278,8 +280,6 @@
     "Primo anno/strutture-discrete/Link.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/01_Architettura.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/12_Tecnologia-microelettronica.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/11_Insieme-di-istruzioni-macchina.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/10_Circuiti-aritmetici.md",
     "Primo anno/Imgs/Pasted image 20250119113759.png",
     "Primo anno/Imgs/Pasted image 20250119113814.png",
     "Primo anno/Imgs/Pasted image 20250119113806.png",
