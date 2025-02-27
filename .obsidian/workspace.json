@@ -4,91 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "e0f930c53c23ca17",
+        "id": "bd89c0a5d58ef853",
         "type": "tabs",
-        "dimension": 61.664641555285534,
         "children": [
           {
-            "id": "0fa0b74c73cd86f7",
+            "id": "2ee9988b56fe5a0e",
             "type": "leaf",
             "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/algebra-lineare-e-geometria/Lezioni/3 ottobre 2024.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "3 ottobre 2024"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
-      },
-      {
-        "id": "738d65d6cfbcef0b",
-        "type": "tabs",
-        "dimension": 38.33535844471446,
-        "children": [
-          {
-            "id": "f2b3eaef87ef6e26",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/algebra-lineare-e-geometria/Lezioni/1 ottobre 2024.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "1 ottobre 2024"
-            }
-          },
-          {
-            "id": "2ec800ac44c940ac",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/algebra-lineare-e-geometria/Lezioni/5 novembre 2024.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "5 novembre 2024"
-            }
-          },
-          {
-            "id": "e5d41016e7a7b868",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/algebra-lineare-e-geometria/Lezioni/7 novembre 2024.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "7 novembre 2024"
-            }
-          },
-          {
-            "id": "883589847050b9a3",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/algebra-lineare-e-geometria/FormularioLia.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "FormularioLia"
-            }
-          },
-          {
-            "id": "ef39f91730e62306",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/algebra-lineare-e-geometria/Lezioni/5 novembre 2024.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "5 novembre 2024"
-            }
-          }
-        ],
-        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -239,22 +168,24 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0fa0b74c73cd86f7",
+  "active": "4976c61b40586f1c",
   "lastOpenFiles": [
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/8 ottobre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/10 ottobre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/15 ottobre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/10 Dicembre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/5 novembre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/7 novembre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/3 ottobre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/1 ottobre 2024.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Definizioni.md",
+    "Primo anno/secondo-semestre/Untitled.md",
+    "Primo anno/secondo-semestre/programmazione-2",
+    "Primo anno/secondo-semestre/analisi-matematica-1",
+    "Primo anno/secondo-semestre/inglese",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica",
+    "Primo anno/secondo-semestre",
+    "Primo anno/primo-semestre",
+    "Primo anno/primo-semestre/algebra-lineare-e-geometria/Lezioni/5 novembre 2024.pdf",
+    "Primo anno/primo-semestre/algebra-lineare-e-geometria/FormularioLia.pdf",
+    "Primo anno/primo-semestre/algebra-lineare-e-geometria/Lezioni/7 novembre 2024.pdf",
+    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Assembly/Conversioni.pdf",
+    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Assembly/Comandi Assembly.md",
+    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Assembly/Appunti.md",
+    "Primo anno/primo-semestre/algebra-lineare-e-geometria/Definizioni.md",
     "Metodo di Gauss-Jordan.pdf.md",
-    "Primo anno/algebra-lineare-e-geometria/FormularioLia.pdf",
-    "Primo anno/architettura-degli-elaboratori[✅30L]/Architettura.md",
-    "Primo anno/algebra-lineare-e-geometria/FileCondivisiTeams/Esercizi_Algebra_Lineare.pdf",
-    "Primo anno/algebra-lineare-e-geometria/Lezioni/31 ottobre 2024.pdf",
+    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Architettura.md",
     "immagine.md",
     "Primo anno/architettura-degli-elaboratori/Assembly/Leggi per la minimizzazione.md",
     "Primo anno/strutture-discrete/Sunto.md",
@@ -277,9 +208,6 @@
     "README.md",
     "Primo anno/architettura-degli-elaboratori/Assembly/Comandi Assembly.md",
     "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/05_Processore.md",
-    "Primo anno/strutture-discrete/Link.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/01_Architettura.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/12_Tecnologia-microelettronica.md",
     "Primo anno/Imgs/Pasted image 20250119113759.png",
     "Primo anno/Imgs/Pasted image 20250119113814.png",
     "Primo anno/Imgs/Pasted image 20250119113806.png",

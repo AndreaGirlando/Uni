@@ -4,7 +4,7 @@
 [[4 ottobre 2024.pdf|4 ottobre 2024]]
 [[Uni/Primo anno/architettura-degli-elaboratori/Lezioni/7 ottobre 2024.pdf|7 ottobre 2024]]
 [[Uni/Primo anno/architettura-degli-elaboratori/Lezioni/9 ottobre 2024.pdf|9 ottobre 2024]]
-[[11 ottobre 2024]]
+[[11 Ottobre 2024]]
 
 ---
 #### Approfondimenti/Rielaborazioni
