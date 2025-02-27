@@ -32,10 +32,13 @@
     "debugMode": false,
     "useInternalPlugins": false
   },
-  "Primo anno/algebra-lineare-e-geometria": "LiAlbum",
   "Primo anno/architettura-degli-elaboratori": "LiAlbum",
   "Primo anno/programmazione-1": "LiAlbum",
   "Primo anno/strutture-discrete": "LiAlbum",
   "Primo anno/Imgs": "LiImages",
-  "Primo anno": "1️⃣"
+  "Primo anno": "1️⃣",
+  "Primo anno/primo-semestre/algebra-lineare-e-geometria": "LiAlbum",
+  "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]": "LiAlbum",
+  "Primo anno/primo-semestre/programmazione-1[✅30L]": "LiAlbum",
+  "Primo anno/primo-semestre/strutture-discrete[✅27]": "LiAlbum"
 }
