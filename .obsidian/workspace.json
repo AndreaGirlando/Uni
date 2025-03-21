@@ -4,19 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "ec3d059c7eea40f7",
+        "id": "ac5aca18e922f0b1",
         "type": "tabs",
         "children": [
           {
-            "id": "4314f4b651f8310e",
+            "id": "f4719bbf4e9772aa",
             "type": "leaf",
             "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/secondo-semestre/analisi-1/esercizi/Esercizi del 0503_250308_173507.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Esercizi del 0503_250308_173507"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -172,6 +170,9 @@
   },
   "active": "4976c61b40586f1c",
   "lastOpenFiles": [
+    "Primo anno/primo-semestre/algebra-lineare-e-geometria/Link.md",
+    "Primo anno/primo-semestre/algebra-lineare-e-geometria/TeoriaAlgebra.pdf",
+    "Primo anno/secondo-semestre/analisi-1/esercizi/Esercizi del 0503_250308_173507.pdf",
     "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/Lezione 2 fondamenti di informatica.pdf",
     "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/Lezione 1 fondamenti di informatica.pdf",
     "Primo anno/secondo-semestre/programmazione-2/FileCondivisiTeams/Lezione 02 Introduzione a C++/2 Operatori_ed_espressioni.pdf",
@@ -180,9 +181,6 @@
     "Primo anno/secondo-semestre/programmazione-2/FileCondivisiTeams/Lezione 02 Introduzione a C++/1 Il_linguaggio_C++_Elementi_base.pdf",
     "Primo anno/secondo-semestre/programmazione-2/FileCondivisiTeams/Lezione 02 Introduzione a C++",
     "Primo anno/secondo-semestre/programmazione-2/FileCondivisiTeams/Lezione 03 vettori stringhe flussi/libri.cpp",
-    "Primo anno/secondo-semestre/programmazione-2/FileCondivisiTeams/Lezione 03 vettori stringhe flussi/4 Esercitazione.pptx",
-    "Primo anno/secondo-semestre/programmazione-2/FileCondivisiTeams/Lezione 03 vettori stringhe flussi/3 Flussi_e_file.pdf",
-    "Primo anno/secondo-semestre/programmazione-2/FileCondivisiTeams/Lezione 03 vettori stringhe flussi/2 Stringhe.pdf",
     "Primo anno/primo-semestre/strutture-discrete[✅27]/Riassunto.md",
     "Primo anno/secondo-semestre/Untitled.md",
     "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Assembly/Comandi Assembly.md",
