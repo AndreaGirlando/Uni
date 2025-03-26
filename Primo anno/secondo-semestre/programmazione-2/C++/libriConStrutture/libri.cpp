@@ -2,7 +2,11 @@
 #include <cstring>
 #include <fstream>
 using namespace std;
-
+/*
+    getline() viene usato per leggere una stringa dal buffer scelto
+    stream.getline(char*,dim) usiamo questo getline() quando usiamo le stringhe native
+    getline(stream,string) usiamo questo getline() quando usiamo la classe string
+*/
 struct Libro{
     string titolo;//Classe string per la gestione delle stringhe
     string autore;
@@ -29,10 +33,12 @@ void stampaLibri();
 void MemorizzaArchivio();
 void CaricaArchivio();
 void cercaLibro(string titolo);
+
 int main(){
     int scelta = 0;
     CaricaArchivio();
     do{
+        cout << "\n\n";
         cout << "1. Inserisci un libro" << endl;
         cout << "2. Stampa tutti i libri dell'archivio" << endl;
         cout << "3. Cerca un libro per titolo" << endl;
@@ -41,7 +47,7 @@ int main(){
         cout << "Scegli l'operazione: " << endl;
 
         cin >> scelta;
-        cin.get(); //per togliere lo \n dal buffer di tastiera
+        cin.get(); //per togliere lo \n dal buffer di tastiera si puo usare anche cin.ignore()
         Libro libro;
         string titolo;
 
@@ -49,7 +55,6 @@ int main(){
             case 0:
                 break;
             case 1:
-
                 cout << "Inserisci il titolo: ";
                 getline(cin,libro.titolo);
 
@@ -63,13 +68,12 @@ int main(){
                 cin >> libro.prezzo;
 
                 cout << "Inserisci il genere: ";
-                cin.ignore();
+                cin.ignore();//usare questo comando ci permette di cancella lo \n del cin precendente
                 cin.getline(libro.genere,21);
 
                 if(!inserisciLibro(&libro)){
                     cout << "Archivio Pieno" << endl;
                 }
-
                 break;
 
             case 2:
@@ -88,9 +92,6 @@ int main(){
                 cout << "Scelta non valida" << endl;
         }
 
-
-
-
     }while(scelta != 0);
 
     cout << "Fine programma" << endl;
@@ -99,7 +100,6 @@ int main(){
 
 bool inserisciLibro(Libro* libro){
     if(numLibri >= MAX_LIBRI) return false;
-    cout << "\n\n\n";
     // libro->stampa();
     archivio[numLibri].titolo = libro->titolo;
     archivio[numLibri].autore = libro->autore;
@@ -113,6 +113,7 @@ bool inserisciLibro(Libro* libro){
 
 void stampaLibri(){
     for(int i = 0; i<numLibri; i++){
+        cout << "\n";
         cout << "<---------------->" << endl;
         archivio[i].stampa();
         cout << "<---------------->" << endl;
@@ -125,12 +126,13 @@ void cercaLibro(string titolo){
             cout << "<---------------->" << endl;
             archivio[i].stampa();
             cout << "<---------------->" << endl;
-            break;
+            return;
         }
-        cout << "<---------------->" << endl;
-        cout << "Libro non trovato" << endl;
-        cout << "<---------------->" << endl;
     }
+    cout << "<---------------->" << endl;
+    cout << "Libro non trovato" << endl;
+    cout << "<---------------->" << endl;
+    return;
 }
 
 void MemorizzaArchivio(){
@@ -154,7 +156,7 @@ void MemorizzaArchivio(){
 }
 
 void CaricaArchivio(){
-    ifstream file("archivio.txt",ios::in);
+    ifstream file("archivio.txt",ios::in);//Apro il file in modalità "r"
 
     if(file.fail()){
         cout << "Errore nell'apertura del file";
@@ -163,13 +165,16 @@ void CaricaArchivio(){
 
     file >> numLibri; //Carico il numero di libri
 
-    for(int i = 0; i<numLibri;i++){ //Carino ogni libro
+    for(int i = 0; i<numLibri;i++){ //Carico ogni libro
         file >> archivio[i].titolo;
+        //! Con l'operatore di shitfing prendiamo fino al primo spazio quindi sarebbe più giusto usare getline()
+        //? in questo modo getline(file,archivio[i].titolo)
         file >> archivio[i].autore;
         file >> archivio[i].annoPubblicazione;
         file >> archivio[i].prezzo;
         file >> archivio[i].genere;
     }
     cout << "Hai caricato " << numLibri << " libri dall'archivio con successo!\n\n";
+    file.close();
     return;
 }
