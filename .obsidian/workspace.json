@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "ac5aca18e922f0b1",
+        "id": "3e4053fe94195e22",
         "type": "tabs",
         "children": [
           {
-            "id": "f4719bbf4e9772aa",
+            "id": "66eefe035016fd3e",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Primo anno/secondo-semestre/programmazione-2/Lezioni/25-03-2025.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "25-03-2025"
             }
           }
         ]
@@ -168,19 +172,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4976c61b40586f1c",
+  "active": "66eefe035016fd3e",
   "lastOpenFiles": [
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/5marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/19marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/3marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/17marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/12marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/10marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Esercizi ed esempi/eserccap1parte2.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Esercizi ed esempi/eserccap1parte1.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Esercizi ed esempi/esempicap1.pdf",
+    "Primo anno/secondo-semestre/programmazione-2/C++/test.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/Lezioni/25-03-2025.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/test",
+    "Primo anno/secondo-semestre/programmazione-2/C++/riferimenti.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/C++/riferimenti",
+    "Primo anno/secondo-semestre/programmazione-2/C++/libri.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/C++/libri",
+    "Primo anno/secondo-semestre/programmazione-2/C++/archivio.txt",
+    "Primo anno/secondo-semestre/programmazione-2/C++/LAB1",
+    "Primo anno/secondo-semestre/programmazione-2/FileCondivisiTeams/Spata/Puntatori3.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/FileCondivisiTeams/Spata/Puntatori2.cpp",
     "Primo anno/primo-semestre/algebra-lineare-e-geometria/Link.md",
     "Primo anno/primo-semestre/strutture-discrete[✅27]/Riassunto.md",
     "Primo anno/secondo-semestre/Untitled.md",
@@ -208,7 +212,6 @@
     "Primo anno/Imgs/Pasted image 20250123082311.png",
     "Primo anno/Imgs/Pasted image 20250123082309.png",
     "index.md",
-    "README.md",
     "Primo anno/Imgs/Pasted image 20250119113759.png",
     "Primo anno/Imgs/Pasted image 20250119113814.png",
     "Primo anno/Imgs/Pasted image 20250119113806.png",
