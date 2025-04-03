@@ -10,7 +10,6 @@ template <typename T> class Pila {
         void Push(T elem);
         T Pop();
         int Len(); //massimo numero di elementi della Pila
-        void copyArray(T elem[]);
     private:
         T *array;
         int dim;
