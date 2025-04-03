@@ -5,7 +5,7 @@ template <typename T> Pila<T>::Pila() : top(0) , dim(2) {
     array = new T[dim];
 }
 template <typename T> Pila<T>::~Pila(){ //? Distruttore per deallocare l'array
-    free(array);
+    delete array[]; //! Si usa come il free
 }
 
 template <typename T>
@@ -21,7 +21,7 @@ template <typename T> void Pila<T>::Push(T elem){
         }
         newArray[top] = elem; //? Inserisco l'ultimo elemento
         top++;
-        free(array); //? dealloco l'array
+        delete array []; //? dealloco l'array
         array = newArray; //? Punto al nuovo array
     }else{
         array[top] = elem;
