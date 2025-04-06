@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "3e4053fe94195e22",
+        "id": "e3d958d11637b810",
         "type": "tabs",
         "children": [
           {
-            "id": "66eefe035016fd3e",
+            "id": "cff821d89bbc37b9",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Primo anno/secondo-semestre/programmazione-2/Lezioni/25-03-2025.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "25-03-2025"
+              "title": "Nuova scheda"
             }
           }
         ]
@@ -44,7 +40,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Esplora risorse"
             }
           },
           {
@@ -162,29 +158,37 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "switcher:Apri selezione rapida": false,
+      "graph:Apri vista grafo": false,
+      "canvas:Crea nuova lavagna": false,
+      "daily-notes:Apri nota del giorno": false,
+      "templates:Inserisci modello": false,
+      "command-palette:Apri riquadro comandi": false,
       "vscode-editor:Create Code File": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "66eefe035016fd3e",
+  "active": "4976c61b40586f1c",
   "lastOpenFiles": [
-    "Primo anno/secondo-semestre/programmazione-2/C++/test.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/C++/Girlando.rar",
+    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori.rar",
+    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori/archivio.txt",
+    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori/libri_template",
+    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori/libri_template.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori/Non confermato 997315.crdownload",
+    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori",
+    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatoriù",
+    "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/teoria.md",
+    "Primo anno/utility/Pasted image 20250405101231.png",
+    "Primo anno/utility/Pasted image 20250405100714.png",
+    "Primo anno/secondo-semestre/programmazione-2/FileCondivisiTeams/Mongiovi/Lezione 06 ereditarietà e polimorfismo/Lezione 06 ereditarieta e polimorfismo.pdf",
+    "Primo anno/utility/Pasted image 20250405100424.png",
+    "Primo anno/utility/Pasted image 20250405095733.png",
+    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Architettura.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/virtual/teoria.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/virtual",
+    "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/virtual.cpp",
     "Primo anno/secondo-semestre/programmazione-2/Lezioni/25-03-2025.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/test",
-    "Primo anno/secondo-semestre/programmazione-2/C++/riferimenti.cpp",
-    "Primo anno/secondo-semestre/programmazione-2/C++/riferimenti",
-    "Primo anno/secondo-semestre/programmazione-2/C++/libri.cpp",
-    "Primo anno/secondo-semestre/programmazione-2/C++/libri",
-    "Primo anno/secondo-semestre/programmazione-2/C++/archivio.txt",
-    "Primo anno/secondo-semestre/programmazione-2/C++/LAB1",
-    "Primo anno/secondo-semestre/programmazione-2/FileCondivisiTeams/Spata/Puntatori3.cpp",
-    "Primo anno/secondo-semestre/programmazione-2/FileCondivisiTeams/Spata/Puntatori2.cpp",
     "Primo anno/primo-semestre/algebra-lineare-e-geometria/Link.md",
     "Primo anno/primo-semestre/strutture-discrete[✅27]/Riassunto.md",
     "Primo anno/secondo-semestre/Untitled.md",
@@ -192,7 +196,6 @@
     "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Assembly/Appunti.md",
     "Primo anno/primo-semestre/algebra-lineare-e-geometria/Definizioni.md",
     "Metodo di Gauss-Jordan.pdf.md",
-    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Architettura.md",
     "immagine.md",
     "Primo anno/architettura-degli-elaboratori/Assembly/Leggi per la minimizzazione.md",
     "Primo anno/strutture-discrete/Sunto.md",
@@ -207,17 +210,11 @@
     "Primo anno/architettura-degli-elaboratori/Untitled.md",
     "Primo anno/programmazione-1/Argomenti di teoria.md",
     "Primo anno/architettura-degli-elaboratori/Architettura.md",
-    "Primo anno/architettura-degli-elaboratori/FileRielaborazioni/13_Laboratorio.md",
     "Primo anno/Imgs/Pasted image 20250123081550.png",
     "Primo anno/Imgs/Pasted image 20250123082311.png",
     "Primo anno/Imgs/Pasted image 20250123082309.png",
-    "index.md",
     "Primo anno/Imgs/Pasted image 20250119113759.png",
     "Primo anno/Imgs/Pasted image 20250119113814.png",
-    "Primo anno/Imgs/Pasted image 20250119113806.png",
-    "Primo anno/Imgs/asciitable.gif",
-    "Primo anno/Imgs/Pasted image 20250119113125.png",
-    "Primo anno/Imgs/Pasted image 20250119112656.png",
-    "Primo anno/Imgs/Pasted image 20250119112243.png"
+    "Primo anno/Imgs/Pasted image 20250119113806.png"
   ]
 }
