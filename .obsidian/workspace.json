@@ -11,10 +11,14 @@
             "id": "cff821d89bbc37b9",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nuova scheda"
+              "title": "info"
             }
           }
         ]
@@ -74,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5
+    "width": 413.5,
+    "collapsed": true
   },
   "right": {
     "id": "abf359470799e113",
@@ -168,8 +173,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4976c61b40586f1c",
+  "active": "cff821d89bbc37b9",
   "lastOpenFiles": [
+    "Primo anno/secondo-semestre/programmazione-2/C++/listaDoppiamenteConcatenata/main.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/C++/listaDoppiamenteConcatenata",
+    "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/main",
+    "Pasted image 20250411103307.png",
+    "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/main.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/Girlando.rar",
     "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori.rar",
     "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori/archivio.txt",
@@ -177,17 +188,13 @@
     "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori/libri_template.cpp",
     "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori/Non confermato 997315.crdownload",
     "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori",
-    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatoriù",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/teoria.md",
     "Primo anno/utility/Pasted image 20250405101231.png",
     "Primo anno/utility/Pasted image 20250405100714.png",
-    "Primo anno/secondo-semestre/programmazione-2/FileCondivisiTeams/Mongiovi/Lezione 06 ereditarietà e polimorfismo/Lezione 06 ereditarieta e polimorfismo.pdf",
     "Primo anno/utility/Pasted image 20250405100424.png",
     "Primo anno/utility/Pasted image 20250405095733.png",
     "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Architettura.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual/teoria.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/virtual",
-    "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/virtual.cpp",
     "Primo anno/secondo-semestre/programmazione-2/Lezioni/25-03-2025.md",
     "Primo anno/primo-semestre/algebra-lineare-e-geometria/Link.md",
     "Primo anno/primo-semestre/strutture-discrete[✅27]/Riassunto.md",
@@ -209,12 +216,10 @@
     "Uni To-Do.md",
     "Primo anno/architettura-degli-elaboratori/Untitled.md",
     "Primo anno/programmazione-1/Argomenti di teoria.md",
-    "Primo anno/architettura-degli-elaboratori/Architettura.md",
     "Primo anno/Imgs/Pasted image 20250123081550.png",
     "Primo anno/Imgs/Pasted image 20250123082311.png",
     "Primo anno/Imgs/Pasted image 20250123082309.png",
     "Primo anno/Imgs/Pasted image 20250119113759.png",
-    "Primo anno/Imgs/Pasted image 20250119113814.png",
-    "Primo anno/Imgs/Pasted image 20250119113806.png"
+    "Primo anno/Imgs/Pasted image 20250119113814.png"
   ]
 }
