@@ -4,21 +4,37 @@
     "type": "split",
     "children": [
       {
-        "id": "e3d958d11637b810",
+        "id": "430c88ab39a443a7",
         "type": "tabs",
         "children": [
           {
-            "id": "cff821d89bbc37b9",
+            "id": "f435263f54e11e9a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
-                "mode": "source",
-                "source": false
+                "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf"
               },
-              "icon": "lucide-file",
-              "title": "info"
+              "icon": "lucide-file-text",
+              "title": "AppuntiCap1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "3755f5f5d7f2ae20",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "74a4381496d74e9f",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Primo anno/utility/Pasted image 20250417161658.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20250417161658"
             }
           }
         ]
@@ -78,8 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5,
-    "collapsed": true
+    "width": 413.5
   },
   "right": {
     "id": "abf359470799e113",
@@ -173,21 +188,26 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "cff821d89bbc37b9",
+  "active": "4976c61b40586f1c",
   "lastOpenFiles": [
-    "Primo anno/secondo-semestre/programmazione-2/C++/listaDoppiamenteConcatenata/main.cpp",
-    "Primo anno/secondo-semestre/programmazione-2/C++/listaDoppiamenteConcatenata",
-    "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/main",
-    "Pasted image 20250411103307.png",
-    "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/main.cpp",
+    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
+    "Primo anno/utility/Pasted image 20250417172551.png",
+    "Primo anno/utility/Pasted image 20250417172530.png",
+    "Primo anno/utility/Pasted image 20250417172519.png",
+    "Primo anno/utility/Pasted image 20250417161658.png",
+    "Primo anno/secondo-semestre/analisi-1/Senza nome.md",
+    "Primo anno/secondo-semestre/analisi-1/Rielaborazione",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/31-03-2025.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione12.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione11.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione 13.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione 10.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione 9.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione 8.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione 7.pdf",
     "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/Girlando.rar",
-    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori.rar",
-    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori/archivio.txt",
-    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori/libri_template",
-    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori/libri_template.cpp",
-    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori/Non confermato 997315.crdownload",
-    "Primo anno/secondo-semestre/programmazione-2/C++/libriConTemplateEOverloadingOperatori",
+    "Pasted image 20250411103307.png",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/teoria.md",
     "Primo anno/utility/Pasted image 20250405101231.png",
     "Primo anno/utility/Pasted image 20250405100714.png",
@@ -214,12 +234,6 @@
     "Primo anno/strutture-discrete/Strutture.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/Tips.md",
     "Uni To-Do.md",
-    "Primo anno/architettura-degli-elaboratori/Untitled.md",
-    "Primo anno/programmazione-1/Argomenti di teoria.md",
-    "Primo anno/Imgs/Pasted image 20250123081550.png",
-    "Primo anno/Imgs/Pasted image 20250123082311.png",
-    "Primo anno/Imgs/Pasted image 20250123082309.png",
-    "Primo anno/Imgs/Pasted image 20250119113759.png",
-    "Primo anno/Imgs/Pasted image 20250119113814.png"
+    "Primo anno/Imgs/Pasted image 20250123081550.png"
   ]
 }
