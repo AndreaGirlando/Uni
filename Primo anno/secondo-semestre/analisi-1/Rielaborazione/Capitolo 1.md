@@ -66,3 +66,44 @@ i suoi elementi sono detti **numeri reali**:
 - **Rappresentazione dei numeri reali** 
   L'insieme dei numeri reali viene rappresentato su una retta dove si costruisce una corrispondenza biunivoca fra $R$ e l'insieme di punti di una retta, associando ad ogni $x ∈ R$ il punto della retta avente ascissa $x$.
 ###### Densità di Q e di R\Q in R
+**Teorema**: Siano $a,b$ due numeri reali con $a<b$. Allora, esistono infiniti numeri razionali $r$ e infiniti numeri irrazionali $s$ tali che $a<r<b$, $a<s<b$. 
+Da questo teorema segue che tra $a$ e $b$ esistono infiniti numeri reali.
+###### Nomenclature sugli intervalli
+**Intervalli limitati**:
+- $]a, b[= \{x ∈ R : a < x < b\}$ (Intervallo aperto)
+- $[a, b] = \{x ∈ R : a ≤ x ≤ b\}$ (Intervallo chiuso)
+**Intervalli non limitati:**
+- $]a, +∞[= \{x ∈ R : x > a\}$ (Intervallo non limitato superiormente)
+- $] − ∞, b[= \{x ∈ R : x < b\}$ (Intervallo non limitato inferiormente)
+**Intervalli notevoli:**
+- $] − ∞, +∞[ = R$
+- $(a,b)$ intervallo generico  
+###### Intorno di un numero
+Un'intervallo del tipo $]c − r, c + r[$ (con $c \in R$ ed $r > 0$) viene detto **Intorno di c di raggio r** e si denota con $B(c, r), I_r(c)$
+###### Proprietà di Archimede
+Dati $a,b > 0$ esiste un $n \in N$ tale che $na > b$
+###### Insiemi finiti, infiniti, numerabili
+**Definizione**: Siano $A$  e $B$ due insiemi non vuoti, diremo che hanno la stessa potenza se esiste una corrispondenza biunivoca $f: A \rightarrow B$ 
+**Definizione**: Sia $X$ un insieme non vuoto. Diremo che $X$ è **finito** ed ha $n$ elementi se esiste una corrispondenza biunivoca fra $X$ e l'insieme $\{1,2, \cdots ,n\}$. In caso contrario $X$ è detto **infinito**. La caratteristica di un insieme infinito $X$ e che esso ha la stessa potenza di un suo sottoinsieme proprio (pur avendo più elementi!). Ad esempio, consideriamo l’insieme $N$ dei numeri naturali e l’insieme $P$ dei numeri naturali pari. Associando ad ogni $n ∈ N$ il numero $2n ∈ P$ si ottiene una corrispondenza biunivoca.
+**Definizione** Un insieme $X$ si dice **numerabile** se ha la stessa potenza di $N$. $Z$ e $Q$ sono entrambi numerabili. Per invece $R$ possiamo dire le seguenti cose:
+- Tutti gli intervalli hanno la medesima potenza
+	- Questo significa che, ad esempio, l'intervallo $(0,1)$, $(2,5)$ o anche $(−∞,∞)$ hanno tutti la stessa cardinalità. Anche se sembrano “lunghi” in modo diverso, da un punto di vista insiemistico, contengono lo stesso numero di elementi.
+- La potenza degli intervalli è maggiore della potenza del numerabile
+	- un intervallo reale come $(0,1)$ non è numerabile: non esiste un modo per elencare tutti i numeri reali in quell'intervallo.
+- $R$ ha la stessa potenza degli intervalli
+	- L’insieme dei numeri reali $R$, anche tutto intero (non solo un intervallo), ha la stessa cardinalità di qualsiasi intervallo reale.
+###### Valore assoluto
+Se $x \in R$ si chiama valore assoluto di $x$ il numero reale $|x|$ definito ponendo: 
+- $|x| = x$ se $x \ge 0$
+- $|x| = -x$ se $x<0$  
+Di seguito le proprietà del valore assoluto:
+1. $|x| \geq 0;\quad |x| = 0 \iff x = 0$
+2. $|-x| = |x|$
+3. $-|x| \leq x \leq |x|$
+4. $|xy| = |x|\,|y|$
+5. $a < x < b,\ a < y < b \Rightarrow |x - y| < b - a$
+6. $-a < x < a \Leftrightarrow |x| < a \quad \text{(essendo } a > 0\text{)}$
+7. $|a + b| \leq |a| + |b|$
+8. $|a - b| \leq |a| + |b|$
+9. $|x| < \varepsilon \quad \forall \varepsilon > 0 \Rightarrow x = 0$
+###### Estremo inferiore ed estremo superiore
