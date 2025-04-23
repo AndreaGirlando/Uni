@@ -4,37 +4,37 @@
     "type": "split",
     "children": [
       {
-        "id": "430c88ab39a443a7",
+        "id": "b7bf35daeaa7c1d8",
         "type": "tabs",
         "children": [
           {
-            "id": "f435263f54e11e9a",
+            "id": "8192dcee3a294738",
             "type": "leaf",
             "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "AppuntiCap1"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nuova scheda"
             }
           }
         ]
       },
       {
-        "id": "3755f5f5d7f2ae20",
+        "id": "b28886dcd3c93684",
         "type": "tabs",
         "children": [
           {
-            "id": "74a4381496d74e9f",
+            "id": "cb65036a199ccb91",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Primo anno/utility/Pasted image 20250417161658.png"
+                "file": "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20250417161658"
+              "icon": "lucide-file",
+              "title": "Capitolo 1"
             }
           }
         ]
@@ -190,22 +190,23 @@
   },
   "active": "4976c61b40586f1c",
   "lastOpenFiles": [
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/5marzo2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/3marzo2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/26marzo2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/31marzo2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/24marzo2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/17marzo2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/19marzo2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/10marzo2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/12marzo2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/aprile 2025/8aprile2025EAM1FN.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/aprile 2025/7aprile2025.pdf",
     "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
+    "Primo anno/utility/Pasted image 20250417161658.png",
     "Primo anno/utility/Pasted image 20250417172551.png",
     "Primo anno/utility/Pasted image 20250417172530.png",
     "Primo anno/utility/Pasted image 20250417172519.png",
-    "Primo anno/utility/Pasted image 20250417161658.png",
     "Primo anno/secondo-semestre/analisi-1/Senza nome.md",
-    "Primo anno/secondo-semestre/analisi-1/Rielaborazione",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/31-03-2025.pdf",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione12.pdf",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione11.pdf",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione 13.pdf",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione 10.pdf",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione 9.pdf",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione 8.pdf",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/FileCondivisi/lezione 7.pdf",
     "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
     "Pasted image 20250411103307.png",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/teoria.md",
