@@ -4,27 +4,29 @@
     "type": "split",
     "children": [
       {
-        "id": "b7bf35daeaa7c1d8",
+        "id": "d71b644096dd9c9f",
         "type": "tabs",
         "children": [
           {
-            "id": "8192dcee3a294738",
+            "id": "fa0e212d43f2a422",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Nuova scheda"
+              "type": "pdf",
+              "state": {
+                "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "AppuntiCap1"
             }
           }
         ]
       },
       {
-        "id": "b28886dcd3c93684",
+        "id": "1c9cee6c0813a84e",
         "type": "tabs",
         "children": [
           {
-            "id": "cb65036a199ccb91",
+            "id": "b57fb8e2fa903cbf",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -94,7 +96,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5
+    "width": 413.5,
+    "collapsed": true
   },
   "right": {
     "id": "abf359470799e113",
@@ -188,20 +191,23 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4976c61b40586f1c",
+  "active": "b57fb8e2fa903cbf",
   "lastOpenFiles": [
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
+    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/stream/main.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/C++/stream/stream.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/virtual.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/teoria.md",
+    "Pasted image 20250425145154.png",
+    "Pasted image 20250425145211.png",
+    "Primo anno/secondo-semestre/programmazione-2/C++/stream",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/5marzo2025.pdf",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/3marzo2025.pdf",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/26marzo2025.pdf",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/31marzo2025.pdf",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/24marzo2025.pdf",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/17marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/19marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/10marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/12marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/aprile 2025/8aprile2025EAM1FN.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/aprile 2025/7aprile2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
     "Primo anno/utility/Pasted image 20250417161658.png",
     "Primo anno/utility/Pasted image 20250417172551.png",
     "Primo anno/utility/Pasted image 20250417172530.png",
@@ -209,11 +215,9 @@
     "Primo anno/secondo-semestre/analisi-1/Senza nome.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
     "Pasted image 20250411103307.png",
-    "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/teoria.md",
     "Primo anno/utility/Pasted image 20250405101231.png",
     "Primo anno/utility/Pasted image 20250405100714.png",
     "Primo anno/utility/Pasted image 20250405100424.png",
-    "Primo anno/utility/Pasted image 20250405095733.png",
     "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Architettura.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual/teoria.md",
     "Primo anno/secondo-semestre/programmazione-2/Lezioni/25-03-2025.md",
@@ -233,8 +237,6 @@
     "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
     "Untitled.md",
     "Primo anno/strutture-discrete/Strutture.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/Tips.md",
-    "Uni To-Do.md",
-    "Primo anno/Imgs/Pasted image 20250123081550.png"
+    "Primo anno/strutture-discrete/FileRielaborazioni/Tips.md"
   ]
 }

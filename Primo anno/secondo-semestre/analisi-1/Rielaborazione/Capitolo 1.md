@@ -107,3 +107,35 @@ Di seguito le proprietà del valore assoluto:
 8. $|a - b| \leq |a| + |b|$
 9. $|x| < \varepsilon \quad \forall \varepsilon > 0 \Rightarrow x = 0$
 ###### Estremo inferiore ed estremo superiore
+Sia $X$ un insieme numerico, ossia un sottoinsieme non vuoto di $R$. 
+- **Minimo**: è un elemento $m \in X$ tale che $m \le x$  per ogni $x \in X$ (è unico)
+- **Massimo**: è un elemento $m \in X$ tale che $m \ge x$ per ogni $x \in X$ (è unico)
+- **Minorante**: un numero $h \in R$ è detto *minorante* di $X$ se $h \le x$ per ogni $x \in X$, denoteremo con $\underline{M}_x$ l'insieme dei minoranti di $X$. Osserviamo che:
+	- se $h \in \underline{M}_x$ e $h' < h$ allora $h' \in \underline{M}_x$, quindi i minoranti di $X$ se esistono sono infiniti
+	- $h \not \in \underline{M}_x$ se esiste un $x \in X: x<h$ 
+	- $\underline{M}_x = ∅$ se per ogni $h\in R$ esiste $x \in X: x < h$ 
+- **Maggioranti**: un numero $k \in R$ è detto *maggiorante* di $X$ se $k \ge x$ per ogni $x \in X$. Denoteremo con $\overline{M_x}$ l'insieme dei maggioranti di $X$. Osserviamo che:
+	- se $k \in \overline{M_x} e k' > k, allora k' \in \overline{M_x}$, quindi i maggioranti di $X$, se esistono sono infiniti
+	- $k \not\in \overline{M_x}$ se esiste $x \in X: x>k$ 
+	- $\overline{M_x} = ∅$ se, per ogni $k \in R$ esiste un $x \in X: x>k$
+
+> [!EXAMPLE]
+> Dato l'insieme $A = \{1,2,3\}$:
+> - l'insieme dei maggioranti di $A$ è $M = \{ x \in R | x \ge 3\}$ 
+> - l'insieme dei minoranti di $A$ è $M = \{ x \in R | x \le 1 \}$
+
+- **Limitato inferiormente**: $X$ è limitato inferiormente se $\underline{M_x} \not= ∅$   
+- **Limitato superiormente**: $X$ è limitato superiormente se $\overline{M_x} \not= ∅$ 
+- **Limitato**: è detto limitato se è sia limitato superiormente che inferiormente
+
+In definitiva, un insieme è limitato se e solo se esiste un intervallo che lo contiene, detto ciò possiamo definire il seguente teorema:
+**Teorema**:
+1. Sia $X$ un insieme limitato inferiormente, allora possiamo dire che $\underline{M_x}$ è dotato di massimo
+2. Sia $X$ un insieme limitato superiormente, allora possiamo dire che $\overline{M_x}$ è dotato di minimo
+Quindi possiamo dire che:
+- **Estremo inferiore**: che denotiamo con $inf X$ è uguale al $max \underline{M_x}$, se $X$ non è limitato inferiormente si pone $inf X = - \infty$. Dato un numero $l$ questo è l'estremo inferiore di $X$ se e solo se verifica queste proprietà:
+	- $L \le x$ $∀x \in X$
+	- $∀\epsilon \gt 0 ∃x \in X: x<l-\epsilon$
+- **Estremo superiore**: che denotiamo con $supX$ è uguale al $min\underline{M_x}$, se $X$ non è limitato superiormente si pone $supX = +\infty$. Dato un numero $l$ questo è l'estremo superiore di $X$ se e solo se verifica queste proprietà:
+	- $L \ge x$ $∀x \in X$
+	- $∀\epsilon \gt 0 ∃x \in X: x>l-\epsilon$
