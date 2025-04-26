@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d71b644096dd9c9f",
+        "id": "959b169f9a072c4f",
         "type": "tabs",
         "children": [
           {
-            "id": "fa0e212d43f2a422",
+            "id": "63640babcd7e5b8d",
             "type": "leaf",
             "state": {
               "type": "pdf",
@@ -22,19 +22,21 @@
         ]
       },
       {
-        "id": "1c9cee6c0813a84e",
+        "id": "dba750ca71813dd0",
         "type": "tabs",
         "children": [
           {
-            "id": "b57fb8e2fa903cbf",
+            "id": "480669216deec5ee",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24-04-2025.pdf"
+                "file": "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "24-04-2025"
+              "icon": "lucide-file",
+              "title": "Capitolo 1"
             }
           }
         ]
@@ -94,7 +96,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5
+    "width": 413.5,
+    "collapsed": true
   },
   "right": {
     "id": "abf359470799e113",
@@ -188,13 +191,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b57fb8e2fa903cbf",
+  "active": "480669216deec5ee",
   "lastOpenFiles": [
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
+    "Uni To-Do.md",
+    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+    "nucleo.md",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24-04-2025.pdf",
     "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/23-04-2025.pdf",
     "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24-03-2025.pdf",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24-04-2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
     "Primo anno/secondo-semestre/programmazione-2/C++/stream/main.cpp",
     "Primo anno/secondo-semestre/programmazione-2/C++/stream/stream.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/virtual.cpp",
@@ -205,7 +210,6 @@
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/5marzo2025.pdf",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/3marzo2025.pdf",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/26marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/31marzo2025.pdf",
     "Primo anno/utility/Pasted image 20250417161658.png",
     "Primo anno/utility/Pasted image 20250417172551.png",
     "Primo anno/utility/Pasted image 20250417172530.png",
@@ -233,8 +237,6 @@
     "Primo anno/strutture-discrete/GuidaEsercizi.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/03_Parte3Teoria.md",
     "Primo anno/strutture-discrete/FileRielaborazioni/04_Parte4.md",
-    "Untitled.md",
-    "Primo anno/strutture-discrete/Strutture.md",
-    "Primo anno/strutture-discrete/FileRielaborazioni/Tips.md"
+    "Untitled.md"
   ]
 }
