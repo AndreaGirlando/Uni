@@ -155,3 +155,45 @@ Sia $X$ un insieme numerico, di seguito varie nozioni di topologia:
 - se un punto è di frontiera potrebbe non essere di accumulazione
 	- se $X = [0, 1] ∪ \{5\}$, il punto$c = 5$ è di frontiera ma non di accumulazione.
 - $X$ si dice denso in $R$ se $\overline{X} = R$. Dal teorema di densità di $Q$ in $R$ segue che tutti i numeri reali sono punti di accumulazione per $Q$ quindi $\overline{Q} = R$, lo stesso vale per $R \backslash Q$. Si ha dunque, se $(a, b)$ è un intervallo limitato, posto $X = (a, b)∩Q$ oppure $X = (a, b) ∩ (R \ Q)$, si ha $X = [a, b]$. ^c777f8
+###### Potenze e radici
+Se $a \in R$ e $n \in N_0$ si definiscono i seguenti assiomi:
+- $a^0$ = 1
+- $a^{n+1}$ = $a^{n} \times a$ 
+- Se $a \in R \backslash \{0\}$ e $n \in N$ si definisce $a^{-n} = \frac{1}{a^n}$ 
+Per definire la potenza nel caso in cui l'esponente sia razionale o irrazionale dobbiamo premettere il seguente teorema
+
+**Teorema della radice n-ma aritmetica**: Siano $a$ un numero reale positivo ed $n$ un numero naturale maggiore o uguale a 2. Allora esiste uno ed uno solo numero positivo $b$ tale che $b^n = a$, il numero $b$ è detto radice n-ma aritmetica di $a$ e si indica con $\sqrt[n]{a}$
+
+grazie a questo teorema se $a>0$ e $n \in N$ si definisce:
+- $a^{\frac{1}{n}}$ = $\sqrt[n]{a}$
+- $a^{\frac{m}{n}} = (\sqrt[n]{a})^m$ 
+Tutte le potenze definite fino ad adesso sono tutte **positive** infatti. Inoltre ricordiamo che:
+- se $a>1$ sia ha $a^b>1$ se e solo se $b>0$
+- se $0<a<1$ si ha $a^b > 1$ se e solo se $b<0$
+Per poter estendere la definizione di radice (data sopra) dobbiamo discutere l'equazione binomia, come fatto di seguito:
+**Discussione equazione binomia**
+Siano $a \in R$ e $n \in N$ con $n \ge 2$ vogliamo trovare tutti i numeri reali $x$ tali che $x^n=a$, l'equazione $x^n = a$ è detta equazione binomia. Di seguito tutte le soluzioni al variare di $a$
+1. $a = 0$ l'unica soluzione è $x=0$ 
+2. $a>0$ ci sono 2 soluzioni:
+	- $±\sqrt[n]{a}$ per $n$ pari
+	- $\sqrt[n]{a}$ per $n$ dispari
+3. $a<0$:
+	- Non ci sono soluzioni per $n$ pari
+	- $-\sqrt[n]{-a}$  per $n$ dispari
+Grazie a quanto appena visto possiamo dire che per ogni $n \in N$ e $\sqrt[n]{x} = -\sqrt[n]{-x}$ per $x<0$ ed $n$ dispari 
+
+###### Logaritmi
+Siano $a,b$ due numeri positivi con $a \not= 1$. Si può dimostrare che l'equazione $a^x = b$ ha una e una sola soluzione detta logaritmo di $b$ in base $a$ e indicata con $\log_{a} b$ , da questo capiamo che il logaritmo verifica la seguente uguaglianza:
+$$a^{\log_{a} b} = b$$
+Di seguito un po' di proprietà dei logaritmi:
+$\log_{a} a = 1$
+$\log_{a} b = 0 \iff b = 1$
+$\log_{a} bc = \log_{a} b + \log_{a} c$
+$\log_{a} b^x = x \log_{a} b$
+$\log_{a} \frac{b}{c} = \log_{a} b - \log_{a} c$
+$\log_{a} b = (\log_{a} c) (\log_{c} b)$
+Dalla prima e dall'ultima delle precedenti eguaglianze, si ottiene
+$1 = \log_{a} a = (\log_{a} b) (\log_{b} a) \implies \log_{b} a = \frac{1}{\log_{a} b}$
+Osserviamo inoltre che $\log_{a} b > 0$ se e solo se $a$ e $b$ sono entrambi maggiori di 1 o minori di 1.
+
+### Cenni sui numeri complessi
