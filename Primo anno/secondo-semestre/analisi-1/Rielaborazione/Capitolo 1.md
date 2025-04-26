@@ -68,6 +68,8 @@ i suoi elementi sono detti **numeri reali**:
 ###### Densità di Q e di R\Q in R
 **Teorema**: Siano $a,b$ due numeri reali con $a<b$. Allora, esistono infiniti numeri razionali $r$ e infiniti numeri irrazionali $s$ tali che $a<r<b$, $a<s<b$. 
 Da questo teorema segue che tra $a$ e $b$ esistono infiniti numeri reali.
+**Spiegazione**: Se prendi due numeri reali a e b con a<b, tra di loro non c'è mai un "vuoto": ci sono sempre infiniti numeri che stanno tra a e b.  
+Non solo: tra a e b ci sono infiniti razionali (numeri come $\frac{3}{4}$, $−5$, $7.1$ , ecc.) e infiniti irrazionali (numeri come $\sqrt{2}$)[[#^c777f8|Conseguenza]]
 ###### Nomenclature sugli intervalli
 **Intervalli limitati**:
 - $]a, b[= \{x ∈ R : a < x < b\}$ (Intervallo aperto)
@@ -139,3 +141,17 @@ Quindi possiamo dire che:
 - **Estremo superiore**: che denotiamo con $supX$ è uguale al $min\underline{M_x}$, se $X$ non è limitato superiormente si pone $supX = +\infty$. Dato un numero $l$ questo è l'estremo superiore di $X$ se e solo se verifica queste proprietà:
 	- $L \ge x$ $∀x \in X$
 	- $∀\epsilon \gt 0 ∃x \in X: x>l-\epsilon$
+
+###### Nozioni di topologia
+Sia $X$ un insieme numerico, di seguito varie nozioni di topologia:
+- **Punto interno**: $c \in X$ è detto punto interno se esiste un $r>0$ tale che $]c-r,c++r[$ $⊆ X$, indichiamo con $int(X)$ l'insieme dei punti interni.
+	- Osserviamo che se $X$ è un intervallo $(a,b)$, i punti interni sono i tutti e soli punti dell'intervallo aperto $]a,b[$ 
+- **Punto di frontiera**: un numero reale $c$ è detto *punto di frontiera* per $X$ se per ogni $r>0$ nell'intorno $]c-r,c++r[$ ci sono elementi di $X$ che elementi di $R \textbackslash X$ 
+- **Punto di accumulazione**: un numero reale $c$ è detto punti di accumulazione per $X$ se, per ogni $r>0$ nell'intorno $]c-r,c++r[$ ci sono elementi diversi da $c$. L'insieme dei punti di accumulazione di accumulazione si denota con $D(X)$ 
+- **Insieme aperto**: $X$ si dice *aperto* se è vuoto oppure quando $X = int(X)$ 
+- **Insieme chiuso**: L’insieme $X$ è detto *chiuso* se il suo complementare $R \backslash X$ è aperto. Si definisce chiusura di $X$ l'insieme $\overline{X} = X ∪ D(X)$ ovvero un insieme si dice chiuso se e solo se contiene tutti i suoi punti di frontiera  
+**Osservazioni:** 
+- se un punto è interno allora è di accumulazione
+- se un punto è di frontiera potrebbe non essere di accumulazione
+	- se $X = [0, 1] ∪ \{5\}$, il punto$c = 5$ è di frontiera ma non di accumulazione.
+- $X$ si dice denso in $R$ se $\overline{X} = R$. Dal teorema di densità di $Q$ in $R$ segue che tutti i numeri reali sono punti di accumulazione per $Q$ quindi $\overline{Q} = R$, lo stesso vale per $R \backslash Q$. Si ha dunque, se $(a, b)$ è un intervallo limitato, posto $X = (a, b)∩Q$ oppure $X = (a, b) ∩ (R \ Q)$, si ha $X = [a, b]$. ^c777f8

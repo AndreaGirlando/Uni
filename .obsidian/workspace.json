@@ -29,14 +29,12 @@
             "id": "b57fb8e2fa903cbf",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
-                "mode": "source",
-                "source": false
+                "file": "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24-04-2025.pdf"
               },
-              "icon": "lucide-file",
-              "title": "Capitolo 1"
+              "icon": "lucide-file-text",
+              "title": "24-04-2025"
             }
           }
         ]
@@ -96,8 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5,
-    "collapsed": true
+    "width": 413.5
   },
   "right": {
     "id": "abf359470799e113",
@@ -193,8 +190,11 @@
   },
   "active": "b57fb8e2fa903cbf",
   "lastOpenFiles": [
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/23-04-2025.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24-03-2025.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24-04-2025.pdf",
     "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
     "Primo anno/secondo-semestre/programmazione-2/C++/stream/main.cpp",
     "Primo anno/secondo-semestre/programmazione-2/C++/stream/stream.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/virtual.cpp",
@@ -206,8 +206,6 @@
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/3marzo2025.pdf",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/26marzo2025.pdf",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/31marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/24marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/17marzo2025.pdf",
     "Primo anno/utility/Pasted image 20250417161658.png",
     "Primo anno/utility/Pasted image 20250417172551.png",
     "Primo anno/utility/Pasted image 20250417172530.png",
