@@ -4,7 +4,7 @@ using namespace std;
 class A{
     public:
         A(int _value) : value(_value){}
-        void stampa(){
+        void virtual stampa(){
             cout << "Classe A, Valore: " << this->value << endl;
         }
     private:
