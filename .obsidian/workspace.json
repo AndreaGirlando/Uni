@@ -31,12 +31,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+                "file": "Uni To-Do.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capitolo 1"
+              "title": "Uni To-Do"
             }
           }
         ]
@@ -96,8 +96,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5,
-    "collapsed": true
+    "width": 413.5
   },
   "right": {
     "id": "abf359470799e113",
@@ -193,9 +192,13 @@
   },
   "active": "480669216deec5ee",
   "lastOpenFiles": [
+    "Primo anno/secondo-semestre/programmazione-2/C++/Esercizi/gameList/a.out",
+    "Primo anno/secondo-semestre/programmazione-2/C++/Esercizi/gameList/main.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/C++/Esercizi/gameList",
+    "Primo anno/secondo-semestre/programmazione-2/C++/Esercizi",
+    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
     "Uni To-Do.md",
-    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
     "nucleo.md",
     "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24-04-2025.pdf",
     "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/23-04-2025.pdf",
@@ -207,9 +210,6 @@
     "Pasted image 20250425145154.png",
     "Pasted image 20250425145211.png",
     "Primo anno/secondo-semestre/programmazione-2/C++/stream",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/5marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/3marzo2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/lezioni/marzo 2025/26marzo2025.pdf",
     "Primo anno/utility/Pasted image 20250417161658.png",
     "Primo anno/utility/Pasted image 20250417172551.png",
     "Primo anno/utility/Pasted image 20250417172530.png",
