@@ -10,5 +10,6 @@
   },
   "showLineNumber": true,
   "strictLineBreaks": false,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "propertiesInDocument": "source"
 }
