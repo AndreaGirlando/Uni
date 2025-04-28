@@ -14,20 +14,14 @@ ostream& operator<<(ostream& stream, Libro& libro){
     return stream;
 }
 
-
-
 template<typename Type> void Print(Type valore){
     cout << valore << endl;
 }
 
 int main(){
-
     Print(5);
     Print("Ciao");
     Print(5.5f);
-
     Print(*(new Libro("Codice123")));
-
-
     return 0;
 }

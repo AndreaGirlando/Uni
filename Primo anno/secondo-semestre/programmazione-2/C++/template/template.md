@@ -20,6 +20,7 @@ int main(){
 5
 Ciao
 5.5
+12
 ```
 Questo codice senza usare i template diventava molto più lungo, in quanto andavano create delle funzioni Print() per ogni nuovo tipo necessario. Come tipo possiamo usare ovviamente delle classi come fatto di seguito.
 ```cpp
@@ -53,4 +54,10 @@ int main(){
     Print(*(new Libro("Codice123")));//l'overload dell'operatore vuole la reference per stampare, new ritorna il puntatore
     return 0;
 }
+```
+```
+5
+Ciao
+5.5
+Codice123
 ```
