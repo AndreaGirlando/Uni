@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "52d88a80171e3960",
+        "id": "942b53efbdb95abd",
         "type": "tabs",
         "children": [
           {
-            "id": "29bfa25cd957de4d",
+            "id": "990ec540cc9b7d36",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Primo anno/secondo-semestre/programmazione-2/C++/template/template.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "template"
+              "title": "Nuova scheda"
             }
           }
         ]
@@ -53,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Modi di indirizzamento",
+                "query": "paino carte",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,7 +57,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "Ricerca"
             }
           },
           {
@@ -172,25 +168,29 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "29bfa25cd957de4d",
+  "active": "4976c61b40586f1c",
   "lastOpenFiles": [
+    "Primo anno/utility/Venn_Diagram_of_Numbers-it.svg.png",
+    "Primo anno/utility/Screenshot_20250502_101617_Samsung capture.jpg",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
+    "Primo anno/utility/Screenshot_20250502_094916_Samsung capture.jpg",
+    "Uni To-Do.md",
+    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+    "Primo anno/utility/im_03.png",
+    "Primo anno/secondo-semestre/programmazione-2/C++/stream/main.cpp",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/28-04-2025.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24-04-2025.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/23-04-2025.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24042025_250429_180407.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/23042025_250429_174230.pdf",
+    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/28042025_250429_210604.pdf",
+    "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/template/template.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/template/a.out",
     "Primo anno/secondo-semestre/programmazione-2/C++/template/main.cpp",
-    "Primo anno/secondo-semestre/programmazione-2/C++/template/template.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/template/gestioneTemplate(Pila)/usa_pila",
-    "Primo anno/secondo-semestre/programmazione-2/C++/template/gestioneTemplate(Pila)/pila.h",
-    "Primo anno/secondo-semestre/programmazione-2/C++/template/gestioneTemplate(Pila)/pila.cpp",
-    "Primo anno/secondo-semestre/programmazione-2/C++/template/gestioneTemplate(Pila)/usa_pila.cpp",
-    "Primo anno/secondo-semestre/programmazione-2/C++/template/gestioneTemplate(Pila)",
-    "Primo anno/secondo-semestre/programmazione-2/C++/template",
-    "Uni To-Do.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/classi.cpp",
     "README.md",
     "index.md",
     "Senza nome.canvas",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
-    "Primo anno/secondo-semestre/programmazione-2/C++/Esercizi/gameList/a.out",
-    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
     "nucleo.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/stream/stream.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/teoria.md",
@@ -201,11 +201,6 @@
     "Primo anno/utility/Pasted image 20250417172530.png",
     "Primo anno/utility/Pasted image 20250417172519.png",
     "Primo anno/secondo-semestre/analisi-1/Senza nome.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
-    "Pasted image 20250411103307.png",
-    "Primo anno/utility/Pasted image 20250405101231.png",
-    "Primo anno/utility/Pasted image 20250405100714.png",
-    "Primo anno/utility/Pasted image 20250405100424.png",
     "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Architettura.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual/teoria.md",
     "Primo anno/secondo-semestre/programmazione-2/Lezioni/25-03-2025.md",
