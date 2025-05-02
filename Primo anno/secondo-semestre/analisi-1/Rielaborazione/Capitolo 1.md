@@ -196,4 +196,74 @@ Dalla prima e dall'ultima delle precedenti eguaglianze, si ottiene
 $1 = \log_{a} a = (\log_{a} b) (\log_{b} a) \implies \log_{b} a = \frac{1}{\log_{a} b}$
 Osserviamo inoltre che $\log_{a} b > 0$ se e solo se $a$ e $b$ sono entrambi maggiori di 1 o minori di 1.
 
+
+---
 ### Cenni sui numeri complessi
+**Definizione**: Definiamo numero complesso una coppia ordinata di numeri reali: $z = (a,b)$ con $a,b\in R$. Indichiamo con $C$ l'insieme dei numeri complessi.
+**Equivalenza:** se $z = (a,b)$ e $w = (c,d)$ sono due numeri complessi, diremo che $z = w$ se $a=c$ e $b = d$ se $z \not = w$  
+
+---
+Dalla definizione appare chiaro che si possa stabile una corrispondenza biunivoca fra $C$ e il piano cartesiano, facendo corrispondere ad $z = (a,b)$ il punto del piano avente coordinate $(a,b)$. 
+###### Notazione:
+Dato $z = (a,b) \in C$:
+- se $b = 0$: $z$ è detto **numero complesso reale**
+- se $b \not = 0$ è detto **numero complesso immaginario** 
+- se $a=0$ e $b\not=0$ **numero immaginario puro**
+**Convenzioni**:
+- $0=(0,0)$ zero complesso
+- $1=(1,0)$ unità reale
+- $i = (0,1)$ unità immaginaria
+- $-z = (-a,-b)$ opposto di $z$ 
+- $\overline{z} = (a,-b)$ coniugato di $z$ 
+- $|z| = \sqrt{a^2+b^2}$ modulo di z
+###### Introduciamo le operazioni
+- $(a,b)+ (c,d) = (a+b,c+d)$ somma
+- $(a,b)*(c,d) = (ac-bd,ad+bc)$ prodotto
+**Osservazioni**
+- $z+(-z) = 0$ 
+- $z * 1 = z$
+- $z*\overline{z} = |z|^2$ 
+- $i^2 = (0,1)*(0,-1) = (0-1,0+0) = (-1,0) = -1$ (un numero alla seconda che da risultato negativo)
+È possibile indentificare ogni numero reale $a$ come il numero complesso reale $(a,0)$ si può dunque considerare $R$ come un sottoinsieme di $C$ (per questo possiamo affermare che $i^2=-1$ anche se siamo nel campo complesso)
+![[Venn_Diagram_of_Numbers-it.svg.png|350]]
+###### Forma algebrica e forma trigonometrica
+
+**Forma algebrica:** Sia $z = (a,b)\in C$ alla luce delle definizione viste prima possiamo osservare che:$$z = (a,0)+(0,1)+(b,0) \rightarrow z = a+ib$$ dopo la freccia troviamo la forma algebrica di $z$, molto utile perché possiamo considerare $z$ come un polinomio in specifico come somma di una "parte reale" ($a$) e di una "parte immaginaria" ($ib$)
+> [!EXAMPLE] Esempio
+> ![[Screenshot_20250502_094916_Samsung capture.jpg]]
+> ottenendo un quoziente dei due numeri, in forma algebrica.
+
+**Forma trigonometrica**
+Ricordiamo la costruzione del piano cartesiano:
+![[im_03.png|250]]
+![[Screenshot_20250502_101617_Samsung capture.jpg|250]]
+Sia ora $z = a+ib$ un numero complesso non nullo, e sia $P = (a,b)$ il punto del piano che lo rappresenta. Indichiamo con $\alpha$ la misura in radianti del più piccolo angolo di cui deve ruotare il semiasse delle ascisse(x) positive per sovrapporsi in direzione e verso alla semiretta $OP$ orientata da $O$ verso $P$. Se $A$ è la proiezione di $P$ sull'asse delle ascisse, il triangolo $OPA$ è un triangolo rettangolo quindi si ha:
+- $a = OA = |z| \cos \alpha$   
+- $b = AP = |z| \sin \alpha$ 
+Detto ciò possiamo scrivere il numero $z$ nella seguente forma:
+$z = |z|(\cos \alpha + i \sin \alpha)$ 
+
+> [!EXAMPLE] Da forma algebrica a trigonometrica
+> 1. $i = 0+1i$ forma algebrica
+> 2. $\alpha = 90° = \frac{π}{2}$ perché $i$ nel piano cartesiano si trova nell'asse y coord = (0,1)
+> 3. $|i| = \sqrt{0^2+1^2} = 1$ calcolo modulo di $i$
+> 4. $i = |i|(\cos \alpha + i\sin \alpha)$ 
+> 5. $i = 1(\cos \frac{π}{2}+i\sin \frac{π}{2})$ forma trigonometrica
+
+**Prodotto in forma trigonometrica**: il prodotto di due numeri in forma trigonometrica dopo varie deduzioni utilizzando la formula di addizione del coseno e seno si deduce facilmente la seguente formula detta formula di Moivre che fornisce la la potenza intera di un numero complesso:
+$$z^n = |z|^n ( \cos(nα) + i \sin(nα))$$
+
+> [!EXAMPLE]
+> $i^2=1[cos(2π​)+isin(2π​)]^2=1^2(\cos(2*\frac{π}{2}) + i \sin(2*\frac{π}{2}))=cos(π)+isin(π)=−1$
+
+###### Radici
+
+
+
+
+
+
+
+
+---
+### Funzioni reali di una variabile reale
