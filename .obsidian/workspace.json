@@ -8,16 +8,37 @@
         "type": "tabs",
         "children": [
           {
-            "id": "990ec540cc9b7d36",
+            "id": "0eb721df35ae68a9",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nuova scheda"
+              "title": "Capitolo 1"
+            }
+          },
+          {
+            "id": "f818fb10ec526299",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
+                "page": 12,
+                "left": -8,
+                "top": 728,
+                "zoom": 1.7777467930842168
+              },
+              "icon": "lucide-file-text",
+              "title": "AppuntiCap1"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -165,17 +186,24 @@
       "templates:Inserisci modello": false,
       "command-palette:Apri riquadro comandi": false,
       "vscode-editor:Create Code File": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "pdf-plus:PDF++: Toggle auto-copy": false,
+      "pdf-plus:PDF++: Toggle auto-focus": false,
+      "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "4976c61b40586f1c",
+  "active": "f818fb10ec526299",
   "lastOpenFiles": [
+    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
+    "Primo anno/utility/Pasted image 20250503103722.png",
+    "Primo anno/utility/Pasted image 20250503110533.png",
+    "Primo anno/utility/Pasted image 20250503104126.png",
+    "Primo anno/utility/Pasted image 20250503103733.png",
     "Primo anno/utility/Venn_Diagram_of_Numbers-it.svg.png",
     "Primo anno/utility/Screenshot_20250502_101617_Samsung capture.jpg",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
     "Primo anno/utility/Screenshot_20250502_094916_Samsung capture.jpg",
     "Uni To-Do.md",
-    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
     "Primo anno/utility/im_03.png",
     "Primo anno/secondo-semestre/programmazione-2/C++/stream/main.cpp",
     "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/28-04-2025.pdf",
@@ -196,10 +224,6 @@
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/teoria.md",
     "Pasted image 20250425145154.png",
     "Pasted image 20250425145211.png",
-    "Primo anno/utility/Pasted image 20250417161658.png",
-    "Primo anno/utility/Pasted image 20250417172551.png",
-    "Primo anno/utility/Pasted image 20250417172530.png",
-    "Primo anno/utility/Pasted image 20250417172519.png",
     "Primo anno/secondo-semestre/analisi-1/Senza nome.md",
     "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Architettura.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual/teoria.md",
