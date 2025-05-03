@@ -8,6 +8,28 @@
         "type": "tabs",
         "children": [
           {
+            "id": "f818fb10ec526299",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
+                "page": 13,
+                "left": -18,
+                "top": 793,
+                "zoom": 1.1
+              },
+              "icon": "lucide-file-text",
+              "title": "AppuntiCap1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "6aa6cf9db1af38e4",
+        "type": "tabs",
+        "children": [
+          {
             "id": "0eb721df35ae68a9",
             "type": "leaf",
             "state": {
@@ -20,25 +42,8 @@
               "icon": "lucide-file",
               "title": "Capitolo 1"
             }
-          },
-          {
-            "id": "f818fb10ec526299",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
-                "page": 12,
-                "left": -8,
-                "top": 728,
-                "zoom": 1.7777467930842168
-              },
-              "icon": "lucide-file-text",
-              "title": "AppuntiCap1"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -95,7 +100,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5
+    "width": 413.5,
+    "collapsed": true
   },
   "right": {
     "id": "abf359470799e113",
@@ -192,10 +198,11 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "f818fb10ec526299",
+  "active": "0eb721df35ae68a9",
   "lastOpenFiles": [
-    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
+    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+    "Capitolo 1.pdf",
     "Primo anno/utility/Pasted image 20250503103722.png",
     "Primo anno/utility/Pasted image 20250503110533.png",
     "Primo anno/utility/Pasted image 20250503104126.png",
@@ -215,7 +222,6 @@
     "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/template/template.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/template/a.out",
-    "Primo anno/secondo-semestre/programmazione-2/C++/template/main.cpp",
     "README.md",
     "index.md",
     "Senza nome.canvas",

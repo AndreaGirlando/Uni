@@ -117,7 +117,7 @@ Sia $X$ un insieme numerico, ossia un sottoinsieme non vuoto di $R$.
 	- $h \not \in \underline{M}_x$ se esiste un $x \in X: x<h$ 
 	- $\underline{M}_x = ∅$ se per ogni $h\in R$ esiste $x \in X: x < h$ 
 - **Maggioranti**: un numero $k \in R$ è detto *maggiorante* di $X$ se $k \ge x$ per ogni $x \in X$. Denoteremo con $\overline{M_x}$ l'insieme dei maggioranti di $X$. Osserviamo che:
-	- se $k \in \overline{M_x} e k' > k, allora k' \in \overline{M_x}$, quindi i maggioranti di $X$, se esistono sono infiniti
+	- se $k \in \overline{M_x}$ e $k' > k,$ allora $k' \in \overline{M_x}$, quindi i maggioranti di $X$, se esistono sono infiniti
 	- $k \not\in \overline{M_x}$ se esiste $x \in X: x>k$ 
 	- $\overline{M_x} = ∅$ se, per ogni $k \in R$ esiste un $x \in X: x>k$
 
@@ -312,9 +312,26 @@ $$gr(f) = \{(x,f(x)):x\in X\}$$
 - **Funzione pari**: $f$ si dice pari se e solo se il suo grafico è un insieme simmetrico rispetto all'asse delle ordinate(y) cioè se contiene il punto $(a,b)$ allora contiene anche il punto $(-a,b)$
 - **Funzione dispari**: $f$ è una funzione dispari se e solo se il suo grafico è un insieme simmetrico rispetto all'origine cioè se contiene il punto $(a,b)$ allora contiene il punto $(-a,-b)$
 - **Funzione periodica**: $f$ si dice periodica se esiste un numero positivo $T$ (detto periodo) tale che $\forall x \in R$ si ha $f(x+T) = f(x)$ inoltre $f$ è periodica se e solo se $f(x+hT) = f(x) \forall x\in R, h\in Z$
-- 
+- **Immagine di f**: denotata con $f(X)$ l'immagine di $f$ è l'insieme dei valori che la funzione $f$ può assumere.
+	- alcuni concetto insiemistici legati ad $f(X)$ vengono per definizione attribuiti ad $f$. 
+		1. Diremo che $f$ è limitata se lo è l'insieme numerico $f(X)$. 
+		2. Gli estremi inferiore e superiore e gli eventuali minimo e massimo di $f(X)$ verranno chiamati estremi inferiore e superiore, minimo e massimo di $f$. L'estremo inferiore si indica con $inf_X f$ 
+		3. Se $f$ ha il minimo esso viene chiamato minimo assoluto di $f$ in $X$, sia esso $m = min_X$. Dato che $m$ è un valore della funzione allora esiste un punto $c$ tale che $f(c) = m$ e viene chiamato punto di minimo assoluto. In modo analogo si introducono il massimo assoluto e il punto di massimo assoluto. 
+- **Oscillazione di f**: chiamiamo oscillazione di $f$ la quantità $sup\{|f(x)-f(y)| x,y \in X\}$ 
 
+> [!Tip]
+> Di seguito supporremo normalmente che l'insieme di definizione di $X$ di $f$ sia un intervallo $(a,b)$
 
+###### Funzione composta
+Siano date due funzioni:
+- $f: (\alpha,\beta) \rightarrow R$ 
+- $g: (a,b) \rightarrow (\alpha,\beta)$ 
+allora per ogni $x \in (a,b)$ è possibile porre $F(x) = f(g(x))$. La funzione $F:(a,b)\rightarrow R$  definita in questo modo viene detta **funzione composta da f (funzione esterna) e g(funzione interna)**. 
+###### Estremi relativi:
+- Un punto $c\in(a,b)$ è detto punto di minimo relativo per $f$ se esiste un suo intorno $I = ]c-r,c+r[$ tal che $f(x) \ge f(c)$ per ogni $x\in I$ 
+- Un punto $c\in(a,b)$ è detto punto di massimo relativo per $f$ se esiste un suo intorno $I = ]c-r,c+r[$ tal che $f(x) \le f(c)$ per ogni $x\in I$ 
+Un punto di estremo assoluto e anche di estremo relativo, ma non il viceversa.
+###### Monotonia
 
 
 ---
