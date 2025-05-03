@@ -14,9 +14,9 @@
               "type": "pdf",
               "state": {
                 "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
-                "page": 13,
-                "left": -18,
-                "top": 793,
+                "page": 12,
+                "left": -3,
+                "top": 354,
                 "zoom": 1.1
               },
               "icon": "lucide-file-text",
@@ -100,8 +100,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5,
-    "collapsed": true
+    "width": 413.5
   },
   "right": {
     "id": "abf359470799e113",
@@ -200,9 +199,9 @@
   },
   "active": "0eb721df35ae68a9",
   "lastOpenFiles": [
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
-    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
     "Capitolo 1.pdf",
+    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
     "Primo anno/utility/Pasted image 20250503103722.png",
     "Primo anno/utility/Pasted image 20250503110533.png",
     "Primo anno/utility/Pasted image 20250503104126.png",
