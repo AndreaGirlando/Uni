@@ -215,7 +215,11 @@ Dato $z = (a,b) \in C$:
 - $i = (0,1)$ unità immaginaria
 - $-z = (-a,-b)$ opposto di $z$ 
 - $\overline{z} = (a,-b)$ coniugato di $z$ 
-- $|z| = \sqrt{a^2+b^2}$ modulo di z
+- $|z| = \sqrt{a^2+b^2}$ modulo di $z$
+
+> [!TIP]
+> Presa un'unita reale $x = (x,0)$ il suo modulo è: $|x| = \sqrt{x^2+0^2} = x$  
+
 ###### Introduciamo le operazioni
 - $(a,b)+ (c,d) = (a+b,c+d)$ somma
 - $(a,b)*(c,d) = (ac-bd,ad+bc)$ prodotto
@@ -250,20 +254,86 @@ $z = |z|(\cos \alpha + i \sin \alpha)$
 > 4. $i = |i|(\cos \alpha + i\sin \alpha)$ 
 > 5. $i = 1(\cos \frac{π}{2}+i\sin \frac{π}{2})$ forma trigonometrica
 
-**Prodotto in forma trigonometrica**: il prodotto di due numeri in forma trigonometrica dopo varie deduzioni utilizzando la formula di addizione del coseno e seno si deduce facilmente la seguente formula detta formula di Moivre che fornisce la la potenza intera di un numero complesso:
+**Prodotto in forma trigonometrica**: il prodotto di due numeri in forma trigonometrica dopo varie deduzioni utilizzando la formula di addizione del coseno e seno si deduce facilmente la seguente formula detta **formula di Moivre** che fornisce la la potenza intera di un numero complesso:
 $$z^n = |z|^n ( \cos(nα) + i \sin(nα))$$
 
 > [!EXAMPLE]
 > $i^2=1[cos(2π​)+isin(2π​)]^2=1^2(\cos(2*\frac{π}{2}) + i \sin(2*\frac{π}{2}))=cos(π)+isin(π)=−1$
 
 ###### Radici
+Siano $z$ un numero complesso e $n$ un intero maggiore o uguale a 2. Un numero complesso $w$ tale che $w^n = z$ è detto radice *ennesima* di $z$. Di seguito ci proponiamo di trovare tutte le radici ennesime di $z$:
+- $z = 0$: per la legge dell'annullamento del prodotto l'unica radice è $w = 0$. 
+- $z \not = 0$:  in tal caso le eventuali radici saranno evidentemente non nulle. Sia $w$ una di esse
+Scriviamo $z$ e $w$ in forma trigonometrica
+- $z = |z| (\cos \alpha  + i\sin\alpha)$ 
+- $w = |w| (\cos \alpha  + i\sin\alpha)$ 
+Usando la formula di Moivre scriviamo l'uguaglianza $w^n = z$ in questo modo:
+$$|w|^n (\cos \alpha  + i\sin\alpha) = |z| (\cos \alpha  + i\sin\alpha)$$
+Da questo concludiamo le seguenti cose:
+- $|w|^n = |z| \rightarrow |w| = \sqrt{n}{|z|}$
+- esiste un $k \in Z: n\beta = \alpha+2k\pi \rightarrow \beta = \frac{\alpha + 2k\pi}{n}$ 
+Quindi la radice $w$ sarà del tipo:
+	$$w_k = \sqrt[n]{|z|} \left( \cos\left(\frac{\alpha + 2k\pi}{n}\right) + i \sin\left(\frac{\alpha + 2k\pi}{n}\right) \right) (*)$$
+Al variare di $k$ nell'insieme $\{0,\dots,n-1\}$ otteniamo tutte le $n$ radici distinte di $z$ 
 
+> [!EXAMPLE]
+> Le radici quarte di $i$ sono: $\cos\frac{\frac{\pi }{2\:}\:+\:2k\pi }{4}+i\sin\frac{\frac{\pi }{2\:}\:+\:2k\pi }{4}$ per $k = 0,1,2,3,...$ ovvero le seguenti scritte in forma esponenziale:
+> - $\cos\left(\frac{\pi}{8}\right) + i\sin\left(\frac{\pi}{8}\right)$
+> - $\cos\left(\frac{5\pi}{8}\right) + i\sin\left(\frac{5\pi}{8}\right)$
+> - $\cos\left(\frac{9\pi}{8}\right) + i\sin\left(\frac{9\pi}{8}\right)$
+> - $\cos\left(\frac{13\pi}{8}\right) + i\sin\left(\frac{13\pi}{8}\right)$
+> 
+> Non scriviamo $\sqrt[n]{|z|}$ perché lavorando con $i$ il modulo è sempre 1
 
+Se consideriamo il caso specifico delle radice quadrate avremo le due radici distinte scritte di seguito:
+- $w_o = \sqrt{|z|}(\cos \frac{\alpha}{2} + i\sin \frac{\alpha}{2}))$
+- $w_1 = \sqrt{|z|}(\cos (\frac{\alpha}{2}+\pi) + i\sin (\frac{\alpha}{2}+\pi)))$
+allora possiamo dire che $w_1 = -w_0$ (grazie alle [[#Formule della trigonometria|formule]] 3 e 4). In particolare possiamo osservare che se $z \in R$:
+- se $z>0$, $\alpha = 0$ e $|z| = z$ allora si ottengono le due radici $±\sqrt{z}$ 
+- se $z < 0$, $\alpha = \pi$ e $|z| = -z$ si ottengono le due radici $±i\sqrt{-z}$ 
 
+> [!example]
+> ![[Pasted image 20250503103733.png]]
+> ![[Pasted image 20250503104126.png]]
+> by ChatGpt
 
+Questa cosa ha delle implicazioni, ad esempio nella formula del $\Delta$ per la risoluzione delle equazioni di secondo grado, infatti in caso di $\Delta$ negativo la formula risolutiva diventa:
+$$\frac{-b±\sqrt{\Delta}}{2a} \rightarrow \frac{-b±i\sqrt{-\Delta}}{2a}$$
+
+> [!EXAMPLE] 
+>Ad esempio, le soluzioni dell'equazione (a coefficienti reali, con discriminante negativo) $z^2 - 2z + 2 = 0$ sono $z = 1 \pm \sqrt{-1} = 1 \pm i$
+
+---
+### Funzioni reali di una variabile reale
+###### Generalità
+Sia $f$ una funzione reale definita in un sottoinsieme $X$ di $R$, ovvero $f:X\rightarrow R$. Si chiama grafico di $f$ il seguente sottoinsieme di $R^2$: 
+$$gr(f) = \{(x,f(x)):x\in X\}$$
+###### Definizioni:
+- **Funzione pari**: $f$ si dice pari se e solo se il suo grafico è un insieme simmetrico rispetto all'asse delle ordinate(y) cioè se contiene il punto $(a,b)$ allora contiene anche il punto $(-a,b)$
+- **Funzione dispari**: $f$ è una funzione dispari se e solo se il suo grafico è un insieme simmetrico rispetto all'origine cioè se contiene il punto $(a,b)$ allora contiene il punto $(-a,-b)$
+- **Funzione periodica**: $f$ si dice periodica se esiste un numero positivo $T$ (detto periodo) tale che $\forall x \in R$ si ha $f(x+T) = f(x)$ inoltre $f$ è periodica se e solo se $f(x+hT) = f(x) \forall x\in R, h\in Z$
+- 
 
 
 
 
 ---
-### Funzioni reali di una variabile reale
+
+
+### Cose da ricordare
+
+
+
+###### Formule della trigonometria
+
+| Id  | Formula                                       | Nome / Spiegazione                     |
+| --- | --------------------------------------------- | -------------------------------------- |
+| 1   | $\sin(-\theta) = -\sin\theta$                 | Seno è una funzione dispari            |
+| 2   | $\cos(-\theta) = \cos\theta$                  | Coseno è una funzione pari             |
+| 3   | $\sin(\theta + \pi) = -\sin\theta$            | Traslazione di mezzo giro              |
+| 4   | $\cos(\theta + \pi) = -\cos\theta$            | Come sopra                             |
+| 5   | $\sin(a + b) = \sin a \cos b + \cos a \sin b$ | Formula della somma per il seno        |
+| 6   | $\cos(a + b) = \cos a \cos b - \sin a \sin b$ | Formula della somma per il coseno      |
+| 7   | $\sin(a - b) = \sin a \cos b - \cos a \sin b$ | Formula della differenza per il seno   |
+| 8   | $\cos(a - b) = \cos a \cos b + \sin a \sin b$ | Formula della differenza per il coseno |
+
