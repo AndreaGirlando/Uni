@@ -14,10 +14,10 @@
               "type": "pdf",
               "state": {
                 "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
-                "page": 12,
-                "left": -3,
-                "top": 354,
-                "zoom": 1.1
+                "page": 1,
+                "left": -18,
+                "top": 845,
+                "zoom": 0.8554855226819158
               },
               "icon": "lucide-file-text",
               "title": "AppuntiCap1"
@@ -66,7 +66,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Esplora risorse"
+              "title": "Files"
             }
           },
           {
@@ -184,12 +184,12 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Apri selezione rapida": false,
-      "graph:Apri vista grafo": false,
-      "canvas:Crea nuova lavagna": false,
-      "daily-notes:Apri nota del giorno": false,
-      "templates:Inserisci modello": false,
-      "command-palette:Apri riquadro comandi": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
       "vscode-editor:Create Code File": false,
       "obsidian-git:Open Git source control": false,
       "pdf-plus:PDF++: Toggle auto-copy": false,
@@ -197,11 +197,11 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "0eb721df35ae68a9",
+  "active": "f818fb10ec526299",
   "lastOpenFiles": [
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
     "Capitolo 1.pdf",
     "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
     "Primo anno/utility/Pasted image 20250503103722.png",
     "Primo anno/utility/Pasted image 20250503110533.png",
     "Primo anno/utility/Pasted image 20250503104126.png",
