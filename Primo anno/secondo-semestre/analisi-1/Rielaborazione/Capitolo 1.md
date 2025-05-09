@@ -332,6 +332,39 @@ allora per ogni $x \in (a,b)$ è possibile porre $F(x) = f(g(x))$. La funzione $
 - Un punto $c\in(a,b)$ è detto punto di massimo relativo per $f$ se esiste un suo intorno $I = ]c-r,c+r[$ tal che $f(x) \le f(c)$ per ogni $x\in I$ 
 Un punto di estremo assoluto e anche di estremo relativo, ma non il viceversa.
 ###### Monotonia
+Sia data una funzione $f: (a,b) \rightarrow R$ si dice che questa è monotona se soddisfa una delle seguenti condizioni:
+- **crescente**: se $x < y \Rightarrow f(x) \le f(y)$
+- **strettamente crescente**: se $x < y \Rightarrow f(x) < f(y)$
+- **decrescente**: se $x<y \Rightarrow f(x) \ge f(y)$
+- **strettamente decrescente**: se $x<y \Rightarrow f(x) > f(y)$
+Possiamo introdurre anche il concetto di monotonia locale, ovvero dato una punto $c \in (a,b)$ si dice che la funzione è crescente nel punto $c$ se esiste $s>0$ tale che:
+- se $x \in ]c-s,c[$ si ha $f(x)<f(c)$
+- se $x \in ]c,c+s[$ si ha $f(x)>f(c)$ 
+in modo simmetrico si introduce il concetto di funzione decrescente. 
+###### Rapporto incrementale
+Sia $f: (a,b) \rightarrow R$ e sia $c\in(a,b)$. Per ogni $x \in (a,b) \backslash \{c\}$ poniamo:
+$$r(x) = \frac{f(x)-f(c)}{x-c}$$
+$r$ viene chiamato rapporto incrementale di $f$ relativo al punto $c$, questo è utile per verificare la monotonia locale di $f$ grazie al seguente teorema:
+**Teorema**
+La funzione $f$ è crescente (o decrescente) nel punto $c$ se e solo se esiste un intorno $I_s(c)$ tale che, per ogni $x \in I_s(c)\backslash\{c\}$ si abbia $r(x)>0$ (o $r(x)<0$)
+**Dimostrazione** 
+Supponiamo che $r(x) > 0$ in $I_s(c) \ {c}$. In $]c − s, c[$ il denominatore di r e negativo, quindi lo e anche il numeratore: dunque, $f (x) < f (c)$. In $]c, c + s[$ il denominatore di $r$ e positivo, quindi lo e anche il numeratore: dunque, $f (x) > f (c)$. Ne segue che $f$ e crescente nel punto $c$. Il viceversa si prova allo stesso modo.
+
+###### Funzione convessa
+La funzione $f: (a,b) \rightarrow R$ è detta convessa se per ogni $x,y \in(a,b)$ e per ogni $t \in [0,1]$ si ha:
+$$f(tx+(1-t)y) \le tf(x)+(1-t)f(y)$$in italiano significa che la porzione di grafico compresa tra le ascisse $x$ e $y$ è al di sotto di un segmento che congiunge questi due punti: $(x,f(x))$ e $(y,f(y))$. La nozione di convessità la possiamo esprimere anche così:
+$$epi(f) = \{ (x,y) \in R^2 x(a,b), y \ge f(x) \}$$
+ ovvero la porzione di grafico che sta al di sopra del grafico
+![[Epigraph_convex.svg.png|500]]
+
+Si prova che la funzione f è convessa se e solo se $epi(f )$ e un sottoinsieme convesso di $R^2$, cioè, se contiene due punti, contiene anche il segmento che li congiunge.
+
+
+> [!TIP]
+> Prendi due punti qualsiasi sul grafico della funzione, ad esempio $A = (x_1, f(x_1)$ e $B = (x_2, f(x_2)$. Ora disegna il segmento rettilineo che li collega. Se la funzione è convessa, allora tutti i punti su quel segmento si trovano al di sopra (o esattamente sul) grafico della funzione tra $x_1​$ e $x_2​$.
+
+###### Funzioni elementari
+
 
 
 ---

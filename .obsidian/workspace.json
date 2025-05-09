@@ -4,20 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "942b53efbdb95abd",
+        "id": "bcf94a1e150e9d60",
         "type": "tabs",
         "children": [
           {
-            "id": "f818fb10ec526299",
+            "id": "d630858d59e8849b",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
                 "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
-                "page": 12,
-                "left": -3,
-                "top": 354,
-                "zoom": 1.1
+                "page": 14,
+                "left": 73,
+                "top": 732,
+                "zoom": 1.5
               },
               "icon": "lucide-file-text",
               "title": "AppuntiCap1"
@@ -26,11 +26,11 @@
         ]
       },
       {
-        "id": "6aa6cf9db1af38e4",
+        "id": "d38046258e7e1dda",
         "type": "tabs",
         "children": [
           {
-            "id": "0eb721df35ae68a9",
+            "id": "ff908379ae89af7d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -100,7 +100,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5
+    "width": 413.5,
+    "collapsed": true
   },
   "right": {
     "id": "abf359470799e113",
@@ -197,11 +198,14 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "0eb721df35ae68a9",
+  "active": "ff908379ae89af7d",
   "lastOpenFiles": [
-    "Capitolo 1.pdf",
-    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
+    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+    "Epigraph_convex.svg.png",
+    "Primo anno/secondo-semestre/programmazione-2/C++/Complessità/Complessità.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/Complessità",
+    "Capitolo 1.pdf",
     "Primo anno/utility/Pasted image 20250503103722.png",
     "Primo anno/utility/Pasted image 20250503110533.png",
     "Primo anno/utility/Pasted image 20250503104126.png",
@@ -220,7 +224,6 @@
     "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/28042025_250429_210604.pdf",
     "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/template/template.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/template/a.out",
     "README.md",
     "index.md",
     "Senza nome.canvas",
@@ -228,7 +231,6 @@
     "Primo anno/secondo-semestre/programmazione-2/C++/stream/stream.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/teoria.md",
     "Pasted image 20250425145154.png",
-    "Pasted image 20250425145211.png",
     "Primo anno/secondo-semestre/analisi-1/Senza nome.md",
     "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Architettura.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual/teoria.md",
@@ -243,7 +245,6 @@
     "immagine.md",
     "Primo anno/architettura-degli-elaboratori/Assembly/Leggi per la minimizzazione.md",
     "Primo anno/strutture-discrete/Sunto.md",
-    "Primo anno/Untitled.md",
-    "Primo anno/strutture-discrete/GuidaEsercizi.md"
+    "Primo anno/Untitled.md"
   ]
 }
