@@ -42,8 +42,23 @@
               "icon": "lucide-file",
               "title": "Capitolo 1"
             }
+          },
+          {
+            "id": "a5f1ce7795b327f9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "conflict-files-obsidian-git.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "conflict-files-obsidian-git"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -100,8 +115,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5,
-    "collapsed": true
+    "width": 413.5
   },
   "right": {
     "id": "abf359470799e113",
@@ -198,7 +212,7 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "ff908379ae89af7d",
+  "active": "a5f1ce7795b327f9",
   "lastOpenFiles": [
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
     "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
@@ -221,7 +235,6 @@
     "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/23-04-2025.pdf",
     "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24042025_250429_180407.pdf",
     "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/23042025_250429_174230.pdf",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/28042025_250429_210604.pdf",
     "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/template/template.md",
     "README.md",
