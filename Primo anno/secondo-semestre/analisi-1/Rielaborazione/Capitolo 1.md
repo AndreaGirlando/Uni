@@ -364,10 +364,26 @@ Si prova che la funzione f è convessa se e solo se $epi(f )$ e un sottoinsieme 
 > Prendi due punti qualsiasi sul grafico della funzione, ad esempio $A = (x_1, f(x_1)$ e $B = (x_2, f(x_2)$. Ora disegna il segmento rettilineo che li collega. Se la funzione è convessa, allora tutti i punti su quel segmento si trovano al di sopra (o esattamente sul) grafico della funzione tra $x_1​$ e $x_2​$.
 
 ###### Funzioni elementari
+Di seguito alcune funzioni che nascono dalle operazioni definite in $R$ dette funzioni elementari, la funzione inversa di una funzione elementare è anche essa elementare.
+- **Funzione constante**: Se $k \in R$ la funzione $f(x) = k$ è definita in $]-\infty, +\infty[$  
+- **Funzione identità**: funzione $f(x) = x$ è definita in $]-\infty,\infty[$
+- **Funzione potenza con esponente intero positivo**: Se $n\in N$ la funzione $f(x) = x^n$ è definita in $]-\infty,\infty[$ 
+- **Funzione potenza con esponente intero negativo**: Se $n\in N$ la funzione $f(x) = x^{-n}$ è definita in $]-\infty,\infty[$ 
+- **Funzione con esponente razionale**: se $\frac{m}{n} \in Q$, la funzione $f(x) = x^\frac{m}{n} = (\sqrt[n]{x})^m$ ed è definita in:
+	- in $[0,+\infty[$ se $\frac{m}{n}>0$
+	- in $]0,+\infty[$ se $\frac{m}{n}<0$
+- **Funzione con esponente irrazionale**: se $s \in R\backslash Q$, la funzione $f(x) = x^s$ è definita in: 
+	- in $[0,+\infty[$ se $s\ge0$
+	- in $]0,+\infty[$ se $s<0$
+- **Radice n-ma**: Se $n\in N, n\ge2$  la funzione $f(x) = \sqrt[n]{x}$ è definita in 
+	- $]-\infty,+\infty[$  se $n$ è dispari
+	- $[0, +\infty[$ se $n$ è pari
+- **Funzione esponenziale**: Se $a>0, a\not=1$ la funzione $f(x) = a^x$ è definita in $]-\infty,\infty[$
+- **Funzione logaritmica**: Se $a>0, a\not=1$ la funzione $f(x) = log_a x$ è definita in $]0, +\infty[$
+- **Funzione Coseno e seno**: Per ogni $x \in R$ si consideri il punto $P$, l'ascissa e l'ordinata di P sono dette rispettivamente $\cos x$ e $\sin x$, le funzioni $f(x) = \cos x$  e $g(x) = \cos x$ sono definite in $]-\infty,\infty[$ ![[Pasted image 20250509170053.png|250]]
+- **Funzione tangente**: 
 
-
-
----
+--- 
 
 
 ### Cose da ricordare

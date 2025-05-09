@@ -16,7 +16,7 @@
                 "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
                 "page": 14,
                 "left": 73,
-                "top": 732,
+                "top": 264,
                 "zoom": 1.5
               },
               "icon": "lucide-file-text",
@@ -42,23 +42,8 @@
               "icon": "lucide-file",
               "title": "Capitolo 1"
             }
-          },
-          {
-            "id": "a5f1ce7795b327f9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "conflict-files-obsidian-git.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "conflict-files-obsidian-git"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -115,7 +100,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5
+    "width": 413.5,
+    "collapsed": true
   },
   "right": {
     "id": "abf359470799e113",
@@ -212,11 +198,18 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "a5f1ce7795b327f9",
+  "active": "ff908379ae89af7d",
   "lastOpenFiles": [
+    "Pasted image 20250509170053.png",
+    "Pasted image 20250509170052.png",
+    "Pasted image 20250509170048.png",
+    "image-1 1.webp",
+    "image-1.webp",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
     "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
-    "Epigraph_convex.svg.png",
+    "conflict-files-obsidian-git.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/classi",
+    "Primo anno/utility/Epigraph_convex.svg.png",
     "Primo anno/secondo-semestre/programmazione-2/C++/Complessità/Complessità.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/Complessità",
     "Capitolo 1.pdf",
@@ -225,10 +218,7 @@
     "Primo anno/utility/Pasted image 20250503104126.png",
     "Primo anno/utility/Pasted image 20250503103733.png",
     "Primo anno/utility/Venn_Diagram_of_Numbers-it.svg.png",
-    "Primo anno/utility/Screenshot_20250502_101617_Samsung capture.jpg",
-    "Primo anno/utility/Screenshot_20250502_094916_Samsung capture.jpg",
     "Uni To-Do.md",
-    "Primo anno/utility/im_03.png",
     "Primo anno/secondo-semestre/programmazione-2/C++/stream/main.cpp",
     "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/28-04-2025.pdf",
     "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24-04-2025.pdf",
@@ -243,7 +233,6 @@
     "nucleo.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/stream/stream.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/teoria.md",
-    "Pasted image 20250425145154.png",
     "Primo anno/secondo-semestre/analisi-1/Senza nome.md",
     "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Architettura.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/virtual/teoria.md",
@@ -257,7 +246,6 @@
     "Metodo di Gauss-Jordan.pdf.md",
     "immagine.md",
     "Primo anno/architettura-degli-elaboratori/Assembly/Leggi per la minimizzazione.md",
-    "Primo anno/strutture-discrete/Sunto.md",
-    "Primo anno/Untitled.md"
+    "Primo anno/strutture-discrete/Sunto.md"
   ]
 }
