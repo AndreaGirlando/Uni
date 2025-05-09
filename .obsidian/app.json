@@ -11,5 +11,6 @@
   "showLineNumber": true,
   "strictLineBreaks": false,
   "alwaysUpdateLinks": true,
-  "propertiesInDocument": "source"
+  "propertiesInDocument": "source",
+  "spellcheck": true
 }
