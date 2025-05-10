@@ -4,33 +4,27 @@
     "type": "split",
     "children": [
       {
-        "id": "bcf94a1e150e9d60",
+        "id": "1cf6cc11596da535",
         "type": "tabs",
         "children": [
           {
-            "id": "d630858d59e8849b",
+            "id": "1468e0d50e98a1aa",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
-                "page": 14,
-                "left": 73,
-                "top": 264,
-                "zoom": 1.5
+                "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/Appunticap2.pdf",
+                "page": 1,
+                "left": -18,
+                "top": 845,
+                "zoom": 1.1
               },
               "icon": "lucide-file-text",
-              "title": "AppuntiCap1"
+              "title": "Appunticap2"
             }
-          }
-        ]
-      },
-      {
-        "id": "d38046258e7e1dda",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "ff908379ae89af7d",
+            "id": "c451f2d0bad67ffa",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -41,6 +35,26 @@
               },
               "icon": "lucide-file",
               "title": "Capitolo 1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "a4eccff7aa63d216",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "33250356e41bddee",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 2.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Capitolo 2"
             }
           }
         ]
@@ -198,33 +212,33 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "ff908379ae89af7d",
+  "active": "33250356e41bddee",
   "lastOpenFiles": [
-    "Pasted image 20250509170053.png",
-    "Pasted image 20250509170052.png",
-    "Pasted image 20250509170048.png",
-    "image-1 1.webp",
-    "image-1.webp",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Appunti/AppuntiCap1.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/Appunticap2.pdf",
     "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
+    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 2.md",
+    "Primo anno/secondo-semestre/analisi-1/Esercizi/Esercizi del 0503_250308_173507.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Esercizi ed esempi/eserccap1parte3.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/maggio 2025/6maggio2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/maggio 2025",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/aprile 2025/30aprile2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/aprile 2025/28aprile2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Esercizi ed esempi/esercizicap3parte2.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/marzo 2025/5marzo2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/marzo 2025/3marzo2025.pdf",
+    "Uni To-Do.md",
+    "Primo anno/utility/Pasted image 20250509170048.png",
+    "Primo anno/utility/image-1.webp",
+    "Primo anno/utility/Pasted image 20250509170053.png",
+    "Primo anno/utility/Pasted image 20250509170052.png",
+    "Primo anno/utility/image-1 1.webp",
     "conflict-files-obsidian-git.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/classi",
     "Primo anno/utility/Epigraph_convex.svg.png",
     "Primo anno/secondo-semestre/programmazione-2/C++/Complessità/Complessità.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/Complessità",
-    "Capitolo 1.pdf",
     "Primo anno/utility/Pasted image 20250503103722.png",
     "Primo anno/utility/Pasted image 20250503110533.png",
     "Primo anno/utility/Pasted image 20250503104126.png",
     "Primo anno/utility/Pasted image 20250503103733.png",
-    "Primo anno/utility/Venn_Diagram_of_Numbers-it.svg.png",
-    "Uni To-Do.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/stream/main.cpp",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/28-04-2025.pdf",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24-04-2025.pdf",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/23-04-2025.pdf",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/24042025_250429_180407.pdf",
-    "Primo anno/secondo-semestre/fondamenti-di-informatica/lezioni/23042025_250429_174230.pdf",
     "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/template/template.md",
     "README.md",
@@ -245,7 +259,6 @@
     "Primo anno/primo-semestre/algebra-lineare-e-geometria/Definizioni.md",
     "Metodo di Gauss-Jordan.pdf.md",
     "immagine.md",
-    "Primo anno/architettura-degli-elaboratori/Assembly/Leggi per la minimizzazione.md",
-    "Primo anno/strutture-discrete/Sunto.md"
+    "Primo anno/architettura-degli-elaboratori/Assembly/Leggi per la minimizzazione.md"
   ]
 }
