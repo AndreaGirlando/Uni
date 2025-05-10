@@ -7,9 +7,9 @@
 
 | Materia |                Doc                 | Fatto? |              Note              |
 | :-----: | :--------------------------------: | :----: | :----------------------------: |
-| Analisi |        [[AppuntiCap1.pdf]]         |   ✅    |                                |
-| Analisi |        [[AppuntiCap2.pdf]]         |   🟨   |                                |
-| Analisi |        [[AppuntiCap3.pdf]]         |   ❌    |                                |
+| Analisi |        [[AppuntiCap1.pdf]]         |   ✅    |          16/16 pagine          |
+| Analisi |        [[AppuntiCap2.pdf]]         |   🟨   |          0/10 pagine           |
+| Analisi |        [[AppuntiCap3.pdf]]         |   ❌    |          0/10 pagine           |
 | Analisi |                                    |        |                                |
 | Prog 2  | Implementare virtual con le classi |   ✅    |                                |
 | Prog 2  |      Lista concatenata chill       |   ✅    |                                |
