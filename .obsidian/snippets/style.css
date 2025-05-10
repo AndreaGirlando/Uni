@@ -29,9 +29,11 @@ table {
   color: #f37b84;
 }
 
-.cm-header-2,.cm-header-3,.cm-header-4,.cm-header-5,.cm-header-6 {
+.cm-header-3{
+  color: #98FB98;
+}
+.cm-header-2,.cm-header-4,.cm-header-5,.cm-header-6 {
   color: #ffd98c;
 }
-
 
 

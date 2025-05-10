@@ -199,6 +199,7 @@ Osserviamo inoltre che $\log_{a} b > 0$ se e solo se $a$ e $b$ sono entrambi mag
 
 ---
 ### Cenni sui numeri complessi
+###### Definizione
 **Definizione**: Definiamo numero complesso una coppia ordinata di numeri reali: $z = (a,b)$ con $a,b\in R$. Indichiamo con $C$ l'insieme dei numeri complessi.
 **Equivalenza:** se $z = (a,b)$ e $w = (c,d)$ sono due numeri complessi, diremo che $z = w$ se $a=c$ e $b = d$ se $z \not = w$  
 
@@ -381,14 +382,40 @@ Di seguito alcune funzioni che nascono dalle operazioni definite in $R$ dette fu
 - **Funzione esponenziale**: Se $a>0, a\not=1$ la funzione $f(x) = a^x$ è definita in $]-\infty,\infty[$
 - **Funzione logaritmica**: Se $a>0, a\not=1$ la funzione $f(x) = log_a x$ è definita in $]0, +\infty[$
 - **Funzione Coseno e seno**: Per ogni $x \in R$ si consideri il punto $P$, l'ascissa e l'ordinata di P sono dette rispettivamente $\cos x$ e $\sin x$, le funzioni $f(x) = \cos x$  e $g(x) = \cos x$ sono definite in $]-\infty,\infty[$ ![[Pasted image 20250509170053.png|250]]
-- **Funzione tangente**: 
+- **Funzione tangente**: la funzione $\tan x = \frac{\sin x}{\cos x}$ è definita in $]-\infty,\infty[\backslash \{\frac{\pi}{2}+k\pi: k \in Z\}$  
+- **Funzione arcocoseno e arcoseno**: Per ogni $y \in [-1,1]$ sia $x$ l'unico punto dell'intervallo $[0,\pi]$ tale che $\cos x = y$, si definisce così la funzione $\arccos y$ inversa di $\cos x$ nell'intervallo $[0,\pi]$. In modo analogo si introduce la funzione $\arcsin y$ inversa di $\sin x$ nell'intervallo $[-\frac{\pi}{2},\frac{\pi}{2}]$
+- **Funzione arcotangente**:  come visto per il punto precedente si costruisce per ogni $y \in ]-\infty,\infty[$ la funzione $\arctan y$ inversa di $\tan x$
+- **Funzione polinomi**: Se $n \in N_0$ e $a_0,a_1,\dots,a_n \in R$ la funzione $p(x) = a_0x^n+a_1x^{n-1}+\dots+a_n$  definito in  $]-\infty,\infty[$ 
+- **Funzioni razionali fratte**: la funzione $f(x) = \frac{a_0x^n+a_1x^{n-1}+\dots+a_n}{b_0x^m+b_1x^{m-1}+\dots+b_m}$ ($a_i,b_j \in R, n \in N_0, m \in N, b_0 \not = 0$) è definita in $]-\infty,\infty[\backslash\{c \in R: b_0c^m + \dots +c_m = 0\}$  
+###### Osservazioni sulle funzioni elementari
+Di seguito un po' di osservazioni sulle funzioni elementari:
+- Se $n$ è pari la funzione $f(x)=x^n$ è pari ed è strettamente crescente in $[0,+\infty[$ e la sua inversa (ovvero $\sqrt[n]{x}$) è strettamente decrescente in $]-\infty,0]$. 
+- Se $n$ è dispari la funzione $f(x) = x^n$ è dispari ed è strettamente crescente in $]-\infty,\infty[$ 
+- Se $n = 0$ il polinomio si dice costante si ha cioè $p(x) = a_0$ per ogni valore di $x$. Due polinomi $p(x) = a_0x^n+a_1x^{n-1}+\dots+a_n$ e $P(x) = b_0x^m+b_1x^{m-1}+\dots+b_m$ si dicono identici se $p(x) = P(x)$ per ogni $x \in R$, inoltre si può dimostrare che $p$ e $P$ sono identici se e solo se:
+	- $m = n$
+	- $b_i = a_i$ per ogni $i = 0,\dots,n$ 
+- Dati due polinomi $p$ e $P$ esiste un polinomio $q$ (quoziente) ed un polinomio $r$ (resto) tale che:
+  $$p(x) = P(x)q(x)+r(x)$$
+- L'equazione $p(x) = 0$ detta equazione algebrica ha esattamente $n$ soluzioni distinte, se $k$ d tali soluzioni coincidono, detto $\alpha$ il loro comune valore, si dice che $\alpha$ è una soluzione di molteplicità $k$ (questi zeri possono essere anche numeri immaginari)
+- Supponiamo che il numeratore e il denominatore di $f$ siano polinomi primi fra loro (privi di divisori comuni). Si può dimostrare che $f$ può essere espressa come somma di frazioni del tipo $\frac{A}{(x-a)^n}$ ($A,a \in R, n \in N$) e di frazioni del tipo $\frac{A_x+B}{(x^2+k^2)^n}$ $(A,B,k \in R, n \in N)$ dette fratti semplici. Per trovare i fratti semplici è necessario trovare gli zeri del polinomio al denominatore.
+  
+
+
+
+
+
+
+
+
+
+
+
+
 
 --- 
 
 
 ### Cose da ricordare
-
-
 
 ###### Formule della trigonometria
 
