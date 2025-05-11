@@ -33,10 +33,19 @@ Una successione è detta limitata se lo è l'insieme dei suoi termini ovvero se 
 
 ### Successioni regolari
 ###### Limite di una successione
-Sia $l$ un numero reale. Si dice che la successione $\{a_n\}$ **converge o tende** ad $l$ o che $l$ è il **limite della successione** (che si denota con $a_n \rightarrow l$ o $a_n = l$) se è verificata la seguente condizione: $$\forall\epsilon>0 \ \exists\alpha \in N: n>\alpha \Rightarrow |a_n-l| < \epsilon$$ovvero se dato un qualunque intorno di $l$, definitivamente i termini delle successione (${a_n}$) appartengono a tale intorno, questo si traduce in termini matematici in questa cosa:
+Sia $l$ un numero reale. Si dice che la successione $\{a_n\}$ **converge o tende** ad $l$ o che $l$ è il **limite della successione** (che si denota con $a_n \rightarrow l$ o $\lim a_n = l$) se è verificata la seguente condizione: $$\forall\epsilon>0 \ \exists\alpha \in N: n>\alpha \Rightarrow |a_n-l| < \epsilon$$ovvero se dato un qualunque intorno di $l$, definitivamente i termini delle successione (${a_n}$) appartengono a tale intorno, questo si traduce in termini matematici in questa cosa:
 1. $|a_n-l|<\epsilon \Longleftrightarrow$ 
 2. $-\epsilon < a_n-l < \epsilon \Longleftrightarrow$
 3. $l-\epsilon < a_n < l+\epsilon$ 
+Se questa condizione è vera, significa che la successione "si stabilizza" attorno al valore $l$. E quindi che man mano che $n$ diventa grande, i termini $a_n$​ rimangono vicini ad $l$ quanto vogliamo (scegliendo un $ε$ sufficientemente piccolo).
+> [!warning]
+> Con $\lim a_n = l$ intendiamo $\lim_{n \to \infty} a_n = l$ 
+> ovvero quando il valore di $n$ va verso infinito il valore della del nostro generico $a_n$ si avvicina ad $l$
+ 
+> [!quote]
+> ![[Screenshot_20250511_172815_Samsung capture.jpg]]
+> Salvo Romeo
+
 > [!EXAMPLE]
 > La successione: $a_n = k$ tende a $k$
 > La successione $\frac{1}{n}$ tende a 0
