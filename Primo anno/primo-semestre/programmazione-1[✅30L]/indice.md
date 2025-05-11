@@ -1,0 +1,92 @@
+- 📁 Root:
+  - 📁 C:
+    - 📁 Esame:
+      - 📄 [[C/Esame/29-01-25.pdf]]
+    - 📁 Esercizi:
+      - 📁 EsamePratico:
+        - 📁 02-02-2023:
+          - 📁 FattoDaMe:
+            - 📄 [[C/Esercizi/EsamePratico/02-02-2023/FattoDaMe/02-02-2023.pdf]]
+          - 📁 FattoDalProf:
+            - 📄 [[C/Esercizi/EsamePratico/02-02-2023/FattoDalProf/02-02-2023.pdf]]
+        - 📁 04-04-2023:
+          - 📄 [[C/Esercizi/EsamePratico/04-04-2023/04-04-2023.pdf]]
+        - 📁 05-12-2023:
+          - 📁 FattoDaMe:
+            - 📄 [[C/Esercizi/EsamePratico/05-12-2023/FattoDaMe/05-12-2023.pdf]]
+          - 📁 FattoDalProf:
+            - 📄 [[C/Esercizi/EsamePratico/05-12-2023/FattoDalProf/05-12-2023.pdf]]
+        - 📁 06-09-2023:
+          - 📁 FattoDaMe:
+            - 📄 [[C/Esercizi/EsamePratico/06-09-2023/FattoDaMe/06-09-23.pdf]]
+          - 📁 FattoDalProf:
+            - 📄 [[C/Esercizi/EsamePratico/06-09-2023/FattoDalProf/06-09-23.pdf]]
+        - 📁 10-01-2023:
+          - 📄 [[C/Esercizi/EsamePratico/10-01-2023/prova.pdf]]
+        - 📁 10-09-2024:
+          - 📁 10-09-2024FattoDaMe:
+            - 📄 [[C/Esercizi/EsamePratico/10-09-2024/10-09-2024FattoDaMe/10-09-2024.pdf]]
+          - 📁 10-09-2024FattoDalProf:
+            - 📁 __MACOSX:
+              - 📄 [[C/Esercizi/EsamePratico/10-09-2024/10-09-2024FattoDalProf/__MACOSX/._10-09-2024.pdf]]
+        - 📁 16-02-2024:
+          - 📁 FattoDaMe:
+            - 📄 [[C/Esercizi/EsamePratico/16-02-2024/FattoDaMe/16-02-2024.pdf]]
+          - 📁 FattoDalProf:
+            - 📄 [[C/Esercizi/EsamePratico/16-02-2024/FattoDalProf/16-02-2024.pdf]]
+        - 📁 20-07-2023:
+          - 📁 FattoDaMe:
+            - 📄 [[C/Esercizi/EsamePratico/20-07-2023/FattoDaMe/20-07-2023.pdf]]
+          - 📁 FattoDalProf:
+            - 📄 [[C/Esercizi/EsamePratico/20-07-2023/FattoDalProf/20-07-2023.pdf]]
+        - 📁 24-09-2024:
+          - 📁 24-09-2024FattoDaMe:
+            - 📄 [[C/Esercizi/EsamePratico/24-09-2024/24-09-2024FattoDaMe/24-09-2024.pdf]]
+          - 📁 24-09-2024FattoDalProf:
+            - 📄 [[C/Esercizi/EsamePratico/24-09-2024/24-09-2024FattoDalProf/24-09-2024.pdf]]
+            - 📁 __MACOSX:
+              - 📄 [[C/Esercizi/EsamePratico/24-09-2024/24-09-2024FattoDalProf/__MACOSX/._24-09-2024.pdf]]
+        - 📁 25-07-2024:
+          - 📄 [[C/Esercizi/EsamePratico/25-07-2024/25-07-2024.pdf]]
+        - 📁 26-06-2024:
+          - 📁 FattaDalProf:
+            - 📄 [[C/Esercizi/EsamePratico/26-06-2024/FattaDalProf/26-06-2024.pdf]]
+          - 📁 FattoDaMe:
+            - 📄 [[C/Esercizi/EsamePratico/26-06-2024/FattoDaMe/26-06-2024.pdf]]
+        - 📁 29-03-2024:
+          - 📁 FattoDaMe:
+            - 📄 [[C/Esercizi/EsamePratico/29-03-2024/FattoDaMe/29-03-2024.pdf]]
+          - 📁 FattoDalProf:
+            - 📄 [[C/Esercizi/EsamePratico/29-03-2024/FattoDalProf/29-03-2024.pdf]]
+            - 📁 __MACOSX:
+              - 📄 [[C/Esercizi/EsamePratico/29-03-2024/FattoDalProf/__MACOSX/._29-03-2024.pdf]]
+  - 📁 FileCondivisiTeams:
+    - 📄 [[FileCondivisiTeams/1) Traduzione e Linguaggi.pdf]]
+    - 📄 [[FileCondivisiTeams/2) Problemi - Algoritmi - Diagrammi.pdf]]
+    - 📄 [[FileCondivisiTeams/6) Allocazione Dinamica Memoria.pdf]]
+    - 📄 [[FileCondivisiTeams/7) Allocazione della Memoria.pdf]]
+    - 📄 [[FileCondivisiTeams/9) compilazione_separata.pdf]]
+    - 📄 [[FileCondivisiTeams/ProveDiLaboratorioSvolte.pdf]]
+    - 📄 [[FileCondivisiTeams/Variabili, rappresentazione dei numeri.pdf]]
+    - 📁 Prove teoriche (anni precedenti):
+      - 📁 Completate:
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Completate/02-02-23.pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Completate/03-03-23.pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Completate/06-12-22 (itinere).pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Completate/07-12-23.pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Completate/16-02-24.pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Completate/23-02-23.pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Completate/27-06-23.pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Completate/31-01-24.pdf]]
+      - 📁 Da completare:
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Da completare/02-02-23.pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Da completare/03-03-23.pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Da completare/06-12-22 (itinere).pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Da completare/07-12-23.pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Da completare/16-02-24.pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Da completare/23-02-23.pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Da completare/27-06-23.pdf]]
+        - 📄 [[FileCondivisiTeams/Prove teoriche (anni precedenti)/Da completare/31-01-24.pdf]]
+  - 📁 Lezioni:
+    - 📄 [[Lezioni/17 ottobre 2024.pdf]]
+    - 📄 [[Lezioni/6 Novembre 2024 (Esercizio matriciCelleAdiacenti.c).pdf]]

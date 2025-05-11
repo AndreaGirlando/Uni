@@ -1,0 +1,52 @@
+- 📁 Root:
+  - 📄 [[Riassunto.pdf]]
+  - 📁 Assembly:
+    - 📄 [[Assembly/Conversioni.pdf]]
+    - 📁 1.0-SistemiNumerazione:
+      - 📄 [[Assembly/1.0-SistemiNumerazione/1.0-Sistemi di numerazione e rappresentazione binaria dei numeri.pdf]]
+      - 📄 [[Assembly/1.0-SistemiNumerazione/1.1-Sistemi di numerazione e rappresentazione binaria dei numeri.pdf]]
+    - 📁 2.0-IstruzioniMacchina:
+      - 📁 2.0:
+        - 📄 [[Assembly/2.0-IstruzioniMacchina/2.0/2.0-IstruzioniMacchina.pdf]]
+      - 📁 2.1:
+        - 📄 [[Assembly/2.0-IstruzioniMacchina/2.1/2.1-IstruzioniMacchina.pdf]]
+      - 📁 2.2:
+        - 📄 [[Assembly/2.0-IstruzioniMacchina/2.2/2.2-IstruzioniMacchina.pdf]]
+    - 📁 3.0-AlgebraBooleana:
+      - 📄 [[Assembly/3.0-AlgebraBooleana/3.0-Algebra Booleana.pdf]]
+      - 📄 [[Assembly/3.0-AlgebraBooleana/3.1-Algebra Booleana.pdf]]
+      - 📄 [[Assembly/3.0-AlgebraBooleana/3.2-Algebra Booleana.pdf]]
+    - 📁 4.0-Pila:
+      - 📄 [[Assembly/4.0-Pila/2.3-IstruzioniMacchina.pdf]]
+    - 📁 5.0-OperazioniEShifting:
+      - 📄 [[Assembly/5.0-OperazioniEShifting/2.4-IstruzioniMacchina.pdf]]
+    - 📁 6.0-CircuitiIntegrati:
+      - 📄 [[Assembly/6.0-CircuitiIntegrati/5-Circuiti integrati.pdf]]
+      - 📄 [[Assembly/6.0-CircuitiIntegrati/5.1-Circuiti integrati.pdf]]
+      - 📄 [[Assembly/6.0-CircuitiIntegrati/EserciziEsame.pdf]]
+  - 📁 FileCondivisiTeams:
+    - 📄 [[FileCondivisiTeams/00_Introduzione.pdf]]
+    - 📄 [[FileCondivisiTeams/01_Architettura.pdf]]
+    - 📄 [[FileCondivisiTeams/02_Memoria.pdf]]
+    - 📄 [[FileCondivisiTeams/03_Bus.pdf]]
+    - 📄 [[FileCondivisiTeams/04_InputOutput.pdf]]
+    - 📄 [[FileCondivisiTeams/05_Processore.pdf]]
+    - 📄 [[FileCondivisiTeams/06_Livello-software.pdf]]
+    - 📄 [[FileCondivisiTeams/07_Pipelining.pdf]]
+    - 📄 [[FileCondivisiTeams/08_Struttura-base-del-processore.pdf]]
+    - 📄 [[FileCondivisiTeams/09_Algebra-booleana.pdf]]
+    - 📄 [[FileCondivisiTeams/10_Circuiti-aritmetici.pdf]]
+    - 📄 [[FileCondivisiTeams/11_Insieme-di-istruzioni-macchina.pdf]]
+    - 📄 [[FileCondivisiTeams/12_Tecnologia-microelettronica.pdf]]
+  - 📁 Lezioni:
+    - 📄 [[Lezioni/13 novembre 2024_241124_123151.pdf]]
+    - 📄 [[Lezioni/15 novembre 2024_241115_182853.pdf]]
+    - 📄 [[Lezioni/2 ottobre 2024_241002_172352.pdf]]
+    - 📄 [[Lezioni/25 ottobre 2024_241026_103944.pdf]]
+    - 📄 [[Lezioni/28 ottobre 2024_241029_161430.pdf]]
+    - 📄 [[Lezioni/4 Ottobre 2024_241004_210302.pdf]]
+    - 📄 [[Lezioni/4 novembre 2024_241109_083610.pdf]]
+    - 📄 [[Lezioni/7 ottobre 2024_241007_211301.pdf]]
+    - 📄 [[Lezioni/9 ottobre 2024_241009_173537.pdf]]
+    - 📄 [[Lezioni/Esercizi esame orale_250204_154408.pdf]]
+    - 📄 [[Lezioni/Mappe di karnaugh tutorial _250122_102752.pdf]]

@@ -4,57 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "1cf6cc11596da535",
+        "id": "edf0bc438c7cdf60",
         "type": "tabs",
         "children": [
           {
-            "id": "1468e0d50e98a1aa",
+            "id": "bbf5f32534ea6fd4",
             "type": "leaf",
             "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/Appunticap2.pdf",
-                "page": 1,
-                "left": 46,
-                "top": 442,
-                "zoom": 1.3
-              },
-              "icon": "lucide-file-text",
-              "title": "Appunticap2"
-            }
-          },
-          {
-            "id": "c451f2d0bad67ffa",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Capitolo 1"
-            }
-          }
-        ]
-      },
-      {
-        "id": "a4eccff7aa63d216",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "33250356e41bddee",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 2.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Capitolo 2"
+              "title": "Nuova scheda"
             }
           }
         ]
@@ -114,8 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5,
-    "collapsed": true
+    "width": 413.5
   },
   "right": {
     "id": "abf359470799e113",
@@ -212,54 +171,54 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "33250356e41bddee",
+  "active": "bbf5f32534ea6fd4",
   "lastOpenFiles": [
-    "Screenshot_20250511_172815_Samsung capture.jpg",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/Appunticap2.pdf",
-    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 2.md",
     "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
     "Uni To-Do.md",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/Appunticap3.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/AppuntiCap1.pdf",
-    "Primo anno/secondo-semestre/analisi-1/Esercizi/Esercizi del 0503_250308_173507.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Esercizi ed esempi/eserccap1parte3.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/maggio 2025/6maggio2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/maggio 2025",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/aprile 2025/30aprile2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/aprile 2025/28aprile2025.pdf",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Esercizi ed esempi/esercizicap3parte2.pdf",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/Test principio di induzione_250118_160631.pdf",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/Formule calcolo combinatorio_250130_093241.pdf",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/Esempio principio di induzione_241027_213340.pdf",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/DB MOVE_241020_203624.pdf",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/9 ottobre 2024_241009_160013.pdf",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/9 Dicembre 2024_241209_220453.pdf",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/8 Gennaio 2025_250108_151611.pdf",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/30 ottobre 2024_241031_091050.pdf",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/25 novembre 2024_241125_202033.pdf",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/7 ottobre 2024_241007_163122.pdf",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/FileRielaborazioni/04_Parte4.md",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/FileRielaborazioni/Tips.md",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/FileRielaborazioni/03_Parte3Teoria.md",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/FileRielaborazioni/03_Parte3.md",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/FileRielaborazioni/01_Parte1.md",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/FileRielaborazioni/02_Parte2.md",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Esercizi/dimostrazioneNoEsame.md",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Esercizi/Dimostrazione.md",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Esercizi/Da fare.md",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Strutture.md",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Riassunto.md",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/indice.md",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/GuidaEsercizi.md",
+    "Primo anno/primo-semestre/programmazione-1[✅30L]/C/Esercizi/listeConcatenate/Pila(Stack)/Stack.md",
+    "Primo anno/primo-semestre/programmazione-1[✅30L]/C/Esercizi/listeConcatenate/Coda(Queue)/Coda.md",
+    "Primo anno/primo-semestre/programmazione-1[✅30L]/C/Esercizi/algoritmiDiOrdinamento/selectionSort/selectionSort.md",
+    "Primo anno/primo-semestre/programmazione-1[✅30L]/C/Esercizi/algoritmiDiOrdinamento/InsertionSort/InsertionSort.md",
+    "Primo anno/primo-semestre/programmazione-1[✅30L]/C/Esercizi/allocazioneMemoria/Allocazione della memoria.md",
+    "Primo anno/primo-semestre/programmazione-1[✅30L]/C/LAB3/esercizio.png",
+    "Primo anno/primo-semestre/programmazione-1[✅30L]/Lezioni/9 ottobre 2024.md",
+    "Primo anno/primo-semestre/programmazione-1[✅30L]/Lezioni/8 ottobre 2024.md",
+    "Primo anno/primo-semestre/programmazione-1[✅30L]/Lezioni/15 ottobre 2024.md",
+    "Primo anno/primo-semestre/programmazione-1[✅30L]/indice.md",
+    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Lezioni/6 novembre 2024.md",
+    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Lezioni/27 novembre 2024.md",
+    "Primo anno/primo-semestre/programmazione-1[30L]/C/LAB3/esercizio.png",
+    "Primo anno/utility/Screenshot_20250511_172815_Samsung capture.jpg",
     "Primo anno/utility/Pasted image 20250509170048.png",
     "Primo anno/utility/image-1.webp",
     "Primo anno/utility/Pasted image 20250509170053.png",
     "Primo anno/utility/Pasted image 20250509170052.png",
     "Primo anno/utility/image-1 1.webp",
-    "conflict-files-obsidian-git.md",
     "Primo anno/utility/Epigraph_convex.svg.png",
-    "Primo anno/secondo-semestre/programmazione-2/C++/Complessità/Complessità.md",
     "Primo anno/utility/Pasted image 20250503103722.png",
-    "Primo anno/utility/Pasted image 20250503110533.png",
-    "Primo anno/utility/Pasted image 20250503104126.png",
-    "Primo anno/utility/Pasted image 20250503103733.png",
-    "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/template/template.md",
-    "README.md",
-    "index.md",
-    "Senza nome.canvas",
-    "nucleo.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/stream/stream.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/teoria.md",
-    "Primo anno/secondo-semestre/analisi-1/Senza nome.md",
-    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Architettura.md",
-    "Primo anno/secondo-semestre/programmazione-2/C++/virtual/teoria.md",
-    "Primo anno/secondo-semestre/programmazione-2/Lezioni/25-03-2025.md",
-    "Primo anno/primo-semestre/algebra-lineare-e-geometria/Link.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Riassunto.md",
-    "Primo anno/secondo-semestre/Untitled.md",
-    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Assembly/Comandi Assembly.md",
-    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Assembly/Appunti.md",
-    "Primo anno/primo-semestre/algebra-lineare-e-geometria/Definizioni.md",
-    "Metodo di Gauss-Jordan.pdf.md",
-    "immagine.md",
-    "Primo anno/architettura-degli-elaboratori/Assembly/Leggi per la minimizzazione.md"
+    "Senza nome.canvas"
   ]
 }
