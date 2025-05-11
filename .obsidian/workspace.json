@@ -11,10 +11,14 @@
             "id": "bbf5f32534ea6fd4",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Primo anno/primo-semestre/algebra-lineare-e-geometria[✅20]/Indice.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nuova scheda"
+              "title": "Indice"
             }
           }
         ]
@@ -171,7 +175,7 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "4976c61b40586f1c",
+  "active": "bbf5f32534ea6fd4",
   "lastOpenFiles": [
     "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
     "Uni To-Do.md",

@@ -1,7 +1,7 @@
 - 📁 Root:
   - 📄 [[Algebra.pdf]]
   - 📁 Esercizi:
-    - 📄 [[Esercizi/24 Novembre 2024.pdf]]
+    - 📄 [[24 Novembre 2024.pdf]]
     - 📄 [[Esercizi/5-6 ottobre 2024.pdf]]
     - 📄 [[Esercizi/8 ottobre 2024.pdf]]
     - 📄 [[Esercizi/IntersezioneTraSottospazi.pdf]]
