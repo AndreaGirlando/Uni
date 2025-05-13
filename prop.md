@@ -1,0 +1,63 @@
+
+| n.  | Denominazione                                                          | CFU | Propedeuticità                                                                                                     |
+| --- | ---------------------------------------------------------------------- | --- | ------------------------------------------------------------------------------------------------------------------ |
+| 1   | Algebra lineare e Geometria                                            | 6   | Nessuna propedeuticità                                                                                             |
+| 2   | Algoritmi e Laboratorio Algoritmi                                      | 6   | Programmazione II e Laboratorio Programmazione II, Strutture Discrete                                              |
+| 2   | Algoritmi e Laboratorio Laboratorio                                    | 3   | Programmazione II e Laboratorio Programmazione II, Strutture Discrete                                              |
+| 3   | Algoritmi Randomizzati e Approssimati                                  | 6   | Algoritmi e Laboratorio Algoritmi, Programmazione II e Laboratorio Programmazione II, Strutture Discrete           |
+| 4   | Architettura degli elaboratori e laboratorio Architettura              | 6   | Nessuna propedeuticità                                                                                             |
+| 4   | Architettura degli elaboratori e laboratorio Laboratorio               | 3   | Nessuna propedeuticità                                                                                             |
+| 5   | Artificial Intelligence                                                | 9   | Algoritmi e Laboratorio Algoritmi                                                                                  |
+| 6   | Audio Processing                                                       | 6   | Interazione e Multimedia e Laboratorio Interazione e Multimedia, Programmazione II e Laboratorio Programmazione II |
+| 7   | Basi di Dati                                                           | 9   | Programmazione II e Laboratorio Programmazione II                                                                  |
+| 8   | Big Data                                                               | 6   | Basi di Dati                                                                                                       |
+| 9   | Calcolo Numerico                                                       | 6   | Algebra lineare e Geometria                                                                                        |
+| 10  | Computabilità e Complessità Computabilità                              | 3   | Fondamenti di Informatica, Strutture Discrete                                                                      |
+| 10  | Computabilità e Complessità Complessità                                | 3   | Fondamenti di Informatica, Strutture Discrete                                                                      |
+| 11  | Computer Grafica                                                       | 9   | Programmazione I e Laboratorio Programmazione I                                                                    |
+| 12  | Cybersecurity                                                          | 6   | Programmazione II e Laboratorio Programmazione II                                                                  |
+| 13  | Digital Forensics                                                      | 9   |                                                                                                                    |
+| 14  | Elementi di Analisi Matematica I                                       | 6   | Nessuna propedeuticità                                                                                             |
+| 15  | Elementi di Analisi Matematica II                                      | 6   | Elementi di Analisi Matematica I                                                                                   |
+| 16  | Embedded System                                                        | 6   | Ingegneria del Software                                                                                            |
+| 17  | Fisica                                                                 | 6   | Elementi di Analisi Matematica I                                                                                   |
+| 18  | Fondamenti di Analisi Dati e Laboratorio Fondamenti di Analisi Dati    | 6   | Algebra lineare e Geometria                                                                                        |
+| 18  | Fondamenti di Analisi Dati e Laboratorio Laboratorio                   | 3   | Algebra lineare e Geometria                                                                                        |
+| 19  | Fondamenti di Informatica                                              | 9   | Nessuna propedeuticità                                                                                             |
+| 20  | Functional and Concurrent Programming Principles                       | 6   | Fondamenti di Informatica                                                                                          |
+| 21  | Information Technology Law                                             | 6   | Nessuna propedeuticità                                                                                             |
+| 22  | Ingegneria del Software                                                | 9   | Programmazione II e Laboratorio Programmazione II                                                                  |
+| 23  | Interazione e Multimedia e Laboratorio Interazione e Multimedia        | 6   | Programmazione I e Laboratorio Programmazione I                                                                    |
+| 23  | Interazione e Multimedia e Laboratorio Laboratorio                     | 3   | Programmazione I e Laboratorio Programmazione I                                                                    |
+| 24  | Internet Security and Laboratory Internet Security                     | 6   | Programmazione II e Laboratorio Programmazione II                                                                  |
+| 24  | Internet Security and Laboratory Laboratory                            | 3   | Programmazione II e Laboratorio Programmazione II                                                                  |
+| 25  | Introduzione al Data Mining                                            | 9   | Algebra lineare e Geometria                                                                                        |
+| 26  | Iot                                                                    | 6   | Reti di Calcolatori                                                                                                |
+| 27  | Metodi Matematici e Statistici                                         | 6   | Algebra lineare e Geometria                                                                                        |
+| 28  | Mixed Reality and Wearable Vision                                      | 6   | Algoritmi e Laboratorio Algoritmi                                                                                  |
+| 29  | Programmazione I e Laboratorio Programmazione I                        | 6   | Nessuna propedeuticità                                                                                             |
+| 29  | Programmazione I e Laboratorio Laboratorio                             | 3   | Nessuna propedeuticità                                                                                             |
+| 30  | Programmazione II e Laboratorio Programmazione II                      | 6   | Programmazione I e Laboratorio Programmazione I                                                                    |
+| 30  | Programmazione II e Laboratorio Laboratorio                            | 3   | Programmazione I e Laboratorio Programmazione I                                                                    |
+| 31  | Mobile Programming                                                     | 6   | Programmazione II e Laboratorio Programmazione II, Ingegneria del Software                                         |
+| 32  | Multimedia Security & Biometry                                         | 6   | Interazione e Multimedia e Laboratorio Interazione e Multimedia                                                    |
+| 33  | Natural Language Processing                                            | 6   | Algebra lineare e Geometria                                                                                        |
+| 34  | Programmazione Parallela su Architetture GPU                           | 6   | Architettura degli elaboratori e laboratorio Architettura, Programmazione II e Laboratorio Programmazione II       |
+| 35  | Quantum Computer Programming                                           | 9   | Algoritmi e Laboratorio Algoritmi                                                                                  |
+| 36  | Quantum Information                                                    | 6   | Algoritmi e Laboratorio Algoritmi                                                                                  |
+| 37  | Reti di Calcolatori                                                    | 9   |                                                                                                                    |
+| 38  | Service Oriented System                                                | 6   | Programmazione II e Laboratorio Programmazione II, Reti di Calcolatori                                             |
+| 39  | Sistemi Centrali                                                       | 6   | Sistemi Operativi                                                                                                  |
+| 40  | Sistemi Operativi                                                      | 9   | Architettura degli elaboratori e laboratorio Architettura, Programmazione I e Laboratorio Programmazione I         |
+| 41  | Sistemi Robotici                                                       | 9   | Strutture Discrete, Programmazione II e Laboratorio Programmazione II                                              |
+| 42  | Social Media Data Analysis                                             | 6   | Algebra lineare e Geometria                                                                                        |
+| 43  | Startup d'Impresa e Modelli di Business                                | 6   | Nessuna propedeuticità                                                                                             |
+| 44  | Strutture Discrete                                                     | 6   | Nessuna propedeuticità                                                                                             |
+| 45  | Sviluppo di Giochi Digitali                                            | 6   | Interazione e Multimedia e Laboratorio Interazione e Multimedia, Programmazione II e Laboratorio Programmazione II |
+| 46  | Technologies for Advanced Programming                                  | 9   | Programmazione II e Laboratorio Programmazione II                                                                  |
+| 47  | Ulteriori Conoscenze Linguistiche: Inglese                             | 6   | Nessuna propedeuticità                                                                                             |
+| 48  | UX; Digital Design & Usability                                         | 9   | Interazione e Multimedia e Laboratorio Interazione e Multimedia                                                    |
+| 49  | Vulnerability Assessment and Penetration Testing                       | 6   | Programmazione II e Laboratorio Programmazione II                                                                  |
+| 50  | Web Programming                                                        | 6   | Interazione e Multimedia e Laboratorio Interazione e Multimedia, Reti di Calcolatori                               |
+| 51  | Web Service Oriented System and Laboratory Web Service Oriented System | 6   | Ingegneria del Software                                                                                            |
+| 51  | Web Service Oriented System and Laboratory Laboratorio                 | 3   | Ingegneria del Software                                                                                            |
