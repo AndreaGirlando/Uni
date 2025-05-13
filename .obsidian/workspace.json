@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "edf0bc438c7cdf60",
+        "id": "c8874ad170158b60",
         "type": "tabs",
         "children": [
           {
-            "id": "bbf5f32534ea6fd4",
+            "id": "9fd757ed86ab3e8c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Primo anno/primo-semestre/algebra-lineare-e-geometria[✅20]/Indice.md",
+                "file": "prop.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Indice"
+              "title": "prop"
             }
           }
         ]
@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Esplora risorse"
+              "title": "Files"
             }
           },
           {
@@ -162,12 +162,12 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Apri selezione rapida": false,
-      "graph:Apri vista grafo": false,
-      "canvas:Crea nuova lavagna": false,
-      "daily-notes:Apri nota del giorno": false,
-      "templates:Inserisci modello": false,
-      "command-palette:Apri riquadro comandi": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
       "vscode-editor:Create Code File": false,
       "obsidian-git:Open Git source control": false,
       "pdf-plus:PDF++: Toggle auto-copy": false,
@@ -175,54 +175,54 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "bbf5f32534ea6fd4",
+  "active": "9fd757ed86ab3e8c",
   "lastOpenFiles": [
+    "index.md",
+    "prop.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/RicercaEOrdinamento/Ordinamento.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/RicercaEOrdinamento/Ricerca.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/RicercaEOrdinamento",
+    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 2.md",
     "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 1.md",
-    "Uni To-Do.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/Test principio di induzione_250118_160631.pdf",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/Formule calcolo combinatorio_250130_093241.pdf",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/Esempio principio di induzione_241027_213340.pdf",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/DB MOVE_241020_203624.pdf",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/9 ottobre 2024_241009_160013.pdf",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/9 Dicembre 2024_241209_220453.pdf",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/8 Gennaio 2025_250108_151611.pdf",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/30 ottobre 2024_241031_091050.pdf",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/25 novembre 2024_241125_202033.pdf",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Lezioni/7 ottobre 2024_241007_163122.pdf",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/FileRielaborazioni/04_Parte4.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/FileRielaborazioni/Tips.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/FileRielaborazioni/03_Parte3Teoria.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/FileRielaborazioni/03_Parte3.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/FileRielaborazioni/01_Parte1.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/FileRielaborazioni/02_Parte2.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Esercizi/dimostrazioneNoEsame.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Esercizi/Dimostrazione.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Esercizi/Da fare.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Strutture.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/Riassunto.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/indice.md",
-    "Primo anno/primo-semestre/strutture-discrete[✅27]/GuidaEsercizi.md",
-    "Primo anno/primo-semestre/programmazione-1[✅30L]/C/Esercizi/listeConcatenate/Pila(Stack)/Stack.md",
-    "Primo anno/primo-semestre/programmazione-1[✅30L]/C/Esercizi/listeConcatenate/Coda(Queue)/Coda.md",
-    "Primo anno/primo-semestre/programmazione-1[✅30L]/C/Esercizi/algoritmiDiOrdinamento/selectionSort/selectionSort.md",
-    "Primo anno/primo-semestre/programmazione-1[✅30L]/C/Esercizi/algoritmiDiOrdinamento/InsertionSort/InsertionSort.md",
-    "Primo anno/primo-semestre/programmazione-1[✅30L]/C/Esercizi/allocazioneMemoria/Allocazione della memoria.md",
-    "Primo anno/primo-semestre/programmazione-1[✅30L]/C/LAB3/esercizio.png",
-    "Primo anno/primo-semestre/programmazione-1[✅30L]/Lezioni/9 ottobre 2024.md",
-    "Primo anno/primo-semestre/programmazione-1[✅30L]/Lezioni/8 ottobre 2024.md",
-    "Primo anno/primo-semestre/programmazione-1[✅30L]/Lezioni/15 ottobre 2024.md",
-    "Primo anno/primo-semestre/programmazione-1[✅30L]/indice.md",
-    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Lezioni/6 novembre 2024.md",
-    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Lezioni/27 novembre 2024.md",
-    "Primo anno/primo-semestre/programmazione-1[30L]/C/LAB3/esercizio.png",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/Appunticap2.pdf",
     "Primo anno/utility/Screenshot_20250511_172815_Samsung capture.jpg",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/indice.md",
+    "Primo anno/primo-semestre/programmazione-1[✅30L]/indice.md",
+    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/indice.md",
+    "Primo anno/primo-semestre/algebra-lineare-e-geometria[✅20]/Indice.md",
+    "Uni To-Do.md",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/Appunticap3.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/AppuntiCap1.pdf",
+    "Primo anno/secondo-semestre/analisi-1/Esercizi/Esercizi del 0503_250308_173507.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisi/Esercizi ed esempi/eserccap1parte3.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/maggio 2025/6maggio2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/maggio 2025",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/aprile 2025/30aprile2025.pdf",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/lezioni/aprile 2025/28aprile2025.pdf",
     "Primo anno/utility/Pasted image 20250509170048.png",
     "Primo anno/utility/image-1.webp",
     "Primo anno/utility/Pasted image 20250509170053.png",
     "Primo anno/utility/Pasted image 20250509170052.png",
     "Primo anno/utility/image-1 1.webp",
+    "conflict-files-obsidian-git.md",
     "Primo anno/utility/Epigraph_convex.svg.png",
+    "Primo anno/secondo-semestre/programmazione-2/C++/Complessità/Complessità.md",
     "Primo anno/utility/Pasted image 20250503103722.png",
-    "Senza nome.canvas"
+    "Primo anno/utility/Pasted image 20250503110533.png",
+    "Primo anno/utility/Pasted image 20250503104126.png",
+    "Primo anno/secondo-semestre/programmazione-2/C++/listeConcatenate/info.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/template/template.md",
+    "README.md",
+    "Senza nome.canvas",
+    "nucleo.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/stream/stream.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/virtual&Derivate/teoria.md",
+    "Primo anno/secondo-semestre/analisi-1/Senza nome.md",
+    "Primo anno/primo-semestre/architettura-degli-elaboratori[✅30L]/Architettura.md",
+    "Primo anno/secondo-semestre/programmazione-2/C++/virtual/teoria.md",
+    "Primo anno/secondo-semestre/programmazione-2/Lezioni/25-03-2025.md",
+    "Primo anno/primo-semestre/algebra-lineare-e-geometria/Link.md",
+    "Primo anno/primo-semestre/strutture-discrete[✅27]/Riassunto.md",
+    "Primo anno/secondo-semestre/Untitled.md"
   ]
 }
