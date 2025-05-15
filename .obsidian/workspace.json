@@ -15,9 +15,9 @@
               "state": {
                 "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/Appunticap2.pdf",
                 "page": 3,
-                "left": 46,
-                "top": 823,
-                "zoom": 1.3
+                "left": -18,
+                "top": 652,
+                "zoom": 0.8554855226819158
               },
               "icon": "lucide-file-text",
               "title": "Appunticap2"
@@ -100,8 +100,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5,
-    "collapsed": true
+    "width": 413.5
   },
   "right": {
     "id": "abf359470799e113",
@@ -198,11 +197,11 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "eac78044d8abac1e",
+  "active": "4976c61b40586f1c",
   "lastOpenFiles": [
-    "Pasted image 20250514175914.png",
     "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/Appunticap2.pdf",
     "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 2.md",
+    "Primo anno/utility/Pasted image 20250514175914.png",
     "Propedeuticità.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/RicercaEOrdinamento/Ricerca.md",
     "Primo anno/secondo-semestre/programmazione-2/C++/RicercaEOrdinamento/Ordinamento.md",
@@ -245,7 +244,6 @@
     "Primo anno/utility/Pasted image 20250509170052.png",
     "Primo anno/utility/image-1 1.webp",
     "Primo anno/utility/Epigraph_convex.svg.png",
-    "Primo anno/utility/Pasted image 20250503103722.png",
     "Senza nome.canvas"
   ]
 }
