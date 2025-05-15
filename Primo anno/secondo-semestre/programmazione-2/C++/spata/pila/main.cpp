@@ -8,6 +8,7 @@
 using namespace std;
 class Nodo{
     public:
+        Nodo(){};
         Nodo(int _n, Nodo* _next = nullptr): n(_n), next(_next) {}
         int n;
         Nodo* next;
@@ -15,7 +16,7 @@ class Nodo{
 
 class Pila{
     public:
-        Pila(): head(nullptr){};
+        Pila(): head(nullptr), len(0){};
         bool isEmpty(){
             return head == nullptr;
         }
@@ -39,8 +40,18 @@ class Pila{
         int len;
 };
 
-void copiaPila(Pila* src, Pila* dst){
-    cout << src->getLen();
+void copiaPila(Pila& src, Pila& dst){
+    int* array = new int[src.getLen()];
+
+    for(int i = 0; i < src.getLen(); i++){
+        array[i] = src.pop()->n;
+    }
+    for(int i = 3; i >= 0; i--){
+        dst.push(new Nodo(array[i]));
+    }
+
+
+    // cout << src.getLen();
 }
 
 int main(){
@@ -50,7 +61,15 @@ int main(){
     temp.push(new Nodo(8));
     temp.push(new Nodo(2));
     temp.push(new Nodo(14));
-    cout << (temp.pop()) -> n;
-    // cout << (temp.pop()) -> n << endl;
+
+    Pila temp2;
+    copiaPila(temp,temp2);
+
+    cout << (temp2.pop())->n << "\t";
+    cout << (temp2.pop())->n << "\t";
+    cout << (temp2.pop())->n << "\t";
+    cout << (temp2.pop())->n << "\t";
+
+    cout << endl;
     return 0;
 }
