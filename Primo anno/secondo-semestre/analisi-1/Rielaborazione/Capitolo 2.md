@@ -91,7 +91,7 @@ Una successione di numeri negativi può tendere:
 > - a $-\infty$ 
 
 ###### Altri teoremi
-**Teoremi di confronto per successioni divergenti**: Se $a_n \le b_n$ per ogni $n \in N$ e $a_n \rightarrow +\infty$ allora $b_n \rightarrow +\infty$ oppure se $b_n \rightarrow -\infty$ allora $a_n \rightarrow -\infty$  
+**Teorema di confronto per successioni divergenti**: Se $a_n \le b_n$ per ogni $n \in N$ e $a_n \rightarrow +\infty$ allora $b_n \rightarrow +\infty$ oppure se $b_n \rightarrow -\infty$ allora $a_n \rightarrow -\infty$  
 **Teorema non in matematichese**: se la successione $a_n$ è sempre più piccola di $b_n$ allora se $a_n\rightarrow +\infty$ anche $b_n \rightarrow \infty$ (anche l'altro caso funziona allo stesso modo)  
 **Dimostrazione**: Se $a_n \rightarrow +\infty$ allora definitivamente si ha $a_n>k$ ne segue che $b_n \ge a_n >k$ (l'altro caso si prova in modo analogo)
 
@@ -103,3 +103,37 @@ Una successione è detta **regolare** se converge o diverge, per una successione
 > ![[Pasted image 20250514175914.png]]
 
 ###### Successioni e valore assoluto
+Accanto alla successione $\{ a_n \}$ consideriamo la successione $\{ |a_n| \}$ allora possiamo affermare le seguenti cose:
+1. Se $a_n \rightarrow l$ allora $|a_n| \rightarrow l$ 
+  il viceversa non vale infatti posto $a_n = (-1)^n$ la successione dei valori assoluti è constante e converge ad $l$ (in questo caso $l=1$) ma $\{a_n\}$ oscilla
+2. Se $a_n \rightarrow +\infty$ oppure $a_n \rightarrow -\infty$ si ha $|a_n| \rightarrow +\infty$ 
+   il viceversa non vale infatti posto $a_n = (-1)^nn$ la successione dei valori assoluti vale $n$ e quindi diverge invece $\{a_n\}$ oscilla.
+   Se $|a_n| \rightarrow +\infty$ allora la successione $\{a_n\}$ è detta **infinitamente grande**
+###### Regolarità e limitatezza
+Si hanno le seguenti affermazioni:
+- Una successione convergente è **limitata**, infatti essa è **D** compresa ad esempio tra $l-1$ e $l+1$ quindi è **D** limitata, non vale il viceversa infatti $\{(-1)^n\}$ è limitata ma oscillante
+- Una successione che diverge a $+\infty$ è limitata inferiormente
+- Una successione che diverge a $-\infty$ è limitata superiormente
+
+###### Successioni monotone
+Si dice che la successione $\{a_n\}$ è **monotona** se verifica una delle seguenti condizioni:
+1. $a_n > a_{n+1}$ *successione strettamente decrescente*
+	- Se $a_n$ è maggiore di $a_{n+1}$ allora la funzione sta decrescendo
+2. $a_n \ge a_{n+1}$ *successione  decrescente*
+	- Se $a_n$ è maggiore o uguale di $a_{n+1}$ allora la funzione sta decrescendo
+3. $a_n < a_{n+1}$ *successione strettamente crescente*
+	-  Se $a_n$ è minore di $a_{n+1}$ allora la funzione sta crescendo
+4. $a_n \le a_{n+1}$ *successione crescente*
+	-  Se $a_n$ è minore o uguale di $a_{n+1}$ allora la funzione sta crescendo
+
+###### Altri teoremi
+**Teorema di regolarità (o sul limite) delle successioni monotone**:
+- Una successione che verifica una delle condizioni $1)$ e $2)$ tende al suo estremo inferiore
+- Una successione che verifica una delle condizioni $3)$ e $4)$ tende al proprio estremo superiore
+**Dimostrazione**
+Proviamo per semplicità solo il caso della divergenza:
+1. Se $inf a_n = -\infty$ fissato $k>0$ il numero $-k$ non è un minorante per la successione perché esiste sicuramente un numero nella successione più piccolo di $k$  ovvero $a_\alpha <-k$. Per $n> \alpha$ si ha $a_n \ge a_\alpha >k$ che è la tesi
+2. 
+
+
+###### Operazioni con i limiti delle successioni
