@@ -15,9 +15,9 @@
               "state": {
                 "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/Appunticap2.pdf",
                 "page": 3,
-                "left": -18,
-                "top": 652,
-                "zoom": 0.8554855226819158
+                "left": -13,
+                "top": 525,
+                "zoom": 1.1162889147219108
               },
               "icon": "lucide-file-text",
               "title": "Appunticap2"
@@ -100,7 +100,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5
+    "width": 413.5,
+    "collapsed": true
   },
   "right": {
     "id": "abf359470799e113",
@@ -197,7 +198,7 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "4976c61b40586f1c",
+  "active": "eac78044d8abac1e",
   "lastOpenFiles": [
     "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/Appunticap2.pdf",
     "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 2.md",
