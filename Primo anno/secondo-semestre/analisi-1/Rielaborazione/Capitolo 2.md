@@ -132,8 +132,8 @@ Si dice che la successione $\{a_n\}$ è **monotona** se verifica una delle segue
 - Una successione che verifica una delle condizioni $3)$ e $4)$ tende al proprio estremo superiore
 **Dimostrazione**
 Proviamo per semplicità solo il caso della divergenza:
-1. Se $inf a_n = -\infty$ fissato $k>0$ il numero $-k$ non è un minorante per la successione perché esiste sicuramente un numero nella successione più piccolo di $k$  ovvero $a_\alpha <-k$. Per $n> \alpha$ si ha $a_n \ge a_\alpha >k$ che è la tesi
-2. 
+1. Se $\inf a_n = -\infty$ fissato $k>0$ il numero $-k$ non è un minorante per la successione perché esiste sicuramente un numero nella successione più piccolo di $k$  ovvero $a_\alpha <-k$. Per $n> \alpha$ si ha $a_n \ge a_\alpha >k$ che è la tesi
+2. Se $\sup a_n = +\infty$ fissato $k>0$ il numero $k$ non è un maggiorante per la successione perché esiste sicuramente un numero nella successione più grande di $k$ ovvero $a_\alpha > k$. Per $n>\alpha$  si ha $a_n>a_\alpha>k$ che è la tesi
 
 
 ###### Operazioni con i limiti delle successioni
