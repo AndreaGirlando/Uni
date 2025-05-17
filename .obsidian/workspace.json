@@ -11,36 +11,14 @@
             "id": "605ef67cb3b19bcf",
             "type": "leaf",
             "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/AppuntiCap2.pdf",
-                "page": 6,
-                "left": 50,
-                "top": 437,
-                "zoom": 1.5
-              },
-              "icon": "lucide-file-text",
-              "title": "AppuntiCap2"
-            }
-          }
-        ]
-      },
-      {
-        "id": "6ea7006942083b2b",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "badeea6313882e73",
-            "type": "leaf",
-            "state": {
               "type": "markdown",
               "state": {
-                "file": "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 2.md",
+                "file": "Uni To-Do.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Capitolo 2"
+              "title": "Uni To-Do"
             }
           }
         ]
@@ -198,20 +176,23 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "badeea6313882e73",
+  "active": "605ef67cb3b19bcf",
   "lastOpenFiles": [
     "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/AppuntiCap2.pdf",
     "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 2.md",
+    "Uni To-Do.md",
+    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/AppuntiCap4.pdf",
+    "README.md",
+    "Propedeuticità.md",
     "Salvo Romeo_250511_172726.pdf",
+    "Pasted image 20250517152316.png",
     "Notes_250405_143510.pdf",
+    "03032025_250304_203438.pdf",
+    "10032025_250311_215806.pdf",
+    "07042025_250407_154738.pdf",
+    "05032025_250312_203718.pdf",
     "31032025_250331_154451.pdf",
     "30042025_250430_155036.pdf",
-    "28042025_250428_153907.pdf",
-    "26032025_250326_154904.pdf",
-    "24032025_250326_140743.pdf",
-    "23042025_250424_171339.pdf",
-    "19032025_250502_163236.pdf",
-    "Propedeuticità.md",
     "Primo anno/secondo-semestre/inglese/Security vs safety.md",
     "Primo anno/secondo-semestre/inglese/Connettivi.md",
     "Primo anno/utility/Pasted image 20250514175914.png",
@@ -234,8 +215,6 @@
     "Primo anno/primo-semestre/programmazione-1[30L]/C/Esercizi/listeConcatenate/Pila(Stack)/Stack.md",
     "Primo anno/primo-semestre/programmazione-1[30L]/C/Esercizi/listeConcatenate/Coda(Queue)/Coda.md",
     "Primo anno/primo-semestre/programmazione-1[30L]/C/Esercizi/algoritmiDiOrdinamento/InsertionSort/InsertionSort.md",
-    "Primo anno/primo-semestre/programmazione-1[30L]/C/Esercizi/algoritmiDiOrdinamento/selectionSort/selectionSort.md",
-    "Primo anno/primo-semestre/programmazione-1[30L]/C/Esercizi/allocazioneMemoria/Allocazione della memoria.md",
     "Primo anno/primo-semestre/programmazione-1[30L]/C/LAB3/esercizio.png",
     "Primo anno/primo-semestre/programmazione-1[✅30L]/C/LAB3/esercizio.png",
     "Primo anno/utility/Screenshot_20250511_172815_Samsung capture.jpg",
@@ -244,7 +223,6 @@
     "Primo anno/utility/Pasted image 20250509170053.png",
     "Primo anno/utility/Pasted image 20250509170052.png",
     "Primo anno/utility/image-1 1.webp",
-    "Primo anno/utility/Epigraph_convex.svg.png",
     "Senza nome.canvas"
   ]
 }
