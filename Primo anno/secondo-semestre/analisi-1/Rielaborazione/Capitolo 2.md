@@ -137,3 +137,57 @@ Proviamo per semplicità solo il caso della divergenza:
 
 
 ###### Operazioni con i limiti delle successioni
+1. Sia $\{a_n\}$ una successione regolare e sia $c$ un numero reale. Prendiamo in considerazione la successione $\{ca_n\}$ allora si ha:
+	1. se $a_n \rightarrow l$ allora $ca_n \rightarrow cl$ 
+	2. se $a_n \rightarrow +\infty$ e $c>0$ allora $ca_n \rightarrow +\infty$  
+	3. se $a_n \rightarrow +\infty$ e $c<0$ allora $ca_n \rightarrow -\infty$ 
+	4. se $a_n \rightarrow -\infty$ e $c>0$ allora $ca_n \rightarrow -\infty$  
+	5. se $a_n \rightarrow -\infty$ e $c<0$ allora $ca_n \rightarrow +\infty$ 
+	**Dimostrazione**:
+	- 1) se $c = 0$, la tesi è ovvia, se $c\not=0$ per ottenere $|ca_n-cl|<\epsilon$  basta osservare che **D** si ha $|a_n - l|<\frac{\epsilon}{|c|}$  
+	- 2) Per ottenere $ca_n>k$ basta osservare che **D** si ha $a_n > \frac{k}{c}$
+	- 3) Per ottenere $ca_n <k$ basta osservare che **D** si ha $|a_n - l|<\frac{-k}{c}$ 
+	- 4) e 5) si provano in modo simile
+2. Date due successioni $\{a_n\}$ e $\{b_n\}$ prendiamo in considerazione la **successione somma** $\{a_n+b_n\}$ allora si ha che:
+	1. Se $a_n \rightarrow l$ e $b_n \rightarrow L$ allora $a_n+b_n \rightarrow l+L$ 
+	2. Se $a_n \rightarrow +\infty$ ed esiste un numero $h \le b_n$ per ogni $n \in N$ allora $a_n + b_n \rightarrow +\infty$ 
+   **Dimostrazione**:
+	- 1) Fissato $\epsilon > 0$ esistono $\alpha, \beta \in N$ tali che per $n>\alpha$ si ha $|a_n - l|< \frac{\epsilon}{2}$ e per $n>\beta$ si ha $|b_n-L|<\frac{\epsilon}{2}$. Allora per $n>max(\alpha, \beta)$ si ha $$|(a_n+b_n) - (l+L)| \le |a_n -l| + |b_n - L| < \epsilon$$
+	- 2) Si ha $a_n+b_n \ge a_n + h$ quindi dato che **D** si ha $a_n > k-h$ ne segue $a_n+b_n > k$ 
+    **Osserviamo**: che la successione $\{b_n\}$ nel caso 2 può non essere regolare (e.g se $a_n = n$  e $b_n = (-1)^n$ si ha lo stesso che $a_n+b_n \rightarrow +\infty$) e quindi possiamo dedurre:
+    1. Se $a_n \rightarrow +\infty$ e $b_n \rightarrow L$ allora $a_n+b_n \rightarrow +\infty$
+    2. Se $a_n \rightarrow +\infty$ e $b_n \rightarrow +\infty$ allora $a_n+b_n \rightarrow +\infty$
+    3. Se $a_n \rightarrow -\infty$ e $b_n \rightarrow  L$ allora $a_n+b_n \rightarrow -\infty$
+    4. Se $a_n \rightarrow -\infty$ e $b_n \rightarrow  -\infty$ allora $a_n+b_n \rightarrow -\infty$
+    se una delle due successioni diverge a $+\infty$ e l'altra a $-\infty$ (o viceversa) si ha una **forma indeterminata** questo significa che si posso avere molte situazioni diverse.    
+> [!TIP]
+> I risultati contenuti nei casi 1) e 2) sono utili per studiare le successioni del tipo $\{ca_n+c'b_n\}$
+
+3. Date due successioni $\{a_n\}$ e $\{b_n\}$ e prendiamo in considerazione la **successione prodotto** $\{a_n \cdot b_n\}$ si ha che:
+	1. Se $a_n \rightarrow l$ e $b_n \rightarrow L$ allora $a_n \cdot b_n \rightarrow l \cdot L$  
+	2. Se $a_n \rightarrow 0$ e $\{b_n\}$ è limitata allora $a_n \cdot b_n \rightarrow 0$ 
+		- osserviamo che la successione $\{b_n\}$ può non essere regolare ($e.g.$ se $a_n = \frac{1}{n}$ e $b_n = (-1)^n$ si ha $a_n \cdot b_n \rightarrow 0$)
+	3. Se $a_n \rightarrow +\infty$ ed esiste un numero positivo $h \le b_n$ per ogni $n \in N$ allora $a_n \cdot b_n \rightarrow +\infty$ 
+	Dai risultati precedenti si deduce la seguente tabella sul comportamento della successione prodotto:
+	- Se $a_n \rightarrow +\infty$ e $b_n \rightarrow L > 0$ allora $a_n \cdot b_n \rightarrow +\infty$ 
+	- Se $a_n \rightarrow +\infty$ e $b_n \rightarrow +\infty$ allora $a_n \cdot b_n \rightarrow +\infty$ 
+	- Se $a_n \rightarrow +\infty$ e $b_n \rightarrow L < 0$ allora $a_n \cdot b_n \rightarrow -\infty$ 
+	- Se $a_n \rightarrow +\infty$ e $b_n \rightarrow -\infty$ allora $a_n \cdot b_n \rightarrow -\infty$ 
+	- Se $a_n \rightarrow -\infty$ e $b_n \rightarrow L>0$ allora $a_n \cdot b_n \rightarrow -\infty$
+	- Se $a_n \rightarrow -\infty$ e $b_n \rightarrow -\infty$ allora $a_n \cdot b_n \rightarrow +\infty$
+	- Se $a_n \rightarrow - \infty$ e $b_n \rightarrow L < 0$ allora $a_n \cdot b_n \rightarrow +\infty$
+   Infine se una delle due successione diverge e l'altra tende a $0$ si ha una **forma indeterminata**
+4. Sia $\{a_n\}$ una successione regolare e **D** non nulla, prendiamo in considerazione la **successione reciproca** $\{\frac{1}{a_n}\}$ allora possiamo dire che:
+    1. Se $a_n \rightarrow l \not= 0$ allora $\frac{1}{a_n} \rightarrow \frac{1}{l}$
+    2. Se $a_n \rightarrow 0$ allora $\frac{1}{a_n} \rightarrow \infty$ 
+    3. Se $a_n \rightarrow \infty$ allora $\frac{1}{a_n} \rightarrow 0$
+5. Date due successioni $\{a_n\}$ e $\{b_n\}$ con $b_n \not= 0$ **D**, prendiamo in considerazione la **successione quoziente** $\{\frac{a_n}{b_n}\}$. Essa viene studiata utilizzando i risultati visti ai punti 3 e 4 scrivendola nella forma $a_n \cdot \frac{1}{b_n}$ 
+###### Limiti notevoli
+
+
+
+
+
+###  Cose da ricordare
+- $\frac{1}{a_n} \rightarrow \infty$
+- $\frac{1}{a_n} \rightarrow 0$
