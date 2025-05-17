@@ -183,8 +183,14 @@ Proviamo per semplicità solo il caso della divergenza:
     3. Se $a_n \rightarrow \infty$ allora $\frac{1}{a_n} \rightarrow 0$
 5. Date due successioni $\{a_n\}$ e $\{b_n\}$ con $b_n \not= 0$ **D**, prendiamo in considerazione la **successione quoziente** $\{\frac{a_n}{b_n}\}$. Essa viene studiata utilizzando i risultati visti ai punti 3 e 4 scrivendola nella forma $a_n \cdot \frac{1}{b_n}$ 
 ###### Limiti notevoli
-
-
+Alcune successioni sono espresse mediante funzioni elementari, qui vediamo le più comuni:
+1. **Successione potenza**: ovvero $\{n^x\} \text{ con } x \in R$  
+	- Se $x = 0$ la successione è costante
+	- Se $x > 0$ si ha $n^x \rightarrow +\infty$ 
+	- Se $x<0$ si ha $x^n = \frac{1}{n^{-x}} \rightarrow 0$ 
+2. **Successione in forma di polinomio**: $x_n = a_0n^p+a_1n^{p-1}+\cdots+a_p$ per quanto visto in 1) la successione si presenta normalmente nella forma indeterminata $\infty - \infty$ quindi si procede nel seguente modo: $$x_n = n^p(a_0+\frac{a_1}{n}+\cdots+\frac{a_p}{n^p})$$ e si ha che $n^p \rightarrow +\infty$ mentre la quantità fra parentesi tende ad $a_0$ quindi $x_n \rightarrow +\infty$ se $a_0 >0$, $x_n \rightarrow -\infty$ se $a_0 < 0$ 
+3. **
+**
 
 
 
