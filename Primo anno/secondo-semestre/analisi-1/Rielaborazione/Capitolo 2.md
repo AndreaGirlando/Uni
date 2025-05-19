@@ -49,6 +49,8 @@ Se questa condizione è vera, significa che la successione "si stabilizza" attor
 > ![[Screenshot_20250511_172815_Samsung capture.jpg]]
 > Salvo Romeo
 
+Se $l = 0$ la successione è detta infinitesima o semplicemente **un infinitesimo**
+
 > [!EXAMPLE]
 > La successione: $a_n = k$ tende a $k$
 > La successione $\frac{1}{n}$ tende a 0
@@ -262,15 +264,75 @@ Da questo possiamo dedurre i seguenti limiti:
 3. sia $\alpha \in R$ si ha $$\frac{(1+x_n)^n-1}{x_n} \to \alpha$$
 4. sia $a_n \to 0$ allora la successione $\{\frac{\sin a_n}{a_n}\}$ allora definitivamente si ha che $|a_n|<\frac{\pi}{2}$
 
-
-> [!warning] 
-> Nel pdf quest'ultimo punto viene approfondito, forse è inutile.
-
 ### Successioni estratte
+###### Definizione
+Date le successioni $\{a_n\}$ e $\{n_k\}$ (quest'ultima strettamente crescente). La funzione composta $\{a_{n_k}\}$ è detta **successione estratta** da $\{a_n\}$ mediate la legge $\{n_k\}$
 
+> [!EXAMPLE]
+> se $n_k = 2k$ si ottiene la successione dei termini di posto pari
+> se $n_k = 2k-1$ si ottiene la successione dei termini di posto dispari
+
+###### Teorema
+**Teorema di regolarità delle successioni estratte**: Se $\{a_n\}$ è regolare, ogni sua estratta ha il suo stesso limite, il viceversa non vale.
+> [!example]
+> $a_n = (-1)^n$  la successione dei termini di posto pari è costante e quindi convergente 
+> da questo esempio possiamo capire anche che il viceversa non vale perché $a_n$ oscilla 
+
+
+> [!TIP]
+> Se una successione ha due estratte aventi limiti diversi essa oscilla
+
+Si hanno tuttavia i seguenti risultati:
+1. se $\{a_{r+k}\}$ è regolare anche $\{a_n\}$ ha il suo stesso limite
+2. se $\{a_{2k}\}$ e $\{a_{2k-1}\}$ hanno lo stesso limite, anche $\{a_n\}$ ha il loro stesso limite 
+
+> [!EXAMPLE]
+> sia $\{X_n\}$ una successione regolare di numeri tutti positivi e poniamo $a_x = (-1)^nX_n$, se $x_n \to 0$, si ha anche $a_n \to 0$. Se $x_n \to l > 0$
+> - per n pari si ha $a_n = x_n \to l$ 
+> - per n dispari si ha $a_n = -x_n \to -l$ 
+> 
+> avendo 2 estratte con limiti diversi possiamo dire che non è regolare e quindi oscilla 
+ 
 ### Confronto tra infiniti e infinitesimi
+###### Infiniti
+Siano $\{a_b\}$ e $\{b_n\}$ due successioni infinitamente grandi detti **infiniti**:
+- Sono dello stesso ordine se il loro rapporto tende ad un limite diverso da zero
+- Si dice che $\{a_n\}$ è di ordine superiore rispetto a $\{b_n\}$ se il loro rapporto diverge
 
+> [!EXAMPLE]
+> $a_n = n^n$
+> $b_n = n!$ 
+> Intuitivamente $a_n$ è di ordine superiore perché cresce più velocemente
+
+###### Infinitesimi
+Siano $\{a_b\}$ e $\{b_n\}$ due **infinitesimi**:
+- Sono dello stesso ordine se il loro rapporto tende ad un limite diverso da zero
+- Si dice che $\{a_n\}$ è di ordine superiore rispetto a $\{b_n\}$ se il loro rapporto tende a zero
+
+
+> [!EXAMPLE]
+> Dati $a_n​=\frac{1}{n},b_n​=\frac{2}{n}​$ il loro rapporto $\frac{a_n}{b_n} = \frac{\frac{1}{n}}{\frac{2}{n}} = \frac{1}{2}$ tende ad $\frac{1}{2}$ e quindi sono dello stesso ordine
+> 
+> Dati $a_n​=\frac{1}{n^2},b_n​=\frac{1}{n}​$ il loro rapporto $\frac{a_n}{b_n} = \frac{\frac{1}{n^2}}{\frac{1}{n}} = \frac{1}{n} \rightarrow 0$  e quindi $a_n$ è di ordine superiore
 ### Successione definite per ricorrenza
+Una successione si dice definita per ricorrenza se viene dato il suo primo termine e viene fornita una legge che calcola ciascun termine in funzione del precedente cioè una funzione del tipo $a_{n+1} = f(a_n)$
+
+> [!EXAMPLE] 
+> $\begin{cases} a_1 = 4 \\ a_{n+1} = \sqrt{a_n}\end{cases}$
+> $a_n = \{4,2,1.4,1.18, \cdots\}$
+
+Quando si studia una successione di questo tipo si procede cosi:
+- Studiare la monotonia
+- Individuo quel numero $l$ che potrebbe essere l'estremo inferiore/superiore
+- dal punto precedente segue che $l = \lim a_n$ (grazie a quanto detto sulle successioni estratte sappiamo che anche $l = \lim a_{n+1}$ )
+- Per l'unicità del limite si deve avere $f(l) = l$ 
+- Si risolve l'equazione $f(x) = x$ e si cerca tra le eventuali soluzione un numero $l$ che possa essere l'estremo inferiore/superiore della successione. Se non esiste la successione diverge
+
+
+
+
+
+
 ###  Cose da ricordare
 - $\frac{1}{a_n} \rightarrow \infty$
 - $\frac{1}{a_n} \rightarrow 0$
