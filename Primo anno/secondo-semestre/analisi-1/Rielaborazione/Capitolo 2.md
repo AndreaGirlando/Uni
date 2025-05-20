@@ -328,11 +328,6 @@ Quando si studia una successione di questo tipo si procede cosi:
 - Per l'unicità del limite si deve avere $f(l) = l$ 
 - Si risolve l'equazione $f(x) = x$ e si cerca tra le eventuali soluzione un numero $l$ che possa essere l'estremo inferiore/superiore della successione. Se non esiste la successione diverge
 
-
-
-
-
-
 ###  Cose da ricordare
 - $\frac{1}{a_n} \rightarrow \infty$
 - $\frac{1}{a_n} \rightarrow 0$

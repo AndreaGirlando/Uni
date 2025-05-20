@@ -154,4 +154,5 @@ void writeToFile(nodo *testa, char filename[50]){
         fprintf(file,"%c\n",tempTesta->dato);
         tempTesta = tempTesta->next;
     }
+    nodo temp = testa;
 }

@@ -4,45 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "ce545016b1865c4c",
+        "id": "b8f642ff71cb0852",
         "type": "tabs",
         "children": [
           {
-            "id": "a6a650f367898e14",
+            "id": "ac79a07b8557c53b",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/AppuntiCap2.pdf",
-                "page": 10,
-                "left": 73,
-                "top": 530,
-                "zoom": 1.5
+                "file": "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 3.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "AppuntiCap2"
-            }
-          }
-        ]
-      },
-      {
-        "id": "cf564ca893bf714d",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "4ffa1b7b26fe57d8",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Esercizi ed esempi/eserccap2parte1.pdf",
-                "page": 1,
-                "left": 845,
-                "top": 609,
-                "zoom": 1.1164314516129032
-              },
-              "icon": "lucide-file-text",
-              "title": "eserccap2parte1"
+              "icon": "lucide-file",
+              "title": "Capitolo 3"
             }
           }
         ]
@@ -102,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 413.5,
-    "collapsed": true
+    "width": 413.5
   },
   "right": {
     "id": "abf359470799e113",
@@ -200,24 +175,26 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "4ffa1b7b26fe57d8",
+  "active": "ac79a07b8557c53b",
   "lastOpenFiles": [
+    "Primo anno/secondo-semestre/programmazione-2/C++/spata/ordinaDispariPari/main.exe",
+    "Primo anno/secondo-semestre/programmazione-2/C++/spata/ordinaDispariPari/main.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/C++/spata/ordinaDispariPari",
+    "Primo anno/secondo-semestre/programmazione-2/C++/spata/palindroma/lista/main.exe",
+    "Primo anno/secondo-semestre/programmazione-2/C++/spata/palindroma/lista/main.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/C++/spata/palindroma/senzaLista/main.exe",
+    "Primo anno/secondo-semestre/programmazione-2/C++/spata/palindroma/senzaLista/main.cpp",
+    "Primo anno/secondo-semestre/programmazione-2/C++/spata/palindroma/senzaLista",
+    "Primo anno/secondo-semestre/programmazione-2/C++/spata/palindroma/lista",
+    "Primo anno/secondo-semestre/programmazione-2/C++/spata/palindroma/main.exe",
+    "Primo anno/secondo-semestre/programmazione-2/C++/spata/palindroma/main.cpp",
     "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 2.md",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/AppuntiCap2.pdf",
+    "Primo anno/secondo-semestre/analisi-1/Rielaborazione/Capitolo 3.md",
     "Primo anno/secondo-semestre/analisi-1/Tabella derivate.md",
-    "buildIndexFiles.py",
     "Uni To-Do.md",
-    "Primo anno/secondo-semestre/analisi-1/FileCondivisiStudium/Appunti/AppuntiCap4.pdf",
     "README.md",
     "Propedeuticità.md",
-    "Salvo Romeo_250511_172726.pdf",
     "Pasted image 20250517152316.png",
-    "Notes_250405_143510.pdf",
-    "03032025_250304_203438.pdf",
-    "10032025_250311_215806.pdf",
-    "07042025_250407_154738.pdf",
-    "05032025_250312_203718.pdf",
-    "31032025_250331_154451.pdf",
     "Primo anno/secondo-semestre/inglese/Security vs safety.md",
     "Primo anno/secondo-semestre/inglese/Connettivi.md",
     "Primo anno/utility/Pasted image 20250514175914.png",
@@ -238,7 +215,6 @@
     "Primo anno/primo-semestre/strutture-discrete[27]/Riassunto.md",
     "Primo anno/primo-semestre/strutture-discrete[27]/indice.md",
     "Primo anno/primo-semestre/programmazione-1[30L]/C/Esercizi/listeConcatenate/Pila(Stack)/Stack.md",
-    "Primo anno/primo-semestre/programmazione-1[30L]/C/Esercizi/listeConcatenate/Coda(Queue)/Coda.md",
     "Primo anno/primo-semestre/programmazione-1[30L]/C/LAB3/esercizio.png",
     "Primo anno/primo-semestre/programmazione-1[✅30L]/C/LAB3/esercizio.png",
     "Primo anno/utility/Screenshot_20250511_172815_Samsung capture.jpg",
