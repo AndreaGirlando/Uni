@@ -1516,7 +1516,7 @@ Ritornando alla domanda inziale, dobbiamo prendere in esame i casi in cui in aul
 Una **variabile casuale** è una funzione che associa ad ogni risultato possibile di un esperimento casuale un numero reale. In altre parole, ogni volta che si verifica un evento nel contesto di un esperimento (per esempio, lanciando un dado), la variabile casuale restituisce un valore numerico. Un esempio classico è il lancio di un dado. In questo caso, la variabile casuale **X** può rappresentare il numero che appare sulla faccia del dado. Quindi, quando lanci il dado, **X** prenderà uno dei seguenti valori: 1, 2, 3, 4, 5 o 6.
 
 **Valore Atteso**
-Il **valore atteso** (o **media ponderata**) di una variabile casuale è il valore medio che ti aspetti di ottenere se ripeti l'esperimento un numero molto grande di volte. È un concetto che descrive la "tendenza centrale" della variabile casuale. 
+Il **valore atteso** (o **media ponderata**) di una variabile casuale è il valore medio che ti aspetti di ottenere se ripeti l'esperimento un numero molto grande di volte. È un concetto che descrive la "tendenza centrale" della variabile casuale.  ^09a8d0
 
 Per calcolare il valore atteso $E[X]$ di una variabile casuale **X**, moltiplichi ogni valore possibile che **X** può assumere per la probabilità che quel valore si verifichi e poi sommi tutti i risultati. La formula è la seguente:
 

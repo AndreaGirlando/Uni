@@ -12,3 +12,24 @@ La complessità computazione serve per stabilire il **costo di un algoritmo** in
 	- **Esponenziale**: $c^n, \dots n^n,...$ (quello peggiore) 
 - **Grande Beta**
 - **Grande Theta**l
+
+---
+### Rielaborazione
+
+La complessità di un'algoritmo varia in base a quello che quel algoritmo fa:
+- **O(1)**: complessità constante
+- **O(n)**: complessità di un ciclo quando le sue variabili sono incrementate/decrementate si una quantità costante.
+- **O(n^c)**: c è il numero di cicli annidati in cui le variabili contatore sono incrementate/decrementate di una quantità constante
+- **O(log n)**: complessità di un ciclo quando le sue variabili sono incrementate/decrementate moltiplicandole o dividendole per una costante.
+- **O(log log n)**: complessità di un ciclo quando le sue variabili sono incrementate/decrementate esponenzialmente
+
+###### Ricerca lineare
+Prendendo in esame la ricerca lineare in un array di $n$ elementi possiamo dire che:
+ - **Caso migliore**: $1$
+ - **Caso peggiore**: $n$
+ - **Caso medio**: ?
+Per riuscire a calcolare il caso medio abbiamo bisogno della funzione $Prob(i)$ che ritorna la probabilità che uno specifico elemento si trovi nella posizione $i$ passata, se ogni elemento è equiprobabile, allora la funzione diventa: $Prob(i) = \frac{1}{N}$, e quindi per il calcolo del [[Strutture#^09a8d0|valore atteso]]:$$\sum_{i=1}^{N} \left(\frac{1}{N} \cdot i\right) = $$
+ovvero:
+$$=\frac{1}{N} \cdot \sum_{i=1}^{N} i \text{ e quindi } \frac{1}{N} \cdot \frac{N(N+1)}{2}$$
+da questo deduciamo che il caso medio é:
+$$\text{caso medio} = \frac{N+1}{2}$$
