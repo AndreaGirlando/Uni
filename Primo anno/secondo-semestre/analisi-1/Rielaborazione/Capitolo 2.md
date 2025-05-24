@@ -139,6 +139,9 @@ Proviamo per semplicità solo il caso della divergenza:
 
 
 ### Operazioni con i limiti delle successioni
+
+^2ac9a5
+
 ###### 1. Successione con uno scalare
 Sia $\{a_n\}$ una successione regolare e sia $c$ un numero reale. Prendiamo in considerazione la successione $\{ca_n\}$ allora si ha:
 	1. se $a_n \rightarrow l$ allora $ca_n \rightarrow cl$
@@ -197,10 +200,13 @@ ovvero $\{n^x\} \text{ con } x \in R$
 	- Se $x<0$ si ha $x^n = \frac{1}{n^{-x}} \rightarrow 0$
 ###### Successione in forma di polinomio
 ovvero $x_n = a_0n^p+a_1n^{p-1}+\cdots+a_p$  che per semplicità si trasforma in: $$x_n = n^p(a_0+\frac{a_1}{n}+\cdots+\frac{a_p}{n^p})$$ e si ha che $n^p \rightarrow +\infty$ mentre la quantità fra parentesi tende ad $a_0$ quindi:
-	- $x_n \rightarrow +\infty$ se $a_0 >0$
-	- $x_n \rightarrow -\infty$ se $a_0 < 0$
+- $x_n \rightarrow +\infty$ se $a_0 >0$
+- $x_n \rightarrow -\infty$ se $a_0 < 0$
+  
 > [!TIP]
 > I termini dentro la parentesi tendono a $0$ perché all'aumentare di $n$ verso $\infty$ questi numeri diventano sempre più piccoli e quindi tendono a $0$, l'unico valore importante per determinare la tendenza della successione è quello di grado più alto ovvero $a_0$ che se moltiplicato per $n^P$ tende a $+\infty/-\infty$ in base al segno
+
+^78c31d
 
 ###### Successione in forma di funzione razionale
 ovvero $x_n = \frac{a_0n^p+a_1n^{p-1}+\cdots+a_p}{b_0n^p+b_1n^{p-1}+\cdots+b_p}$ che possiamo scrivere anche come: $$x_n = n^{p-q} \frac{a_0+\frac{a_1}{n}+\cdots+\frac{a_p}{n^p}}{b_0+\frac{b_1}{n}+\cdots+\frac{b_p}{n^p}}$$usando quello che abbiamo detto per le successioni in forma di polinomio possiamo affermare che:
@@ -264,6 +270,13 @@ Da questo possiamo dedurre i seguenti limiti:
 3. sia $\alpha \in R$ si ha $$\frac{(1+x_n)^n-1}{x_n} \to \alpha$$
 4. sia $a_n \to 0$ allora la successione $\{\frac{\sin a_n}{a_n}\}$ allora definitivamente si ha che $|a_n|<\frac{\pi}{2}$
 
+###### Altri limiti notevoli
+In caso di funzioni trigonometriche abbiamo i seguenti limiti notevoli:
+- $\frac{\sin a_n}{a_n} \to 1$ 
+- $\frac{\tan a_n}{a_n} \to 1$ 
+- $\frac{\arcsin a_n}{a_n} \to 1$ 
+- $\frac{\arctan a_n}{a_n} \to 1$ 
+- $\frac{1-\cos a_n}{(a_n)^2} \to \frac{1}{2}$ 
 ### Successioni estratte
 ###### Definizione
 Date le successioni $\{a_n\}$ e $\{n_k\}$ (quest'ultima strettamente crescente). La funzione composta $\{a_{n_k}\}$ è detta **successione estratta** da $\{a_n\}$ mediate la legge $\{n_k\}$
@@ -294,6 +307,8 @@ Si hanno tuttavia i seguenti risultati:
 > avendo 2 estratte con limiti diversi possiamo dire che non è regolare e quindi oscilla 
  
 ### Confronto tra infiniti e infinitesimi
+
+^2e5731
 ###### Infiniti
 Siano $\{a_b\}$ e $\{b_n\}$ due successioni infinitamente grandi detti **infiniti**:
 - Sono dello stesso ordine se il loro rapporto tende ad un limite diverso da zero
