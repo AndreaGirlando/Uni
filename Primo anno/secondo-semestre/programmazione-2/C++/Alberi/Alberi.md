@@ -52,3 +52,11 @@ Visitiamo un albero in tre modi:
 1. **preorder**: visito prima la radice e quindi i sottoalberi da sinistra verso destra
 2. **inorder**: visito il sottoalbero sinistro quindi la radice e poi il sottoalbero destro (stampiamo albero in ordine)
 3. **postorder**: visito il sottoalbero sinistro, destro e poi la radice
+
+
+
+**Eliminazione**: abbiamo tre casi:
+1. nodo con nessun figlio
+2. nodo con 1 figlio
+3. nodo con 2 figli
+il terzo caso è quello più complicato
