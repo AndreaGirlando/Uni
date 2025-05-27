@@ -48,7 +48,7 @@ void print(int v[], int len) {
 }
 
 int main() {
-    int array[] = {5, 1, 76, 45, 29};
+    int array[] = {5, 1, 76, 46, 29};
     int len = sizeof(array) / sizeof(int);
 
     print(array, len);
