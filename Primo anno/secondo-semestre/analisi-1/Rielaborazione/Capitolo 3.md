@@ -139,3 +139,7 @@ Utilizzando i limiti notevoli studiati per le successioni si ottiene che:
 il confronto è uguale a quello per le [[Capitolo 2#^2e5731|successioni]]
 
 ### Asintoti
+Un asintoto per $f$ è una retta $r$ tale che la distanza del generico punto del grafico di $f$ da $r$ tenda a zero. Abbiamo diversi tipi di asintoto:
+- **Asintoto verticale**: Se la funzione $f$ diverge al tendere di $x$ a $c$ allora la retta di equazione $x = c$. Infatti detto $P(x,f(x))$ il generico punto del grafico allora si ha $d(P,r) = |x-c|$ che tende a zero al tendere di $x$ a $c$   
+- **Asintoto orizzontale**: Sia data una funzione $f: (a,+\infty[ \to R$ e si supponga che $\lim_{x\to+\infty} f(x) = l \in R$   
+- **Asintoto obliquo**: 
