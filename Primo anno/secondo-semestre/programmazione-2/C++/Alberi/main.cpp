@@ -1,15 +1,12 @@
 #include <iostream>
-
-/*
-    - Implementare la ricerca in modo ricorsivo
-*/
-
+#include <iomanip>
 using namespace std;
+
 class BST;
-class BSTNode{
+class BSTNode {
     public:
         BSTNode(int _d, BSTNode* _dx = nullptr, BSTNode* _sx = nullptr, BSTNode* _padre = nullptr)
-            : d(_d), dx(_dx), sx(_sx), padre(_padre){}
+            : d(_d), dx(_dx), sx(_sx), padre(_padre) {}
         friend ostream& operator<<(ostream& stream, BSTNode& temp);
         friend class BST;
     private:
@@ -19,107 +16,137 @@ class BSTNode{
         int d;
 };
 
-//*Dichiarazione del operatore per la stampa del nodo binario
-ostream& operator<<(ostream& stream, BSTNode& temp){
-    stream << "Self: "<< &temp << " Padre: " << temp.padre << " Dx: " << temp.dx << " Sx: " << temp.sx << " D: " <<  temp.d << endl;
+ostream& operator<<(ostream& stream, BSTNode& temp) {
+    stream << "Self: " << &temp << " Padre: " << temp.padre << " Dx: " << temp.dx << " Sx: " << temp.sx << " D: " << temp.d << endl;
     return stream;
 }
 
-class BST{
+class BST {
     public:
-        BST(): root(nullptr){}
-        ~BST();
-        BST& Insert(int d);
+        BST() : root(nullptr) {}//* costruttore
+        ~BST();//* distruttore
+        void Trapianta(BSTNode* u, BSTNode* v);
+        void Delete(BSTNode* z);
+        BSTNode* Min();
         void Print();
         BSTNode* Search(int d);
+        BST& Insert(int d);
         BSTNode* Next(BSTNode* node);
-        BSTNode* Min();
     private:
         BSTNode* Min(BSTNode* x);
-        void Print(BSTNode* x);
-        void Delete(BSTNode* x);
-        BSTNode* Search(BSTNode* T,int d);
+        void PrintTree(BSTNode* node, string prefix = "", bool isLeft = true);
+        void DeleteAllTree(BSTNode* x);
+        BSTNode* Search(BSTNode* T, int d);
         BSTNode* root;
 };
 
-//* Funzione che ritorna il next di un dato nodo
-//! Capire bene come funziona questo metodo !!è importante
-BSTNode* BST::Next(BSTNode* x){
-    if(x->dx) {
+void BST::Delete(BSTNode* z) {
+    if (z->sx == nullptr) Trapianta(z, z->dx);
+    else if (z->dx == nullptr) Trapianta(z, z->sx);
+    else {
+        BSTNode* y = Min(z->dx);
+        if (y->padre != z) {
+            Trapianta(y, y->dx);
+            y->dx = z->dx;
+            y->dx->padre = y;
+        }
+        Trapianta(z, y);
+        y->sx = z->sx;
+        y->sx->padre = y;
+    }
+
+}
+
+void BST::Trapianta(BSTNode* u, BSTNode* v) {
+    if (u->padre == nullptr) {
+        root = v;
+    } else if (u == u->padre->sx) {
+        u->padre->sx = v;
+    } else {
+        u->padre->dx = v;
+    }
+    if (v != nullptr) {
+        v->padre = u->padre;
+    }
+}
+//* Cerchiamo il nodo successivo a quello dato in input
+BSTNode* BST::Next(BSTNode* x) {
+    if (x->dx) {
         return Min(x->dx);
     }
     BSTNode* y = x->padre;
-    while(y != nullptr && x == y->dx){
+    while (y != nullptr && x == y->dx) {
         x = y;
         y = y->padre;
     }
     return y;
 }
-
-//* Funzione che cerca il minimo partendo da un nodo
-BSTNode* BST::Min(){
+//* Caso base del minimo
+BSTNode* BST::Min() {
     return Min(root);
 }
-BSTNode* BST::Min(BSTNode* x){
+//* Funzione ricorsiva che cerca il minimo dentro l'albero e scende verso sinistra
+BSTNode* BST::Min(BSTNode* x) {
     BSTNode* node = x;
-    while(node->sx != nullptr){
+    while (node->sx != nullptr) {
         node = node->sx;
     }
     return node;
 }
 
-//* funzione Search ricorsiva (caso base - caso ricorsivo)
-BSTNode* BST::Search(int d){
+//* Caso base ricerca
+BSTNode* BST::Search(int d) {
     return Search(root, d);
 }
-
-BSTNode* BST::Search(BSTNode* T,int d){
-
-    if(T == nullptr || T->d == d){
+//* funzione ricorsiva che cerca dentro l'albero (quest'ultimo deve essere ordinato)
+BSTNode* BST::Search(BSTNode* T, int d) {
+    if (T == nullptr || T->d == d) {
         return T;
     }
-    if(d<T->d){
+    if (d < T->d) {
         return Search(T->sx, d);
     }
     return Search(T->dx, d);
-
 }
 
-//* funzione Print ricorsiva (caso base - caso ricorsivo)
-void BST::Print(){
-    cout << endl;
-    Print(root);
+//* caso base stampa
+void BST::Print() {
+    cout << "\nAlbero:\n";
+    PrintTree(root, "", false);
 }
-void BST::Print(BSTNode* x){
-    if(x == nullptr){
-        return;
+//* funzione ricorsiva di stampa che utilzza dei suffisi/prefissi per creare una visualizzazione migliore
+void BST::PrintTree(BSTNode* node, string prefix, bool isLeft) {
+    if (node != nullptr) {
+        cout << prefix;
+        cout << (isLeft ? "├──" : "└──" );
+        cout << (node == root? "root:":(isLeft ? "sx:" : "dx:") );
+        cout << node->d << endl;
+
+        PrintTree(node->sx, prefix + (isLeft ? "│   " : "    "), true);
+        PrintTree(node->dx, prefix + (isLeft ? "│   " : "    "), false);
     }
-    cout << *(x) << endl;
-    Print(x->sx);
-    Print(x->dx);
 }
-//* Distruttore che richiama la funzione Delete per cancellare tutto l'albero
-BST::~BST(){
-    Delete(root);
+
+BST::~BST() {
+    DeleteAllTree(root);
 }
-//* Funzione delete che fa uso della strategia postorder per cancellare tutto l'albero
-void BST::Delete(BSTNode* node){
-    if(node){
-        Delete(node->sx);
-        Delete(node->dx);
+//* Viene richiamata dal distruttore del BST in modo che ricorsivamente elimini tutti i nodi
+void BST::DeleteAllTree(BSTNode* node) {
+    if (node) {
+        DeleteAllTree(node->sx);
+        DeleteAllTree(node->dx);
         delete node;
     }
 }
 
-
-//* Funzione che inserisce un nodo in modo ordinato all'interno dell'albero
-BST& BST::Insert(int d){
+//* Inserisco il nuovo nodo facendo attenzione all'ordine tra i nodi
+BST& BST::Insert(int d) {
     BSTNode* x = root;
     BSTNode* y = nullptr;
 
-    while(x != nullptr){
+    while (x != nullptr) {
         y = x;
-        if(d < x->d){
+        if (d < x->d) {
             x = x->sx;
         } else {
             x = x->dx;
@@ -129,9 +156,9 @@ BST& BST::Insert(int d){
     BSTNode* nodo = new BSTNode(d);
     nodo->padre = y;
 
-    if(y == nullptr){
-        root = nodo; // Albero vuoto
-    } else if(d < y->d){
+    if (y == nullptr) {
+        root = nodo;
+    } else if (d < y->d) {
         y->sx = nodo;
     } else {
         y->dx = nodo;
@@ -140,17 +167,18 @@ BST& BST::Insert(int d){
     return *this;
 }
 
-int main(){
-
+int main() {
     BST tree;
     tree.Insert(56).Insert(12).Insert(10).Insert(65).Insert(123).Insert(1).Insert(23);
     tree.Print();
 
-    cout << "l'elemento cercato è: " << *(tree.Search(12));
-    cout << "l'elemento minimo è: " << *(tree.Min());
+    // cout << "\nElemento cercato (12): " << *(tree.Search(12));
+    // cout << "Elemento minimo: " << *(tree.Min());
+    // cout << "Next di 10: " << *(tree.Next(tree.Search(10)));
+    // cout << "Next del minimo: " << *(tree.Next(tree.Min())) << endl;
 
-    cout << *(tree.Next(tree.Search(10)));
-    cout << *(tree.Next(tree.Min()));
+    tree.Delete(tree.Search(12));
+    tree.Print();
 
     return 0;
 }
