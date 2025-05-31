@@ -333,6 +333,9 @@ allora per ogni $x \in (a,b)$ è possibile porre $F(x) = f(g(x))$. La funzione $
 - Un punto $c\in(a,b)$ è detto punto di massimo relativo per $f$ se esiste un suo intorno $I = ]c-r,c+r[$ tal che $f(x) \le f(c)$ per ogni $x\in I$ 
 Un punto di estremo assoluto e anche di estremo relativo, ma non il viceversa.
 ###### Monotonia
+
+^2bb6d6
+
 Sia data una funzione $f: (a,b) \rightarrow R$ si dice che questa è monotona se soddisfa una delle seguenti condizioni:
 - **crescente**: se $x < y \Rightarrow f(x) \le f(y)$
 - **strettamente crescente**: se $x < y \Rightarrow f(x) < f(y)$

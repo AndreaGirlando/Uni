@@ -132,14 +132,107 @@ Utilizzando i limiti notevoli studiati per le successioni si ottiene che:
 - $\lim_{x \to 0} \frac{\log(1 + x)}{x} = 1$
 - $\lim_{x \to 0} \frac{e^x - 1}{x} = 1$
 - $\lim_{x \to 0} \frac{(1 + x)^{a} - 1}{x} = a \quad (a \in \mathbb{R})$
-
 ### Confronto fra infinitesimi e fra infiniti
 - Una funzione che tende a zero è detta infinitesima (o "infinitesimo")
 - Una funzione che diverge è detta infinitamente grande (o "un infinito")
 il confronto è uguale a quello per le [[Capitolo 2#^2e5731|successioni]]
 
 ### Asintoti
-Un asintoto per $f$ è una retta $r$ tale che la distanza del generico punto del grafico di $f$ da $r$ tenda a zero. Abbiamo diversi tipi di asintoto:
-- **Asintoto verticale**: Se la funzione $f$ diverge al tendere di $x$ a $c$ allora la retta di equazione $x = c$. Infatti detto $P(x,f(x))$ il generico punto del grafico allora si ha $d(P,r) = |x-c|$ che tende a zero al tendere di $x$ a $c$   
-- **Asintoto orizzontale**: Sia data una funzione $f: (a,+\infty[ \to R$ e si supponga che $\lim_{x\to+\infty} f(x) = l \in R$   
-- **Asintoto obliquo**: 
+###### Definizione
+Un asintoto per $f$ è una **retta** $r$ tale che la distanza del generico punto del grafico di $f$ da $r$ tenda a zero. 
+> [!TIP]
+> La distanza che c'è tra la funzione e l'asintoto diventa sempre più piccola quando ci allontaniamo dall'origine (ovvero quando $x\to\pm\infty$), allora possiamo dire che la nostra distanza tende a $0$ (ovviamente questa cosa vale per ogni tipo di asintoto).
+> 
+> Inoltre una tra $x$ o $y$ deve tendere a $\pm\infty$ per avere un asintoto 
+
+###### Diversi tipi di asintoto
+Abbiamo diversi tipi di asintoto:
+- **Asintoto verticale**: Se la funzione $f$ diverge al tendere di $x$ a $c$ allora la retta di equazione $x = c$ è detta asintoto verticale per $f$. 
+  Infatti dato $P(x,f(x))$ un generico punto del grafico si ha: $$d(P,r) = |x-c|$$visto che $x\to c$ allora questa distanza tende a $0$. Inoltre visto che $x\to c$ allora deve essere vero che $y$ tende ad un'infinito ovvero che (almeno una):
+	- $\lim_{x\to c^{+}} = \pm \infty$  asintoto verticale sinistro
+	- $\lim_{x\to c^{-}} = \pm \infty$ asintoto verticale destro
+![[Pasted image 20250531110936.png]]
+
+> [!EXAMPLE]
+> ![[Screenshot_20250531_111957_Samsung capture.jpg]]
+
+- **Asintoto orizzontale**: Sia data una funzione $f: (a,+\infty[ \to R$ e si supponga che $\lim_{x\to+\infty} f(x) = l \in R$   allora la retta $r$  di equazione $y = l$ è detta asintoto orizzontale destro per $f$. 
+  Infatti dato $P(x,f(x))$ un generico punto del grafico di $f$ si ha: $$d(P,r) = |f(x)-l|$$per il limite scritto prima $f(x)$ tende ad $l$ quando $x\to+\infty$, quindi la distanza tra la diminuisce e tende a $0$ ![[Pasted image 20250531110852.png]]Se abbiamo che $\lim_{x\to+\infty} f(x) = l$ e $\lim_{x\to-\infty} f(x) = h$ allora abbiamo 2 asintoti orizzontali: 
+	- $y = l$ asintoto orizzontale destro
+	- $y = h$ asintoto orizzontale sinistro
+
+> [!EXAMPLE]
+> ![[Screenshot_20250531_103631_Samsung capture.jpg]]
+
+- **Asintoto obliquo**: Sia data una funzione $f: (a,+\infty[ \to R$ e si supponga che $\lim_{x\to+\infty}f(x)=\infty$ se $f$ ha un asintoto obliquo allora i due infiniti $f$ e $x$ devono avere lo stesso ordine di grandezza, in altre parole il rapporto $\frac{f(x)}{x}$ deve ammettere un limite finito (ovvero $m$) al tendere di $x$ a $+\infty$. 
+  ![[Pasted image 20250531122500.png]]
+  dunque se: 
+  - $\lim_{x\to+\infty}\frac{f(x)}{x} = m \not= 0$
+  - se $\lim_{x\to+\infty}f(x)-mx = p \in R$ 
+  allora la retta $r$ di equazione $y = mx+p$ è asintoto obliquo destro per $f$ (in modo simmetrico si introduce quello sinistro). Infatti detto $P(x,f(x))$ il generico punto del grafico di $f$, si ha $d(P,r) = \frac{|mx-f(x)+p|}{\sqrt{1+m^2}}$ che tende a zero al tendere di $x$ a $+\infty$  
+> [!EXAMPLE]
+> ![[Screenshot_20250531_124822_Samsung capture.jpg]]
+
+### Limiti delle funzioni monotone
+
+> [!CITE] 
+> Ricordiamo dal capitolo 1 che una funzione $f$ è detta [[Capitolo 1#^2bb6d6|monotona]] in un intervallo $(a,b)$ se in tale intervallo è crescente o decrescente (anche strettamente) 
+###### Teorema
+Sia $f: (a,b)\to R$ una funzione strettamente crescente in $(a,b)$ allora possiamo dire che:
+- per ogni $c \in ]a,b[$ esistono i limiti destro e sinistro di $f$ al tendere di $x$ a $c$ e si ha che $$l^- = \lim_{x\to c^-} f(x) = \sup_{(a,c[} \text{ } f(x) \le f(c) \le l^+ = \lim_{x\to c^+} f(x) = \inf_{]c,b)}f(x)$$
+- esistono i limiti di $f$ al tendere di $x$ ad $a$ e a $b$ e si ha:
+	- $l^+ = \lim_{x\to a}f(x)  = \inf_{]a,b)}f(x)$
+	- $l^- = \lim_{x\to b}f(x)  = \inf_{(a,b[}f(x)$
+**Osservazioni**
+1. Se $a, b$ appartengono all'insieme di definizione si ha:
+	- $l^+ \ge f(a)$
+	- $l^- \le f(b)$
+2. Se $f$ è decrescente, si ha $$l^{-} = \lim_{x \to c^{-}} f(x) = \inf_{(a,c[} f(x) \geq f(c) \geq l^{+} = \lim_{x \to c^{+}} f(x) = \sup_{]c,b)} f(x)$$
+### Funzioni continue
+###### Definizione
+Sia data una funzione $f: X \to R$ e sia $c$ un punto non isolato di $X$, si dice che $f$ è continua in $c$ se $\lim_{x\to c}f(x) = f(c)$. Si dice che $f$ è continua se è continua $\forall x \in X$   
+**In altre parole La funzione f è continua in un punto c se, quando x si avvicina a c, i valori di f(x) si avvicinano a f(c)**
+###### Teorema di Weierstrass
+Sia $f$ una funzione reale continua in un intervallo chiuso e limitato $[a,b]$, allora $f$ ammette minimo e massimo assoluti
+###### Proprietà dei valori intermedi (PVI)
+Si dice che una funzione $f: X \to R$ gode della proprietà dei valori intermedi (brevemente PVI) se: dati $\alpha,\beta \in f(X) \text{ con } \alpha < \beta$ per ogni $\gamma \in ]\alpha,\beta[$ esiste $x \in X$ tale che $f(x) = \gamma$, in altre parole se la funzione assume due valori allora questa assume anche i valori fra essi compresi.
+###### Teorema di esistenza degli zeri
+**Teorema**: sia $f$ una funzione reale continua in un intervallo chiuso e limitato $[a,b]$ e si supponga $f(a)<0$ e $f(b)>0$ (o viceversa). Allora esiste $c \in [a,b]$ tale che $f(c) = 0$
+**Teorema non in matematichese**: la continuità di $f$ implica che la funzione non può “saltare” da negativo a positivo senza passare per lo zero. Vogliamo trovare il punto dove $f$ si annulla.
+**Dimostrazione**: 
+posto $x_0 = \frac{a+b}{2}$ 
+- se $f(x_0) = 0$ la tesi è dimostrata
+- se $f(x_0)<0$ poniamo $[a_1,b_1] = [x_0,b]$ 
+  se $f(x_0)>0$ poniamo $[a_1,b_1] = [a, x_0]$
+  in entrambi i casi si ha che:
+	- $f(a_1)<0$ 
+	- $f(b_1)>0$
+	- $a \le a_1 < b_1 \le b$ 
+	- $b_1 - a_1 = \frac{b-a}{2}$ 
+Procedo analogamente a partire dall'intervallo $[a_1,b_1]$ e reiterando lo stesso ragionamento, se per un certo $n$ si trova $f(x)=0$ la tesi è dimostrata, in caso contrario si determinano due successioni $\{a_n\}$ e $\{b_n\}$ tali che per ogni $n \in N$ si ha che 
+- $f(a_n)<0$
+- $f(b_n)>0$
+- $a \le a_1 \le \cdots \le a_n < b_n \le b_{n-1} \le \cdots \le b$
+- $b_n - a_n = \frac{b-a}{2^n}$ 
+La successione $\{a_n\}$ è crescente e limitata superiormente (da b) quindi converge al proprio estremo superiore $c\le b$. 
+inoltre possiamo dire che $$b_n = b_n -a_n+a_n = \frac{b-a}{2^n}+a_n\to c$$ 
+Si ha allora per la continuità di $f$: $$f(a_n) \to f(c) \text{ e } f(b_n)\to f(c)$$Poiché:
+- da $f(a_n)<0$ si ha $f(c)\le 0$
+- da $f(b_n)>0$ segue $f(c)\ge0$ 
+quindi segue necessariamente che $$f(c)=0$$
+###### Teorema di esistenza dei valori intermedi (teorema di Darboux)
+**Teorema**: Sia $f$ una funzione reale continua in un intervallo chiuso e limitato $[a,b]$ e si supponga che $f(a) \not = f(b)$ ad esempio $f(a)<f(b)$. Allora per ogni $\gamma \in ]f(a),f(b)[$ esiste $c \in [a,b]$ tale che $f(c) = \gamma$ 
+ **Dimostrazione**: Consideriamo in $[a,b]$ la funzione $g(x) = f(x)-\gamma$ che è continua e agli estremi dell'intervallo assume valori di segno diverso, quindi per il teorema di esistenza degli zeri, si annulla in un punto $c$: si ha dunque  $f(c)-\gamma = 0$ e quindi che $f(c) = \gamma$ 
+ **Osservazioni**:
+ 1. Se l'intervallo non è chiuso e limitato la tesi vale egualmente: basta applicare il teorema ad una restrizione (ad un sotto intervallo)
+ 2. Se $f$ non è definita in un intervallo il teorema non vale: basti pensare ad esempio ad una funzione definita nell'unione di due intervalli disgiunti, costante in ciascuno di essi, con valori diversi delle costanti
+ 3. Il viceversa del teorema non vale: la funzione definita in $[0,1]$ ponendo $f(x) = x$ in $]0,1[$ $f(0)=1,f(1) = 0$ verifica la PVI ma non è continua
+ 4. Il teorema di esistenza degli zeri è un caso particolare del teorema di Darboux 
+###### Teorema di continuità delle funzioni monotone
+**Teorema:** Sia $f: (a,b) \to R$ una funzione strettamente monotona e sia verificata la PVI allora $f$ è continua
+**Dimostrazione**: Supponiamo che $f$ sia crescente e proviamo la continuità in un punto $c$ interno ad $(a,b)$. Dal teorema sui limiti delle funzioni monotone segue che $l^-\le f(x) \le l^+$ per provare la continuità basta provare che $l^- = f(x) = l^+$. Supponiamo per assurdo che non sia vero, ad esempio si abbia $l^- < f(c)$. Sia $\gamma \in ]l^-,f(c)[$ per la PVI esiste $\overline{x} \in (a,b)$ tale che $f(\overline{x}) = \gamma$. L'assurdo segue dal fatto che $\overline{x}$ non può esistere, infatti:
+- se $\overline{x} = c$ si avrebbe $\gamma  = f(\overline{x}) = f(c)$ 
+- se $\overline{x} < c$ si avrebbe $\gamma = f(\overline{x}) \le l^-$ 
+- se $\overline{x} > c$ si avrebbe $\gamma = f(\overline{x}) > f(c)$
+L'assurdo è dunque trovato. 
+###### Conseguenza di questi teoremi
