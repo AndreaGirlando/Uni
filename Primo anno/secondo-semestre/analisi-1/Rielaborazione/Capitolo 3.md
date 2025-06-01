@@ -191,6 +191,9 @@ Sia $f: (a,b)\to R$ una funzione strettamente crescente in $(a,b)$ allora possia
 	- $l^- \le f(b)$
 2. Se $f$ è decrescente, si ha $$l^{-} = \lim_{x \to c^{-}} f(x) = \inf_{(a,c[} f(x) \geq f(c) \geq l^{+} = \lim_{x \to c^{+}} f(x) = \sup_{]c,b)} f(x)$$
 ### Funzioni continue
+
+^14df84
+
 ###### Definizione
 Sia data una funzione $f: X \to R$ e sia $c$ un punto non isolato di $X$, si dice che $f$ è continua in $c$ se $\lim_{x\to c}f(x) = f(c)$. Si dice che $f$ è continua se è continua $\forall x \in X$   
 **In altre parole La funzione f è continua in un punto c se, quando x si avvicina a c, i valori di f(x) si avvicinano a f(c)**

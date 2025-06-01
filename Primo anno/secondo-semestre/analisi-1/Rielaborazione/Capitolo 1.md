@@ -346,14 +346,16 @@ Possiamo introdurre anche il concetto di monotonia locale, ovvero dato una punto
 - se $x \in ]c,c+s[$ si ha $f(x)>f(c)$ 
 in modo simmetrico si introduce il concetto di funzione decrescente. 
 ###### Rapporto incrementale
+^a17adb
+
 Sia $f: (a,b) \rightarrow R$ e sia $c\in(a,b)$. Per ogni $x \in (a,b) \backslash \{c\}$ poniamo:
-$$r(x) = \frac{f(x)-f(c)}{x-c}$$
-$r$ viene chiamato rapporto incrementale di $f$ relativo al punto $c$, questo è utile per verificare la monotonia locale di $f$ grazie al seguente teorema:
+$$r(x) = \frac{f(x)-f(c)}{x-c} \text{ oppure } R(h) = \frac{f(c+h)-f(c)}{h}$$
+![[Pasted image 20250601130158.png]]
+$r(x) \text{ oppure } R(h)$ viene chiamato rapporto incrementale di $f$ relativo al punto $c$, questo è utile per verificare la monotonia locale di $f$ grazie al seguente teorema:
 **Teorema**
 La funzione $f$ è crescente (o decrescente) nel punto $c$ se e solo se esiste un intorno $I_s(c)$ tale che, per ogni $x \in I_s(c)\backslash\{c\}$ si abbia $r(x)>0$ (o $r(x)<0$)
 **Dimostrazione** 
 Supponiamo che $r(x) > 0$ in $I_s(c) \ {c}$. In $]c − s, c[$ il denominatore di r e negativo, quindi lo e anche il numeratore: dunque, $f (x) < f (c)$. In $]c, c + s[$ il denominatore di $r$ e positivo, quindi lo e anche il numeratore: dunque, $f (x) > f (c)$. Ne segue che $f$ e crescente nel punto $c$. Il viceversa si prova allo stesso modo.
-
 ###### Funzione convessa
 La funzione $f: (a,b) \rightarrow R$ è detta convessa se per ogni $x,y \in(a,b)$ e per ogni $t \in [0,1]$ si ha:
 $$f(tx+(1-t)y) \le tf(x)+(1-t)f(y)$$in italiano significa che la porzione di grafico compresa tra le ascisse $x$ e $y$ è al di sotto di un segmento che congiunge questi due punti: $(x,f(x))$ e $(y,f(y))$. La nozione di convessità la possiamo esprimere anche così:
