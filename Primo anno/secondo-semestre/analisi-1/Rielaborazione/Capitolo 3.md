@@ -10,9 +10,11 @@ Per una funzione reale si possono dare 9 definizioni di limite, precisamente stu
 > [!quote]
 > **Punto di accumulazione**: un numero reale $c$ è detto punti di accumulazione per $X$ se, per ogni $r>0$ nell'intorno $]c-r,c++r[$ ci sono elementi diversi da $c$. L'insieme dei punti di accumulazione di accumulazione si denota con $D(X)$ 
 
+^818a5c
+
 Data una funzione reale definita in un insieme $X ⊆ R$, se $c \in D(x)$ si definisce il limite di $f$ al tendere di $x$ a $c$ nel seguente modo:
 1. Si dice che $f$ **converge** al numero $l$ al tendere di $x$ a $c$ e si scrive: $$\lim_{x\to c}f(x) = l \in R$$ se $\forall \epsilon > 0$ $\exists δ > 0: x \in X, x \not=c,|x-c|<δ \Rightarrow |f(x)-l| < \epsilon$ ovvero $l-\epsilon < f(x) < l+\epsilon$  
-   **Spiegazione intuitiva**: Dire che il limite di $f(x)$ per $x$ che tende a $c$ è $l$ significa che possiamo rendere $f(x)$ arbitrariamente vicino a $l$, scegliendo $x$ sufficientemente vicino a $c$ (ma senza che $x$ debba essere uguale a $c$). In altre parole, per ogni livello di precisione $\epsilon$ che vogliamo raggiungere, esiste un intervallo attorno a $c$ (di ampiezza $\delta$) tale che, se $x$ si trova all’interno di questo intervallo (escluso il punto $c$), allora $f(x)$ sarà compreso nell’intervallo $(l - \epsilon, l + \epsilon)$.
+   **Spiegazione intuitiva**: Dire che il limite di $f(x)$ per $x$ che tende a $c$ è uguale ad $l$ significa che possiamo rendere $f(x)$ arbitrariamente vicino a $l$, scegliendo $x$ sufficientemente vicino a $c$ (ma senza che $x$ debba essere uguale a $c$). In altre parole, per ogni livello di precisione $\epsilon$ che vogliamo raggiungere, esiste un intervallo attorno a $c$ (di ampiezza $\delta$) tale che, se $x$ si trova all’interno di questo intervallo (escluso il punto $c$), allora $f(x)$ sarà compreso nell’intervallo $(l - \epsilon, l + \epsilon)$.
    
 2. Si dice che $f$ **diverge** a $+\infty$ al tendere di $x$ a $c$ e si scrive $$lim_{x\to c} f(x) = +\infty$$ se $\forall k>0 \text{ } \exists δ>0 \text{ } x\in X, x\not=c, |x-c|<δ \Rightarrow f(x)>k$ 
    **Spiegazione intuitiva**: Dire che $f(x)$ tende a infinito quando $x$ si avvicina a $c$ significa che il valore di $f(x)$ può diventare arbitrariamente grande, cioè maggiore di qualunque soglia positiva. Per ogni $k > 0$, esiste un $\delta$ tale che, se $x \ne c$ e $|x - c| < \delta$, allora $f(x) > k$.
@@ -235,4 +237,26 @@ quindi segue necessariamente che $$f(c)=0$$
 - se $\overline{x} < c$ si avrebbe $\gamma = f(\overline{x}) \le l^-$ 
 - se $\overline{x} > c$ si avrebbe $\gamma = f(\overline{x}) > f(c)$
 L'assurdo è dunque trovato. 
-###### Conseguenza di questi teoremi
+###### Conseguenze di questi teoremi
+1. **Immagine di un intervallo mediante una funzione continua**: Sia $f:[a,b]\to R$ una funzione continua, dal teorema di Darboux segue che la sua immagine è un intervallo, e dal teorema di Weierstrass segue che $f$ possiede minimo $m$ e massimo $M$ quindi la sua immagine è l'intervallo chiuso e limitato $[m,M]$
+	1. Se $f$ è crescente la sua immagine è l'intervallo $[f(a),f(b)]$ 
+	2. Se $f$ è decrescente la sua immagine è l'intervallo $[f(b),f(a)]$
+   In generale, se $f$ è una funzione continua in un intervallo generico $(a,b)$ la sua immagine è l'intervallo $(\inf_{(a,b)}f(x), sup_{(a,b)}f(x)$  
+2. **Continuità della funzione inversa**: sia $f: [a,b] \to [f(a),f(b)]$ una funzione strettamente crescente e continua (può essere anche descrescente). Allora la sua inversa è continua.
+3. **Continuità delle funzioni elementari**: tutte le funzioni elementari che abbiamo introdotto sono continue nei rispettivi insiemi di definizione. Sia infatti $c$ un punto dell'insieme di definizione di $f$. Se $c$ è contenuto in un intervallo in cui $f$ è monotona, la continuità in $c$ segue dal teorema di continuità delle funzioni monotone, in caso contrario il limite destro e sinistro coincidono
+
+### Punti di discontinuità
+Data una funzione $f: X \to R$, un punto $c \in D(x)$([[#^818a5c|insieme dei punti di accumulazione]]) è detto punto di discontinuità per $f$ in uno dei seguenti casi: 
+- se $f$ non è definita in $c$ 
+	- $f(x) = \log x, c = 0$ 
+- se $f$ non è dotata di limite al tendere di $x$ a $c$ 
+	- $f(x) = \frac{|x|}{x}, c = 0$
+- se $\lim_{x\to c} f(x) \not = f(c)$ 
+	- $f(x) = x$ per $x \not = 0, f(0) = 5, c = 0$   
+Dato $c$ punto di discontinuità possiamo dire che:
+- $c$ è **eliminabile** se $lim_{x \to c} f(x) = l$ esiste ed è finito. In tal caso, definendo $$g(x) = \begin{cases} f(x) & \text{se } x \neq c, \\ l & \text{se } x = c, \end{cases}$$otteniamo una funzione continua in $c$.
+- $c$ è di **prima specie** se i limiti:
+	- $l^- = lim_{x\to c^-}f(x)$
+	- $l^+ = lim_{x\to c^+}f(x)$ 
+  esistono entrambi finiti ma sono distinti in tal caso il numero $|l^--l^+|$ è detto **salto** di $f$ in corrispondenza di $c$
+- $c$ è un **punto di infinito** se $f$ diverge al tendere di $x$ a $c$, se $c$ è un punto di infinito per $f$ allora c'è un asintoto verticale di equazione $x = c$ 
