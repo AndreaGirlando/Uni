@@ -51,4 +51,4 @@
     - 📄 [[8 ottobre 2024.pdf|8 ottobre 2024]]
   - 📁 Lia:
     - 📄 [[Formulario.pdf|Formulario]]
-    - 📄 [[Teoria.pdf|Teoria]]
+    - 📄 [[Primo anno/primo-semestre/algebra-lineare-e-geometria[✅20]/Lia/Teoria.pdf|Teoria]]
