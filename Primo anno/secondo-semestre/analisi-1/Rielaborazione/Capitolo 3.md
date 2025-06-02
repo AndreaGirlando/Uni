@@ -128,6 +128,7 @@ Utilizzando i limiti notevoli studiati per le successioni si ottiene che:
 - $\lim_{x\to0}\frac{\arcsin x}{x} = 1$
 - $\lim_{x\to0}\frac{\arctan x}{x} = 1$ 
 - $\lim_{x\to0}\frac{1- \cos x}{x} = \frac{1}{2}$
+- $\lim_{x\to0}\frac{\cos x - 1}{x} = 0$ 
 ###### Limiti notevoli di tipo esponenziale
 - $\lim_{x \to \pm\infty} \left( 1 + \frac{1}{x} \right)^x = e$
 - $\lim_{x \to 0} \left( 1 + x \right)^{\frac{1}{x}} = e$
