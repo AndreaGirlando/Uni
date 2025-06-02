@@ -46,3 +46,45 @@ Viceversa, se esiste il polinomio $p = f(c)+a(x-c)$ si ha $$\frac{f(x)-f(c)}{x-c
 La derivata rappresenta il coefficiente angolare della retta tangente in un punto del grafico. La retta secante, che unisce due punti $(c, f(c))$ e $(c + h, f(c + h))$, ha coefficiente angolare dato dal rapporto incrementale $R(h)$. Se la funzione $f$ è derivabile in $c$, $\lim_{h \to 0} R(h) = f'(c)$. In questo caso, la retta secante tende alla tangente al grafico in $c$, con equazione $y = f(c) + f'(c)(x - c)$. La tangente rappresenta la posizione limite delle secanti e approssima il grafico localmente come un polinomio di primo grado. In situazioni particolari, come $f(x) = \sqrt{x}$ in $x = 0$, la tangente può essere verticale.
 
 ### Regole di derivazione
+In questo paragrafo vengono presentate le regole per derivare funzioni ottenute mediante operazioni tra funzioni derivabili:
+1. **Combinazione lineare**: Siano $f,g$ derivabili in un punto $c$ e $h,k \in R$. Indicata con $F$ la combinazione lineare $F(x) = hf(x)+kg(x)$ questa è derivabile nel punto $c$ e diventa: $F'(x) = hf'(c)+kg'(x)$. Il rapporto incrementale di $F$ è la combinazione lineare dei rapporti incrementali di $f$ e $g$ mediante le costanti $h$ e $k$ 
+2. **Prodotto**: Siano $f,g$ derivabili in un punto $c$. Indicata con $p$ la funzione prodotto $p(x) = f(x)g(x)$, quest'ultima è derivabile nel punto $c$ e si ha $p'(c) = f(c)g'(c)+ f'(c)g(c)$ 
+3. **Reciproco**: Sia $f$ derivabile in un punto $c$ e tale che $f(c) \not = 0$. Indichiamo con $F$ la funzione reciproca del tipo $F(x) = \frac{1}{f(x)}$, la funzione $F$ è derivabile nel punto $c$ e si ha $F'(c) = \frac{-f'(c)}{(f(c))^2}$ 
+4. **Quoziente**: Siano $f,g$ derivabili in un punto $c$ e si abbia $g(c)\not = 0$. Indicata con $q$ la funzione quoziente del tipo $q(x) = \frac{f(x)}{g(x)}$, la funzione $q$ è derivabile nel punto $c$ e si ha $$q'(c) = \frac{f'(c)g(c)-f(c)g'(c)}{(g(c))^2}$$arriviamo a questa conclusione scrivendo $q$ nella forma $q(x) = f(x)\frac{1}{g(x)}$ e applicando le regole 2 e 3
+5. **Funzione composta**: Siano date due funzioni
+	- $f:(\alpha,\beta) \to R$ 
+	- $g(a,b) \to (\alpha, \beta)$ 
+   e supponiamo che $g$ sia derivabile nel punto $c$ e che $f$ sia derivabile nel punto $g(c)$ allora indichiamo con $F$ la funzione composta del tipo: $F(x) = f(g(x))$ questa è derivabile nel punto $c$ e diventa $F'(x) = f'(g(c))g'(c)$ 
+6. **Funzione inversa**: Sia $f: [a,b] \to R$ una funzione strettamente crescente e continua, se essa è invertibile la sua inversa è $f^{-1}: [f(a),f(b)] \to [a,b]$, sia $\gamma \in [f(a),f(b)]$, dato $c\in[a,b]$ tale che $\gamma = f(c)$ allora si può dimostrare che $f^{-1}$ è derivabile in $\gamma$ e diventa $(f^{-1})(\gamma) = \frac{1}{f'(c)}$ 
+### Derivate delle funzioni elementari
+Di seguito le formule che permettono di derivare le funzioni elementari:
+1. **Funzione costante**: Se $f(x) = k \text{ } \forall x \in R$ il suo rapporto incrementale è nullo quindi $$f(x) = k \text{ diventa } f'(x) = 0$$
+2. **Funzione potenza con esponente intero**: $$f(x) = x^n \text{ diventa } f'(x) = nx^{n-1} \text{ (* n può essere negativo) }$$nel caso $n = 2$ il rapporto incrementale è: 
+   ![[Screenshot_20250602_102709_Samsung capture.jpg|500]]
+3. **Funzione con valore assoluto**: la funzione $f(x) = |x|$ non è derivabile nel punto $x = 0$ mentre:
+	- se $x>0$ si ha $f'(x) = 1$
+	- se $x < 0$ si ha $f'(x)=-1$ 
+   la derivata di $f$ è la cosiddetta funzione segno, che può essere scritta mediante l'espressione $F'(c) = \frac{|x|}{x}$ $$f(x) = |x| \text{ diventa } f'(x) = \frac{|x|}{x}$$
+4. **Funzione esponenziale**: Se $f(x) = a^x$ il rapporto incrementale è $r(x)=\frac{a^x-a^c}{x-c} = a^c\frac{a^{x-c}-1}{x-c}$ e si può provare che al tendere di $x$ a $c$ si ha il limite $a^c \log a$ e quindi si ha che:  $$f(x) = a^x \text{ diventa } f'(x) = a^x\log a$$inoltre se $a = e$ allora si ha che $$f(x) = e^x \text{ diventa } f'(x) = e^x$$
+5. **Funzione logaritmo**: Per calcolare questa derivata useremo la regola per la derivata della funzione inversa. Preso $f(x) = e^x$ la cui inversa è $\log x$, se $\gamma > 0$, sia $c \in R$ tale che $e^c = \gamma$ ossia $c = \log \gamma$. Si ha $f'(c)=e^c \not = 0$ quindi $(f^{-1})'(\gamma) = \frac{1}{e^c} = \frac{1}{\gamma}$ quindi ne segue che: $$f(x) = \log x \text{ diventa } f'(x) = \frac{1}{x}$$o più in generale che: $$f(x) = \log_a x \text{ diventa } f'(x) = \frac{1}{x}\log_a e$$Inoltre grazie alla regola delle funzioni compose possiamo dire che: $$ F(x) = \log|f(x)| \text{ diventa } f'(x) = \frac{f'(x)}{f(x)}$$
+6. **Funzione potenza con esponente qualunque**: Se $x>0$ consideriamo $f(x)=x^a = e^{log x^a} = e^{a \log x}$ da cui $f'(x) = e^{a \log x}a\frac{1}{x} = a\frac{x^a}{x} = ax^{a-1}$ quindi possiamo dire che $$f(x) = x^a \text{ diventa } f'(x) = ax^{a-1}$$  ![[Screenshot_20250602_114008_Samsung capture.jpg]]
+7. **Funzioni trigonometriche**: usando la formula del rapporto incrementale si dimostra che
+   $$f(x) = sin(x) \text{ diventa } f'(x) = cos(x)$$
+   $$f(x) = cos(x) \text{ diventa } f'(x) = -sin(x)$$
+   $$f(x) = tan(x) = \frac{\sin x}{\cos x} \text{ diventa } f'(x) = tan^2x+1 = \frac{1}{cos^2x}$$
+![[Screenshot_20250602_110837_Samsung capture.jpg|500]]
+8. **Funzioni inverse delle funzioni trigonometriche**: utilizzando le regole di derivazione delle funzioni inverse si può provare che: $$f(x) = \arcsin(x) \text{ diventa } f'(x) = \frac{1}{\sqrt{1-x^2}}$$$$f(x) = \arccos(x) \text{ diventa } f'(x) = \frac{1}{-\sqrt{1-x^2}}$$$$f(x) = \arctan(x) \text{ diventa } f'(x) = \frac{1}{1+x^2}$$
+### Teoremi sul calcolo differenziale e loro applicazioni allo studio delle funzioni
+Studiare una funzione significa individuare a partire dalla legge di definizione le sue principali proprietà analitiche:
+- limitatezza
+- continuità
+- derivabilità
+- monotonia
+- convessità
+- ecc
+Per individuare alcune di queste proprietà sarà molto utile lo studio delle derivate. 
+
+###### Conseguenza della derivata
+Ricordando il teorema sul rapporto incrementale scritto nel capitolo 1 che ci diceva che la funzione $f$ è crescente (o decrescente) nel punto $c$ se e solo se $r(x)>0$(o $r(x)<0$) in un intorno di $c$. Quindi usando le derivate possiamo affermare che se $f'(c)>0$ (o $f'(c)<0$) allora per il teorema della permanenza del segno si avrà $r(x)>0$(o $r(x)<0$) in un intorno di $c$. 
+
+###### Teoremi
