@@ -81,10 +81,14 @@ Studiare una funzione significa individuare a partire dalla legge di definizione
 - derivabilità
 - monotonia
 - convessità
-- ecc
+- ecc...
 Per individuare alcune di queste proprietà sarà molto utile lo studio delle derivate. 
 
 ###### Conseguenza della derivata
 Ricordando il teorema sul rapporto incrementale scritto nel capitolo 1 che ci diceva che la funzione $f$ è crescente (o decrescente) nel punto $c$ se e solo se $r(x)>0$(o $r(x)<0$) in un intorno di $c$. Quindi usando le derivate possiamo affermare che se $f'(c)>0$ (o $f'(c)<0$) allora per il teorema della permanenza del segno si avrà $r(x)>0$(o $r(x)<0$) in un intorno di $c$. 
 
 ###### Teoremi
+**Teorema 1 (monotonia locale):** Se $f'(c)>0$ $(\text{ oppure } f'(c)<0)$ allora $f$ è crescente (oppure decrescente) nel punto $c$, il viceversa non è vero. 
+- Ad esempio $f(x) = x^3$ è crescente nel punto $c = 0$ ma $f'(0) = 0$.
+
+**Teorema di Fermat**: Data una funzione $f(a,b) \to R$ sia $c \in ]a,b[$ un punto di minimo o di massimo relativo per $f$. Si supponga che $f$ sia derivabile nel punto $c$ allora si ha $f(c)' = 0$ 
