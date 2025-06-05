@@ -92,3 +92,17 @@ Ricordando il teorema sul rapporto incrementale scritto nel capitolo 1 che ci di
 - Ad esempio $f(x) = x^3$ è crescente nel punto $c = 0$ ma $f'(0) = 0$.
 
 **Teorema di Fermat**: Data una funzione $f(a,b) \to R$ sia $c \in ]a,b[$ un punto di minimo o di massimo relativo per $f$. Si supponga che $f$ sia derivabile nel punto $c$ allora si ha $f(c)' = 0$ 
+**Dimostrazione**: Dato che il $c$ è interno, la derivata è il limite del rapporto incrementale sia da sinistra che da destra. il numeratore del rapporto incrementale in un intorno di $c$ ha sempre lo stesso segno sia a destra che a sinistra, mentre il denominatore è negativo a sinistra di $c$ e positivo a destra, quindi possiamo dire che:
+- $f'(c) = f'_-(c) = \lim_{x\to c^-}r(x)\le 0$ 
+- $f'(c) = f'_+(c) = \lim_{x\to c^+}r(x)\ge 0$ 
+quindi necessariamente $f'(c) = 0$. Il viceversa di questo teorema non vale infatti prendendo la funzione $f(x) = x^3$ si ha $f'(0) = 0$ ma il punto $c = 0$ non è un estremo relativo, infatti $f$ è crescente in ogni punto di $R$. Quindi il fatto che $f'(c) = 0$ è una condizione necessaria, ma non sufficiente, per l'esistenza di un estremo relativo. Infine possiamo dire che i punti $c$ tale $f'(c) = 0$  sono detti punti stazionari o critici per $f$.
+
+**Teorema di Rolle**: Sia $f$ una funzione reale continua nell'intervallo chiuso $[a,b]$ e derivabile in $]a,b[$ tale che $f(a) = f(b)$. Allora esiste $c \in ]a,b[$ tale che $f'(c) = 0$ 
+**Dimostrazione**: Per il teorema di Weierstrass $f$ è dotata di minimo e massimo assoluti:
+- $x_1$ punto di minimo assoluto
+- $x_2$ punto di massimo assoluto
+Se $x_1 = a$ e $x_2 = b$ (o viceversa) allora il minimo e il massimo assoluti della funzione sono uguali quindi $f$ è costante e la sua derivata è ovunque nulla. In caso contrario uno dei due punti $x_1,x_2$ è interno, in esso allora la derivata è nulla per il teorema di Fermat
+
+**Teorema di Lagrange**: Sia $f$ una funzione reale continua nell'intervallo $[a,b]$ e derivabile $]a,b[$. Allora esiste $c \in ]a,b[$ tale che $f(b)-f(a) = f'(c)(b-a)$ 
+**Dimostrazione**: Consideriamo in $[a,b]$ la funzione $$g(x) = (f(b)-f(a))x+(a-b)f(x)$$ Si vede facilmente che essa verifica le ipotesi del teorema di Rolle, quindi esiste $c \in ]a,b[$ tale $g'(c) = 0$. Dal fatto che $g'(x) = f(b)-f(a)+(a-b)f'(x)$ segue subito la tesi.
+ 
