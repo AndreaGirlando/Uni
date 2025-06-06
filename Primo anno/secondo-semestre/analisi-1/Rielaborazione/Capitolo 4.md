@@ -87,22 +87,61 @@ Per individuare alcune di queste proprietà sarà molto utile lo studio delle de
 ###### Conseguenza della derivata
 Ricordando il teorema sul rapporto incrementale scritto nel capitolo 1 che ci diceva che la funzione $f$ è crescente (o decrescente) nel punto $c$ se e solo se $r(x)>0$(o $r(x)<0$) in un intorno di $c$. Quindi usando le derivate possiamo affermare che se $f'(c)>0$ (o $f'(c)<0$) allora per il teorema della permanenza del segno si avrà $r(x)>0$(o $r(x)<0$) in un intorno di $c$. 
 
-###### Teoremi
-**Teorema 1 (monotonia locale):** Se $f'(c)>0$ $(\text{ oppure } f'(c)<0)$ allora $f$ è crescente (oppure decrescente) nel punto $c$, il viceversa non è vero. 
+###### Teorema 1 (monotonia locale)
+**Teorema**: Se $f'(c)>0$ $(\text{ oppure } f'(c)<0)$ allora $f$ è crescente (oppure decrescente) nel punto $c$, il viceversa non è vero. 
 - Ad esempio $f(x) = x^3$ è crescente nel punto $c = 0$ ma $f'(0) = 0$.
 
-**Teorema di Fermat**: Data una funzione $f(a,b) \to R$ sia $c \in ]a,b[$ un punto di minimo o di massimo relativo per $f$. Si supponga che $f$ sia derivabile nel punto $c$ allora si ha $f(c)' = 0$ 
+###### Teorema di Fermat
+**Teorema**: Data una funzione $f(a,b) \to R$ sia $c \in ]a,b[$ un punto di minimo o di massimo relativo per $f$. Si supponga che $f$ sia derivabile nel punto $c$ allora si ha $f(c)' = 0$ 
 **Dimostrazione**: Dato che il $c$ è interno, la derivata è il limite del rapporto incrementale sia da sinistra che da destra. il numeratore del rapporto incrementale in un intorno di $c$ ha sempre lo stesso segno sia a destra che a sinistra, mentre il denominatore è negativo a sinistra di $c$ e positivo a destra, quindi possiamo dire che:
 - $f'(c) = f'_-(c) = \lim_{x\to c^-}r(x)\le 0$ 
 - $f'(c) = f'_+(c) = \lim_{x\to c^+}r(x)\ge 0$ 
-quindi necessariamente $f'(c) = 0$. Il viceversa di questo teorema non vale infatti prendendo la funzione $f(x) = x^3$ si ha $f'(0) = 0$ ma il punto $c = 0$ non è un estremo relativo, infatti $f$ è crescente in ogni punto di $R$. Quindi il fatto che $f'(c) = 0$ è una condizione necessaria, ma non sufficiente, per l'esistenza di un estremo relativo. Infine possiamo dire che i punti $c$ tale $f'(c) = 0$  sono detti punti stazionari o critici per $f$.
+quindi necessariamente $f'(c) = 0$. Il viceversa di questo teorema non vale infatti prendendo la funzione $f(x) = x^3$ si ha $f'(0) = 0$ ma il punto $c = 0$ non è un estremo relativo, infatti $f$ è crescente in ogni punto di $R$. Quindi il fatto che $f'(c) = 0$ è una condizione necessaria, ma non sufficiente, per l'esistenza di un estremo relativo. Infine possiamo dire che i punti $c$ tale $f'(c) = 0$sono detti punti stazionari o critici per $f$.
 
-**Teorema di Rolle**: Sia $f$ una funzione reale continua nell'intervallo chiuso $[a,b]$ e derivabile in $]a,b[$ tale che $f(a) = f(b)$. Allora esiste $c \in ]a,b[$ tale che $f'(c) = 0$ 
+###### Teorema di Rolle
+**Teorema**: Sia $f$ una funzione reale continua nell'intervallo chiuso $[a,b]$ e derivabile in $]a,b[$ tale che $f(a) = f(b)$. Allora esiste $c \in ]a,b[$ tale che $f'(c) = 0$ 
 **Dimostrazione**: Per il teorema di Weierstrass $f$ è dotata di minimo e massimo assoluti:
 - $x_1$ punto di minimo assoluto
 - $x_2$ punto di massimo assoluto
 Se $x_1 = a$ e $x_2 = b$ (o viceversa) allora il minimo e il massimo assoluti della funzione sono uguali quindi $f$ è costante e la sua derivata è ovunque nulla. In caso contrario uno dei due punti $x_1,x_2$ è interno, in esso allora la derivata è nulla per il teorema di Fermat
 
-**Teorema di Lagrange**: Sia $f$ una funzione reale continua nell'intervallo $[a,b]$ e derivabile $]a,b[$. Allora esiste $c \in ]a,b[$ tale che $f(b)-f(a) = f'(c)(b-a)$ 
+###### Teorema di Lagrange
+**Teorema**: Sia $f$ una funzione reale continua nell'intervallo $[a,b]$ e derivabile $]a,b[$. Allora esiste $c \in ]a,b[$ tale che $f(b)-f(a) = f'(c)(b-a)$ 
 **Dimostrazione**: Consideriamo in $[a,b]$ la funzione $$g(x) = (f(b)-f(a))x+(a-b)f(x)$$ Si vede facilmente che essa verifica le ipotesi del teorema di Rolle, quindi esiste $c \in ]a,b[$ tale $g'(c) = 0$. Dal fatto che $g'(x) = f(b)-f(a)+(a-b)f'(x)$ segue subito la tesi.
- 
+
+###### Corollari del teorema di Lagrange
+1. **Teorema del prolungamento della derivata**: Sia data una funzione $f: (a,b)\to R$ e sia $c \in (a,b)$. Supponiamo che $f$ sia derivabile in $(a,b)\backslash\{c\}$ e che sia continua in $c$. Supponiamo inoltre che esista il $\lim_{x\to c}f'(x)$ e sia esso $l$ allora si ha $\lim_{x\to c}r(x) = l$ 
+	- **Osservazione**: Dal teorema appena enunciato segue che le funzioni $\arcsin x$ e $\arccos x$ non sono derivabili in $-1$ e $1$, infatti sono continue ma le loro derivate divergono al tendere di $x$ a tali punti.
+2. **Criterio di monotonia**: Sia data una funzione $f: (a,b) \to R$ derivabile, questa è un condizione sufficiente affinché $f$ sia crescente in $(a,b)$ è che $f'(x)\ge 0 \forall x \in (a,b)$ 
+	- **Dimostrazione**: Siano $x,y \in (a,b)$ con $x<y$. Applicando il teorema di Lagrange ad $f$ nell'intervallo $[x,y]$ si ottiene che esiste $c \in ]x,y[$ tale che $f(y)-f(x) = (y-x)f'(c)\ge 0$ da cui la tesi.
+3. **Criterio di stretta monotonia**: Sia data una funzione $f: (a,b) \to R$ derivabile. Condizione necessaria e sufficiente affinché $f$ sia strettamente crescente in $(a,b)$ è che:
+	- $f'(x)\ge0 \text{  } \forall x \in (a,b)$ 
+	- e che non esista nessun intervallo $(c,d) ⊆ (a,b)$ tale che $f'(x) = \forall x \in (c,d)$ 
+4. **Teorema sulle funzioni con derivata nulla**: Sia data una funzione $f:(a,b) \to R$ derivabile, tale che $f'(x) = 0 \text{  } \forall x \in (a,b)$, allora $f$ è costante in $(a,b)$ 
+	- **Dimostrazione**: Siano $x,y$ due punti generici di $(a,b)$ con $x<y$. Applicando il teorema di Lagrange ad $f$ nell'intervallo $[x,y]$ si ottiene l'esistenza di $c \in ]x,y[$ tale che $$f(y)-f(x) = f'(c)(y-x)$$ quindi $f(x) = f(y)$ e date che $x$ e $y$ sono arbitrari, ne segue la tesi.
+	- **Osservazione**: è importante che $f$ sia definita in un intervallo, infatti se ad esempio prendiamo la funzione definita in $[0,1] ∪ [4,5]$ ponendo $f(x) = 2$ in $[0,1]$ e $f(x) = 6$ in $[4,5]$ ha derivata nulla in tutto il suo insieme di definizione ma non è costante.
+### Metodo per lo studio dei punti stazionari
+###### Metodo:
+Sia $f$ una funzione derivabile in $(a,b)$ e sia $c\in (a,b)$ tale che $f'(c) = 0$. Dai risultati precedenti segue che $c$ può essere un punti di estremo relativo. Ricordando i criteri di monotonia segue che:
+1. se $f'(x) < 0$ in un intorno sinistro di $c$ e $f'(x)>0$ in un intorno destro di $c$, allora $c$ è un punto di minimo relativo per $f$.
+2. se $f'(x)>0$ in un intorno sinistro di $c$ e $f'(x)<0$ in un intorno destro di $c$, allora $c$ è un punto di massimo relativo per $f$.
+In pratica un punto stazionario $c$ è un punto di estremo relativo per $f$ se in corrispondenza di $c$ la derivata cambia segno. Se esiste la derivata seconda in $c$, possiamo raffinare lo studio anche utilizzando il segno della derivata seconda, e precisamente si ha:
+3. $f''(c)>0$, allora $c$ è un punto di minimo relativo per $f$
+4. $f''(c)<0$, allora $c$ è un punto di massimo relativo per $f$ 
+Infatti dato che $f''(c)$ è la derivata della funzione $f'$ nel punto $c$, se $f''(c)>0$  la funzione $f'$ è crescente nel punto $c$, in cui vale zero, quindi si avrà $f'(x)<0$ in un intorno sinistro di $c$ e $f'(x)>0$ in un intorno destro di $c$ e dal risultato "1." ne segue che $c$ è un punto di minimo relativo per $f$.   
+###### In definitiva
+se $f'(c) \not = 0$ la funzione $f$ è crescente o decrescente nel punto $c$ 
+se $f'(c) = 0$ e $f''(c) \not = 0$, $c$ è un punto di estremo relativo per $f$
+
+### Metodo per la ricerca degli estremi assoluti
+###### Metodo:
+Sia $f$ una funzione reale continua in $[a,b]$ il teorema di Weierstrass assicura l'esistenza degli estremi assoluti, per individuarli occorre determinare i seguenti insiemi:
+- $A = \{c\in]a,b[:f'(c) = 0\}$
+- $B = {c \in ]a,b[ \text{  }: \exists f'(c)}$ 
+ - $C = \{a;b\}$
+in quanto, se un punto di estremo assoluto appartiene all'interno di $[a,b]$ in tale punto la derivata, se esiste, è nulla per il teorema di Fermat: Pertanto, i punti di estremo assoluto andranno cercati o all’interno dell’intervallo, e in tal caso la derivata o non esiste oppure esiste e vale zero, oppure agli estremi dell’intervallo. Un volta determinati i tre insiemi $A, B, C$ basta calcolare i valori della funzione in tutti i punti di tali insiemi per trovare il minimo e il massimo.
+![[Pasted image 20250606110912.png]]
+
+
+### Funzioni localmente convesse
+
