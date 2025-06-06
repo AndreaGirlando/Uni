@@ -5,18 +5,44 @@
 > In corso == 🟨
 > 
 
-| Materia |                Doc                 | Fatto? |                             Note                             |
-| :-----: | :--------------------------------: | :----: | :----------------------------------------------------------: |
-| Analisi |        [[AppuntiCap1.pdf]]         |   ✅    |                         16/16 pagine                         |
-| Analisi |        [[AppuntiCap2.pdf]]         |   ✅    |                         10/10 pagine                         |
-| Analisi |        [[AppuntiCap3.pdf]]         |   🟨   |                         1/10 pagine                          |
-| Analisi |        [[AppuntiCap4.pdf]]         |   ❌    |                         0/10 pagine                          |
-| Prog 2  | Implementare virtual con le classi |   ✅    |                                                              |
-| Prog 2  |      Lista concatenata chill       |   ✅    |                                                              |
-| Prog 2  |              Template              |   ✅    |                                                              |
-|  Prog2  |           Esercizi esame           |   ❌    |                                                              |
-|  Prog2  |     Complessità computazionale     |   ❌    |            Lezione 10 pt1: ✅<br>Lezione 10 pt2: ❌            |
-|  Prog2  |      Algoritmi di ordinamento      |   ❌    | Insertion:❌<br>selection:✅<br>bubble:✅<br>merge:❌<br>quick:❌ |
+| Materia |                          Doc                           | Fatto? |      Note       |
+| :-----: | :----------------------------------------------------: | :----: | :-------------: |
+| Analisi |                  [[AppuntiCap1.pdf]]                   |   ✅    |  16/16 pagine   |
+| Analisi |                  [[AppuntiCap2.pdf]]                   |   ✅    |  10/10 pagine   |
+| Analisi |                  [[AppuntiCap3.pdf]]                   |   ✅    |  10/10 pagine   |
+| Analisi |                  [[AppuntiCap4.pdf]]                   |   🟨   |   8/10 pagine   |
+| Analisi |                  Esercizi Capitolo 1                   |   ❌    |                 |
+| Analisi |                  Esercizi Capitolo 2                   |   ❌    |                 |
+| Analisi |                  Esercizi Capitolo 3                   |   ❌    |                 |
+| Analisi |                    Derivate a spam                     |   ❌    |                 |
+| Analisi |                  Esercizi capitolo 4                   |   ❌    |                 |
+| Analisi |                   Studiare la teoria                   |   ❌    |                 |
+| Analisi |                      Exams count                       |   0    |                 |
+|         |                                                        |        |                 |
+| Inglese |               Fare e studiare fotocopie                |        |                 |
+|         |                                                        |        |                 |
+|  Prog2  |                      Bubble sort                       |   ❌    |                 |
+|  Prog2  |                     Selection sort                     |   ❌    |                 |
+|  Prog2  |                     Insertion sort                     |   ❌    |                 |
+|  Prog2  |                       Merge sort                       |   ❌    |                 |
+|  Prog2  |                       Quick sort                       |   ❌    |                 |
+|  Prog2  |               Complessità computazionale               |   ❌    |                 |
+|  Prog2  |                 Implementazione Albero                 |   ❌    |                 |
+|  Prog2  |              Ricerca binaria in un albero              |   ❌    |                 |
+|  Prog2  |             Ricerca iterativa in un albero             |   ❌    |                 |
+|  Prog2  |             Massimo e minimo in un albero              |   ❌    |                 |
+|  Prog2  |           Successore di un nodo in un albero           |   ❌    |                 |
+|  Prog2  |         Cancellazione di un nodo in un albero          |   ❌    |                 |
+|  Prog2  |                    Teoria dei grafi                    |   ❌    |                 |
+|  Prog2  | Implementazione di un Grafo <br>con lista di adiacenza |   ❌    |                 |
+|  Prog2  |                  Breadth-First-Search                  |   ❌    |                 |
+|  Prog2  |                  Breadth-first Trees                   |   ❌    |                 |
+|  Prog2  |                   Depth first-Search                   |   ❌    |                 |
+|  Prog2  |                  Depth first forests                   |   ❌    |                 |
+|  Prog2  |      Implementazione di un Grafo <br>con matrice       |   ❌    | ha senso farlo? |
+|  Prog2  |                      Exams count                       |   0    |                 |
+|         |                                                        |        |                 |
+
 
 
 ---
