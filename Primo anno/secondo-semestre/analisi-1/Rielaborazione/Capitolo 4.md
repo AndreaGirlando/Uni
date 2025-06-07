@@ -144,4 +144,57 @@ in quanto, se un punto di estremo assoluto appartiene all'interno di $[a,b]$ in 
 
 
 ### Funzioni localmente convesse
+###### Definizione
+Sia $f: (a,b) \to R$ una funzione derivabile e sia $c \in (a,b)$, ricordiamo che l'equazione della tangente al grafico di $f$ nel punto di ascissa $c$ è $y = f(c)+f'(c)(x-c)$ e questa divide il piano in due semipiani:
+- Semipiano superiore definito come: $\overline{S} = \{(x,y)\in R^2: y \ge f(c)+f'(c)(x-c)\}$  
+- Semipiano inferiore definito in modo analogo e lo indichiamo con $\underline{S}$ 
+La funzione $f$ si dice **convessa** nel punto $c$ se esiste $r>0$ tale che, se $x \in ]c-r,c+r[$ si ha: $$f(x)\ge f(c)+f'(c)(x-c)$$ ossia per tutti i punti di un opportuno intorno di $c$ il corrispondente punto del grafico appartiene a $\overline{S}$. La funzione si dice **concava** nel punto $c$ se per tutti i punti di un opportuno intorno di $c$ il corrispondente punto del grafico appartiene a $\underline{S}$. Se $f$ in $c$ non è né convessa né concava si dice che $c$ è un **punto di flesso** per $f$, hanno particolare interesse i punti di flesso detti **punti di flesso propri** che si hanno quando:
+- se $x \in ]c-r,c[$ il corrispondente punto del grafico appartiene a $\overline{S}$ 
+- se $x \in ]c,c+r[$ il corrispondente punto del grafico appartiene a $\underline{S}$ 
+Si può dimostrare che $f$ è convessa in $(a,b)$ se lo è in ogni punto.
 
+###### Teoremi
+**Teorema**: sia $f$ una funzione derivabile in $(a,b)$ e sia $c\in(a,b)$ tale che esista $f''(c)>0$. Allora $f$ è convessa in $c$ (allo stesso modo si dice che se esiste $f''(c)<0$ allora $f$ è concava in $c$.)
+**Dimostrazione**: Dobbiamo provare che in un opportuno intorno di $c$ si ha $f(x)\ge f(c)+f'(c)(x-c)$. 
+Consideriamo allora in $(a,b)$ la funzione $F(x) = f(x)-f(c)-f'(c)(x-c)$, la funzione che ci indica la distanza verticale tra $f(x)$ e la tangente in $c$ quindi ci  basterà provare che $F(x)\ge 0$ (se questo valore è positivo la nostra funzione si trova sopra la tangente) in un intorno di $c$. 
+Da questo capiamo che:
+- Si ha $F(c) = f(c)-f(c)-f'(c)(c-c) = 0$  
+- $F'(x) = f'(x)-f'(c)$ che è uguale a 0 nel punto $x = c$ 
+	- la derivata di $f(c)$ è $0$ quindi non lo scrivo
+	- la derivata di $f'(c)(x-c)$ è $f'(c)$
+- e che esiste $F''(c) = f''(c)$. $F$ ha dunque in $c$ un minimo relativo (perché la derivata prima è 0 invece la seconda è positiva)
+dunque esiste un intorno di $c$ in tutti i punti del quale si ha $F(x)\ge F(c) = 0$ come si voleva.
+
+**Continuo del teorema**: Ne segue che se esiste la derivata seconda in tutto l'intervallo $(a,b)$, gli eventuali punti di flesso vanno cercati fra i punti $c$ tali che $f''(c) = 0$ e in tal caso si ha un flesso proprio se:
+- $f''(x)<0$ in un intorno sinistro di $c$
+- $f''(x)>0$ in un intorno destri di $c$
+
+**Teorema di de l'hopital**: Siano $f,g$ due funzioni reali derivabili in $(a,b)\backslash\{c\}$ tali che:
+1. $\lim_{x\to c}f(x) = \lim_{x\to c}g(x) = 0$ oppure che $\lim_{x\to c}f(x) = \lim_{x\to c}g(x) = \infty$ 
+2. $g'(x) \not = 0 \text{  } \forall x \in (a,b)\backslash\{c\}$ 
+3. esiste il $\lim_{x\to c} \frac{f'(x)}{g'(x)} =l$ ($l \in R$ oppure $l = \pm\infty$)
+Allora, si ha: 
+- $g(x) \not = 0 \text{  } \forall x \in (a,b) \backslash \{c\}$
+- $\lim_{x\to c}\frac{f(x)}{g(x)} = l$ 
+
+> [!EXAMPLE]
+> Si voglia calcolare il $\lim_{x\to 0}x \log x$ allora si ha:
+> $x\log x = \frac{\log x}{\frac{1}{x}}$  
+> facendo la derivata otteniamo: 
+> $$\frac{\frac{1}{x}}{-\frac{1}{x^2}} = \frac{1}{x} \times -x^2 = -x \to 0$$
+> quindi possiamo concludere che il limite richiesto vale zero
+
+Questo teorema può essere utile anche nella ricerca degli asintoti obliqui. Supponendo infatti che: 
+- $\lim_{x\to +\infty}$ $f(x)  = \infty$ 
+- $\lim_{x\to +\infty}$ $f'(x)  = m \in R$ 
+allora si avrà $\lim_{x\to +\infty}\frac{f(x)}{x} = \lim_{x\to +\infty}\frac{f'(x)}{1} = m$ 
+dove $m$ è il coefficiente angolare dell'eventuale asintoto obliquo
+
+Ovviamente ci sono dei casi in cui questo teorema non va usato:
+1. $\lim_{x\to 0} \frac{sinx}{x}$ il rapporto delle derivate tende ad 1 ma non è opportuno applicare questo teorema in quanto per calcolare la derivata di $\sin x$ era già necessario conoscere tale limite.  
+> [!quote]
+> Se non vi ricordate il risultato di qualche limite notevole potete usare de l'hopital basta che non lo vedo io (by Ornella Naselli)
+
+2. $\lim_{x\to \infty} \frac{2^x}{3^x}$. il limite vale zero, come si vede subito riscrivendo la funzione nella forma $(\frac{2}{3})^x$. Il rapporto delle derivate non è di nessun aiuto in quanto vale $\frac{2^x}{3^x}\times\frac{\log 2}{\log 3}$.
+Precisiamo infine che in alcuni casi il limite di $\frac{f(x)}{g(x)}$ esiste anche se non esiste il limite di $\frac{f'(x)}{g'(x)}$ il teorema fornisce dunque una condizione sufficiente ma non necessaria. 
+Consideriamo ad esempio, per $x \to 0$ la coppia di funzioni $f(x) = x^2\sin\frac{1}{x}g(x) = x$. Il loro rapporto è $x\sin \frac{1}{x}$ che tende a zero. Il rapporto delle derivate è $2x\sin\frac{1}{x}-\cos\frac{1}{x}$ che al tendere di $x$ a $0$ non è regolare. 

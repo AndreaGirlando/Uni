@@ -10,7 +10,7 @@
 | Analisi |                  [[AppuntiCap1.pdf]]                   |   ✅    |  16/16 pagine   |
 | Analisi |                  [[AppuntiCap2.pdf]]                   |   ✅    |  10/10 pagine   |
 | Analisi |                  [[AppuntiCap3.pdf]]                   |   ✅    |  10/10 pagine   |
-| Analisi |                  [[AppuntiCap4.pdf]]                   |   🟨   |   8/10 pagine   |
+| Analisi |                  [[AppuntiCap4.pdf]]                   |   ✅    |  10/10 pagine   |
 | Analisi |                  Esercizi Capitolo 1                   |   ❌    |                 |
 | Analisi |                  Esercizi Capitolo 2                   |   ❌    |                 |
 | Analisi |                  Esercizi Capitolo 3                   |   ❌    |                 |
