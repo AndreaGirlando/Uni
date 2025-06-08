@@ -19,18 +19,19 @@
 | Analisi |                   Studiare la teoria                   |   ❌    |                 |
 | Analisi |                      Exams count                       |   0    |                 |
 |         |                                                        |        |                 |
-| Inglese |               Fare e studiare fotocopie                |        |                 |
+| Inglese |                     Fare fotocopie                     |   ✅    |                 |
+| Inglese |                   Studiare fotocopie                   |   ❌    |                 |
 |         |                                                        |        |                 |
-|  Prog2  |                      Bubble sort                       |   ❌    |                 |
-|  Prog2  |                     Selection sort                     |   ❌    |                 |
-|  Prog2  |                     Insertion sort                     |   ❌    |                 |
-|  Prog2  |                       Merge sort                       |   ❌    |                 |
-|  Prog2  |                       Quick sort                       |   ❌    |                 |
+|  Prog2  |                      Bubble sort                       |   ✅    |                 |
+|  Prog2  |                     Selection sort                     |   ✅    |                 |
+|  Prog2  |                     Insertion sort                     |   ✅    |                 |
+|  Prog2  |                       Merge sort                       |   ✅    |                 |
+|  Prog2  |                       Quick sort                       |   ✅    |                 |
 |  Prog2  |               Complessità computazionale               |   ❌    |                 |
-|  Prog2  |                 Implementazione Albero                 |   ❌    |                 |
-|  Prog2  |              Ricerca binaria in un albero              |   ❌    |                 |
-|  Prog2  |             Ricerca iterativa in un albero             |   ❌    |                 |
-|  Prog2  |             Massimo e minimo in un albero              |   ❌    |                 |
+|  Prog2  |                 Implementazione Albero                 |   ✅    |                 |
+|  Prog2  |              Ricerca binaria in un albero              |   ✅    |                 |
+|  Prog2  |             Ricerca iterativa in un albero             |   ✅    |                 |
+|  Prog2  |             Massimo e minimo in un albero              |   ✅    |                 |
 |  Prog2  |           Successore di un nodo in un albero           |   ❌    |                 |
 |  Prog2  |         Cancellazione di un nodo in un albero          |   ❌    |                 |
 |  Prog2  |                    Teoria dei grafi                    |   ❌    |                 |
