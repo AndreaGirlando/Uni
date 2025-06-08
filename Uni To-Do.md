@@ -1,4 +1,4 @@
-
+	
 > [!Legenda]
 > Ancora da fare == ❌ 
 > Già fatto == ✅
