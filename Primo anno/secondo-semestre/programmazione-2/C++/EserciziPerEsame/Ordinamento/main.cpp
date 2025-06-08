@@ -64,10 +64,8 @@ void quickSort(int* array, size_t startIndex, size_t endIndex){
 
     //* obiettivo: cercare la corretta del pivot dentro il nostro array
     //? lo facciamo cercando e contando tutti gli elementi più piccoli
-    while (j < endIndex) //j scorre fino a quando non raggiunge il pivot
-    {
-        if (array[j] <= pivot) // se incontra un valore più piccolo del pivot
-        {
+    while (j < endIndex){ //j scorre fino a quando non raggiunge il pivot
+        if (array[j] <= pivot){ // se incontra un valore più piccolo del pivot
             i++; //counter elementi più piccoli del pivot, indice dove deve essere inserito l'elemento < pivot
             scambia(array[i], array[j]); // l'elemento i posizione j va in posizione i (che è l'indice dove inserire gli elementi < pivot)
         }
@@ -100,8 +98,7 @@ void merge(int* array, size_t left, size_t mid, size_t right){
     size_t indexTemp = 0;          // indice per il vettore temporaneo
 
     // Fusione dei due vettori dentro tempArray con annesso ordinamento
-    while ((indexTemp < tempSize) && (indexLeft <= mid) && (indexRight <= right))
-    {
+    while ((indexTemp < tempSize) && (indexLeft <= mid) && (indexRight <= right)){
         if (array[indexLeft] < array[indexRight]){ // se è vera vuol dire che devo inserire prima array[indexLeft] dentro tempArray
             tempArray[indexTemp] = array[indexLeft];
             indexLeft++;
