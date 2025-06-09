@@ -406,17 +406,6 @@ Di seguito un po' di osservazioni sulle funzioni elementari:
   
 
 
-
-
-
-
-
-
-
-
-
-
-
 --- 
 
 
