@@ -147,7 +147,7 @@ Sia $X$ un insieme numerico, di seguito varie nozioni di topologia:
 - **Punto interno**: $c \in X$ è detto punto interno se esiste un $r>0$ tale che $]c-r,c++r[$ $⊆ X$, indichiamo con $int(X)$ l'insieme dei punti interni.
 	- Osserviamo che se $X$ è un intervallo $(a,b)$, i punti interni sono i tutti e soli punti dell'intervallo aperto $]a,b[$ 
 - **Punto di frontiera**: un numero reale $c$ è detto *punto di frontiera* per $X$ se per ogni $r>0$ nell'intorno $]c-r,c++r[$ ci sono elementi di $X$ che elementi di $R \textbackslash X$ 
-- **Punto di accumulazione**: un numero reale $c$ è detto punti di accumulazione per $X$ se, per ogni $r>0$ nell'intorno $]c-r,c++r[$ ci sono elementi diversi da $c$. L'insieme dei punti di accumulazione di accumulazione si denota con $D(X)$ 
+- **Punto di accumulazione**: un numero reale $c$ è detto punto di accumulazione per $X$ se, per ogni $r>0$ nell'intorno $]c-r,c+r[$ ci sono elementi di $X$ diversi da $c$. L'insieme dei punti di accumulazione di accumulazione si denota con $D(X)$ 
 - **Insieme aperto**: $X$ si dice *aperto* se è vuoto oppure quando $X = int(X)$ 
 - **Insieme chiuso**: L’insieme $X$ è detto *chiuso* se il suo complementare $R \backslash X$ è aperto. Si definisce chiusura di $X$ l'insieme $\overline{X} = X ∪ D(X)$ ovvero un insieme si dice chiuso se e solo se contiene tutti i suoi punti di frontiera  
 **Osservazioni:** 
@@ -219,7 +219,7 @@ Dato $z = (a,b) \in C$:
 - $|z| = \sqrt{a^2+b^2}$ modulo di $z$
 
 > [!TIP]
-> Presa un'unita reale $x = (x,0)$ il suo modulo è: $|x| = \sqrt{x^2+0^2} = x$  
+> Presa un'unita reale $x = (x,0)$ il suo modulo è: $|x| = \sqrt{x^2+0^2}$  
 
 ###### Introduciamo le operazioni
 - $(a,b)+ (c,d) = (a+b,c+d)$ somma
@@ -365,16 +365,12 @@ $$epi(f) = \{ (x,y) \in R^2 x(a,b), y \ge f(x) \}$$
 
 Si prova che la funzione f è convessa se e solo se $epi(f )$ e un sottoinsieme convesso di $R^2$, cioè, se contiene due punti, contiene anche il segmento che li congiunge.
 
-
-> [!TIP]
-> Prendi due punti qualsiasi sul grafico della funzione, ad esempio $A = (x_1, f(x_1)$ e $B = (x_2, f(x_2)$. Ora disegna il segmento rettilineo che li collega. Se la funzione è convessa, allora tutti i punti su quel segmento si trovano al di sopra (o esattamente sul) grafico della funzione tra $x_1​$ e $x_2​$.
-
 ###### Funzioni elementari
 Di seguito alcune funzioni che nascono dalle operazioni definite in $R$ dette funzioni elementari, la funzione inversa di una funzione elementare è anche essa elementare.
 - **Funzione constante**: Se $k \in R$ la funzione $f(x) = k$ è definita in $]-\infty, +\infty[$  
 - **Funzione identità**: funzione $f(x) = x$ è definita in $]-\infty,\infty[$
 - **Funzione potenza con esponente intero positivo**: Se $n\in N$ la funzione $f(x) = x^n$ è definita in $]-\infty,\infty[$ 
-- **Funzione potenza con esponente intero negativo**: Se $n\in N$ la funzione $f(x) = x^{-n}$ è definita in $]-\infty,\infty[$ 
+- **Funzione potenza con esponente intero negativo**: Se $n\in N$ la funzione $f(x) = x^{-n}$ è definita in $]-\infty,\infty[ \backslash \{0\}$  
 - **Funzione con esponente razionale**: se $\frac{m}{n} \in Q$, la funzione $f(x) = x^\frac{m}{n} = (\sqrt[n]{x})^m$ ed è definita in:
 	- in $[0,+\infty[$ se $\frac{m}{n}>0$
 	- in $]0,+\infty[$ se $\frac{m}{n}<0$
@@ -423,4 +419,27 @@ Di seguito un po' di osservazioni sulle funzioni elementari:
 | 6   | $\cos(a + b) = \cos a \cos b - \sin a \sin b$ | Formula della somma per il coseno      |
 | 7   | $\sin(a - b) = \sin a \cos b - \cos a \sin b$ | Formula della differenza per il seno   |
 | 8   | $\cos(a - b) = \cos a \cos b + \sin a \sin b$ | Formula della differenza per il coseno |
+
+###### Formule utili per il calcolo del dominio
+| Tipo di funzione            | Forma                                  | Dominio                                                                       | Note                             |
+| --------------------------- | -------------------------------------- | ----------------------------------------------------------------------------- | -------------------------------- |
+| Costante                    | $f(x) = k$                             | $\mathbb{R}$                                                                  | Definita ovunque                 |
+| Identità                    | $f(x) = x$                             | $\mathbb{R}$                                                                  |                                  |
+| Polinomiale                 | $f(x) = a_nx^n + \dots + a_0$          | $\mathbb{R}$                                                                  |                                  |
+| Potenza $n \in \mathbb{N}$  | $f(x) = x^n$                           | $\mathbb{R}$                                                                  |                                  |
+| Potenza negativa            | $f(x) = x^{-n}$                        | $\mathbb{R} \setminus \{0\}$                                                  | Denominatore diverso da 0        |
+| Potenza razionale (pari)    | $f(x) = x^{\frac{m}{n}},\ n$ pari      | $[0,+\infty)$ se $\frac{m}{n} > 0$ <br> $]0,+\infty[$ se $\frac{m}{n} < 0$    | Dipende dal segno dell’esponente |
+| Potenza razionale (dispari) | $f(x) = x^{\frac{m}{n}},\ n$ dispari   | $\mathbb{R}$                                                                  |                                  |
+| Potenza irrazionale         | $f(x) = x^s$ con $s \notin \mathbb{Q}$ | $[0,+\infty)$ se $s \geq 0$ <br> $]0,+\infty[$ se $s < 0$                     |                                  |
+| Radice $n$-esima (pari)     | $f(x) = \sqrt[n]{x}$ con $n$ pari      | $[0,+\infty)$                                                                 |                                  |
+| Radice $n$-esima (dispari)  | $f(x) = \sqrt[n]{x}$ con $n$ dispari   | $\mathbb{R}$                                                                  |                                  |
+| Esponenziale                | $f(x) = a^x$                           | $\mathbb{R}$                                                                  | $a > 0,\ a \ne 1$                |
+| Logaritmica                 | $f(x) = \log_a x$                      | $]0,+\infty[$                                                                 | $a > 0,\ a \ne 1$                |
+| Seno                        | $f(x) = \sin x$                        | $\mathbb{R}$                                                                  | Periodica                        |
+| Coseno                      | $f(x) = \cos x$                        | $\mathbb{R}$                                                                  | Periodica                        |
+| Tangente                    | $f(x) = \tan x$                        | $\mathbb{R} \setminus \left\{\frac{\pi}{2} + k\pi\right\},\ k \in \mathbb{Z}$ |                                  |
+| Arcoseno                    | $f(x) = \arcsin x$                     | $[-1,1]$                                                                      | Inversa del seno                 |
+| Arcocoseno                  | $f(x) = \arccos x$                     | $[-1,1]$                                                                      | Inversa del coseno               |
+| Arcotangente                | $f(x) = \arctan x$                     | $\mathbb{R}$                                                                  | Inversa della tangente           |
+| Razionale fratta            | $f(x) = \frac{P(x)}{Q(x)}$             | $\mathbb{R} \setminus \{x : Q(x) = 0\}$                                       | Denominatore diverso da 0        |
 
