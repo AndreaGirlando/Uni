@@ -23,6 +23,9 @@ ostream& operator<<(ostream& stream, Nodo& nodo){
 class Albero{
     public:
         Albero(Nodo* _root = nullptr):root(_root){}
+        ~Albero(){
+            deleteAlberoRecursive(root);
+        }
         Albero& inserisciNodo(Nodo* newNodo);
 
         Nodo* ricercaBinaria(int n){
@@ -44,29 +47,37 @@ class Albero{
             return nullptr;
         }
 
-        int Max(){
-            Nodo* tempRoot = root;
-            int max = root->n;
-            while(tempRoot != nullptr){
-                max = tempRoot->n;
-                tempRoot = tempRoot->dx;
-            }
-
-            return max;
+        Nodo* Max(){
+            return Max(root);
         }
-        int Min(){
-            Nodo* tempRoot = root;
-            int min = root->n;
-            while(tempRoot != nullptr){
-                min = tempRoot->n;
-                tempRoot = tempRoot->sx;
-            }
-
-            return min;
+        Nodo* Min(){
+            return Min(root);
         }
+
+        Nodo* nextNodo(Nodo* temp){
+            if(temp == nullptr) { return temp; }
+
+            if(temp->dx != nullptr){
+                return Min(temp->dx);
+            }else{
+                Nodo* padre = temp->padre;
+                while(padre != nullptr && temp == padre->dx){
+                    temp = padre;
+                    padre = padre->padre;
+                }
+                return padre;
+            }
+        }
+
         void printAlbero();
     private:
         void printAlberoRecursive(string prefix,Nodo* temp);
+        void deleteAlberoRecursive(Nodo* temp){
+            if(temp == nullptr) return;
+            deleteAlberoRecursive(temp->sx);
+            deleteAlberoRecursive(temp->dx);
+            delete temp;
+        }
         Nodo* ricercaBinaria(Nodo* nodo, int n){
             if(nodo == nullptr || nodo->n == n) return nodo;
             if(n > nodo->n){
@@ -74,6 +85,24 @@ class Albero{
             }else{
                 return ricercaBinaria(nodo->sx, n);
             }
+        }
+        Nodo* Max(Nodo* tempRoot){
+            Nodo* max = root;
+            while(tempRoot != nullptr){
+                max = tempRoot;
+                tempRoot = tempRoot->dx;
+            }
+
+            return max;
+        }
+        Nodo* Min(Nodo* tempRoot){
+            Nodo* min = root;
+            while(tempRoot != nullptr){
+                min = tempRoot;
+                tempRoot = tempRoot->sx;
+            }
+
+            return min;
         }
         Nodo* root;
 
@@ -128,12 +157,15 @@ int main(){
     tree.inserisciNodo(new Nodo(5)).inserisciNodo(new Nodo(1)).inserisciNodo(new Nodo(6)).inserisciNodo(new Nodo(2)).inserisciNodo(new Nodo(1)).inserisciNodo(new Nodo(8));
     tree.inserisciNodo(new Nodo(45)).inserisciNodo(new Nodo(15)).inserisciNodo(new Nodo(26)).inserisciNodo(new Nodo(62)).inserisciNodo(new Nodo(21)).inserisciNodo(new Nodo(18));
 
-    cout << "Il massimo è: " << tree.Max() << endl;
-    cout << "Il minimo è: " << tree.Min() << endl;
+    cout << "Il massimo è: " << *(tree.Max()) << endl;
+    cout << "Il minimo è: " << *(tree.Min()) << endl;
 
 
-    cout << *(tree.ricercaIterativa(15)) << endl;
-    cout << *(tree.ricercaBinaria(1)) << endl;
+    // cout << *(tree.ricercaIterativa(15)) << endl;
+    // cout << *(tree.ricercaBinaria(1)) << endl;
+
+
+    cout << *(tree.nextNodo(tree.ricercaIterativa(15))) << endl;
 
     // tree.printAlbero();
     cout << "\n\n\n";
