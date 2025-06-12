@@ -34,7 +34,7 @@
 |  Prog2  |             Massimo e minimo in un albero              |   ✅    |                 |
 |  Prog2  |           Successore di un nodo in un albero           |   ✅    |                 |
 |  Prog2  |                 Distruttore del albero                 |   ✅    |                 |
-|  Prog2  |         Cancellazione di un nodo in un albero          |   ❌    |                 |
+|  Prog2  |         Cancellazione di un nodo in un albero          |   ✅    |                 |
 |  Prog2  |                    Teoria dei grafi                    |   ❌    |                 |
 |  Prog2  | Implementazione di un Grafo <br>con lista di adiacenza |   ❌    |                 |
 |  Prog2  |                  Breadth-First-Search                  |   ❌    |                 |
