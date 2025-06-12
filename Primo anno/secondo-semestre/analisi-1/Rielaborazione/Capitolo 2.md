@@ -195,9 +195,9 @@ Date due successioni $\{a_n\}$ e $\{b_n\}$ con $b_n \not= 0$ **D**, prendiamo in
 Alcune successioni sono espresse mediante funzioni elementari, e qui vediamo le più comuni:
 ###### Successione potenza
 ovvero $\{n^x\} \text{ con } x \in R$
-	- Se $x = 0$ la successione è costante
-	- Se $x > 0$ si ha $n^x \rightarrow +\infty$
-	- Se $x<0$ si ha $x^n = \frac{1}{n^{-x}} \rightarrow 0$
+- Se $x = 0$ la successione è costante
+- Se $x > 0$ si ha $n^x \rightarrow +\infty$
+- Se $x<0$ si ha $n^x = \frac{1}{n^{-x}} \rightarrow 0$
 ###### Successione in forma di polinomio
 ovvero $x_n = a_0n^p+a_1n^{p-1}+\cdots+a_p$  che per semplicità si trasforma in: $$x_n = n^p(a_0+\frac{a_1}{n}+\cdots+\frac{a_p}{n^p})$$ e si ha che $n^p \rightarrow +\infty$ mentre la quantità fra parentesi tende ad $a_0$ quindi:
 - $x_n \rightarrow +\infty$ se $a_0 >0$
@@ -209,7 +209,7 @@ ovvero $x_n = a_0n^p+a_1n^{p-1}+\cdots+a_p$  che per semplicità si trasforma in
 ^78c31d
 
 ###### Successione in forma di funzione razionale
-ovvero $x_n = \frac{a_0n^p+a_1n^{p-1}+\cdots+a_p}{b_0n^p+b_1n^{p-1}+\cdots+b_p}$ che possiamo scrivere anche come: $$x_n = n^{p-q} \frac{a_0+\frac{a_1}{n}+\cdots+\frac{a_p}{n^p}}{b_0+\frac{b_1}{n}+\cdots+\frac{b_p}{n^p}}$$usando quello che abbiamo detto per le successioni in forma di polinomio possiamo affermare che:
+ovvero $x_n = \frac{a_0n^p+a_1n^{p-1}+\cdots+a_p}{b_0n^q+b_1n^{q-1}+\cdots+b_q}$ che possiamo scrivere anche come: $$x_n = n^{p-q} \frac{a_0+\frac{a_1}{n}+\cdots+\frac{a_p}{n^p}}{b_0+\frac{b_1}{n}+\cdots+\frac{b_q}{n^q}}$$usando quello che abbiamo detto per le successioni in forma di polinomio possiamo affermare che:
     1. se $p = q$ si ha $x_n \rightarrow \frac{a_0}{b_0}$
     2. se $p<q$ si ha $x_n \rightarrow 0$
     3. se $p>q$ si ha $x_n \rightarrow +\infty$ se $a_0$ e $b_0$ hanno lo stesso segno
@@ -225,7 +225,7 @@ ovvero $x_n = \frac{a_0n^p+a_1n^{p-1}+\cdots+a_p}{b_0n^p+b_1n^{p-1}+\cdots+b_p}$
 > 	- $p > q$ e $a_0$ e $b_0$ hanno segno uguale quindi 3 regola
 > - $\frac{2n^2 + 5n + 3}{8 - 3n} \to -\infty$
 > 	- $p > q$ e $a_0$ e $b_0$ hanno segno diverso quindi 4 regola
-> - $\frac{2n^2 + 8}{8 - n^2} \to -\infty$
+> - $\frac{2n^2 + 8}{8 - n^2} \to -2$
 > 	- $p > q$ e $a_0$ e $b_0$ hanno segno diverso quindi 4 regola
 > - $\frac{2n^2 - 5n^3 + 3}{8 - n^2} \to +\infty$
 > 	- $p > q$ e $a_0$ e $b_0$ hanno segno uguale quindi 3 regola
@@ -259,7 +259,7 @@ questo tipo di successioni si basano su questa
 		   - Basta osservare che $log_ax_n =(\log_a\frac{1}{a})(\log_{\frac{1}{a}}x_n) = -\log_{\frac{1}{a}} x_n$
 	   - $a<1,x_n\to+0\Rightarrow \log_a x_n \to +\infty$
 		   - Basta osservare che $log_ax_n =(\log_a\frac{1}{a})(\log_{\frac{1}{a}}x_n) = -\log_{\frac{1}{a}} x_n$
-	3. Successione del tipo $(a_n)^{b_n}$ essendo $a_n > 0$ per ogni $n$.  Questa successione si scrive nella forma $(a_n)^{b_n} = e^{\log((a_n)^{b_n})} = e^{b_n \log a_n}$ e in questa forma ci si può ricondurre ai casi $1$, $2$.  Si avranno forme indeterminate se il prodotto $b_n \log a_n$ si presenta nella forma $0 \cdot \infty$ .
+	1. Successione del tipo $(a_n)^{b_n}$ essendo $a_n > 0$ per ogni $n$.  Questa successione si scrive nella forma $(a_n)^{b_n} = e^{\log((a_n)^{b_n})} = e^{b_n \log a_n}$ e in questa forma ci si può ricondurre ai casi $1$, $2$.  Si avranno forme indeterminate se il prodotto $b_n \log a_n$ si presenta nella forma $0 \cdot \infty$ .
 ### Il numero e
 ###### Definizione
 Consideriamo una successione del tipo: $a_n = (1+\frac{1}{n})^n$  si può dimostrate che è strettamente crescente per un numero $a_n<3$ $\forall n$ quindi converge ad un numero $<3$ chiamato $e$ che di solito viene definito cosi:
@@ -271,7 +271,7 @@ Da questo possiamo dedurre i seguenti limiti:
 4. sia $a_n \to 0$ allora la successione $\{\frac{\sin a_n}{a_n}\}$ allora definitivamente si ha che $|a_n|<\frac{\pi}{2}$
 
 ###### Altri limiti notevoli
-In caso di funzioni trigonometriche abbiamo i seguenti limiti notevoli:
+In caso di funzioni trigonometriche abbiamo i seguenti limiti notevoli (considerando una successione che tende a 0):
 - $\frac{\sin a_n}{a_n} \to 1$ 
 - $\frac{\tan a_n}{a_n} \to 1$ 
 - $\frac{\arcsin a_n}{a_n} \to 1$ 

@@ -107,18 +107,18 @@ di seguito alcuni casi in cui non è vera questa condizione:
 > - $\lim_{x \to +\infty} \left( x^2 - 2x^3 + 1 \right) = -\infty$
 > - $\lim_{x \to -\infty} \left( x^4 - 2x^3 + 1 \right) = +\infty$
 > - $\lim_{x \to -\infty} \left( x^5 - 2x^4 + 1 \right) = -\infty$
-> - $\lim_{x \to -\infty} \left( x^4 - 2x^6 + 1 \right) = +\infty$
+> - $\lim_{x \to -\infty} \left( x^4 - 2x^6 + 1 \right) = -\infty$
 > - $\lim_{x \to -\infty} \left( x^4 - 2x^7 + 1 \right) = -\infty$
 
-5. **Funzioni razionali fratte**: Consideriamo la funzione $f(x)$ definita così: $$f(x) = \frac{a_0x^n+a_1x^{n-1}+\cdots+a_n}{b_0x^m+b_1x^{m-1}+\cdots+b_m}$$ per poter analizzare il limite di questa funzione dobbiamo distinguere vari casi:
+5. **Funzioni razionali fratte**: Consideriamo la funzione $f(x)$ definita così: $$f(x) = \frac{a_0x^n+a_1x^{n-1}+\cdots+a_n}{b_0x^m+b_1x^{m-1}+\cdots+b_m}$$per poter analizzare il limite di questa funzione dobbiamo distinguere vari casi:
 	- *se n>m*  al tendere di $x \to\pm\infty$ la funzione diverge e per capire il segno dobbiamo esaminare il segno del numeratore e denominatore
 	- *se n = m* $\lim_{x\to+\infty}f(x) = \lim_{x\to+\infty}f(x) = \frac{a_0}{b_0}$    
 	- se *n<m* $\lim_{x\to+\infty}f(x) = \lim_{x\to+\infty}f(x) = 0$ 
 
 > [!EXAMPLE]
 > - $\lim_{x\to+\infty}\frac{(2x-2)^3}{4-x^3} = -8$   caso $n = m$
-> - $\lim_{x\to-\infty}\frac{2-x}{x^3+5} = \infty$ caso $n>m$
-> - $\lim_{x\to-\infty}\frac{x^5+2}{x-1} = 0$ caso $n<m$
+> - $\lim_{x\to-\infty}\frac{2-x}{x^3+5} = 0$ caso $n<m$
+> - $\lim_{x\to-\infty}\frac{x^5+2}{x-1} = +\infty$ caso $n>m$
 
 ### Alcuni limiti notevoli
 ###### Limiti notevoli con funzioni trigonometriche
