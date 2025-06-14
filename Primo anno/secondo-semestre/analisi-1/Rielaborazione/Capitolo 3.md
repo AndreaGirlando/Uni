@@ -111,9 +111,9 @@ di seguito alcuni casi in cui non è vera questa condizione:
 > - $\lim_{x \to -\infty} \left( x^4 - 2x^7 + 1 \right) = -\infty$
 
 5. **Funzioni razionali fratte**: Consideriamo la funzione $f(x)$ definita così: $$f(x) = \frac{a_0x^n+a_1x^{n-1}+\cdots+a_n}{b_0x^m+b_1x^{m-1}+\cdots+b_m}$$per poter analizzare il limite di questa funzione dobbiamo distinguere vari casi:
-	- *se n>m*  al tendere di $x \to\pm\infty$ la funzione diverge e per capire il segno dobbiamo esaminare il segno del numeratore e denominatore
-	- *se n = m* $\lim_{x\to+\infty}f(x) = \lim_{x\to+\infty}f(x) = \frac{a_0}{b_0}$    
-	- se *n<m* $\lim_{x\to+\infty}f(x) = \lim_{x\to+\infty}f(x) = 0$ 
+	- *se n>m*  al tendere di $x \to\pm\infty$ la funzione diverge e per capire il segno dobbiamo esaminare il segno del numeratore e denominatore e moltiplicarlo per il segno di $\infty$ 
+	- *se n = m* $\lim_{x\to+\infty}f(x) = \lim_{x\to-\infty}f(x) = \frac{a_0}{b_0}$    
+	- se *n<m* $\lim_{x\to+\infty}f(x) = \lim_{x\to-\infty}f(x) = 0$ 
 
 > [!EXAMPLE]
 > - $\lim_{x\to+\infty}\frac{(2x-2)^3}{4-x^3} = -8$   caso $n = m$
@@ -246,7 +246,7 @@ L'assurdo è dunque trovato.
 	1. Se $f$ è crescente la sua immagine è l'intervallo $[f(a),f(b)]$ 
 	2. Se $f$ è decrescente la sua immagine è l'intervallo $[f(b),f(a)]$
    In generale, se $f$ è una funzione continua in un intervallo generico $(a,b)$ la sua immagine è l'intervallo $(\inf_{(a,b)}f(x), sup_{(a,b)}f(x)$  
-2. **Continuità della funzione inversa**: sia $f: [a,b] \to [f(a),f(b)]$ una funzione strettamente crescente e continua (può essere anche descrescente). Allora la sua inversa è continua.
+2. **Continuità della funzione inversa**: sia $f: [a,b] \to [f(a),f(b)]$ una funzione strettamente crescente e continua (può essere anche decrescente). Allora la sua inversa è continua.
 3. **Continuità delle funzioni elementari**: tutte le funzioni elementari che abbiamo introdotto sono continue nei rispettivi insiemi di definizione. Sia infatti $c$ un punto dell'insieme di definizione di $f$. Se $c$ è contenuto in un intervallo in cui $f$ è monotona, la continuità in $c$ segue dal teorema di continuità delle funzioni monotone, in caso contrario il limite destro e sinistro coincidono
 
 ### Punti di discontinuità
