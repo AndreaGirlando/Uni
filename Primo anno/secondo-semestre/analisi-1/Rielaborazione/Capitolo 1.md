@@ -341,6 +341,7 @@ Sia data una funzione $f: (a,b) \rightarrow R$ si dice che questa è monotona se
 - **strettamente crescente**: se $x < y \Rightarrow f(x) < f(y)$
 - **decrescente**: se $x<y \Rightarrow f(x) \ge f(y)$
 - **strettamente decrescente**: se $x<y \Rightarrow f(x) > f(y)$
+Notiamo subito che una funzione strettamente monotona è iniettiva, quindi invertibile. Si vede facilmente che anche la sua funzione inversa gode dello stesso tipo di monotonia.
 Possiamo introdurre anche il concetto di monotonia locale, ovvero dato una punto $c \in (a,b)$ si dice che la funzione è crescente nel punto $c$ se esiste $s>0$ tale che:
 - se $x \in ]c-s,c[$ si ha $f(x)<f(c)$
 - se $x \in ]c,c+s[$ si ha $f(x)>f(c)$ 
