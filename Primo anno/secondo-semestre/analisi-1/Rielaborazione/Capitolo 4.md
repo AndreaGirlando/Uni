@@ -205,3 +205,4 @@ Consideriamo ad esempio, per $x \to 0$ la coppia di funzioni $f(x) = x^2\sin\fra
 > Esercizi di esempio
 > ![[Pasted image 20250609144432.png]]
 > ![[Pasted image 20250609144442.png]]
+> ![[Pasted image 20250615102458.png]]

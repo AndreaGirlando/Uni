@@ -1,1 +1,0 @@
-$\overline{z}^2+|z|^2-2z^2\overline{z}^2$   
