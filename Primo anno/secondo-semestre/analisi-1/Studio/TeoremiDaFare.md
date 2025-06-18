@@ -28,29 +28,12 @@ Quindi possiamo dire che:
 
 ---
 ### Capitolo 2
-**Teorema dell'unicità del limite**: se una successione converge, il suo limite è unico
-**Dimostrazione**: Supponiamo per assurdo che esistano 2 limiti: $a_n \rightarrow l$ e $a_n \rightarrow L$ con $l<L$. Scelto un $\epsilon$ tale che $0<\epsilon<\frac{L-l}{2}$, allora abbiamo la seguente disequazione: $$a_n<l+\epsilon < L-\epsilon < a_n$$ come possiamo notare abbiamo $a_n < a_n$ che è un assurdità.
-
 ---
-
-**Teorema della permanenza del segno**: Se $a_n \rightarrow l>0$ (o $l<0$) allora si ha definitivamente $a_n >0$ (o $a_n<0$)
-**Teorema non in matematichese**: questa cosa significa che se $l>0$ (o $l<0$) allora prima o poi nella successione anche $a_n$ sarà $> 0$ (o $<0$)
-**Dimostrazione**: Supponiamo $l>0$. Scelto $\epsilon$ tale che $0<\epsilon<l$ allora definitivamente si ha $a_n>l-\epsilon>0$ (il caso $l<0$ si prova in modo simile)
-Generalizzando possiamo dire che: ^4215e5
-- preso un numero $h$ e $a_n \rightarrow l$ con $h<l$ allora definitivamente si ha che $a_n > h$
-- preso un numero $k$ e $a_n \rightarrow l$ con $k>l$ allora definitivamente si ha che $a_n<k$
-
----
-**Teorema di confronto per successioni convergenti**: Se $a_n<b_n<c_n$ per ogni $n \in N$ e $a_n \rightarrow l$, $c_n \rightarrow l$ allora $b_n \rightarrow l$
-**Teorema non in matematichese**: se le successioni $a_n$ e $c_n$ tendono ad $l$ e sappiamo che un terza successione $b_n$ è compresa tra $a_n$ e $c_n$ per ogni $n \in N$ allora anche queste tende a $l$
-**Dimostrazione**: per la definizione di limite sappiamo che definitivamente si ha:
-- $l-\epsilon < a_n < l+\epsilon$
-- $l-\epsilon < c_n < l+\epsilon$
-allora si ha sicuramente che: $$l-\epsilon < a_n<b_n<c_n < l+\epsilon$$
----
-**Teorema di confronto per successioni divergenti**: Se $a_n \le b_n$ per ogni $n \in N$ e $a_n \rightarrow +\infty$ allora $b_n \rightarrow +\infty$ oppure se $b_n \rightarrow -\infty$ allora $a_n \rightarrow -\infty$
-**Teorema non in matematichese**: se la successione $a_n$ è sempre più piccola di $b_n$ allora se $a_n\rightarrow +\infty$ anche $b_n \rightarrow \infty$ (anche l'altro caso funziona allo stesso modo)
-**Dimostrazione**: Se $a_n \rightarrow +\infty$ allora definitivamente si ha $a_n>k$ ne segue che $b_n \ge a_n >k$ (l'altro caso si prova in modo analogo)
+**Teorema**: Sia $f: (a,b)\to R$ una funzione strettamente crescente in $(a,b)$ allora possiamo dire che:
+- per ogni $c \in ]a,b[$ esistono i limiti destro e sinistro di $f$ al tendere di $x$ a $c$ e si ha che $$l^- = \lim_{x\to c^-} f(x) = \sup_{(a,c[} \text{ } f(x) \le f(c) \le l^+ = \lim_{x\to c^+} f(x) = \inf_{]c,b)}f(x)$$
+- esistono i limiti di $f$ al tendere di $x$ ad $a$ e a $b$ e si ha:
+	- $l^+ = \lim_{x\to a}f(x)  = \inf_{]a,b)}f(x)$
+	- $l^- = \lim_{x\to b}f(x)  = \inf_{(a,b[}f(x)$
 
 ---
 
@@ -78,18 +61,6 @@ Per la funzione **regolare al tendere di x a c** abbiamo questo i seguenti teore
 - esistono i limiti di $f$ al tendere di $x$ ad $a$ e a $b$ e si ha:
 	- $l^+ = \lim_{x\to a}f(x)  = \inf_{]a,b)}f(x)$
 	- $l^- = \lim_{x\to b}f(x)  = \inf_{(a,b[}f(x)$
-
----
-**Teorema di esistenza dei valori intermedi (teorema di Darboux)**: Sia $f$ una funzione reale continua in un intervallo chiuso e limitato $[a,b]$ e si supponga che $f(a) \not = f(b)$ ad esempio $f(a)<f(b)$. Allora per ogni $\gamma \in ]f(a),f(b)[$ esiste $c \in [a,b]$ tale che $f(c) = \gamma$ 
- **Dimostrazione**: Consideriamo in $[a,b]$ la funzione $g(x) = f(x)-\gamma$ che è continua e agli estremi dell'intervallo assume valori di segno diverso, quindi per il teorema di esistenza degli zeri, si annulla in un punto $c$: si ha dunque  $f(c)-\gamma = 0$ e quindi che $f(c) = \gamma$ 
-
----
-**Teorema di continuità delle funzioni monotone:** Sia $f: (a,b) \to R$ una funzione strettamente monotona e sia verificata la PVI allora $f$ è continua
-**Dimostrazione**: Supponiamo che $f$ sia crescente e proviamo la continuità in un punto $c$ interno ad $(a,b)$. Dal teorema sui limiti delle funzioni monotone segue che $l^-\le f(x) \le l^+$ per provare la continuità basta provare che $l^- = f(x) = l^+$. Supponiamo per assurdo che non sia vero, ad esempio si abbia $l^- < f(c)$. Sia $\gamma \in ]l^-,f(c)[$ per la PVI esiste $\overline{x} \in (a,b)$ tale che $f(\overline{x}) = \gamma$. L'assurdo segue dal fatto che $\overline{x}$ non può esistere, infatti:
-- se $\overline{x} = c$ si avrebbe $\gamma  = f(\overline{x}) = f(c)$ 
-- se $\overline{x} < c$ si avrebbe $\gamma = f(\overline{x}) \le l^-$ 
-- se $\overline{x} > c$ si avrebbe $\gamma = f(\overline{x}) > f(c)$
-L'assurdo è dunque trovato. 
 
 ---
 **Conseguenze di questi teoremi**
@@ -120,24 +91,10 @@ Viceversa, se esiste il polinomio $p = f(c)+a(x-c)$ si ha $$\frac{f(x)-f(c)}{x-c
 
 ---
 
-**Teorema**: sia $f$ una funzione derivabile in $(a,b)$ e sia $c\in(a,b)$ tale che esista $f''(c)>0$. Allora $f$ è convessa in $c$ (allo stesso modo si dice che se esiste $f''(c)<0$ allora $f$ è concava in $c$.)
-**Dimostrazione**: Dobbiamo provare che in un opportuno intorno di $c$ si ha $f(x)\ge f(c)+f'(c)(x-c)$. 
-Consideriamo allora in $(a,b)$ la funzione $F(x) = f(x)-f(c)-f'(c)(x-c)$, la funzione che ci indica la distanza verticale tra $f(x)$ e la tangente in $c$ quindi ci  basterà provare che $F(x)\ge 0$ (se questo valore è positivo la nostra funzione si trova sopra la tangente) in un intorno di $c$. 
-Da questo capiamo che:
-- Si ha $F(c) = f(c)-f(c)-f'(c)(c-c) = 0$  
-- $F'(x) = f'(x)-f'(c)$ che è uguale a 0 nel punto $x = c$ 
-	- la derivata di $f(c)$ è $0$ quindi non lo scrivo
-	- la derivata di $f'(c)(x-c)$ è $f'(c)$
-- e che esiste $F''(c) = f''(c)$. $F$ ha dunque in $c$ un minimo relativo (perché la derivata prima è 0 invece la seconda è positiva)
-dunque esiste un intorno di $c$ in tutti i punti del quale si ha $F(x)\ge F(c) = 0$ come si voleva.
----
-
 ###### Corollari del teorema di Lagrange
 1. **Teorema del prolungamento della derivata**: Sia data una funzione $f: (a,b)\to R$ e sia $c \in (a,b)$. Supponiamo che $f$ sia derivabile in $(a,b)\backslash\{c\}$ e che sia continua in $c$. Supponiamo inoltre che esista il $\lim_{x\to c}f'(x)$ e sia esso $l$ allora si ha $\lim_{x\to c}r(x) = l$ 
 	- **Osservazione**: Dal teorema appena enunciato segue che le funzioni $\arcsin x$ e $\arccos x$ non sono derivabili in $-1$ e $1$, infatti sono continue ma le loro derivate divergono al tendere di $x$ a tali punti.
-2. **Criterio di monotonia**: Sia data una funzione $f: (a,b) \to R$ derivabile, questa è un condizione sufficiente affinché $f$ sia crescente in $(a,b)$ è che $f'(x)\ge 0 \forall x \in (a,b)$ 
-	- **Dimostrazione**: Siano $x,y \in (a,b)$ con $x<y$. Applicando il teorema di Lagrange ad $f$ nell'intervallo $[x,y]$ si ottiene che esiste $c \in ]x,y[$ tale che $f(y)-f(x) = (y-x)f'(c)\ge 0$ da cui la tesi.
-3. **Criterio di stretta monotonia**: Sia data una funzione $f: (a,b) \to R$ derivabile. Condizione necessaria e sufficiente affinché $f$ sia strettamente crescente in $(a,b)$ è che:
+2. **Criterio di stretta monotonia**: Sia data una funzione $f: (a,b) \to R$ derivabile. Condizione necessaria e sufficiente affinché $f$ sia strettamente crescente in $(a,b)$ è che:
 	- $f'(x)\ge0 \text{  } \forall x \in (a,b)$ 
 	- e che non esista nessun intervallo $(c,d) ⊆ (a,b)$ tale che $f'(x) = \forall x \in (c,d)$ 
 ---
