@@ -144,7 +144,7 @@ Sia $X$ un insieme numerico, di seguito varie nozioni di topologia:
 - **Punto interno**: $c \in X$ è detto punto interno se esiste un $r>0$ tale che $]c-r,c++r[$ $⊆ X$, indichiamo con $int(X)$ l'insieme dei punti interni.
 	- Osserviamo che se $X$ è un intervallo $(a,b)$, i punti interni sono i tutti e soli punti dell'intervallo aperto $]a,b[$ 
 - **Punto di frontiera**: un numero reale $c$ è detto *punto di frontiera* per $X$ se per ogni $r>0$ nell'intorno $]c-r,c++r[$ ci sono elementi di $X$ che elementi di $R \textbackslash X$ 
-- **Punto di accumulazione**: un numero reale $c$ è detto punti di accumulazione per $X$ se, per ogni $r>0$ nell'intorno $]c-r,c++r[$ ci sono elementi diversi da $c$. L'insieme dei punti di accumulazione di accumulazione si denota con $D(X)$ 
+- **Punto di accumulazione**: un numero reale $c$ è detto punto di accumulazione per $X$ se, per ogni $r>0$ nell'intorno $]c-r,c+r[$ ci sono elementi di $X$ diversi da $c$. L'insieme dei punti di accumulazione di accumulazione si denota con $D(X)$ 
 - **Insieme aperto**: $X$ si dice *aperto* se è vuoto oppure quando $X = int(X)$ 
 - **Insieme chiuso**: L’insieme $X$ è detto *chiuso* se il suo complementare $R \backslash X$ è aperto. Si definisce chiusura di $X$ l'insieme $\overline{X} = X ∪ D(X)$ ovvero un insieme si dice chiuso se e solo se contiene tutti i suoi punti di frontiera  
 **Osservazioni:** 
@@ -216,7 +216,7 @@ Dato $z = (a,b) \in C$:
 - $|z| = \sqrt{a^2+b^2}$ modulo di $z$
 
 > [!TIP]
-> Presa un'unita reale $x = (x,0)$ il suo modulo è: $|x| = \sqrt{x^2+0^2} = x$  
+> Presa un'unita reale $x = (x,0)$ il suo modulo è: $|x| = \sqrt{x^2+0^2}$  
 
 ###### Introduciamo le operazioni
 - $(a,b)+ (c,d) = (a+b,c+d)$ somma
@@ -338,6 +338,7 @@ Sia data una funzione $f: (a,b) \rightarrow R$ si dice che questa è monotona se
 - **strettamente crescente**: se $x < y \Rightarrow f(x) < f(y)$
 - **decrescente**: se $x<y \Rightarrow f(x) \ge f(y)$
 - **strettamente decrescente**: se $x<y \Rightarrow f(x) > f(y)$
+Notiamo subito che una funzione strettamente monotona è iniettiva, quindi invertibile. Si vede facilmente che anche la sua funzione inversa gode dello stesso tipo di monotonia.
 Possiamo introdurre anche il concetto di monotonia locale, ovvero dato una punto $c \in (a,b)$ si dice che la funzione è crescente nel punto $c$ se esiste $s>0$ tale che:
 - se $x \in ]c-s,c[$ si ha $f(x)<f(c)$
 - se $x \in ]c,c+s[$ si ha $f(x)>f(c)$ 
@@ -362,16 +363,12 @@ $$epi(f) = \{ (x,y) \in R^2 x(a,b), y \ge f(x) \}$$
 
 Si prova che la funzione f è convessa se e solo se $epi(f )$ e un sottoinsieme convesso di $R^2$, cioè, se contiene due punti, contiene anche il segmento che li congiunge.
 
-
-> [!TIP]
-> Prendi due punti qualsiasi sul grafico della funzione, ad esempio $A = (x_1, f(x_1)$ e $B = (x_2, f(x_2)$. Ora disegna il segmento rettilineo che li collega. Se la funzione è convessa, allora tutti i punti su quel segmento si trovano al di sopra (o esattamente sul) grafico della funzione tra $x_1​$ e $x_2​$.
-
 ###### Funzioni elementari
 Di seguito alcune funzioni che nascono dalle operazioni definite in $R$ dette funzioni elementari, la funzione inversa di una funzione elementare è anche essa elementare.
 - **Funzione constante**: Se $k \in R$ la funzione $f(x) = k$ è definita in $]-\infty, +\infty[$  
 - **Funzione identità**: funzione $f(x) = x$ è definita in $]-\infty,\infty[$
 - **Funzione potenza con esponente intero positivo**: Se $n\in N$ la funzione $f(x) = x^n$ è definita in $]-\infty,\infty[$ 
-- **Funzione potenza con esponente intero negativo**: Se $n\in N$ la funzione $f(x) = x^{-n}$ è definita in $]-\infty,\infty[$ 
+- **Funzione potenza con esponente intero negativo**: Se $n\in N$ la funzione $f(x) = x^{-n}$ è definita in $]-\infty,\infty[ \backslash \{0\}$  
 - **Funzione con esponente razionale**: se $\frac{m}{n} \in Q$, la funzione $f(x) = x^\frac{m}{n} = (\sqrt[n]{x})^m$ ed è definita in:
 	- in $[0,+\infty[$ se $\frac{m}{n}>0$
 	- in $]0,+\infty[$ se $\frac{m}{n}<0$
@@ -403,17 +400,6 @@ Di seguito un po' di osservazioni sulle funzioni elementari:
   
 
 
-
-
-
-
-
-
-
-
-
-
-
 --- 
 
 
@@ -431,6 +417,29 @@ Di seguito un po' di osservazioni sulle funzioni elementari:
 | 6   | $\cos(a + b) = \cos a \cos b - \sin a \sin b$ | Formula della somma per il coseno      |
 | 7   | $\sin(a - b) = \sin a \cos b - \cos a \sin b$ | Formula della differenza per il seno   |
 | 8   | $\cos(a - b) = \cos a \cos b + \sin a \sin b$ | Formula della differenza per il coseno |
+
+###### Formule utili per il calcolo del dominio
+| Tipo di funzione            | Forma                                  | Dominio                                                                       | Note                             |
+| --------------------------- | -------------------------------------- | ----------------------------------------------------------------------------- | -------------------------------- |
+| Costante                    | $f(x) = k$                             | $\mathbb{R}$                                                                  | Definita ovunque                 |
+| Identità                    | $f(x) = x$                             | $\mathbb{R}$                                                                  |                                  |
+| Polinomiale                 | $f(x) = a_nx^n + \dots + a_0$          | $\mathbb{R}$                                                                  |                                  |
+| Potenza $n \in \mathbb{N}$  | $f(x) = x^n$                           | $\mathbb{R}$                                                                  |                                  |
+| Potenza negativa            | $f(x) = x^{-n}$                        | $\mathbb{R} \setminus \{0\}$                                                  | Denominatore diverso da 0        |
+| Potenza razionale (pari)    | $f(x) = x^{\frac{m}{n}},\ n$ pari      | $[0,+\infty)$ se $\frac{m}{n} > 0$ <br> $]0,+\infty[$ se $\frac{m}{n} < 0$    | Dipende dal segno dell’esponente |
+| Potenza razionale (dispari) | $f(x) = x^{\frac{m}{n}},\ n$ dispari   | $\mathbb{R}$                                                                  |                                  |
+| Potenza irrazionale         | $f(x) = x^s$ con $s \notin \mathbb{Q}$ | $[0,+\infty)$ se $s \geq 0$ <br> $]0,+\infty[$ se $s < 0$                     |                                  |
+| Radice $n$-esima (pari)     | $f(x) = \sqrt[n]{x}$ con $n$ pari      | $[0,+\infty)$                                                                 |                                  |
+| Radice $n$-esima (dispari)  | $f(x) = \sqrt[n]{x}$ con $n$ dispari   | $\mathbb{R}$                                                                  |                                  |
+| Esponenziale                | $f(x) = a^x$                           | $\mathbb{R}$                                                                  | $a > 0,\ a \ne 1$                |
+| Logaritmica                 | $f(x) = \log_a x$                      | $]0,+\infty[$                                                                 | $a > 0,\ a \ne 1$                |
+| Seno                        | $f(x) = \sin x$                        | $\mathbb{R}$                                                                  | Periodica                        |
+| Coseno                      | $f(x) = \cos x$                        | $\mathbb{R}$                                                                  | Periodica                        |
+| Tangente                    | $f(x) = \tan x$                        | $\mathbb{R} \setminus \left\{\frac{\pi}{2} + k\pi\right\},\ k \in \mathbb{Z}$ |                                  |
+| Arcoseno                    | $f(x) = \arcsin x$                     | $[-1,1]$                                                                      | Inversa del seno                 |
+| Arcocoseno                  | $f(x) = \arccos x$                     | $[-1,1]$                                                                      | Inversa del coseno               |
+| Arcotangente                | $f(x) = \arctan x$                     | $\mathbb{R}$                                                                  | Inversa della tangente           |
+| Razionale fratta            | $f(x) = \frac{P(x)}{Q(x)}$             | $\mathbb{R} \setminus \{x : Q(x) = 0\}$                                       | Denominatore diverso da 0        |
 
 
 
@@ -634,9 +643,9 @@ Date due successioni $\{a_n\}$ e $\{b_n\}$ con $b_n \not= 0$ **D**, prendiamo in
 Alcune successioni sono espresse mediante funzioni elementari, e qui vediamo le più comuni:
 ###### Successione potenza
 ovvero $\{n^x\} \text{ con } x \in R$
-	- Se $x = 0$ la successione è costante
-	- Se $x > 0$ si ha $n^x \rightarrow +\infty$
-	- Se $x<0$ si ha $x^n = \frac{1}{n^{-x}} \rightarrow 0$
+- Se $x = 0$ la successione è costante
+- Se $x > 0$ si ha $n^x \rightarrow +\infty$
+- Se $x<0$ si ha $n^x = \frac{1}{n^{-x}} \rightarrow 0$
 ###### Successione in forma di polinomio
 ovvero $x_n = a_0n^p+a_1n^{p-1}+\cdots+a_p$  che per semplicità si trasforma in: $$x_n = n^p(a_0+\frac{a_1}{n}+\cdots+\frac{a_p}{n^p})$$ e si ha che $n^p \rightarrow +\infty$ mentre la quantità fra parentesi tende ad $a_0$ quindi:
 - $x_n \rightarrow +\infty$ se $a_0 >0$
@@ -648,7 +657,7 @@ ovvero $x_n = a_0n^p+a_1n^{p-1}+\cdots+a_p$  che per semplicità si trasforma in
 ^78c31d
 
 ###### Successione in forma di funzione razionale
-ovvero $x_n = \frac{a_0n^p+a_1n^{p-1}+\cdots+a_p}{b_0n^p+b_1n^{p-1}+\cdots+b_p}$ che possiamo scrivere anche come: $$x_n = n^{p-q} \frac{a_0+\frac{a_1}{n}+\cdots+\frac{a_p}{n^p}}{b_0+\frac{b_1}{n}+\cdots+\frac{b_p}{n^p}}$$usando quello che abbiamo detto per le successioni in forma di polinomio possiamo affermare che:
+ovvero $x_n = \frac{a_0n^p+a_1n^{p-1}+\cdots+a_p}{b_0n^q+b_1n^{q-1}+\cdots+b_q}$ che possiamo scrivere anche come: $$x_n = n^{p-q} \frac{a_0+\frac{a_1}{n}+\cdots+\frac{a_p}{n^p}}{b_0+\frac{b_1}{n}+\cdots+\frac{b_q}{n^q}}$$usando quello che abbiamo detto per le successioni in forma di polinomio possiamo affermare che:
     1. se $p = q$ si ha $x_n \rightarrow \frac{a_0}{b_0}$
     2. se $p<q$ si ha $x_n \rightarrow 0$
     3. se $p>q$ si ha $x_n \rightarrow +\infty$ se $a_0$ e $b_0$ hanno lo stesso segno
@@ -664,7 +673,7 @@ ovvero $x_n = \frac{a_0n^p+a_1n^{p-1}+\cdots+a_p}{b_0n^p+b_1n^{p-1}+\cdots+b_p}$
 > 	- $p > q$ e $a_0$ e $b_0$ hanno segno uguale quindi 3 regola
 > - $\frac{2n^2 + 5n + 3}{8 - 3n} \to -\infty$
 > 	- $p > q$ e $a_0$ e $b_0$ hanno segno diverso quindi 4 regola
-> - $\frac{2n^2 + 8}{8 - n^2} \to -\infty$
+> - $\frac{2n^2 + 8}{8 - n^2} \to -2$
 > 	- $p > q$ e $a_0$ e $b_0$ hanno segno diverso quindi 4 regola
 > - $\frac{2n^2 - 5n^3 + 3}{8 - n^2} \to +\infty$
 > 	- $p > q$ e $a_0$ e $b_0$ hanno segno uguale quindi 3 regola
@@ -698,7 +707,7 @@ questo tipo di successioni si basano su questa
 		   - Basta osservare che $log_ax_n =(\log_a\frac{1}{a})(\log_{\frac{1}{a}}x_n) = -\log_{\frac{1}{a}} x_n$
 	   - $a<1,x_n\to+0\Rightarrow \log_a x_n \to +\infty$
 		   - Basta osservare che $log_ax_n =(\log_a\frac{1}{a})(\log_{\frac{1}{a}}x_n) = -\log_{\frac{1}{a}} x_n$
-	3. Successione del tipo $(a_n)^{b_n}$ essendo $a_n > 0$ per ogni $n$.  Questa successione si scrive nella forma $(a_n)^{b_n} = e^{\log((a_n)^{b_n})} = e^{b_n \log a_n}$ e in questa forma ci si può ricondurre ai casi $1$, $2$.  Si avranno forme indeterminate se il prodotto $b_n \log a_n$ si presenta nella forma $0 \cdot \infty$ .
+	1. Successione del tipo $(a_n)^{b_n}$ essendo $a_n > 0$ per ogni $n$.  Questa successione si scrive nella forma $(a_n)^{b_n} = e^{\log((a_n)^{b_n})} = e^{b_n \log a_n}$ e in questa forma ci si può ricondurre ai casi $1$, $2$.  Si avranno forme indeterminate se il prodotto $b_n \log a_n$ si presenta nella forma $0 \cdot \infty$ .
 ### Il numero e
 ###### Definizione
 Consideriamo una successione del tipo: $a_n = (1+\frac{1}{n})^n$  si può dimostrate che è strettamente crescente per un numero $a_n<3$ $\forall n$ quindi converge ad un numero $<3$ chiamato $e$ che di solito viene definito cosi:
@@ -710,7 +719,7 @@ Da questo possiamo dedurre i seguenti limiti:
 4. sia $a_n \to 0$ allora la successione $\{\frac{\sin a_n}{a_n}\}$ allora definitivamente si ha che $|a_n|<\frac{\pi}{2}$
 
 ###### Altri limiti notevoli
-In caso di funzioni trigonometriche abbiamo i seguenti limiti notevoli:
+In caso di funzioni trigonometriche abbiamo i seguenti limiti notevoli (considerando una successione che tende a 0):
 - $\frac{\sin a_n}{a_n} \to 1$ 
 - $\frac{\tan a_n}{a_n} \to 1$ 
 - $\frac{\arcsin a_n}{a_n} \to 1$ 
@@ -820,6 +829,7 @@ Questo è la rielaborazione del file [[AppuntiCap3.pdf]]
 # Limiti e continuità delle funzioni reali di una variabile reale
 
 Per una funzione reale si possono dare 9 definizioni di limite, precisamente studiare il limite di una funzione significa vedere qual è il comportamento della funzione stessa quando la variabile si avvicina ("tende") ad un certo punto. Le nove definizioni si differenziano l'una dall'altra solo per il diverso significato di "definitivamente".
+
 ### Definizioni di limite
 ###### Limite al tendere di x a c
 
@@ -923,18 +933,18 @@ di seguito alcuni casi in cui non è vera questa condizione:
 > - $\lim_{x \to +\infty} \left( x^2 - 2x^3 + 1 \right) = -\infty$
 > - $\lim_{x \to -\infty} \left( x^4 - 2x^3 + 1 \right) = +\infty$
 > - $\lim_{x \to -\infty} \left( x^5 - 2x^4 + 1 \right) = -\infty$
-> - $\lim_{x \to -\infty} \left( x^4 - 2x^6 + 1 \right) = +\infty$
+> - $\lim_{x \to -\infty} \left( x^4 - 2x^6 + 1 \right) = -\infty$
 > - $\lim_{x \to -\infty} \left( x^4 - 2x^7 + 1 \right) = -\infty$
 
-5. **Funzioni razionali fratte**: Consideriamo la funzione $f(x)$ definita così: $$f(x) = \frac{a_0x^n+a_1x^{n-1}+\cdots+a_n}{b_0x^m+b_1x^{m-1}+\cdots+b_m}$$ per poter analizzare il limite di questa funzione dobbiamo distinguere vari casi:
-	- *se n>m*  al tendere di $x \to\pm\infty$ la funzione diverge e per capire il segno dobbiamo esaminare il segno del numeratore e denominatore
-	- *se n = m* $\lim_{x\to+\infty}f(x) = \lim_{x\to+\infty}f(x) = \frac{a_0}{b_0}$    
-	- se *n<m* $\lim_{x\to+\infty}f(x) = \lim_{x\to+\infty}f(x) = 0$ 
+5. **Funzioni razionali fratte**: Consideriamo la funzione $f(x)$ definita così: $$f(x) = \frac{a_0x^n+a_1x^{n-1}+\cdots+a_n}{b_0x^m+b_1x^{m-1}+\cdots+b_m}$$per poter analizzare il limite di questa funzione dobbiamo distinguere vari casi:
+	- *se n>m*  al tendere di $x \to\pm\infty$ la funzione diverge e per capire il segno dobbiamo esaminare il segno del numeratore e denominatore e moltiplicarlo per il segno di $\infty$ 
+	- *se n = m* $\lim_{x\to+\infty}f(x) = \lim_{x\to-\infty}f(x) = \frac{a_0}{b_0}$    
+	- se *n<m* $\lim_{x\to+\infty}f(x) = \lim_{x\to-\infty}f(x) = 0$ 
 
 > [!EXAMPLE]
 > - $\lim_{x\to+\infty}\frac{(2x-2)^3}{4-x^3} = -8$   caso $n = m$
-> - $\lim_{x\to-\infty}\frac{2-x}{x^3+5} = \infty$ caso $n>m$
-> - $\lim_{x\to-\infty}\frac{x^5+2}{x-1} = 0$ caso $n<m$
+> - $\lim_{x\to-\infty}\frac{2-x}{x^3+5} = 0$ caso $n<m$
+> - $\lim_{x\to-\infty}\frac{x^5+2}{x-1} = +\infty$ caso $n>m$
 
 ### Alcuni limiti notevoli
 ###### Limiti notevoli con funzioni trigonometriche
@@ -1062,7 +1072,7 @@ L'assurdo è dunque trovato.
 	1. Se $f$ è crescente la sua immagine è l'intervallo $[f(a),f(b)]$ 
 	2. Se $f$ è decrescente la sua immagine è l'intervallo $[f(b),f(a)]$
    In generale, se $f$ è una funzione continua in un intervallo generico $(a,b)$ la sua immagine è l'intervallo $(\inf_{(a,b)}f(x), sup_{(a,b)}f(x)$  
-2. **Continuità della funzione inversa**: sia $f: [a,b] \to [f(a),f(b)]$ una funzione strettamente crescente e continua (può essere anche descrescente). Allora la sua inversa è continua.
+2. **Continuità della funzione inversa**: sia $f: [a,b] \to [f(a),f(b)]$ una funzione strettamente crescente e continua (può essere anche decrescente). Allora la sua inversa è continua.
 3. **Continuità delle funzioni elementari**: tutte le funzioni elementari che abbiamo introdotto sono continue nei rispettivi insiemi di definizione. Sia infatti $c$ un punto dell'insieme di definizione di $f$. Se $c$ è contenuto in un intervallo in cui $f$ è monotona, la continuità in $c$ segue dal teorema di continuità delle funzioni monotone, in caso contrario il limite destro e sinistro coincidono
 
 ### Punti di discontinuità
@@ -1086,6 +1096,7 @@ Dato $c$ punto di discontinuità possiamo dire che:
 
 Questo è la rielaborazione del file [[AppuntiCap4.pdf]]
 # Calcolo differenziale per le funzioni reali di una variabile reale
+
 ### Derivabilità
 
 ###### Rapporto incrementale
@@ -1290,3 +1301,4 @@ Consideriamo ad esempio, per $x \to 0$ la coppia di funzioni $f(x) = x^2\sin\fra
 > Esercizi di esempio
 > ![[Pasted image 20250609144432.png]]
 > ![[Pasted image 20250609144442.png]]
+> ![[Pasted image 20250615102458.png]]
