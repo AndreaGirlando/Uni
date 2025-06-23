@@ -11,22 +11,22 @@
 | Analisi |                  [[AppuntiCap2.pdf]]                   |   ✅    |          10/10 pagine           |
 | Analisi |                  [[AppuntiCap3.pdf]]                   |   ✅    |          10/10 pagine           |
 | Analisi |                  [[AppuntiCap4.pdf]]                   |   ✅    |          10/10 pagine           |
-| Analisi |                  Esercizi Capitolo 1                   |   🟨   | rivedere meglio la prima parte  |
-| Analisi |                  Esercizi Capitolo 2                   |   🟨   | rivedere meglio limiti notevoli |
+| Analisi |                  Esercizi Capitolo 1                   |   ✅    | rivedere meglio la prima parte  |
+| Analisi |                  Esercizi Capitolo 2                   |   ✅    | rivedere meglio limiti notevoli |
 | Analisi |                  Esercizi Capitolo 3                   |   ✅    |                                 |
-| Analisi |                  Esercizi capitolo 4                   |   🟨   |    manca lo spam di derivate    |
+| Analisi |                  Esercizi capitolo 4                   |   ✅    |    manca lo spam di derivate    |
 | Analisi |                   Studiare la teoria                   |   ❌    |                                 |
-| Analisi |                      Exams count                       |   2    |                                 |
+| Analisi |                      Exams count                       |   6    |                                 |
 |         |                                                        |        |                                 |
 | Inglese |                     Fare fotocopie                     |   ✅    |                                 |
-| Inglese |                   Studiare fotocopie                   |   🟨   |                                 |
+| Inglese |                   Studiare fotocopie                   |   ✅    |                                 |
 |         |                                                        |        |                                 |
 |  Prog2  |                      Bubble sort                       |   ✅    |                                 |
 |  Prog2  |                     Selection sort                     |   ✅    |                                 |
 |  Prog2  |                     Insertion sort                     |   ✅    |                                 |
 |  Prog2  |                       Merge sort                       |   ✅    |                                 |
 |  Prog2  |                       Quick sort                       |   ✅    |                                 |
-|  Prog2  |               Complessità computazionale               |   ❌    |                                 |
+|  Prog2  |               Complessità computazionale               |   🟨   |                                 |
 |  Prog2  |                 Implementazione Albero                 |   ✅    |                                 |
 |  Prog2  |              Ricerca binaria in un albero              |   ✅    |                                 |
 |  Prog2  |             Ricerca iterativa in un albero             |   ✅    |                                 |
