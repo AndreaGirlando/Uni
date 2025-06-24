@@ -56,7 +56,7 @@ class Nodo{
 
 class Coda{
     public:
-        Coda():head(nullptr), tail(nullptr){}
+        Coda():head(nullptr), tail(nullptr), Len(0){}
         ~Coda(){
             Nodo* tempHead = head;
             int tempLen = len;
