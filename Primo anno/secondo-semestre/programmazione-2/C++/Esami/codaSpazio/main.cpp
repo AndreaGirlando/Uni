@@ -57,6 +57,13 @@ class Nodo{
 class Coda{
     public:
         Coda():head(nullptr), tail(nullptr){}
+        ~Coda(){
+            Nodo* tempHead = head;
+            int tempLen = len;
+            for(int i = 0; i<tempLen; i++){
+                dequeue();
+            }
+        }
         void enqueue(Nodo* newNodo){
             if(head == nullptr && tail == nullptr){
                 head = newNodo;
@@ -65,10 +72,25 @@ class Coda{
                 tail->next = newNodo;
                 tail = newNodo;
             }
+            len++;
         }
-        // dequeue(){
-
-        // }
+        Astronauta* dequeue(){
+            if(head == nullptr) return nullptr;
+            Nodo* res = head;
+            Astronauta* astronauta = head->data;
+            if(head == tail){
+                head = nullptr;
+                tail = nullptr;
+                delete res;
+                len--;
+                return astronauta;
+            }else{
+                head = head->next;
+                delete res;
+                len--;
+                return astronauta;
+            }
+        }
         void printCoda(){
             cout << "Di seguito la coda: " << endl;
             Nodo* tempHead = head;
@@ -81,7 +103,23 @@ class Coda{
                 tempHead = tempHead->next;
             }
         }
+        void checkAndRemoveByHours(int ore){
+            int tempLen = len;
+            cout << tempLen;
+            Astronauta** array = new Astronauta*[tempLen];
+            for(int i = 0; i<tempLen; i++){
+                array[i] = dequeue();
+            }
+            for(int i = 0; i<tempLen; i++){
+                if(array[i]->getOreVolo() >= ore){
+                    enqueue(new Nodo(array[i]));
+                    // delete array[i];
+                }
+            }
+            delete array;
+        }
     private:
+        int len;
         Nodo* head;
         Nodo* tail;
 };
@@ -97,6 +135,7 @@ int main(){
     coda.enqueue(new Nodo(new Astronauta(6,"Chris","Canada",1700)));
     coda.enqueue(new Nodo(new Astronauta(7,"Pedro","Spagna",400)));
     coda.enqueue(new Nodo(new AstronautaPremiato(new Astronauta(8,"Jessica","USA",2200), new Bonus(60000, "NASA"))));
+    coda.checkAndRemoveByHours(1000);
     coda.printCoda();
 
     return 0;
