@@ -1,14 +1,12 @@
 #include <iostream>
 using namespace std;
 
+class B1{
+    public:
+    private:
+        int valore;
+};
+
 int main() {
-    cout << "Hello World!";
-
-    char nome[30];
-
-    cin.getline(nome,30);
-    cout << nome;
-
-    cout << endl;
-    return 0;
+    B1* temp = new B1();
 }

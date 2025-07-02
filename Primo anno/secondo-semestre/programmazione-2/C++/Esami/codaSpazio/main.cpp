@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+class Coda;
 class Astronauta{
     public:
         Astronauta(int _codiceId, string _nome, string _nazionalita, float _oreVolo):codiceId(_codiceId),nome(_nome),nazionalita(_nazionalita), oreVolo(_oreVolo){}
@@ -26,6 +27,7 @@ class Bonus{
         int getValore(){return valore;}
         string getEnte(){return ente;}
         friend ostream& operator<<(ostream& stream, AstronautaPremiato& data);
+        friend class Coda;
     private:
         int valore;
         string ente;
@@ -35,6 +37,7 @@ class AstronautaPremiato:public Astronauta{
     public:
         AstronautaPremiato(Astronauta* _astronauta, Bonus* _bonus):Astronauta(*(_astronauta)), bonus(_bonus){}
         friend ostream& operator<<(ostream& stream, AstronautaPremiato& data);
+        friend class Coda;
     private:
         Bonus* bonus;
 };
@@ -56,7 +59,7 @@ class Nodo{
 
 class Coda{
     public:
-        Coda():head(nullptr), tail(nullptr), Len(0){}
+        Coda():head(nullptr), tail(nullptr), len(0){}
         ~Coda(){
             Nodo* tempHead = head;
             int tempLen = len;
@@ -103,9 +106,18 @@ class Coda{
                 tempHead = tempHead->next;
             }
         }
+        int getValoreBonus(){
+            Nodo* tempHead = head;
+            int sum = 0;
+            while(tempHead != nullptr){
+                if(dynamic_cast<AstronautaPremiato*>(tempHead->data)){
+                    sum += dynamic_cast<AstronautaPremiato*>(tempHead->data)->bonus->getValore();
+                }
+            }
+            return sum;
+        }
         void checkAndRemoveByHours(int ore){
             int tempLen = len;
-            cout << tempLen;
             Astronauta** array = new Astronauta*[tempLen];
             for(int i = 0; i<tempLen; i++){
                 array[i] = dequeue();
@@ -123,6 +135,77 @@ class Coda{
         Nodo* head;
         Nodo* tail;
 };
+class BST;
+class Missione{
+    public:
+        Missione(int _codiceMissione, string _nomeMissione, int _annoLancio):codiceMissione(_codiceMissione),nomeMissione(_nomeMissione),annoLancio(_annoLancio){}
+        friend class BST;
+        friend ostream& operator<<(ostream& stream, Missione& missione);
+    private:
+        int codiceMissione;
+        string nomeMissione;
+        int annoLancio;
+};
+ostream& operator<<(ostream& stream, Missione& missione){
+    cout << "Codice: " << missione.codiceMissione;
+    cout << " Nome: " << missione.nomeMissione;
+    cout << " Anno di lancio: " << missione.annoLancio;
+    return stream;
+}
+
+class BSTNode{
+    public:
+        BSTNode(Missione* _missione = nullptr, BSTNode* _sx = nullptr, BSTNode* _dx = nullptr, BSTNode* _padre = nullptr):missione(_missione), padre(_padre), sx(_sx), dx(_dx){}
+        friend class BST;
+    private:
+        BSTNode* padre;
+        BSTNode* sx;
+        BSTNode* dx;
+        Missione* missione;
+};
+
+class BST{
+    public:
+        BST():root(nullptr){}
+        void insert(BSTNode* newNodo){
+            BSTNode* tempRoot = root;
+            BSTNode* prev = nullptr;
+            if(root == nullptr){
+                root = newNodo;
+            }else{
+                while(tempRoot != nullptr){
+                    prev = tempRoot;
+                    if(newNodo->missione->codiceMissione > tempRoot->missione->codiceMissione){
+                        tempRoot = tempRoot->dx;
+                    }else{
+                        tempRoot = tempRoot->sx;
+                    }
+                }
+
+                if(newNodo->missione->codiceMissione > prev->missione->codiceMissione){
+                    prev->dx = newNodo;
+                }else{
+                    prev->sx = newNodo;
+                }
+
+            }
+        }
+        Missione* search(int codiceMissione){
+            BSTNode* tempRoot = root;
+            while(tempRoot != nullptr){
+                if(tempRoot->missione->codiceMissione == codiceMissione){
+                    return tempRoot->missione;
+                }else if(codiceMissione > tempRoot->missione->codiceMissione){
+                    tempRoot = tempRoot->dx;
+                }else{
+                    tempRoot = tempRoot->sx;
+                }
+            }
+            return nullptr; //sarà nullptr
+        }
+    private:
+        BSTNode* root;
+};
 
 int main(){
 
@@ -138,6 +221,18 @@ int main(){
     coda.checkAndRemoveByHours(1000);
     coda.printCoda();
 
+
+    cout << "\n\n\n\n\n";
+
+
+    BST tree;
+    tree.insert(new BSTNode(new Missione(1001, "Marte", 2021)));
+    tree.insert(new BSTNode(new Missione(1001, "Marte", 2021)));
+    tree.insert(new BSTNode(new Missione(1003, "Marte", 2021)));
+    tree.insert(new BSTNode(new Missione(1001, "Marte", 2021)));
+
+    cout << *(tree.search(1003));
+    cout << endl;
     return 0;
 }
 
