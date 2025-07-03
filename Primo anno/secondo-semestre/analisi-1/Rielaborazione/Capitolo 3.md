@@ -209,12 +209,12 @@ Si dice che una funzione $f: X \to R$ gode della proprietà dei valori intermedi
 posto $x_0 = \frac{a+b}{2}$ 
 - se $f(x_0) = 0$ la tesi è dimostrata
 - se $f(x_0)<0$ poniamo $[a_1,b_1] = [x_0,b]$ 
-  se $f(x_0)>0$ poniamo $[a_1,b_1] = [a, x_0]$
-  in entrambi i casi si ha che:
-	- $f(a_1)<0$ 
-	- $f(b_1)>0$
-	- $a \le a_1 < b_1 \le b$ 
-	- $b_1 - a_1 = \frac{b-a}{2}$ 
+- se $f(x_0)>0$ poniamo $[a_1,b_1] = [a, x_0]$
+in entrambi i casi si ha che:
+- $f(a_1)<0$ 
+- $f(b_1)>0$
+- $a \le a_1 < b_1 \le b$ 
+- $b_1 - a_1 = \frac{b-a}{2}$ 
 Procedo analogamente a partire dall'intervallo $[a_1,b_1]$ e reiterando lo stesso ragionamento, se per un certo $n$ si trova $f(x)=0$ la tesi è dimostrata, in caso contrario si determinano due successioni $\{a_n\}$ e $\{b_n\}$ tali che per ogni $n \in N$ si ha che 
 - $f(a_n)<0$
 - $f(b_n)>0$
