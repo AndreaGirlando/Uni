@@ -10,6 +10,8 @@ int main(int argc, char *argv[])
         printf("%d - %15s\n\n",i, argv[i]);
     }
 
+    int numero = 0;
+    scanf("%d", &numero);
+    printf("%d", numero);
 
-    printf("%d", (int)argv[1]);
 }

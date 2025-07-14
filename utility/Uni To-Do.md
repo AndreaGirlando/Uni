@@ -8,8 +8,8 @@
 | Materia |                          Doc                           | Fatto? |              Note               |
 | :-----: | :----------------------------------------------------: | :----: | :-----------------------------: |
 | Analisi |                  [[AppuntiCap1.pdf]]                   |   ✅    |          16/16 pagine           |
-| Analisi |                  [[AppuntiCap2.pdf]]                   |   ✅    |          10/10 pagine           |
-| Analisi |                  [[AppuntiCap3.pdf]]                   |   ✅    |          10/10 pagine           |
+| Analisi |                  [[Appunticap2.pdf]]                   |   ✅    |          10/10 pagine           |
+| Analisi |                  [[Appunticap3.pdf]]                   |   ✅    |          10/10 pagine           |
 | Analisi |                  [[AppuntiCap4.pdf]]                   |   ✅    |          10/10 pagine           |
 | Analisi |                  Esercizi Capitolo 1                   |   ✅    | rivedere meglio la prima parte  |
 | Analisi |                  Esercizi Capitolo 2                   |   ✅    | rivedere meglio limiti notevoli |

@@ -1,4 +1,4 @@
-Questo è la rielaborazione del file [[AppuntiCap3.pdf]]
+Questo è la rielaborazione del file [[Appunticap3.pdf]]
 
 # Limiti e continuità delle funzioni reali di una variabile reale
 

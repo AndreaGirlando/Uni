@@ -46,7 +46,7 @@ Un albero viene implementato usando nel nodo un puntatore al figlio destro e uno
 il problema principale si ha durante la fase di eliminazione del nodo, perché eliminiamo il nodo "2" cosa mettiamo al suo posto? di seguito verrà chiarita questa cosa
 - **Inserimento**: riusciamo a capire dove inserire il nodo usando la proprietà di prima, se l'elemento che dobbiamo inserire è minore del nodo dove ci troviamo scendiamo a sx sennò a dx.
 - **Eliminazione**: guarda implementazione
-[[Primo anno/secondo-semestre/programmazione-2/C++/Alberi/main.cpp|Implementazione]]
+[[1203 programmazione-2[✅30]/C++/Alberi/main.cpp|Implementazione]]
 
 Visitiamo un albero in tre modi:
 1. **preorder**: visito prima la radice e quindi i sottoalberi da sinistra verso destra

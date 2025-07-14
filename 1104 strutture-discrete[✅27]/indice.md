@@ -1,5 +1,5 @@
 - 📁 Root:
-  - 📄 [[Riassunto.pdf|Riassunto]]
+  - 📄 [[1104 strutture-discrete[✅27]/Riassunto.pdf|Riassunto]]
   - 📁 Esercizi:
     - 📄 [[Esame 1 settembre 2023_250123_081421.pdf|Esame 1 settembre 2023_250123_081421]]
     - 📄 [[Esame 2 febbraio 2022_250121_175130.pdf|Esame 2 febbraio 2022_250121_175130]]

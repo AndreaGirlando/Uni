@@ -50,4 +50,4 @@ ostream& operator<<(ostream& stream,Book& book){
         }
 ```
 
-In questo [[Primo anno/secondo-semestre/programmazione-2/C++/stream/main.cpp|file]] vengono usati tutti è tre.
+In questo [[1203 programmazione-2[✅30]/C++/stream/main.cpp|file]] vengono usati tutti è tre.

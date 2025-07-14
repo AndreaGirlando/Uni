@@ -1,5 +1,5 @@
 - 📁 Root:
-  - 📄 [[Riassunto.pdf|Riassunto]]
+  - 📄 [[1102 architettura-degli-elaboratori[✅30L]/Riassunto.pdf|Riassunto]]
   - 📁 Assembly:
     - 📄 [[Conversioni.pdf|Conversioni]]
     - 📁 1.0-SistemiNumerazione:
