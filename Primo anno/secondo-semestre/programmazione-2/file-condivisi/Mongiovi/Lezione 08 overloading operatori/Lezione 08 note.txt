@@ -1,1 +1,0 @@
-Fondamenti di programmazione in C++ Capitolo 14 - Sovraccaricamento degli operatori

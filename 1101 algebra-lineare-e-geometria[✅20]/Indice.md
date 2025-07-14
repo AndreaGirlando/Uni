@@ -1,0 +1,54 @@
+- 📁 Root:
+  - 📄 [[Algebra.pdf|Algebra]]
+  - 📁 Esercizi:
+<<<<<<< Updated upstream
+    - 📄 [[24 Novembre 2024.pdf]]
+    - 📄 [[5-6 ottobre 2024.pdf]]
+    - 📄 [[1101 algebra-lineare-e-geometria[✅20]/Esercizi/8 ottobre 2024.pdf]]
+    - 📄 [[IntersezioneTraSottospazi.pdf]]
+    - 📄 [[IntersezioneTraSottospazi2.pdf]]
+    - 📄 [[KerImgSemplicità.pdf]]
+    - 📄 [[SommaDiretta.pdf]]
+=======
+    - 📄 [[24 Novembre 2024.pdf|24 Novembre 2024]]
+    - 📄 [[5-6 ottobre 2024.pdf|5-6 ottobre 2024]]
+    - 📄 [[1101 algebra-lineare-e-geometria[✅20]/Lezioni/8 ottobre 2024.pdf|8 ottobre 2024]]
+    - 📄 [[IntersezioneTraSottospazi.pdf|IntersezioneTraSottospazi]]
+    - 📄 [[IntersezioneTraSottospazi2.pdf|IntersezioneTraSottospazi2]]
+    - 📄 [[KerImgSemplicità.pdf|KerImgSemplicità]]
+    - 📄 [[SommaDiretta.pdf|SommaDiretta]]
+>>>>>>> Stashed changes
+    - 📁 Esame:
+      - 📁 materialeSantiSpadaro:
+        - 📁 06-07-23:
+          - 📄 [[Prova06072023.pdf|Prova06072023]]
+          - 📄 [[Sol06072023.pdf|Sol06072023]]
+  - 📁 FileCondivisiTeams:
+    - 📄 [[Esercizi_Algebra_Lineare.pdf|Esercizi_Algebra_Lineare]]
+    - 📄 [[Esercizi_Applicazioni_Lineari.pdf|Esercizi_Applicazioni_Lineari]]
+    - 📄 [[Esercizi_Spazi_Vettoriali.pdf|Esercizi_Spazi_Vettoriali]]
+  - 📁 Lezioni:
+    - 📄 [[1 ottobre 2024.pdf|1 ottobre 2024]]
+    - 📄 [[10 Dicembre 2024.pdf|10 Dicembre 2024]]
+    - 📄 [[10 ottobre 2024.pdf|10 ottobre 2024]]
+    - 📄 [[12 Dicembre 2024.pdf|12 Dicembre 2024]]
+    - 📄 [[14 novembre 2024.pdf|14 novembre 2024]]
+    - 📄 [[15 novembre 2024.pdf|15 novembre 2024]]
+    - 📄 [[15 ottobre 2024.pdf|15 ottobre 2024]]
+    - 📄 [[17 Dicembre 2024.pdf|17 Dicembre 2024]]
+    - 📄 [[1101 algebra-lineare-e-geometria[✅20]/Lezioni/17 ottobre 2024.pdf|17 ottobre 2024]]
+    - 📄 [[19 novembre 2024.pdf|19 novembre 2024]]
+    - 📄 [[21 novembre 2024.pdf|21 novembre 2024]]
+    - 📄 [[22 ottobre 2024.pdf|22 ottobre 2024]]
+    - 📄 [[24 ottobre 2024.pdf|24 ottobre 2024]]
+    - 📄 [[26 novembre 2024.pdf|26 novembre 2024]]
+    - 📄 [[28 novembre 2024.pdf|28 novembre 2024]]
+    - 📄 [[29 ottobre 2024.pdf|29 ottobre 2024]]
+    - 📄 [[3 ottobre 2024.pdf|3 ottobre 2024]]
+    - 📄 [[31 ottobre 2024.pdf|31 ottobre 2024]]
+    - 📄 [[5 novembre 2024.pdf|5 novembre 2024]]
+    - 📄 [[7 novembre 2024.pdf|7 novembre 2024]]
+    - 📄 [[1101 algebra-lineare-e-geometria[✅20]/Lezioni/8 ottobre 2024.pdf|8 ottobre 2024]]
+  - 📁 Lia:
+    - 📄 [[Formulario.pdf|Formulario]]
+    - 📄 [[1101 algebra-lineare-e-geometria[✅20]/Lia/Teoria.pdf|Teoria]]

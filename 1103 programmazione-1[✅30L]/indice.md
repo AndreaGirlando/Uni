@@ -1,0 +1,92 @@
+- 📁 Root:
+  - 📁 C:
+    - 📁 Esame:
+      - 📄 [[29-01-25.pdf|29-01-25]]
+    - 📁 Esercizi:
+      - 📁 EsamePratico:
+        - 📁 02-02-2023:
+          - 📁 FattoDaMe:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/02-02-2023/FattoDaMe/02-02-2023.pdf|02-02-2023]]
+          - 📁 FattoDalProf:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/02-02-2023/FattoDaMe/02-02-2023.pdf|02-02-2023]]
+        - 📁 04-04-2023:
+          - 📄 [[04-04-2023.pdf|04-04-2023]]
+        - 📁 05-12-2023:
+          - 📁 FattoDaMe:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/05-12-2023/FattoDaMe/05-12-2023.pdf|05-12-2023]]
+          - 📁 FattoDalProf:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/05-12-2023/FattoDaMe/05-12-2023.pdf|05-12-2023]]
+        - 📁 06-09-2023:
+          - 📁 FattoDaMe:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/06-09-2023/FattoDaMe/06-09-23.pdf|06-09-23]]
+          - 📁 FattoDalProf:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/06-09-2023/FattoDaMe/06-09-23.pdf|06-09-23]]
+        - 📁 10-01-2023:
+          - 📄 [[prova.pdf|prova]]
+        - 📁 10-09-2024:
+          - 📁 10-09-2024FattoDaMe:
+            - 📄 [[10-09-2024.pdf|10-09-2024]]
+          - 📁 10-09-2024FattoDalProf:
+            - 📁 __MACOSX:
+              - 📄 [[._10-09-2024.pdf|._10-09-2024]]
+        - 📁 16-02-2024:
+          - 📁 FattoDaMe:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/16-02-2024/FattoDaMe/16-02-2024.pdf|16-02-2024]]
+          - 📁 FattoDalProf:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/16-02-2024/FattoDaMe/16-02-2024.pdf|16-02-2024]]
+        - 📁 20-07-2023:
+          - 📁 FattoDaMe:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/20-07-2023/FattoDaMe/20-07-2023.pdf|20-07-2023]]
+          - 📁 FattoDalProf:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/20-07-2023/FattoDaMe/20-07-2023.pdf|20-07-2023]]
+        - 📁 24-09-2024:
+          - 📁 24-09-2024FattoDaMe:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/24-09-2024/24-09-2024FattoDaMe/24-09-2024.pdf|24-09-2024]]
+          - 📁 24-09-2024FattoDalProf:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/24-09-2024/24-09-2024FattoDaMe/24-09-2024.pdf|24-09-2024]]
+            - 📁 __MACOSX:
+              - 📄 [[._24-09-2024.pdf|._24-09-2024]]
+        - 📁 25-07-2024:
+          - 📄 [[25-07-2024.pdf|25-07-2024]]
+        - 📁 26-06-2024:
+          - 📁 FattaDalProf:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/26-06-2024/FattoDaMe/26-06-2024.pdf|26-06-2024]]
+          - 📁 FattoDaMe:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/26-06-2024/FattoDaMe/26-06-2024.pdf|26-06-2024]]
+        - 📁 29-03-2024:
+          - 📁 FattoDaMe:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/29-03-2024/FattoDaMe/29-03-2024.pdf|29-03-2024]]
+          - 📁 FattoDalProf:
+            - 📄 [[1103 programmazione-1[✅30L]/C/Esercizi/EsamePratico/29-03-2024/FattoDaMe/29-03-2024.pdf|29-03-2024]]
+            - 📁 __MACOSX:
+              - 📄 [[._29-03-2024.pdf|._29-03-2024]]
+  - 📁 FileCondivisiTeams:
+    - 📄 [[1) Traduzione e Linguaggi.pdf|1) Traduzione e Linguaggi]]
+    - 📄 [[2) Problemi - Algoritmi - Diagrammi.pdf|2) Problemi - Algoritmi - Diagrammi]]
+    - 📄 [[6) Allocazione Dinamica Memoria.pdf|6) Allocazione Dinamica Memoria]]
+    - 📄 [[7) Allocazione della Memoria.pdf|7) Allocazione della Memoria]]
+    - 📄 [[9) compilazione_separata.pdf|9) compilazione_separata]]
+    - 📄 [[ProveDiLaboratorioSvolte.pdf|ProveDiLaboratorioSvolte]]
+    - 📄 [[Variabili, rappresentazione dei numeri.pdf|Variabili, rappresentazione dei numeri]]
+    - 📁 Prove teoriche (anni precedenti):
+      - 📁 Completate:
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/02-02-23.pdf|02-02-23]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/03-03-23.pdf|03-03-23]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/06-12-22 (itinere).pdf|06-12-22 (itinere)]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/07-12-23.pdf|07-12-23]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/16-02-24.pdf|16-02-24]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/23-02-23.pdf|23-02-23]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/27-06-23.pdf|27-06-23]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/31-01-24.pdf|31-01-24]]
+      - 📁 Da completare:
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/02-02-23.pdf|02-02-23]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/03-03-23.pdf|03-03-23]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/06-12-22 (itinere).pdf|06-12-22 (itinere)]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/07-12-23.pdf|07-12-23]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/16-02-24.pdf|16-02-24]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/23-02-23.pdf|23-02-23]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/27-06-23.pdf|27-06-23]]
+        - 📄 [[1103 programmazione-1[✅30L]/file-condivisi/Prove teoriche (anni precedenti)/Completate/31-01-24.pdf|31-01-24]]
+  - 📁 Lezioni:
+    - 📄 [[1103 programmazione-1[✅30L]/Lezioni/17 ottobre 2024.pdf|17 ottobre 2024]]
+    - 📄 [[6 Novembre 2024 (Esercizio matriciCelleAdiacenti.c).pdf|6 Novembre 2024 (Esercizio matriciCelleAdiacenti.c)]]

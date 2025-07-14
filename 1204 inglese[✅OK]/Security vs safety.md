@@ -1,0 +1,1 @@
+Security is about protection from intentional attacks. An example can be setup a defense against an hacker attack, in the other hand Safety is about protection from accidental problems like a medical device that shuts down safely in case of a malfunction. Security is more like a digital defense and safety is related to physical defense.

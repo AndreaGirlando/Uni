@@ -1,0 +1,6 @@
+1001 Mario Rossi 25.5 0 0
+1002 Anna Verdi 28.0 880 6 
+1003 Luca Bianchi 26.0 0 0
+1004 Sara Neri 27.5 0 0 
+1005 Marco Gialli 24.0 500 12 
+1006 Laura Marroni 29.0 600 12
