@@ -9,4 +9,4 @@ Questa repository contiene i miei appunti di studio, che includono anche eventua
 
 # [Versione web delle note](https://uni-notes-girlando.netlify.app/)
 - I pdf sono raggiungibili solo attraverso il file chiamato "Link" che trovi all'interno delle varie cartelle. ATTENZIONE: alcuni pdf non funzionano.
-- Inoltre alcune espressioni latex sono buggate, perciò si consiglia di clonare la repo ed usare obisidian per una visualizzazione ottimale
+- Inoltre alcune espressioni latex non funzionano, perciò si consiglia di clonare la repo ed usare obisidian per una visualizzazione ottimale
