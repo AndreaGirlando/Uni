@@ -57,5 +57,8 @@ Arriviamo a capire che la equi-join è derivata perché $R \bowtie_{A_i = A_k} S
 
 ###### Dimostrazione che natural-join è derivata
 
+
+###### Dimostrazione che l'intersezione è derivata
+Data due relazioni $R$ ed $S$ allora $$A\wedge R = R-(R-S)$$
 ###### Query
 Una query è una funzione che da una istanza di una database (insiemi di relazioni) ci da una relazione come risultato
