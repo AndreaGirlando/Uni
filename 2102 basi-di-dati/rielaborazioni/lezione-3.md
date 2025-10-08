@@ -56,6 +56,8 @@ Allora ponendo:
 Arriviamo a capire che la equi-join è derivata perché $R \bowtie_{A_i = A_k} S = \sigma_{A_i = A_k}(R \times S)$ ovvero la equi-join è una theta join con una congiunzione di uguaglianza
 
 ###### Dimostrazione che natural-join è derivata
+Siano $R$ con attributi $XY$ ed $S$ con attributi $YZ$, allora $R \bowtie S$ è una relazione di attributi $XYZ$ costituita da tutte le ennuple tali che: $t[XY]$ in $R$, $t[YZ]$ in $S$ ovvero che: $$R \bowtie S = \{t|t[XY] \in R \text{ \, e \, } t[YZ] \in S\}$$ Possiamo affermare che la congiunzione è derivata perché se rinominiamo gli attributi di $S$ come $Y'Z$ ottenendo $S'$ capiamo subito che usando una equi-join (con $Y = Y'$) e una proiezione rispetto $XYZ$ otteniamo la stessa cosa che facendo una natural join: $$R \bowtie S = \pi_{XYZ}(R\bowtie_{Y=Y'}S')$$
+essendo la equi-join un operatore derivata allora anche la natural join lo è.
 
 ###### Query
 Una query è una funzione che da una istanza di una database (insiemi di relazioni) ci da una relazione come risultato
