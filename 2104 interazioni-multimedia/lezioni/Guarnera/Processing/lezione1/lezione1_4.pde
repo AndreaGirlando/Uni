@@ -1,0 +1,9 @@
+background(255);
+strokeWeight(35);
+line(50,25,150,150);
+strokeCap(SQUARE);
+line(150,25,250,150);
+strokeCap(PROJECT);
+line(250,25,350,150);
+strokeCap(ROUND);
+line(350,25,450,150);
