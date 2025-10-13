@@ -122,3 +122,43 @@ int potenza ( int a , int n ) {
 L'albero di ricorsione per il calcolo di $2^4$ ha la seguente forma: ![[Pasted image 20251013093604.png]]
 ###### Conclusioni
 Questi tre esempi mostrano un principio comune: **la ricorsione separa il processo in due momenti distinti ma complementari**, questa struttura logica è ciò ritroveremo in forma più articolata nei grandi algoritmi
+
+
+# Problemi di somma e soglia su array
+
+Come abbiamo visto nei punti precedenti gli **array** offrono un contesto ideale per applicare e comprendere la logica ricorsiva, le operazioni definite su un array possono essere descritte ricorsivamente in molti modi diversi, nei prossimi esempi vedremo come la ricorsione può essere utilizzata per risolvere problemi di natura sia quantitativa che logica.
+
+
+In generale i problemi sugli array posso essere risolti in modo ricorsivo seguendo due schemi generali:
+- **Ricorsione in coda**: in cui l'array viene ridotto progressivamente di un elemento alla volta
+- **Doppia ricorsione**: in cui l'array viene suddiviso in due sottoarray di dimensioni più piccole che vengono risolti e poi ricombinati
+###### Somma dei valori di un array
+Supponiamo di avere un array di interi: $$A = [3,7,2,9,4]$$ in questo caso la somma totale degli elementi sarà: $3+7+2+9+4 = 25$ quindi il nostro obbiettivo è quello di scrivere una procedura in grado di restituire per qualsiasi array $A$ di dimensione $n$, il valore:
+$$S(A,n) = \Sigma_{i = 0}^{n-1}A[i]$$
+Si tratta di un problema apparentemente semplice ma utile per comprendere la differenza tra un approccio **iterativo** e **ricorsivo**:
+- **Approccio iterativo**: supponendo di avere un array di $n$ elementi ci basta scorrere l'array da destra verso sinistra e accumulando progressivamente il valore in una variabile che chiameremo **somma**
+  ![[Pasted image 20251013161930.png|700]]
+- **Approccio ricorsivo**: Invece di accumulare progressivamente i risultati per usare un approccio ricorsivo dobbiamo scomporre il problema in problemi più piccoli, ciò significa nel caso della somma immaginare l'azione di scorrimento iterativo dell'array come una funzione che richiama ste stessa su versioni ridotte dello stesso array, questa cosa si può fare in due modi:  
+	1. *Ricorsione di coda* ![[Pasted image 20251013162320.png]]
+		- **Fase di divisione**: consiste nel passare da un array di $n$ elementi a uno di $n-1$
+		- **Fase di riunificazione**: consiste nel sommare il valore corrente $A[n-1]$ al risultato ottenuto ricorsivamente
+		- *Codice*![[Pasted image 20251013162520.png|700]]
+		- *Albero di ricorsione*: La complessità dell'albero è $n$ e ogni chiamata ricorsiva genera una sola nuova chiamata quindi la complessità temporale è $O(n)$
+	2. *Doppia ricorsione* ![[Pasted image 20251013163348.png]]
+		- **Fase di divisione**: suddivide il problema in due sottoproblemi di dimensione $n/2$
+		- **Fase di riunificazione**: consiste nel sommare i due risultati parziali
+		- *Codice*![[Pasted image 20251013163558.png|700]]
+		- *Albero di ricorsione* ![[Pasted image 20251013163705.png]]Questo è un albero bilanciato e completo con profondità $\log_2n$ la complessità temporale complessiva è: $T(n) = 2T(\frac{n}{2})+O(1)$ 	 
+ 
+
+
+###### Verificare se la somma supera una soglia
+Nel problema che consideriamo ora non vogliamo calcolare il valore della somma, ma soltanto stabilire se la somma degli elementi di un array $A$ supera una certa soglia $T$ come risultato vogliamo un esito logico $\text{true\\false}$, quello che facciamo è facciamo scorrere la soglia $T$ verso il basso man mano che consumiamo l'array: a ogni passo sottraiamo l'ultimo elemento e chiediamo se la somma rimanente super la nuova soglia ![[Pasted image 20251013164534.png]]
+- **Fase di divisione**: il problema viene suddiviso in problemi più piccoli con una soglia sempre più bassa
+- **Fase di riunificazione**: il valore dell'ultima chiamata ricorsiva risale
+
+È naturale chiedersi se un approccio a doppia ricorsione possa offrire vantaggi, ma in questo caso la risposta è no, infatti se si suddividesse l'array in due sottoarray ciascuna chiamata fornirebbe la risposta "la sinistra da sola non supera $T$" che non ci dice nulla sull'esito finale che dipende da $\text{sinistra+destra}$, ne consegue che la ricorsione binaria in forma puramente booleana è insufficiente e quindi si dovrebbe complicare il tutto per renderla funzionante
+
+**Quando l'obiettivo è un esito booleano con possibile arresto anticipato, la ricorsione lineare con soglia residua è la forma più naturale chiara ed efficace**
+
+# Approccio ricorsivo e iterativo
