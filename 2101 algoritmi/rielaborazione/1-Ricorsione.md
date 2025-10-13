@@ -1,6 +1,5 @@
 Rielaborazione del file [[1-Ricorsione.pdf]]
 
-
 # Concetto di ricorsione
 
 ###### La ricorsione
