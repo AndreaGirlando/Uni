@@ -162,3 +162,19 @@ Nel problema che consideriamo ora non vogliamo calcolare il valore della somma, 
 **Quando l'obiettivo è un esito booleano con possibile arresto anticipato, la ricorsione lineare con soglia residua è la forma più naturale chiara ed efficace**
 
 # Approccio ricorsivo e iterativo
+
+###### Analisi
+Dopo aver analizzato vari esempi di funzioni ricorsive e la loro costruzione passo dopo passo, è naturale chiedersi quale sia la differenza sostanziale tra un approccio ricorsivo e uno iterativo:
+- **Ricorsione**: 
+	- **Concettualmente:** rappresenta un modo di ragionare *dall'altro verso il basso*, infatti parte dalla formulazione del problema generale e lo scompone in sottoproblemi più piccoli
+	- **Computazionalmente**:  richiede una quantità di memoria proporzionale alla profondità della ricorsione
+- **Iterazione**: 
+	- **Concettualmente:** rappresenta il modo di ragionare *dal basso verso l'alto*, la soluzione viene costruita passo passo mantenendo esplicitamente lo stato intermedio della computazione
+	- **Computazionalmente**:  usa una quantità di memoria costante poiché le variabili utilizzate vengono riutilizzate a ogni passo.
+
+Le funzioni ricorsive hanno molto spesso una maggiore **chiarezza espressiva** e questo permette una ottima **modularità**, naturalmente presenta anche dei **limiti pratici**, come quando la profondità di una chiamata è molto grande o anche nella gestione dei bug durante la fase di debug (le funzioni ricorsive sono difficili da debuggare)
+
+###### Conclusioni
+Possiamo dire che l’approccio iterativo privilegia l’efficienza e la concretezza del controllo esplicito, mentre la ricorsione privilegia l’astrazione, la chiarezza concettuale e la naturale corrispondenza con la definizione logica del problema. 
+
+**Nell’equilibrio tra i due approcci si trova una delle lezioni più profonde della programmazione: la tensione costante tra eleganza e concretezza, tra astrazione e controllo.**
