@@ -76,9 +76,8 @@ la **i)** è vera per la proprietà distributiva dell'integrale indefinito, appl
 
 **Esempio 3**
 Sia $n \in N$ determiniamo $$\int e^x x^n dx$$ scegliendo $e^x$ come fattore differenziale e $x^n$ come fattore finito si ha:
-$$\int e^x x^n \,dx = e^x x^n - n \int e^x x^{n-1} \,dx = \\
-= e^x x^n - n \left( e^x x^{n-1} - (n-1) \int e^x x^{n-2} \,dx \right) = \cdots.$$e dopo $n$ integrazioni per parti il problema viene ricondotto alla determinazione dell'integrale indefinito di $e^x$ 
-
+e dopo $n$ integrazioni per parti il problema viene ricondotto alla determinazione dell'integrale indefinito di $e^x$  $$\int e^x x^n \,dx = e^x x^n - n \int e^x x^{n-1} \,dx = \\
+= e^x x^n - n \left( e^x x^{n-1} - (n-1) \int e^x x^{n-2} \,dx \right) = \cdots.$$
 > [!Danger] Errore
 > Se avessimo scelto $e^x$ si arrivava alla determinazione dell'integrale $\int e^x x^{n+1} dx$ e quindi con il grado di x che aumenta cosa che inevitabilmente ci porta a calcoli enormi 
 
@@ -117,3 +116,29 @@ Di seguito altri esempi:
 
 
 ###### Integrazione polinomi trigonometrici
+Risolveremo solo integrali del tipo:
+- $I_n = \int \cos^n x \, dx$
+- $J_n = \int \sin^n x \, dx$
+- $H = \int \cos^m x \sin^n x \, dx$
+essendo $n, m \in N$ si ha:
+
+$$I_1 = \sin x + k, \quad k \in \mathbb{R};$$
+
+$$I_2 = \int \frac{1 + \cos(2x)}{2} \, dx = \frac{x}{2} + \frac{\sin(2x)}{4} + k, \quad k \in \mathbb{R};$$
+
+$$I_3 = \int \cos x \cdot \cos^2 x \, dx = \int \cos x (1 - \sin^2 x) \, dx = \left[\int (1-t^2) \, dt\right]_{t=\sin x}$$
+analogamente per $n>3$, in pratica possiamo dire che:
+- **Per n pari**: si utilizzano le formule di bisezione
+- **Per n dispari**: si ricorre all'integrazione per sostituzione
+Analogamente:$$J_1 = -\cos x + k$$$$J_2 = \int \frac{1 - \cos(2x)}{2} \, dx$$$$J_3 = \int \sin x \cdot \sin^2 x \, dx = -\int (-\sin x)(1 - \cos^2 x) \, dx$$
+e si procede allo stesso modo di $I_3$. Invece per determinare $H$ si distinguono due casi:
+- **i)** se almeno uno fra $m,n$ è dispari, ad esempio $m = 2p+1, p\in N_0$ $$H = \int \cos x \cdot (\cos^2 x)^p \cdot \sin^n x \, dx = \int \cos x (1 - \sin^2 x)^p \sin^n x \, dx = \left[\int (1-t^2)^p t^n \, dt\right]_{t=\sin x}$$ praticamente arriviamo all'integrale di un polinomio
+- **ii)** se $m,n$ sono entrambi pari ovvero $m = 2p, n = 2q$ con $p,q \in N$ si procede nel seguente modo
+
+
+**Esempio 8**: di seguito alcuni integrali indefiniti di polinomi trigonometrici
+1. $$\int \sin x \cos^3 x \, dx = -\int (-\sin x) \cos^3 x \, dx = -\left[\int t^3 \, dt\right]_{t=\cos x} = -\frac{\cos^4 x}{4} + k, \quad k \in \mathbb{R}.$$
+2. $$\int \cos^3 x \sin^2 x \, dx = \int (\cos x) \cos^2 x \sin^2 x \, dx = \int (\cos x)(1-\sin^2 x) \sin^2 x \, dx = \left[\int (t^2 - t^4) \, dt\right]_{t=\sin x} = \frac{\sin^3 x}{3} - \frac{\sin^5 x}{5} + k, \quad k \in \mathbb{R}.$$
+3. $$\int \cos^2 x \sin^2 x \, dx = \int \frac{1 + \cos(2x)}{2} \frac{1 - \cos(2x)}{2} \, dx = \int \frac{1 - \cos^2(2x)}{4} \, dx = \frac{1}{4} \int \left(1 - \frac{1 + \cos(4x)}{2}\right) \, dx = \frac{1}{4} \int \left(\frac{1}{2} - \frac{1}{2}\cos(4x)\right) \, dx = \frac{1}{8}x - \frac{1}{32}\sin(4x) + k, \quad k \in \mathbb{R}.$$
+
+##### Integrazione delle funzioni razionali fratte
