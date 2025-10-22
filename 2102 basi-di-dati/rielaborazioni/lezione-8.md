@@ -70,7 +70,7 @@ select Dept
 from Employee
 where Salary in (select max(Salary) from Employee)
 ```
-	oppure si potrebbe anche scrivere
+oppure si potrebbe anche scrivere
 ```SQL
 select Dept
 from Employee

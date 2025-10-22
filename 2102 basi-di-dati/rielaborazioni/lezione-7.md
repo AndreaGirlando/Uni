@@ -61,7 +61,7 @@ La join viene usata per effettuare query su più tabelle, ha la seguente sintass
 Come possiamo notare la clausola del join viene specificata dentro la clausola where
 ![[Pasted image 20251018112051.png|700]]
 Per rendere queste query con molte tabelle più pulite si usano gli alias delle tabelle
-```
+```SQL
 SELECT p1.Professore 
 FROM Corsi p1, Corsi p2, Esami e1, Esami e2 
 WHERE p1.Corso = e1.Corso AND 
