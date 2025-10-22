@@ -99,3 +99,46 @@ La notazione $\Omega$ indica un **limite inferiore** e appunto per questo viene 
 - $n^3 = \Omega(n^2)$
 
 ###### Le notazioni o e ω (piccole)
+Accanto a $O$ e $\Omega$ che rappresentano limiti asintotici ampi, esistono le loro controparti minuscole $o$ e $\omega$ che esprimo limiti stretti 
+
+- La prima $o(g(n))$ esprime che $f(n)$ cresce **più lentamente** di $g(n)$:$$f(n) = o(g(n)) \Leftrightarrow \forall c > 0, \exists n_o > 0 \text{ tale che } f(n) < cg(n), \forall n \ge n_o$$Significa che il rapporto $\frac{f(n)}{g(n)}$ tende a zero quindi $f(n)$ cresce in modo più lento di $g(n)$ che per $n$ grandi il suo contributo diventa trascurabile
+  
+  Praticamente possiamo dire che un tempo di esecuzione $o(n^2)$ significa che esso cresce più lentamente di qualunque funzione proporzionale a $n^2$
+- La seconda $\omega(g(n))$ ha un significato opposto descrive infatti funzioni che crescono **più rapidamente** di $g(n)$:$$f(n) = \omega(g(n)) \Leftrightarrow \forall c>0, \ \exists n_0 > 0 \text{ tale che } f(n)>cg(n), \forall n \ge n_0$$Significa che il rapporto $\frac{f(n)}{g(n)}$ tende a infinito 
+  Praticamente possiamo dire che un tempo di esecuzione $\omega(n^2)$ significa che la nostra funzione cresce più velocemente di qualunque funzione proporzionale a $n^2$ 
+
+Possiamo dunque pensare alle notazioni $o$ e $\omega$ come versioni esclusive di $O$ e $\Omega$ che indicano una crescita più lenta o più rapida che non raggiunge mai quella della funzione di riferimento
+
+
+###### Conclusioni sulle notazioni asintotiche
+La scala delle notazioni è la seguente
+$$\omega(g(n)) \supseteq \Omega(g(n)) \supseteq \Theta(g(n)) \subseteq O(g(n)) \subseteq o(g(n))$$
+
+
+### Oltre i casi limite
+Le notazioni asintotiche descrivono il comportamento di un algoritmo per input molto grandi, ma nella realtà le cose possono essere più sfumate, le costanti o termini minori possono influenzare le prestazioni più di quanto le formule suggeriscano
+
+###### Cosa accade davvero in pratica
+Le notazioni asintotiche sono strumenti potenti per classificare gli algoritmi, ma è importante ricordare che esse rappresentano un modello astratto del comportamento di un programma. Dire che un algoritmo ha complessità $O(g(n))$ non significa che esegua esattamente $g(n)$ operazioni ma solo che per $n$ grandi il suo tempo di esecuzione non cresce più rapidamente di una funzione $g(n)$, di solito in questo tipo di analisi si distinguono tre casi:
+- $O(g(n))$ che descrive il **caso peggiore** ovvero il limite superiore del tempo di esecuzione
+- $\Omega(g(n))$ che descrive il **caso migliore** ovvero il limite inferiore del tempo di esecuzione
+- $\Theta(g(n))$ indica che il tempo di esecuzione è compreso tra i due limiti precedenti, fornisce quindi una descrizione asintoticamente esatta di quello che è il tempo di esecuzione
+![[Pasted image 20251022183909.png|700]]
+Questi esempi ci mostrano che le notazioni non devono essere interpretate come previsioni puntuali, ma come **descrizioni qualitative del comportamento**, le notazioni vanno interpretate in questo modo:
+- **Caso peggio** ci garantisce la soglia di sicurezza, utile in contesti critici
+- **Caso migliore**: indica il limite di ottimalità teorica, ma non sempre raggiungibile
+- **Caso medio**: è spesso quello più significativo nella valutazione pratica
+
+###### Quando le costanti contano
+Nell'analisi asintotica degli algoritmi, è prassi trascurare i **fattori costanti** e i **termini di ordine inferiore**, questo approccio consente di concentrarsi sulla crescita dominante della funzione per $n$ molto grandi, tuttavia questa cosa nella pratica quotidiana per input di piccole o medie dimensioni dovrebbe essere attenzionata
+
+**Esempio**: $$T_1(n) = 100n, \ T_2(n) = 5n \log_2 n$$dal punto di vista asintotico $T_1$ è più efficiente, tuttavia il fattore costante $100$ nel primo algoritmo può renderlo più lento del secondo per una vasta gamma di valori realistici di $n$, vediamolo con $n = 100$
+$$T_1(100) = 10000 , \ T_2(100) = 5\times100\times \log_2 100 ≈ 5 \times 100 \times 6.64 = 3320 $$
+In questo caso, l'algoritmo con complessità peggiore risulta più veloce
+
+Questo esempio mette in evidenza un punto importante: le notazioni asintotiche descrivono il comportamento per $n$ grandi, ma non sempre riflettono le prestazioni reali su input di dimensioni moderate
+
+**In sintesi** possiamo dire che:
+- Le notazioni asintotiche descrivono il comportamento a lungo termine
+- I fattori costanti e i termini minori influenzano le prestazioni nel breve termine
+- un algoritmo asintoticamente migliore può essere più lento di un altro per una vasta gamma di input reali
