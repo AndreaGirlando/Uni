@@ -142,3 +142,41 @@ e si procede allo stesso modo di $I_3$. Invece per determinare $H$ si distinguon
 3. $$\int \cos^2 x \sin^2 x \, dx = \int \frac{1 + \cos(2x)}{2} \frac{1 - \cos(2x)}{2} \, dx = \int \frac{1 - \cos^2(2x)}{4} \, dx = \frac{1}{4} \int \left(1 - \frac{1 + \cos(4x)}{2}\right) \, dx = \frac{1}{4} \int \left(\frac{1}{2} - \frac{1}{2}\cos(4x)\right) \, dx = \frac{1}{8}x - \frac{1}{32}\sin(4x) + k, \quad k \in \mathbb{R}.$$
 
 ##### Integrazione delle funzioni razionali fratte
+Sia $f$ una funzione razionale fratta: $$f(x) = \frac{a(x)}{b(x)} \text { funzione 1.1 } $$con $a, b$ polinomi primi fra loro, effettuando la divisione fra $a$ e $b$ si ottengono due polinomi $q$ e $r$ quest'ultimo avente grado minore di quello di $b$ tali che: $$f(x) = q(x)+\frac{r(x)}{b(x)}$$Quindi per integrare una qualsiasi funzione razionale fratta basta integrare un polinomio e una funzione razionale fratta propria, ossia una funzione razionale fratta in cui il grado del numeratore è minore di quello del denominatore.
+
+Supponiamo che la funzione $1.1$ sia una funzione razionale fratta propria, e sia $m$ il grado del polinomio $b$, possiamo affermare che:
+- $b(x) = 0$ ha $m$ soluzioni reali o complesse
+	- Data $\alpha$ una soluzione reale con una sua molteplicità $n$ allora $b(x)$ è divisibile per $(x-\alpha)^n$ 
+	- Dato $k+ic$ una soluzione complessa con molteplicità $n$ (anche il suo coniugato $k-ic$ lo sarà) allora $b(x)$ è divisibile per $$[x-(k+ic)]^n[x-(k-ic)]^n = [(x-k)^2+c^2]^n$$
+Dunque il polinomio $b$ si decompone nel prodotto di fattori del tipo $(x-\alpha)^n$ e fattori del tipo $[(x-k)^2+c^2]^n$ cioè nel prodotto di potenze di polinomi di primo grado e di potenze di polinomi di secondo grado con discriminante negativo. A questo punto si dimostra che è possibile decomporre la funzione razionale $f$ nella somma di funzioni razionali (le **fratte semplici**) che sono del tipo:
+- Ogni $b$ del tipo $(x-\alpha)^n$ dà luogo ad $n$ fratti semplici del tipo: $$\frac{A}{(x-\alpha)^n} \text{ funzione 1.2 }$$$$ \frac{A_1}{x-\alpha}, \frac{A_2}{(x-\alpha)^2}, \dots, \frac{A_n}{(x-\alpha)^n} $$
+- Ogni fattore del tipo $[(x-k)^2+c^2]^n$ dà luogo ad $n$ fratti semplici del tipo: $$\frac{A_1x+B_1}{(x-k)^2+c^2} \text{ funzione 1.3 }$$
+  $$ \frac{A_1 x + B_1}{(x-k)^2 + c^2}, \frac{A_2 x + B_2}{[(x-k)^2 + c^2]^2}, \dots, \frac{A_n x + B_n}{[(x-k)^2 + c^2]^n}. $$
+**Esempio 9**
+Presa una funzione razionale fratta con denominatore nella forma: $$x^3(x-2)(x^2+5)(x^2+1)^2$$i suoi fratti semplici saranno:
+$$\frac{A_1}{x}, \frac{A_2}{x^2}, \frac{A_3}{x^3}, \frac{A_4}{x-2}$$e
+$$ \frac{C_1 x + B_1}{x^2+5}, \frac{C_2 x + B_2}{x^2+1}, \frac{C_3 x + B_3}{(x^2+1)^2} $$
+Praticamente l'integrazione di una funzione razionale fratta propria viene ricondotta all'integrazione dei suoi fratti semplici
+
+
+###### Come integrare un fratto semplice
+
+**Integrazione dei fratti semplici del primo tipo (1.2):**
+Osserviamo che grazie alla proprietà di omogeneità possiamo supporre $A = 1$, il nostro fratto diventa:$$I_n = \int \frac{1}{(x-c)^n} dx$$
+Se $n = 1$ si ha $$I_1 = \int \frac{1}{\underbrace{x-c}_{f(x)}} \cdot \underbrace{1}_{f'(x)} dx = \text{ e quindi per la regola di integrazione } = \log |x-c|+k$$Se $n>1$ si ha $$I_n = \int (x-c)^{-n} dx = \frac{1}{-n+1} \frac{1}{(x-c)^{n-1}}+k$$
+**Integrazione dei fratti semplici del secondo tipo (1.3)**:
+Tratteremo solo i casi con $n=1$ e $n=2$, poniamo quindi:
+$$I_n = \int \frac{A_1x+B_1}{(x-k)^2+c^2}$$
+*Primo caso:* $n=1$ 
+Grazie al primo teorema di integrazione per sostituzione possiamo supporre $k=0$ quindi abbiamo che $$I_1 = \int \frac{A_1x+B_1}{x^2+c^2} dx \text{ decomponendo in somma: } A \int \frac{x}{x^2+c^2} dx + B \int \frac{1}{x^2+c^2} dx.$$
+Supponendo $A = B = 1$, consideriamo i due in modo separato per semplicità:
+1. $$ \int \frac{x}{x^2+c^2} dx = \frac{1}{2} \int \frac{2x}{x^2+c^2} dx = \frac{1}{2} \log(x^2+c^2) + k; $$
+2. $$\int \frac{1}{x^2+c^2} dx = \int \frac{1}{c^2 \left[ \left(\frac{x}{c}\right)^2 + 1 \right]} dx = \frac{1}{c} \int \frac{1}{c \left[ \left(\frac{x}{c}\right)^2 + 1 \right]} dx = \\
+= \frac{1}{c} \left[ \int \frac{1}{t^2+1} dt \right]_{t=\frac{x}{c}} = \frac{1}{c} \arctan \frac{x}{c} + k$$dato che la derivata di $\frac{x}{c} è {1}{c}$
+
+*Secondo caso:* $n=2$
+Anche questa volta possiamo supporre che $A=B=1$ e $k = 0$ quindi si ha che: $$\int \frac{x+1}{(x^2+c^2)^2} dx = I_1+I_2$$dove $I_1$ e $I_2$ sono: $$I_1 = \int \frac{x}{(x^2+c^2)^2} dx, \quad I_2 = \int \frac{1}{(x^2+c^2)^2} dx.$$
+1. $$ I_1 = \frac{1}{2} \int \frac{2x}{(x^2+c^2)^2} dx = \frac{1}{2} \left[ \int \frac{1}{t^2} dt \right]_{t=x^2+c^2} = -\frac{1}{2} \frac{1}{x^2+c^2} + k $$
+2. Per determinare $I_2$ procediamo come abbiamo visto nell'esempio $5$ relativo all'integrazione per parti: $$I_2 = \frac{1}{c^2} \int \frac{c^2}{(x^2+c^2)^2} dx = \frac{1}{c^2} \int \frac{x^2+c^2-x^2}{(x^2+c^2)^2} dx = \\ \frac{1}{c^2} \int \frac{1}{x^2+c^2} dx + \frac{1}{c^2} \int \frac{-x^2}{(x^2+c^2)^2} dx.$$il primo è stato già studiato nel caso $n=1$, per il secondo invece osserviamo che $\frac{1}{x^2+c^2}$ è $\frac{-2x}{(x^2+c^2)^2}$ quindi è possibile procedere per parti: $$\int \frac{-x^2}{(x^2+c^2)^2} dx = \frac{1}{2} \int x \cdot \frac{-2x}{(x^2+c^2)^2} dx = \frac{1}{2} \frac{x}{x^2+c^2} - \frac{1}{2} \int \frac{1}{x^2+c^2} dx.$$e anche in questo caso ci riconduciamo al caso di $n=1$
+
+Con le considerazioni fatte finora, siamo in grado di integrare una funzione del tipo: $$f(x) = \frac{ax+b}{x^2+px+q}$$
