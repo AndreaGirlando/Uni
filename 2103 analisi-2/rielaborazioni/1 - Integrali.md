@@ -163,7 +163,7 @@ Praticamente l'integrazione di una funzione razionale fratta propria viene ricon
 
 **Integrazione dei fratti semplici del primo tipo (1.2):**
 Osserviamo che grazie alla proprietà di omogeneità possiamo supporre $A = 1$, il nostro fratto diventa:$$I_n = \int \frac{1}{(x-c)^n} dx$$
-Se $n = 1$ si ha $$I_1 = \int \frac{1}{\underbrace{x-c}_{f(x)}} \cdot \underbrace{1}_{f'(x)} dx = \text{ e quindi per la regola di integrazione } = \log |x-c|+k$$Se $n>1$ si ha $$I_n = \int (x-c)^{-n} dx = \frac{1}{-n+1} \frac{1}{(x-c)^{n-1}}+k$$
+Se $n = 1$ si ha $$I_1 = \int \frac{1}{\underbrace{x-c}_{f(x)}} \cdot \underbrace{1}_{f'(x)} dx = \text{ e quindi per la regola di integrazione } = \log |x-c|+k$$Se $n>1$ si ha $$I_n = \int (x-c)^{-n} dx = \frac{(x-c)^{-n+1}}{-n+1} = \frac{1}{-n+1} \frac{1}{(x-c)^{n-1}}+k$$
 **Integrazione dei fratti semplici del secondo tipo (1.3)**:
 Tratteremo solo i casi con $n=1$ e $n=2$, poniamo quindi:
 $$I_n = \int \frac{A_1x+B_1}{(x-k)^2+c^2}$$
