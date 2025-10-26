@@ -180,3 +180,82 @@ Anche questa volta possiamo supporre che $A=B=1$ e $k = 0$ quindi si ha che: $$\
 2. Per determinare $I_2$ procediamo come abbiamo visto nell'esempio $5$ relativo all'integrazione per parti: $$I_2 = \frac{1}{c^2} \int \frac{c^2}{(x^2+c^2)^2} dx = \frac{1}{c^2} \int \frac{x^2+c^2-x^2}{(x^2+c^2)^2} dx = \\ \frac{1}{c^2} \int \frac{1}{x^2+c^2} dx + \frac{1}{c^2} \int \frac{-x^2}{(x^2+c^2)^2} dx.$$il primo è stato già studiato nel caso $n=1$, per il secondo invece osserviamo che $\frac{1}{x^2+c^2}$ è $\frac{-2x}{(x^2+c^2)^2}$ quindi è possibile procedere per parti: $$\int \frac{-x^2}{(x^2+c^2)^2} dx = \frac{1}{2} \int x \cdot \frac{-2x}{(x^2+c^2)^2} dx = \frac{1}{2} \frac{x}{x^2+c^2} - \frac{1}{2} \int \frac{1}{x^2+c^2} dx.$$e anche in questo caso ci riconduciamo al caso di $n=1$
 
 Con le considerazioni fatte finora, siamo in grado di integrare una funzione del tipo: $$f(x) = \frac{ax+b}{x^2+px+q}$$
+Posto $\Delta = p^2 - 4q$ e da qui distinguiamo tre casi:
+1. $\Delta > 0$: in questo caso il trinomio al denominatore ha due zeri reali e distinti $x_1$, $x_2$ e si ha $x^2+px+q = (x-x_1)(x-x_2)$ e quindi cerchiamo $A$ e $B$ tali che:
+   $$\frac{ax+b}{x^2+px+q} = \frac{A}{x-x_1}+\frac{B}{x-x_2}$$
+   Si deve risolvere il sistema $$\big \{^{A+B \ = \ a}_{-x_2A-x_1B \  = \ b} $$che ammette una sola soluzione in quanto il determinante dei coefficienti vale $x_2-x_1 \not = 0$ quindi ci si riconduce al caso $1.2$ 
+2. $\Delta = 0$:  in questo caso il trinomio al denominatore ha un solo zero $x_0$ di molteplicità $2$ e si ha: $x^2+px+q = (x-x_0)^2$, procedendo come nel caso precedente si determinano due numeri $A$ e $B$ tali che: $$\frac{ax+b}{x^2+px+q} = \frac{A}{x-x_0} + \frac{B}{(x-x_0)^2}.$$in questo modo ci si riconduce nuovamente al caso $1.2$
+3. $\Delta < 0$: in questo caso si utilizza il metodo del complemento dei quadrati: $$x^2 + px + q = x^2 + px + \frac{p^2}{4} - \frac{p^2}{4} + q = \left(x+\frac{p}{2}\right)^2 + \left(\frac{\sqrt{-\Delta}}{2}\right)^2$$quindi il trinomio al denominatore si scrive nella forma $(x-k)^2+c^2$ e si ha:
+   $$ \int f(x) dx = a \int \frac{x}{x^2+px+q} dx + b \int \frac{1}{(x-k)^2+c^2} dx = $$$$ = \frac{a}{2} \int \frac{2x}{x^2+px+q} dx + b \int \frac{1}{(x-k)^2+c^2} dx = $$$$ = \frac{a}{2} \int \frac{2x+p-p}{x^2+px+q} dx + b \int \frac{1}{(x-k)^2+c^2} dx = $$$$ = \frac{a}{2} \int \frac{2x+p}{x^2+px+q} dx + \left( b - \frac{ap}{2} \right) \int \frac{1}{(x-k)^2+c^2} dx = $$$$ = \frac{a}{2} \log(x^2+px+q) + \left( b - \frac{ap}{2} \right) \left[ \int \frac{1}{t^2+c^2} dt \right]_{t=x-k}$$
+Ci si riconduce quindi al caso $1.3$
+
+###### Valanga di esempi:
+**Esempio 10**: Determiniamo $$I = \int \frac{x+4}{x^2-x-6} dx$$si ha: $$x^2-x-6 = (x-3)(x+2)$$
+quindi i fratti semplici saranno del tipo: $$\frac{A}{x-3} \ , \frac{B}{x+2}$$cerchiamo di determinare $A, B$: $$\frac{x+4}{x^2-x-6} = \frac{A}{x-3}+\frac{B}{x+2} = \frac{(A+B)x + 2A -3B}{x^2-x-6}$$quindi deve essere $A+B = 1$, $2A-3B = 4$ e quindi troviamo che $$A = \frac{7}{5}, \ B = -\frac{2}{5}$$sostituendo nei fratti semplici e integrando otteniamo che: $$I = \frac{7}{5}\log |x-3|- \frac{2}{5} \log |x+2| +k$$
+**Esempio 11**: Determiniamo $$\int \frac{x+4}{x^2-2x+1} dx$$in questo caso i fratti semplici sono del tipo: $$\frac{A}{x-1}, \ \frac{B}{(x-1)^2}$$si trova $A = 1$ e $B = 5$ quindi l'integrale richiesto risulta essere: $$|x-1|-\frac{5}{x-1}+k$$
+ **Esempio 12**: Determiniamo $$I = \int \frac{x+4}{x^2+x+4} dx$$il denominatore ha discriminante negativo, quindi si procede nel seguente modo: $$I = \frac{1}{2} \int \frac{2x+8}{x^2+x+4} dx = \frac{1}{2} \int \frac{2x+1}{x^2+x+4} dx + \frac{1}{2} \int \frac{7}{x^2+x+4} dx = $$$$
+= \frac{1}{2} \log(x^2+x+4) + \frac{7}{2} \int \frac{dx}{\left(x+\frac{1}{2}\right)^2 + \frac{15}{4}} = $$$$
+= \frac{1}{2} \log(x^2+x+4) + \frac{7}{\sqrt{15}} \arctan \frac{2}{\sqrt{15}} \left(x+\frac{1}{2}\right) + k$$
+**Esempio 13**: Determiniamo
+$$I = \int \frac{x+3}{(x^2+4)^2}dx$$ e quindi risulta che:
+$$
+I = \frac{1}{2} \int \frac{2x+6}{(x^2+4)^2} dx = \frac{1}{2} \left[ \int \frac{dt}{t^2} \right]_{t=x^2+4} + 3 \int \frac{dx}{(x^2+4)^2}
+$$
+$$
+= -\frac{1}{2(x^2+4)} + \frac{3}{4} \int \frac{x^2+4-x^2}{(x^2+4)^2} dx
+$$
+$$
+= -\frac{1}{2(x^2+4)} + \frac{3}{4} \int \frac{dx}{x^2+4} - \frac{3}{4} \int \frac{x^2}{(x^2+4)^2} dx
+$$
+$$
+= -\frac{1}{2(x^2+4)} + \frac{3}{4} \int \frac{dx}{x^2+4} - \frac{3}{8} \int x \cdot \frac{2x}{(x^2+4)^2} dx
+$$
+$$
+= -\frac{1}{2(x^2+4)} + \frac{3}{8} \arctan \frac{x}{2} - \frac{3}{8} \left[ x \cdot \left( -\frac{1}{x^2+4} \right) - \int 1 \cdot \left( -\frac{1}{x^2+4} \right) dx \right]
+$$
+$$
+= -\frac{1}{2(x^2+4)} + \frac{3}{8} \arctan \frac{x}{2} - \frac{3}{8} \left[ -\frac{x}{x^2+4} + \int \frac{dx}{x^2+4} \right]
+$$
+$$
+= -\frac{1}{2(x^2+4)} + \frac{3}{8} \arctan \frac{x}{2} + \frac{3x}{8(x^2+4)} - \frac{3}{8} \int \frac{dx}{x^2+4}
+$$
+$$
+= -\frac{1}{2(x^2+4)} + \frac{3}{8} \arctan \frac{x}{2} + \frac{3x}{8(x^2+4)} - \frac{3}{8} \left( \frac{1}{2} \arctan \frac{x}{2} \right) + k
+$$
+$$
+= -\frac{1}{2(x^2+4)} + \left( \frac{3}{8} - \frac{3}{16} \right) \arctan \frac{x}{2} + \frac{3x}{8(x^2+4)} + k
+$$
+$$
+= -\frac{1}{2(x^2+4)} + \frac{3}{16} \arctan \frac{x}{2} + \frac{3x}{8(x^2+4)} + k.
+$$
+
+**Esempi 14**: questi sono esempi in cui la funzione razionale fratta non è propria, in questi casi la funzione deve essere decomposta nella somma di un polinomio e di una funzione razionale fratta propria: 
+- *Casi con trasformazioni semplici*:
+	1. $$\int \frac{x+1}{2x+3} dx = \frac{1}{2} \int \frac{2x+2}{2x+3} dx = \frac{1}{2} \int \frac{2x+3-1}{2x+3} dx = \\ \frac{1}{2} \int \left( 1-\frac{1}{2x+3} \right) dx.$$
+	2. $$ \int \frac{x^4}{x^2+1} dx = \int \frac{x^4-1+1}{x^2+1} dx = \int \left( \frac{x^4-1}{x^2+1} + \frac{1}{x^2+1} \right) dx = \\ \int \left( x^2-1 + \frac{1}{x^2+1} \right) dx. $$
+	3. $$ \int \frac{x^2 + 2}{x - 5}\,dx  = \int \frac{x^2 - 25 + 25 + 2}{x - 5}\,dx  = \int \left( x + 5 + \frac{27}{x - 5} \right)\,dx$$
+- *Casi dove la trasformazione viene fatta effettuando la divisione fra il numeratore e il denominatore*
+	1. $$ \int \frac{x^3}{x^2 + 2}\,dx  = \int \left( x + \frac{-2x}{x^2 + 2} \right)\,dx $$
+	2. $$ \int \frac{x^4 + 1}{x^3 - 2}\,dx = \int \left( x + \frac{3x + 1}{x^3 - 2} \right)\,dx $$
+
+###### Integrazione per razionalizzazione
+Grazie al primo teorema di integrazione per sostituzione è possibile ricondurre alcuni integrali a quelli di funzioni razionali fratte. Di seguito degli esemp:
+1. $$\int \frac{e^x}{e^x + 1} dx = \left[ \int \frac{1}{t+1} dt \right]_{t=e^x} = \log(e^x + 1) + k$$
+2. $$\int \frac{e^{2x} + 4e^x}{e^{2x} + 1} dx = \int e^x \frac{e^x + 4}{e^{2x} + 1} dx = \left[ \int \frac{t+4}{t^2 + 1} dt \right]_{t=e^x}$$
+   qui abbiamo osservato che è presente il fattore $D(e^x) = e^x$. Se esso non è presente basta moltiplicare il numeratore e il denominatore per $e^x$ come nell'esempio successivo
+3. $$\int \frac{dx}{e^x + 3} = \int \frac{e^x}{e^{2x} + 3e^x} dx = \left[ \int \frac{dt}{t^2 + 3t} \right]_{t=e^x}$$
+4. $$\int \frac{\tan x}{\tan x + 1} dx = \int \frac{\tan x (\tan^2 x + 1)}{(\tan x + 1)(\tan^2 x + 1)} dx = \left[ \int \frac{t}{(t+1)(t^2+1)} dt \right]_{t=\tan x}$$
+   qui abbiamo moltiplicato numeratore e denominatore per $tan^2x+1$ che è la derivata di $\tan x$ 
+###### Teorema 6 (secondo teorema di integrazione per sostituzione)
+Siano $f: (a, b) \rightarrow R$ una *funzione dotata di primitive*, $g: (c, d) \rightarrow R$ una funzione  derivabile e tale che $Im(g) = (a,b)$. Se $g$ è *invertibile* si ha:
+**Dimostrazione**: Dal primo teorema di integrazione per sostituzione segue che:
+$$\int f(g(t))g'(t) dt = \big [ \int f(x) \  dx \big]$$componendo ambo i membri con $t = g^{-1}(x)$
+
+**Esempio 15**: di seguito degli esempi di applicazione del teorema appena dimostrato
+1. Determinare $$\int \sqrt{x+3} \ dx$$si ha che $(a,b) = [-3, +\infty[$ è ci poniamo come obbiettivo quello di porre $\sqrt{x+3} = t$. Si deve scegliere dunque $(c, d) = [0, +\infty[$ $g(t) = t^2-3$. Si prova subito che tutte le ipotesi del teorema sono soddisfatte e in particolare si ha: $$g'(t) = 2t, \\ g^{-1}(x) = \sqrt{x+3}$$quindi $$\int \sqrt{x+3} dx = \Big [ \int t \times 2t \ dt \Big ]_{t = \sqrt{x+3}} = \frac{2}{3}(\sqrt{x+3})^3 + k$$
+2. Sia $$f(x) = \sqrt{\frac{px+q}{rx+s}}$$con $ps-qr \not = 0$ una funzione definita in un intervallo $(a, b)$ in cui il radicando è non negativo. La sostituzione da fare in questo caso è $$t = \sqrt{\frac{px+q}{rxs+s}}$$con $t \ge 0$ si ha allora
+   $$g(t) = \frac{st^2-q}{p-rt^2}, \ g'(t) = \frac{2(ps-qr)t}{(p-rt^2)^2}$$
+   Poiché $g'$ ha sempre segno costante, la funzione $g$ è invertibile. Applicando il secondo teorema di integrazione per sostituzione si ottiene: $$\int f(x) \ dx \Big[ \int \frac{2(ps-qr)t^2}{(p-rt^2)^2} \ dt \Big]_{t = \sqrt{\frac{px+q}{rx+s}}}$$che è l'integrale di una funzione razionale.
+3. Di seguito un caso particolare: ![[Pasted image 20251026110341.png]]
+
+##### Integrale definito secondo Riemann
