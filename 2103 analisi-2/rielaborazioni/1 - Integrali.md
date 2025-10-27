@@ -259,3 +259,42 @@ $$\int f(g(t))g'(t) dt = \big [ \int f(x) \  dx \big]$$componendo ambo i membri 
 3. Di seguito un caso particolare: ![[Pasted image 20251026110341.png]]
 
 ##### Integrale definito secondo Riemann
+Ricordiamo che dati due insiemi numerici $A$ e $B$ se: $$a \le b \ \forall \ a \in A, \forall b \in B$$si dice che $A$ e $B$ sono **separati** e in quel caso si può provare che $\sup A \le \inf B$ e tutti gli elementi $c \in [\sup A, \inf B]$ sono detti *elementi di separazione*. Se $\sup A = \inf B$ l'elemento di separazione è unico e gli insiemi $A$ e $B$ sono detti **contigui**.
+
+Si può provare che $A$ e $B$ sono contigui se e solo se per ogni $\epsilon > 0$ esistono $a\in A$ e $b \in B$ tali che $b-a < \epsilon$ 
+
+**Definizione 3**: Chiameremo **decomposizione** di $[a, b]$ ogni insieme di punti: $$D = \{x_0;x_1;\dots,x_{n-1}; x_n\}$$
+tali che: $$a = x_0 < x_1 < \dots < x_{n-1}<x_n = b$$
+- i punti $x_0,x_1,\dots,x_n$ sono detti *capisaldi della decomposizione*
+- Il numero $$|D| = max\{(x_1-x_0), (x_2-x_1), \dots , (x_n-x_{n-1})\}$$si chiama *ampiezza di D*
+
+> [!EXAMPLE] Esempio
+> Se consideriamo l'intervallo $[0,10]$, una possibile decomposizione D potrebbe essere:
+> $$D=\{0;2;5;10\}$$
+> Qui i capisaldi sono $x_0​=0, x_1​=2, x_2​=5, x_3​=10$ con $|D| = 5$. 
+
+Sia $D = \{x_0;x_1;\dots,x_{n-1}; x_n\}$ una delle decomposizioni di $[a,b]$. Poiché $f$ è continua in ognuno degli intervalli $[x_{i-1}, x_i]$ (con $i = 1,\dots,n$) è ivi dotata di massimo e minimo assoluto. Formalmente scriveremo che: per ogni $i = 1, \dots, n$ siano $y_i, z_i \in [x_{i-1}, x_i]$ tali che: $$f(y_i) = \min_{[x_{i-1}, x_i]}f, \ f(z_i) = \max_{[x_{i-1}, x_i]}f$$
+
+**Definizione 4**: le quantità :
+- *Somma inferiore* della funzione $f$ relativa a $D$ $$s(f, D) = \Sigma^{n}_{i=1}f(y_i)(x_i-x_{i-1})$$
+- *Somma superiore* della funzione $f$ relativa a $D$ $$S(f, D) = \Sigma^{n}_{i=1}f(z_i)(x_i-x_{i-1})$$
+Al variare della decomposizione $D$, queste somme descrivono due insiemi numeri $\underline{S}$ (insieme di tutte le possibili somme inferiori) e $\overline{S}$ (insieme di tutte le possibili somme superiori) su questi due insiemi possiamo dire che:
+- Date due composizioni $D_1, D_2$ si ha che $$s(f,D_1) \le S(f, D_2)$$ cioè gli insiemi $\underline{S} \text{ e } \overline{S}$  sono separati
+- Sapendo che sono separati sappiamo sicuramente che $\sup \underline{S} \le \inf \overline{S}$ 
+
+**Teorema 7**: Gli insiemi $\underline{S}$ e $\overline{S}$ sono contigui
+**Dimostrazione**: Dobbiamo dimostrare che $$\forall \epsilon > 0, \ \exists D \text{ decomposizione di } [a, b] \text{ tale che } S(D) - s(D) < \epsilon $$
+Fissiamo $\epsilon > 0$ essendo $f$ una funzione continua in $[a, b]$ per il teorema di Cantor essa è uniformemente continua in $[a,b]$, scriviamo di seguito la definizione di *uniformemente continua* in $\frac{\epsilon}{b-a}$ e troviamo che: $$\exists \delta > 0 \text{ tale che } x,y \in [a,b], [x-y] < \epsilon \Rightarrow |f(x)-f(y)| < \frac{\epsilon}{b-a} \text{ (1.4) }$$Costruiamo una decomposizione $D$ di $[a, b]$ tale che $|D| < \delta$. 
+- $x_0, x_1, \dots, x_{n-1}, x_n$ i capisaldi di questa decomposizione
+- $y_i, z_i \in [x_{i-1}, x_i]$ i punti di minimo e massimo assoluto di $f$ in $[x_{i-1}, x_i]$ 
+Dato che $|D| < \delta$ si ha $|z_i - y_i| < \delta$ quindi usando la $(1.4)$ per tale coppia di punti vale la disuguaglianza $$f(z_i)-f(y_i) = |f(z_i) - f(y_i)| < \frac{\epsilon}{b-a}$$si ha allora che: $$S(D)-s(D) = \Sigma^{n}_{i = 1}(f(z_i)- f(y_i))(x_i-x_{i-1}) < \sum_{i=1}^{n} \frac{\varepsilon}{b-a} (x_i - x_{i-1}) = $$$$ \frac{\varepsilon}{b-a} \sum_{i=1}^{n} (x_i - x_{i-1}) =$$$$ \frac{\varepsilon}{b-a} (b-a) = \varepsilon.$$
+In virtù del teorema precedente gli insiemi $\underline{S} \text{ e } \overline{S}$ sono contigui e $\sup \underline{S} = \inf \overline{S}$ è il loro unico elemento di separazione
+
+**Definizione 5**: il numero $$\int_{a}^{b} f(x)\ dx = \sup \underline{S} = \inf \overline{S}$$e si chiama *integrale definito (secondo Riemann)* di $f$ in $[a,b]$
+
+**Esempio 16**: consideriamo la funzione costante: $$f(x) = k \forall \in [a, b]$$qualunque sia la decomposizione $D$ scelta, si ha subito$$s(f, D) = S(f, D) = k(b-a)$$quindi$$\int^b_a k \ dx = k(b-a)$$
+Osserviamo che se $k>0$ il valore dell'integrale risulta uguale all'area del rettangolo $$\{(x,y) \in R^2: a \le x \le b, 0 \le y \le f(x)\}$$
+**Osservazione 3**: Il valore dell'integrale dipende da $f$, da $a$ e da $b$ non cambia cambiando il nome della variabile di integrazione $$\int^b_a f(x) \ dx = \int^b_a f(t) \ dt = \dots$$
+Sia $f$ una funzione continua in un intervallo $(\alpha, \beta)$ e siano $a,b \in (\alpha, \beta)$ Se $a<b$ abbiamo già definito l'integrale definito $$\int^b_a f(x) dx$$che si generalizza nel caso in cui $a \ge b$ nel seguente modo:
+$$\int^b_a f(x) dx = \Big \{^{0 \quad \quad \quad \quad \quad  \ \text{ se } a = b}_{- \int^a_b f(x) \ dx  \quad \quad \text{ se } a > b} $$
+ 
