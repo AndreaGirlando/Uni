@@ -296,5 +296,23 @@ In virtù del teorema precedente gli insiemi $\underline{S} \text{ e } \overline
 Osserviamo che se $k>0$ il valore dell'integrale risulta uguale all'area del rettangolo $$\{(x,y) \in R^2: a \le x \le b, 0 \le y \le f(x)\}$$
 **Osservazione 3**: Il valore dell'integrale dipende da $f$, da $a$ e da $b$ non cambia cambiando il nome della variabile di integrazione $$\int^b_a f(x) \ dx = \int^b_a f(t) \ dt = \dots$$
 Sia $f$ una funzione continua in un intervallo $(\alpha, \beta)$ e siano $a,b \in (\alpha, \beta)$ Se $a<b$ abbiamo già definito l'integrale definito $$\int^b_a f(x) dx$$che si generalizza nel caso in cui $a \ge b$ nel seguente modo:
-$$\int^b_a f(x) dx = \Big \{^{0 \quad \quad \quad \quad \quad  \ \text{ se } a = b}_{- \int^a_b f(x) \ dx  \quad \quad \text{ se } a > b} $$
+$$\int^b_a f(x) dx = \Big \{^{0 \quad \quad \quad \quad \quad  \ \text{ se } a = b}_{- \int^a_b f(x) \ dx  \quad \quad \text{ se } a > b}$$
  
+ 
+ 
+##### Proprietà dell'integrale definito
+Di seguito le principali proprietà dell'integrale definito:
+- *Proprietà additiva*: se $f$ è una funzione continua in $(\alpha, \beta)$ allora $$\int^b_a f(x) \ dx = \int^c_a f(x) \ dx + \int^b_c f(x) \ dx$$ qualunque siano i punti $a,b,c \in (\alpha, \beta)$
+- *Proprietà distributiva*: se $f,g$ sono continue in $(\alpha, \beta), a,b \in (\alpha, \beta) \text{ e } c_1, c_2 \in R$ si ha: $$\int_a^b (c_1 f(x) + c_2 g(x)) dx = c_1 \int_a^b f(x) dx + c_2 \int_a^b g(x) dx.$$
+- *Proprietà della media*: Sia $f$ continua in $[a,b]$. Posto $m = \min_{[a,b]}f$ e $M = \max_{[a,b]} f$ si ha $$m(b-a) \leq \int_a^b f(x) dx \leq M(b-a).$$
+  inoltre esiste $c \in [a,b]$ tale che: $$\int^b_a f(x) dx = f(c)(b-a)$$
+  la prima proprietà della media segue dalla definizione di integrale usando la decomposizione $D = \{a;b\}$. Per ottenere la seconda basta osservare che: $$m \leq \frac{\int_a^b f(x) dx}{b - a} \leq M$$ e applicare la proprietà dei valori intermedi alla funzione $f$ 
+- *Prima proprietà di monotonia*: Sia $f$ continua in $[a,b]$ e tale che $f(x)\ge 0$ per ogni $x \in [a,b]$, allora si ha: $$\int^b_a f(x) \ dx \ge 0$$
+  l'eguaglianza si ha se e solo se $f$ è identicamente nulla. Questa proprietà si può provare usando quella della media e osservando che $m \ge 0$, da questo risultato applicando la proprietà distributiva segue subito la seconda proprietà 
+- *Seconda proprietà di monotonia*: Siano $f, g$ continue in $[a, b]$ e tali che $f(x)\le g(x)$ per ogni $x \in [a,b]$. Allora si ha $$\int^b_a f(x) \ dx \le \int^b_a g(x) \ dx$$
+- *Proprietà con il valore assoluto*: Siano $f$ continua in $[a,b]$ allora: $$|\int^b_a f(x) \ dx| \le \int^b_a |f(x)| \ dx$$
+##### Funzione integrale
+Sia $f: (\alpha, \beta) \rightarrow R$ una funzione continua e sia $x_0 \in (\alpha, \beta)$. Per ogni $x \in (\alpha, \beta)$ l'integrale definito $$\int^{x_0}_x f(t) \ dt$$è un numero (che dipende da $x$) possiamo quindi considerare la funzione $F: (\alpha, \beta) \rightarrow R$ definita mediante la legge: $$F(x) = \int^{x_0}_x f(t) \ dt, \ \forall x \in (\alpha, \beta)$$La funzione $F$ si chiama *funzione integrale di f di punto iniziale $x_0$*, ovviamente $F(x_0) = 0$ 
+**Teorema 8**: Siano $f(\alpha, \beta) \rightarrow R$ una funzione continua e $x_0, x_1 \in (\alpha, \beta)$. Se $F$ e $G$ sono due funzioni integrali di punti iniziale $x_0$ e $x_1$ rispettivamente, allora esiste $c \in R$ tale che: $$F(x) = G(x)+c \ \forall x \in (\alpha, \beta)$$
+**Dimostrazione**: Per definizione di funzione integrale si ha: $$F(x) = \int_{x_0}^x f(t) dt, \quad G(x) = \int_{x_1}^x f(t) dt, \quad \forall x \in (\alpha, \beta)$$Usando la proprietà additiva, dell'integrale definito otteniamo che:
+$$F(x) = \int_{x_0}^x f(t) dt = \int_{x_0}^{x_1} f(t) dt + \int_{x_1}^x f(t) dt = G(x) + \int_{x_0}^{x_1} f(t) dt$$
