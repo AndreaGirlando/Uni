@@ -320,4 +320,35 @@ $$F(x) = \int_{x_0}^x f(t) dt = \int_{x_0}^{x_1} f(t) dt + \int_{x_1}^x f(t) dt 
 Supponendo per semplicità che $x>c$ dal teorema della media applicato alla restrizione di $f$ in $[c,x]$ segue che esiste $\overline x \in [c,x]$ tale che $$\frac{\int^x_c f(t) dt}{x-c} = f(\overline x)$$Osserviamo che $\overline x$ dipenda da $x$ e al tendere di $x$ a $c$ anche $\overline x$ tende a $c$ quindi, per la continuità di $f$ nel punto $c$ si ha $$\lim_{x\rightarrow c}f(\overline x) = f(x) = f(c) \text{ da cui segue la tesi } $$Dal risultato appena dimostrato segue che ogni funzione integrale di una funzione continua $f$ è una primitiva di $f$ 
 
 **Teorema 10 (Teorema fondamentale del calcolo integrale)**
-Una funzione continua in un intervallo è ivi dotata di primitive
+Una funzione continua in un intervallo è ivi dotata di primitive, di seguito degli esempi di applicazioni di questo teorema:
+
+**Esempio 17**: trovare la funzione $F$ primitiva in $]0; +\infty[$ della funzione $$f(x) = \frac{\sin x}{x}, \forall x > 0$$e tale che $F(2) = 5$. Dato che ogni funzione integrale è una primitiva di $f$ basta porre: $$F(x) = \int^x_2 \frac{\sin t}{t} \ dt + 5$$
+**Esempio 18**: Derivare la funzione definita in $]0, + \infty[$ della legge: $$F(x) = \int^x_1 \frac{\sin t}{t} \ dt \ \forall x > 0$$si tratta della funzione integrale di una funzione continua quindi: $$F'(x) = \frac{\sin x}{x} \ \forall x > 0$$
+**Esempio 19**: Derivare la funzione definita in $]0, +\infty[$ della legge $$F(x) = \int^1_x \frac{\sin t}{t} \ dt \ \forall x > 0$$Non è una funzione integrale in quanto l'estremo variabile di integrazione è quello inferiore. Tuttavia, si osserva che: $$F(x) = - \int^x_1 \frac{\sin t}{t} \ dt$$e quindi $$F'(x) = -\frac{\sin x}{x}, \forall x > 0$$
+**Esempio 20**: Derivare la funzione definita in $]0; +\infty[$ della legge: $$F(x) = \int^{x^3}_1 \frac{\sin t}{t} \ dt \ \forall x > 0$$$F$ è composta mediante la funzione integrale $\int^y_1 \frac{\sin t}{t} \ dt$ e la funzione $x^3$ quindi $$F'(x) = 3x^2\frac{\sin x^3}{x^3} \forall x > 0$$
+**Esempio 21**: derivare la funzione definita in $]0; +\infty[$ della legge: $$F(x) = \int^{\log x}_{x^4} \frac{\sin t}{t} \ dt \ \forall x > 0$$Non è una funzione integrale in quanto gli estremi di integrazione sono entrambi variabili, allora si procede nel seguente modo: $$F(x) = \int_{x^4}^{2} \frac{\sin t}{t} dt + \int_{2}^{\log x} \frac{\sin t}{t} dt$$e quindi $$F'(x) = -4x^3 \frac{\sin x^4}{x^4} + \frac{1}{x} \frac{\sin(\log x)}{\log x}, \quad \forall x > 0.$$
+
+**Teorema 11 (formula fondamentale del calcolo integrale)** Sia $f: (\alpha, \beta) \rightarrow R$ una funzione continua, e sia $F$ una sua primitiva. Se $a,b \in (\alpha, \beta)$ si ha $$\int^b_a f(x) dx = F(b)-F(a) = [F(x)]^b_a$$
+**Dimostrazioni**: la funzione $G(x) = \int^x_a f(t) \ dt$ è una primitiva di $f$, quindi esiste una costante $k$ tale che, per ogni $x \in (\alpha, \beta)$ si ha $F(x) = G(x) + k$. In particolare per $x = a$ ne segue $F(a) = k$ quindi $F(x) = G(x)+F(a)$. Calcolando i due membri di quest'eguaglianza per $x = b$ ne segue $$F(b) = \int_a^b f(x) dx + F(a) \quad \text{che è la tesi.}$$
+**Esempio 22**
+1. $\int_1^e \log x \, dx = \left[ x \log x - x \right]_1^e = 1$
+2. $\int_{\pi/2}^{\pi/4} \cos x \, dx = \left[ \sin x \right]_{\pi/2}^{\pi/4} = \frac{\sqrt{2}}{2} - 1$
+
+###### Interpretazione geometrica dell'integrale di Riemann
+Si vuole attribuire un'area a sottoinsiemi del paino che non siano necessariamente dei poligoni, se $X = (a,b) \times (c,d)$ è un rettangolo limitato e chiameremo area di $X$ il numero: $$area(X) = (b-a)(d-c)$$Chiameremo *plurirettangolo* ogni insieme che sia unione finita di rettangoli a due a due privi di punti interni a comune. Se $X$ è un plurirettangolo chiamiamo $area(X)$ la somma delle aree dei rettangolo che lo compongono. 
+
+Siano rispettivamente $\underline{P}$ e $\overline P$ rispettivamente le famiglie non vuote dei plurirettangolo contenuti in $X$ e dei plurirettangoli contenuti in $X$
+
+Introduciamo $\underline A$ e $\overline A$ costituiti dalle aree degli elementi di $\underline P$ e $\overline P$ si tratta evidentemente di due insiemi numerici separati
+
+Se essi sono contigui $X$ è detto *misurabile* e il loro elemento di separazione è chiamato area di $X$ se non sono contigui $X$ è detto *non misurabile*
+
+Sia ora $f$ una funzione reale continua e non negativa in $[a,b]$. Introduciamo l'insieme che chiameremo *rettangoloide di f*: $$R(f) = \{(x,y) \in R^2: \ a \le x \le b, 0 \le y \le f(x)\}$$Siano $D$ una decomposizione dell'intervallo $[a,b]$ di capisaldi $x_0,x_1, \dots, x_n$ e $y_i, z_i \in [x_{i-1}, x_i]$ i punti di minimo e massimo assoluto di $f$ nell'intervallo $[x_{i-1}, x_i]$ 
+
+Osserviamo che la quantità $f(y_i)(x_i-x_{i-1})$ rappresenta l'area di un rettangolo contenuto nella porzione di rettangoloide relativa all'intervallo $[x_{i-1}, x_i]$. L'unione di tutti i rettangolo ottenuti in tal modo costituisce un plurirettangolo contenuto nel rettangoloide e la sua area è $s(f, D)$, analogamente $S(f, D)$ fornisce l'area di un plurirettangolo contenente il rettangoloide.
+
+Dire che la funzione è integrabile, cioè che gli insiemi $\underline S$ e $\overline S$ sono contigui, equivale dunque a dire che sono contigui gli insiemi $\underline A$ e $\overline A$ quindi garantisce che il rettangoloide è misurabile e la sua area è l'elemento di separazione fra tali insiemi, quindi l'integrale.
+
+Se $f$ è a valori non positivi, si può in modo simile introdurre il rettangoloide e la sua area risulta uguale a $- \int^b_a f(x) \ dx$ dato che in questo caso $R(f)$ è simmetrico rispetto all'asse delle ascisse a $R(-f)$ quindi ha la sua stessa area
+
+Se infine $f$ e $g$ sono due funzioni continue in $[a,b]$ tali che $g(x)  \le f(x) \forall x \text{ in } [a,b]$  si può dimostrare che l'insieme $$\{(x,y) \in R^2: a\le x \le b, g(x) \le y \le f(x)\}$$che chiameremo *dominio normale rispetto all'asse delle ascisse* è misurabile e la sua area è uguale $$\int^b_a (f(x)-g(x)) dx$$ 
