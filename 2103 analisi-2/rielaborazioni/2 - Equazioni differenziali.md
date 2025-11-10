@@ -132,3 +132,29 @@ $$W(x_0) = \begin{vmatrix}
 0 & 0 & \dots & 1
 \end{vmatrix} = 1$$
 dalla definizione 1 e dalla proposizione 4 segue che $y_1, \dots y_n$ sono indipendenti
+
+###### Teorema 5
+Siano $y_1, \dots, y_n$ $n$ soluzioni indipendenti dell'equazione $3.6$, allora tutte e sole le soluzioni dell'equazione $3.6$ sono le funzioni del tipo: $$\sum_{i=1}^{n} k_i y_i(x), \quad k_i \in \mathbb{R}.$$
+**Dimostrazione**: Che una combinazione lineare di soluzione sia una soluzione è già stato affermato dalla Proposizione 4. Proviamo il viceversa. Sia $y$ una soluzione della $3.6$ scelto ad arbitrio $x_0 \in (\alpha, \beta)$ consideriamo il problema di Cauchy
+$$\begin{cases}
+y^{(n)} + a_1(x)y^{(n-1)} + \dots + a_n(x)y = 0 \\
+y(x_0) = \overline{y(x_0)} \\
+\dots \\
+y^{(n-1)}(x_0) = \overline{y(x_0)}
+\end{cases}
+\quad (3.7)$$
+del quale la funzione $\overline y$ è evidentemente una soluzione. Dato inoltre che le soluzioni sono indipendenti, il sistema lineare di $n$ equazione nelle $n$ incognite $k_1, \dots, k_n$ 
+$$\begin{cases}
+k_1 y_1(x_0) + k_2 y_2(x_0) + \dots + k_n y_n(x_0) = \overline{y}(x_0) \\
+k_1 y'_1(x_0) + k_2 y'_2(x_0) + \dots + k_n y'_n(x_0) = \overline{y}'(x_0) \\
+\dots \\
+k_1 y_1^{(n-1)}(x_0) + k_2 y_2^{(n-1)}(x_0) + \dots + k_n y_n^{(n-1)}(x_0) = \overline{y}^{(n-1)}(x_0)
+\end{cases}$$
+ha un'unica soluzione $(k_1, \dots, k_n)$ e la funzione $$w(x) = \sum_{i=1}^{n} k_i y_i(x)$$è soluzione del problema di Cauchy $3.7$. Per l'unicità della soluzione si ha $\overline y = w$. Abbiamo in tal modo provato che, data una n-pla di soluzioni indipendenti, ogni altra soluzione della $3.6$ è una loro combinazione lineare, come si voleva.
+> [!WARNING] Osservazione 2
+> Ricordiamo ora che $n$ elementi $v_1, \dots, v_n$ di uno spazio vettoriale si dicono linearmente indipendenti se l'unica loro combinazione lineare $\Sigma^n_{i=1}k_iv_i$ nulla è quella in cui $k_i = 0 \forall i = 1, \dots, n$. Si può provare che le soluzioni $y_1, \dots, y_n$ della $3.6$ sono indipendenti se e solo se sono linearmente indipendenti. Dal teorema 5 segue che lo spazio vettoriale delle soluzione ha dimensione $n$
+
+###### Teorema 6
+Siano $y_1, \dots, y_n$ $n$ integrali indipendenti dell'equazione omogenea $3.6$ e sia $\overline y$ un integrale particolare dell'equazione completa $3.5$. Allora l'integrale generale dell'equazione completa è dato da: $$y(x) = \overline{y} + \sum_{i=1}^{n} k_i y_i(x) : k_i \in \mathbb{R}$$**Dimostrazione**: La tesi segue dal teorema 5 e dalla proposizione 1.
+
+### Equazioni lineari a coefficienti costanti
