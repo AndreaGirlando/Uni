@@ -20,7 +20,7 @@ Chiameremo **integrale generale** l'insieme di tutte le soluzioni, ogni soluzion
 Se la funzione $f$ è identicamente nulla ($f(x) = 0 \quad \forall x \in R$), l'equazione è detta *omogenea*;
 
 L'equazione omogenea associata alla $3.2$ è $$y' = -a(x)y$$
-###### Risoluzione equazione omogena associata alla 3.2
+##### Risoluzione equazione omogena associata alla 3.2
 > [!Check]
 > la funzione identicamente nulla in $(\alpha, \beta)$ è soluzione.![[Screenshot_20251109_114108_Samsung capture.jpg|500]]
 
@@ -46,12 +46,89 @@ $$
 $$da cui $$k'(x) = f(x)e^{(A(x))} \quad \forall x \in (\alpha, \beta)$$
 quindi la funzione $k$ viene determinata in quanto primitiva della funzione $f(x)e^{A(x)}$. In questo modo abbiamo determinato un integrale particolare $\overline y$ della $3.2$. Di seguito i risultati che ci consentiranno di determinare tutte le soluzioni dell'equazione $3.2$. 
 
-###### Teorema 1
+##### Teorema 1
 Se $y$ una soluzione dell'equazione $3.2$ e $z$ una soluzione dell'equazione $3.3$ allora la funzione somma $y+z$ è soluzione dell'equazione $3.2$ 
 **Dimostrazione**: Basta osservare che posto $w = y+z$, $w$ è derivabile in $(\alpha, \beta)$ e si ha:$$w'(x)+a(x)w(x) = (y'(x)+a(x)y(x)) + (z'(x)+a(x)z(x)) = f(x) + 0 = 0$$
-###### Teorema 2
+##### Teorema 2
 Se $y$ e $z$ sono due soluzioni dell'equazione $3.2$ allora la funzione differenza $y-z$ è soluzione dell'equazione $3.3$
 **Dimostrazione**: anche in questo caso posto $w = y-z$, la funzione $w$ è derivabile in $(\alpha, \beta)$ e si ha:$$w'(x)+a(x)w(x) = (y'(x)+a(x)y(x)) - (z'(x)+a(x)z(x)) = f(x) - f(x) = 0$$
 ###### Conseguenze
 Da queste due proposizione segue che tutte e sole le soluzioni dell'equazione $3.2$ si ottengono sommando una soluzione della $3.2$ alle soluzioni della $3.3$; tenendo conto della $3.4$ possiamo concludere che l'integrale generale della $3.2$ è dato da $$y(x) = \overline y(x)+k e^{-A(x)}, k \in R$$ 
 ### Equazioni lineari di ordine n
+
+Sia $n \in N$ e siano date $n+1$ funzioni reali continue nel medesimo intervallo $(\alpha, \beta)$ siano esse $a_1, a_2, \dots, a_n f$. L'equazione differenziale lineare di ordine $n$ che ha la forma: $$y^{(n)}+a_1(x)y^{(n-1)}+ \dots + a_{n-1}(x)y' + a_n(x)y = f(x) \quad (3.5)$$è il problema della ricerca di funzioni reali $y$ definite in $(\alpha, \beta)$ derivabili $n$ volte e tali che $$y^{(n)}(x) + a_1(x)y^{(n-1)}(x) + \dots + a_{n-1}(x)y'(x) + a_n(x)y(x) = f(x) \quad \forall x \in (\alpha, \beta)$$Come nel caso precedente:
+- Chiameremo *integrale generale dell'equazione differenziale* l'insieme delle sue soluzioni
+- Un soluzione viene anche chiamata *integrale particolare*
+- le funzioni $a_i$ sono dette *coefficienti dell'equazione* 
+- funzione $f$ *termine noto*
+- Se $f$ è identicamente nulla, l'equazione è detta *omogenea*
+Di seguito l'omogenea associata alla $3.5$ avente i suoi stessi coefficienti e il termine noto nullo:
+$$ y^{(n)} + a_1(x)y^{(n-1)} + \dots + a_{n-1}(x)y' + a_n(x)y = 0 \quad (3.6)$$
+Nel paragrafo precedente abbiamo studiato il caso particolare $n=1$, i risultati ottenuti ci saranno utili per studiare il caso generale, si hanno intanto alcuni risultati preliminari:
+##### Teorema 3 (teorema di esistenza e unicità)
+Il problema di Cauchy associato all'equazione $3.5$ ammette una ed una sola soluzione definita in $(\alpha, \beta)$ 
+
+##### Proposizioni 
+###### Proposizione 1 
+Se $y$ è una soluzione dell'equazione $3.5$ e $z$ soluzione della $3.6$ allora la funzione somma $y+z$ è soluzione dell'equazione $3.5$
+###### Proposizione 2
+Se $y$ e $z$ sono due soluzioni della $3.5$ allora la funzione differenza $y-z$ è soluzione dell'equazione $3.6$
+###### Proposizione 3
+Se $y$ e $z$ due soluzioni dell'equazione $3.6$ allora ogni loro combinazione lineare $hy(x)+kz(x) (h,k \in R)$ è soluzione della $3.6$
+###### Proposizione 4 (principio di sovrapposizione)
+dati:
+- $y$ soluzione dell'equazione $y^{(n)} + a_1(x)y^{(n-1)}+ \dots a_n(x) y = f(x)$
+- $z$ soluzione dell'equazione $y^{(n)}+a_1(x)y^{(n-1)}+\dots a_n(x) y = g(x)$ 
+- $c_1, c_2$ sono due numeri reali
+allora la funzione $c_1y+c_2z$ è una soluzione dell'equazione $$y^{(n)}+a_1(x)y^{(n-1)}+\dots a_n(x) y = c_1f(x)+c_2g(x)$$ Se il termine noto dell'equazione è una funzione a valori complessi nasce la proposizione di seguito
+###### Proposizione 5
+Supponiamo che il termine noto dell'equazione $3.5$ sia una funzione a valori complessi $f(x) = u(x)+iv(x)$. Allora la funzione complessa $y(x) = w(x)+iz(x)$ è soluzione dell'equazione $3.5$ se e solo se:
+- $w$ soluzione di $y^{(n)} + a_1(x)y^{(n-1)} + \dots + a_{n-1}(x)y' + a_n(x)y = u(x)$
+- $z$ soluzione di  $y^{(n)} + a_1(x)y^{(n-1)} + \dots + a_{n-1}(x)y' + a_n(x)y = v(x)$
+
+> [!WARNING] Osservazione 1
+> Dalla proposizione 4, e dal fatto evidente che la funzione identicamente nulla è soluzione della $3.6$ considerato con le usuali operazioni di somma fra funzioni e di prodotti di funzioni per un numero, è uno spazio vettoriale. 
+
+###### Proposizione 6
+ci proponiamo adesso di determinare l'integrale generale della $3.6$. A tale scopo siano $y_1, \dots y_n$ $n$soluzioni della $3.6$. Introduciamo il seguente determinante: $$W(x) = \begin{vmatrix}
+y_1(x) & y_2(x) & \dots & y_n(x) \\
+y'_1(x) & y'_2(x) & \dots & y'_n(x) \\
+\dots & \dots & \dots & \dots \\
+y_1^{(n-1)}(x) & y_2^{(n-1)}(x) & \dots & y_n^{(n-1)}(x)
+\end{vmatrix}$$
+detto *wronskiano delle soluzioni*. Si verifica una e una sola delle seguenti affermazioni:
+- a) $W(x)$ è identicamente nulla (il determinante è zero per ogni valore di $x$)
+- b) $W(x) \not = 0$ per ogni $x \in (\alpha, \beta)$
+
+**Linea dimostrativa**: Si prova che $W(x)$ è soluzione dell'equazione differenziale $y'+a_1(x)y = 0$ le cui soluzioni sono del tipo $y(x) = ke^{-A(x)}$ con $A$ primitiva di $a_1$, quindi sono identicamente nulle ($k = 0$) o sempre diverse di da zero.
+
+*Per brevità lo proviamo solo nel caso n = 2.* 
+In tal caso si ha: $$
+W(x) =
+\begin{vmatrix}
+y_1(x) & y_2(x) \\
+y_1'(x) & y_2'(x)
+\end{vmatrix}
+= y_1(x)\,y_2'(x) - y_2(x)\,y_1'(x)
+$$
+quindi tenendo conto del fatto che $y_1$ e $y_2$ sono soluzioni della $3.6$:
+$$ W'(x) = y'_1(x)y'_2(x) + y_1(x)y''_2(x) - y'_1(x)y'_2(x) - y''_1(x)y_2(x) = $$$$ = y_1(x) \left( -a_1(x)y'_2(x) - a_2(x)y_2(x) \right) - y_2(x) \left( -a_1(x)y'_1(x) - a_2(x)y_1(x) \right) = $$$$ = a_1(x) \left( -y_1(x)y'_2(x) + y_2(x)y'_1(x) \right) =$$ $$= -a_1(x)W(x) $$
+Quindi possiamo scrivere che: $$W'(x) = -a_1 W(x) \rightarrow W'(x)+a_1W(x) = 0$$
+visto che siamo riusciti a dimostrare che $W'(x)+a_1​(x)W(x)=0$ allora  $W(x)$ è soluzione di $y'+a_1​(x)y=0$
+##### Definizione 1
+le soluzioni $y_1, \dots y_n$ sono dette indipendenti se si ha $W(x) \not = 0 \quad \forall x \in (\alpha, \beta)$ 
+###### Teorema 4
+Un'equazione differenziale lineare di ordine $n$ omogenea ha sempre $n$ soluzioni indipendenti
+**Dimostrazione**: Fissiamo ad arbitrio $x_0 \in (\alpha, \beta)$ e consideriamo $n$ problemi di Cauchy, l'i-mo dei quali è $$(P_i) \quad \begin{cases}
+y^{(n)} + a_1(x)y^{(n-1)} + \dots + a_n(x)y = 0 \\
+y^{(i)}(x_0) = 1 \\
+y^{(j)}(x_0) = 0, \quad j \neq i
+\end{cases}$$
+Per il teorema di esistenza e unicità, $P_i$ ammette un'unica soluzione $y_i$. Consideriamo le $n$ soluzioni così ottenute, il loro wronskiano, calcolato in $x_0$ è:
+$$W(x_0) = \begin{vmatrix}
+1 & 0 & \dots & 0 \\
+0 & 1 & \dots & 0 \\
+\dots & \dots & \dots & \dots \\
+0 & 0 & \dots & 1
+\end{vmatrix} = 1$$
+dalla definizione 1 e dalla proposizione 4 segue che $y_1, \dots y_n$ sono indipendenti
