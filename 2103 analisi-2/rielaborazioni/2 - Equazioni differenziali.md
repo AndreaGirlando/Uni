@@ -158,3 +158,38 @@ ha un'unica soluzione $(k_1, \dots, k_n)$ e la funzione $$w(x) = \sum_{i=1}^{n} 
 Siano $y_1, \dots, y_n$ $n$ integrali indipendenti dell'equazione omogenea $3.6$ e sia $\overline y$ un integrale particolare dell'equazione completa $3.5$. Allora l'integrale generale dell'equazione completa è dato da: $$y(x) = \overline{y} + \sum_{i=1}^{n} k_i y_i(x) : k_i \in \mathbb{R}$$**Dimostrazione**: La tesi segue dal teorema 5 e dalla proposizione 1.
 
 ### Equazioni lineari a coefficienti costanti
+
+##### Studio generale
+Presentiamo adesso il metodo risolutivo per le equazioni lineare di ordine $n$. Anche stavolta consideriamo in un primo momento l'equazione omogenea: $$y^{(n)}+a_1y^{(n-1)}+\dots+ a_{n-1}y'+a_ny = 0 \quad (3.8)$$
+Si cerca una soluzione del tipo $$y(x)= e^{\alpha x} \text{ con } \alpha \in C$$Calcolando le derivate successive di $y$ e sostituendo nella $3.8$ si ottiene
+$$e^{\alpha x}(\alpha^ n+a_1\alpha^{n-1}+ \dots a_n) = 0$$quindi la funzione $y$ soluzione della $3.8$ se e solo se il numero $\alpha$ è soluzione dell'equazione algebrica:$$\alpha^ n+a_1\alpha^{n-1}+ \dots a_n = 0 (3.9)$$
+detta equazione caratteristica della $3.8$. Risolvendo tale equazione si troveranno soluzioni reali e coppie di soluzione immaginarie coniugate. Si può dimostrare che dalla risoluzione dell'equazione caratteristica si ottengono $n$ soluzioni per l'equazione differenziale, precisamente:
+- se $\alpha$ è una soluzione reale di molteplicità $r$ della $3.9$ essa dà luogo alle seguenti $r$ soluzioni della $3.8$: $$e^{\alpha x}, xe^{\alpha x}, \dots, x^{r-1}e^{\alpha x}$$
+- se $\beta \pm i \gamma$ è una coppia di soluzioni immaginarie coniugate di molteplicità $s$ della $3.9$ essa dà luogo alle seguenti $2s$ soluzioni della $3.8$  
+ Si può provare che le $n$ soluzioni così ottenute sono linearmente indipendenti, quindi esse danno luogo all'integrale generare dell'equazione differenziale
+
+###### Caso n = 2
+L'equazione omogena si presenta nella forma:
+$$y''+ay'+by = 0 \quad a,b \in R$$
+con l'equazione caratteristica corrispondente che è:$$\alpha^2+a\alpha+b = 0$$per risolvere quest'ultima si deve studiare il segno del discriminante $\Delta = a^2-4b$, quindi abbiamo tre casi:
+1. $\Delta > 0$: l'equazione caratteristica ha le due soluzioni reali e distinte $\alpha_1, \alpha_2$. Le soluzioni dell'equazione differenziale sono allora $e^{\alpha_1}x, e^{\alpha_2}x$ e quindi si ha che:  $$W(x) = e^{(\alpha_1+\alpha_2)x}(\alpha_1-\alpha_2)$$quindi le soluzioni sono linearmente indipendenti.
+2. $\Delta > 0$: l'equazione caratteristica ha una soluzione reale $\alpha$ di molteplicità 2. Le soluzioni dell'equazione differenziale sono allora $e^\alpha x, xe^\alpha x$ e si ha: $$W(x) = e^{2 \alpha x} \not = 0$$
+3. $\Delta < 0$: l'equazione caratteristica ha due soluzioni complesse $\beta + i \gamma$ ($\gamma \not = 0$). Le soluzioni dell'equazione differenziale sono $e^{\beta x} \cos(\gamma x)$ e $e^{\beta x} \sin(\gamma x)$ e si ha $$W(x) = \gamma e^{2 \beta x} \not  = 0$$quindi le soluzioni sono linearmente indipendenti.
+###### Esempi
+![[Pasted image 20251113152930.png|500]]
+
+##### Metodo della somiglianza
+Presentiamo ora il metodo per risolvere l'equazione completa. A tale scopo bisogna determinare una sua soluzione particolare. Tale ricerca è particolarmente semplice se ci troviamo nel caso: $$f(x) = e^{hx}p(x)$$essendo $h$ un numero complesso e $p$ un polinomio di grado $m$ a coefficienti complessi. Utilizzeremo il cosiddetto **metodo di somiglianza** nel quale si cerca una soluzione particolare dell'equazione completa che abbia una forma simile a quella del termine noto. Precisamente si cerca una soluzione del tipo $$y(x) = e^{hx}x^sq(x)$$
+Con:
+- $q$ un polinomio di grado $m$ 
+- $s$ la molteplicità di $h$
+	- $s = 0$ se $h$ non è soluzione dell'equazione caratteristica
+Il polinomio $q$ si determina imponendo che la funzione $y(x)$ sia soluzione dell'equazione completa
+
+##### Definizione di funzione esponenziale in campo complesso
+Ricordiamo che se $\beta + i \gamma \in C$ allora si definisce:$$e^{\beta+i \gamma} = e^{\beta}(\cos \gamma + i \sin \gamma)$$e quindi che 
+- $e^{\beta} \cos \gamma = \text{ parte reale di } e^{\beta+i \gamma}$.
+- $e^{\beta} \sin \gamma = \text{ parte immaginaria di } e^{\beta+i\gamma}$
+
+##### Esempi di risoluzione degli esercizi
+ ![[Capitolo_equazioni_differenziali_2526(1)PDF_251113_170820.pdf]]
