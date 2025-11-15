@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulatore SQL - Doppia NOT EXISTS</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        // Icone SVG inline
+        const ChevronRight = () => (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        );
+
+        const Database = ({ className }) => (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            </svg>
+        );
+
+        const CheckCircle = ({ className }) => (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+        );
+
+        const XCircle = ({ className }) => (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+            </svg>
+        );
+
+        const SQLSimulator = () => {
+            const [step, setStep] = useState(0);
+            const [selectedClient, setSelectedClient] = useState(null);
+
+            // Dati di esempio
+            const agenti = [
+                { CodiceAgente: 'A001', Nome: 'Mario Rossi', Zona: 'Catania', Supervisore: 'S01', Commissione: 0.10 },
+                { CodiceAgente: 'A002', Nome: 'Luigi Verdi', Zona: 'Catania', Supervisore: 'S01', Commissione: 0.12 },
+                { CodiceAgente: 'A003', Nome: 'Anna Bianchi', Zona: 'Milano', Supervisore: 'S02', Commissione: 0.11 },
+                { CodiceAgente: 'A004', Nome: 'Paolo Neri', Zona: 'Roma', Supervisore: 'S03', Commissione: 0.09 }
+            ];
+
+            const clienti = [
+                { CodiceCliente: 'C001', Nome: 'Tech Solutions', Citta: 'Catania', Sconto: 0.05 },
+                { CodiceCliente: 'C002', Nome: 'Digital Corp', Citta: 'Milano', Sconto: 0.08 },
+                { CodiceCliente: 'C003', Nome: 'Innovation Ltd', Citta: 'Roma', Sconto: 0.06 },
+                { CodiceCliente: 'C004', Nome: 'Smart Systems', Citta: 'Catania', Sconto: 0.07 }
+            ];
+
+            const ordini = [
+                { CodiceOrdine: 'O001', CodiceCliente: 'C001', CodiceAgente: 'A001', Articolo: 'Laptop', Data: '2025-01-15', Ammontare: 1500 },
+                { CodiceOrdine: 'O002', CodiceCliente: 'C001', CodiceAgente: 'A002', Articolo: 'Monitor', Data: '2025-02-10', Ammontare: 300 },
+                { CodiceOrdine: 'O003', CodiceCliente: 'C002', CodiceAgente: 'A001', Articolo: 'Tastiera', Data: '2025-01-20', Ammontare: 80 },
+                { CodiceOrdine: 'O004', CodiceCliente: 'C002', CodiceAgente: 'A003', Articolo: 'Mouse', Data: '2025-02-05', Ammontare: 50 },
+                { CodiceOrdine: 'O005', CodiceCliente: 'C003', CodiceAgente: 'A002', Articolo: 'Stampante', Data: '2025-01-25', Ammontare: 400 },
+                { CodiceOrdine: 'O006', CodiceCliente: 'C004', CodiceAgente: 'A003', Articolo: 'Scanner', Data: '2025-02-15', Ammontare: 250 }
+            ];
+
+            const agentiCatania = agenti.filter(a => a.Zona === 'Catania');
+
+            const verificaCliente = (codiceCliente) => {
+                const agentiMancantiPerCliente = agentiCatania.filter(agente => {
+                    return !ordini.some(ordine => 
+                        ordine.CodiceCliente === codiceCliente && 
+                        ordine.CodiceAgente === agente.CodiceAgente
+                    );
+                });
+                return agentiMancantiPerCliente;
+            };
+
+            const clientiValidi = clienti.filter(c => verificaCliente(c.CodiceCliente).length === 0);
+
+            const steps = [
+                {
+                    title: "Il Problema",
+                    description: "Trovare i codici di quei clienti che hanno fatto ordini a TUTTI gli agenti di Catania"
+                },
+                {
+                    title: "Passo 1: Identificare gli agenti di Catania",
+                    description: "Prima dobbiamo sapere quali sono TUTTI gli agenti di Catania"
+                },
+                {
+                    title: "Passo 2: La Logica della Doppia Negazione",
+                    description: "Un cliente va bene se NON ESISTE un agente di Catania per cui NON ESISTE un ordine"
+                },
+                {
+                    title: "Passo 3: Verifica Cliente per Cliente",
+                    description: "Clicca su un cliente per vedere se ha ordinato da tutti gli agenti di Catania"
+                },
+                {
+                    title: "Risultato Finale",
+                    description: "Ecco i clienti che soddisfano la condizione"
+                }
+            ];
+
+            return (
+                <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="bg-white rounded-lg shadow-xl p-6 mb-6">
+                            <div className="flex items-center gap-3 mb-4">
+                                <Database className="w-8 h-8 text-indigo-600" />
+                                <h1 className="text-3xl font-bold text-gray-800">Simulatore SQL: Doppia NOT EXISTS</h1>
+                            </div>
+                            <p className="text-gray-600">Problema della Divisione Relazionale in SQL</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                            <div className="bg-white rounded-lg shadow-lg p-4">
+                                <h3 className="font-bold text-lg mb-3 text-indigo-600 border-b pb-2">Agenti</h3>
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-sm">
+                                        <thead>
+                                            <tr className="bg-gray-100">
+                                                <th className="p-2 text-left">Codice</th>
+                                                <th className="p-2 text-left">Nome</th>
+                                                <th className="p-2 text-left">Zona</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {agenti.map(a => (
+                                                <tr key={a.CodiceAgente} className={a.Zona === 'Catania' && step >= 1 ? 'bg-yellow-100' : ''}>
+                                                    <td className="p-2">{a.CodiceAgente}</td>
+                                                    <td className="p-2">{a.Nome}</td>
+                                                    <td className="p-2 font-semibold">{a.Zona}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div className="bg-white rounded-lg shadow-lg p-4">
+                                <h3 className="font-bold text-lg mb-3 text-indigo-600 border-b pb-2">Clienti</h3>
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-sm">
+                                        <thead>
+                                            <tr className="bg-gray-100">
+                                                <th className="p-2 text-left">Codice</th>
+                                                <th className="p-2 text-left">Nome</th>
+                                                <th className="p-2 text-left">Città</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {clienti.map(c => (
+                                                <tr 
+                                                    key={c.CodiceCliente}
+                                                    onClick={() => step === 3 && setSelectedClient(c.CodiceCliente)}
+                                                    className={`
+                                                        ${selectedClient === c.CodiceCliente ? 'bg-blue-200' : ''}
+                                                        ${step === 3 ? 'cursor-pointer hover:bg-blue-50' : ''}
+                                                        ${step === 4 && clientiValidi.some(cv => cv.CodiceCliente === c.CodiceCliente) ? 'bg-green-100' : ''}
+                                                    `}
+                                                >
+                                                    <td className="p-2">{c.CodiceCliente}</td>
+                                                    <td className="p-2">{c.Nome}</td>
+                                                    <td className="p-2">{c.Citta}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div className="bg-white rounded-lg shadow-lg p-4">
+                                <h3 className="font-bold text-lg mb-3 text-indigo-600 border-b pb-2">Ordini</h3>
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-sm">
+                                        <thead>
+                                            <tr className="bg-gray-100">
+                                                <th className="p-2 text-left">Cliente</th>
+                                                <th className="p-2 text-left">Agente</th>
+                                                <th className="p-2 text-left">Articolo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {ordini.map(o => (
+                                                <tr 
+                                                    key={o.CodiceOrdine}
+                                                    className={selectedClient === o.CodiceCliente ? 'bg-blue-100' : ''}
+                                                >
+                                                    <td className="p-2">{o.CodiceCliente}</td>
+                                                    <td className="p-2">{o.CodiceAgente}</td>
+                                                    <td className="p-2">{o.Articolo}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+                            <div className="mb-4">
+                                <div className="flex items-center justify-between mb-2">
+                                    <h2 className="text-xl font-bold text-gray-800">{steps[step].title}</h2>
+                                    <span className="text-sm text-gray-500">Passo {step + 1} di {steps.length}</span>
+                                </div>
+                                <p className="text-gray-600">{steps[step].description}</p>
+                            </div>
+
+                            {step === 1 && (
+                                <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                                    <h3 className="font-bold mb-2">Agenti di Catania identificati:</h3>
+                                    <div className="flex gap-2">
+                                        {agentiCatania.map(a => (
+                                            <div key={a.CodiceAgente} className="bg-yellow-200 px-3 py-1 rounded">
+                                                {a.CodiceAgente} - {a.Nome}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <p className="mt-3 text-sm text-gray-700">
+                                        Ci sono <strong>{agentiCatania.length} agenti</strong> nella zona di Catania. 
+                                        Un cliente valido deve aver fatto almeno un ordine con OGNUNO di questi agenti.
+                                    </p>
+                                </div>
+                            )}
+
+                            {step === 2 && (
+                                <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4">
+                                    <h3 className="font-bold mb-3">La Logica della Doppia NOT EXISTS</h3>
+                                    <div className="bg-white p-4 rounded font-mono text-sm mb-3">
+                                        <div className="text-blue-600">SELECT DISTINCT C.CodiceCliente</div>
+                                        <div className="text-blue-600">FROM Clienti C</div>
+                                        <div className="text-purple-600">WHERE NOT EXISTS (</div>
+                                        <div className="ml-4 text-green-600">SELECT *</div>
+                                        <div className="ml-4 text-green-600">FROM Agenti A</div>
+                                        <div className="ml-4 text-green-600">WHERE A.Zona = 'Catania'</div>
+                                        <div className="ml-4 text-red-600">AND NOT EXISTS (</div>
+                                        <div className="ml-8 text-orange-600">SELECT *</div>
+                                        <div className="ml-8 text-orange-600">FROM Ordini O</div>
+                                        <div className="ml-8 text-orange-600">WHERE O.CodiceCliente = C.CodiceCliente</div>
+                                        <div className="ml-8 text-orange-600">AND O.CodiceAgente = A.CodiceAgente</div>
+                                        <div className="ml-4 text-red-600">)</div>
+                                        <div className="text-purple-600">)</div>
+                                    </div>
+                                    <div className="space-y-2 text-sm">
+                                        <div className="flex items-start gap-2">
+                                            <span className="text-purple-600 font-bold">1° NOT EXISTS:</span>
+                                            <span>NON deve esistere un agente di Catania per cui...</span>
+                                        </div>
+                                        <div className="flex items-start gap-2 ml-6">
+                                            <span className="text-red-600 font-bold">2° NOT EXISTS:</span>
+                                            <span>...NON esiste un ordine del cliente con quell'agente</span>
+                                        </div>
+                                        <div className="mt-3 p-3 bg-gray-100 rounded">
+                                            <strong>In altre parole:</strong> Un cliente è valido se per ogni agente di Catania esiste almeno un ordine.
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {step === 3 && selectedClient && (
+                                <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+                                    <h3 className="font-bold mb-3">Verifica per Cliente: {selectedClient}</h3>
+                                    <div className="space-y-2">
+                                        {agentiCatania.map(agente => {
+                                            const haOrdine = ordini.some(o => 
+                                                o.CodiceCliente === selectedClient && 
+                                                o.CodiceAgente === agente.CodiceAgente
+                                            );
+                                            return (
+                                                <div key={agente.CodiceAgente} className="flex items-center gap-3 bg-white p-3 rounded">
+                                                    {haOrdine ? (
+                                                        <CheckCircle className="w-5 h-5 text-green-500" />
+                                                    ) : (
+                                                        <XCircle className="w-5 h-5 text-red-500" />
+                                                    )}
+                                                    <span>Agente {agente.CodiceAgente} ({agente.Nome})</span>
+                                                    <span className={`ml-auto px-2 py-1 rounded text-sm ${haOrdine ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                                                        {haOrdine ? 'Ha ordinato' : 'NON ha ordinato'}
+                                                    </span>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                    <div className={`mt-4 p-3 rounded font-bold ${verificaCliente(selectedClient).length === 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                                        {verificaCliente(selectedClient).length === 0 
+                                            ? '✓ Questo cliente soddisfa la condizione!' 
+                                            : `✗ Questo cliente NON soddisfa la condizione (mancano ${verificaCliente(selectedClient).length} agenti)`
+                                        }
+                                    </div>
+                                </div>
+                            )}
+
+                            {step === 4 && (
+                                <div className="bg-green-50 border-l-4 border-green-400 p-4">
+                                    <h3 className="font-bold mb-3 text-lg">Clienti che hanno ordinato da TUTTI gli agenti di Catania:</h3>
+                                    {clientiValidi.length > 0 ? (
+                                        <div className="space-y-2">
+                                            {clientiValidi.map(c => (
+                                                <div key={c.CodiceCliente} className="bg-green-100 p-3 rounded flex items-center gap-3">
+                                                    <CheckCircle className="w-6 h-6 text-green-600" />
+                                                    <div>
+                                                        <div className="font-bold">{c.CodiceCliente}</div>
+                                                        <div className="text-sm text-gray-600">{c.Nome} - {c.Citta}</div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <div className="bg-yellow-100 p-3 rounded">
+                                            Nessun cliente soddisfa la condizione con i dati attuali
+                                        </div>
+                                    )}
+                                    <div className="mt-4 p-3 bg-white rounded text-sm">
+                                        <strong>Riepilogo:</strong> La query restituisce {clientiValidi.length} cliente/i che hanno fatto ordini con TUTTI i {agentiCatania.length} agenti di Catania.
+                                    </div>
+                                </div>
+                            )}
+
+                            <div className="flex justify-between mt-6">
+                                <button
+                                    onClick={() => setStep(Math.max(0, step - 1))}
+                                    disabled={step === 0}
+                                    className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    ← Indietro
+                                </button>
+                                <button
+                                    onClick={() => setStep(Math.min(steps.length - 1, step + 1))}
+                                    disabled={step === steps.length - 1}
+                                    className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                                >
+                                    Avanti <ChevronRight />
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="bg-white rounded-lg shadow-lg p-6">
+                            <h3 className="font-bold text-lg mb-3">💡 Intuizione Chiave sulla Doppia NOT EXISTS</h3>
+                            <div className="space-y-3 text-gray-700">
+                                <p>
+                                    La <strong>doppia negazione</strong> è la tecnica standard in SQL per esprimere la <strong>divisione relazionale</strong>: 
+                                    trovare elementi che sono in relazione con TUTTI gli elementi di un altro insieme.
+                                </p>
+                                <div className="bg-blue-50 p-4 rounded">
+                                    <p className="font-semibold mb-2">Perché funziona?</p>
+                                    <ul className="list-disc list-inside space-y-1 text-sm">
+                                        <li>La prima NOT EXISTS scorre tutti gli agenti di Catania</li>
+                                        <li>La seconda NOT EXISTS verifica se esiste un ordine tra cliente e agente</li>
+                                        <li>Se NON esiste un ordine mancante per NESSUN agente, il cliente è valido</li>
+                                        <li>Matematicamente: ¬∃z ¬∃y Y(x,y,z) equivale a ∀z ∃y Y(x,y,z) </li>
+                                    </ul>
+                                </div>
+                                <p className="text-sm italic">
+                                    Questa tecnica è potentissima per query del tipo "trova X che ha fatto Y con TUTTI gli Z"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // Render
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<SQLSimulator />);
+    </script>
+</body>
+</html>

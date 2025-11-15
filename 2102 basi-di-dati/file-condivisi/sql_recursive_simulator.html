@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulatore Query Ricorsive SQL</title>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+    <script>
+        // Configurazione per sql.js
+        window.SQL_WASM_PATH = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.wasm';
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Icone SVG come componenti
+        const BookOpen = () => (
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+        );
+
+        const Code = () => (
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+        );
+
+        const Lightbulb = () => (
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+        );
+
+        const Play = () => (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        );
+
+        const Award = () => (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+        );
+
+        const CheckCircle = () => (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        );
+
+        const AlertCircle = () => (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        );
+
+        const ChevronRight = () => (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+        );
+
+        const ArrowRight = () => (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+        );
+
+        const RecursiveSQLSimulator = () => {
+            const [currentPhase, setCurrentPhase] = useState('learn');
+            const [learnStep, setLearnStep] = useState(0);
+            const [currentLevel, setCurrentLevel] = useState(0);
+            const [sqlInput, setSqlInput] = useState('');
+            const [result, setResult] = useState(null);
+            const [showHint, setShowHint] = useState(false);
+            const [completedLevels, setCompletedLevels] = useState([]);
+            const [db, setDb] = useState(null);
+            const [isExecuting, setIsExecuting] = useState(false);
+            const [showDataEditor, setShowDataEditor] = useState(false);
+            const [customData, setCustomData] = useState('');
+            const [currentTableData, setCurrentTableData] = useState(null);
+
+            // Inizializza sql.js
+            useEffect(() => {
+                const initDb = async () => {
+                    try {
+                        const SQL = await initSqlJs({
+                            locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
+                        });
+                        const database = new SQL.Database();
+                        setDb(database);
+                    } catch (error) {
+                        console.error('Errore inizializzazione database:', error);
+                    }
+                };
+                initDb();
+            }, []);
+
+            const learningSteps = [
+                {
+                    title: "Cos'è una Query Ricorsiva?",
+                    content: () => (
+                        <div className="space-y-4">
+                            <p className="text-lg text-gray-700">
+                                Le <strong>query ricorsive</strong> in SQL permettono di interrogare dati con strutture gerarchiche 
+                                o che richiedono iterazioni, come alberi organizzativi, grafi, o sequenze numeriche.
+                            </p>
+                            <div className="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-600">
+                                <h4 className="font-semibold text-indigo-900 mb-2">Esempi di utilizzo:</h4>
+                                <ul className="list-disc list-inside text-gray-700 space-y-1">
+                                    <li>Strutture gerarchiche (organigrammi aziendali)</li>
+                                    <li>Bill of Materials (distinte base di produzione)</li>
+                                    <li>Percorsi in grafi (reti di trasporto, social network)</li>
+                                    <li>Sequenze matematiche (Fibonacci, numeri naturali)</li>
+                                </ul>
+                            </div>
+                            <p className="text-gray-700">
+                                In SQL, le query ricorsive si implementano usando le <strong>Common Table Expressions (CTE)</strong> 
+                                con la clausola <code className="bg-gray-200 px-2 py-1 rounded">WITH RECURSIVE</code>.
+                            </p>
+                        </div>
+                    )
+                },
+                {
+                    title: "Struttura Base: WITH RECURSIVE",
+                    content: () => (
+                        <div className="space-y-4">
+                            <p className="text-gray-700">
+                                Una CTE ricorsiva ha questa struttura fondamentale:
+                            </p>
+                            <div className="bg-gray-800 text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+                                <pre>{`WITH RECURSIVE nome_cte AS (
+    -- PARTE 1: Caso Base (anchor member)
+    SELECT colonne
+    FROM tabella
+    WHERE condizione_iniziale
+    
+    UNION ALL
+    
+    -- PARTE 2: Caso Ricorsivo (recursive member)
+    SELECT colonne
+    FROM tabella
+    JOIN nome_cte ON condizione_join
+    WHERE condizione_continuazione
+)
+SELECT * FROM nome_cte;`}</pre>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                                    <h4 className="font-semibold text-green-900 mb-2">✓ UNION ALL</h4>
+                                    <p className="text-sm text-gray-700">Usa sempre UNION ALL (non UNION) perché è più efficiente e mantiene i duplicati necessari.</p>
+                                </div>
+                                <div className="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                                    <h4 className="font-semibold text-yellow-900 mb-2">⚠ Attenzione</h4>
+                                    <p className="text-sm text-gray-700">La condizione WHERE nel caso ricorsivo è fondamentale per evitare loop infiniti!</p>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                },
+                {
+                    title: "Parte 1: Il Caso Base",
+                    content: () => (
+                        <div className="space-y-4">
+                            <p className="text-gray-700">
+                                Il <strong>caso base</strong> (o anchor member) è il punto di partenza della ricorsione:
+                            </p>
+                            <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
+                                <h4 className="font-semibold text-blue-900 mb-2">Caratteristiche del Caso Base:</h4>
+                                <ul className="list-disc list-inside text-gray-700 space-y-2">
+                                    <li>È una query SELECT normale (non ricorsiva)</li>
+                                    <li>Definisce il punto di partenza della ricorsione</li>
+                                    <li>Deve restituire almeno una riga</li>
+                                    <li>Non può riferire la CTE stessa</li>
+                                </ul>
+                            </div>
+                            <h4 className="font-semibold text-gray-800 mt-4 mb-2">Esempio pratico: generare i numeri da 1 a 5</h4>
+                            <div className="bg-gray-800 text-gray-100 p-4 rounded-lg font-mono text-sm">
+                                <pre>{`WITH RECURSIVE numeri AS (
+    -- Caso Base: inizia da 1
+    SELECT 1 AS n
+    
+    UNION ALL
+    
+    -- (caso ricorsivo qui...)
+)
+SELECT * FROM numeri;`}</pre>
+                            </div>
+                            <p className="text-gray-700 mt-3">
+                                In questo esempio, il caso base restituisce una singola riga con valore <code className="bg-gray-200 px-2 py-1 rounded">n = 1</code>.
+                            </p>
+                        </div>
+                    )
+                },
+                {
+                    title: "Parte 2: Il Caso Ricorsivo",
+                    content: () => (
+                        <div className="space-y-4">
+                            <p className="text-gray-700">
+                                Il <strong>caso ricorsivo</strong> (o recursive member) genera nuove righe basandosi sui risultati precedenti:
+                            </p>
+                            <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-600">
+                                <h4 className="font-semibold text-purple-900 mb-2">Caratteristiche del Caso Ricorsivo:</h4>
+                                <ul className="list-disc list-inside text-gray-700 space-y-2">
+                                    <li>Deve riferire la CTE stessa (auto-riferimento)</li>
+                                    <li>Tipicamente usa un JOIN con la CTE</li>
+                                    <li>Genera nuove righe ad ogni iterazione</li>
+                                    <li>Deve avere una condizione di terminazione (WHERE)</li>
+                                </ul>
+                            </div>
+                            <h4 className="font-semibold text-gray-800 mt-4 mb-2">Completiamo l'esempio dei numeri:</h4>
+                            <div className="bg-gray-800 text-gray-100 p-4 rounded-lg font-mono text-sm">
+                                <pre>{`WITH RECURSIVE numeri AS (
+    -- Caso Base: inizia da 1
+    SELECT 1 AS n
+    
+    UNION ALL
+    
+    -- Caso Ricorsivo: aggiungi 1 al numero precedente
+    SELECT n + 1
+    FROM numeri
+    WHERE n < 5  -- CONDIZIONE DI STOP!
+)
+SELECT * FROM numeri;
+
+-- Risultato: 1, 2, 3, 4, 5`}</pre>
+                            </div>
+                            <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500 mt-4">
+                                <h4 className="font-semibold text-red-900 mb-2">🚨 Importante!</h4>
+                                <p className="text-gray-700">
+                                    Senza <code className="bg-gray-200 px-2 py-1 rounded">WHERE n &lt; 5</code> la query continuerebbe 
+                                    all'infinito! La condizione di stop è <strong>obbligatoria</strong>.
+                                </p>
+                            </div>
+                        </div>
+                    )
+                },
+                {
+                    title: "Come Funziona l'Esecuzione",
+                    content: () => (
+                        <div className="space-y-4">
+                            <p className="text-gray-700">
+                                Vediamo passo-passo come SQL esegue una query ricorsiva:
+                            </p>
+                            <div className="space-y-3">
+                                <div className="bg-white border-2 border-indigo-200 p-4 rounded-lg">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">1</div>
+                                        <h4 className="font-semibold text-gray-800">Esegue il Caso Base</h4>
+                                    </div>
+                                    <p className="text-sm text-gray-700 ml-11">
+                                        La query inizia eseguendo il caso base, che genera il primo set di risultati.
+                                    </p>
+                                    <div className="ml-11 mt-2 bg-gray-100 p-2 rounded font-mono text-sm">
+                                        Risultato temporaneo: [1]
+                                    </div>
+                                </div>
+                                
+                                <div className="bg-white border-2 border-purple-200 p-4 rounded-lg">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">2</div>
+                                        <h4 className="font-semibold text-gray-800">Prima Iterazione Ricorsiva</h4>
+                                    </div>
+                                    <p className="text-sm text-gray-700 ml-11">
+                                        Il caso ricorsivo usa i risultati del caso base per generare nuove righe.
+                                    </p>
+                                    <div className="ml-11 mt-2 bg-gray-100 p-2 rounded font-mono text-sm">
+                                        Risultato temporaneo: [1, 2]
+                                    </div>
+                                </div>
+                                
+                                <div className="bg-white border-2 border-purple-200 p-4 rounded-lg">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">3</div>
+                                        <h4 className="font-semibold text-gray-800">Iterazioni Successive</h4>
+                                    </div>
+                                    <p className="text-sm text-gray-700 ml-11">
+                                        Il processo continua, usando i risultati dell'iterazione precedente.
+                                    </p>
+                                    <div className="ml-11 mt-2 bg-gray-100 p-2 rounded font-mono text-sm">
+                                        Risultato temporaneo: [1, 2, 3], poi [1, 2, 3, 4], poi [1, 2, 3, 4, 5]
+                                    </div>
+                                </div>
+                                
+                                <div className="bg-white border-2 border-green-200 p-4 rounded-lg">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">4</div>
+                                        <h4 className="font-semibold text-gray-800">Terminazione</h4>
+                                    </div>
+                                    <p className="text-sm text-gray-700 ml-11">
+                                        Quando il caso ricorsivo non genera più righe (n &lt; 5 diventa falso), la ricorsione termina.
+                                    </p>
+                                    <div className="ml-11 mt-2 bg-green-100 p-2 rounded font-mono text-sm">
+                                        Risultato finale: [1, 2, 3, 4, 5]
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                },
+                {
+                    title: "Esempio Completo: Gerarchia",
+                    content: () => (
+                        <div className="space-y-4">
+                            <p className="text-gray-700">
+                                Vediamo un esempio più realistico: una gerarchia aziendale.
+                            </p>
+                            <div className="bg-gray-100 p-4 rounded-lg">
+                                <h4 className="font-semibold text-gray-800 mb-2">Tabella dipendenti:</h4>
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-sm border-collapse">
+                                        <thead>
+                                            <tr className="bg-gray-200">
+                                                <th className="border border-gray-300 px-3 py-2">id</th>
+                                                <th className="border border-gray-300 px-3 py-2">nome</th>
+                                                <th className="border border-gray-300 px-3 py-2">manager_id</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td className="border border-gray-300 px-3 py-2">1</td><td className="border border-gray-300 px-3 py-2">Alice (CEO)</td><td className="border border-gray-300 px-3 py-2">NULL</td></tr>
+                                            <tr><td className="border border-gray-300 px-3 py-2">2</td><td className="border border-gray-300 px-3 py-2">Bob</td><td className="border border-gray-300 px-3 py-2">1</td></tr>
+                                            <tr><td className="border border-gray-300 px-3 py-2">3</td><td className="border border-gray-300 px-3 py-2">Carlo</td><td className="border border-gray-300 px-3 py-2">1</td></tr>
+                                            <tr><td className="border border-gray-300 px-3 py-2">4</td><td className="border border-gray-300 px-3 py-2">Diana</td><td className="border border-gray-300 px-3 py-2">2</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <h4 className="font-semibold text-gray-800 mt-4">Obiettivo: trovare tutti i subordinati di Alice</h4>
+                            
+                            <div className="bg-gray-800 text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+                                <pre>{`WITH RECURSIVE gerarchia AS (
+    -- Caso Base: inizia da Alice
+    SELECT id, nome, manager_id, 0 AS livello
+    FROM dipendenti
+    WHERE id = 1  -- Alice (CEO)
+    
+    UNION ALL
+    
+    -- Caso Ricorsivo: trova i subordinati
+    SELECT d.id, d.nome, d.manager_id, g.livello + 1
+    FROM dipendenti d
+    JOIN gerarchia g ON d.manager_id = g.id
+    -- La ricorsione si ferma quando non ci sono più subordinati
+)
+SELECT * FROM gerarchia ORDER BY livello, nome;
+
+-- Risultato:
+-- Alice (livello 0)
+-- Bob, Carlo (livello 1)
+-- Diana (livello 2)`}</pre>
+                            </div>
+                            
+                            <div className="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-600 mt-4">
+                                <h4 className="font-semibold text-indigo-900 mb-2">📝 Note importanti:</h4>
+                                <ul className="list-disc list-inside text-gray-700 space-y-1">
+                                    <li>Il JOIN collega i dipendenti ai loro manager nella CTE</li>
+                                    <li>Il campo <code className="bg-gray-200 px-2 py-1 rounded">livello</code> tiene traccia della profondità</li>
+                                    <li>Non serve una condizione WHERE esplicita: termina quando non ci sono più match</li>
+                                </ul>
+                            </div>
+                        </div>
+                    )
+                },
+                {
+                    title: "Pronto per Esercitarti!",
+                    content: () => (
+                        <div className="space-y-4">
+                            <p className="text-xl text-gray-700 font-semibold">
+                                🎓 Hai completato la parte teorica!
+                            </p>
+                            <p className="text-gray-700">
+                                Ora conosci tutti gli elementi fondamentali delle query ricorsive:
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div className="bg-green-50 p-3 rounded-lg flex items-start gap-2">
+                                    <CheckCircle />
+                                    <span className="text-sm text-gray-700">Struttura WITH RECURSIVE</span>
+                                </div>
+                                <div className="bg-green-50 p-3 rounded-lg flex items-start gap-2">
+                                    <CheckCircle />
+                                    <span className="text-sm text-gray-700">Caso Base (anchor)</span>
+                                </div>
+                                <div className="bg-green-50 p-3 rounded-lg flex items-start gap-2">
+                                    <CheckCircle />
+                                    <span className="text-sm text-gray-700">Caso Ricorsivo (recursive)</span>
+                                </div>
+                                <div className="bg-green-50 p-3 rounded-lg flex items-start gap-2">
+                                    <CheckCircle />
+                                    <span className="text-sm text-gray-700">Condizioni di terminazione</span>
+                                </div>
+                                <div className="bg-green-50 p-3 rounded-lg flex items-start gap-2">
+                                    <CheckCircle />
+                                    <span className="text-sm text-gray-700">JOIN nelle query ricorsive</span>
+                                </div>
+                                <div className="bg-green-50 p-3 rounded-lg flex items-start gap-2">
+                                    <CheckCircle />
+                                    <span className="text-sm text-gray-700">Esempi pratici</span>
+                                </div>
+                            </div>
+                            
+                            <div className="bg-indigo-100 p-6 rounded-lg border-2 border-indigo-600 mt-6">
+                                <h4 className="font-semibold text-indigo-900 mb-3 text-lg">🚀 Prossimo passo: Pratica</h4>
+                                <p className="text-gray-700 mb-4">
+                                    Ti aspettano <strong>3 esercizi pratici</strong> di difficoltà crescente dove potrai 
+                                    scrivere le tue query ricorsive e verificarne il funzionamento <strong>reale</strong> con un database SQLite integrato!
+                                </p>
+                                <button
+                                    onClick={() => setCurrentPhase('practice')}
+                                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold text-lg"
+                                >
+                                    Inizia gli Esercizi
+                                    <ArrowRight />
+                                </button>
+                            </div>
+                        </div>
+                    )
+                }
+            ];
+
+            const practiceExercises = [
+                {
+                    title: "Livello 1: Sequenza di Numeri Pari",
+                    description: "Genera i primi 10 numeri pari (2, 4, 6, ..., 20) usando una query ricorsiva.",
+                    schema: "Nessuna tabella richiesta",
+                    setupSQL: null,
+                    task: "Scrivi una query ricorsiva che generi i numeri pari da 2 a 20",
+                    hint: `Struttura base:
+WITH RECURSIVE nome_cte AS (
+  -- Caso base: inizia da 2
+  SELECT 2 AS n
+  UNION ALL
+  -- Caso ricorsivo: aggiungi 2 al numero precedente
+  SELECT n + 2 FROM nome_cte WHERE n < 20
+)
+SELECT * FROM nome_cte;`,
+                    solution: `WITH RECURSIVE numeri_pari AS (
+  SELECT 2 AS n
+  UNION ALL
+  SELECT n + 2 FROM numeri_pari WHERE n < 20
+)
+SELECT * FROM numeri_pari;`,
+                    explanation: `In questo esercizio:
+1. Il caso base parte da 2 (primo numero pari)
+2. Il caso ricorsivo aggiunge 2 ad ogni iterazione
+3. La condizione WHERE n < 20 ferma la ricorsione
+4. Ogni iterazione genera un nuovo numero pari`
+                },
+                {
+                    title: "Livello 2: Organigramma Aziendale",
+                    description: "Naviga una struttura gerarchica di dipendenti per trovare tutti i subordinati.",
+                    schema: `Tabella: dipendenti
+┌────┬──────────┬────────────┐
+│ id │   nome   │ manager_id │
+├────┼──────────┼────────────┤
+│ 1  │ Alice    │ NULL       │ (CEO)
+│ 2  │ Bob      │ 1          │
+│ 3  │ Carlo    │ 1          │
+│ 4  │ Diana    │ 2          │
+│ 5  │ Elena    │ 2          │
+│ 6  │ Franco   │ 3          │
+└────┴──────────┴────────────┘`,
+                    setupSQL: `
+CREATE TABLE dipendenti (
+    id INTEGER PRIMARY KEY,
+    nome TEXT NOT NULL,
+    manager_id INTEGER
+);
+
+INSERT INTO dipendenti (id, nome, manager_id) VALUES
+(1, 'Alice', NULL),
+(2, 'Bob', 1),
+(3, 'Carlo', 1),
+(4, 'Diana', 2),
+(5, 'Elena', 2),
+(6, 'Franco', 3);
+`,
+                    task: "Trova tutti i dipendenti sotto Bob (id=2) includendo il loro livello gerarchico",
+                    hint: `WITH RECURSIVE gerarchia AS (
+  -- Caso base: inizia da Bob
+  SELECT id, nome, manager_id, 0 AS livello
+  FROM dipendenti
+  WHERE id = 2
+  UNION ALL
+  -- Caso ricorsivo: trova i subordinati
+  SELECT d.id, d.nome, d.manager_id, g.livello + 1
+  FROM dipendenti d
+  JOIN gerarchia g ON d.manager_id = g.id
+)
+SELECT * FROM gerarchia ORDER BY livello, nome;`,
+                    solution: `WITH RECURSIVE gerarchia AS (
+  SELECT id, nome, manager_id, 0 AS livello
+  FROM dipendenti
+  WHERE id = 2
+  UNION ALL
+  SELECT d.id, d.nome, d.manager_id, g.livello + 1
+  FROM dipendenti d
+  JOIN gerarchia g ON d.manager_id = g.id
+)
+SELECT * FROM gerarchia ORDER BY livello, nome;`,
+                    explanation: `Query gerarchica con JOIN:
+1. Caso base: seleziona Bob come punto di partenza (livello 0)
+2. JOIN nella parte ricorsiva: collega dipendenti (d) ai loro manager nella CTE (g)
+3. La condizione ON d.manager_id = g.id trova i subordinati diretti
+4. Il campo livello traccia la profondità nella gerarchia
+5. La ricorsione termina automaticamente quando non ci sono più subordinati`
+                },
+                {
+                    title: "Livello 3: Percorsi in un Grafo",
+                    description: "Trova tutti i percorsi possibili tra città connesse, evitando i cicli.",
+                    schema: `Tabella: collegamenti
+┌─────────────────┬──────────────┐
+│ citta_partenza  │ citta_arrivo │
+├─────────────────┼──────────────┤
+│ Roma            │ Milano       │
+│ Milano          │ Torino       │
+│ Roma            │ Napoli       │
+│ Napoli          │ Bari         │
+│ Torino          │ Genova       │
+│ Milano          │ Bologna      │
+└─────────────────┴──────────────┘`,
+                    setupSQL: `
+CREATE TABLE collegamenti (
+    citta_partenza TEXT NOT NULL,
+    citta_arrivo TEXT NOT NULL
+);
+
+INSERT INTO collegamenti (citta_partenza, citta_arrivo) VALUES
+('Roma', 'Milano'),
+('Milano', 'Torino'),
+('Roma', 'Napoli'),
+('Napoli', 'Bari'),
+('Torino', 'Genova'),
+('Milano', 'Bologna');
+`,
+                    task: "Trova tutti i percorsi partendo da Roma, mostrando il percorso completo",
+                    hint: `WITH RECURSIVE percorsi AS (
+  -- Caso base: collegamenti diretti da Roma
+  SELECT citta_partenza, citta_arrivo, 
+         citta_partenza || ' -> ' || citta_arrivo AS percorso,
+         1 AS lunghezza
+  FROM collegamenti
+  WHERE citta_partenza = 'Roma'
+  UNION ALL
+  -- Caso ricorsivo: estendi i percorsi
+  SELECT p.citta_partenza, c.citta_arrivo,
+         p.percorso || ' -> ' || c.citta_arrivo,
+         p.lunghezza + 1
+  FROM percorsi p
+  JOIN collegamenti c ON p.citta_arrivo = c.citta_partenza
+  WHERE p.percorso NOT LIKE '%' || c.citta_arrivo || '%'
+    AND p.lunghezza < 5
+)
+SELECT percorso, lunghezza FROM percorsi ORDER BY lunghezza, percorso;`,
+                    solution: `WITH RECURSIVE percorsi AS (
+  SELECT citta_partenza, citta_arrivo, 
+         citta_partenza || ' -> ' || citta_arrivo AS percorso,
+         1 AS lunghezza
+  FROM collegamenti
+  WHERE citta_partenza = 'Roma'
+  UNION ALL
+  SELECT p.citta_partenza, c.citta_arrivo,
+         p.percorso || ' -> ' || c.citta_arrivo,
+         p.lunghezza + 1
+  FROM percorsi p
+  JOIN collegamenti c ON p.citta_arrivo = c.citta_partenza
+  WHERE p.percorso NOT LIKE '%' || c.citta_arrivo || '%'
+    AND p.lunghezza < 5
+)
+SELECT percorso, lunghezza FROM percorsi ORDER BY lunghezza, percorso;`,
+                    explanation: `Gestione di grafi con prevenzione cicli:
+1. Concatenazione: || ' -> ' || costruisce il percorso come stringa
+2. Prevenzione cicli: WHERE p.percorso NOT LIKE '%' || c.citta_arrivo || '%'
+   verifica che la città di arrivo non sia già nel percorso
+3. Limite profondità: p.lunghezza < 5 previene percorsi troppo lunghi
+4. Il campo lunghezza conta i passi del percorso
+5. Fondamentale nei grafi prevenire i cicli per evitare loop infiniti!`
+                }
+            ];
+
+            // Funzione per leggere i dati attuali della tabella
+            const readCurrentTableData = (tableName) => {
+                if (!db) return null;
+                
+                try {
+                    const stmt = db.prepare(`SELECT * FROM ${tableName}`);
+                    const results = [];
+                    
+                    while (stmt.step()) {
+                        const row = stmt.getAsObject();
+                        results.push(row);
+                    }
+                    stmt.free();
+                    
+                    return results;
+                } catch (error) {
+                    console.error('Errore lettura tabella:', error);
+                    return null;
+                }
+            };
+
+            // Setup database per l'esercizio corrente
+            useEffect(() => {
+                if (db && currentPhase === 'practice') {
+                    const exercise = practiceExercises[currentLevel];
+                    if (exercise.setupSQL) {
+                        try {
+                            // Drop table se esiste
+                            try {
+                                db.run("DROP TABLE IF EXISTS dipendenti");
+                                db.run("DROP TABLE IF EXISTS collegamenti");
+                            } catch (e) {}
+                            
+                            // Esegui setup
+                            db.run(exercise.setupSQL);
+                            
+                            // Inizializza customData con i dati di default
+                            setCustomData(exercise.setupSQL);
+                            
+                            // Leggi i dati della tabella
+                            const tableName = currentLevel === 1 ? 'dipendenti' : 'collegamenti';
+                            const tableData = readCurrentTableData(tableName);
+                            setCurrentTableData({ name: tableName, data: tableData });
+                        } catch (error) {
+                            console.error('Errore setup database:', error);
+                        }
+                    } else {
+                        setCustomData('');
+                        setCurrentTableData(null);
+                    }
+                    setShowDataEditor(false);
+                }
+            }, [db, currentLevel, currentPhase]);
+
+            const executeQuery = async () => {
+                if (!db) {
+                    setResult({
+                        success: false,
+                        message: "⚠️ Database non ancora inizializzato. Riprova tra qualche secondo."
+                    });
+                    return;
+                }
+
+                setIsExecuting(true);
+                setResult(null);
+
+                try {
+                    // Imposta un limite di iterazioni per le query ricorsive
+                    // PRAGMA recursive_triggers limita la profondità della ricorsione
+                    try {
+                        db.run("PRAGMA recursive_triggers = OFF");
+                    } catch (e) {}
+
+                    // Wrappa la query con un limite di righe per prevenire loop infiniti
+                    let queryToExecute = sqlInput.trim();
+                    
+                    // Se la query contiene WITH RECURSIVE, aggiungi un LIMIT se non presente
+                    if (queryToExecute.toLowerCase().includes('with recursive')) {
+                        // Controlla se c'è già un LIMIT
+                        if (!queryToExecute.toLowerCase().includes('limit')) {
+                            // Rimuovi il punto e virgola finale se presente
+                            queryToExecute = queryToExecute.replace(/;\s*$/, '');
+                            // Aggiungi LIMIT per sicurezza
+                            queryToExecute += ' LIMIT 10000';
+                        }
+                    }
+
+                    const startTime = Date.now();
+                    const stmt = db.prepare(queryToExecute);
+                    const results = [];
+                    let rowCount = 0;
+                    const MAX_ROWS = 10000;
+                    const MAX_TIME = 5000; // 5 secondi
+                    
+                    while (stmt.step()) {
+                        // Controllo timeout ogni 1000 righe
+                        if (rowCount % 1000 === 0) {
+                            const elapsed = Date.now() - startTime;
+                            if (elapsed > MAX_TIME) {
+                                stmt.free();
+                                setIsExecuting(false);
+                                setResult({
+                                    success: false,
+                                    message: "⏱️ Timeout: La query ha impiegato troppo tempo (>5 secondi)! Probabilmente hai dimenticato una condizione di terminazione nella parte ricorsiva. Verifica che ci sia una clausola WHERE che fermi la ricorsione."
+                                });
+                                return;
+                            }
+                        }
+
+                        const row = stmt.getAsObject();
+                        results.push(row);
+                        rowCount++;
+
+                        if (rowCount >= MAX_ROWS) {
+                            stmt.free();
+                            setIsExecuting(false);
+                            setResult({
+                                success: false,
+                                message: `⚠️ Query interrotta: sono state generate più di ${MAX_ROWS} righe! Questo indica probabilmente una ricorsione infinita. Verifica che la tua query abbia una condizione WHERE appropriata per terminare la ricorsione.`
+                            });
+                            return;
+                        }
+                    }
+                    stmt.free();
+
+                    setResult({
+                        success: true,
+                        output: results,
+                        message: results.length > 0 
+                            ? `✅ Query eseguita con successo! Trovate ${results.length} righe.`
+                            : "✅ Query eseguita con successo! Nessuna riga restituita.",
+                        warning: "⚠️ Nota: Verifica tu stesso che il risultato corrisponda a quello atteso. Il simulatore non valida automaticamente la correttezza logica della query."
+                    });
+                    
+                    if (!completedLevels.includes(currentLevel)) {
+                        setCompletedLevels([...completedLevels, currentLevel]);
+                    }
+                } catch (error) {
+                    setResult({
+                        success: false,
+                        message: `❌ Errore nell'esecuzione della query: ${error.message}`
+                    });
+                }
+
+                setIsExecuting(false);
+            };
+
+            const applyCustomData = () => {
+                if (!db) return;
+                
+                try {
+                    // Drop tabelle esistenti
+                    try {
+                        db.run("DROP TABLE IF EXISTS dipendenti");
+                        db.run("DROP TABLE IF EXISTS collegamenti");
+                    } catch (e) {}
+                    
+                    // Esegui il SQL personalizzato
+                    db.run(customData);
+                    
+                    // Leggi i nuovi dati
+                    const tableName = currentLevel === 1 ? 'dipendenti' : 'collegamenti';
+                    const tableData = readCurrentTableData(tableName);
+                    setCurrentTableData({ name: tableName, data: tableData });
+                    
+                    setResult({
+                        success: true,
+                        message: "✅ Dati della tabella aggiornati con successo!"
+                    });
+                    setShowDataEditor(false);
+                } catch (error) {
+                    setResult({
+                        success: false,
+                        message: `❌ Errore nell'applicazione dei dati: ${error.message}`
+                    });
+                }
+            };
+
+            const resetData = () => {
+                const exercise = practiceExercises[currentLevel];
+                if (exercise.setupSQL && db) {
+                    try {
+                        // Drop tabelle esistenti
+                        try {
+                            db.run("DROP TABLE IF EXISTS dipendenti");
+                            db.run("DROP TABLE IF EXISTS collegamenti");
+                        } catch (e) {}
+                        
+                        // Ripristina dati originali
+                        db.run(exercise.setupSQL);
+                        setCustomData(exercise.setupSQL);
+                        
+                        // Leggi i dati ripristinati
+                        const tableName = currentLevel === 1 ? 'dipendenti' : 'collegamenti';
+                        const tableData = readCurrentTableData(tableName);
+                        setCurrentTableData({ name: tableName, data: tableData });
+                        
+                        setResult({
+                            success: true,
+                            message: "✅ Dati originali ripristinati con successo!"
+                        });
+                        setShowDataEditor(false);
+                    } catch (error) {
+                        setResult({
+                            success: false,
+                            message: `❌ Errore nel ripristino dei dati: ${error.message}`
+                        });
+                    }
+                }
+            };
+
+            if (currentPhase === 'learn') {
+                return (
+                    <div className="w-full max-w-5xl mx-auto p-6 bg-gradient-to-br from-blue-50 to-indigo-50 min-h-screen">
+                        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+                            <div className="flex items-center gap-3 mb-4">
+                                <BookOpen />
+                                <div>
+                                    <h1 className="text-3xl font-bold text-gray-800">Query Ricorsive in SQL</h1>
+                                    <p className="text-gray-600">Corso Interattivo - Parte Teorica</p>
+                                </div>
+                            </div>
+                            <div className="flex gap-2 mt-4">
+                                {learningSteps.map((_, idx) => (
+                                    <div
+                                        key={idx}
+                                        className={`h-2 flex-1 rounded ${
+                                            idx <= learnStep ? 'bg-indigo-600' : 'bg-gray-200'
+                                        }`}
+                                    />
+                                ))}
+                            </div>
+                            <p className="text-sm text-gray-600 mt-2">
+                                Passo {learnStep + 1} di {learningSteps.length}
+                            </p>
+                        </div>
+
+                        <div className="bg-white rounded-lg shadow-lg p-8">
+                            <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
+                                <Lightbulb />
+                                {learningSteps[learnStep].title}
+                            </h2>
+                            
+                            <div className="prose max-w-none">
+                                {learningSteps[learnStep].content()}
+                            </div>
+
+                            <div className="flex justify-between mt-8 pt-6 border-t">
+                                <button
+                                    onClick={() => setLearnStep(Math.max(0, learnStep - 1))}
+                                    disabled={learnStep === 0}
+                                    className={`px-6 py-3 rounded-lg font-semibold transition-colors ${
+                                        learnStep === 0
+                                            ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                            : 'bg-gray-500 text-white hover:bg-gray-600'
+                                    }`}
+                                >
+                                    ← Precedente
+                                </button>
+                                
+                                {learnStep < learningSteps.length - 1 && (
+                                    <button
+                                        onClick={() => setLearnStep(learnStep + 1)}
+                                        className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
+                                    >
+                                        Successivo →
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                <div className="w-full max-w-6xl mx-auto p-6 bg-gradient-to-br from-blue-50 to-indigo-50">
+                    <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                                <Code />
+                                <div>
+                                    <h1 className="text-3xl font-bold text-gray-800">Esercizi Pratici</h1>
+                                    <p className="text-gray-600">Database SQLite integrato - Esecuzione reale delle query!</p>
+                                </div>
+                            </div>
+                            <button
+                                onClick={() => {
+                                    setCurrentPhase('learn');
+                                    setLearnStep(0);
+                                }}
+                                className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+                            >
+                                ← Torna alla Teoria
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+                        {practiceExercises.map((ex, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => {
+                                    setCurrentLevel(idx);
+                                    setSqlInput('');
+                                    setResult(null);
+                                    setShowHint(false);
+                                }}
+                                className={`p-4 rounded-lg border-2 transition-all ${
+                                    currentLevel === idx
+                                        ? 'border-indigo-600 bg-indigo-50'
+                                        : 'border-gray-200 bg-white hover:border-indigo-300'
+                                }`}
+                            >
+                                <div className="flex items-center justify-between mb-2">
+                                    <span className="font-semibold text-gray-800">Livello {idx + 1}</span>
+                                    {completedLevels.includes(idx) && <Award />}
+                                </div>
+                                <p className="text-sm text-gray-600 text-left">{ex.title.split(': ')[1]}</p>
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className="bg-white rounded-lg shadow-lg p-6">
+                        <h2 className="text-2xl font-bold text-gray-800 mb-3">{practiceExercises[currentLevel].title}</h2>
+                        <p className="text-gray-700 mb-4">{practiceExercises[currentLevel].description}</p>
+                        
+                        <div className="bg-gray-50 border-l-4 border-indigo-600 p-4 mb-4">
+                            <div className="flex items-center justify-between mb-2">
+                                <h3 className="font-semibold text-gray-800">Schema e Dati Database:</h3>
+                                {practiceExercises[currentLevel].setupSQL && (
+                                    <button
+                                        onClick={() => setShowDataEditor(!showDataEditor)}
+                                        className="px-3 py-1 bg-indigo-600 text-white text-sm rounded hover:bg-indigo-700 transition-colors"
+                                    >
+                                        {showDataEditor ? '✕ Chiudi Editor' : '✏️ Modifica Dati'}
+                                    </button>
+                                )}
+                            </div>
+                            <pre className="text-sm text-gray-700 whitespace-pre-wrap font-mono mb-3">{practiceExercises[currentLevel].schema}</pre>
+                            
+                            {currentTableData && currentTableData.data && currentTableData.data.length > 0 && (
+                                <div className="mt-4">
+                                    <h4 className="font-semibold text-gray-700 mb-2">Dati attuali nella tabella {currentTableData.name}:</h4>
+                                    <div className="bg-white p-3 rounded border border-gray-300 overflow-x-auto">
+                                        <table className="w-full text-xs border-collapse">
+                                            <thead>
+                                                <tr className="bg-gray-200">
+                                                    {Object.keys(currentTableData.data[0]).map(key => (
+                                                        <th key={key} className="border border-gray-300 px-2 py-1 text-left font-semibold">
+                                                            {key}
+                                                        </th>
+                                                    ))}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {currentTableData.data.map((row, idx) => (
+                                                    <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                                                        {Object.values(row).map((val, i) => (
+                                                            <td key={i} className="border border-gray-300 px-2 py-1">
+                                                                {val === null ? <span className="text-gray-400 italic">NULL</span> : String(val)}
+                                                            </td>
+                                                        ))}
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        {showDataEditor && practiceExercises[currentLevel].setupSQL && (
+                            <div className="bg-purple-50 border-l-4 border-purple-600 p-4 mb-4">
+                                <h3 className="font-semibold text-gray-800 mb-2">🛠️ Editor Dati Tabella:</h3>
+                                <p className="text-sm text-gray-700 mb-3">
+                                    Modifica il codice SQL qui sotto per cambiare i dati della tabella. 
+                                    Puoi aggiungere, modificare o rimuovere righe per testare la tua query con dati diversi.
+                                </p>
+                                <textarea
+                                    value={customData}
+                                    onChange={(e) => setCustomData(e.target.value)}
+                                    className="w-full h-64 p-3 border-2 border-purple-300 rounded-lg font-mono text-sm focus:border-purple-600 focus:outline-none bg-white"
+                                    placeholder="INSERT INTO ..."
+                                />
+                                <div className="flex gap-2 mt-3">
+                                    <button
+                                        onClick={applyCustomData}
+                                        className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold"
+                                    >
+                                        ✓ Applica Modifiche
+                                    </button>
+                                    <button
+                                        onClick={resetData}
+                                        className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-semibold"
+                                    >
+                                        ↺ Ripristina Dati Originali
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-4">
+                            <h3 className="font-semibold text-gray-800 mb-2">📋 Compito:</h3>
+                            <p className="text-gray-700">{practiceExercises[currentLevel].task}</p>
+                        </div>
+
+                        <div className="mb-4">
+                            <label className="block font-semibold text-gray-800 mb-2">Scrivi la tua query SQL:</label>
+                            <textarea
+                                value={sqlInput}
+                                onChange={(e) => setSqlInput(e.target.value)}
+                                className="w-full h-56 p-4 border-2 border-gray-300 rounded-lg font-mono text-sm focus:border-indigo-600 focus:outline-none"
+                                placeholder="WITH RECURSIVE ..."
+                            />
+                        </div>
+
+                        <div className="flex gap-3 mb-4">
+                            <button
+                                onClick={executeQuery}
+                                disabled={isExecuting || !db}
+                                className={`flex items-center gap-2 px-6 py-3 rounded-lg transition-colors font-semibold ${
+                                    isExecuting || !db
+                                        ? 'bg-gray-400 cursor-not-allowed text-white'
+                                        : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                                }`}
+                            >
+                                <Play />
+                                {isExecuting ? 'Esecuzione...' : 'Esegui Query'}
+                            </button>
+                            <button
+                                onClick={() => setShowHint(!showHint)}
+                                className="px-6 py-3 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors font-semibold"
+                            >
+                                {showHint ? 'Nascondi' : 'Mostra'} Suggerimento
+                            </button>
+                            <button
+                                onClick={() => setSqlInput(practiceExercises[currentLevel].solution)}
+                                className="px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-semibold"
+                            >
+                                Mostra Soluzione
+                            </button>
+                        </div>
+
+                        {showHint && (
+                            <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                                <h3 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                                    <AlertCircle />
+                                    Suggerimento:
+                                </h3>
+                                <pre className="text-sm text-gray-700 whitespace-pre-wrap overflow-x-auto font-mono">{practiceExercises[currentLevel].hint}</pre>
+                            </div>
+                        )}
+
+                        {result && (
+                            <div className={`border-l-4 p-4 rounded ${
+                                result.success 
+                                    ? 'bg-green-50 border-green-500' 
+                                    : 'bg-red-50 border-red-500'
+                            }`}>
+                                <div className="flex items-center gap-2 mb-2">
+                                    {result.success ? (
+                                        <CheckCircle />
+                                    ) : (
+                                        <AlertCircle />
+                                    )}
+                                    <h3 className="font-semibold text-gray-800 text-lg">
+                                        {result.success ? 'Successo!' : 'Errore'}
+                                    </h3>
+                                </div>
+                                <p className="text-gray-700 mb-3">{result.message}</p>
+                                
+                                {result.warning && (
+                                    <div className="bg-yellow-50 border border-yellow-300 p-3 rounded mb-3">
+                                        <p className="text-sm text-yellow-900">{result.warning}</p>
+                                    </div>
+                                )}
+                                
+                                {result.success && result.output && result.output.length > 0 && (
+                                    <div>
+                                        <h4 className="font-semibold text-gray-800 mb-2">Risultato della Query:</h4>
+                                        <div className="bg-white p-3 rounded border border-gray-200 overflow-x-auto">
+                                            <table className="w-full text-sm border-collapse">
+                                                <thead>
+                                                    <tr className="bg-gray-100">
+                                                        {Object.keys(result.output[0]).map(key => (
+                                                            <th key={key} className="border border-gray-300 px-3 py-2 text-left font-semibold">
+                                                                {key}
+                                                            </th>
+                                                        ))}
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {result.output.map((row, idx) => (
+                                                        <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                                                            {Object.values(row).map((val, i) => (
+                                                                <td key={i} className="border border-gray-300 px-3 py-2">
+                                                                    {val === null ? <span className="text-gray-400 italic">NULL</span> : String(val)}
+                                                                </td>
+                                                            ))}
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                        <div className="mt-4 p-4 bg-indigo-50 rounded">
+                                            <h4 className="font-semibold text-gray-800 mb-2">💡 Spiegazione:</h4>
+                                            <p className="text-gray-700 whitespace-pre-wrap">{practiceExercises[currentLevel].explanation}</p>
+                                        </div>
+
+                                        {currentLevel < practiceExercises.length - 1 && (
+                                            <button
+                                                onClick={() => {
+                                                    setCurrentLevel(currentLevel + 1);
+                                                    setSqlInput('');
+                                                    setResult(null);
+                                                    setShowHint(false);
+                                                }}
+                                                className="mt-4 flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold"
+                                            >
+                                                Prossimo Esercizio
+                                                <ChevronRight />
+                                            </button>
+                                        )}
+                                        
+                                        {currentLevel === practiceExercises.length - 1 && (
+                                            <div className="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                                                <p className="font-semibold text-yellow-900">🎉 Complimenti! Hai completato tutti gli esercizi!</p>
+                                                <p className="text-sm text-gray-700 mt-2">Ora sei pronto ad usare le query ricorsive nei tuoi progetti SQL!</p>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<RecursiveSQLSimulator />, document.getElementById('root'));
+    </script>
+</body>
+</html>
