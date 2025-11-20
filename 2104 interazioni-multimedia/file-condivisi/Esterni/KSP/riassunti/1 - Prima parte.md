@@ -29,8 +29,8 @@ quello interno ha sempre lo stesso colore, percepiamo di colore diverso
 ## 2.3 rappresentazione immagine
 rappresentata da funzione bidimensionale $f(x,y)$
 
-- x,y coordinate spaziali
-- f(x,y) : proporzionale allla luce incidente e riflessa
+- $x,y$ coordinate spaziali
+- $f(x,y)$ : proporzionale alla luce incidente e riflessa
 >$$f(x,y)=i(x,y)r(x,y)$$
 - i : luce incidente
 - r : luce riflessa

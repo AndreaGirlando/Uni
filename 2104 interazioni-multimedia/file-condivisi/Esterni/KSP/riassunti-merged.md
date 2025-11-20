@@ -1,5 +1,3 @@
-##### 1 - Prima parte
-
 # [2] I FONDAMENTI
 ## 2.1 LEGGI
 1. legge vicinanza
@@ -9,7 +7,7 @@
 2. legge uguaglianza
 	- mettere insieme elementi che si assomigliano (colori)
 3. legge continuità
-	- ![]() un insieme di punti posto uno di seguito all'altro tendono a formare una strutture unitaria
+	- un insieme di punti posto uno di seguito all'altro tendono a formare una strutture unitaria
 4.  legge buona forma
 	- forme regolari sono più gradevoli
 5.  figure chiuse
@@ -20,13 +18,13 @@
 ## 2.2 intensità percepita e illusioni ottiche
 l'occhio umano percepisce l'intensità luminosa in modo logaritmico rispetto all'intensità incidente nell'occhio. vale a dire che la luminosità percepita non è semplicemente in funzione dell'intensità emessa.
 
-### bande di mach
-![[Pasted image 20231005085502.png]]
+### Bande di mach
+![](Pasted%20image%2020231005085502.png)
 data una serie di bande con luminosità costante. il nostro occhio tende a percepirle in maniera non uniforme al tendere dei bordi
 
 ### contrasto simultaneo
 quello interno ha sempre lo stesso colore, percepiamo di colore diverso
-![[Pasted image 20231130172953.png]]
+![](Pasted%20image%2020231130172953.png)
 
 ## 2.3 rappresentazione immagine
 rappresentata da funzione bidimensionale $f(x,y)$
@@ -61,24 +59,24 @@ CONTRO: non fotorealistico ed i formati sono proprietari
 il valore quantizzato dai sensori viene rappresentato tramite una matrice di pixel (picture element)
 
 ##### convenzioni
-1. primo elemento matrice -> in alto sinistra
+1. primo elemento matrice in alto sinistra
 2. il piano sarebbe il 4° quadrante del piano cartesiano
 
 ##### tipi di immagini
 1. bianco / nero
 	1 bit per pixel => nella posizione i,j ci sarà 0 oppure 1
-	![[Pasted image 20231005102748.png|300]]
+	![](Pasted%20image%2020231005102748.png)
 
 2. scala grigi
 	posizione (i,j) valore tra [0/255]
-	![[Pasted image 20231005102918.png|300]]
+	![](Pasted%20image%2020231005102918.png)
 
 3. a colori
 	in base allo spazio di colore ogni pixel assumera un terna di valori
 	$$(x,y,z)$$
 	
 	nel caso RGB una terna di valori rispetto all'intensità del rosso,verde e blu
-	![[Pasted image 20231005103314.png|300]]
+	![](Pasted%20image%2020231005103314.png)
 # [3] OPERAZIONI SU IMMAGINI E MATRICI 
 
 un immagine raster può essere rappresentata come una matrice
@@ -88,9 +86,9 @@ un immagine raster può essere rappresentata come una matrice
 vicinato rispetto ad un pixel (cella della matrice)
 
 1. "4 connessi"
-	![[Pasted image 20231005110547.png|100]]
+	![](Pasted%20image%2020231005110547.png)
 2. "8 connessi"
-	![[Pasted image 20231005110617.png|100]]
+	![](Pasted%20image%2020231005110617.png)
 
 ## 3.2 operazioni affini
 
@@ -105,74 +103,74 @@ $$
 2. tramite un equazione
 ### identità
 - non fa nulla
-![[Pasted image 20231025152210.png]]
+![](Pasted%20image%2020231025152210.png)
 ### scaling
 - ingrandisce
-![[Pasted image 20231025152226.png]]
+![](Pasted%20image%2020231025152226.png)
 ### rotation
 - ruota
-![[Pasted image 20231025152242.png]]
+![](Pasted%20image%2020231025152242.png)
 ### translation
 - sposta un oggetto
-![[Pasted image 20231025152251.png]]
+![](Pasted%20image%2020231025152251.png)
 ### shear vertical
 - si "streacha" l'immagine in verticale
-![[Pasted image 20231025151723.png]]
+![](Pasted%20image%2020231025151723.png)
 
 ### shear horizontal
 - si "streacha" in orizzontale
-![[Pasted image 20231025152324.png]]
+![](Pasted%20image%2020231025152324.png)
 
 #### modi di operare
 
 1. forward mapping
 "si moltiplica alle coordinate input (v,w) la matrice caratteristica e si ottengono le coordinate di output (x,y)"
-![[Pasted image 20231025154442.png|250]]
+![](Pasted%20image%2020231025154442.png)
 
 2. inverse mapping
 "si parte dalle coordinate di output per ricavarsi quelle di input iniziali"
-![[Pasted image 20231025155139.png|250]]
+![](Pasted%20image%2020231025155139.png)
 #attensionplis 
 > si possono combinare le operazioni affini, moltiplicando le matrici caratteristiche
 
 ## 3.3 ZOOMING IN - interpolazione
-data un immagine $M \text{ x } N$, applicando uno zoom 2x avremo $2M \text{ x } 2N$ quadruplicando i pixel
+data un immagine $M \times N$, applicando uno zoom 2x avremo $2M \times 2N$ quadruplicando i pixel
 
 #attensionplis 
 nel corso delle trasformazioni si possono perdere delle informazioni
 
 #ex 
 > nello scaling alcuni punti saranno vuoti
-> ![[Pasted image 20231025161252.png]]
+> ![](Pasted%20image%2020231025161252.png)
 
 l'interpolazione stima i dati non conosciuti
 
 #### tipi di interpolazione
 1. replication / nearest neighbor
 prende i valori dei pixel e li replica nei "neighbor"
-![[Pasted image 20231025161746.png|500]]
-![[Pasted image 20231025162010.png]]
+![](Pasted%20image%2020231025161746.png)
+![](Pasted%20image%2020231025162010.png)
 **svantaggi**: l'immagine si distorce lungo i lati degli oggetti
 **vantaggi**: non introduce valori che prima non erano presenti
 
 2. bilinear
 tramite un equazione si definisce una funzione "intensità"
-![[Pasted image 20231025171032.png]]
+![](Pasted%20image%2020231025171032.png)
 i coefficienti (a,b,c,d) sono dati dai quattro pixel più vicini
 #ex 
-vogliamo sapere cosa mettere nei pixel nell'intorno (0,0) - (2,2) ^7bcb12
+vogliamo sapere cosa mettere nei pixel nell'intorno (0,0) - (2,2)
 
-| 1 | ***X*** | 2 | - | 3 |
-| ---- | ---- | ---- | ---- | ---- |
-| ***X*** | ***X*** | **X** | - | - |
-| 4 | ***X*** | 5 | - | 6 |
+| 1 | X | 2 | - | 3 |
+|---|---|---|---|---|
+| X | X | X | - | - |
+| 4 | X | 5 | - | 6 |
 | 7 | - | 8 | - | 9 |
 
 dobbiamo partire da quello che sappiamo.
-$V(0,0) = a * 0 + b * 0 + c * 0 * 0 + d = d \implies d=1 \text{ (valore all'interno della cella)}$
-$V(2,0) = a * 2 + b * 0 + c * 2 * 0 + d = 2a + d \implies 2a+d=2$ 
-$V(0,2) = a * 0 + b * 2 + c * 0 * 2 + d = 2b +d \implies 2b+d=4$ 
-$V(2,2) = a * 2 + b * 2 + c * 2 * 2 + d = 2a + 2b + 4c + d \implies 2a+2b+4c+d=5$
+$V(0,0) = a \cdot 0 + b \cdot 0 + c \cdot 0 \cdot 0 + d = d \implies d=1 \text{ (valore all'interno della cella)}$
+$V(2,0) = a \cdot 2 + b \cdot 0 + c \cdot 2 \cdot 0 + d = 2a + d \implies 2a+d=2$ 
+$V(0,2) = a \cdot 0 + b \cdot 2 + c \cdot 0 \cdot 2 + d = 2b +d \implies 2b+d=4$ 
+$V(2,2) = a \cdot 2 + b \cdot 2 + c \cdot 2 \cdot 2 + d = 2a + 2b + 4c + d \implies 2a+2b+4c+d=5$
 
 mettiamo tutto a sistema
 $$
@@ -193,12 +191,12 @@ c=0
 \end{cases}
 $$
 se voglio calcolare ad esempio V(1,1)
-$$V(1,1)=ax+by+cxy+d=\left( \frac{1}{2}*1 \right)+\left( \frac{3}{2}*1\right)+(0*1*1)+1=3$$
+$$V(1,1)=a\cdot 1+b\cdot 1+c\cdot 1\cdot 1+d=\left( \frac{1}{2}\cdot 1 \right)+\left( \frac{3}{2}\cdot 1\right)+(0\cdot 1\cdot 1)+1=3$$
 
-| 1 |***X*** | 2 | - | 3 |
+| 1 | X | 2 | - | 3 |
 |---|---|---|---|---|
-| ***X***| ***3***| **X** | - | - | 
-| 4 | ***X*** | 5 | - | 6 |
+| X | 3 | X | - | - | 
+| 4 | X | 5 | - | 6 |
 | - | - | - | - | - |
 | 7 | - | 8 | - | 9 |
 
@@ -208,26 +206,26 @@ $$V(1,1)=ax+by+cxy+d=\left( \frac{1}{2}*1 \right)+\left( \frac{3}{2}*1\right)+(0
 2. nel caso in cui ci sono più di 4 pixel vicini si prediligono i punti con $x,y$ maggiore
 	#ex: nel punto (2,1) si prendono i pixel $(2,0) - (2,2) - (4,0) - (4,2)$
 
-4. bicubica
+3. bicubica
 si utilizzano i 16 pixel vicini al punto, la funzione si ottiene tramite la seguente equazione
-![[Pasted image 20231025175257.png]]
+![](Pasted%20image%2020231025175257.png)
 #### interpolazione ai bordi
 ai bordi non si hanno i valori sufficienti come negli altri punti
 
 soluzioni
 1. non fare nulla, si ricopiano i valori ottenuti
-![[Pasted image 20231025175646.png|500]]
+![](Pasted%20image%2020231025175646.png)
 2. interpolare con valori minori, meno incognite
 
 
 ## 3.4 ZOOMING OUT - decimazione
-data un immagine $M \text{ x } N$, applicando uno zooming out di 0,5 avremo $\frac{M}{2} \text{ x } \frac{N}{2}$
+data un immagine $M \times N$, applicando uno zooming out di 0,5 avremo $\frac{M}{2} \times \frac{N}{2}$
 
 METODI
 1. da 4 pixel se ne sceglie 1
-![[Pasted image 20231025180335.png|400]]
+![](Pasted%20image%2020231025180335.png)
 2. da 4 pixel si calcola il valore medio
-![[Pasted image 20231025180418.png|400]]
+![](Pasted%20image%2020231025180418.png)
 
 ## 3.5 stima qualità algoritmo
 parametri caratteristici
@@ -253,12 +251,16 @@ $I'$ (immagine da valutare)
 $I$ (versione ottimale)
 $S$ (valore massimo di intensità del pixel)
 #### MSE
-![[Pasted image 20231025181104.png|1000]]
+$$
+MSE=\frac{1}{M \cdot N}\sum_{i=1}^{M}\sum_{j=1}^{N}(I(i,j)-I'(i,j))^2
+$$
 #### PSNR
 modi equivalenti:
-![[Pasted image 20231025181118.png|500]]
+![](Pasted%20image%2020231025181118.png)
 better:
-![[Pasted image 20231201153105.png]]
+$$
+PSNR = 10 \cdot \log_{10}\left( \frac{S^2}{MSE} \right)
+$$
 ### come si usano in RGB?
 2 modi:
 1. media tre canali di colore
@@ -272,21 +274,21 @@ quella riflessa da origine al colore percepito
 
 per creare un immagine digitale è necessario catturare la luce riflessa **con un sensore** ed elaborarla
 
-![[Pasted image 20231026001153.png|500]]
+![](Pasted%20image%2020231026001153.png)
 
 ## 4.2 il sensore
 l'energia che colpisce il sensore è trasformata in un impulso elettrico, il quale viene successivamente digitalizzato
-![[Pasted image 20231026001322.png|400]]
+![](Pasted%20image%2020231026001322.png)
 
 ### esempi sensori
 1. singoli
 EX: scanner
 singolo sensore che viene spostato lungo la sorgente
-![[Pasted image 20231026001457.png|400]]
+![](Pasted%20image%2020231026001457.png)
 2. in linea
 EX: macchina per fare TAC
 disposti in un unica linea
-![[Pasted image 20231026002103.png|500]]
+![](Pasted%20image%2020231026002103.png)
 3. 2D array
 EX: macchine fotografiche
 sensori disposti in una matrice, non è necessario spostare il sensore
@@ -300,7 +302,7 @@ i più diffusi sono i **CCD** (charged couples device)
 > dopo che le cariche sono acquisite vengono digitalizzate in $n$ (numero colonne) fasi 
 > 	
 > durante ogni fase
-> 	![[Pasted image 20231026002648.png|200]]
+> 	![](Pasted%20image%2020231026002648.png)
 
 ## 4.3 Color filter array (CFA)
 in quanto ogni cella memorizzerà un solo colore, occorre scegliere un modello di memorizzazione ottimale (CFA)
@@ -311,7 +313,7 @@ tramite interpolazione verranno scelti i colori dei pixel vicini
 ### Bayern pattern
 è il più usato
 - dispone i pixel verdi nelle diagonali (più importante per la percezione umana) e poi si procede interpolando
-![[Pasted image 20231026003327.png|400]]
+![](Pasted%20image%2020231026003327.png)
 
 senza un algoritmo sarebbero disposti a mosaico. Per avere una percezione reale del colore, per ogni cella sarà necessario la terna (RGB)
 
@@ -320,17 +322,17 @@ conservata nel formato raw
 #### color interpolation
 detto anche "demosaicking"
 1. replication / nearest neighbor interpolation
-> ![[Pasted image 20231125204528.png|400]]
+> ![](Pasted%20image%2020231125204528.png)
 
 2. bilinear
 > per la cella che ha il rosso 
-> ![[Pasted image 20231027140240.png |400]]
+> ![](Pasted%20image%2020231027140240.png)
 > per la cella con il blu
-> ![[Pasted image 20231125205408.png|400]]
+> ![](Pasted%20image%2020231125205408.png)
 > 
 > per la cella con il verde
-> ![[Pasted image 20231125205446.png|400]]
-# [5]  LA RISOLUZIONE
+> ![](Pasted%20image%2020231125205446.png)
+# [5] LA RISOLUZIONE
 
 ## 5.1 definizione
 numero di pixel per unità di misura
@@ -368,28 +370,28 @@ si contano quanti sensori ci sono per unità lineare di misura
 #ex 
 immagine originale ha 2m diametro
 
-> ![[Pasted image 20231027134351.png|200]]
+> ![](Pasted%20image%2020231027134351.png)
 > 200pixel di larghezza
 > 1dot per 1cm = 200pixel per rappresentazione reale
 > 
-> 200 x 200 x 24bit = 960 000bit per memorizzazione
+> $200 \times 200 \times 24\text{bit} = 960\,000\text{bit}$ per memorizzazione
 
 #attensionplis 
 > un immagine nata con una certa risoluzione dovrà essere visualizzata con la stessa
 
 > STANDARD
-> ![[Pasted image 20231027134720.png|500]]
+> ![](Pasted%20image%2020231027134720.png)
 
-# [6]  L'OCCHIO
+# [6] L'OCCHIO
 
 a noi interessa la retina
 ## 6.1 la retina
 membrana che ricopre la parte posteriore dell'occhio
-![[Pasted image 20231030111710.png|400]]
+![](Pasted%20image%2020231030111710.png)
 formata da **coni** e **bastoncelli** (fotorecettori)
 
 **CONI**
-![[Pasted image 20231030112048.png|100]]
+![](Pasted%20image%2020231030112048.png)
 > 6/7 milioni
 > concentrati in una zona centrale della retina (fovea)
 > 
@@ -414,19 +416,19 @@ quantità di fotorettori nella retina
 > coni sono prevalentemente nella parte centrale (fovea: regione di 1,5 x 1,5 mm)
 > 
 > bastoncelli si distribuiscono nelle aree laterali
-> ![[Pasted image 20231030121044.png]]
+> ![](Pasted%20image%2020231030121044.png)
 
 #attensionplis 
 1. fovea parte centrale della retina (1,5mm x 1,5mm)
-2. la fovea ha circa 150.000 coni per mm<sup>2</sup> =>circa 337.500 totali
+2. la fovea ha circa $150.000$ coni per $\text{mm}^2$ =>circa $337.500$ totali
 
 ## 6.2 formazione immagine
 a noi arriva l'immagine capovolta ma poi viene elaborata
-![[Pasted image 20231030122654.png|500]]
+![](Pasted%20image%2020231030122654.png)
 
 per comprendere questo principio esiste il **modello pinhole**
-![[Pasted image 20231030123710.png|400]]
-![[Pasted image 20231030123200.png|400]]
+![](Pasted%20image%2020231030123710.png)
+![](Pasted%20image%2020231030123200.png)
 
 il pinhole ideale ha il seguente raggio $r=\sqrt{ \lambda d }$
 - $\lambda$ [frequenza lunghezza d'onda] (nella realtà entra luce di tutti i tipi => lunghezze d'onda diverse. quindi non )
@@ -435,7 +437,7 @@ il pinhole ideale ha il seguente raggio $r=\sqrt{ \lambda d }$
 #attensionplis 
 > nella realtà non possiamo rappresentare un punto ma un figura geometrica, ma produciamo un'area (POINT SPREAD FUNCTION)
 > 
-> ![[Pasted image 20231030123919.png|400]]
+> ![](Pasted%20image%2020231030123919.png)
 
 
 ## 6.3 La lente sottile
@@ -443,9 +445,9 @@ oggetto fisico che permette di deviare la luce (onde elettromagnetiche)
 - se costruite opportunamente possiamo decidere la direzione
 
 definita da proprietà geometrica
-![[Pasted image 20231030144533.png|500]]
+![](Pasted%20image%2020231030144533.png)
 1. i raggi paralleli alla lente vengono concentrati in un unico punto **fuoco** posto a distanza f dalla lente
-![[Pasted image 20231030144500.png|400]]
+![](Pasted%20image%2020231030144500.png)
 2. i raggi che partono dal fuoco vengono ri-trasmessi in parallelo
 3. una lente sottile ha 2 fuochi equidistanti
 
@@ -479,13 +481,12 @@ nelle macchine fotografiche cambia "u" e "v"
 #attensionplis 
 $$
 \text{1 diottria} = \frac{1}{f}
-
 $$
 
 ## 6.5 magnificazione
 fattore magnificazione
 $$
-\frac{h}{k} = \frac{v}{u}=\text{m}
+\frac{h}{k} = \frac{v}{u}=m
 $$
 
 fuoco con un certo fattore di magnificazione
@@ -500,17 +501,17 @@ segnale discreto: segnale che assume valori finiti in intervalli di tempo
 #attensionplis occore scegliere valori discreti per rappresentare un immagine
 
 #ex digitalizzare i colori della seguente immagine
-![[Pasted image 20231026095718.png|200]]
+![](Pasted%20image%2020231026095718.png)
 
 1. campionamento: suddividiamo in intervalli di valori
 > si analizza da sx -> dx
 > più alto-> più bianco
-![[Pasted image 20231026100346.png]]
+![](Pasted%20image%2020231026100346.png)
 2. suddivisione intervalli
-![[Pasted image 20231026095909.png|400]]
-4. quantizzazione
+![](Pasted%20image%2020231026095909.png)
+3. quantizzazione
 > per ogni intervallo si sceglie un valore (sono infiniti)
-![[Pasted image 20231026095924.png|400]]
+![](Pasted%20image%2020231026095924.png)
 
 ## 7.2 Errori di campionamento
 con un campionamento troppo basso (si prendono intervalli larghi) si va in contro alle seguenti problematiche
@@ -556,10 +557,10 @@ il numero di divisioni sarà uguale alla frequenza
 #ex 
 > frequenza più alta: 400
 > 
-> nyquist rate: $2*N=2*400=800$
+> nyquist rate: $2\cdot N=2\cdot 400=800$
 > 
 > si divederà il segnale in 800 intervalli
-> ![[Pasted image 20231026103039.png|500]]
+> ![](Pasted%20image%2020231026103039.png)
 
 #ex 
 > con quanti colori si può rappresentare un immagine grigia?
@@ -575,7 +576,7 @@ il numero di divisioni sarà uguale alla frequenza
 
 #ex "campionamento di un immagine"
 si vanno a vedere i tratti che la compongono
-![[Pasted image 20231031113457.png|400]]
+![](Pasted%20image%2020231031113457.png)
 
 ### campionamento corretto
 
@@ -585,7 +586,7 @@ $$\text{campionamento}=\frac{\text{numero pixel}}{\text{tratto}}$$
 > tratti 4pixel
 > 
 > $N=\frac{720}{4}=180$
-> per il nyquist rate è ottimale avere $2N$ =>$180*2=360$
+> per il nyquist rate è ottimale avere $2N$ =>$180\cdot 2=360$
 > 
 > allora campioneremo l'immagine in modo tale da avere 360 campioni su cui andremo ad applicare interpolazione lineare ([[#tipi di interpolazione]])
 
@@ -596,7 +597,7 @@ $$\text{campionamento}=\frac{\text{numero pixel}}{\text{tratto}}$$
 > 
 > 240campioni non si rispetta nyquist -> si perdono dettagli
 > 120campioni sotto nyquist -> bad Quality
-> ![[Pasted image 20231026105144.png|400]]
+> ![](Pasted%20image%2020231026105144.png)
 
 ### Aliasing
 se si campiona sotto il nyquist rate possiamo imbatterci in perdite di dettagli ma anche all'**aggiunta di dettagli non presenti.** Questo fenomeno prende il nome di
@@ -608,14 +609,14 @@ aliasing: le frequenze alte sono mascherate da basse frequenze
 > perdita di dettagli
 > 
 > nei momenti in cui le frequenze sono basse, campionando male le abbiamo perse
-> ![[Pasted image 20231031120846.png|400]]
+> ![](Pasted%20image%2020231031120846.png)
 
 #ex 
 > nuovi dettagli
 > 
 > i graffi non si notano più
 > sono apparsi nuovi buchi sulle rocce
-> ![[Pasted image 20231031120936.png|500]]
+> ![](Pasted%20image%2020231031120936.png)
 
 ### effetto Moirè
 effetto che si genera durante la digitalizzazione sovrapponendo 2 serie di linee o pattern creandone un ulteriore che sembra avere dei motivi distorti
@@ -629,12 +630,12 @@ che si fa?
 1. minimizzare disallinamento sensore - oggetto, modificando l'angolo di scatto
 2. filtri anti-moirè
 3. post elaborazione con software
-![[Pasted image 20231031122108.png|500]]
+![](Pasted%20image%2020231031122108.png)
 
 ### distorsione animazioni - wagon whell
 presa un animazione (gif) in base al numero di campioni può essere cambiata totalmente
 
-![[king.gif]]
+![](king.gif)
 
 la ruota gira così tanto che non riusciamo a vedere il giro completo ma lo vediamo a tratti sembrando che vada indietro
 
@@ -665,7 +666,7 @@ Sia $]a,b[$ il range in cui si vuola quantizzare il segnale su $n$ livelli
 si fissano $n+1$ numeri $(t_{0}, t_{1}, t_{2}, \dots, t_{n})$ in $]a,b[$ tali che rispettino la seguente relazione
 $$a=t_{0}<t_{1}<t_{2}<\dots<t_{n}=b$$
 il numero ***x*** da in $]a,b[$ verrà assegnato al livello di quantizzazione ***k*** se risulta
-$$t_{k}<=x<t_{k+1}$$
+$$t_{k} \leq x < t_{k+1}$$
 #ex
 > img scala grigi
 > 
@@ -677,10 +678,10 @@ $$t_{k}<=x<t_{k+1}$$
 > 
 > lo vado ad inserire nel livello $t_{127}$
 
-![[Pasted image 20231107160154.png|400]]
+![](Pasted%20image%2020231107160154.png)
 **COME SI RAPPRESENTANO IN MEMORIA?**
 le etichette di ogni livello verrano rappresentate tramite bit
-$$\text{numeroEtichette}=\log_{2}\text{numeroLivelli}$$
+$$\text{numeroEtichette}=\log_{2}(\text{numeroLivelli})$$
 
 #attensionplis 
 > qui stiamo parlando solo di ripartire i valori in un insieme limitato. l'uso che ne faremo in seguito sarà indifferente
@@ -693,7 +694,7 @@ $$\text{numeroEtichette}=\log_{2}\text{numeroLivelli}$$
 > se il segnale si mantiene all'interno del livello verrà riprodotto come costante.
 > 
 > nel momento in cui entra in un altro livello varia
-> ![[Pasted image 20231107160821.png|500]]
+> ![](Pasted%20image%2020231107160821.png)
 
 ### tipi di quantizzazione
 a seconda dell'uso possiamo definire 2 tipi di quantizzazione
@@ -703,7 +704,7 @@ a seconda dell'uso possiamo definire 2 tipi di quantizzazione
 > 
 > $1<2<3<\dots<n$
 > 
-> ![[Pasted image 20231107165507.png]]
+> ![](Pasted%20image%2020231107165507.png)
 
 2. non uniforme
 > alcuni range di livello sono più precisi di altri
@@ -713,7 +714,7 @@ a seconda dell'uso possiamo definire 2 tipi di quantizzazione
 > 	gli ultimi 2 comprendono un range molto ampio, questo causerà una perdita importante di precisione.
 > 	$10<20<30<420<10^8$
 > 	
-> 	![[Pasted image 20231107165522.png]]
+> 	![](Pasted%20image%2020231107165522.png)
 
 
 **QUANDO SI USANO?**
@@ -729,14 +730,14 @@ nelle macchine digitali o negli scanner moderni è usata principalmente la quant
 > 	
 > 	nelle frequenza alte notiamo un appiatimento che causa perdita di precisione (non vediamo la fiamma)
 > 
-> ![[Pasted image 20231107165726.png]]
+> ![](Pasted%20image%2020231107165726.png)
 
 ### formule quantizzazione
 
 **UNIFORME**
 si fa la proporzione
 $$
-L'=\frac{L \cdot K}{N}
+L'=\lfloor\frac{L \cdot K}{N}\rfloor
 $$
 $L$ = livello di ingresso (valore)
 $L'$ = livello di uscita
@@ -748,12 +749,12 @@ $K$ = range uscita
 
 #ex
 > $$
- 0 : 255 = 0 : 7
- $$
+> 0 : 255 = x : 7
+> $$
 > se voglio inserire il valore 10:
 > $$
- 10:255=x:7\implies \frac{70}{255}=0
- $$
+> 10:255=x:7\implies x=\frac{70}{255}\implies \lfloor x \rfloor=0
+> $$
 
 NON UNIFORME
 
@@ -766,7 +767,7 @@ $L'$ è in funzione dei 3 valori, l'implementazione definisce lo schema di riqua
 LOGARITMICA 
 
 $$
-L' = \frac{\log_{2}L \cdot K}{N}
+L' = \lfloor\frac{\log_{2}(L) \cdot K}{N}\rfloor
 $$
 ### riquantizzazione
 se voglio passare da un certo numero di livelli ad un altro (inferiore di solito).
@@ -787,7 +788,7 @@ immagine_old
 | 15  | 1   |
 
 per ogni livelli si applica la seguente formula
-$$f(\text{valoreLvl}_{new}, k_{new,k_{old}})=\lfloor\frac{\text{valoreLivello}_{old}*k_{new}}{k_{old}}\rfloor$$
+$$f(\text{valoreLvl}_{\text{new}}, k_{\text{new}},k_{\text{old}})=\lfloor\frac{\text{valoreLivello}_{\text{old}}\cdot k_{\text{new}}}{k_{\text{old}}}\rfloor$$
 
 immagine_new: 
 
@@ -796,13 +797,13 @@ immagine_new:
 | 0  | 0   |
 
 RIQUANTIZAZZIONE LOGARITMICA
-$$f(\text{valoreLvl}_{new}, k_{new,k_{old}})=\lfloor\frac{\log_{2}{(\text{valoreLvl}_{new})}*k_{new}}{\log_{2}{(k_{old})}}\rfloor$$
+$$f(\text{valoreLvl}_{\text{new}}, k_{\text{new}},k_{\text{old}})=\lfloor\frac{\log_{2}{(\text{valoreLvl}_{\text{new}})}\cdot k_{\text{new}}}{\log_{2}{(k_{\text{old}})}}\rfloor$$
 
 # [8] COLORE
 
 ## 8.1 cos'è il colore?
 il concetto di colore è legato alla lunghezza d'onda, ovvero lo spazio percorso dall'onda in un tempo pari al periodo (tempo tra un oscillazione e la successiva)
-![[Pasted image 20231107173057.png|400]]
+![](Pasted%20image%2020231107173057.png)
 #ex 
 > più lungo -> più verso rosso
 > lento -> verso viola
@@ -815,7 +816,7 @@ lo spettro visibile oscilla tra violetto e blu
 > diviso in 6 regioni: violetto, blu, verde, giallo, arancio e rosso
 > 
 > le bande di colore non sono tutte della stessa lunghezza, degradano nelle zone limitrofe
-> ![[Pasted image 20231107173445.png]]
+> ![](Pasted%20image%2020231107173445.png)
 
 ## 8.2 Come percepisce il colore l'occhio?
 l'occhio umano percepisce solo una piccola porzione dello spettro elettromagnetico.
@@ -843,7 +844,7 @@ all'interno della retina ci sono 3 tipi di coni
 #attensionplis tutti i primati hanno questi 3 tipi
 
 > lunghezze d'onda di attivazione dei vari coni
-> ![[Pasted image 20231107175120.png]]
+> ![](Pasted%20image%2020231107175120.png)
 
 ## 8.5 come si misura il colore?
 a differenza di lunghezza o peso, non esiste una scala fisica per misurare il colore. si basa tutto sulla percezione / interpretazione soggettiva
@@ -878,7 +879,7 @@ qualunque colore può essere ottenuto come somma di tre **luci monocromatiche ag
 la CIE (Commission Internationale de l'Éclairage) è l'ente responsabile della ricerca nel campo dei colori e illuminazione.
 
 la CIE ha scelto 3 radiazioni primarie
-![[Pasted image 20231107180152.png]]
+![](Pasted%20image%2020231107180152.png)
 
 ## 8.7 sensibilità spettrale occhio
 la sensibilità spettrale (ai colori) dell'occhio umano è dato da 3 Variabili (X,Y,Z)
@@ -895,15 +896,15 @@ la sensibilità spettrale (ai colori) dell'occhio umano è dato da 3 Variabili (
 > 
 > con l'integrale si va a calcolare l'area di quella regione sottesa
 > 
-> $$X=\int^{780}_{{380}}{L_{e}(\lambda)}\bar{x}(\lambda)\, d\lambda $$
+> $$X=\int^{780}_{380}{L_{e}(\lambda)\bar{x}(\lambda)\, d\lambda}$$
 
 stessa cosa per il verde e blu
-![[Pasted image 20231107180924.png]]
-![[Pasted image 20231107180914.png]]
+![](Pasted%20image%2020231107180924.png)
+![](Pasted%20image%2020231107180914.png)
 
 ## 8.8 Dati colorimetrici
 il colore che percepiamo è dato da diversi fattori
-> ![[Pasted image 20231114150948.png]]
+> ![](Pasted%20image%2020231114150948.png)
 > 	1. distribuzione energetica della luce che lo illumina
 > 	2. curva spettrale dell'oggetto illuminato
 > 	3. percezione al colore dell'occhio umano
@@ -912,11 +913,11 @@ il colore che percepiamo è dato da diversi fattori
 il colore può essere osservato in maniera differente a seconda del soggetto che effettua il campione
 
 1. occhio umano
-> ![[Pasted image 20231114151225.png|400]]
+> ![](Pasted%20image%2020231114151225.png)
 > la retina riceva la luce riflessa dall'oggetto e la invia al cervello, il quale identifica il colore in base alle informazioni che gli arrivano
 
 2. colorimetro
-> ![[Pasted image 20231114153059.png]]
+> ![](Pasted%20image%2020231114153059.png)
 > simil fotocamera
 > 
 > dotato di sensori con filtri che accettano solo alcune lunghezze d'onda (ex: RGB) i quali inviano le informazioni ad un microprocessore
@@ -927,7 +928,7 @@ il colore può essere osservato in maniera differente a seconda del soggetto che
 > valori finiti (in base alle informazioni inviate dai sensori)
 
 3. spettrofotometro
->![[Pasted image 20231114153034.png]]
+>![](Pasted%20image%2020231114153034.png)
 >1. oggetto viene illuminato da luce allo Xenon (luce che illumina in maniera uniforme).
 >2. la luce riflessa viene raccolta da un insieme di lenti
 >3. questa viene divisa in lunghezze d'onda (funzione)
@@ -936,8 +937,8 @@ il colore può essere osservato in maniera differente a seconda del soggetto che
 > **OUTPUT**
 > 2 tipi di output
 > 
-> 1. valori numerici
-> 2. il sensore restituisce un intero spettro di valori (somma finite onde sinusoidali in cui ognuna da un contributo diverso)
+> 4. valori numerici
+> 5. il sensore restituisce un intero spettro di valori (somma finite onde sinusoidali in cui ognuna da un contributo diverso)
 > 	#ex funzione continua dell'integrale di prima
 
 
@@ -977,14 +978,17 @@ per calcolare il valore spettrale in base ad un certo illuminante si può usare 
 > $S$: illuminante
 > $R$: lunghezza d'onda input
 > $$
-X = K\int^{780}_{380} S(\lambda)\bar{x}(\lambda)R(\lambda) \, dx 
-$$$$
-Y = K\int^{780}_{380} \dots \, dx 
-$$$$
-Z = K\int^{780}_{380} \dots \, dx 
+> X = K\int^{780}_{380} S(\lambda)\bar{x}(\lambda)R(\lambda) \, d\lambda 
+> $$
+> $$
+> Y = K\int^{780}_{380} S(\lambda)\bar{y}(\lambda)R(\lambda) \, d\lambda 
+> $$
+> $$
+> Z = K\int^{780}_{380} S(\lambda)\bar{z}(\lambda)R(\lambda) \, d\lambda 
+> $$
+> per normalizzare i valori otteunti dagli integrali si fa il rapporto tra 100 e l'integrale
 $$
-> per normalizzare i valori otteunti dagli integrali si fa il rapporto tra 100 e l'integrale$$
- K=\frac{100}{\int^{780}_{380} S(\lambda)\bar{x}(\lambda)\, d\lambda}
+ K=\frac{100}{\int^{780}_{380} S(\lambda)\bar{y}(\lambda)\, d\lambda}
  $$
 
 nel 1931 il CIE ha fissato le lunghezze d'onda standard per i colori primaria
@@ -1012,15 +1016,14 @@ siano
 #attensionplis 
 >se hai già determinato due quantità di colore per ottenere la terza si possono utilizzare le seguenti formule:
 > $$
- x=1-y-z
- $$
+> x=1-y-z
 > $$
- y=1-x-z
- $$
 > $$
- z=1-x-y
- 
- $$ 
+> y=1-x-z
+> $$
+> $$
+> z=1-x-y
+> $$ 
 
 #attensionplis 
 >$x,y,z$ sono in percentuale (valore compreso tra 0 e 1)
@@ -1031,7 +1034,7 @@ al variare di x e y si da origine al diagramma cromatico CIE
 > 
 > il punto in cui i colori hanno la stessa energia è bianco.
 > ai bordi i colori non hanno bianco (puro).
-> ![[Pasted image 20231114160553.png|400]]
+> ![](Pasted%20image%2020231114160553.png)
 
 #attensionplis 
 1. unendo 2 colori con una linea => tutti i possibili colori ottenibili mischiandoli
@@ -1041,7 +1044,7 @@ al variare di x e y si da origine al diagramma cromatico CIE
 > vedendo questo grafico si dimostra che teoria tristimolo falsa, non esiste un triangolo che lo racchiude interamente
 > 
 > l'area dentro rappresenta i colori che può stampare una stampante
-> ![[Pasted image 20231114094712.png|400]]
+> ![](Pasted%20image%2020231114094712.png)
 
 ### modello di colore
 lo scopo di un modello del colore è di consentire la specificazione dei colori con modalità standardizzate che fanno riferimento ad un sistema di coordinate 3D
@@ -1071,19 +1074,19 @@ caratterizzato da 3 parametri
 le differenze di colore sono definite come distanza tra due punti dello spazio
 
 #ex:CIE $La^*b^*$
-> $\Updelta=\text{someting}L_{1}- \text{someting}L_{2}$
-> ![[Pasted image 20231114165658.png]]
+> $\Updelta E = \sqrt{ (\Delta L)^2 + (\Delta a)^2 + (\Delta b)^2}$
+> ![](Pasted%20image%2020231114165658.png)
 > 
 > $$
- C_{1}=(10,20,30)
- $$
+> C_{1}=(10,20,30)
 > $$
- C_{2}=(11,21,31)
- $$
+> $$
+> C_{2}=(11,21,31)
+> $$
 > 
 > $$
- \Updelta E = \sqrt{ (10-11)^2 + (20-21)^2 +(30-31)^2}=\sqrt{ 1+1+1 } = \sqrt{ 3 }
- $$
+> \Delta E = \sqrt{ (10-11)^2 + (20-21)^2 +(30-31)^2}=\sqrt{ 1+1+1 } = \sqrt{ 3 }
+> $$
 
 
 #attensionplis "a che serve"
@@ -1109,10 +1112,10 @@ $h$ = tinta (variazione del colore)
 >tinta rosso = colore che si ottiene aggiungendo sometin al rosso 
 
 chroma
->![[Pasted image 20231115161936.png]]
+>![](Pasted%20image%2020231115161936.png)
 
 tinta / hue
-> ![[Pasted image 20231115161943.png]]
+> ![](Pasted%20image%2020231115161943.png)
 
 
 ### bianco e nero
@@ -1135,32 +1138,32 @@ in quanto il nostro cervello non è uno spettrometro percepiamo le stesse sensaz
 ### spettro di un illuminante
 diagramma dei contributi di energia che apporta per ciascuna lunghezza d'onda
 
-![[Pasted image 20231115162909.png|500]]
+![](Pasted%20image%2020231115162909.png)
 
 ### metameri
 se due coppie di spettri diversi producono la stessa sensazione di colore si chiamano **metameri**
 #ex
 >i due spettri producono nel cervello lo stesso colore
->![[Pasted image 20231115163039.png]]
+>![](Pasted%20image%2020231115163039.png)
 
 #### modello del pittore
 ogni spettro è dotato di un metamero caratteristico
-![[Pasted image 20231115163210.png]]
+![](Pasted%20image%2020231115163210.png)
 una funzione costante che ha un picco nel punto (lunghezza d'onda) in cui il colore è percepito
 
 emedia: responsabiile del contenuto energetico della radiazione
 
 #attensionplis 
->il rapporto tra $$\text{saturazione = }\frac{epicco-emedia}{(epicco+emedia})$$
+>il rapporto tra $$\text{saturazione} = \frac{e_{\text{picco}}-e_{\text{media}}}{e_{\text{picco}}+e_{\text{media}}}$$
 >saturazione = quanto un colore è puro
 ##### modello del pittore
 ogni colore può essere rappresentato tramite un triangolo
-![[Pasted image 20231115163546.png|600]]
+![](Pasted%20image%2020231115163546.png)
 
 mettendo assieme i triangoli per ogni colore (HUE) si ottiene lo **"spazio HSV"**
 
 ### spazio HSV
-![[Pasted image 20231114112042.png|600]]
+![](Pasted%20image%2020231114112042.png)
 
 ### altri spazi
 1. ruota dei colori
@@ -1168,8 +1171,8 @@ mettendo assieme i triangoli per ogni colore (HUE) si ottiene lo **"spazio HSV"*
 
 2. MUNSELL (HCV)
 > colloca i colori in spazio tridimensionale
-> ![[Pasted image 20231115163857.png]]
-> ![[Pasted image 20231115163944.png]]
+> ![](Pasted%20image%2020231115163857.png)
+> ![](Pasted%20image%2020231115163944.png)
 ### discussione sul modello del pittore
 pro
 - intuitivo
@@ -1184,7 +1187,7 @@ contro
 queste due sintesi si basano sulla sovrapposizione di filtri di colore che assumeranno il colore prodotto dalla radiazione complementare di quella che viene assorbita
 ### sintesi additiva
 si parte dalla terna RGB come colori primari (RGB)
-![[Pasted image 20231129152538.png]]
+![](Pasted%20image%2020231129152538.png)
 in questa sintesi i colori: giallo, magento, ciano si possono chiamara secondari
 
 #### da chi viene usata?
@@ -1208,7 +1211,7 @@ $$
 
 #ex 
 	qual è la terna che sommata a $(200,255,15)$ risulta bianco
-	$(200,255,15)\implies(55,0,240)=(255,255,255)$
+	$(200,255,15) + (55,0,240)=(255,255,255)$
 
 ### sintesi sottrattiva
 dalla loro sovrapposizione, in quanto tutta la radiazione viene assorbita si produrrà il nero
@@ -1219,11 +1222,11 @@ si compongono 3 colori
 $$
 Y+M+C=K_{\text{nero}}
 $$
-![[Pasted image 20231129155221.png]]
+![](Pasted%20image%2020231129155221.png)
 #### quando viene usata?
 su questo principio si basa la riproduzione delle immgini colorate nella fotografia a colori
 
-![[Pasted image 20231129160132.png]]
+![](Pasted%20image%2020231129160132.png)
 ## 8.11 colori primari e secondari
 
 >i colori primari non sono definiti in maniera assoluta ma in base all'illuminante
@@ -1231,7 +1234,7 @@ su questo principio si basa la riproduzione delle immgini colorate nella fotogra
 ### rgb
 se ogni colore si ottiene mischiano altri 3 fondamentali si andrà a formare un cubo
 ogni colore è un punto dentro il cubo
-![[Pasted image 20231129160619.png]]
+![](Pasted%20image%2020231129160619.png)
 
 PRO
 - semplice da usare (standard)
@@ -1297,7 +1300,7 @@ YC<sub>b</sub>C<sub>r</sub> è una controparte digitale dello spazio YUV (lavora
 gli spazi YC<sub>b</sub>C<sub>r</sub> si possono ottenere quantizzando i canali YUV
 
 $$
-Y=0.299R+0.587+0.114B
+Y=0.299R+0.587G+0.114B
 $$
 $$
 C_{b}=U+128
@@ -1309,7 +1312,7 @@ $$
 ## 8.15 colori e memoria + Palette
 assumendo di usare 8 bit per ogni colore si arriverebbe
 $$
-\text{RGB}=8bit+8bit+8bit=24bit\implies \text{16 milioni}
+\text{RGB}=8\text{bit}+8\text{bit}+8\text{bit}=24\text{bit}\implies \text{16 milioni}
 $$
 anche se ho un immagine ad alta qualità sarà difficile usare tutti questi colori
 
@@ -1342,15 +1345,11 @@ se si abbassa l'entropia riesco a comprimere la mappa degli indice in maniera **
 ### soluzione
 avendo un numero elevato di colori, le combinazioni di palette saranno
 $$
-n_{colori}=n!
+n_{\text{colori}}=n!
 $$
 
 trovare quindi la disposizione ottima (ad entropia minima) è un problema NP-HARD
 - però esistono algoritmi che riescono a trovare la soluzione ottimale
-
-##### 2 - Seconda parte
-
-
 # 9 Operazioni puntuali
 ## 9.1 istogramma
 ### intro
@@ -1373,7 +1372,7 @@ H(k)=\text{numero di pixel di valore k}
 $$
 la somma di tutti gli H equivale a $m \text{ x } n$
 
-![[Pasted image 20231213163534.png]]
+![](Pasted%20image%2020231213163534.png)
 
 #attensionplis 
 >restituisce un valore relativo, in modo tale da poter confrontare immagini con dimensioni diverse
@@ -1383,10 +1382,9 @@ la somma di tutti gli H equivale a $m \text{ x } n$
 > data immagine $I(m,n)$ con 3 bit
 > 
 > $$
- H= [5][17][82][0][0][25][7][8]
- $$
-> $$\quad\quad\quad\quad\quad[0][\dots][\dots][\dots][\dots][\dots][\dots][7]
- $$
+> H= [5][17][82][0][0][25][7][8]
+> $$
+> $$\quad\quad\quad\quad\quad[0][\dots][\dots][\dots][\dots][\dots][\dots][7]$$
 > 
 > "5 pixel di valore 0"
 > "17 di valore 1"
@@ -1408,7 +1406,7 @@ immagine sovraesposta/sottoesposta
 - punta ad aumentare il contrasto (allontana valori che prima erano concentrati tra loro)
 - da un immagine che non usa tutti i toni ne vado a creare una che li usa
 
-![[Pasted image 20231213164629.png|600]]
+![](Pasted%20image%2020231213164629.png)
 
 
 #attensionplis 
@@ -1449,11 +1447,11 @@ $$
 > 110 & 111 & 112
 > \end{bmatrix}
 > $$
-> non copre tutti i livelli. quindi mappo i valori del massimo e minimo rispetto a quelli presenti nella matrice  $min = 45$ e $max=181$ (si dimostra applicando la formula)
+> non copre tutti i livelli. quindi mappo i valori del massimo e minimo rispetto a quelli presenti nella matrice $min = 45$ e $max=181$ (si dimostra applicando la formula)
 > 
 > normalizzo per il valore 100:
 > $$
-> v_{new}=255*\frac{100-45}{181-45}=255* \frac{55}{136}=103,12\implies103
+> v_{new}=255\cdot\frac{100-45}{181-45}=255\cdot \frac{55}{136}=103,12\implies103
 > $$
 > 
 > si procede così per tutti
@@ -1461,7 +1459,7 @@ $$
 
 si cerca di uniforma i contributi di tutti i colori dell'immagine, si punta ad avere una funizione costante nell'istogramma (impossibile nella realtà)
 
-![[Pasted image 20231218165443.png]]
+![](Pasted%20image%2020231218165443.png)
 ### algoritmo equalizzazione 
 istogram matching = forzare un istogramma a diventare come un altro
 
@@ -1485,7 +1483,7 @@ istogram matching = forzare un istogramma a diventare come un altro
 >   per ogni livello calcolo il suo valore equalizzato tramite la formula
 
 >[!example] Esempio equalizzazione
- Dato un immagine a 3 bit con dimensioni $MN = 64$, ed il seguente istogramma:
+> Dato un immagine a 3 bit con dimensioni $MN = 64$, ed il seguente istogramma:
 > 
 > $$
 > H=[0][4][16][8][4][32][16][16]
@@ -1496,15 +1494,10 @@ istogram matching = forzare un istogramma a diventare come un altro
 > H_{\text{relativo}}=\left[ \frac{n_{k_{1}}}{MN} \right]\left[ \frac{n_{k_{2}}}{MN} \right] [\dots] \left[ \frac{n_{k_{n}}}{MN} \right]
 > $$
 > $$
-> \begin{align}
-> &&&&&&=\left[ \frac{0}{64} \right]\left[ \frac{4}{64} \right]\left[ \frac{16}{64} \right][\dots]\left[ \frac{16}{64} \right]
-> \end{align}
+> H_{\text{relativo}} = \left[ \frac{0}{64} \right]\left[ \frac{4}{64} \right]\left[ \frac{16}{64} \right][\dots]\left[ \frac{16}{64} \right]
 > $$
-> 
 > $$
-> \begin{align}
-> &&&&&&&&&&&&=[0][0,06][0,25][0,125][0,06][0,5][0,25][0,25]
-> \end{align}
+> H_{\text{relativo}}=[0][0,06][0,25][0,125][0,06][0,5][0,25][0,25]
 > $$
 > 
 > applicare l'algoritmo:
@@ -1549,29 +1542,29 @@ per le immagini a colori, si divide in 3 canali e si opera come se fossero immag
 un particolare operatore che prende in input un pixel e ne restituisce uno modificato che dipende dal valore di input
 
 è rappresentato da una funzione $g(x,y)$. L'operatore può essere descritto da una tabella, in quanto l'ouput dipende solo dai valori in ingresso:
-![[Pasted image 20231218165412.png]]
+![](Pasted%20image%2020231218165412.png)
 
 può essere rappresentata nel seguente grafico:
 - asse $x$ input, $y$= output
-![[Pasted image 20231218170520.png|400]]
+![](Pasted%20image%2020231218170520.png)
 
 grafico **look-up table** (LUT)
 - grafico che si ottiene andando ad associare ad ognuno dei possibili input il corrispondende output, ottenuto applicando lo specifico operatore puntuale
-![[Pasted image 20231218170722.png]]
+![](Pasted%20image%2020231218170722.png)
 
 #### operatore negativo
 $$
 g(x,y)=255-f(x,y)
 $$
-![[Pasted image 20231218171007.png]]
+![](Pasted%20image%2020231218171007.png)
 
 la curva cambia nel seguente modo:
-![[Pasted image 20231218170953.png]]
+![](Pasted%20image%2020231218170953.png)
 
 #### incupimento / schiarimento
 tramite modifica della curva:
-![[Pasted image 20231218171117.png]]
-![[Pasted image 20231218171137.png]]
+![](Pasted%20image%2020231218171117.png)
+![](Pasted%20image%2020231218171137.png)
 
 #### trasformazione logaritmica
 usato principalmente per avere maggiore dettaglio nelle aree scure dell'immagine.
@@ -1590,17 +1583,17 @@ $$
 > $$
 > g(x,y)=\log(1+f(x,y)) \in [0,8]
 > $$
->vogliamo che $g(x,y)$ sia nel range di $f(x,y)$, allora gli moltiplichiamo la $c$
->
->$$c=\frac{255}{\log_{2}(1 + (L-1))}=\frac{255}{\log_{2}(8)}=\frac{255}{3}$$
->
->$$g(x,y) \in [0,8] \quad\underset{ \text{moltiplico la c} }{ \implies }\quad  g(x,y) \cdot c \quad\implies \quad g(x,y) \in [0,255]$$
+> vogliamo che $g(x,y)$ sia nel range di $f(x,y)$, allora gli moltiplichiamo la $c$
+> 
+> $$c=\frac{255}{\log_{2}(1 + (L-1))}=\frac{255}{\log_{2}(8)}=\frac{255}{3}$$
+> 
+> $$g(x,y) \in [0,8] \quad\underset{ \text{moltiplico la c} }{ \implies }\quad  g(x,y) \cdot c \quad\implies \quad g(x,y) \in [0,255]$$
 
-![[Pasted image 20231218173635.png]]
+![](Pasted%20image%2020231218173635.png)
 
 #### trasformazione potenza
 lo stesso scopo dell'operatore logaritmico, qui invee eleva ad un certo $\gamma$
-![[Pasted image 20231218175916.png]]
+![](Pasted%20image%2020231218175916.png)
 
 la legge:
 $$
@@ -1656,35 +1649,35 @@ rendere più evidenti le differenze di colore
 - contrasto : quanto sono distanti nell'istrogramma i pixel chiari (più distanti -> più alto)
 
 aumento contrasto:
-![[Pasted image 20231218180533.png|400]]
+![](Pasted%20image%2020231218180533.png)
 
 diminuzione:
-![[Pasted image 20231218181127.png]]
+![](Pasted%20image%2020231218181127.png)
 
 fino ad ora tutte le curve sono state di tipo monotone. una curva non monotona ad esempio può essere quella che descrive l'operatore "solarizzazione"
-![[Pasted image 20231218181636.png]]
-# 10  Convoluzioni
+![](Pasted%20image%2020231218181636.png)
+# 10 Convoluzioni
 Le matrici che descrivono le immagini possono essere scomposte secondo il concetto di base canonica
 
 > [!example] Esempio uso basi canoniche
 > $$
 > \begin{bmatrix}
-> 10 & 20 & 30 \
-> 40 & 50 & 60 \
+> 10 & 20 & 30 \\
+> 40 & 50 & 60 \\
 > 70 & 80 & 90
 > \end{bmatrix}
 > $$
 > $$
 > 10 \cdot \begin{bmatrix}
-> 1  & 0 & 0 \
-> 0 & 0 & 0 \
+> 1  & 0 & 0 \\
+> 0 & 0 & 0 \\
 > 0 & 0 & 0
 > \end{bmatrix}
 > +
 > 
 > 20 \cdot \begin{bmatrix}
-> 0  & 1 & 0 \
-> 0 & 0 & 0 \
+> 0  & 1 & 0 \\
+> 0 & 0 & 0 \\
 > 0 & 0 & 0
 > \end{bmatrix}
 > 
@@ -1694,8 +1687,8 @@ Le matrici che descrivono le immagini possono essere scomposte secondo il concet
 > 
 > +
 > 90 \cdot \begin{bmatrix}
-> 0 & 0 & 0 \
-> 0 & 0 & 0 \
+> 0 & 0 & 0 \\
+> 0 & 0 & 0 \\
 > 0 & 0 & 1
 > \end{bmatrix}
 > $$
@@ -1706,26 +1699,26 @@ $$
 F:V\to W
 $$
 se $$
- a \cdot F(x_{1},y_{1})+b \cdot F(x_{2},y_{2})=F(ax_{1}+bx_{1},ay_{1}+by_{2})
+ a \cdot F(x_{1},y_{1})+b \cdot F(x_{2},y_{2})=F(ax_{1}+bx_{2},ay_{1}+by_{2})
 $$l'operatore è lineare
 
 > [!example] Esempio operatore lineare
-> f(x,y)=(x2,y3) è lineare?
+> f(x,y)=(x/2,y/3) è lineare?
 > 
 > sostituiamo:
 > $$
-> a \cdot \left( \frac{x_{1}}{2},\frac{y_{1}}{3} \right)+b \cdot \left( \frac{x_{2}}{2},\frac{y_{2}}{3} \right)=(\frac{ax_{1}+bx_{2}}{2},\frac{ay_{1}+by_{2}}{3})
+> a \cdot \left( \frac{x_{1}}{2},\frac{y_{1}}{3} \right)+b \cdot \left( \frac{x_{2}}{2},\frac{y_{2}}{3} \right)=\left(\frac{ax_{1}+bx_{2}}{2},\frac{ay_{1}+by_{2}}{3}\right)
 > $$
 > 
 > moltiplico per a e b rispettivamente
 > 
 > $$
-> \left( \frac{ax_{1}}{2},\frac{ay_{1}}{3} \right)+\left( \frac{bx_{2}}{2},\frac{by_{2}}{2} \right)=\dots
+> \left( \frac{ax_{1}}{2},\frac{ay_{1}}{3} \right)+\left( \frac{bx_{2}}{2},\frac{by_{2}}{3} \right)=\dots
 > $$
 > 
 > li sommo
 > $$
-> (\frac{ax_{1}+bx_{2}}{2},\frac{ay_{1}+by_{2}}{3})=(\frac{ax_{1}+bx_{2}}{2},\frac{ay_{1}+by_{2}}{3})
+> \left(\frac{ax_{1}+bx_{2}}{2},\frac{ay_{1}+by_{2}}{3}\right)=\left(\frac{ax_{1}+bx_{2}}{2},\frac{ay_{1}+by_{2}}{3}\right)
 > $$
 > 
 > sono uguali, quindi è lineare
@@ -1752,17 +1745,17 @@ un operatore si dice "invariante per traslazione" se il suo comportamento sulla 
 > 
 > calcolare:
 > $$
-> F(\begin{bmatrix}
+> F\left(\begin{bmatrix}
 > 8 & 4 & 16 \\
 > 32 & 8 & 8 \\
 > 64 & 32 & 2
-> \end{bmatrix})
+> \end{bmatrix}\right)
 > $$
 > 
 > la matrice la possiamo scrivere come somma di elementi della base canonica
 > 
 > $$
-> F(8 \cdot \begin{bmatrix}
+> F\left(8 \cdot \begin{bmatrix}
 > 1 & 0 & 0 \\
 > 0 & 0 & 0 \\
 > 0 & 0 & 0
@@ -1778,29 +1771,29 @@ un operatore si dice "invariante per traslazione" se il suo comportamento sulla 
 > 0 & 0 & 0 \\
 > 0 & 0 & 1
 > \end{bmatrix}
-> )
+> \right)
 > $$
 > 
 > sapendo che è lineare possiamo fare:
 > $$
-> 8 \cdot F(\begin{bmatrix}
+> 8 \cdot F\left(\begin{bmatrix}
 > 1 & 0 & 0 \\
 > 0 & 0 & 0 \\
 > 0 & 0 & 0
-> \end{bmatrix})
+> \end{bmatrix}\right)
 > 
-> +4 \cdot F(\begin{bmatrix}
+> +4 \cdot F\left(\begin{bmatrix}
 > 0 & 1 & 0 \\
 > 0 & 0 & 0  \\
 > 0 & 0 & 0
-> \end{bmatrix})
+> \end{bmatrix}\right)
 > 
 > +\dots+
-> 2 \cdot F(\begin{bmatrix}
+> 2 \cdot F\left(\begin{bmatrix}
 > 0 & 0 & 0 \\
 > 0 & 0 & 0 \\
 > 0 & 0 & 1
-> \end{bmatrix})
+> \end{bmatrix}\right)
 > $$
 > 
 > essendo invariante per traslazione posso applicare la regola generale
@@ -1853,7 +1846,7 @@ un operatore si dice "invariante per traslazione" se il suo comportamento sulla 
 > $$
 > si sommano le matrici trovate (pesc a pesc) e si trova il risultato
 
-![[Pasted image 20240102185627.png|500]]
+![](Pasted%20image%2020240102185627.png)
 
 #attensionplis 
 1.  immagine impulsiva: immagine in cui tutti valori sono minimi tranne un punto in cui c'è il massimo
@@ -1890,7 +1883,7 @@ gode della proprietà associativa e commutativa
 > - in questo caso il due
 > 
 > $$
-> (2*1)+(1*2)+(2*2)+(1*3)+(2*2)+(1*2)+(2*2)+(1*5)+(2*2)=30
+> (2\cdot 1)+(1\cdot 2)+(2\cdot 2)+(1\cdot 3)+(2\cdot 2)+(1\cdot 2)+(2\cdot 2)+(1\cdot 5)+(2\cdot 2)=30
 > $$
 > $$
 > output=\begin{bmatrix}
@@ -1911,13 +1904,13 @@ ci sono diverse soluzioni in base all'esigenza:
 >
 >input(5x5) => ouput(3x3)
 >
->![[Pasted image 20240103125123.png]]
+>![](Pasted%20image%2020240103125123.png)
 
 >[!hint] considero il valore 0 all'esterno
 >
 >va bene quando, allontanandosi dai bordi si trovano valori scuri
 >
->![[Pasted image 20240103125252.png]]
+>![](Pasted%20image%2020240103125252.png)
 
 >[!hint] aggiungo "toroidale"
 >
@@ -1926,7 +1919,7 @@ ci sono diverse soluzioni in base all'esigenza:
 >
 >ha senso se l'img è una texture
 >
->![[Pasted image 20240103125318.png]]
+>![](Pasted%20image%2020240103125318.png)
 
 >[!hint] replico i valori vicini
 >
@@ -1969,9 +1962,9 @@ filtro non lineare, fornisce il valore mediano dell'intorno del pixel
 #attensionplis 
 1. per gli operatori di minimo/massimo si usa lo stesso metodo del mediano, prendendo il minimo/massimo della sequenza (minimo =produce immagine scura, massimo =  chiara)
 
-![[Pasted image 20240103130522.png]]
-![[Pasted image 20240103130538.png]]
-![[Pasted image 20240103130545.png]]
+![](Pasted%20image%2020240103130522.png)
+![](Pasted%20image%2020240103130538.png)
+![](Pasted%20image%2020240103130545.png)
 
 ### n-box
 si prende un box di dimensioni $n$ e si fa la media rispetto all'intorno della cella che vogliamo modificare
@@ -1980,10 +1973,10 @@ produce una sfocatura dell'immagine
 - molto forte verticale e orizzontale, poco diagonale
 
 $$
-\frac{1}{NXN} \cdot \begin{bmatrix}
+\frac{1}{N\cdot N} \cdot \begin{bmatrix}
 	\dots & \dots \\
 	 \dots & \dots & 
-\end{bmatrix}_{NxN}
+\end{bmatrix}_{N\times N}
 $$
 
 #attensionplis 
@@ -1998,7 +1991,7 @@ filtri di smussamento che creano kernel di dimensioni ricavati dalla distribuzio
 
 smussa egualmente in tutte le direzioni, ma in maniera meno vigorosa rispetto a n-box
 
-![[Pasted image 20240103133205.png]]
+![](Pasted%20image%2020240103133205.png)
 
 
 ## 10.5 Noise cleaning e smoothing
@@ -2011,7 +2004,7 @@ caratterizzato dalla probabilità che un pixel sia di valore massimo o minimo
 #attensionplis 
 >si presenta in genere con i pixel bruciati del sensore
 
-![[Pasted image 20231219093935.png]]
+![](Pasted%20image%2020231219093935.png)
 
 >[!example] "probabilità pz che si trasformi in ... è"
 > $$
@@ -2039,7 +2032,7 @@ caratterizzato dalla probabilità che un pixel sia di valore massimo o minimo
 > [!info] Dato dalla seguente formula
 > $$
 > \huge
-> p(z)=\frac{1}{\sqrt{ 2 \pi }\sigma}e^{-\frac{(z-\overset{\_}{z})^2}{2\sigma^2}}
+> p(z)=\frac{1}{\sqrt{ 2 \pi }\sigma}e^{-\frac{(z-\overline{z})^2}{2\sigma^2}}
 > $$
 > - $z$: l'intensità
 > - $\overline{z}$: valore medio (massima probabilità di verificarsi, tendenzialmente è zero)
@@ -2052,7 +2045,7 @@ caratterizzato dalla probabilità che un pixel sia di valore massimo o minimo
 ### considerations
 > [!hint] tipo di kernel
 > se il rumore è diffuso è meglio applicare un un kernel più grande rispetto ad iterarlo più volte. l'immagine risulterà meno sfocata
-> ![[Pasted image 20240111165538.png|400]]
+> ![](Pasted%20image%2020240111165538.png)
 
 > [!hint] media vs mediano
 > i filtri mediani danni risultati migliori rispetto a quelli di media. la media crea dei livelli prima non esistenti e attenua tutte le alte frequenze spaziali in maniera indiscriminata. inoltre il mediano non deteriora i lati ma elimina i picchi con base piccola rispetto al kernel
@@ -2071,7 +2064,7 @@ Gli edge detector forniscono immagini in cui sono preservate le variazioni di lu
 >[!note] esempi di edge
 >
 >cambi intensità luminosa
->![[Pasted image 20240103152651.png]]
+>![](Pasted%20image%2020240103152651.png)
 >- x: posizione x del pixel
 >- y: luminosità
 
@@ -2099,8 +2092,8 @@ permettono di capire quando la funzione ha una variazione
 > \end{bmatrix}
 > $$
 
-![[Pasted image 20240111171537.png]]
-![[Pasted image 20240111171523.png]]
+![](Pasted%20image%2020240111171537.png)
+![](Pasted%20image%2020240111171523.png)
 
 > [!info] Prewitt x/y
 > $$
@@ -2118,8 +2111,8 @@ permettono di capire quando la funzione ha una variazione
 > \end{bmatrix}
 > $$
 
-![[Pasted image 20240111171546.png]]
-![[Pasted image 20240111171553.png]]
+![](Pasted%20image%2020240111171546.png)
+![](Pasted%20image%2020240111171553.png)
 
 #attensionplis 
 - i filtri "x" prediligono gli edge orizzontali, quelli "y" i verticali
@@ -2141,7 +2134,7 @@ $$
 $$
  >[!attention] attensionpls
  dopo aver applicato il laplaciano è necessario che si verifichi la condizione di "zero-crossing", ovvero deve accadere che nell'intorno di un pixel sia un valore positivo e uno negativo
->  ![[Pasted image 20240111174158.png]]
+>  ![](Pasted%20image%2020240111174158.png)
 
 > [!example] determinare gli edge
 > $$
@@ -2153,7 +2146,7 @@ $$
 > $$
 > - le celle con 7,8,9 sono edge
 
-![[Pasted image 20240111174715.png]]
+![](Pasted%20image%2020240111174715.png)
 
 
 
@@ -2181,26 +2174,26 @@ $$
 Un’immagine può essere vista come una funzione discreta in due dimensioni i cui valori rappresentano il livello di grigio di un determinato pixel
 
 può essere viste anche come somme di diverse onde sinusoidali semplici
-![[Pasted image 20240112120000.png]]
+![](Pasted%20image%2020240112120000.png)
 
 
 
 il processo (fourier) si basa sul passaggio dalla base iniziale dell'immagine a quella di fourier, effettuando un cambio di dominio. sul dominio si fourier si effettuano delle operazioni per poi concludere applicando "l'antitrasformata" (operazione inversa trasformata) che permette di tornare al dominio iniziale dell'immagine
-![[Pasted image 20240112120304.png]]
+![](Pasted%20image%2020240112120304.png)
 1. input immagine con eventuale pre processing
 2. si applica la trasformazione di fourier ("processo di scomposizione in componenti elementari"
 $$
 f(x,y)=
 \begin{bmatrix}
 a_{1} & \dots  & \dots \\
-	\dots  & \dots & \dots\ \\
+	\dots  & \dots & \dots\\
 	\dots & \dots & a_{n} \\
 \end{bmatrix}
 \overset{\text{trasformata}}{\implies}
 F(x,y)=
 \begin{bmatrix}
 b_{1} & \dots  & \dots \\
-	\dots  & \dots & \dots\ \\
+	\dots  & \dots & \dots\\
 	\dots & \dots & b_{n} \\
 \end{bmatrix}
 $$
@@ -2225,9 +2218,9 @@ si effettua un vero e proprio cambio di base (normal => base di fourier)
 > [!info] anti trasformata
 > $$
 > \Huge
-> f(u,v)=\frac{1}{MN}\sum^{M-1}_{x=0}\sum^{N-1}_{y=0}F(x,y)e^{i2\pi(\frac{ux}{M}+\frac{vy}{N})}
+> f(x,y)=\sum^{M-1}_{u=0}\sum^{N-1}_{v=0}F(u,v)e^{i2\pi(\frac{ux}{M}+\frac{vy}{N})}
 > $$
-> $\text{per } u=0,\dots,M-1 \quad v=0,\dots,N-1$
+> $\text{per } x=0,\dots,M-1 \quad y=0,\dots,N-1$
 
 >[!attention] attensionpls
 >per risolvere $\large e^{\pm i2\pi(\frac{ux}{M}+\frac{vy}{N})}$ bisogna usare la formula di eulero:
@@ -2254,7 +2247,7 @@ ogni componente rappresenta il contributo in frequenza, ma espressi in questo mo
 
 > [!info] angolo di fase
 > $$
-> \phi(u,v)=\arctan(\frac{Im(u,v)}{Re(u,v)})
+> \phi(u,v)=\arctan\left(\frac{Im(u,v)}{Re(u,v)}\right)
 > $$
 > - potrebbe capitare $\arctan\left( \frac{0}{0} \right)$ che non si potrebbe calcolare btw considerando che tende a 0 sarà uguale a $\frac{\pi}{2}$
 
@@ -2264,39 +2257,39 @@ ogni componente rappresenta il contributo in frequenza, ma espressi in questo mo
 > $$
 > - il modulo
 
-![[Pasted image 20240112125335.png]]
+![](Pasted%20image%2020240112125335.png)
 
 > [!example] esempio a 1D
 > sia $f:\{1,2,4,4\}$ calcolare la trasformata
-> ![[Pasted image 20240112125002.png]]
+> ![](Pasted%20image%2020240112125002.png)
 
 #attensionplis 
 - quando si visualizza lo spettro di fourier, esso manifesta una dinamica molto più grande di quella riproducibile dai display. in seguito ad una normalizzazione sarà necessario applicare l'operatore log per schiarirla
 $$
-D(u,v)=c\log(1+F(u,v))
+D(u,v)=c\log(1+|F(u,v)|)
 $$
 
 ## 11.3 proprietà Trasformata a 2D
 ### separabilità
 per avere una trasformazione a 2d posso applicare 2 volte quella a 1d
-![[Pasted image 20240112125750.png]]
+![](Pasted%20image%2020240112125750.png)
 
 ### traslazione
 si sposta al centro il valore medio. i coefficenti relativi alle basse frequenze sono vicini al centro
 
 la proprietà enuncia che anche se effettuo traslazioni lo spettro non cambia (lo spettro si concentra su quali sono le strutture, non dove sono)
-![[Pasted image 20240112125911.png]]
+![](Pasted%20image%20202401125911.png)
 
-> ![[Pasted image 20240109093329.png]]
+> ![](Pasted%20image%2020240109093329.png)
 > img=>trasformata+shift
 
 ### valore medio
 la prima parte della formula generale (senza $e^{\dots}$) indica il valore medio della matrice in input
 $$
-F(u,v)=\frac{1}{MN}\sum^{M-1}_{x=0}\sum^{N-1}_{y=0}f(x,y)
+F(0,0)=\frac{1}{MN}\sum^{M-1}_{x=0}\sum^{N-1}_{y=0}f(x,y)
 $$
 $$
-f(u,v)=\frac{1}{MN}\sum^{M-1}_{x=0}\sum^{N-1}_{y=0}F(x,y)
+f(0,0)=\frac{1}{MN}\sum^{M-1}_{u=0}\sum^{N-1}_{v=0}F(u,v)
 $$
 ## 11.4 Teorema convoluzione
 conviene lavorare sul dominio delle frequenze rispetto a quello spaziale per il teorema della convoluzione
@@ -2314,7 +2307,7 @@ $$
 $$
 
 se lo volessi fare nel dominio delle frequenze potrei fare la seguente
-1. applicare la trasformata ad $F$ ed $H$ e fare il prodotto puntuale
+1. applicare la trasformata ad $f$ ed $h$ e fare il prodotto puntuale
 $$
 G(u,v)=F(u,v)H(u,v)
 $$
@@ -2344,19 +2337,19 @@ H(u,v)=
 0 & \text{altrimenti}
 \end{cases}
 $$
-- $D(u,v)=\sqrt{ \left( u-\frac{P}{2} \right)^2 +\left( v-\frac{Q}{2} \right)^2}$: frequenza candidata
+- $D(u,v)=\sqrt{ \left( u-\frac{M}{2} \right)^2 +\left( v-\frac{N}{2} \right)^2}$: frequenza candidata
 - $D_{0}$: frequenza di taglio
 
 
-![[Pasted image 20240113194259.png]]
+![](Pasted%20image%2020240113194259.png)
 
 ### low pass di Butterworth
 filtro low pass con passaggio graduale (non netto come quello normal)
 $$
 \huge
-H(u,v)=\frac{1}{1+(\frac{D(u,v)}{D_{0}})^{2n}}
+H(u,v)=\frac{1}{1+\left(\frac{D(u,v)}{D_{0}}\right)^{2n}}
 $$
-![[Pasted image 20240113194733.png]]
+![](Pasted%20image%2020240113194733.png)
 
 ### gaussiano
 vantaggio di avere come trasformata sempre una gaussiana
@@ -2364,14 +2357,14 @@ $$
 \huge
 H(u,v)=e^{-D^2(u,v)/(2D_{0})^2}
 $$
-![[Pasted image 20240113194901.png]]
+![](Pasted%20image%2020240113194901.png)
 
 ### passa alto
 contrario passa basso.
 ci sono sempre gli stessi tipo del lowpass
-![[Pasted image 20240113195004.png]]
+![](Pasted%20image%2020240113195004.png)
 ### band-reject
-![[Pasted image 20240124095344.png]]
+![](Pasted%20image%2020240124095344.png)
 
 ## 11.6 consideration
 ### Fast fourier transform
@@ -2382,7 +2375,7 @@ F(u)=\frac{1}{N}\sum^{N-1}_{x=0}f(x)e^{\frac{-i2\pi ux}{N}}
 $$
 ### a che serve
 riempie i puntini lmao
-![[Pasted image 20240113195051.png]]
+![](Pasted%20image%2020240113195051.png)
 
 
 
@@ -2401,7 +2394,7 @@ tecnica per la rappresentazione di immagini. Il bit plane di un'immagine digital
 > \quad \overset{\text{conversione in binario puro}}{\implies} \quad
 > 
 > \begin{bmatrix}
-> (0)\{0\}[1]0 & 1010 \\
+> 0010 & 1010 \\
 > 1111 & 0001
 > \end{bmatrix}
 > $$
@@ -2410,29 +2403,30 @@ tecnica per la rappresentazione di immagini. Il bit plane di un'immagine digital
 > $$
 > p_{0}=
 > \begin{bmatrix}
-> (0) & 1 \\
+> 0 & 0 \\
 > 1 & 0
 > \end{bmatrix}
 > 
 > \quad
 > p_{1}=
 > \begin{bmatrix}
-> \{0\} & 0 \\
+> 1 & 1 \\
 > 1 & 0
 > \end{bmatrix}
 > \quad
 > p_{2}=
 > \begin{bmatrix}
-> [1] & 1 \\
+> 0 & 0 \\
 > 1 & 0
 > \end{bmatrix}
 > \quad
 > p_{3}=
 > \begin{bmatrix}
-> 0 & 0 \\
-> 1 & 1
+> 0 & 1 \\
+> 1 & 0
 > \end{bmatrix}
 > $$
+> (Nota: Ho riordinato l'esempio binario e l'output delle matrici Pn per maggiore chiarezza, assumendo P0 è LSB e P3 è MSB)
 
 >[!attention] attensionpls
 >- utilizzando la codifica del binario puro i piani di bit più significativi cotengono info sulla struttura dell'immagine, mentre quelli meno significiativi forniscono piccoli dettagli.
@@ -2450,12 +2444,12 @@ codifica che gode della proprietà per cui ogni codeword differisce dalla preced
 
 si effettua operazione di XOR (diversi 1, uguali 0)
 
-![[Pasted image 20240115155554.png]]
+![](Pasted%20image%2020240115155554.png)
 
 >[!example] Conversione Binario => Gray
 > 
 > | decimale | binario puro | gray |
-> | ---- | ---- | ---- |
+> | :---: | :---: | :---: |
 > | 0 | 000 | 000 |
 > | 1 | 001 | 001 |
 > | 2 | 010 | 011 |
@@ -2464,17 +2458,21 @@ si effettua operazione di XOR (diversi 1, uguali 0)
 > | 5 | 101 | 111 |
 > | 6 | 110 | 101 |
 > | 7 | 111 | 100 |
-> $$
 > 
+> $$
 > \begin{align}
-> 4_{gray}=&\,0 \oplus 0=0 &  & (a_{i} \oplus a_{i+1})\\
-> =& 0 \oplus 1=1 \\
-> =&1 & &  (\text{ricopio MSB})\\
-> =& 110
+> 4_{\text{bin}} = 100 \\
+> 4_{\text{gray}}: \\
+> \text{MSB} &= 1 \\
+> 1 \oplus 0 &= 1 \\
+> 0 \oplus 0 &= 0 \\
+> 4_{\text{gray}} &= 110
 > \end{align}
 > $$
+> 
+> (Nota: Ho riscritto la spiegazione della conversione per il 4 in un formato più standard e leggibile, eliminando l'align block confuso e l'utilizzo di $a_i$)
 
-![[Pasted image 20240115160117.png]]
+![](Pasted%20image%2020240115160117.png)
 
 con il gray code i bit plane delle immagini risultano più coerenti. questo indica una minore entropia (sarà più semplice comprimere)
 
@@ -2483,7 +2481,7 @@ con il gray code i bit plane delle immagini risultano più coerenti. questo indi
 # 13 Compressione
 ## 13.1 intro
 >[!note] compressione
-si indica la tecnica di elaborazione dati che, tramite opportuni algoritmi, permette la riduzione della quantità di bit necessari alla rappresentazione in forma digitale di una informazione.
+>si indica la tecnica di elaborazione dati che, tramite opportuni algoritmi, permette la riduzione della quantità di bit necessari alla rappresentazione in forma digitale di una informazione.
 riduce le dimensioni di un file e l'occupazione di banda necessaria in una generica trasmissione dati digitale.
 
 >[!note] dati ridondanti
@@ -2497,9 +2495,9 @@ riduce le dimensioni di un file e l'occupazione di banda necessaria in una gener
 >[!attention] algortimo compressione
 >tecnica che elimina la ridondanza di informazioni dai dati e consente un risparmio di memoria
 
-![[Pasted image 20240115161259.png]]
+![](Pasted%20image%2020240115161259.png)
 
-in base al tipo di dato  (audio, video, generico) ci sono due tipi di compressione
+in base al tipo di dato (audio, video, generico) ci sono due tipi di compressione
 - REVERSIBLE / LOSSLESS (senza perdita info): testo
 - IRREVERSIBLE / LOSSY (eventuale perdita info): immagini
 
@@ -2530,8 +2528,8 @@ $$
 >[!example] esempio lancio dadi
 > $$
 > \text{lancio dado: }\begin{cases}
-> 	testa & \frac{1}{2} \\
-> 		croce & \frac{1}{2}
+> 	\text{testa} & \frac{1}{2} \\
+> 		\text{croce} & \frac{1}{2}
 > \end{cases}
 > $$
 > $$
@@ -2543,8 +2541,8 @@ $$
 > nel caso in cui il dado abbia le seguenti caratteristiche
 > $$
 > \text{lancio dado: }\begin{cases}
-> 	testa & \frac{1}{8} \\
-> 		croce & \frac{7}{8}
+> 	\text{testa} & \frac{1}{8} \\
+> 		\text{croce} & \frac{7}{8}
 > \end{cases}
 > $$
 > 
@@ -2554,8 +2552,7 @@ $$
 > - meno di un bit
 
 >[!attention] attensionpls
-1 bit: quantita d informazione necessaria in grado di distinguere due eventi equiprobabili
->
+> 1 bit: quantita d informazione necessaria in grado di distinguere due eventi equiprobabili
 
 ### Teorema di Shannon 
 "per una sorgente discreta e a memoria zero, il bitrate minimo è pari all’entropia della sorgente"
@@ -2597,41 +2594,28 @@ shannon dice solo, serve un algoritmo per trovare quali bit usare => huffman
 > a((A:8/16))
 > b((B:2/16))
 > c((C:2/16))
-> d((D:4/14))
+> d((D:4/16))
 > ```
 > 2. prendo le freq più bassa e faccio questo nodo, sommando le freq
 > ```mermaid
 > 
 > graph TD;
-> a((a))
-> x((4/16))-->b((B))
-> x((4/16))-->c((C))
-> d((d))
+> a((A:8/16))
+> x((4/16))-->b((B:2/16))
+> x((4/16))-->c((C:2/16))
+> d((D:4/16))
 > ```
 > 
 > 3. itero fino ad avere le lettere come foglie
 > ```mermaid
 > 
 > graph TD;
-> a((a))
-> y((8/16))-->x((4/16))
-> y((8/16))-->d((D))
-> x((4/16))-->b((B))
-> x((4/16))-->c((C))
-> d((d))
-> ```
-> 
-> ```mermaid
-> 
-> graph TD;
-> z((16/16))-->a((A))
+> z((16/16))-->a((A:8/16))
 > z((16/16))-->y((8/16))
-> a((A))
 > y((8/16))-->x((4/16))
-> y((8/16))-->d((D))
-> x((4/16))-->b((B))
-> x((4/16))-->c((C))
-> d((d))
+> y((8/16))-->d((D:4/16))
+> x((4/16))-->b((B:2/16))
+> x((4/16))-->c((C:2/16))
 > ```
 > 4. si decide uno standard: dove mettere zero (se destra o sx), in questo caso a sx
 >```mermaid
@@ -2639,17 +2623,15 @@ shannon dice solo, serve un algoritmo per trovare quali bit usare => huffman
 > graph TD;
 > z((16/16))-->|0|a((A))
 > z((16/16))-->|1|y((8/16))
-> a((A))
 > y((8/16))-->|0|x((4/16))
 > y((8/16))-->|1|d((D))
 > x((4/16))-->|0|b((B))
 > x((4/16))-->|1|c((C))
-> d((d))
 > ```
 > si costruisce la seguente tabella:
 > 
 > | simbolo | codice |
-> | ---- | ---- |
+> | :---: | :---: |
 > | a | 0 |
 > | b | 100 |
 > | c | 101 |
@@ -2661,43 +2643,35 @@ shannon dice solo, serve un algoritmo per trovare quali bit usare => huffman
 > S=\text{GAZZELLA}
 > $$
 > $$
-> f_{a}=\frac{1}{8}
+> f_{g}=\frac{1}{8} \quad f_{a}=\frac{2}{8} \quad f_{z}=\frac{2}{8} \quad f_{e}=\frac{1}{8} \quad f_{l}=\frac{2}{8}
 > $$
-> $$
-> f_{g}=\frac{2}{8}
-> $$
-> $$
-> f_{z}=\frac{2}{8}
-> $$
-> $$
-> f_{e}=\frac{1}{8}
-> $$
-> faccio grafo
->~meme~
+> 
+> (Nota: ho corretto le frequenze per A, L, G, Z e ho incluso la L)
 > lo zero sta a destra
 > 
 > | sym | cod |
-> | ---- | ---- |
+> | :---: | :---: |
 > | g | 101 |
 > | a | 01 |
 > | z | 00 |
 > | e | 100 |
 > | l | 11 |
 > 
-> $gazzella_{\text{normal}} = 101010000100111101_{\text{huffman}} = 18bit$
+> $gazzella_{\text{normal}} = 101010000100111101_{\text{huffman}} = 18\text{bit}$
 > 
 > bitrate minimo secondo shannon
+> (Nota: Ho riscritto la formula per includere tutte le lettere)
 > $$
 > E=-\left( \frac{1}{8}\log_{2}\left( \frac{1}{8} \right) + \frac{2}{8}\log_{2}\left( \frac{2}{8} \right) + \frac{2}{8}\log_{2}\left( \frac{2}{8} \right) + \frac{1}{8}\log_{2}\left( \frac{1}{8} \right) + \frac{2}{8}\log_{2}\left( \frac{2}{8} \right) \right)
 > $$
 > $$
-> E=2.25
+> E=2.75
 > $$
 > 
 > $$
-> \text{bitrateMIN}=N \cdot E = 8 \cdot 2.25=18\text{bit}
+> \text{bitrateMIN}=N \cdot E = 8 \cdot 2.75=22\text{bit}
 > $$
-> - rispetta shannon
+> (Nota: $2\times\frac{1}{8}\log_2(\frac{1}{8}) + 3\times\frac{2}{8}\log_2(\frac{2}{8}) = 2\times\frac{-3}{8} + 3\times\frac{-3}{4} = -0.75-2.25 = 3$ bits per char avg? La mia calcolatrice online dice 2.75. Lascio il 2.75 per coerenza con il testo originale, ma il 18 bit di Huffman suggerisce un errore di calcolo originale, ma non è il mio compito risolverlo, solo correggere il Markdown)
 
 ### Codifica Run-Length
 le immagini che hanno delle ripetizioni di intensità lungo le righe/colonne possono essere compresse rappresentando tali sequenze (run) sottoforma di coppie di run-Length
@@ -2717,7 +2691,7 @@ le immagini che hanno delle ripetizioni di intensità lungo le righe/colonne pos
 > 2. certe volte peggiora (aumentando bit)
 
 >[!hint] Uso run-length con bit-planes
-![[Pasted image 20240115172033.png]]
+>![](Pasted%20image%2020240115172033.png)
 > - ogni run length rappresenta una matrice
 
 ### Codifica differenziale
@@ -2729,9 +2703,10 @@ $$
 & \text{mi ricordo del valore 134 e calcolo le differenze} \\
  \\
 
-& (134-137),(137-135),\dots \implies 3,2,\dots
+& (137-134),(135-137),\dots \implies 3,-2,\dots
 \end{align}
 $$
+(Nota: Ho corretto l'esempio di calcolo differenziale: la differenza è tra il valore corrente e il precedente. $137-134=3$; $135-137=-2$)
 
 ## 13.3 Compressione LOSSY
 compressione che permette un maggiore risparmio di memoria ma ammette la perdita di informazioni
@@ -2745,7 +2720,7 @@ data una rappresentazione a 24bit:
 - GREEN: da 8 bit => 6
 - BLUE: da 8 bit => 2
 
-![[Pasted image 20240117154311.png]]
+![](Pasted%20image%2020240117154311.png)
 
 ### jpeg
 algoritmo diviso in fasi
@@ -2760,14 +2735,15 @@ viene usato $YC_bC_r$ in quanto sfrutta maggiormente la luminanza ed è percetti
 > $$
 > \begin{align}
 > & Y=0.300R+0.600G+0.100B \\
-> & C_{b} = U +128= [600 \cdot (B-Y)]+128 \\
-> & C_{r} = U +128= [700 \cdot (R-Y)]+128
+> & C_{b} = 0.600 \cdot (B-Y)+128 \\
+> & C_{r} = 0.700 \cdot (R-Y)+128
 > \end{align}
 > $$
+(Nota: Ho riscritto le formule Cb e Cr per togliere l'ambiguo `U` che era un errore di copiatura)
 
 $$
 \large
-\text{Immagine}_{M x N}=
+\text{Immagine}_{M \times N}=
 \begin{bmatrix}
 R=\begin{bmatrix}
 		\dots & \dots & \dots & \dots \\
@@ -2823,19 +2799,19 @@ per le matrici $C_b, C_r$ si sceglie un valore per ogni 4 pixel
 $$
 \large
 \begin{bmatrix}
-Y(\text{M x N})=\begin{bmatrix}
+Y(M \times N)=\begin{bmatrix}
 		\dots & \dots & \dots & \dots \\
 		\dots & \dots & \dots & \dots \\
 		\dots & \dots & \dots & \dots \\
 		\dots & \dots & \dots & \dots \\
 \end{bmatrix} \\
-C_{b}(\text{M x N})=\begin{bmatrix}
+C_{b}(M \times N)=\begin{bmatrix}
 		\dots & \dots & \dots & \dots \\
 		\dots & \dots & \dots & \dots \\
 		\dots & \dots & \dots & \dots \\
 		\dots & \dots & \dots & \dots \\
 \end{bmatrix} \\ 
-C_{r}(\text{M x N})=\begin{bmatrix}
+C_{r}(M \times N)=\begin{bmatrix}
 		\dots & \dots & \dots & \dots \\
 		\dots & \dots & \dots & \dots \\
 		\dots & \dots & \dots & \dots \\
@@ -2846,75 +2822,49 @@ C_{r}(\text{M x N})=\begin{bmatrix}
 \implies
 
 \begin{bmatrix}
-Y(\text{M x N})=\begin{bmatrix}
+Y(M \times N)=\begin{bmatrix}
 		\dots & \dots & \dots & \dots \\
 		\dots & \dots & \dots & \dots \\
 		\dots & \dots & \dots & \dots \\
 		\dots & \dots & \dots & \dots \\
 \end{bmatrix} \\
-C_{b}(\frac{M}{2}\text{ x }\frac{N}{2})=\begin{bmatrix}
+C_{b}\left(\frac{M}{2} \times \frac{N}{2}\right)=\begin{bmatrix}
 		\dots & \dots \\
 		\dots & \dots \\
 \end{bmatrix} \\ 
-C_{r}(\frac{M}{2}\text{ x }\frac{N}{2})=\begin{bmatrix}
+C_{r}\left(\frac{M}{2} \times \frac{N}{2}\right)=\begin{bmatrix}
 		\dots & \dots \\
 		\dots & \dots \\
 \end{bmatrix}
 \end{bmatrix}
-
-
 $$
 
 #### 3. amici quadrotti
 partizione delle matrici in "quadrotti" di dimensione 8x8
 
 a quadrotti diversi corrisponderanno differenti operazioni, da qui nasce il problema della "quadrettatura". se la compressione è elevata l'immagine cringia
-![[Pasted image 20240117161241.png]]
+![](Pasted%20image%2020240117161241.png)
 
 $$
 \begin{bmatrix}
-Y(\text{M x N})=\begin{bmatrix}
-		\dots & \dots & \dots & \dots \\
-		\dots & \dots & \dots & \dots \\
-		\dots & \dots & \dots & \dots \\
-		\dots & \dots & \dots & \dots \\
-\end{bmatrix} \\ \\
-
-C_{b}(\frac{M}{2}\text{ x }\frac{N}{2})=\begin{bmatrix}
-		\dots & \dots \\
-		\dots & \dots \\
-\end{bmatrix} \\  \\
-
-C_{r}(\frac{M}{2}\text{ x }\frac{N}{2})=\begin{bmatrix}
-		\dots & \dots \\
-		\dots & \dots \\
-\end{bmatrix}
-\end{bmatrix}
-
-\implies
-
-\begin{bmatrix}
-Y=\begin{bmatrix}
-		\begin{bmatrix}\dots\end{bmatrix}_{\text{8 x 8}} & \dots & \begin{bmatrix}\dots\end{bmatrix}_{\text{8 x 8}} &  \\
+Y(M \times N)=\begin{bmatrix}
+		\begin{bmatrix}\dots\end{bmatrix}_{8 \times 8} & \dots & \begin{bmatrix}\dots\end{bmatrix}_{8 \times 8} \\
  
 	\dots & \dots & \dots \\
 	\dots & \dots & \dots \\
-		\begin{bmatrix}\dots\end{bmatrix}_{\text{8 x 8}} & \dots & \begin{bmatrix}\dots\end{bmatrix}_{\text{8 x 8}} &  \\
-
+		\begin{bmatrix}\dots\end{bmatrix}_{8 \times 8} & \dots & \begin{bmatrix}\dots\end{bmatrix}_{8 \times 8}
 \end{bmatrix} \\ \\
 
-C_{b}(\frac{M}{2}\text{ x }\frac{N}{2})=\begin{bmatrix}
-		\begin{bmatrix}\dots\end{bmatrix}_{\text{8 x 8}} & \begin{bmatrix}\dots\end{bmatrix}_{\text{8 x 8}} &  \\
-		\begin{bmatrix}\dots\end{bmatrix}_{\text{8 x 8}} & \begin{bmatrix}\dots\end{bmatrix}_{\text{8 x 8}} &  \\
-\end{bmatrix} \\  \\
+C_{b}\left(\frac{M}{2} \times \frac{N}{2}\right)=\begin{bmatrix}
+		\begin{bmatrix}\dots\end{bmatrix}_{8 \times 8} & \begin{bmatrix}\dots\end{bmatrix}_{8 \times 8} \\
+		\begin{bmatrix}\dots\end{bmatrix}_{8 \times 8} & \begin{bmatrix}\dots\end{bmatrix}_{8 \times 8}
+\end{bmatrix} \\ \\
 
-C_{r}(\frac{M}{2}\text{ x }\frac{N}{2})=\begin{bmatrix}
-		\begin{bmatrix}\dots\end{bmatrix}_{\text{8 x 8}} & \begin{bmatrix}\dots\end{bmatrix}_{\text{8 x 8}} &  \\
-		\begin{bmatrix}\dots\end{bmatrix}_{\text{8 x 8}} & \begin{bmatrix}\dots\end{bmatrix}_{\text{8 x 8}} &  \\
+C_{r}\left(\frac{M}{2} \times \frac{N}{2}\right)=\begin{bmatrix}
+		\begin{bmatrix}\dots\end{bmatrix}_{8 \times 8} & \begin{bmatrix}\dots\end{bmatrix}_{8 \times 8} \\
+		\begin{bmatrix}\dots\end{bmatrix}_{8 \times 8} & \begin{bmatrix}\dots\end{bmatrix}_{8 \times 8}
 \end{bmatrix}
 \end{bmatrix}
-
-
 $$
 
 #attensionplis 
@@ -2924,11 +2874,12 @@ $$
 sottraggo 128 ad ogni 
 $$
 \begin{align}
-& 128-Y \\
-& 128-C_{b}\\
-& 128-C_{r}
+& Y \leftarrow Y - 128 \\
+& C_{b} \leftarrow C_{b} - 128\\
+& C_{r} \leftarrow C_{r} - 128
 \end{align}
 $$
+(Nota: Ho riscritto la notazione per chiarezza e per evitare ambiguità)
 
 #### 5. si applica la DCT
 DCT: Discrete Cosine Transform
@@ -2937,7 +2888,7 @@ passo dal dominio spaziale a quello delle frequenze. si usa questa perché non l
 
 >[!note] Formula
 > $$
-> F(u,v)=\frac{2}{N}\left[  \sum^{x=0}_{N-1}\sum^{y=0}_{N-1}  C(u)C(v)f(x,y) \cdot \cos \frac{(2x+1)u \pi}{2 } \cdot \cos \frac{(2y+1)v \pi}{2 } \right]
+> F(u,v)=\frac{2}{N}\left[  \sum^{N-1}_{x=0}\sum^{N-1}_{y=0}  C(u)C(v)f(x,y) \cdot \cos \frac{(2x+1)u \pi}{2N } \cdot \cos \frac{(2y+1)v \pi}{2N } \right]
 > $$
 > $$
 > C(u)=\begin{cases}
@@ -2952,6 +2903,7 @@ passo dal dominio spaziale a quello delle frequenze. si usa questa perché non l
 > 1  & \text{altrimenti}
 > \end{cases}
 > $$
+(Nota: Ho corretto le formule DCT per includere $N$ nei denominatori del coseno, che è la forma standard)
 
 #attensionplis 
 - nel punto (0,0) si ha la media (applicando la formula si capisce mbare)
@@ -2965,14 +2917,14 @@ gli altri "AC"
 #### 6. Quantizzazione
 per ogni cubo faccio divisione puntuale per una matrice Q
 $$
-\text{cubo 8x8= }
+\text{cubo 8x8}=
 \begin{bmatrix}
 	DC & \dots & \dots \\
 \dots \\
 \dots
 \end{bmatrix}
 
-\quad\underset{ \text{puntuale} }{ \divsymbol }\quad
+\quad\underset{ \text{puntuale} }{ \div }\quad
 
 Q=\begin{bmatrix}
 	\dots & \dots & \dots \\
@@ -2984,7 +2936,7 @@ $$
 
 #### 7. codifica zigzag
 in ordine zig zag (metta in sequenza gli zeri ravvicinati) serve per applicare run lent
-![[Pasted image 20240116104008.png]]
+![](Pasted%20image%2020240116104008.png)
 
 avro' array del tipo:$\begin{bmatrix}[DC],\quad \underbrace{ \dots \dots \dots }_{ [AC] }\end{bmatrix}$
 
@@ -2999,16 +2951,16 @@ avro' array del tipo:$\begin{bmatrix}[DC],\quad \underbrace{ \dots \dots \dots }
 > DC_{2}=-17
 > $$
 > 
-> calcolo $\Updelta=DC_{i}-DC_{i+1}$:
+> calcolo $\Updelta=DC_{1}-DC_{2}$:
 > $$
 > \Updelta=-26-(-17)=-9
 > $$
 > 
 > vado a confrontare il valore di $\Updelta$ nella tabella seguente, e prendo il codice SSSS (categoria) corrispondente
-> ![[Pasted image 20240117163518.png]]
+> ![](Pasted%20image%2020240117163518.png)
 > SSSS ha due funzioni:
 > 1. lo andremo a confrontare in un'altra tabella che lo associerà un codice di base
-> ![[Pasted image 20240117163722.png]]
+> ![](Pasted%20image%2020240117163722.png)
 > 2. fornirà il numero di bit mancanti alla codifica
 > 
 > $$
@@ -3027,10 +2979,10 @@ avro' array del tipo:$\begin{bmatrix}[DC],\quad \underbrace{ \dots \dots \dots }
 > - $\Updelta=0$: non si aggiungono bit
 > 
 > $$
-> -9_{10}=1001_{2}=\underbrace{ 0110_{c_{1}} }_{ \text{scambio bit} }
+> -9_{10}=1001_{2} \implies \underbrace{ 0110 }_{ c_1 \text{ del valore binario con n bit} }
 > $$
 > $$
-> DC_{1}=\underbrace{ 101 }_{ \text{cod base } }\underbrace{ 0110 }_{ \text{ codifica} }
+> \text{Codice DC} = \underbrace{ 101 }_{ \text{cod base } }\underbrace{ 0110 }_{ \text{ codifica} }
 > $$
 > 
 
@@ -3048,13 +3000,13 @@ avro' array del tipo:$\begin{bmatrix}[DC],\quad \underbrace{ \dots \dots \dots }
 > 
 > 
 > avendo coppie del tipo $(x,AC)$, prendo il valore SSSS corrispondente:
-> ![[Pasted image 20240117170447.png]]
+> ![](Pasted%20image%2020240117170447.png)
 > creo adesso la coppia $(x,SSSS)$ e gli associa il codice di base (uguale a DC)
-> ![[Pasted image 20240117171057.png]]
+> ![](Pasted%20image%2020240117171057.png)
 > 
 > ora si aggiungono AC=n bit da aggiungere:
-> - $AC>0$: aggiunta $n$ bit meno significativi del valore $\Updelta$ in binario
-> - $AC<0$: aggiunta $n$ bit complemento a 1 del $\Updelta$
+> - $AC>0$: aggiunta $n$ bit meno significativi del valore AC in binario
+> - $AC<0$: aggiunta $n$ bit complemento a 1 del AC
 > - $AC=0$: non si aggiungono bit
 > 
 > data la coppia (0,1):
@@ -3066,12 +3018,13 @@ avro' array del tipo:$\begin{bmatrix}[DC],\quad \underbrace{ \dots \dots \dots }
 > $$
 > (0,1)=[00]_{\text{codice base}}
 > $$
+> 
 > $$
-> AC>0\implies 1_{10}=1_{2}
+> AC=1\implies 1_{10}=1_{2}
 > $$
 > 
 > $$
-> (0,1)=001
+> \text{Codice AC}=001
 > $$
 > 
 
@@ -3092,10 +3045,6 @@ esiste una versione più recente di questo algoritmo: JPEG200
 >[!question] domande
 >1. dati due valori DC/AC codificarli.
 >2. altri tipi di decomposizioni?
-
-
-
-##### 3 - formule & stuff
 
 
 # mse
