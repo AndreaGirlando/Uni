@@ -1,3 +1,4 @@
+
 | **Operatore**           | **Sintassi**            | **Descrizione**                                                | **Esempio**                                         |
 | ----------------------- | ----------------------- | -------------------------------------------------------------- | --------------------------------------------------- |
 | **Selezione**           | `σ_cond(R)`             | Filtra le tuple che soddisfano una condizione.                 | `σ_{età > 30}(Impiegati)`                           |
@@ -11,5 +12,3 @@
 | **Theta Join**          | `R ⋈_cond S`            | Join con condizione generica.                                  | `Impiegati ⋈_{Impiegati.idDip = D.id} Dipartimenti` |
 | **Equijoin**            | `R ⋈_{A=B} S`           | Theta join con uguaglianza.                                    | `Impiegati ⋈_{idDip=id} Dipartimenti`               |
 | **Divisione**           | `R ÷ S`                 | Restituisce i valori di `R` associati a _tutti_ quelli di `S`. | `Esami ÷ MaterieObbligatorie`                       |
-| **Aggregazione**        | `γ_funzioni, gruppi(R)` | Operazioni di gruppo come `COUNT`, `AVG`, `SUM`, `MAX`, `MIN`. | `γ_{dip, AVG(stipendio)} (Impiegati)`               |
-im
