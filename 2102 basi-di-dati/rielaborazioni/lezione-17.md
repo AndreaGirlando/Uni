@@ -151,3 +151,42 @@ Per controllare se una decomposizione preserva i dati facciamo in questo modo:
 ![[Pasted image 20251209192621.png|500]]
 Sappiamo che questo metodo è valido per la seguente dimostrazione:
 ![[Pasted image 20251209192731.png|500]]
+# Decomposizioni che conservano le dipendenze funzionali
+
+###### Conservazione delle dipendenze
+La proiezione $\pi_Z(F)$ di $F$ su un insieme $Z$ di attributi è l'insieme delle dipendenze $X \rightarrow$ Y appartenenti a $F^+$ tali che $XY ⊆ Z$
+
+###### Algoritmo per il calcolo della proiezione di un insieme di dipendenze
+![[Pasted image 20251210154119.png|500]]
+
+###### Conservazione delle dipendenze II
+Dato uno schema relazionale $(R,F)$ ed una sua decomposizione $d = \{R_1,R_2, \dots, R_k\}$ si dice che essa **conserva le dipendenze funzionali** se $F$ è implicata logicamente dall'unione delle proiezioni $\pi_{R_i}(F)$ 
+
+Di seguito **l'algoritmo per controllare se una decomposizione preserva le dipendenze funzionali**:
+![[Pasted image 20251210154527.png|500]]
+
+###### Forma normale
+Una relazione $r$ è detta in *forma normale di Boyce-Codd (BCNF)* se per ogni dipendenza funzionale $X\rightarrow A$ definita su di essa, $X$ contiene una chiave $K$ di $r$, cioè $X$ è superchiave per $r$
+###### Terza forma normale
+Una relazione $r$ è detta in *terza forma normale (3NF)* se per ogni dipendenza funzionale $X \rightarrow A$ definita su di essa si ha almeno una delle due seguenti condizioni:
+1. $X$ contiene una chiave $K$ di $r$
+2. $A$ appartiene ad almeno una chiave di $R$
+
+###### Perché scegliamo queste forme normali?
+**BCNF**: lo scopo di questa forma normale è quello di eliminare ridondanze causate dalle dipendenze
+![[Pasted image 20251210161228.png|500]]
+**3NF**:![[Pasted image 20251210161247.png|500]]
+###### Lemmi
+![[Pasted image 20251210161526.png|500]]
+![[Pasted image 20251210161537.png|500]]
+![[Pasted image 20251210161545.png|500]]
+
+###### Decomposizioni che preservano i dati con componenti in BCNF
+**Input**: Schema $R$ e dipendenze $F$
+**Output**: Decomposizione che preserva i dati tale che ogni componente sia in BCNF rispetto alla proiezione di $F$ su quella componente
+![[Pasted image 20251210161740.png|500]]
+
+###### Preservazione delle dipendenze e 3NF
+**Input**: $R,F$ con $F$ ricoprimento minimale
+**Output**: Una decomposizione di $R$ che **conserva le dipendenze** e tale che ogni suo elemento è in **3NF**
+![[Pasted image 20251210162030.png|500]]
