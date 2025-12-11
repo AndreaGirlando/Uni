@@ -1,44 +1,46 @@
-class Ball{
+class Ball {
   float posX, posY, size; //posizione e grandezza
-  float sx,sy; // velocità
-  
-  Ball(float x, float y, float s, float sx, float sy){
+  float speedX, speedY; // velocità
+
+  Ball(float x, float y, float s, float sx, float sy) {
     this.posX = x;
     this.posY = y;
     this.size = s;
-    this.sx = s;
-    this.sx = sx;
-    this.sy = sy;
+    this.speedX = sx;
+    this.speedY = sy;
   }
-  
-  Ball(float x, float y, float s){
-    this(x,y,s, 0,0); //pallina ferma
+
+  Ball(float x, float y, float s) { //costruttore di una pallina ferma, se mai servisse
+    this(x, y, s, 0, 0); 
   }
-  
-  void display(){
-    fill(255,255,0);
+
+  void display() { // disegniamo una pallina gialla usando le posizioni e le grandezza data
+    fill(255, 255, 0);
     noStroke();
-    ellipse(posX,posY,size,size);
+    ellipse(posX, posY, size, size); //size viene usata due volte in modo da avere un cerchio
   }
-  void move(){
-    posX+=sx;
-    posY+=sy;
+
+  void move() { // funzione che simula il movimento della pallina incrementando X e Y della velocità
+    posX+=speedX;
+    posY+=speedY;
   }
-  void bounce(){
-    if(posX < size/2 || posX > width-size/2){
-      sx=-sx;
+
+  void bounce() {
+    // Ivertiamo il valore di velocità quando la pallina raggiunge i bordi
+    // size/2 sarebbe il raggio del nostro cerchio  
+    if (posX < size/2 || posX > width-size/2) {
+      speedX=-speedX;
     }
-    if(posY < size/2 || posY > height-size/2){
-      sy=-sy;
-      posY = height-size/2;
+    if (posY < size/2 || posY > height-size/2) {
+      speedY=-speedY;
     }
   }
-  
-  void gravity(){
-    sy+=0.2;
+
+  void gravity() {
+    speedY+=0.2; //Facciamo in modo che la pallina subisca la gravità, aumentando la velocità di 0.2
   }
-  
-  void run(){
+
+  void run() {
     gravity();
     move();
     bounce();
