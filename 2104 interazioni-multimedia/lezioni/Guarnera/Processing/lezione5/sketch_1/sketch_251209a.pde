@@ -1,5 +1,4 @@
 
-/*
 //SCALE
 float scale = 0.2;
 float dir_scale=1;
@@ -22,7 +21,7 @@ void draw(){
   scale+=dir_scale*0.1;
   if(scale>1 || scale<=0) dir_scale=-dir_scale;
 }
-*/
+
 /*
 float shX = 0.1;
 float shY = 0.1;
@@ -40,11 +39,11 @@ void setup(){
 void draw(){
   background(255);
   translate(width/2, height/2);
-  
+
   //shearX(shX);
   shearY(shY);
   rect(0,0,150,150);
-  
+
   //shX+=0.1;
   shY+=0.1;
 }
@@ -57,13 +56,13 @@ float rotAngle =  10;
 void setup(){
   size(600,600);
   frameRate(10);
-}  
+}
 
 void draw(){
-    
+
     fill(255,50);
     rect(0,0,width, height);
-    
+
     translate(width/2,height/2);
     rotate(radians(rotAngle));
     noStroke();
@@ -95,17 +94,17 @@ void draw(){
   fill(255);
   rect(0,0,50,50);
   popMatrix(); //fine blocco uno
-  
+
   a1++;
   a2+=4;
-  
+
   pushMatrix();
   translate(width/2+80, height/2 );
   rotate(radians(a2));
   fill(255,0,0);
-  rect(0,0,50,50);  
+  rect(0,0,50,50);
   popMatrix();
-  
+
   a2++;
 }
 */
