@@ -145,5 +145,3 @@ void radixSort(int* A, int len, int h){
 ###### Complessità
 La sua complessità dipende dall'algoritmo di ordinamento usato al suo interno, nel nostro caso abbiamo usato il counting sort quindi abbiamo una complessità: $$O(h(n+k)) \in O(n)$$
 
-
-# Dizionari
