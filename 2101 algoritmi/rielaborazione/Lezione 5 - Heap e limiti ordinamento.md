@@ -1,4 +1,4 @@
-# Heap
+## Heap
 
 ### Introduzione
 Si usa l'heap per implementare efficientemente le **code con priorità**. Questo tipo di coda non serve gli elementi in base al momento di arrivo, ma in base a una caratteristica intrinseca chiamata **chiave** (o priorità). Spesso viene astratta come un albero (successivamente la implementiamo come array)
@@ -302,7 +302,7 @@ Nel file [[6 - 29 ottobre 2025.pdf]] ci sono alla fine degli esempi di esercizi 
 - Top-ten di punteggi più alti
 - ecc...
 
-# Limiti degli ordinamenti con confronti
+## Limiti degli ordinamenti con confronti
 
 ### Albero di decisione
 ###### Definizione
