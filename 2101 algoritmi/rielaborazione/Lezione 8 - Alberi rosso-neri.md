@@ -151,3 +151,56 @@ Ruotiamo il padre di $z$ in modo tale da mettere $z$ nella posizione del padre, 
 ![[Screenshot_20251221_162142_Samsung capture.jpg|700]]
 
 ### Operazioni negli alberi rosso-neri: eliminazione
+###### Ripasso rimozione negli alberi BST
+1. *cancellazione foglia*: caso banale, cancello il nodo.
+2. *cancello nodo con un solo figlio*: l'unico figlio prende il posto del padre
+3. *cancello nodo con due figli*: cancello la chiave del nodo che voglio eliminare, la sostituisco alla chiave del nodo più a sinistra del sottoalbero destro, elimino il nodo più a sinistra del sottoalbero destro
+
+###### Definizione
+Indicando con $z$ il nodo che vogliamo rimuovere, definiamo i vari casi di rimozione:
+- **Caso A**: $z$ foglia rossa
+	-  elimino $z$
+- **Caso B**: $z$ con un solo figlio e il padre nero
+	- il figlio di $z$ diventa figlio del padre di $z$  
+	- elimino $z$
+- **Caso C**: $z$ nero con figlio rosso
+	- il figlio prende il posto di $z$ e diventa nero
+	- elimino $z$
+- **Caso D**: $z$ foglia nera
+	- elimino $z$
+	- denoto il NIL come *doppio nero*
+- **Caso E**: $z$ nero con figlio nero
+	- il figlio prende il posto di $z$ e diventa *doppio nero*
+	- elimino $z$
+Gli due due casi creano delle configurazioni anomale, quindi sarà necessario creare una funzione **delete-fixup**
+
+###### Definizione delete-fixup
+Questa funzione va a risolvere i casi problematici dell'eliminazione, definiamo 3 casi:
+*Premesse*: 
+- $z$ è nodo doppio nero
+- $w$ è il fratello di $z$
+
+**Caso 1**: $w$ è nero e ha almeno un figlio rosso
+- *a:* figlio esterno rosso
+	1. Ruoto $w$ con il padre e lo faccio salire
+	2. il doppio nero diventa nero
+	3. $\beta$  diventa nero 
+	![[Pasted image 20251222112735.png|400]]
+- *b:* figlio esterno nero, ma interno rosso
+	1. Ruoto il figlio rosso con il padre $w$ facendolo diventare padre
+	2. $w$ diventerà figlio esterno rosso
+	3. ci siamo ricondotti al caso 1-a
+	   ![[Pasted image 20251222113132.png|400]]
+**Caso 2**: $w$ nero con entrambi i figli neri
+1. propaga la colorazione di $w$ e di $z$ al padre
+	- *a:* se il padre era rosso diventa nero e ho finito
+	- *b:* se il padre era nero diventa doppio nero, richiamo delete-fixup sul padre del doppio nero
+![[Pasted image 20251222113644.png|400]]
+**Caso 3**: $w$ è rosso
+1. ruoto $w$ con il padre facendo risalire $w$ 
+2. richiamo fixup sul nodo nero
+![[Pasted image 20251222114200.png]]
+
+**TIP Generali**: 
+- Se un nodo doppio-nero diventa la radice dell'interno albero possiamo scartare un grado di nero
+- Se dobbiamo togliere un grado di nero ad un nodo NIL questo si può fare ma resterà comunque nero
