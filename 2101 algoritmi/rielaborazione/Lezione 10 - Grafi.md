@@ -48,7 +48,7 @@ Un ordinamento topologico è un ordinamento lineare dei nodi in modo che valga l
 ![[Pasted image 20250110135330.png|500]]
 ### BFS
 ###### Definizione 
-La Breadth-First-Search ovvero ricerca in ampiezza è una algoritmo di ricerca nei grafi. Dato un grafo $G = (V,E)$ e un vertice distinto $s$ detto *sorgente*, la visita in ampiezza ispeziona sistematicamente gli archi di $G$ per "scoprire" tutti i vertici che sono raggiungibili da $s$. Genera anche un albero detto breadth-first tree, il cammino che va da $s$ ad un generico $v$ nell'albero corrisponde al *cammino minimo* da $s$ a $v$
+La Breadth-First-Search ovvero ricerca in ampiezza è una algoritmo di ricerca nei grafi. Dato un grafo $G = (V,E)$ e un vertice distinto $s$ detto *sorgente*, la visita in ampiezza ispeziona sistematicamente gli archi di $G$ per "scoprire" tutti i vertici che sono raggiungibili da $s$. 
 ###### Implementazione
 Per tenere traccia del lavoro svolto, la visita in ampiezza colora i vertici di:
 - *bianco*: nodo non ancora visitato
@@ -78,6 +78,6 @@ BFS(V, s)
 		color[v] = Black
 ```
 
-
+La ricerca oltre a calcolare la distanza di ogni nodo dalla sorgente $s$ crea un albero, detto albero BFS dove il cammino che va da $s$ ad un generico $v$ corrisponde al *cammino minimo* da $s$ a $v$
 ### DFS
 ### Ricerca dei cammini minimi
