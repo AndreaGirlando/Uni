@@ -1,8 +1,5 @@
 # Grafi
 
-Lezione 16
-Lezione 17
-Lezione 18
 ### Proprietà dei grafi
 ###### Definizione e proprietà
 Un grafo è definito come $$G=(V,E)$$con 
@@ -79,5 +76,104 @@ BFS(V, s)
 ```
 
 La ricerca oltre a calcolare la distanza di ogni nodo dalla sorgente $s$ crea un albero, detto albero BFS dove il cammino che va da $s$ ad un generico $v$ corrisponde al *cammino minimo* da $s$ a $v$
+
+![[Pasted image 20251223125121.png]]
+
 ### DFS
+###### Definizione
+Un altro algoritmo di ispezione dei grafi è il depth first search, a differenza del BFS dove la ricerca era in ampiezza qui abbiamo una ricerca in profondità, vedremo successivamente che questo algoritmo ci permette di trarre dal nostro grafo diverse informazioni utili come:
+- la composizione delle componenti connesse
+- un ordinamento topologico
+tutto questo lo facciamo grazie all'albero DFS che crea durante la ricerca. Vedremo diverse implementazioni
+
+###### Premesse comuni alle implementazioni fatte
+I nodi sono colorati in modo diverso in base allo stato in cui si trovano:
+- *bianco*: nodo non ancora visitato
+- *grigio*: nodo scoperto ma non visitato
+- *nero*: nodo visitato
+Nella nostra implementazione teniamo traccia del tempo di inizio e fine visita di un nodo usando due array $d$ e $F$, con $d[v]$ e $d[F]$ indichiamo rispettivamente il tempo di inizio e fine di $v$ ($T$ sarà una variabile che scandirà il tempo di esecuzione)![[Pasted image 20251223124440.png]]Avremo anche altri due array:
+- $color[v]$: che ci indicherà il colore del nodo v
+- $\Pi[v]$: che ci indicherà il padre di quel nodo nel albero DFS 
+Inoltre useremo una funzione $adj(v)$ che ritorna una lista dei nodi adiacenti a $v$
+
+###### Prima implementazione
+```
+DFS-visit(v):
+	color[v] = gray;
+	foreach u in adj(v)
+		if color[u] = white
+			π[u] = v
+			DFS-visit(u)
+		color[v] = black
+
+DFS(G,s):
+	foreach v in V DO:
+		color[v] = white
+		π[] = null
+DFS-visit(s);
+```
+Questa è l'implementazione più grezza, infatti ci potrebbero essere dei nodi non visitati, ad esempio quelli non collegati a nulla. Da queste problematiche nasce la seconda implementazione.
+
+###### Seconda implementazione
+In questa implementazione aggiungiamo un for che scorre la lista dei nodi, in modo che qualsiasi nodo verrà sicuramente visitato, il fatto che ogni nodo può essere una ipotetica sorgente potrebbe creare più alberi DFS ovvero una *foresta DFS*
+```
+DFS-visit(v):
+	color[v] = gray;
+	foreach u in adj(v)
+		if color[u] = white
+			π[u] = v
+			DFS-visit(u)
+		color[v] = black
+
+DFS(G,s):
+	foreach v in V DO:
+		color[v] = white
+		π[] = null
+	foreach v in V DO:
+		if color[v] = white:
+			DFS-visit(s);
+```
+Questa implementazione è perfetta, ma non raccoglie nessuna informazione sul nostro grafo, da qui nasce la necessità di introdurre $d$ e $F$ per scandire il tempo, usati nella terza implementazione
+
+###### Terza implementazione
+```
+DFS-visit(v):
+	d[v] = T
+	T = T+1
+	color[v] = gray;
+	foreach u in adj(v)
+		if color[u] = white
+			π[u] = v
+			DFS-visit(u)
+		color[v] = black
+	F[v] = t
+	t = t+1
+
+DFS(G,s):
+	foreach v in V DO:
+		color[v] = white
+		π[] = null
+	foreach v in V DO:
+		if color[v] = white:
+			DFS-visit(s);
+```
+Alla fine avremo alla fine di questo algoritmo negli array $d$ ed $F$ il tempo di inizio e fine, molto utile nell'utilizzo della DFS per scopi terzi. Di seguito un grafo con le informazioni ottenute dopo una DFS:
+![[Screenshot_20251223_142604_Samsung capture.jpg|500]]
+###### Etichette degli archi
+Nel nostro grafo etichettiamo gli archi in base al ruolo che hanno durante l'esplorazione del grafo, e sono:
+- *T* archi consecutivi: sono gli archi usati dalla DFS per scoprire nuovi nodi
+- *I* archi all'indietro: collegano un nodo a un suo antenato nell'albero DFS
+- *F* archi in avanti: collegano un nodo al suo discendente
+- *C* archi trasversali: collegano nodi che non hanno relazione antenato-discendente
+
+###### Per cosa usiamo la DFS
+**Ordinamento topologico**: dato il tempo di inizio e fine visita di ogni vertice del grafo otteniamo un ordinamento topologico valido se mettiamo i vertici in ordine rispetto a di fine visita:
+![[Screenshot 2025-12-23 143622.png|500]]
+Dai tempi di fine visita otteniamo un ordinamento topologico: $D-G-B-A-E-F-C$
+**Identificazione delle componenti connesse**: per identificare le componenti connesse di un grafo facciamo uso della DFS nel seguente modo:
+1. Faccio una DFS e metto in ordine rispetto al tempo di inizio visita
+2. Creo il grafo trasposto di quello dato in input (inverto le direzioni di tutti gli archi)
+3. Faccio la DFS sul grafo trasposto usando nel foreach principale la lista di nodi definita nel punto 1
+Otteniamo una foresta di alberi DFS, tanti alberi quanti sono le componenti connesse. Di seguito un esempio: ![[Pasted image 20251223144742.png|500]]
 ### Ricerca dei cammini minimi
+Lezione 18
