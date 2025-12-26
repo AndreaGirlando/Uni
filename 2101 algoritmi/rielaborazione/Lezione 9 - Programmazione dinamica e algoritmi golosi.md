@@ -316,10 +316,155 @@ PRINT-CHAIN(D, i, j)
 Mentre l'algoritmo che è rimasto essenzialmente lo stesso si occupa di esplorare e trovare tutti i possibili modi di parentesizzare la catena $k$, la matrice $D[i,j]$ salva esattamente quale indice $k$ ha prodotto la parentesizzazione migliore. La funzione print-chain serve per stampare la parentesizzazione migliore in base ai parametri passati.  
 ###### Complessità
 Avendo tre cicli annidati la complessità è $O(n^3)$, è una complessità molto alta, infatti questo algoritmo viene utilizzando quando si devono moltiplicare matrici molto grandi dove c'è un vero e proprio guadagno.
-### La più lunga sotto-sequenza comune in una stringa
-Lezione 14
+### Distanza di Editing e LCS
+###### Introduzione al Problema
+
+Il problema fondamentale analizzato riguarda il calcolo della distanza tra due stringhe, $X$ e $Y$. Esistono diverse metriche per valutare questa distanza, come la **Distanza di Hamming** (che considera solo sostituzioni su stringhe di uguale lunghezza) o la più generale **Distanza di Editing** (o distanza di Levenshtein).
+
+La Distanza di Editing definisce il numero minimo di operazioni necessarie per trasformare la stringa $X$ nella stringa $Y$. Le operazioni consentite, ciascuna con un costo unitario, sono:
+1. **Inserimento** di un carattere.
+2. **Cancellazione** di un carattere.
+3. **Sostituzione** di un carattere.
+
+Consideriamo ad esempio la trasformazione dalla parola "CASA" alla parola "CHIESA".
+- _CASA_ $\to$ _CHASA_ (Inserimento 'H')
+- _CHASA_ $\to$ _CHESA_ (Sostituzione 'A' con 'E')
+- _CHESA_ $\to$ _CHIESA_ (Inserimento 'I')
+###### Definizione Formale e Ricorsiva
+Date due stringhe:
+- $X$ di lunghezza $n$, dove $x_i = X[1 \dots i]$ è il prefisso di lunghezza $i$.
+- $Y$ di lunghezza $m$, dove $y_j = Y[1 \dots j]$ è il prefisso di lunghezza $j$.
+Definiamo $ED(i, j)$ come la distanza di editing tra i prefissi $x_i$ e $y_j$. La soluzione può essere espressa ricorsivamente:
+
+**Casi Base**
+Se una delle due stringhe è vuota, la distanza è pari alla lunghezza dell'altra stringa (tutti inserimenti o cancellazioni):
+- $ED(i, 0) = i$
+- $ED(0, j) = j$
+
+**Passo Ricorsivo**
+Per calcolare $ED(i, j)$ con $i, j > 0$, consideriamo i caratteri $x_i$ e $y_j$:
+1. Se $x_i = y_j$ (Match): Non è necessaria alcuna operazione sui caratteri correnti. Il costo è ereditato dai prefissi precedenti: $$ED(i, j) = ED(i-1, j-1)$$
+2. Se $x_i \neq y_j$ (Mismatch): Dobbiamo scegliere l'operazione che minimizza il costo tra le tre possibili:
+    - _Sostituzione:_ $ED(i-1, j-1) + 1$
+    - _Cancellazione (da X):_ $ED(i-1, j) + 1$
+    - _Inserimento (in Y):_ $ED(i, j-1) + 1$
+
+La formula completa è:
+$$ED(i, j) = \min(ED(i-1, j) + 1, ED(i, j-1) + 1,  ED(i-1, j-1) + \text{costo\_sostituzione})$$
+
+(Nota: il costo di sostituzione è 1 se i caratteri sono diversi, 0 se uguali).
+
+###### Programmazione Dinamica
+
+L'approccio ricorsivo puro ("top-down") è inefficiente a causa della ricalcolazione dei sottoproblemi sovrapposti. La soluzione ottimale utilizza la **Programmazione Dinamica** ("bottom-up"), costruendo una tabella (matrice) di dimensione $(n+1) \times (m+1)$.
+
+**Algoritmo per il calcolo della Distanza (EDT)**
+*Input*: Stringhe $X, Y$ di lunghezza $n, m$.
+
+*Complessità*: Tempo $O(n \times m)$, Spazio $O(n \times m)$ (ottimizzabile a $O(\min(n, m))$ se si memorizzano solo le ultime due righe).
+
+**Pseudocodice:**
+```
+EDT(X, Y, n, m)
+  Dichiara matrice ED[0..n, 0..m]
+
+  // Inizializzazione
+  FOR i = 0 TO n DO ED[i, 0] = i
+  FOR j = 0 TO m DO ED[0, j] = j
+
+  // Riempimento Matrice
+  FOR i = 1 TO n DO
+    FOR j = 1 TO m DO
+      IF X[i] == Y[j] THEN
+        ED[i, j] = ED[i-1, j-1]
+      ELSE
+        ED[i, j] = min(ED[i, j-1],    // Inserimento
+                       ED[i-1, j],    // Cancellazione
+                       ED[i-1, j-1])  // Sostituzione
+                   + 1
+```
+
+###### Ricostruzione della Soluzione Ottima
+
+Una volta compilata la matrice, il valore in $ED[n, m]$ rappresenta il costo minimo. Per trovare la sequenza di operazioni, si esegue un "backtracking" dalla cella $(n, m)$ alla cella $(0, 0)$.
+
+**Pseudocodice Ricostruzione:**
+```
+PRINT-EDT(ED, X, Y, n, m)
+  i = n, j = m
+  WHILE (i > 0 OR j > 0)
+    IF (i > 0 AND j > 0 AND X[i] == Y[j]) THEN
+      // Match: nessun costo, ci spostiamo in diagonale
+      i = i - 1
+      j = j - 1
+    ELSE
+      // Determiniamo da quale cella proviene il minimo
+      min_val = min(ED[i, j-1], ED[i-1, j], ED[i-1, j-1])
+
+      IF (j > 0 AND min_val == ED[i, j-1]) THEN
+        STAMPA("Inserimento di " + Y[j])
+        j = j - 1
+      ELSE IF (i > 0 AND min_val == ED[i-1, j]) THEN
+        STAMPA("Cancellazione di " + X[i])
+        i = i - 1
+      ELSE
+        STAMPA("Sostituzione di " + X[i] + " con " + Y[j])
+        i = i - 1
+        j = j - 1
+```
+
+---
+
+###### Longest Common Substring
+
+Un problema correlato è trovare la più lunga stringa di caratteri _consecutivi_ comune a entrambe le stringhe.
+
+**Definizione Ricorsiva (Suffissi)**
+Sia $LCS_{suffix}(i, j)$ la lunghezza del suffisso comune più lungo tra $X[1\dots i]$ e $Y[1\dots j]$.
+- Se $X[i] = Y[j]$: $LCS_{suffix}(i, j) = LCS_{suffix}(i-1, j-1) + 1$
+- Se $X[i] \neq Y[j]$: $LCS_{suffix}(i, j) = 0$ (la continuità si interrompe).
+
+Durante il calcolo, è necessario mantenere una variabile globale `max_len` per tracciare il valore massimo trovato nella matrice, poiché la sottostringa più lunga può terminare in qualsiasi punto, non necessariamente alla fine delle stringhe.
+
+*Ottimizzazione Spaziale:*
+Poiché per calcolare la riga $i$ serve solo la riga $i-1$, è possibile utilizzare solo due array ("current" e "previous") invece di un'intera matrice, riducendo lo spazio.
+
+###### Longest Common Subsequence
+A differenza della sotto-stringa, una **sotto-sequenza** non richiede che i caratteri siano consecutivi, ma deve mantenere l'ordine relativo originale.
+
+**Esempio**:
+$X = \text{ACTAAA}$
+$Y = \text{CCATAG}$
+LCS = "ATA" (lunghezza 3).
+
+**Relazione di Ricorrenza**
+Sia $LCS(i, j)$ la lunghezza della più lunga sotto-sequenza comune tra $X[1\dots i]$ e $Y[1\dots j]$.
+1. Se $X[i] = Y[j]$: Il carattere fa parte della LCS. $$LCS(i, j) = LCS(i-1, j-1) + 1$$
+2. Se $X[i] \neq Y[j]$: Il carattere corrente non può estendere una corrispondenza comune. La soluzione è il massimo tra ignorare il carattere di $X$ o ignorare il carattere di $Y$. $$LCS(i, j) = \max(LCS(i-1, j), \quad LCS(i, j-1))$$
+
+**Ricostruzione e Stampa della LCS**
+Per stampare la sotto-sequenza, si utilizza una procedura ricorsiva partendo dalla fine della matrice calcolata ($L$).
+
+```
+PRINT-LCS(L, X, Y, i, j)
+  IF (L[i, j] == 0) RETURN
+
+  IF (X[i] == Y[j]) THEN
+    // Trovato un carattere comune: stampa prima i precedenti (ordine inverso)
+    PRINT-LCS(L, X, Y, i-1, j-1)
+    STAMPA(X[i])
+  ELSE
+    // Segui la direzione del massimo valore
+    IF (L[i-1, j] >= L[i, j-1]) THEN
+      PRINT-LCS(L, X, Y, i-1, j)
+    ELSE
+      PRINT-LCS(L, X, Y, i, j-1)
+```
 # Algoritmi golosi
 ### Introduzione
+###### Definizione
+Un'altra strategia che possiamo sfruttare per risolvere problemi di ottimizzazione è la strategia greedy, in italiano golosa. Un algoritmo goloso fa sempre la scelta che sembra ottima in un determinato momento, ovvero fa una scelta *localmente ottima*, nella speranza che tale scelta porterà a una soluzione globalmente ottima. La scelta greedy che viene fatta cambia da problema a problema.
+
 ### Selezione di attività
 Lezione 13
 ### Compressione di Huffman
