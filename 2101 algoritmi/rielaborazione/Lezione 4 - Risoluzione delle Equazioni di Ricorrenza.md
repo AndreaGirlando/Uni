@@ -44,12 +44,10 @@ int binarySearch(int A[], int low, int high, int x) {
 ```
 
 In ogni chiamata si effettua al massimo una sola chiamata ricorsiva su metà dell'intervallo, mentre il lavoro non ricorsivo è costante. L'equazione di ricorrenza quindi è: $$T(n) = T(\frac{n}{2})+1$$
-Ci sono altri esempio nel file [[4-risoluzione delle Equazioni di Ricorrenza.pdf|pdf]]
-
 ### Ricorrenze non uniformi
 Non tutti gli algoritmi ricorsivi possono essere descritti mediante un'equazione del tipo: $$T(n) = aT(\frac{n}{b})+f(n)$$in cui il problema viene suddiviso in un numero costante di sotto-problemi. In molti casi reali, la dimensione dei sotto-problemi può variare a seconda dei dati.
 
-###### Esempio - quickSort
+###### Esempio - QuickSort
 - **Caso ideale**: l'elemento *pivot* scelto divide l'array esattamente in due parti uguali, ciascuna di dimensione $\frac{n}{2}$
 - **Caso reale**: il *pivot* scelto non divide il nostro array in due array di dimensioni diverse
 Nel caso medio possiamo dire che:
@@ -83,8 +81,6 @@ $$con $L$ che rappresenta la profondità dell'albero ossia il numero di livello 
 **Esempio 1 - Ricerca binaria**: consideriamo l'equazione della ricerca binaria trovata prima: $$T(n) = T(\frac{n}{2})+1$$Possiamo immaginare l'albero della ricorsione come una catena di chiamate successive, in cui ogni nodo produce un unico figlio di dimensione dimezzata. Ad ogni livello il lavoro è constante (ovvero $1$). Il costo totale si ottiene sommando il contributi di tutti i livelli:
 $$T(n) = 1+1+1+1+\dots+1$$dove il numero dei termini è pari a $\log_2n+1$. Da qui risulta immediatamente che: $T(n) = O(\log n)$ 
 
-**Altri esempi disponibili nel file originale**
-
 ### Il metodo della sostituzione
 Un secondo approccio è il metodo della sostituzione, dove al posto di avere un'analisi attraverso una rappresentazione visiva abbiamo un'analisi più analitica
 
@@ -106,8 +102,6 @@ L'intuizione (l'albero di ricorsione)n suggerisce una crescita logaritmica. Supp
 $$T(n) \le c \log_2 \frac{n}{2}+1 =$$
 $$= c(\log_2 n - 1) + 1$$
 $$= c \log_2 n -c + 1$$Affinché la disuguaglianza $T(n) \le c \log_2 n$ sia rispettata, è sufficiente che: $$-c+1 \le 0 \text{ cioè } c \ge 1$$Anche in questo caso la nostra ipotesi è coerente ed è $T(n) = O(\log n)$
-
-**Altri esempi nel file originale**
 
 ### Metodo basato sul teorema Master
 Il teorema Master fornisce una regola generale per determinare in modo sistematico l'ordine di grandezza.
@@ -180,5 +174,3 @@ Applicando la formula corrispondente, otteniamo:
 $$T(n) = \Theta(n^{\log_{2} 1} \log n) = \Theta(\log n).$$
 
 In ogni passo della ricerca binaria, il problema viene dimezzato, ma il lavoro svolto ad ogni livello (una sola comparazione) è costante. Poiché ci sono $\log_{2} n$ livelli fino a ridurre il problema a un singolo elemento, il costo totale cresce in modo logaritmico. Il Teorema Master, in questo caso, conferma in modo immediato ciò che l'intuizione suggerisce: ogni livello contribuisce in modo uniforme, e il numero di livelli determina la crescita complessiva.
-
-**Ci sono altri esempi nel file originale**

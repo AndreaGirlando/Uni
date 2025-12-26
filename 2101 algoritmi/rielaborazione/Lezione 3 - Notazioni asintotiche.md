@@ -2,17 +2,20 @@
 
 ### Concetti preliminari di analisi asintotica
 ###### Confronto tra le principali funzioni di crescita
-Quando si analizza l'efficienza di un algoritmo, non ci si limita a misurare il tempo effettivo di esecuzione sul computer, poiché tale misura dipende da fattori cangianti da macchina a macchina, quello che si punta a fare è descrivere in modo astratto e generale il comportamento dell'algoritmo, indipendentemente dal contesto. In particolare si studia come il **tempo di esecuzione** cresce al crescere della dimensione dell'input $n$. 
+Quando si analizza l'efficienza di un algoritmo, non ci si limita a misurare il tempo effettivo di esecuzione sul computer, poiché tale misura dipende da fattori cangianti da macchina a macchina, quello che si punta a fare è descrivere in modo astratto e generale il comportamento dell'algoritmo, indipendentemente dal contesto. 
+In particolare si studia come il **tempo di esecuzione** cresce al crescere della dimensione dell'input $n$. 
 - $T(n)$ rappresenta la **funzione di costo dell'algoritmo**. 
 Un algoritmo è fatto di vari passi, un **passo** può essere considerato come un'operazione di base che richiede un tempo costante.
 
-Diremo che due algoritmi sono più o meno efficienti a seconda di come cresce la loro funzione $T(n)$: **un algoritmo la cui funzione di costo cresce più lentamente sarà, per input sufficientemente grandi, più efficiente di uno con crescita più rapida**. 
+Diremo che due algoritmi sono più o meno efficienti a seconda di come cresce la loro funzione $T(n)$: *un algoritmo la cui funzione di costo cresce più lentamente sarà, per input sufficientemente grandi, più efficiente di uno con crescita più rapida.* 
 
 Dalla necessità di classificare i vari algoritmi nascono le **notazioni asintotiche**, che ci permettono per l'appunto di rappresentare questa idea di crescita trascurando i dettagli che non influiscono sul comportamento generale dell'algoritmo. 
-
-
 ###### Confronto tra le principali funzioni di crescita
-Alcune funzioni crescono lentamente, altre molto rapidamente. Immaginiamo di avere diversi algoritmi che risolvono lo stesso problema, ma con funzioni di costo differente: uno è proporzionale a $a \log n$, un altro a $n$, un altro ancora a $n^2$. Per valori piccoli di $n$ le differenze possono sembrare trascurabili, ma per input abbastanza grandi la situazione cambia, ad esempio con $n=1000$: $$\log_2 n ≈ 10,\ n = 1000,\ n^2 = 10^6, \ 2^n ≈ 10^{301}$$
+Alcune funzioni crescono lentamente, altre molto rapidamente. Immaginiamo di avere diversi algoritmi che risolvono lo stesso problema, ma con funzioni di costo differente: 
+- uno è proporzionale a $a \log n$
+- un altro a $n$
+- un altro ancora a $n^2$
+Per valori piccoli di $n$ le differenze possono sembrare trascurabili, ma per input abbastanza grandi la situazione cambia, ad esempio con $n=1000$: $$\log_2 n ≈ 10,\ n = 1000,\ n^2 = 10^6, \ 2^n ≈ 10^{301}$$
 In generale abbiamo diversi tipi di crescita:
 1. **Funzioni costanti** $T(n) = 1$ rappresentano algoritmi che impiegano sempre lo stesso numero di operazioni indipendentemente da $n$
 	- Accesso ad un elemento di un array
@@ -29,7 +32,7 @@ In generale abbiamo diversi tipi di crescita:
 Sono elencate in ordine di crescita crescente: una funzione situata più in basso cresce più rapidamente di tutte quelle sopra di essa
 
 ###### Termini e fattori dominanti e trascurabili
-Quando si analizza il tempo di esecuzione di un algoritmo la funzione di costo $T(n)$ può contenere più termini, si chiama termine dominante quello che determina l'andamento complessivo della funzione per valori grandi di $n$, quando abbiamo più termini quello che dobbiamo fare è:
+Quando si analizza il tempo di esecuzione di un algoritmo la funzione di costo $T(n)$ può contenere più termini, si chiama *termine dominante* quello che determina l'andamento complessivo della funzione per valori grandi di $n$, quando abbiamo più termini quello che dobbiamo fare è:
 - Eliminare i termini di ordine inferiore, cioè quelli che crescono più lentamente
 - Si ignorano i fattori costanti che moltiplicano i termini
 - Si conserva solo il termine che domina
@@ -38,7 +41,7 @@ Di seguito degli esempi:
 2. $T (n) = n \log n + 100n$ qui il termine che cresce più velocemente è $n \log n$
 
 ### Le notazioni asintotiche
-Con il termine **asintotico** indichiamo il comportamento di una funzione quando la variabile indipendente cresce senza limiti, quindi possiamo dire che:
+Con il termine **asintotico** indichiamo il comportamento di una funzione quando la variabile indipendente cresce senza limiti, possiamo quindi affermare che:
 
 *Una notazione asintotica è un modo sintetico per descrivere il modo in cui una funzione cresce rispetto a un'altra. Essa non ci dice quanto vale esattamente una funzione, ma quanto rapidamente aumenta rispetto ad altre funzioni al crescere di n*
 
@@ -48,19 +51,18 @@ In generale le notazioni asintotiche forniscono un linguaggio per esprimere rela
 - $f(n)$ cresce non più rapidamente / alla stessa velocità / più rapidamente di $g(n)$
 Esse si basano quindi sul confronto tra le due funzione nel limite per $n \rightarrow \infty$ cioè osservando il loro comportamento quando la dimensione diventa molto grande 
 
-**Esempio**: date queste due funzioni: $$f(n) = 3n^2 + 5n +7, \ g(n) = n^2$$ la differenza può sembrare significativa, ma man mano che $n$ cresce il termine $3n^2$ diventa dominante, quindi possiamo affermare che $f(n)$ e $g(n)$ hanno la stessa crescita asintotica
+**Esempio**: date queste due funzioni: $$f(n) = 3n^2 + 5n +7, \ g(n) = n^2$$la differenza può sembrare significativa, ma man mano che $n$ cresce il termine $3n^2$ diventa dominante, quindi possiamo affermare che $f(n)$ e $g(n)$ hanno la stessa crescita asintotica
 
 ###### La notazione Θ (theta)
-La notazione $\theta$ fornisce un **vincolo asintotico stretto** ovvero *rappresenta l'insieme di tutte le funzioni che crescono alla stessa velocità di una funzione di riferimento g(n)*. Formalmente scriviamo che: $$\theta(g(n)) = \{ f(n) | \exists c_1,c_2, n_0 > 0 \text{ tali che } 0 \le c_1g(n) \le f(n) \le c_2g(n), \forall n \ge n_0 \}$$In altre parole, a partire da una certa soglia $n_0$ la funzione $f(n)$ è sempre compresa tra due multipli costanti della funzione di riferimento $g(n)$.
-Praticamente la notazione $\theta$ descrive una crescita bilanciata: $f(n)$ cresce in modo simile a $g(n)$ differendo al più per un fattore costante. Questo significa che per input di $n$ molto grandi possiamo dire che: $$\frac{f(n)}{g(n)} \rightarrow k \text{ con } 0<k<\infty $$
-![[Pasted image 20251022150331.png|500]]
+La notazione $\Theta$ fornisce un **vincolo asintotico stretto** ovvero *rappresenta l'insieme di tutte le funzioni che crescono alla stessa velocità di una funzione di riferimento g(n)*. Formalmente scriviamo che: $$\theta(g(n)) = \{ f(n) | \exists c_1,c_2, n_0 > 0 \text{ tali che } 0 \le c_1g(n) \le f(n) \le c_2g(n), \forall n \ge n_0 \}$$In altre parole, a partire da una certa soglia $n_0$ la funzione $f(n)$ è sempre compresa tra due multipli costanti della funzione di riferimento $g(n)$.
+Praticamente la notazione $\Theta$ descrive una crescita bilanciata: $f(n)$ cresce in modo simile a $g(n)$ differendo al più per un fattore costante. Questo significa che per input di $n$ molto grandi possiamo dire che: $$\frac{f(n)}{g(n)} \rightarrow k \text{ con } 0<k<\infty $$![[Pasted image 20251022150331.png|500]]
 da questa immagine capiamo subito il significato della definizione formale infatti dopo un certo $n$ (in questo caso $n=7$) la nostra funzione resta confinata nella fascia delimitata dalla linea tratteggiata
 
 **Esempi**:
 - $5n + 20 = \theta(n)$ perché la costante additiva non influisce sul comportamento
 - $\frac{1}{2}n^3 + 100 = \theta(n^3)$
 
-La notazione $\theta$ è la più informativa poiché fornisce sia un limite superiore sia uno inferiore, se $f(n) = \theta(g(n))$ allora $f(n)$ è simultaneamente:
+La notazione $\theta$ è la più informativa poiché fornisce sia un limite superiore sia uno inferiore, se $f(n) = \Theta(g(n))$ allora $f(n)$ è simultaneamente:
 - $O(g(n))$
 - $\Omega(g(n))$
 Capiremo successivamente il perché
@@ -116,14 +118,27 @@ $$\omega(g(n)) \supseteq \Omega(g(n)) \supseteq \Theta(g(n)) \subseteq O(g(n)) \
 
 
 ### Oltre i casi limite
-Le notazioni asintotiche descrivono il comportamento di un algoritmo per input molto grandi, ma nella realtà le cose possono essere più sfumate, le costanti o termini minori possono influenzare le prestazioni più di quanto le formule suggeriscano
 
 ###### Cosa accade davvero in pratica
 Le notazioni asintotiche sono strumenti potenti per classificare gli algoritmi, ma è importante ricordare che esse rappresentano un modello astratto del comportamento di un programma. Dire che un algoritmo ha complessità $O(g(n))$ non significa che esegua esattamente $g(n)$ operazioni ma solo che per $n$ grandi il suo tempo di esecuzione non cresce più rapidamente di una funzione $g(n)$, di solito in questo tipo di analisi si distinguono tre casi:
 - $O(g(n))$ che descrive il **caso peggiore** ovvero il limite superiore del tempo di esecuzione
 - $\Omega(g(n))$ che descrive il **caso migliore** ovvero il limite inferiore del tempo di esecuzione
 - $\Theta(g(n))$ indica che il tempo di esecuzione è compreso tra i due limiti precedenti, fornisce quindi una descrizione asintoticamente esatta di quello che è il tempo di esecuzione
-![[Pasted image 20251022183909.png|700]]
+
+**Esempio 1: La ricerca lineare**
+Nel caso peggiore, una ricerca lineare in un array di $n$ elementi richiede di esaminare tutti gli elementi:
+$$T_{\text{worst}}(n) = O(n)$$
+Tuttavia, se l'elemento cercato si trova spesso nelle prime posizioni, il numero medio di confronti può essere molto più basso, ad esempio circa $n/2$. In tal caso, il comportamento medio si avvicina a:
+$$T_{\text{avg}}(n) = \Theta(n/2) = \Theta(n)$$
+ma il tempo effettivo percepito sarà spesso inferiore rispetto al limite teorico.
+
+**Esempio 2: L'ordinamento tramite QuickSort**
+Il QuickSort ha una complessità nel caso peggiore di $O(n^2)$, che si verifica quando il pivot scelto in ogni passo è sempre il minimo o il massimo elemento (ad esempio, se l'array è già ordinato). Tuttavia, nella pratica, grazie alla scelta casuale del pivot o a tecniche di bilanciamento, l'algoritmo si comporta quasi sempre come un algoritmo $O(n \log n)$. Il suo caso medio è quindi molto più rappresentativo delle prestazioni reali:
+$$T_{\text{avg}}(n) = \Theta(n \log n)$$
+**Esempio 3: La ricerca binaria**
+La ricerca binaria ha caso migliore $\Omega(1)$ (quando l'elemento cercato è esattamente quello centrale) e caso peggiore $O(\log n)$. Nella pratica, tuttavia, ogni ricerca richiede un numero di passi che dipende in modo logaritmico da $n$, per cui il comportamento effettivo si avvicina costantemente al caso peggiore.
+
+
 Questi esempi ci mostrano che le notazioni non devono essere interpretate come previsioni puntuali, ma come **descrizioni qualitative del comportamento**, le notazioni vanno interpretate in questo modo:
 - **Caso peggio** ci garantisce la soglia di sicurezza, utile in contesti critici
 - **Caso migliore**: indica il limite di ottimalità teorica, ma non sempre raggiungibile
@@ -134,11 +149,4 @@ Nell'analisi asintotica degli algoritmi, è prassi trascurare i **fattori costan
 
 **Esempio**: $$T_1(n) = 100n, \ T_2(n) = 5n \log_2 n$$dal punto di vista asintotico $T_1$ è più efficiente, tuttavia il fattore costante $100$ nel primo algoritmo può renderlo più lento del secondo per una vasta gamma di valori realistici di $n$, vediamolo con $n = 100$
 $$T_1(100) = 10000 , \ T_2(100) = 5\times100\times \log_2 100 ≈ 5 \times 100 \times 6.64 = 3320 $$
-In questo caso, l'algoritmo con complessità peggiore risulta più veloce
-
-Questo esempio mette in evidenza un punto importante: le notazioni asintotiche descrivono il comportamento per $n$ grandi, ma non sempre riflettono le prestazioni reali su input di dimensioni moderate
-
-**In sintesi** possiamo dire che:
-- Le notazioni asintotiche descrivono il comportamento a lungo termine
-- I fattori costanti e i termini minori influenzano le prestazioni nel breve termine
-- un algoritmo asintoticamente migliore può essere più lento di un altro per una vasta gamma di input reali
+In questo caso, l'algoritmo con complessità peggiore risulta più veloce. Questo esempio mette in evidenza un punto importante: le notazioni asintotiche descrivono il comportamento per $n$ grandi, ma non sempre riflettono le prestazioni reali su input di dimensioni moderate
