@@ -175,5 +175,92 @@ Dai tempi di fine visita otteniamo un ordinamento topologico: $D-G-B-A-E-F-C$
 2. Creo il grafo trasposto di quello dato in input (inverto le direzioni di tutti gli archi)
 3. Faccio la DFS sul grafo trasposto usando nel foreach principale la lista di nodi definita nel punto 1
 Otteniamo una foresta di alberi DFS, tanti alberi quanti sono le componenti connesse. Di seguito un esempio: ![[Pasted image 20251223144742.png|500]]
-### Ricerca dei cammini minimi
-Lezione 18
+# Ricerca dei cammini minimi
+
+### Introduzione
+###### Definizioni
+In un *problema dei cammini minimi* sono dati:
+- un grafo orientato pesato $G = (V,E)$
+- funzione peso $w: E \rightarrow R$ che associa agli archi dei pesi
+Il peso di un cammino $p = <v_0, v_1, \dots, v_k>$ è la somma dei pesi degli archi che lo compongono: $$w(p) = \sum_{i=1}^{k}w(v_{i-1},v_i)$$il peso di un cammino minimo $\delta(u,v)$ da $u$ a $v$ è definito in questo modo:
+$$
+\delta(u, v) = \begin{cases} 
+\min \{ w(p) : u \stackrel{p}{\leadsto} v \} & \text{se esiste un cammino da } u \text{ a } v \\
+\infty & \text{negli altri casi}
+\end{cases}
+$$
+
+Un **cammino minimo** è definito come un cammino qualsiasi $p$ con peso $w(p) = \delta(u,v)$
+
+###### Varianti di questo problema
+Esistono 4 varianti del problema dei cammini minimi:
+1. *Problema dei cammini minimi da sorgente unica(single source)*: dato un grafo vogliamo trovare un cammino minimo che va da un dato vertice sorgente $s \in V$ a ciascun vertice $v \in V$ 
+2. *Problema dei cammini minimi con destinazione unica(single destination)*: trovare un cammino minimo da ciascun vertice $v$ a un dato vertice $t$ destinazione. (Invertendo la direzione di ciascun argo nel grafo lo possiamo ricondurre la primo caso)
+3. *Problema del cammino minimo per una coppia di vertici(single pair)*: trovare un cammino minimo da $u$ a $v$, e una variante del primo problema.
+4. *Problema dei cammini minimi fra tutte le coppie di vertici(all-pairs)*: trovare un cammino minimo da $u$ a $v$ per ogni coppia di vertici.
+Di seguito affronteremo il primo e il quarto.
+
+### Proprietà
+###### Sottostruttura ottima
+**Teorema**: Dati
+- un grafo orientato $G = (V,E)$ 
+- la funzione peso $w: E \rightarrow R$ 
+- sia $p = (v_0,v_1, \dots, v_k)$ un cammino minimo dal vertice $v_0$ al $v_k$ 
+per qualsiasi $i$ e $j$ tali che $0\le i \le j \le k$ sia $p_{ij}$ un sotto-cammino di $p$ dal vertice $v_i$ al vertice $v_j$ allora $P_{ij}$ è un cammino minimo da $v_i$ a $v_j$
+**Dimostrazione**: Se scomponiamo il cammino $p$ in $$\nu_0 \overset{p_{0i}}{\leadsto} \nu_i \overset{p_{ij}}{\leadsto} \nu_j \overset{p_{jk}}{\leadsto} \nu_k $$abbiamo $w(p) = w(p_{0i})+w(p_{ij})+w(p_{jk})$. 
+Supponiamo adesso che ci sia un cammino $p'_{ij}$ da $v_i$ a $v_j$ con peso $w(p'_{ij})<w(p_{ij})$. Allora $\nu_0 \overset{p_{0i}}{\leadsto} \nu_i \overset{p'_{ij}}{\leadsto} \nu_j \overset{p_{jk}}{\leadsto} \nu_k$ è un cammino da $v_0$ a $v_k$ il cui peso è minore di $w(p)$ che contraddice l'ipotesi che $p$ sia un cammino minimo da $v_0$ a $v_k$
+###### Archi di peso negativo e cicli
+All'interno del nostro grafo potrebbero essere contenuti dei cammini di peso negativo, o anche dei cicli:
+- Quando *non sono presenti* dei cicli di peso complessivo negativo raggiungibili è sempre possibile definire $\delta(s,v)$
+- Quando *sono presenti* dei cicli di peso complessivo negativo non sarà possibile individuare di $\delta(s,v)$ in quanto sarà sempre possibile diminuirlo effettuando un numero indefinito di passi all'interno del ciclo. In tal caso diremo che $\delta(s,v) = -\infty$
+###### Rilassamento dei cammini minimi
+Il processo di *rilassamento di un arco* consiste nel verificare se passando per $u$, è possibile migliorare il cammino minimo per $v$ da $s$ precedentemente trovato. Nelle nostre implementazioni avremo un array $d$ dove $d[v]$ è peso del cammino da $v$ ad $s$, con ogni passo di rilassamento possiamo ridurre questo valore.
+
+```
+RELAX(u,v,w):
+	if(d[v]>d[u]+w(u,v))
+		d[v] = d[u]+w(u,v)
+```
+
+Alla creazione del nostro grafo tutti i valori del nostro array $d$ vengono inizializzati a $+\infty$. 
+
+###### Proprietà dei cammini minimi
+1. *Disuguaglianza triangolare*
+   Per qualsiasi arco $(u, v) \in E$, si ha $\delta(s, v) \le \delta(s, u) + w(u, v)$.
+2. *Proprietà del limite superiore*
+   Per tutti i vertici $v \in V$, si ha sempre $v.d \ge \delta(s, v)$ e, una volta che il limite superiore $v.d$ assume il valore $\delta(s, v)$, esso non cambia più.
+3. *Proprietà dell'assenza di un cammino*
+   Se non c'è un cammino da $s$ a $v$, allora si ha sempre $v.d = \delta(s, v) = \infty$.
+4. *Proprietà della convergenza*
+   Se $s \leadsto u \to v$ è un cammino minimo in $G$ per qualche $u, v \in V$ e se $u.d = \delta(s, u)$ in un istante qualsiasi prima del rilassamento dell'arco $(u, v)$, allora $v.d = \delta(s, v)$ in tutti gli istanti successivi.
+5. *Proprietà del rilassamento del cammino*
+   Se $p = \langle v_0, v_1, \dots, v_k \rangle$ è un cammino minimo da $s = v_0$ a $v_k$ e gli archi di $p$ vengono rilassati nell'ordine $(v_0, v_1), (v_1, v_2), \dots, (v_{k-1}, v_k)$, allora $v_k.d = \delta(s, v_k)$. Questa proprietà è soddisfatta indipendentemente da altri passi di rilassamento effettuati.
+6. *Proprietà del sotto grafo dei predecessori*
+   Una volta che $v.d = \delta(s, v)$ per ogni $v \in V$, il sotto grafo dei predecessori è un albero di cammini minimi radicato in $s$.
+
+### Single-Source Shortest Path
+###### Generic SSSP
+Di seguito vediamo il primo algoritmo per la ricerca di un cammino minimo ovvero il *Single-Source Shortest Path* che risolve il primo problema dei cammini minimi. 
+```
+Generic-SSSP(G,s)
+	d = new array(len(V))
+	foreach v in V do
+		d[v] = +infinito
+	d[s] = 0
+	while esiste (u, v) in E tale che d[u] + w(u, v) < d[v]:
+	    RELAX(u, v)
+	return d
+```
+
+
+###### SSSP in un grafo orientato aciclico (DAG)
+Rilassando gli archi di un dag (Directed Acyclic Graph) pesato $G = (V,E)$ secondo un ordine topologico dei suoi vertici è possibile calcolare i cammini minimi da una sorgente unica nel tempo $\Theta(V+E)$. L'algoritmo inizia ordinando topologicamente il dag, se esiste un cammino dal vertice $u$ al vertice $v$, allora $u$ precede $v$ nell'ordine topologico. Effettuiamo un passaggio sui vertici secondo l'ordine topologico. Durante l'elaborazione vengono rilassati tutti gli archi che escono dal vertice 
+
+```
+DAG-SHORTEST-PATHS(G, w, s)
+	U = getTopologicalOrder(G);
+	foreach v in U:
+	  foreach v in G.Adj[u]
+		  RELAX(u, v, w)
+```
+![[Pasted image 20251227181327.png|500]]

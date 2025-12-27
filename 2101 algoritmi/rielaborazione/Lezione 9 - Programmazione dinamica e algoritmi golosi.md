@@ -263,7 +263,7 @@ MATRIX-CHAIN-ORDER(P, n)
             
             for k = i to j - 1 do
                 // Calcolo del costo temporaneo
-                costo = S[i, k] + S[k + 1, j] + P[k] * P[j]
+                costo = S[i, k] + S[k + 1, j] + P[i-1] * P[k] * P[j]
                 
                 // Se il nuovo costo è minore, aggiorna la matrice
                 if S[i, j] > costo then
@@ -465,7 +465,122 @@ PRINT-LCS(L, X, Y, i, j)
 ###### Definizione
 Un'altra strategia che possiamo sfruttare per risolvere problemi di ottimizzazione è la strategia greedy, in italiano golosa. Un algoritmo goloso fa sempre la scelta che sembra ottima in un determinato momento, ovvero fa una scelta *localmente ottima*, nella speranza che tale scelta porterà a una soluzione globalmente ottima. La scelta greedy che viene fatta cambia da problema a problema.
 
-### Selezione di attività
-Lezione 13
+### Problema dello zaino
+###### Definizione
+Riprendendo il problema dello zaino presentato nella lezione 2, ricordiamo che:
+- $k$ capienza dello zaino
+- $A = \{a_1,a_2,\dots,a_n\}$
+- $P(a_i) =$ peso dell'oggetto
+- $V(a_i) =$ valore dell'oggetto
+- *Obbiettivo*: massimizzare il guadagno
+in questo caso però ogni oggetto ha lo stesso valore ovvero: $$v(a) = 1 \; \forall a \in A$$
+Banalmente ciò che dobbiamo massimizzare è il numero di oggetti. Un ottima strategia (greedy) è quella di scegliere l'oggetto con il peso minore.
+###### Dimostrazione scelta greedy
+$$
+a_w : P(a_w) = \min\{\text{Peso}(a_j) : a_j \in A\}
+$$
+Ovvero $a_w$ scelta greedy. $S \subseteq A$ è una soluzione ottima. Allora $a_w \in S$.
+Ipotizziamo per assurdo che $a_w \notin S$.
+
+$$
+a_\phi \rightarrow P(a_\phi) = \min\{P(a_j) : a_j \in S\}
+$$
+Ovvero $a_\phi$ elemento meno pesante della soluzione ottima.
+Allora consideriamo $S - \{a_\phi\}$ e considero
+
+$$
+S' = (S - \{a_\phi\}) \cup \{a_w\}
+$$
+
+Per ipotesi, $S$ è una soluzione ottima, per cui
+
+$$
+\sum_{a \in S} P(a) \leq k
+$$
+
 ### Compressione di Huffman
-Lezione 15
+
+###### Definizione
+I codici di Huffman sono una tecnica molto diffusa ed efficace per comprimere i dati, risparmi dal 20% al 90% sono tipici, a seconda delle caratteristiche dei dai da comprimere. Consideriamo la compressione di un testo dove ogni carattere è rappresentato da una stringa binaria detta *parola in codice*, queste possono essere create in diversi modi. Spesso l'alfabeto (ovvero tutti i caratteri presenti nel testo) viene indicato con $\Sigma$ 
+
+###### Come costruiamo le parole in codice
+**Lunghezza fissa:** se utilizziamo un codice *a lunghezza fissa* occorrono 3 bit per rappresentare sei caratteri: $a = 000, b = 001, \dots f = 101$ (posso rappresentare $2^3$ caratteri)
+**Lunghezza variabile**: questa codifica assegna ai caratteri più frequenti delle parole in codice corte e ai meno frequenti delle parole in codice lunghe
+![[Pasted image 20251227102313.png|500]]
+
+###### Codici prefissi
+I codici considerati d'ora in avanti sono soltanto i codici in cui nessuna parola in codice è anche un prefisso di qualche altra parola in codice, questi codici sono detti *codici prefissi*.
+
+> [!TIP] Perché usiamo i codici prefissi
+> Data una tabella di codifica del tipo:
+> $A = 0$ 
+> $B = 01$ 
+> $C = 1$
+> 
+> Notiamo subito che il codice di $A$ è un prefisso del codice $B$. 
+> Questo comporta che quando al decodificatore arriva un codice del tipo $01$ non sa se questo equivale ad $AC$ o solo $B$
+
+Per creare questo tipo di codici usiamo l'albero di Hoffman che funziona in questo modo:
+- Ogni foglia è etichettata con un carattere e la sua frequenza
+- Ogni nodo interno è etichettato con la somma delle frequenze delle foglie nel suo sottoalbero
+Per creare i nodi interni prendiamo i nodi con la frequenza più bassa e li "uniamo" in un padre con la somma delle frequenza (alla quale assegniamo un'altra lettera), facendo questa cosa ricorsivamente otterremo un albero del tipo:
+![[Pasted image 20251227102806.png|500]]![[Pasted image 20251227103754.png|500]]
+Il cammino semplice che c'è tra la radice e quel carattere *definisce il suo codice prefisso*. **La profondità di una foglia corrisponde al numero di bit necessari per la codifica**
+
+###### Costo di una codifica
+Dato un albero $T$ che corrisponde a un codice prefisso, è semplice calcolare il numero di bit richiesti per codificare un file. Dato un nodo foglia $c$ definiamo:
+- $f(c)$ la frequenza di quel nodo nel file
+- $d_T(c)$ la profondità della foglia nell'albero
+Il costo della codifica di un albero diventa:
+$$B(T) = \sum_{c\in C} f(c) \times d_T(c)$$
+quindi dobbiamo trovare una strategia che dato testo minimizza $B(T)$
+
+###### Dimostrazione della sottostruttura ottima
+**Definizioni iniziali:**
+- $\Sigma$: Insieme dei caratteri (soluzione $T$)
+- Consideriamo due nodi $a$ e $b$ (le foglie con frequenza minima) e il loro genitore $z$.
+- $\Sigma' = \Sigma - \{a, b\} \cup \{z\}$ (soluzione $T'$)
+
+**Relazioni tra frequenze e profondità:**
+1. $f(z) = f(a) + f(b)$
+    - La frequenza del nodo padre è la somma delle frequenze dei figli.
+2. $d_T(a) = d_{T'}(z) + 1$ e $d_T(b) = d_{T'}(z) + 1$
+	- La profondità di $a/b$ nell'albero originale è la profondità di $z$ nell'albero ridotto più 1.
+**Costruzione di una relazione tra T e T'$:**
+Il costo dell'albero $T$, denotato come $B(T)$, è dato dalla somma delle frequenze per le profondità:
+$$B(T) = \sum_{c \in \Sigma} f(c) \cdot d_T(c)$$
+3.  Espandendo la sommatoria per mettere in relazione $T$ con $T'$: $$B(T)= \left[ \sum_{c \in \Sigma'} f(c) d_{T'}(c) \right] - f(z) \cdot d_{T'}(z) + f(a) d_T(a) + f(b) d_T(b)$$*Nota*: Il termine tra parentesi quadre è $B(T')$. Sottraiamo il contributo di $z$ (che è in $T'$ ma non è foglia in $T$) e aggiungiamo i contributi di $a$ e $b$.
+4. Sostituendo le relazioni di profondità e frequenza ($f(z) = f(a)+f(b)$): $$B(T) = B(T') - (f(a) + f(b)) d_{T'}(z) + f(a)(d_{T'}(z) + 1) + f(b)(d_{T'}(z) + 1)$$
+5. Svolgendo i calcoli, i termini con $d_{T'}(z)$ si cancellano: $$= f(a) + f(b)$$
+6. Quindi la relazione fondamentale è: $$B(T) = B(T') + f(a) + f(b)$$
+**Suppongo che la sottostruttura ottima non esista**
+- *Ipotesi per assurdo*: Supponiamo che $T$ **non** sia l'albero ottimo per $\Sigma$ (e quindi anche che $T'$ non sia l'albero ottimo per $\Sigma'$). Di conseguenza, deve esistere un albero $T_{opt}$ con costo strettamente inferiore a $T$: $$B(T_{opt}) < B(T)$$
+- *Costruzione dell'albero ridotto*: Prendiamo $T_{opt}$ e uniamo le foglie $a$ e $b$ nel padre $z$. Otteniamo un nuovo albero $T'_{opt}$ valido per l'alfabeto ridotto $\Sigma'$. Il costo di questo albero ridotto è: $$B(T'_{opt}) = B(T_{opt}) - (f(a) + f(b))$$
+- *Sviluppo algebrico*: Riprendiamo la disuguaglianza del punto 1: $$B(T_{opt}) < B(T)$$ Sottraiamo a entrambi i membri la quantità costante $(f(a) + f(b))$: $$B(T_{opt}) - (f(a) + f(b)) < B(T) - (f(a) + f(b))$$ Sostituiamo i termini con le definizioni dei costi ridotti ($B(T'_{opt})$ e $B(T')$): $$\underbrace{B(T_{opt}) - (f(a) + f(b))}_{B(T'_{opt})} < \underbrace{B(T) - (f(a) + f(b))}_{B(T')}$$ Otteniamo infine: $$B(T'_{opt}) < B(T')$$
+Abbiamo dimostrato l'esistenza di un albero $T'_{opt}$ con costo inferiore a $T'$. Questo *contraddice l'ipotesi iniziale* che $T'$ fosse l'albero ottimo per $\Sigma'$.
+
+###### Implementazione
+```
+HUFFMAN(Σ, f)
+    Q <- new Priority Queue
+    
+    // Inizializzazione: crea un nodo foglia per ogni carattere
+    foreach c in Σ do:
+        x <- new Node(c)
+        insert x in Q
+        
+    // Costruzione dell'albero dal basso verso l'alto
+    for i <- 1 to |Σ| - 1 DO
+        x <- extractMin(Q)      // Estrae il nodo con frequenza minima
+        y <- extractMin(Q)      // Estrae il secondo nodo con frequenza minima
+        
+        z <- new Node           // Crea un nuovo nodo interno
+        f(z) = f(x) + f(y)      // Somma le frequenze
+        left(z) = x             // Assegna i figli
+        right(z) = y
+        
+        insert z in Q           // Inserisce il nuovo nodo nella coda
+        
+    return extractMin(Q)        // Ritorna la radice dell'albero
+```
+Il processo inizia inserendo tutti i caratteri dell'alfabeto in una coda di priorità, dove vengono trattati come nodi foglia ordinati in base alla loro frequenza di apparizione. L'algoritmo procede estraendo iterativamente i due nodi con la frequenza minore assoluta e unendoli per creare un nuovo nodo intermedio, il cui valore è dato dalla somma delle frequenze dei due figli. Questo nuovo nodo viene reinserito nella coda, e l'operazione si ripete ciclicamente fino a quando rimane un unico nodo che diventa la radice dell'albero. Il risultato è una struttura in cui i caratteri più frequenti si trovano più vicini alla radice (ottenendo codici binari più corti), mentre quelli più rari sono posizionati in profondità (con codici più lunghi).
