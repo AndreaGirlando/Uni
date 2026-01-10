@@ -200,7 +200,7 @@ Esistono 4 varianti del problema dei cammini minimi:
 4. *Problema dei cammini minimi fra tutte le coppie di vertici(all-pairs)*: trovare un cammino minimo da $u$ a $v$ per ogni coppia di vertici.
 Di seguito affronteremo il primo e il quarto.
 
-### Proprietà
+### Proprietà dei cammini minimi
 ###### Sottostruttura ottima
 **Teorema**: Dati
 - un grafo orientato $G = (V,E)$ 
@@ -264,3 +264,92 @@ DAG-SHORTEST-PATHS(G, w, s)
 		  RELAX(u, v, w)
 ```
 ![[Pasted image 20251227181327.png|500]]
+### Algoritmo di Bellam-Ford
+
+###### Definizione
+Questo algoritmo si basa su un cavillo logico molto semplice, visto che non so quali archi rilassare li rilasso sempre tutti. Li rilasso $n-1$ volte dove $n$ è la lunghezza del cammino più lungo (che consiste nel numero di nodi), dopo aver fatto $n-1$ rilassamenti degli archi sono sicuro che anche il cammino più lungo sarà rilassato. Questo algoritmo a differenza di tutti gli altri è in grado di capire se l'output che sta ritornando è valido, aggiungendo infatti un rilassamento ulteriore dopo le $n-1$ passate verifichiamo se il nostro grafo contiene dei cicli negativi.
+###### Implementazione
+
+```text
+Bellman-Ford(G, s, w)
+    // 1. Inizializzazione
+    d = new Array(len(V))
+    for each v ∈ V do
+        d[v] = +∞
+        π[v] = NIL
+    d[s] = 0
+
+    // 2. Rilassamento iterativo degli archi
+    for i ← 1 to |V|-1 do
+        for each (u, v) ∈ E do
+            relax(u, v, w)
+
+    // 3. Controllo dei cicli di peso negativo
+    for each (u, v) ∈ E do
+        if (d[v] > d[u] + w(u, v)) then
+            return false
+
+    return d
+```
+La parte iniziale viene utilizzata per inizializzare gli array $d$ e $\pi$ che rappresentano:
+- $d[v]$ rappresenta la distanza di $v$ da $s$
+- $\pi[v]$ è il nodo padre di $v$ nell'albero dei cammini minimi 
+
+Il punto tre verifica la validità del risultato, stiamo controllando se si possono effettuare altri relax, se questo succede vuol dire che il nostro grafo contiene dei cicli negativi, e quindi la ricerca di un cammino minimo non può esistere
+###### Esempio
+Di seguito un esempio di come dovremmo implementare questo algoritmo in sede di esame
+![[Screenshot_20260110_103629_Samsung capture.jpg|500]]
+###### Complessità
+La complessità di questo algoritmo cambia in base al tipo di implementazione utilizzata per rappresentare i grafi:
+- *Lista di adiacenza*: $O(VE)$
+- *Matrice di adiacenza*: $O(V^3)$
+
+
+### Algoritmo di Dijkstra
+
+###### Definizione
+Per poter funzionare questo algoritmo ha bisogno che tutti i pesi nel grafo siano positivi. Questo algoritmo si basa sull'idea che se troviamo un nodo convergente (quindi completamente rilassato) possiamo rilassare i tutti i suoi archi uscenti. Dati due insiemi:
+- *insieme dei nodi in convergenza*
+- *insieme dei nodi non in convergenza*
+Un nodo convergente sarà sicuramente il nodo con il valore più piccolo nell'insieme dei nodi non in convergenza questo poiché tutti i pesi degli archi sono positivi (o nulli), non esiste alcun cammino alternativo che, passando per altri nodi non ancora visitati, possa "tornare indietro" e ridurre ulteriormente la distanza di quel nodo specifico.
+###### Implementazione
+```
+Dijkstra(G, s, w)
+    d = new Array(len(V))
+    for each v ∈ V do
+        d[v] = +∞
+        π[v] = NIL
+    d[s] = 0
+
+    Q ← build-min-heap(V)
+    
+    while Q ≠ ∅ do
+        v ← extract-min(Q)
+        foreach u ∈ ADJ(v)
+            if d[u] > d[v] + w(v, u) then
+                decrease-key(Q, u, d[v] + w(v, u))
+```
+La parte iniziale viene utilizzata per inizializzare gli array $d$ e $\pi$ che rappresentano:
+- $d[v]$ rappresenta la distanza di $v$ da $s$
+- $\pi[v]$ è il nodo padre di $v$ nell'albero dei cammini minimi 
+Quello che fa il resto del algoritmo consiste nel creare un min-heap rispetto al valore che hanno i nodi in $d$ e poi rilassare tutti gli archi uscenti dai minimi della coda fino a quando la coda non è vuota
+###### Esempio
+Di seguito un esempio di come dovremmo implementare questo algoritmo in sede di esame
+![[Pasted image 20260110111329.png|500]]
+
+###### Complessità
+Questa analisi deve essere divisa in varie sezioni:
+- *Inizializzazione*: scorre tutti i nodi quindi ha un costo pari a: $O(V)$
+- *Costruzione min-heap*: la costruzione del min-heap è lineare al numero di elementi quindi nel nostro caso avremo un costo pari a: $O(V)$
+- *While principale*: la funzione extractMin di un min-heap come è noto impiega tempo $O(\log n)$ nel nostro caso viene eseguita $V$ volte, quindi si avrà un costo pari a: $O(V \times \log V)$ 
+- *Foreach interno*: la funzione decreaseKey di un min-heap come è noto impiega tempo $O(\log n)$, viene richiamata ogni volta che troviamo un cammino più breve, quindi nel caso peggiore avviene per tutti gli archi quindi si avrà un costo pari a: $O(E \times \log V)$
+Quindi il costo complessivo di questo algoritmo sarà:
+$$O((V \times \log V) + (E \times \log V)) \rightarrow O((V+E)\times \log V)$$
+
+### Conclusioni sul problema dei cammini minimi da una sorgente
+###### Conclusioni
+Per la risoluzione di questo problema abbiamo presentato tre algoritmi:
+- Single-Source Shortest Path
+- Bellam-Ford
+- Dijkstra
+Sia SSSP che Dijkstra hanno delle condizioni sul grafo per poter funzionare, questo li porta ad avere una complessità migliore rispetto a Bellam-Ford che resta però il più generalista.
