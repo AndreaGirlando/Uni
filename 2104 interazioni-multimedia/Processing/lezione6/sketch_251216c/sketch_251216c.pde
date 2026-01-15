@@ -15,6 +15,7 @@ void setup() {
 PImage quantizza(PImage I, int k) {
   PImage R = I.copy();
   R.loadPixels();
+  println(R.pixels);
   int q;
   for (int i = 0; i < R.pixels.length; i++) {
     q = floor(blue(R.pixels[i])*k/256);
