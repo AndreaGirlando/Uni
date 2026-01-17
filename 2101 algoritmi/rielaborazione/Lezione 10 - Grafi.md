@@ -238,7 +238,7 @@ Alla creazione del nostro grafo tutti i valori del nostro array $d$ vengono iniz
 6. *Proprietà del sotto grafo dei predecessori*
    Una volta che $v.d = \delta(s, v)$ per ogni $v \in V$, il sotto grafo dei predecessori è un albero di cammini minimi radicato in $s$.
 
-### Single-Source Shortest Path
+### Single-Source Shortest Path in un DAG
 ###### Generic SSSP
 Di seguito vediamo il primo algoritmo per la ricerca di un cammino minimo ovvero il *Single-Source Shortest Path* che risolve il primo problema dei cammini minimi. 
 ```
@@ -353,3 +353,178 @@ Per la risoluzione di questo problema abbiamo presentato tre algoritmi:
 - Bellam-Ford
 - Dijkstra
 Sia SSSP che Dijkstra hanno delle condizioni sul grafo per poter funzionare, questo li porta ad avere una complessità migliore rispetto a Bellam-Ford che resta però il più generalista.
+
+###### Utilizzi molteplici
+Questi algoritmi studiati principalmente per la risoluzione del problema single source possono essere usati anche per risolvere il problema di trovare il cammino minimo tra tutte le coppie però la complessità aumenta:
+- Bellam-Ford: $O(V^4)$
+- Dijkstra: $O(V^3\log V)$
+- DAG: $O(V^3)$
+
+### Programmazione dinamica per la risoluzione dei cammini minimi tra tutte le coppie
+
+###### Definizione
+In questo algoritmo la dimensione del problema viene identificata come: *il numero di archi che possono essere presenti in un cammino minimo* ovvero la *lunghezza massima di un cammino minimo* che sarebbe pari a $V-1$, la dimensione del problema verrà di seguito identificata con $d$. Indicheremo con $$\delta^d(u,v)$$il peso del cammino minimo da $u$ a $v$ usando $d$ archi.
+![[Pasted image 20260117093955.png|500]]
+
+Ipotizzando di avere un cammino minimo da due generici vertici $u$ e $v$ al passo $d-1$ avremo questa cosa:
+![[Pasted image 20260117095253.png]]
+se al passo $d$ (quindi con più archi disponibili) scopriamo di avere un altro percorso che passa dal nodo $k$, quindi siamo in una situazione del tipo: ![[Pasted image 20260117095624.png]] come facciamo a capire quale dei due percorsi ha il peso minore, lo facciamo in questo modo:
+$$\begin{aligned}
+&\text{if } (\delta^{d-1}(u, k) + w(k, v) < \delta^{d-1}(u, v)) \\
+&\quad \text{then } \delta^d(u, v) = \delta^{d-1}(u, k) + w(k, v) \\
+&\text{else } \delta^d(u, v) = \delta^{d-1}(u, v)
+\end{aligned}$$
+Come individuiamo il nostro $K$? Non lo individuo, provo tutti i $k$ ad ogni passaggio. Per ogni $d$ andiamo a creare quindi una matrice $l$ definita così: $$l_{i,j}^d = \begin{cases} 
+w_{i,j} & \text{se } d = 1 \\ 
+\min_{1 \le k \le n} \left( l_{i,j}^{d-1}, l_{i,k}^{d-1} + w_{k,j} \right) & \text{se } d > 1 
+\end{cases}$$
+il primo termine del $min$ è contenuto nel secondo quindi si può elidere
+$$l_{i,j}^d = \begin{cases} 
+w_{i,j} & \text{se } d = 1 \\ 
+\min_{1 \le k \le n} \left(l_{i,k}^{d-1} + w_{k,j} \right) & \text{se } d > 1 
+\end{cases}$$
+
+###### Implementazione
+Dalla funzione ricorsiva definita nel punto precedente nasce il seguente algoritmo
+```
+Extend-APSP(L, W)
+	n = L.rows
+	L_new = new Matrix(n, n)
+	for i = 1 to n do
+	    for j = 1 to n do
+	        L_new[i, j] = infinity
+	        for k = 1 to n do
+	            if (L[i, k] + W[k, j] < L_new[i, j])
+	                L_new[i, j] = L[i, k] + W[k, j]
+	return L_new
+```
+che viene richiamato dalla seguente funzione:
+
+```
+APSP(W) 
+	n = m L_1 = W 
+	for d = 2 to n - 1 do 
+		L_d = EXTEND-APSP(L_{d-1}, W) 
+	return L_{n-1}
+```
+La funzione $APSP$ ha complessità $O(V^4)$ quindi non siamo riusciti a fare meglio di Bellam-Ford.
+
+###### Miglioramento
+Prendiamo in esame un algoritmo che moltiplica le matrici, se moltiplichiamo una matrice per stessa non è necessario fare la moltiplicazione $n$ volte se nel passo precedente è stato fatto trovato il risultato per  la moltiplicazione $n/2$ volte. 
+$$\begin{aligned}
+A^1 &= A \\
+A^2 &= A \times A \\
+A^3 &= A^2 \cdot A \\
+A^4 &= A^2 \cdot A^2 \\
+A^8 &= A^4 \times A^4 \\
+A^{16} &= A^8 \times A^8 \\
+... \\
+\end{aligned}$$
+Questa cosa è fattibile anche nel nostro algoritmo, quindi la ora la matrice $l$ viene definita come:
+$$
+l_{i,j}^d = \begin{cases} 
+w_{i,j} & \text{se } d = 1 \\ 
+\min_{1 \le k \le n} \left( l_{i,k}^{d/2} + l_{k,j}^{d/2} \right) & \text{se } d > 1 
+\end{cases}
+$$
+Da questo nasce la una nuova implementazione della funzione $APSP$:
+```
+Fast-APSP(W)
+    n = m  // numero di vertici
+    L^1 = W
+    d = 1
+    while d < n - 1 do
+        L^{2d} = EXTEND-APSP(L^d, L^d)
+        d = 2d
+    return L^d
+```
+Se inseriamo un iterazione in più otteniamo lo stesso risultato del ciclo finale di bellam-ford (la verifica di cicli negativi)
+###### Complessità
+Il Fast-APSP ha complessità $O(V^3\log V)$ che è un miglioramento lieve rispetto a quello di bellam-ford
+
+### Floyd-Warshall
+
+###### Definizione
+D'ora in avanti indicheremo con $V_K$ il sottoinsieme di $V$ formato dai primi $K$ nodi 
+$$
+\begin{aligned}
+V_k &= \{ v_1, v_2, v_3, \dots, v_k \} \\
+V_0 &= \{ \} \\
+V_1 &= \{ v_1 \} \\
+V_2 &= \{ v_1, v_2 \} \\
+&\vdots \\
+V_n &= V
+\end{aligned}
+$$
+La dimensione del problema al passo k è definita *dalla possibilità di includere il k-esimo nodo come potenziale punto di passaggio per tutte le coppie (u,v).*
+![[Pasted image 20260117105549.png]]considerando i due cammini evidenziati in blu ottengo un cammino che passa da $k$, ora bisogna capire quale dei due cammini è il migliore. E lo facciamo usando una matrice$$D^K[i,j] = \delta^K(i,j) = \begin{cases} w[i, j] & \text{se } k = 0 \\ \min \left( D^{k-1}[i, j], D^{k-1}[i, k] + D^{k-1}[k, j] \right) & \text{se } k > 0 \end{cases}$$
+è molto simile al caso di programmazione dinamica che abbiamo fatto precedentemente, però in questo caso non dobbiamo provare tutte le $k$ ad ogni passaggio perché $k$ è già definita
+###### Implementazione
+Dalla definizione di matrice precedentemente presentata otteniamo il seguente algoritmo: 
+```
+FLOYD-WARSHALL(W)
+    n = m  // numero di vertici
+    D^0 = W
+    for k = 1 to n do
+        D^k = new Matrix(n, n)
+        for i = 1 to n do
+            for j = 1 to n do
+                // Se il cammino attraverso k è più breve, aggiorna
+                if (D^{k-1}[i, j] > D^{k-1}[i, k] + D^{k-1}[k, j])
+                    D^k[i, j] = D^{k-1}[i, k] + D^{k-1}[k, j]
+                else
+                    D^k[i, j] = D^{k-1}[i, j]
+    return D^n
+```
+Inoltre vogliamo creare un albero dei cammini minimi, per fare ciò dobbiamo tenere traccia dei predecessori dei nostri nodi, e lo facciamo usando una seconda matrice definita in questo modo:
+$$
+\pi^K[i, j] = \begin{cases} 
+i & \text{se } [i, j] \in E \\ 
+\text{null} & \text{altrimenti} 
+\end{cases}
+$$
+![[Pasted image 20260117111058.png]]
+Di conseguenza il nostro algoritmo diventa:
+```
+Floyd-Warshall(W)
+    n = m // numero di vertici
+    D^0 = W
+    
+    // Inizializzazione della matrice dei predecessori Pi
+    Pi^0 = new Matrix(n, n)
+    for i = 1 to n do
+        for j = 1 to n do
+            if (i != j and W[i, j] < infinity)
+                Pi^0[i, j] = i
+            else
+                Pi^0[i, j] = null
+
+    // Ciclo principale dell'algoritmo
+    for k = 1 to n do
+        D^k = new Matrix(n, n)
+        Pi^k = new Matrix(n, n)
+        for i = 1 to n do
+            for j = 1 to n do
+                // Manteniamo i valori precedenti come base
+                D^k[i, j] = D^{k-1}[i, j]
+                Pi^k[i, j] = Pi^{k-1}[i, j]
+                
+                // Controllo se il passaggio per il nodo k migliora il cammino
+                if (D^{k-1}[i, j] > D^{k-1}[i, k] + D^{k-1}[k, j])
+                    D^k[i, j] = D^{k-1}[i, k] + D^{k-1}[k, j]
+                    Pi^k[i, j] = Pi^{k-1}[k, j] // Aggiorna il predecessore
+                    
+    return D^n, Pi^n
+```
+
+###### Esempio
+![[Screenshot_20260117_112309_Samsung capture.jpg]]
+Ci sono delle euristiche da seguire per ridurre il carico di lavoro:
+*in generale devo fare len(V)+1 matrici (la prima è quella di adiacenza)*
+1. Riscrivo la riga e la colonna $k$ perché sicuramente non cambia
+2. Riscrivo la diagonale principale perché è sicuramente sempre 0 (non capita mai di avere dei cappi)
+3. Prendo la colonna $k$ e se in una delle celle che la compongo ci trovo un $\infty$ riscrivo tutta la riga
+4. Prendo la riga $k$ e se in una delle celle che la compongono ci trovo un $\infty$ riscrivo tutta la colonna
+
+###### Complessità
+La complessità di questo algoritmo è $O(V^3)$ ottima rispetto a tutto quello che abbiamo trovato fino ad adesso. In generale si preferisce questo algoritmo anche quando servono i cammini minimi da una singola sorgente, perché ha la stessa complessità di bellam-ford.
