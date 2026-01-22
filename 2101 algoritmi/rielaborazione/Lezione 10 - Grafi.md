@@ -267,7 +267,7 @@ DAG-SHORTEST-PATHS(G, w, s)
 ### Algoritmo di Bellam-Ford
 
 ###### Definizione
-Questo algoritmo si basa su un cavillo logico molto semplice, visto che non so quali archi rilassare li rilasso sempre tutti. Li rilasso $n-1$ volte dove $n$ è la lunghezza del cammino più lungo (che consiste nel numero di nodi), dopo aver fatto $n-1$ rilassamenti degli archi sono sicuro che anche il cammino più lungo sarà rilassato. Questo algoritmo a differenza di tutti gli altri è in grado di capire se l'output che sta ritornando è valido, aggiungendo infatti un rilassamento ulteriore dopo le $n-1$ passate verifichiamo se il nostro grafo contiene dei cicli negativi.
+Questo algoritmo si basa su un cavillo logico molto semplice, visto che non so quali archi rilassare li rilasso sempre tutti. Li rilasso $n-1$ volte dove $n$ è la lunghezza del cammino più lungo (ovvero il numero di nodi), dopo aver fatto $n-1$ rilassamenti degli archi sono sicuro che anche il cammino più lungo sarà rilassato. Questo algoritmo a differenza di tutti gli altri è in grado di capire se l'output che sta ritornando è valido, aggiungendo infatti un rilassamento ulteriore dopo le $n-1$ passate verifichiamo se il nostro grafo contiene dei cicli negativi.
 ###### Implementazione
 
 ```text
@@ -518,7 +518,7 @@ Floyd-Warshall(W)
 ```
 
 ###### Esempio
-![[Screenshot_20260117_112309_Samsung capture.jpg]]
+![[Screenshot_20260117_112309_Samsung capture.jpg|500]]
 Ci sono delle euristiche da seguire per ridurre il carico di lavoro:
 *in generale devo fare len(V)+1 matrici (la prima è quella di adiacenza)*
 1. Riscrivo la riga e la colonna $k$ perché sicuramente non cambia
