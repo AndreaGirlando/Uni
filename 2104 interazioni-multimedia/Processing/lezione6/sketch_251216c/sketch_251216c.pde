@@ -20,6 +20,7 @@ PImage quantizza(PImage I, int k) {
   for (int i = 0; i < R.pixels.length; i++) {
     q = floor(blue(R.pixels[i])*k/256);
     q = int(float(q)/(k-1)*255);
+    
     R.pixels[i] = color(q);
   }
   R.updatePixels();
