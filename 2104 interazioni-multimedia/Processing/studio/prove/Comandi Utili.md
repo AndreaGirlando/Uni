@@ -43,7 +43,7 @@ void draw(){
 }
 ```
 - Per far muovere verso una direzione piuttosto che un'altra usare: $x = x+1*dir$ con dir che diventa l'opposto quando si arriva ai bordi
-- **translate**(width/2, height/2); questo comando trasla quello che vediamo della canvas, in pratica ishifta l'origine di width/2 e height/2 (in questo caso)
+- **translate**(width/2, height/2); questo comando trasla quello che vediamo della canvas, in pratica shifta l'origine di width/2 e height/2 (in questo caso)
 - **rotate**($millis()*0.001*$TWO_PI$/10$) ruota la canvas rispetto all'origine (in questo caso specifico lo fa ogni 10 secondi)
 - **map**(10, 0, width, 20, 250); mappa il primo range in un range più grande
 - **constrain(valore, min, max)** mappa il valore ad un range dato
@@ -65,7 +65,7 @@ void draw(){
   popMatrix(); //Fine blocco 2
 ```
 - **PImage**: tipo variabile img
-- PImage I = **createImage**(dim,dim, spazio di colore): crea un imagine usando lo spazio di colore specificato (RGB sempre)
+- PImage I = **createImage**(dim,dim, spazio di colore): crea un immagine usando lo spazio di colore specificato (RGB sempre)
 - PImage I = **loadImage("lena.png"):** carica l'immagine lena.png dalla cartella data che si trova insieme allo script
 - I.**loadPixels()**: carica i pixel della nostra immagine dentro l'array **I.pixels** 
   per trovare un pixel data la sua posizione nella canvas facciamo in questo modo:
@@ -217,7 +217,7 @@ PImage convertiToImg(float[][] req) {
 ### Cose da vedere
 - [x] Le implicaizoni delle classi
 - [x] Altri filtri
-- [ ] Fare gli esami vecchi
+- [x] Fare gli esami vecchi
 - [x] capire che cosa è la quantizzazzione e implementarla
 - [x] Convoluzione
 - [x] Equalizzazione
