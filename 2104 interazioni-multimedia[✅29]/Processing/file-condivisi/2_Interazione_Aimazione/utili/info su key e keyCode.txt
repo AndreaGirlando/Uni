@@ -1,0 +1,6 @@
+Codici dei tasti CODED, reperibili con keyCode:
+UP, DOWN, LEFT, RIGHT, ALT, CONTROL e SHIFT
+Mentre in key, non avendo bisogno di fare il controllo se key==CODED, abbiamo i seguenti caratteri speciali:
+BACKSPACE, TAB, ENTER, RETURN, ESC e DELETE.
+L'invio si può "catturare" in due modi (key == ENTER) oppure (key == '\n').
+Lo spazio è il carattere ' ' (c'è uno spazio tra i singoli apici) 

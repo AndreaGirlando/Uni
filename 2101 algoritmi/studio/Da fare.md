@@ -1,0 +1,64 @@
+- [x] Concetti base ricorsione
+- [x] Esempi classici ricorsione
+- [x] Problema dello zaino
+- [x] Equazioni di ricorrenza
+- [x] Notazione O
+- [x] Notazione $\Theta$ 
+- [x] Notazione $\Omega$
+- [x] Notazioni piccole
+- [x] Metodo Master
+- [x] Heapify (Min e max heapify)
+- [x] heapInsert
+- [x] extractMax e Min
+- [x] BuildMinHeap/BuildMaxHeap
+- [ ] Heapsort
+- [ ] Fare esercizi sugli Heap
+- [ ] Riscrivere gli pseudocodici sugli heap
+- [x] Albero di decisione e dimostrazione
+- [x] Counting sort
+- [x] Radix sort
+- [ ] Introduzione alle tabelle hash
+- [ ] Tabelle ad indirizzamento diretto
+- [ ] Funzioni di hashing (divisione, moltiplicazione)
+- [ ] Hashing con concatenazione e dimostrazione
+- [ ] Hashing ad indirizzamento aperto
+- [ ] Inserimento, ricerca e cancellazione (indirizzamento aperto)
+- [ ] Requisiti di una buona funzione di hash ad indirizzamento aperto
+- [ ] Teniche per la creazione di sequenze di ispezione
+- [ ] Alberi bilanciati, degenere e ripasso proprietà BST
+- [ ] Reppresentazione di un albero rosso nero e definizione altezza nera
+- [ ] RBT: rotazioni
+- [ ] RBT: inserimento
+- [ ] RBT: eliminazione
+- [ ] Introduzione alla prog dinamica
+- [ ] Fibonacci
+- [ ] RodCutting
+- [ ] Moltiplicazione tra matrici
+- [ ] Distanza di editing e LCS
+- [ ] Longest Common Substring
+- [ ] Longest Common Subsequence
+- [ ] Introduzione agli algoritmi greedy
+- [ ] Problema dello zaino
+- [ ] Compressione di huffman
+- [ ] Grafi
+- [x] Proprietà dei grafi
+- [x] Rappresentazione dei grafi
+- [x] BFS
+- [x] DFS
+- [ ] Introduzione alla ricerca dei cammini minimi
+- [ ] Proprietà dei cammini minimi
+- [ ] Generic SSSP in un DAG
+- [ ] Algoritmo di Bellam-Ford
+- [ ] Algoritmo di Dijkstra
+- [ ] Programmazione dinamica per la risoluzione dei cammini minimi tra tutte le coppie
+- [ ] Algoritmo Floyd-Warshall
+- [ ] Esame 27/01/2025 a
+- [ ] Esame 27/01/2025 b
+- [ ] Esame 17/02/2025
+- [ ] Esame 15/04/2025
+- [ ] Esame 14/05/2025
+- [ ] Esame 16/06/2025
+- [ ] Esame 01/07/2025
+- [ ] Esame 01/09/2025
+- [ ] Esame 09/25/2025
+- [ ] Esame 10/27/2025
