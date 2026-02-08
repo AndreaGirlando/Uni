@@ -8,39 +8,44 @@
 - [x] Notazioni piccole
 - [x] Metodo Master
 - [x] Heapify (Min e max heapify)
+- [x] DecreaseKey
 - [x] heapInsert
 - [x] extractMax e Min
 - [x] BuildMinHeap/BuildMaxHeap
-- [ ] Heapsort
-- [ ] Fare esercizi sugli Heap
-- [ ] Riscrivere gli pseudocodici sugli heap
+- [x] Heapsort
+- [x] Fare esercizi sugli Heap
+- [x] Riscrivere gli pseudocodici sugli heap
 - [x] Albero di decisione e dimostrazione
 - [x] Counting sort
 - [x] Radix sort
-- [ ] Introduzione alle tabelle hash
-- [ ] Tabelle ad indirizzamento diretto
-- [ ] Funzioni di hashing (divisione, moltiplicazione)
-- [ ] Hashing con concatenazione e dimostrazione
-- [ ] Hashing ad indirizzamento aperto
-- [ ] Inserimento, ricerca e cancellazione (indirizzamento aperto)
-- [ ] Requisiti di una buona funzione di hash ad indirizzamento aperto
-- [ ] Teniche per la creazione di sequenze di ispezione
-- [ ] Alberi bilanciati, degenere e ripasso proprietà BST
-- [ ] Reppresentazione di un albero rosso nero e definizione altezza nera
-- [ ] RBT: rotazioni
-- [ ] RBT: inserimento
-- [ ] RBT: eliminazione
-- [ ] Introduzione alla prog dinamica
-- [ ] Fibonacci
-- [ ] RodCutting
-- [ ] Moltiplicazione tra matrici
-- [ ] Distanza di editing e LCS
+- [x] Introduzione alle tabelle hash
+- [x] Tabelle ad indirizzamento diretto
+- [x] Funzioni di hashing (divisione, moltiplicazione)
+- [x] Hashing con concatenazione e dimostrazione
+- [x] Hashing ad indirizzamento aperto
+- [x] Inserimento, ricerca e cancellazione (indirizzamento aperto)
+- [x] Requisiti di una buona funzione di hash ad indirizzamento aperto
+- [x] Teniche per la creazione di sequenze di ispezione
+- [x] Esercizi sulle sequenze di ispezione (ds/generale)
+- [x] Alberi bilanciati, degenere e ripasso proprietà BST
+- [x] Reppresentazione di un albero rosso nero e definizione altezza nera
+- [x] RBT: rotazioni
+- [x] RBT: inserimento (regole come ave maria)
+- [x] RBT: eliminazione (regole come ave maria)
+- [x] RBT: esercizi
+- [x] RBT: ignorare pseucodice
+- [x] Introduzione alla prog dinamica
+- [x] Fibonaccifile:///home/girlando/Scaricati/LCString.md
+- [x] RodCut
+- [x] Moltiplicazione tra matrici
+- [ ] Distanza di editing
 - [ ] Longest Common Substring
-- [ ] Longest Common Subsequence
+- [ ] Longest Common Subsequence (libro + sottostruttura ottima gemini)
 - [ ] Introduzione agli algoritmi greedy
 - [ ] Problema dello zaino
+- [ ] Activity Selector (appunti + libro)
 - [ ] Compressione di huffman
-- [ ] Grafi
+- [x] Grafi
 - [x] Proprietà dei grafi
 - [x] Rappresentazione dei grafi
 - [x] BFS
@@ -52,6 +57,7 @@
 - [ ] Algoritmo di Dijkstra
 - [ ] Programmazione dinamica per la risoluzione dei cammini minimi tra tutte le coppie
 - [ ] Algoritmo Floyd-Warshall
+---
 - [ ] Esame 27/01/2025 a
 - [ ] Esame 27/01/2025 b
 - [ ] Esame 17/02/2025
@@ -62,3 +68,17 @@
 - [ ] Esame 01/09/2025
 - [ ] Esame 09/25/2025
 - [ ] Esame 10/27/2025
+
+### Dimostrazioni
+- [ ] Dimostrazione ricerca con successo (hashing con concatenazione)
+- [ ] Hashing con indirizzamento aperto (ricerca con successo e senza)
+- [ ] Dimostrazione altezza nera (pagina 42)
+- [ ] Dimostrazione sottostruttura ottima (RODCUT)
+
+### Da ricordare
+- [ ] Pseudocodici RODCUT
+- [ ] Casi rimozione (vengono richiesti anche gli esempi grafici)
+- [ ] Casi inserimento (vengono richiesti anche gli esempi grafici)
+- [ ] CountingSort
+- [ ] Casi metodo Master
+- [ ] Pseudocodici heap
