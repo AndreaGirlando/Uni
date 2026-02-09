@@ -38,20 +38,20 @@
 - [x] Fibonaccifile:///home/girlando/Scaricati/LCString.md
 - [x] RodCut
 - [x] Moltiplicazione tra matrici
-- [ ] Distanza di editing
-- [ ] Longest Common Substring
-- [ ] Longest Common Subsequence (libro + sottostruttura ottima gemini)
-- [ ] Introduzione agli algoritmi greedy
-- [ ] Problema dello zaino
+- [x] Distanza di editing
+- [x] Longest Common Substring (Lezione 11)
+- [x] Longest Common Subsequence (libro + sottostruttura ottima gemini)
+- [x] Introduzione agli algoritmi greedy
+- [x] Problema dello zaino
 - [ ] Activity Selector (appunti + libro)
-- [ ] Compressione di huffman
+- [x] Compressione di huffman
 - [x] Grafi
 - [x] Proprietà dei grafi
 - [x] Rappresentazione dei grafi
 - [x] BFS
 - [x] DFS
-- [ ] Introduzione alla ricerca dei cammini minimi
-- [ ] Proprietà dei cammini minimi
+- [x] Introduzione alla ricerca dei cammini minimi
+- [x] Proprietà dei cammini minimi
 - [ ] Generic SSSP in un DAG
 - [ ] Algoritmo di Bellam-Ford
 - [ ] Algoritmo di Dijkstra
