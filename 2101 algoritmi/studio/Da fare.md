@@ -35,7 +35,7 @@
 - [x] RBT: esercizi
 - [x] RBT: ignorare pseucodice
 - [x] Introduzione alla prog dinamica
-- [x] Fibonaccifile:///home/girlando/Scaricati/LCString.md
+- [x] Fibonacc
 - [x] RodCut
 - [x] Moltiplicazione tra matrici
 - [x] Distanza di editing
@@ -43,7 +43,7 @@
 - [x] Longest Common Subsequence (libro + sottostruttura ottima gemini)
 - [x] Introduzione agli algoritmi greedy
 - [x] Problema dello zaino
-- [ ] Activity Selector (appunti + libro)
+- [ ] Activity Selector (appunti + libro) 
 - [x] Compressione di huffman
 - [x] Grafi
 - [x] Proprietà dei grafi
@@ -52,11 +52,14 @@
 - [x] DFS
 - [x] Introduzione alla ricerca dei cammini minimi
 - [x] Proprietà dei cammini minimi
-- [ ] Generic SSSP in un DAG
-- [ ] Algoritmo di Bellam-Ford
-- [ ] Algoritmo di Dijkstra
-- [ ] Programmazione dinamica per la risoluzione dei cammini minimi tra tutte le coppie
-- [ ] Algoritmo Floyd-Warshall
+- [x] Generic SSSP in un DAG
+- [x] Algoritmo di Bellam-Ford
+- [x] Algoritmo di Dijkstra
+- [x] Programmazione dinamica per la risoluzione dei cammini minimi tra tutte le coppie
+- [x] Algoritmo Floyd-Warshall
+- [ ] Esercizi Floyd Warshall
+- [ ] Esercizi Dijkstra
+- [ ] Esercizi bellam ford
 ---
 - [ ] Esame 27/01/2025 a
 - [ ] Esame 27/01/2025 b
@@ -74,11 +77,27 @@
 - [ ] Hashing con indirizzamento aperto (ricerca con successo e senza)
 - [ ] Dimostrazione altezza nera (pagina 42)
 - [ ] Dimostrazione sottostruttura ottima (RODCUT)
-
+- [ ] Dimostrazione sottostruttura ottima LCS e LCS
+- [ ] Dimostrazione sottostruttura ottima EDT
+- [ ] Dimostrazione sottostruttura ottima Huffman
+- [ ] Dimostrazione scelta greedy Huffman
+- [ ] Dimostrazione sottostruttura ottima Matrix Moltiplication
+- [ ] Dimostrazione sottostruttura ottima cammini minimi 
 ### Da ricordare
 - [ ] Pseudocodici RODCUT
+- [ ] Pseudocodici MATRIX
+- [ ] Pseudocodici LCS e LCS
+- [ ] Pseudocodici EDT
+- [ ] Pseudocodici HUFFMAN
 - [ ] Casi rimozione (vengono richiesti anche gli esempi grafici)
 - [ ] Casi inserimento (vengono richiesti anche gli esempi grafici)
 - [ ] CountingSort
 - [ ] Casi metodo Master
 - [ ] Pseudocodici heap
+- [ ] BFS
+- [ ] DFS
+- [ ] Pseudocodice SSSP DAG
+- [ ] Pseudocodice Dijkstra
+- [ ] Pseudocodice Bellam Ford
+- [ ] Pseudocide Floyd Warshall
+- [ ] Pseudocodice APSP

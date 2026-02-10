@@ -138,3 +138,75 @@ PRINT-LCS(b, X, i, j)
 	else:
 	    PRINT-LCS(b, X, i, j-1)
 ```
+
+
+# Activity selector
+
+### 1. Definizione del Problema
+
+Il nostro primo esempio è il problema della programmazione di più attività in competizione che richiedono l’uso esclusivo di una risorsa comune, con l’obiettivo di selezionare il più grande insieme di attività mutuamente compatibili. Supponiamo di avere un insieme $S = \{a_1, a_2, ..., a_n\}$ di $n$ attività che devono utilizzare la stessa risorsa, per esempio un’aula universitaria, che può essere utilizzata per svolgere una sola attività alla volta.
+- Ogni attività $a_i$ ha un tempo di inizio $s_i$ e un tempo di fine $f_i$.
+- Il problema della selezione di attività consiste nel selezionare il sottoinsieme che contiene il maggior numero di attività mutuamente compatibili.
+- Supponiamo che le attività siano ordinate in modo monotonicamente crescente rispetto ai tempi di fine: $f_1 \le f_2 \le ... \le f_n$.
+### 2. Sottostruttura Ottima
+Possiamo facilmente verificare che il problema della selezione di attività presenta una sottostruttura ottima.
+Indichiamo con $S_{ij}$ l’insieme delle attività che iniziano dopo la fine dell’attività $a_i$ e finiscono prima dell’inizio dell’attività $a_j$.
+Supponiamo di voler trovare un insieme massimo di attività mutuamente compatibili in $S_{ij}$ e supponiamo che $A_{ij}$ sia un insieme massimo che include una certa attività $a_k$.
+Includendo $a_k$ in una soluzione ottima, restano due sottoproblemi:
+1. Trovare le attività mutuamente compatibili nell’insieme $S_{ik}$ (attività che iniziano dopo la fine di $a_i$ e finiscono prima dell’inizio di $a_k$).
+2. Trovare le attività mutuamente compatibili nell’insieme $S_{kj}$ (attività che iniziano dopo la fine di $a_k$ e finiscono prima dell’inizio di $a_j$).
+Siano $A_{ik} = A_{ij} \cap S_{ik}$ e $A_{kj} = A_{ij} \cap S_{kj}$.
+Ne deriva che $A_{ij} = A_{ik} \cup \{a_k\} \cup A_{kj}$ e, quindi, la dimensione dell'insieme massimo è:
+$$|A_{ij}| = |A_{ik}| + |A_{kj}| + 1$$
+**Ragionamento "taglia e incolla":**
+Se trovassimo un insieme $A'_{kj}$ di attività mutuamente compatibili in $S_{kj}$ tale che $|A'_{kj}| > |A_{kj}|$, allora potremmo utilizzare $A'_{kj}$ anziché $A_{kj}$ in una soluzione del sottoproblema per $S_{ij}$. Avremmo potuto costruire un insieme di $|A_{ik}| + |A'_{kj}| + 1 > |A_{ij}|$ attività, il che contraddice l’ipotesi che $A_{ij}$ sia una soluzione ottima. Un ragionamento simmetrico si applica a $S_{ik}$.
+### 3. La Scelta Golosa (Greedy Choice)
+
+Che cosa intendiamo con scelta golosa nel problema della selezione di attività? L’intuito ci dice di scegliere l’attività in $S$ che finisce per prima, perché così la risorsa resterebbe disponibile per il maggior numero possibile di attività successive. Poiché le attività sono ordinate per tempi di fine crescenti, la scelta golosa è l’attività $a_1$. Se facciamo la scelta golosa, resta un solo sottoproblema da risolvere: trovare le attività che iniziano dopo la fine di $a_1$. Sia $S_k = \{a_i \in S : s_i \ge f_k\}$ l’insieme delle attività che iniziano dopo la fine dell’attività $a_k$. Se scegliamo $a_1$, $S_1$ resta l’unico sottoproblema.
+### 4. Teorema 16.1: Correttezza della scelta golosa
+**Teorema:** Consideriamo un sottoproblema non vuoto $S_k$ e sia $a_m$ l’attività in $S_k$ che ha il primo tempo di fine; allora l’attività $a_m$ è inclusa in qualche sottoinsieme massimo di attività mutuamente compatibili di $S_k$.
+**Dimostrazione:**
+Supponiamo che $A_k$ sia un sottoinsieme massimo di attività mutuamente compatibili di $S_k$ e sia $a_j$ l’attività in $A_k$ con il più piccolo tempo di fine.
+1. Se $a_j = a_m$, abbiamo finito (l'attività golosa è già nell'insieme ottimo).
+2. Se $a_j \neq a_m$, costruiamo l'insieme $A'_k = (A_k - \{a_j\}) \cup \{a_m\}$ (sostituiamo $a_j$ con $a_m$).
+    - Le attività in $A'_k$ sono disgiunte perché $a_j$ era la prima a finire in $A_k$ e $f_m \le f_j$ (poiché $a_m$ è la scelta golosa).
+    - Poiché $|A'_k| = |A_k|$, concludiamo che $A'_k$ è un sottoinsieme massimo che include $a_m$.
+
+---
+### 5. Algoritmo Ricorsivo
+La procedura cerca la prima attività in $S_k$ compatibile con $a_k$.
+
+```
+RECURSIVE-ACTIVITY-SELECTOR(s, f, k, n)
+1  m = k + 1
+2  while m <= n and s[m] < f[k]    // Trova la prima attività in Sk
+3      m = m + 1
+4  if m <= n
+5      return {a_m} U RECURSIVE-ACTIVITY-SELECTOR(s, f, m, n)
+6  else
+       return Ø
+```
+
+**Analisi:**
+Il ciclo `while` (righe 2-3) cerca la prima attività $a_m$ compatibile con $a_k$ (ovvero $s_m \ge f_k$). Il tempo di esecuzione è $\Theta(n)$, poiché ogni attività viene esaminata una sola volta nel test del ciclo `while` attraverso tutte le chiamate ricorsive.
+
+---
+### 6. Algoritmo Iterativo
+Possiamo convertire la procedura ricorsiva in una iterativa. La procedura `GREEDY-ACTIVITY-SELECTOR` raccoglie le attività selezionate in un insieme $A$.
+```
+GREEDY-ACTIVITY-SELECTOR(s, f)
+1  n = s.length
+2  A = {a_1}
+3  k = 1
+4  for m = 2 to n
+5      if s[m] >= f[k]
+6          A = A U {a_m}
+7          k = m
+8  return A
+```
+
+**Funzionamento:**
+- Le righe 2-3 selezionano $a_1$ e inizializzano $A$.
+- La variabile $k$ indicizza l'ultima attività aggiunta ad $A$. Poiché le attività sono ordinate, $f_k$ è sempre il massimo tempo di fine in $A$.
+- Il ciclo `for` (righe 4-7) esamina ogni attività $a_m$. Se $a_m$ è compatibile ($s_m \ge f_k$), viene aggiunta ad $A$ e $k$ viene aggiornato.
+- Anche questo algoritmo impiega tempo $\Theta(n)$.
