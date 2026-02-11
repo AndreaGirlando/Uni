@@ -43,7 +43,7 @@
 - [x] Longest Common Subsequence (libro + sottostruttura ottima gemini)
 - [x] Introduzione agli algoritmi greedy
 - [x] Problema dello zaino
-- [ ] Activity Selector (appunti + libro) 
+- [x] Activity Selector (appunti + libro) 
 - [x] Compressione di huffman
 - [x] Grafi
 - [x] Proprietà dei grafi
@@ -57,9 +57,9 @@
 - [x] Algoritmo di Dijkstra
 - [x] Programmazione dinamica per la risoluzione dei cammini minimi tra tutte le coppie
 - [x] Algoritmo Floyd-Warshall
-- [ ] Esercizi Floyd Warshall
-- [ ] Esercizi Dijkstra
-- [ ] Esercizi bellam ford
+- [x] Esercizi Floyd Warshall
+- [x] Esercizi Dijkstra
+- [x] Esercizi bellam ford
 ---
 - [ ] Esame 27/01/2025 a
 - [ ] Esame 27/01/2025 b
@@ -70,7 +70,7 @@
 - [ ] Esame 01/07/2025
 - [ ] Esame 01/09/2025
 - [ ] Esame 09/25/2025
-- [ ] Esame 10/27/2025
+- [x] Esame 10/27/2025
 
 ### Dimostrazioni
 - [ ] Dimostrazione ricerca con successo (hashing con concatenazione)
@@ -89,15 +89,15 @@
 - [ ] Pseudocodici LCS e LCS
 - [ ] Pseudocodici EDT
 - [ ] Pseudocodici HUFFMAN
-- [ ] Casi rimozione (vengono richiesti anche gli esempi grafici)
-- [ ] Casi inserimento (vengono richiesti anche gli esempi grafici)
-- [ ] CountingSort
-- [ ] Casi metodo Master
+- [ ] Pseudocodici CountingSort
 - [ ] Pseudocodici heap
-- [ ] BFS
-- [ ] DFS
+- [ ] Pseudocodici BFS
+- [ ] Pseudocodici DFS
 - [ ] Pseudocodice SSSP DAG
 - [ ] Pseudocodice Dijkstra
 - [ ] Pseudocodice Bellam Ford
 - [ ] Pseudocide Floyd Warshall
 - [ ] Pseudocodice APSP
+- [ ] Casi metodo Master
+- [ ] Casi rimozione (vengono richiesti anche gli esempi grafici)
+- [ ] Casi inserimento (vengono richiesti anche gli esempi grafici)

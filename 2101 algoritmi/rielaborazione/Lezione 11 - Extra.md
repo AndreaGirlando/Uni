@@ -141,9 +141,7 @@ PRINT-LCS(b, X, i, j)
 
 
 # Activity selector
-
 ### 1. Definizione del Problema
-
 Il nostro primo esempio è il problema della programmazione di più attività in competizione che richiedono l’uso esclusivo di una risorsa comune, con l’obiettivo di selezionare il più grande insieme di attività mutuamente compatibili. Supponiamo di avere un insieme $S = \{a_1, a_2, ..., a_n\}$ di $n$ attività che devono utilizzare la stessa risorsa, per esempio un’aula universitaria, che può essere utilizzata per svolgere una sola attività alla volta.
 - Ogni attività $a_i$ ha un tempo di inizio $s_i$ e un tempo di fine $f_i$.
 - Il problema della selezione di attività consiste nel selezionare il sottoinsieme che contiene il maggior numero di attività mutuamente compatibili.
@@ -169,7 +167,7 @@ Che cosa intendiamo con scelta golosa nel problema della selezione di attività?
 Supponiamo che $A_k$ sia un sottoinsieme massimo di attività mutuamente compatibili di $S_k$ e sia $a_j$ l’attività in $A_k$ con il più piccolo tempo di fine.
 1. Se $a_j = a_m$, abbiamo finito (l'attività golosa è già nell'insieme ottimo).
 2. Se $a_j \neq a_m$, costruiamo l'insieme $A'_k = (A_k - \{a_j\}) \cup \{a_m\}$ (sostituiamo $a_j$ con $a_m$).
-    - Le attività in $A'_k$ sono disgiunte perché $a_j$ era la prima a finire in $A_k$ e $f_m \le f_j$ (poiché $a_m$ è la scelta golosa).
+    - Le attività in $A'_k$ sono disgiunte perché lo è anche $A_k$ e $f_m \le f_j$ (poiché $a_m$ è la scelta golosa).
     - Poiché $|A'_k| = |A_k|$, concludiamo che $A'_k$ è un sottoinsieme massimo che include $a_m$.
 
 ---
