@@ -60,43 +60,55 @@
 - [x] Esercizi Floyd Warshall
 - [x] Esercizi Dijkstra
 - [x] Esercizi bellam ford
+
 ---
+
 - [ ] Esame 27/01/2025 a
 - [ ] Esame 27/01/2025 b
-- [ ] Esame 17/02/2025
+- [x] Esame 17/02/2025
 - [ ] Esame 15/04/2025
 - [ ] Esame 14/05/2025
-- [ ] Esame 16/06/2025
+- [x] Esame 16/06/2025
 - [ ] Esame 01/07/2025
 - [ ] Esame 01/09/2025
 - [ ] Esame 09/25/2025
 - [x] Esame 10/27/2025
+- [x] Esame 26/01/2026
+- [x] Esame 22/01/2026
+
+
+
 
 ### Dimostrazioni
-- [ ] Dimostrazione ricerca con successo (hashing con concatenazione)
-- [ ] Hashing con indirizzamento aperto (ricerca con successo e senza)
-- [ ] Dimostrazione altezza nera (pagina 42)
-- [ ] Dimostrazione sottostruttura ottima (RODCUT)
-- [ ] Dimostrazione sottostruttura ottima LCS e LCS
-- [ ] Dimostrazione sottostruttura ottima EDT
-- [ ] Dimostrazione sottostruttura ottima Huffman
-- [ ] Dimostrazione scelta greedy Huffman
-- [ ] Dimostrazione sottostruttura ottima Matrix Moltiplication
-- [ ] Dimostrazione sottostruttura ottima cammini minimi 
+- [x] Dimostrazione ricerca con successo (hashing con concatenazione)
+- [x] Hashing con indirizzamento aperto (ricerca con successo e senza)
+- [x] Dimostrazione altezza nera (pagina 42)
+- [x] Dimostrazione sottostruttura ottima (RODCUT)
+- [x] Dimostrazione sottostruttura ottima LCS e LCS
+- [x] Dimostrazione sottostruttura ottima EDT
+- [x] Dimostrazione sottostruttura ottima Huffman
+- [x] Dimostrazione scelta greedy Huffman
+- [x] Dimostrazione sottostruttura ottima Activity Selector
+- [x] Dimostrazione scelta greedy Activity Selector
+- [x] Dimostrazione sottostruttura ottima Matrix Moltiplication
+- [x] Dimostrazione sottostruttura ottima cammini minimi 
+
+
+
 ### Da ricordare
-- [ ] Pseudocodici RODCUT
-- [ ] Pseudocodici MATRIX
-- [ ] Pseudocodici LCS e LCS
-- [ ] Pseudocodici EDT
-- [ ] Pseudocodici HUFFMAN
-- [ ] Pseudocodici CountingSort
-- [ ] Pseudocodici heap
-- [ ] Pseudocodici BFS
-- [ ] Pseudocodici DFS
+- [x] Pseudocodici RODCUT
+- [x] Pseudocodici MATRIX
+- [x] Pseudocodici LCS e LCS
+- [x] Pseudocodici EDT
+- [x] Pseudocodici HUFFMAN
+- [x] Pseudocodici CountingSort
+- [x] Pseudocodici heap
+- [x] Pseudocodici BFS
+- [x] Pseudocodici DFS
 - [ ] Pseudocodice SSSP DAG
-- [ ] Pseudocodice Dijkstra
-- [ ] Pseudocodice Bellam Ford
-- [ ] Pseudocide Floyd Warshall
+- [x] Pseudocodice Dijkstra
+- [x] Pseudocodice Bellam Ford
+- [x] Pseudocide Floyd Warshall
 - [ ] Pseudocodice APSP
 - [ ] Casi metodo Master
 - [ ] Casi rimozione (vengono richiesti anche gli esempi grafici)

@@ -72,13 +72,17 @@ Date due sequenze $X$ e $Y$, il problema consiste nel trovare la più lunga sott
 ### Sottostruttura ottima
 **Sottostruttura ottima di una LCS**
 Siano $X = \langle x_1, x_2, \dots, x_m \rangle$ e $Y = \langle y_1, y_2, \dots, y_n \rangle$ le sequenze; sia $Z = \langle z_1, z_2, \dots, z_k \rangle$ una qualsiasi LCS di $X$ e $Y$.
-1. Se $x_m = y_n$, allora $z_k = x_m = y_n$ e $Z_{k-1}$ è una LCS di $X_{m-1}$ e $Y_{n-1}$.
+1. Se $x_m = y_n$, allora $z_k = x_m = y_n$ e $Z_{k-1}$ è una LCS di $X_{m-1}$ e $Y_{n-1}$. 
 2. Se $x_m \neq y_n$, allora $z_k \neq x_m$ implica che $Z$ è una LCS di $X_{m-1}$ e $Y$.
 3. Se $x_m \neq y_n$, allora $z_k \neq y_n$ implica che $Z$ è una LCS di $X$ e $Y_{n-1}$.
+
+> [!TIP]
+> In questa definizione partiamo dalla fine della nostra stringa, se le stringhe sono uguali allora quel carattere deve essere salvato nella sottostringa comune $z$ e quindi il problema si riduce di $1$, se le stringhe non sono uguali il problema resta quello di trovare la sottostringa comune ignorando quel carattere ecco perché: ($X_{m-1}$ e $Y$) o ($X$ e $Y_{n-1}$)
+
 **Dimostrazione** 
-- (1) Se $z_k \neq x_m$, allora potremmo accodare $x_m = y_n$ a $Z$ per ottenere una sottosequenza comune di $X$ e $Y$ di lunghezza $k + 1$, contraddicendo l’ipotesi che $Z$ sia una _più lunga_ sottosequenza comune di $X$ e $Y$. Quindi, deve essere $z_k = x_m = y_n$. Ora, il prefisso $Z_{k-1}$ è una sottosequenza comune di $X_{m-1}$ e $Y_{n-1}$ di lunghezza $k - 1$. Vogliamo dimostrare che questo prefisso è una LCS. Supponiamo per assurdo che ci sia una sottosequenza comune $W$ di $X_{m-1}$ e $Y_{n-1}$ di lunghezza maggiore di $k - 1$. Allora, accodando $x_m = y_n$ a $W$ si ottiene una sottosequenza comune di $X$ e $Y$ la cui lunghezza è maggiore di $k$, che è una contraddizione.
-- (2) Se $z_k \neq x_m$, allora $Z$ è una sottosequenza comune di $X_{m-1}$ e $Y$. Se esistesse una sottosequenza comune $W$ di $X_{m-1}$ e $Y$ di lunghezza maggiore di $k$, allora $W$ sarebbe anche una sottosequenza comune di $X_m$ e $Y$, contraddicendo l’ipotesi che $Z$ sia una LCS di $X$ e $Y$.
-- (3) La dimostrazione è simmetrica a quella del punto (2).
+1. Visto che deve essere $z_k = x_m = y_n$. Ora, il prefisso $Z_{k-1}$ è una sottosequenza comune di $X_{m-1}$ e $Y_{n-1}$ di lunghezza $k - 1$. Vogliamo dimostrare che questo prefisso è una LCS. Supponiamo per assurdo che ci sia una sottosequenza comune $W$ di $X_{m-1}$ e $Y_{n-1}$ di lunghezza maggiore di $k - 1$. Allora, accodando $x_m = y_n$ a $W$ si ottiene una sottosequenza comune di $X$ e $Y$ la cui lunghezza è maggiore di $k$, che è una contraddizione.
+2. Se $z_k \neq x_m$, allora $Z$ è una sottosequenza comune di $X_{m-1}$ e $Y$. Se esistesse una sottosequenza comune $W$ di $X_{m-1}$ e $Y$ di lunghezza maggiore di $k$, allora $W$ sarebbe anche una sottosequenza comune di $X_m$ e $Y$, contraddicendo l’ipotesi che $Z$ sia una LCS di $X$ e $Y$.
+3. La dimostrazione è simmetrica a quella del punto (2).
 
 ### Definizione funzione ricorsiva
 Definiamo $c[i, j]$ come la lunghezza di una LCS delle sequenze $X_i$ e $Y_j$.
@@ -98,6 +102,7 @@ $$c[i, j] = \max(c[i, j-1], c[i-1, j])$$
 5. Se $x_i == y_j$, il valore deriva dalla diagonale in alto a sinistra + 1 (freccia $\nwarrow$).
 6. Se $x_i \neq y_j$, il valore è il massimo tra il vicino in alto (freccia $\uparrow$) e il vicino a sinistra (freccia $\leftarrow$) .
 7. Il valore in $c[m, n]$ è la lunghezza della LCS. Per ricostruire la stringa, seguiamo le frecce a ritroso partendo da $b[m, n]$ .
+
 ```
 LCS-LENGTH(X, Y)
 	m = X.length
@@ -142,7 +147,7 @@ PRINT-LCS(b, X, i, j)
 
 # Activity selector
 ### 1. Definizione del Problema
-Il nostro primo esempio è il problema della programmazione di più attività in competizione che richiedono l’uso esclusivo di una risorsa comune, con l’obiettivo di selezionare il più grande insieme di attività mutuamente compatibili. Supponiamo di avere un insieme $S = \{a_1, a_2, ..., a_n\}$ di $n$ attività che devono utilizzare la stessa risorsa, per esempio un’aula universitaria, che può essere utilizzata per svolgere una sola attività alla volta.
+Il nostro primo esempio è il problema della programmazione di più attività in competizione che richiedono l’uso esclusivo di una risorsa comune, con l’obiettivo di selezionare il più grande insieme di attività mutuamente compatibili. Supponiamo di avere un insieme $S = \{a_1, a_2, ..., a_n\}$ di $n$ attività che devono utilizzare la stessa risorsa
 - Ogni attività $a_i$ ha un tempo di inizio $s_i$ e un tempo di fine $f_i$.
 - Il problema della selezione di attività consiste nel selezionare il sottoinsieme che contiene il maggior numero di attività mutuamente compatibili.
 - Supponiamo che le attività siano ordinate in modo monotonicamente crescente rispetto ai tempi di fine: $f_1 \le f_2 \le ... \le f_n$.
@@ -158,10 +163,9 @@ Ne deriva che $A_{ij} = A_{ik} \cup \{a_k\} \cup A_{kj}$ e, quindi, la dimension
 $$|A_{ij}| = |A_{ik}| + |A_{kj}| + 1$$
 **Ragionamento "taglia e incolla":**
 Se trovassimo un insieme $A'_{kj}$ di attività mutuamente compatibili in $S_{kj}$ tale che $|A'_{kj}| > |A_{kj}|$, allora potremmo utilizzare $A'_{kj}$ anziché $A_{kj}$ in una soluzione del sottoproblema per $S_{ij}$. Avremmo potuto costruire un insieme di $|A_{ik}| + |A'_{kj}| + 1 > |A_{ij}|$ attività, il che contraddice l’ipotesi che $A_{ij}$ sia una soluzione ottima. Un ragionamento simmetrico si applica a $S_{ik}$.
-### 3. La Scelta Golosa (Greedy Choice)
-
+### La Scelta Golosa (Greedy Choice)
 Che cosa intendiamo con scelta golosa nel problema della selezione di attività? L’intuito ci dice di scegliere l’attività in $S$ che finisce per prima, perché così la risorsa resterebbe disponibile per il maggior numero possibile di attività successive. Poiché le attività sono ordinate per tempi di fine crescenti, la scelta golosa è l’attività $a_1$. Se facciamo la scelta golosa, resta un solo sottoproblema da risolvere: trovare le attività che iniziano dopo la fine di $a_1$. Sia $S_k = \{a_i \in S : s_i \ge f_k\}$ l’insieme delle attività che iniziano dopo la fine dell’attività $a_k$. Se scegliamo $a_1$, $S_1$ resta l’unico sottoproblema.
-### 4. Teorema 16.1: Correttezza della scelta golosa
+
 **Teorema:** Consideriamo un sottoproblema non vuoto $S_k$ e sia $a_m$ l’attività in $S_k$ che ha il primo tempo di fine; allora l’attività $a_m$ è inclusa in qualche sottoinsieme massimo di attività mutuamente compatibili di $S_k$.
 **Dimostrazione:**
 Supponiamo che $A_k$ sia un sottoinsieme massimo di attività mutuamente compatibili di $S_k$ e sia $a_j$ l’attività in $A_k$ con il più piccolo tempo di fine.
@@ -170,8 +174,7 @@ Supponiamo che $A_k$ sia un sottoinsieme massimo di attività mutuamente compati
     - Le attività in $A'_k$ sono disgiunte perché lo è anche $A_k$ e $f_m \le f_j$ (poiché $a_m$ è la scelta golosa).
     - Poiché $|A'_k| = |A_k|$, concludiamo che $A'_k$ è un sottoinsieme massimo che include $a_m$.
 
----
-### 5. Algoritmo Ricorsivo
+### Algoritmo Ricorsivo
 La procedura cerca la prima attività in $S_k$ compatibile con $a_k$.
 
 ```
