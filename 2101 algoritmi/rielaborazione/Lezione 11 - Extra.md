@@ -171,7 +171,8 @@ Che cosa intendiamo con scelta golosa nel problema della selezione di attività?
 Supponiamo che $A_k$ sia un sottoinsieme massimo di attività mutuamente compatibili di $S_k$ e sia $a_j$ l’attività in $A_k$ con il più piccolo tempo di fine.
 1. Se $a_j = a_m$, abbiamo finito (l'attività golosa è già nell'insieme ottimo).
 2. Se $a_j \neq a_m$, costruiamo l'insieme $A'_k = (A_k - \{a_j\}) \cup \{a_m\}$ (sostituiamo $a_j$ con $a_m$).
-    - Le attività in $A'_k$ sono disgiunte perché lo è anche $A_k$ e $f_m \le f_j$ (poiché $a_m$ è la scelta golosa).
+    - Le attività in $A'_k$ sono disgiunte perché lo è anche $A_k$ e $f_m \le f_j$(poiché $a_m$ è la scelta golosa).
+    - All'inizio abbiamo detto che $a_j$ è l'attività con il più piccolo tempo di fine, allora $f_m = f_j$ e qui capiamo che
     - Poiché $|A'_k| = |A_k|$, concludiamo che $A'_k$ è un sottoinsieme massimo che include $a_m$.
 
 ### Algoritmo Ricorsivo
