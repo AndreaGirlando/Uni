@@ -75,6 +75,7 @@ PercorsoLinea(**Id**, *IdDeviazione*, *IdFermata*, progressivo)
 	- [x] Sistemare la relazione
 - [x] Scrivere le query per la creazione degli indici
 - [x] Scrivere le query per la creazione del database
+- [ ] Scrivere la normalizzazione secondo la guida di CFE
 - [ ] Scrivere i trigger
 	- [ ] Scrivere i trigger per i vincoli
 	- [ ] Scrivere i trigger per il dato ridondante
