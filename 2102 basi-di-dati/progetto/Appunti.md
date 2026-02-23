@@ -62,14 +62,25 @@ PercorsoLinea(**Id**, *IdDeviazione*, *IdFermata*, progressivo)
 - [x] CorsaPianificata
 - [x] Alcune cardinalità nelle relazioni
 - [x] Controllare se va bene
-- [ ] Cercare/Inserire un dato sulla quale fare le analisi delle ridondanze (modificare eventuale schema ER/logico)
-- [ ] Modificare almeno due query che che usino il dato dato ridondante
-- [ ] Capire se le stime sui volumi sono giusti
-- [ ] Analisi delle ridondanze
-- [ ] Analisi degli indici
-- [ ] Scrivere le query per la creazione degli indici
+- [x] Nello schema logico mancano le chiavi esterne
+- [x] Cercare/Inserire un dato sulla quale fare le analisi delle ridondanze (modificare eventuale schema ER/logico)
+- [x] Modificare almeno due query che che usino il dato dato ridondante
+- [x] Modificare le operazioni, per fare le analisi sui dati ridondati serve che più operazioni lavorino sulle tabelle con i dati ridondanti in modo da fare i confronti
+- [x] Capire se le stime sui volumi sono giusti
+- [x] Analisi delle ridondanze
+	- [x] Creazione delle stime e dei calcoli
+	- [x] Sistemare la relazione
+- [x] Analisi degli indici per il futuro
+	- [x] Creazione delle stime e dai calcoli
+	- [x] Sistemare la relazione
+- [x] Scrivere le query per la creazione degli indici
+- [x] Scrivere le query per la creazione del database
 - [ ] Scrivere i trigger
-- [ ] Scrivere le query per le operazioni definite
+	- [ ] Scrivere i trigger per i vincoli
+	- [ ] Scrivere i trigger per il dato ridondante
+- [ ] Scrivere le query per l'inserimento dei dati
+- [ ] Scrivere le query per le varie operazioni definite
+- [ ] Ultimare la relazione
 
 
 ---
