@@ -1,12 +1,9 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.5.1 Chrome/142.0.7444.265 Electron/39.6.1 Safari/537.36" version="29.5.1">
   <diagram name="Pagina-1" id="YIbOOEWhWtE3JlbQlyz5">
-    <mxGraphModel dx="331" dy="203" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1424" dy="962" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="9qvsHVxMkWWdz-PDWaG6-16" parent="1" style="text;html=1;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;spacingLeft=5;spacingBottom=3;fontSize=11;" value="&lt;font&gt;CodiceFiscale&lt;/font&gt;" vertex="1">
-          <mxGeometry height="10" width="60" x="251" y="990" as="geometry" />
-        </mxCell>
         <mxCell id="9qvsHVxMkWWdz-PDWaG6-18" parent="1" style="text;html=1;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;spacingLeft=5;spacingBottom=3;fontSize=11;" value="&lt;font&gt;DataNascita&lt;/font&gt;" vertex="1">
           <mxGeometry height="10" width="55" x="256" y="1000" as="geometry" />
         </mxCell>
@@ -497,16 +494,6 @@
               <mxPoint x="192" y="45" />
             </Array>
             <mxPoint x="192" y="50" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="9qvsHVxMkWWdz-PDWaG6-14" edge="1" parent="9qvsHVxMkWWdz-PDWaG6-218" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=oval;startFill=0;endArrow=none;endFill=0;align=left;fontSize=11;">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="60" y="34.950000000000045" />
-              <mxPoint x="60" y="34.950000000000045" />
-            </Array>
-            <mxPoint x="50" y="34.950000000000045" as="sourcePoint" />
-            <mxPoint x="72" y="35" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="9qvsHVxMkWWdz-PDWaG6-15" parent="9qvsHVxMkWWdz-PDWaG6-218" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;spacingLeft=5;fontSize=11;" value="" vertex="1">
