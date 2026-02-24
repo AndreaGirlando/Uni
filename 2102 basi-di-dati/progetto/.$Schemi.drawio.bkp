@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.5.1 Chrome/142.0.7444.265 Electron/39.6.1 Safari/537.36" version="29.5.1">
   <diagram name="Pagina-1" id="YIbOOEWhWtE3JlbQlyz5">
-    <mxGraphModel dx="396" dy="243" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1760" dy="1203" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1069,30 +1069,8 @@
             <mxPoint x="202.5" y="310" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9qvsHVxMkWWdz-PDWaG6-399" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;spacingLeft=5;spacingBottom=2;fontSize=11;" value="&lt;span&gt;IdZonaPartenza&lt;/span&gt;" vertex="1">
-          <mxGeometry height="10" width="30" x="227.5" y="310" as="geometry" />
-        </mxCell>
-        <mxCell id="9qvsHVxMkWWdz-PDWaG6-400" edge="1" parent="1" source="9qvsHVxMkWWdz-PDWaG6-399" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=oval;startFill=0;endArrow=none;endFill=0;fontSize=11;">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="202.5" y="315" />
-            </Array>
-            <mxPoint x="202.5" y="320" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="9qvsHVxMkWWdz-PDWaG6-401" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;spacingLeft=5;spacingBottom=3;fontSize=11;" value="&lt;font&gt;Id&lt;/font&gt;" vertex="1">
           <mxGeometry height="10" width="38.25" x="227.75" y="300" as="geometry" />
-        </mxCell>
-        <mxCell id="9qvsHVxMkWWdz-PDWaG6-402" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;spacingLeft=5;spacingBottom=2;fontSize=11;" value="&lt;span&gt;IdZonaArrivo&lt;/span&gt;" vertex="1">
-          <mxGeometry height="10" width="30" x="227.5" y="320" as="geometry" />
-        </mxCell>
-        <mxCell id="9qvsHVxMkWWdz-PDWaG6-403" edge="1" parent="1" source="9qvsHVxMkWWdz-PDWaG6-402" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=oval;startFill=0;endArrow=none;endFill=0;fontSize=11;">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="202.5" y="325" />
-            </Array>
-            <mxPoint x="202.5" y="330" as="targetPoint" />
-          </mxGeometry>
         </mxCell>
         <mxCell id="9qvsHVxMkWWdz-PDWaG6-404" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;spacingLeft=5;spacingBottom=2;fontSize=11;" value="&lt;span&gt;Prezzo&lt;/span&gt;" vertex="1">
           <mxGeometry height="10" width="30" x="227.5" y="330" as="geometry" />
