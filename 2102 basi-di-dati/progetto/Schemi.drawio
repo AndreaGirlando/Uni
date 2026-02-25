@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.5.1 Chrome/142.0.7444.265 Electron/39.6.1 Safari/537.36" version="29.5.1">
   <diagram name="Pagina-1" id="YIbOOEWhWtE3JlbQlyz5">
-    <mxGraphModel dx="1760" dy="1203" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="704" dy="481" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -375,7 +375,7 @@
             <mxPoint x="349" y="90" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9qvsHVxMkWWdz-PDWaG6-105" parent="9qvsHVxMkWWdz-PDWaG6-216" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" value="(1,N)" vertex="1">
+        <mxCell id="9qvsHVxMkWWdz-PDWaG6-105" parent="9qvsHVxMkWWdz-PDWaG6-216" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" value="(1,1)" vertex="1">
           <mxGeometry height="15" width="30" x="179" y="40" as="geometry" />
         </mxCell>
         <mxCell id="9qvsHVxMkWWdz-PDWaG6-156" parent="9qvsHVxMkWWdz-PDWaG6-216" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fontSize=11;" value="Riferito a" vertex="1">
@@ -443,7 +443,7 @@
             <mxPoint x="207" y="30" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9qvsHVxMkWWdz-PDWaG6-80" parent="9qvsHVxMkWWdz-PDWaG6-217" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" value="(1,N)" vertex="1">
+        <mxCell id="9qvsHVxMkWWdz-PDWaG6-80" parent="9qvsHVxMkWWdz-PDWaG6-217" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" value="(0,1)" vertex="1">
           <mxGeometry height="15" width="30" x="152" y="40" as="geometry" />
         </mxCell>
         <mxCell id="9qvsHVxMkWWdz-PDWaG6-218" connectable="0" parent="1" style="group;fontSize=11;" value="" vertex="1">
@@ -509,7 +509,7 @@
         <mxCell id="9qvsHVxMkWWdz-PDWaG6-31" parent="9qvsHVxMkWWdz-PDWaG6-218" style="text;html=1;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;spacingLeft=5;spacingBottom=5;fontSize=11;" value="&lt;span&gt;TipoUtente&lt;/span&gt;" vertex="1">
           <mxGeometry height="10" width="45" y="50" as="geometry" />
         </mxCell>
-        <mxCell id="9qvsHVxMkWWdz-PDWaG6-79" parent="9qvsHVxMkWWdz-PDWaG6-218" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" value="(0, 1)" vertex="1">
+        <mxCell id="9qvsHVxMkWWdz-PDWaG6-79" parent="9qvsHVxMkWWdz-PDWaG6-218" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" value="(1, N)" vertex="1">
           <mxGeometry height="20" width="36.5" x="130.25" as="geometry" />
         </mxCell>
         <mxCell id="9qvsHVxMkWWdz-PDWaG6-104" edge="1" parent="9qvsHVxMkWWdz-PDWaG6-218" source="9qvsHVxMkWWdz-PDWaG6-9" style="endArrow=none;html=1;rounded=0;exitX=-0.002;exitY=0.126;exitDx=0;exitDy=0;exitPerimeter=0;fontSize=11;" value="">
@@ -521,7 +521,7 @@
             <mxPoint x="53" y="25" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9qvsHVxMkWWdz-PDWaG6-106" parent="9qvsHVxMkWWdz-PDWaG6-218" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" value="(1,1)" vertex="1">
+        <mxCell id="9qvsHVxMkWWdz-PDWaG6-106" parent="9qvsHVxMkWWdz-PDWaG6-218" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" value="(1,N)" vertex="1">
           <mxGeometry height="15" width="30" x="22.5" as="geometry" />
         </mxCell>
         <mxCell id="9qvsHVxMkWWdz-PDWaG6-219" connectable="0" parent="1" style="group;fontSize=11;" value="" vertex="1">

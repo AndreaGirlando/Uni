@@ -17,17 +17,10 @@ INSERT INTO Reclamo (IdCorsaEffettiva, IdUtente, Testo, Data)
 VALUES (1, 12, 'L''autobus ha saltato la mia fermata nonostante avessi prenotato la discesa.', CURDATE());
 
 -- OP 3
-SELECT 
-    CP.Id AS IdCorsa, 
-    L.NomeDescrittivo AS Linea, 
-    CP.OraPartenza AS OrarioPartenzaCapolinea, 
-    F.Nome AS FermataRichiesta
-FROM CorsaPianificata CP
-JOIN Linea L ON CP.IdLinea = L.Id
-JOIN PercorsoLinea PL ON L.Id = PL.IdLinea
-JOIN Fermata F ON PL.IdFermata = F.Id
-WHERE L.Id = 1 AND F.Id = 5
-ORDER BY CP.OraPartenza ASC;
+SELECT OraPartenza AS OrariPartenzaCapolinea
+FROM CorsaPianificata
+WHERE IdLinea = 1
+ORDER BY OraPartenza ASC;
 
 -- OP 5
 SELECT 
