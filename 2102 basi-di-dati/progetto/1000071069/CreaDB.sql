@@ -15,7 +15,6 @@ CREATE TABLE Utente (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(100) NOT NULL,
     Cognome VARCHAR(100) NOT NULL,
-    CodiceFiscale CHAR(16) UNIQUE,
     DataNascita DATE,
     TipoUtente VARCHAR(20) NOT NULL CHECK (TipoUtente IN ('Studente', 'Pensionato', 'Standard')),
     MatricolaStudente VARCHAR(50),
@@ -72,7 +71,6 @@ CREATE TABLE TitoloViaggio (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     IdUtente INT,
     IdTariffa INT NOT NULL,
-    CodiceUnivoco VARCHAR(100) UNIQUE NOT NULL,
     Tipo VARCHAR(20) NOT NULL CHECK (Tipo IN ('Abbonamento', 'Biglietto')),
     DataEmissione DATE NOT NULL,
     DataScadenza DATE NOT NULL,
@@ -282,7 +280,25 @@ BEGIN
     WHERE Id = NEW.IdCorsaEffettiva;
 END $$
 
--- Ripristiniamo il delimitatore standard
+-- Stored procedure: operazione 8 come stored procedure
+CREATE PROCEDURE ReportRitardiMensili(
+    IN p_mese INT,
+    IN p_anno INT
+)
+BEGIN
+    SELECT 
+        L.NomeDescrittivo AS NomeLinea,
+        COUNT(CE.Id) AS TotaleCorseEffettuate,
+        ROUND(AVG(TIMESTAMPDIFF(MINUTE, CP.OraPartenza, CE.OraPartenzaReale)), 2) AS RitardoMedioMinuti
+    FROM CorsaEffettiva CE
+    JOIN CorsaPianificata CP ON CE.IdCorsaPianificata = CP.Id
+    JOIN Linea L ON CP.IdLinea = L.Id
+    WHERE MONTH(CE.Data) = p_mese AND YEAR(CE.Data) = p_anno
+    GROUP BY L.Id, L.NomeDescrittivo
+    ORDER BY RitardoMedioMinuti DESC;
+END $$
+
+
 DELIMITER ;
 
 

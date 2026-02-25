@@ -5,8 +5,8 @@ INSERT INTO Validazione (IdTitoloViaggio, IdCorsaEffettiva, Data)
 VALUES (20, 17, NOW());
 
 -- OP 2
-INSERT INTO TitoloViaggio (IdUtente, IdTariffa, CodiceUnivoco, Tipo, DataEmissione, DataScadenza)
-VALUES (10, 3, 'TX-987654321', 'Biglietto', CURDATE(), DATE_ADD(CURDATE(), INTERVAL 1 DAY));
+INSERT INTO TitoloViaggio (IdUtente, IdTariffa, Tipo, DataEmissione, DataScadenza)
+VALUES (10, 3, 'Biglietto', CURDATE(), DATE_ADD(CURDATE(), INTERVAL 1 DAY));
 
 -- OP 4
 INSERT INTO CorsaEffettiva (IdCorsaPianificata, IdAutista, NumeroPasseggeri, IdMezzo, Data, OraPartenzaReale, OraArrivoReale)
@@ -53,16 +53,7 @@ JOIN Linea L ON CP.IdLinea = L.Id
 ORDER BY CE.Data DESC, CE.NumeroPasseggeri DESC;
 
 -- OP 8
-SELECT 
-    L.NomeDescrittivo AS NomeLinea,
-    COUNT(CE.Id) AS TotaleCorseEffettuate,
-    ROUND(AVG(TIMESTAMPDIFF(MINUTE, CP.OraPartenza, CE.OraPartenzaReale)), 2) AS RitardoMedioMinuti
-FROM CorsaEffettiva CE
-JOIN CorsaPianificata CP ON CE.IdCorsaPianificata = CP.Id
-JOIN Linea L ON CP.IdLinea = L.Id
-WHERE MONTH(CE.Data) = 2 AND YEAR(CE.Data) = 2026
-GROUP BY L.Id, L.NomeDescrittivo
-ORDER BY RitardoMedioMinuti DESC;
+CALL ReportRitardiMensili(5, 2024);
 
 
 

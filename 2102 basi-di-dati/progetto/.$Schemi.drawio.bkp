@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.5.1 Chrome/142.0.7444.265 Electron/39.6.1 Safari/537.36" version="29.5.1">
   <diagram name="Pagina-1" id="YIbOOEWhWtE3JlbQlyz5">
-    <mxGraphModel dx="331" dy="224" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="587" dy="401" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -442,19 +442,6 @@
             </Array>
             <mxPoint x="207" y="30" as="targetPoint" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="9qvsHVxMkWWdz-PDWaG6-73" edge="1" parent="9qvsHVxMkWWdz-PDWaG6-217" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=oval;startFill=0;endArrow=none;endFill=0;align=left;fontSize=11;">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="75" y="14.950000000000045" />
-              <mxPoint x="75" y="14.950000000000045" />
-            </Array>
-            <mxPoint x="65" y="14.950000000000045" as="sourcePoint" />
-            <mxPoint x="87" y="15" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="9qvsHVxMkWWdz-PDWaG6-74" parent="9qvsHVxMkWWdz-PDWaG6-217" style="text;html=1;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;spacingLeft=5;spacingBottom=3;fontSize=11;" value="&lt;font&gt;CodiceUnivoco&lt;/font&gt;" vertex="1">
-          <mxGeometry height="10" width="60" y="10" as="geometry" />
         </mxCell>
         <mxCell id="9qvsHVxMkWWdz-PDWaG6-80" parent="9qvsHVxMkWWdz-PDWaG6-217" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" value="(1,N)" vertex="1">
           <mxGeometry height="15" width="30" x="152" y="40" as="geometry" />
