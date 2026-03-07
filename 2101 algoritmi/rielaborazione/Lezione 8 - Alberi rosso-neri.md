@@ -138,13 +138,13 @@ Questa funzione si basa sulla definizione di 3 casi, supponendo che **z** sia il
 
 **Caso 2**: questo caso è definito su due condizioni
 - lo zio $y$ di $z$ è nero
-- $z$ è interno
+- $z$ è interno (direzione sua rispetto al padre diversa di quella di suo padre rispetto al nonno)
 ![[Pasted image 20251221150916.png|500]]
 Ruotiamo il padre di $z$ in modo tale da mettere $z$ nella posizione del padre, ci saremo ricondotti al caso 3 e richiamiamo la procedura sulla nuova $z$
 
 **Caso 3**: questo caso è definito su due condizioni
 - lo zio $y$ di $z$ è nero
-- $z$ è esterno
+- $z$ è esterno (stessa direzione del padre rispetto al nonno)
 ![[Pasted image 20251221151352.png|500]]Ruotiamo il padre di $z$  con il nonno in maniera tale da metterlo al posto del nonno
 
 ###### Esempio
@@ -172,7 +172,7 @@ Indicando con $z$ il nodo che vogliamo rimuovere, definiamo i vari casi di rimoz
 - **Caso E**: $z$ nero con figlio nero
 	- il figlio prende il posto di $z$ e diventa *doppio nero*
 	- elimino $z$
-Gli due due casi creano delle configurazioni anomale, quindi sarà necessario creare una funzione **delete-fixup**
+Gli ultimi due  casi creano delle configurazioni anomale, quindi sarà necessario creare una funzione **delete-fixup**
 
 ###### Definizione delete-fixup
 Questa funzione va a risolvere i casi problematici dell'eliminazione, definiamo 3 casi:

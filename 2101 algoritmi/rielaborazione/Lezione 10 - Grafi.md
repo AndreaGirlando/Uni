@@ -24,7 +24,7 @@ Un grafo è detto aciclico quando non ha cicli
 *Se un grafo ha un ciclo allora ne ha infiniti*
 
 ###### Grafo pesato
-Un grafo è pesato se ad ogni arco diamo un peso una la funzione peso: $$w: E \rightarrow R$$quindi il costo totale di un eventuale cammino è: $$w(P) = \sum_{i=1}^{k-1}w(u_i,u_{i+1})$$*la maggior parte dei grafi pesati ha valori positivi negli archi*
+Un grafo è pesato se ad ogni arco diamo un peso usando la funzione peso: $$w: E \rightarrow R$$quindi il costo totale di un eventuale cammino è: $$w(P) = \sum_{i=1}^{k-1}w(u_i,u_{i+1})$$*la maggior parte dei grafi pesati ha valori positivi negli archi*
 
 ###### Ordinamento topologico
 Un ordinamento topologico è un ordinamento lineare dei nodi in modo che valga la relazione: $$\exists (u,v) \in R \Rightarrow u < v$$
@@ -167,7 +167,7 @@ Nel nostro grafo etichettiamo gli archi in base al ruolo che hanno durante l'esp
 - *C* archi trasversali: collegano nodi che non hanno relazione antenato-discendente
 
 ###### Per cosa usiamo la DFS
-**Ordinamento topologico**: dato il tempo di inizio e fine visita di ogni vertice del grafo otteniamo un ordinamento topologico valido se mettiamo i vertici in ordine rispetto a di fine visita:
+**Ordinamento topologico**: dato il tempo di inizio e fine visita di ogni vertice del grafo otteniamo un ordinamento topologico valido se mettiamo i vertici in ordine rispetto al tempo di fine visita:
 ![[Screenshot 2025-12-23 143622.png|500]]
 Dai tempi di fine visita otteniamo un ordinamento topologico: $D-G-B-A-E-F-C$
 **Identificazione delle componenti connesse**: per identificare le componenti connesse di un grafo facciamo uso della DFS nel seguente modo:
@@ -196,7 +196,7 @@ Un **cammino minimo** è definito come un cammino qualsiasi $p$ con peso $w(p) =
 Esistono 4 varianti del problema dei cammini minimi:
 1. *Problema dei cammini minimi da sorgente unica(single source)*: dato un grafo vogliamo trovare un cammino minimo che va da un dato vertice sorgente $s \in V$ a ciascun vertice $v \in V$ 
 2. *Problema dei cammini minimi con destinazione unica(single destination)*: trovare un cammino minimo da ciascun vertice $v$ a un dato vertice $t$ destinazione. (Invertendo la direzione di ciascun argo nel grafo lo possiamo ricondurre la primo caso)
-3. *Problema del cammino minimo per una coppia di vertici(single pair)*: trovare un cammino minimo da $u$ a $v$, e una variante del primo problema.
+3. *Problema del cammino minimo per una coppia di vertici(single pair)*: trovare un cammino minimo da $u$ a $v$, è una variante del primo problema.
 4. *Problema dei cammini minimi fra tutte le coppie di vertici(all-pairs)*: trovare un cammino minimo da $u$ a $v$ per ogni coppia di vertici.
 Di seguito affronteremo il primo e il quarto.
 
@@ -220,6 +220,7 @@ Il processo di *rilassamento di un arco* consiste nel verificare se passando per
 RELAX(u,v,w):
 	if(d[v]>d[u]+w(u,v))
 		d[v] = d[u]+w(u,v)
+		π[v] = u
 ```
 
 Alla creazione del nostro grafo tutti i valori del nostro array $d$ vengono inizializzati a $+\infty$. 
@@ -259,7 +260,7 @@ Rilassando gli archi di un dag (Directed Acyclic Graph) pesato $G = (V,E)$ secon
 ```
 DAG-SHORTEST-PATHS(G, w, s)
 	U = getTopologicalOrder(G);
-	foreach v in U:
+	foreach u in U:
 	  foreach v in G.Adj[u]
 		  RELAX(u, v, w)
 ```
@@ -441,6 +442,17 @@ Fast-APSP(W)
 Se inseriamo un iterazione in più otteniamo lo stesso risultato del ciclo finale di bellam-ford (la verifica di cicli negativi)
 ###### Complessità
 Il Fast-APSP ha complessità $O(V^3\log V)$ che è un miglioramento lieve rispetto a quello di bellam-ford
+
+###### Risoluzione degli esercizi
+Utilizzare questo criterio quando chiede esercizi su grafi con algoritmo matriciale (quello lento) # 
+**Passo D0** 
+1) Disegnare una matrice $n*n$ dove n è il numero dei vertici 
+2) Sulla diagonale metti 0 
+3) Per ogni vertice se esiste un arco da v a u scrivi nella matrice il peso dell'arco viceversa metti infinito 
+**Passo Dn** 
+Per ogni possibile coppia di vertici verifica se ne esiste un cammino con n nodi che avrà peso minore rispetto al cammino precedente. 
+
+Tips: se un nodo non ha archi uscenti allora avrà sempre infinito su tutta la riga tranne la diagonale.
 
 ### Floyd-Warshall
 

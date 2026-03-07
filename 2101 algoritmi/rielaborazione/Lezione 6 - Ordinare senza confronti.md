@@ -69,9 +69,9 @@ void countingSort(int *A, int* B, int n){
 Questa implementazione se avviata sull'array: $A = \{2,6,1,7,8\}$ da il seguente output:
 ```
 Array di base: 2 - 6 - 1 - 7 - 8
-Primo For: 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0
-Secondo For: 0 - 1 - 1 - 0 - 0 - 0 - 1 - 1
-Terzo For: 0 - 1 - 2 - 2 - 2 - 2 - 3 - 4
+Primo For: 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0
+Secondo For: 0 - 1 - 1 - 0 - 0 - 0 - 1 - 1 - 1
+Terzo For: 0 - 1 - 2 - 2 - 2 - 2 - 3 - 4 - 5
 Quarto For: 1 - 2 - 6 - 7 - 8
 ```
 ###### Complessità
@@ -97,7 +97,7 @@ quello che fa questo algoritmo è ordinare rispetto considerando solo una cifra 
 
 ```
 RadixSort(A, n, h)
-	for i <= 0 to h = 1 do:
+	for i <= 0 to h do:
 		countingSort(A, n, i)
 ```
 

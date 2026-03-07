@@ -18,7 +18,7 @@ Se un paziente arriva in codice giallo, supera automaticamente tutti quelli in a
 ### Confronto con altre implementazioni delle code con priorità
 
 ###### Specifiche iniziali
-Per capire perché nasce lo heap dobbiamo prima fare un'analisi di come le varie strutture dati si comportano (in termini di complessità algoritmica) quando si lavora con una coda con priorità. Una implementazione di una coda con priorità deve avere necessariamente i seguenti metodi:
+Per capire perché nasce lo heap dobbiamo prima fare un'analisi di come le varie strutture dati si comportano (in termini di complessità algoritmica) quando si lavora con una coda con priorità. Un implementazione di una coda con priorità deve avere necessariamente i seguenti metodi:
 1.  **Inserimento:** Aggiungere un nuovo elemento.
 2.  **Estrazione (del minimo):** Rimuovere e restituire l'elemento prioritario.
 3.  **Decremento (Decrease Key):** Aumentare la priorità di un elemento e quindi diminuire il valore della sua chiave
@@ -317,7 +317,7 @@ Con $A = [1,2,3]$ abbiamo un albero di decisione del tipo: ![[Pasted image 20251
 Qualsiasi algoritmo di ordinamento per confronti richiede $\Omega(n \log n)$
 
 ###### Dimostrazione
-Come abbiamo visto nell'esempio dell'albero di decisione ci basta determinare l'altezza di un albero di decisione dove possibile permutazione degli elementi compare come foglia. 
+Come abbiamo visto nell'esempio dell'albero di decisione ci basta determinare l'altezza di un albero ogni dove possibile permutazione degli elementi compare come foglia.
 Consideriamo quindi un albero di decisione:
 - elementi da ordinare $n$
 - altezza $h$

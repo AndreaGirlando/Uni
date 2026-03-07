@@ -85,7 +85,7 @@ Dati:
 - $h: U \rightarrow \{0,1,..,m-1\}$
 $$h(k) = k \ mod \ m$$
 ![[Pasted image 20251214155300.png|500]]
-Quando utilizziamo questo metodo evitiamo certi valori di $m$, per esempio non può essere una potenza di $2$, perché se $m = 2^p$ allora $h(k)$ allora la creazione delle chiave si baserà solo sui $p$ meno significativi e non su tutto il valore creando poca uniformità.
+Quando utilizziamo questo metodo evitiamo certi valori di $m$, per esempio non può essere una potenza di $2$, perché se $m = 2^p$ allora $h(k)$ durante la creazione delle chiave si baserà solo sui $p$ meno significativi e non su tutto il valore creando poca uniformità.
 ![[Pasted image 20251214155907.png|500]]
 
 ###### Metodo della moltiplicazione
@@ -99,7 +99,7 @@ Spieghiamo il principio di di questo metodo:
 2. Il resto della divisione per 1 con un numero reale, ritornerà il valore della parte decimale, ottenendo un valore compreso tra 0 e 1, 1 escluso.
 3. Moltiplicando per $m$, otteniamo valori compresi tra 0 e $m$, $m$ escluso.
 4. La funzione *floor* ci permette di prendere solo la parte intera
-In questo metodo il valore di $m$ non è critico, solitamente scegliamo una potenza di $2$ perché rende più veloce l'implementazione nei calcolatori moderni
+In questo metodo il valore di $m$ non è critico come prima, solitamente scegliamo una potenza di $2$ perché rende più veloce l'implementazione nei calcolatori moderni
 ### Risolviamo le collisioni usando l'hashing con concatenazione
 
 ###### Definizione
@@ -142,7 +142,7 @@ Search(T,k)
 	- Distribuiamo la sommatoria dentro la parentesi e sostituiamo $Pr\{x_{ij}\}$:$$\frac{1}{n}(\sum^n_{i=1}1+\sum^n_{i=1}\sum^n_{j = n+1}\frac{1}{m})$$
 	- Riscrivo la prima sommatoria semplicemente come $n$ e sposto fuori la costante $\frac{1}{m}$: $$\frac{1}{n}(n+\frac{1}{m}\sum^n_{i=1}\sum^n_{j = n+1}1)$$
 	- Riscrivo la sommatoria con $j$ come $n-i$: $$\frac{1}{n}(n+\frac{1}{m}\sum^n_{i=1}(n-i))$$
-	- Riscrivo le sommatorie come differenza di sommatorie $$\frac{1}{n}\Big(n+\frac{1}{m}(\sum^n_{i=1} n \ -\sum^n_{j = n+1}i)\Big)$$
+	- Riscrivo le sommatorie come differenza di sommatorie $$\frac{1}{n}\Big(n+\frac{1}{m}(\sum^n_{i=1} n \ -\sum^n_{i = 1}i)\Big)$$
 	- Risolvo le sommatorie $$\frac{1}{n}\Big(n+\frac{1}{m}(n^2-\frac{n(n+1)}{2})\Big)$$
 	- Risolvo i calcoli rimanenti $$1+\frac{1}{mn}\Big(n^2-\frac{n(n+1)}{2}\Big) = 1 + \frac{n}{m} - \frac{n+1}{2m} \in O(1+\alpha)$$
 
@@ -218,9 +218,9 @@ $$Pr[h(k)=p]=\frac{1}{m!} \forall p \in P_m$$
 Questa ipotesi si chiama **hashing uniforme**. Costruire funzioni hash per l'indirizzamento aperto che rispettino questa proprietà è piuttosto complesso. Successivamente vengono analizzate tre tecniche usate per creare la sequenza di ispezione
 
 ###### Analisi
-La nostra analisi dell'indirizzamento aperto è espressa in termini del fattore di carico $\alpha = \frac{n}{m}$. Supponiamo venga applicata l'hashing uniforme quindi la sequenza $$\langle h(k, 0), h(k, 1),..., h(k,m-1) \rangle$$utilizzata per inserire o ricercare una chiave $k$ ha la stessa probabilità di essere una qualsiasi permutazione di $\langle 0,1,\dots,m-1 \rangle$.  Analizziamo il numero atteso di ispezioni dell'hashing con indirizzamento aperto, facendo differenza tra una ricerca con e senza successo:
+La nostra analisi dell'indirizzamento aperto è espressa in termini del fattore di carico $\alpha = \frac{n}{m}$. Supponiamo venga applicata l'hashing uniforme quindi la sequenza $$\langle h(k, 0), h(k, 1),..., h(k,m-1) \rangle$$utilizzata per inserire o ricercare una chiave $k$ ha la stessa probabilità di essere una qualsiasi permutazione di $\langle 0,1,\dots,m-1 \rangle$.  Analizziamo di seguito il numero atteso di ispezioni dell'hashing con indirizzamento aperto, facendo differenza tra una ricerca con e senza successo:
 **Ricerca senza successo**: data una tavola hash con un fattore di carico $\alpha = n/m < 1$ il numero atteso di ispezioni in una ricerca senza successo è al massimo $\frac{1}{1-\alpha}$
-*Dimostrazione*: ![[Pasted image 20251214181345.png|600]]
+*Dimostrazione*:  ![[Pasted image 20260307180342.png]]
 
 **Ricerca con successo**: data una tavola hash con un fattore di carico $\alpha = n/m < 1$ il numero atteso di ispezioni in una ricerca senza successo è al massimo $\frac{1}{\alpha}\ln\frac{1}{1-\alpha}$
 *Dimostrazione*: ![[Pasted image 20251214181414.png|600]]

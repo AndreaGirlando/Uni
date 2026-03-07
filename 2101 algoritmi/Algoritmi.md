@@ -1,3 +1,5 @@
+
+
 # Ricorsione
 
 ### Introduzione alla ricorsione
@@ -11,7 +13,7 @@ La **ricorsione** rappresenta uno dei concetti più eleganti e profondi della pr
 Questo meccanismo sembra apparentemente circolare, ma è in realtà estremamente potente a condizione che esista un punto di arresto ben definito: ovvero **la condizione base**
 
 Un esempio classico di questo meccanismo è il calcolo del fattoriale di un numero intero non negativo $n$
-![[Pasted image 20251012172214.png]]
+![[Pasted image 20251012172214.png|500]]
 in breve si afferma che per calcolare $n!$ non è necessario conoscere direttamente il risultato ma basta sapere come calcolare il fattoriale di un numero più piccolo $n-1$. Questa definizione *auto-riferita* è perfettamente lecita e diventa potente perché il caso base (quello sopra) interrompe la catena di richiami e garantisce la terminazione (cosa molto importante in un programma)
 
 ###### Fasi della ricorsione
@@ -200,6 +202,7 @@ Dopo aver analizzato vari esempi di funzioni ricorsive e la loro costruzione pas
 	- *Concettualmente*: rappresenta il modo di ragionare *dal basso verso l'alto*, la soluzione viene costruita passo passo mantenendo esplicitamente lo stato intermedio della computazione
 	- *Computazionalmente*:  usa una quantità di memoria costante poiché le variabili utilizzate vengono riutilizzate a ogni passo.
 Le funzioni ricorsive hanno molto spesso una maggiore *chiarezza espressiva* e questo permette una ottima *modularità*, naturalmente presenta anche dei *limiti pratici*, come quando la profondità di una chiamata è molto grande o anche nella gestione dei bug durante la fase di debug.
+
 # Il problema dello zaino
 
 Il **problema dello zaino** che consiste in:
@@ -420,6 +423,8 @@ Nell'analisi asintotica degli algoritmi, è prassi trascurare i **fattori costan
 **Esempio**: $$T_1(n) = 100n, \ T_2(n) = 5n \log_2 n$$dal punto di vista asintotico $T_1$ è più efficiente, tuttavia il fattore costante $100$ nel primo algoritmo può renderlo più lento del secondo per una vasta gamma di valori realistici di $n$, vediamolo con $n = 100$
 $$T_1(100) = 10000 , \ T_2(100) = 5\times100\times \log_2 100 ≈ 5 \times 100 \times 6.64 = 3320 $$
 In questo caso, l'algoritmo con complessità peggiore risulta più veloce. Questo esempio mette in evidenza un punto importante: le notazioni asintotiche descrivono il comportamento per $n$ grandi, ma non sempre riflettono le prestazioni reali su input di dimensioni moderate
+
+
 # Risoluzione delle equazioni di ricorrenza
 
 ### Introduzione alle equazioni di ricorrenza
@@ -616,7 +621,7 @@ Se un paziente arriva in codice giallo, supera automaticamente tutti quelli in a
 ### Confronto con altre implementazioni delle code con priorità
 
 ###### Specifiche iniziali
-Per capire perché nasce lo heap dobbiamo prima fare un'analisi di come le varie strutture dati si comportano (in termini di complessità algoritmica) quando si lavora con una coda con priorità. Una implementazione di una coda con priorità deve avere necessariamente i seguenti metodi:
+Per capire perché nasce lo heap dobbiamo prima fare un'analisi di come le varie strutture dati si comportano (in termini di complessità algoritmica) quando si lavora con una coda con priorità. Un implementazione di una coda con priorità deve avere necessariamente i seguenti metodi:
 1.  **Inserimento:** Aggiungere un nuovo elemento.
 2.  **Estrazione (del minimo):** Rimuovere e restituire l'elemento prioritario.
 3.  **Decremento (Decrease Key):** Aumentare la priorità di un elemento e quindi diminuire il valore della sua chiave
@@ -915,7 +920,7 @@ Con $A = [1,2,3]$ abbiamo un albero di decisione del tipo: ![[Pasted image 20251
 Qualsiasi algoritmo di ordinamento per confronti richiede $\Omega(n \log n)$
 
 ###### Dimostrazione
-Come abbiamo visto nell'esempio dell'albero di decisione ci basta determinare l'altezza di un albero di decisione dove possibile permutazione degli elementi compare come foglia. 
+Come abbiamo visto nell'esempio dell'albero di decisione ci basta determinare l'altezza di un albero ogni dove possibile permutazione degli elementi compare come foglia.
 Consideriamo quindi un albero di decisione:
 - elementi da ordinare $n$
 - altezza $h$
@@ -923,6 +928,8 @@ Consideriamo quindi un albero di decisione:
 ciascuna delle $n!$ permutazioni dell'input compare in una foglia, si ha quindi $n! \le l$. Dal momento che un albero binario di altezza $h$ non ha più di $2^h$ foglie si ha: $$n! \le l \le 2^h$$da questo estraiamo: $$n! \le 2^h \rightarrow \log_2(n!) \le h$$che ci indica una complessità di $$\Omega (n \log n)$$ 
 ###### Conclusioni
 Da questo capiamo che algoritmi come *heapSort* e *MergeSort* sono ottimi algoritmi di ordinamento usando i confronti
+
+
 # Algoritmi di ordinamento senza confronti 
 
 ### Counting sort
@@ -994,9 +1001,9 @@ void countingSort(int *A, int* B, int n){
 Questa implementazione se avviata sull'array: $A = \{2,6,1,7,8\}$ da il seguente output:
 ```
 Array di base: 2 - 6 - 1 - 7 - 8
-Primo For: 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0
-Secondo For: 0 - 1 - 1 - 0 - 0 - 0 - 1 - 1
-Terzo For: 0 - 1 - 2 - 2 - 2 - 2 - 3 - 4
+Primo For: 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0 - 0
+Secondo For: 0 - 1 - 1 - 0 - 0 - 0 - 1 - 1 - 1
+Terzo For: 0 - 1 - 2 - 2 - 2 - 2 - 3 - 4 - 5
 Quarto For: 1 - 2 - 6 - 7 - 8
 ```
 ###### Complessità
@@ -1022,7 +1029,7 @@ quello che fa questo algoritmo è ordinare rispetto considerando solo una cifra 
 
 ```
 RadixSort(A, n, h)
-	for i <= 0 to h = 1 do:
+	for i <= 0 to h do:
 		countingSort(A, n, i)
 ```
 
@@ -1069,6 +1076,9 @@ void radixSort(int* A, int len, int h){
 
 ###### Complessità
 La sua complessità dipende dall'algoritmo di ordinamento usato al suo interno, nel nostro caso abbiamo usato il counting sort quindi abbiamo una complessità: $$O(h(n+k)) \in O(n)$$
+
+
+
 # Tabelle Hash
 
 ### Introduzione alle Hash table
@@ -1156,7 +1166,7 @@ Dati:
 - $h: U \rightarrow \{0,1,..,m-1\}$
 $$h(k) = k \ mod \ m$$
 ![[Pasted image 20251214155300.png|500]]
-Quando utilizziamo questo metodo evitiamo certi valori di $m$, per esempio non può essere una potenza di $2$, perché se $m = 2^p$ allora $h(k)$ allora la creazione delle chiave si baserà solo sui $p$ meno significativi e non su tutto il valore creando poca uniformità.
+Quando utilizziamo questo metodo evitiamo certi valori di $m$, per esempio non può essere una potenza di $2$, perché se $m = 2^p$ allora $h(k)$ durante la creazione delle chiave si baserà solo sui $p$ meno significativi e non su tutto il valore creando poca uniformità.
 ![[Pasted image 20251214155907.png|500]]
 
 ###### Metodo della moltiplicazione
@@ -1170,7 +1180,7 @@ Spieghiamo il principio di di questo metodo:
 2. Il resto della divisione per 1 con un numero reale, ritornerà il valore della parte decimale, ottenendo un valore compreso tra 0 e 1, 1 escluso.
 3. Moltiplicando per $m$, otteniamo valori compresi tra 0 e $m$, $m$ escluso.
 4. La funzione *floor* ci permette di prendere solo la parte intera
-In questo metodo il valore di $m$ non è critico, solitamente scegliamo una potenza di $2$ perché rende più veloce l'implementazione nei calcolatori moderni
+In questo metodo il valore di $m$ non è critico come prima, solitamente scegliamo una potenza di $2$ perché rende più veloce l'implementazione nei calcolatori moderni
 ### Risolviamo le collisioni usando l'hashing con concatenazione
 
 ###### Definizione
@@ -1289,9 +1299,9 @@ $$Pr[h(k)=p]=\frac{1}{m!} \forall p \in P_m$$
 Questa ipotesi si chiama **hashing uniforme**. Costruire funzioni hash per l'indirizzamento aperto che rispettino questa proprietà è piuttosto complesso. Successivamente vengono analizzate tre tecniche usate per creare la sequenza di ispezione
 
 ###### Analisi
-La nostra analisi dell'indirizzamento aperto è espressa in termini del fattore di carico $\alpha = \frac{n}{m}$. Supponiamo venga applicata l'hashing uniforme quindi la sequenza $$\langle h(k, 0), h(k, 1),..., h(k,m-1) \rangle$$utilizzata per inserire o ricercare una chiave $k$ ha la stessa probabilità di essere una qualsiasi permutazione di $\langle 0,1,\dots,m-1 \rangle$.  Analizziamo il numero atteso di ispezioni dell'hashing con indirizzamento aperto, facendo differenza tra una ricerca con e senza successo:
+La nostra analisi dell'indirizzamento aperto è espressa in termini del fattore di carico $\alpha = \frac{n}{m}$. Supponiamo venga applicata l'hashing uniforme quindi la sequenza $$\langle h(k, 0), h(k, 1),..., h(k,m-1) \rangle$$utilizzata per inserire o ricercare una chiave $k$ ha la stessa probabilità di essere una qualsiasi permutazione di $\langle 0,1,\dots,m-1 \rangle$.  Analizziamo di seguito il numero atteso di ispezioni dell'hashing con indirizzamento aperto, facendo differenza tra una ricerca con e senza successo:
 **Ricerca senza successo**: data una tavola hash con un fattore di carico $\alpha = n/m < 1$ il numero atteso di ispezioni in una ricerca senza successo è al massimo $\frac{1}{1-\alpha}$
-*Dimostrazione*: ![[Pasted image 20251214181345.png|600]]
+*Dimostrazione*:  ![[Pasted image 20260307180342.png]]
 
 **Ricerca con successo**: data una tavola hash con un fattore di carico $\alpha = n/m < 1$ il numero atteso di ispezioni in una ricerca senza successo è al massimo $\frac{1}{\alpha}\ln\frac{1}{1-\alpha}$
 *Dimostrazione*: ![[Pasted image 20251214181414.png|600]]
@@ -1309,7 +1319,6 @@ Questa funzione di hashing non gode della proprietà di hashing uniforme, in qua
 Cambia solo la funzione di hashing e diventa: $$h(k,i) = (h'(x)+c_1+c_2i^2) \ mod \ m$$Con $c_1$ e $c_2$ costanti scelte in modo tale che l'intera tabella venga scansionata dalla funzione $h(k,i)$ ed evitare l'agglomerazione primaria.
 ###### Ispezione doppio hashing
 In questa funzione vengono usate due funzione di hashing: $$h(k,i) = (h'(k)+ih''(k)) \ mod \ m$$Il numero totale di permutazioni totale è $m \times m = m^2$, in quanto la prima funzione di hashing da la prima posizione, la seconda le successive, e quindi $m$ possibili posizioni dopo altre $m$. 
-
 # Alberi rosso-neri
 
 ### Alberi bilanciati
@@ -1450,17 +1459,17 @@ Questa funzione si basa sulla definizione di 3 casi, supponendo che **z** sia il
 
 **Caso 2**: questo caso è definito su due condizioni
 - lo zio $y$ di $z$ è nero
-- $z$ è interno
+- $z$ è interno (direzione sua rispetto al padre diversa di quella di suo padre rispetto al nonno)
 ![[Pasted image 20251221150916.png|500]]
 Ruotiamo il padre di $z$ in modo tale da mettere $z$ nella posizione del padre, ci saremo ricondotti al caso 3 e richiamiamo la procedura sulla nuova $z$
 
 **Caso 3**: questo caso è definito su due condizioni
 - lo zio $y$ di $z$ è nero
-- $z$ è esterno
+- $z$ è esterno (stessa direzione del padre rispetto al nonno)
 ![[Pasted image 20251221151352.png|500]]Ruotiamo il padre di $z$  con il nonno in maniera tale da metterlo al posto del nonno
 
 ###### Esempio
-![[Screenshot_20251221_162142_Samsung capture.jpg|500]]
+![[Screenshot_20251221_162142_Samsung capture.jpg|700]]
 
 ### Operazioni negli alberi rosso-neri: eliminazione
 ###### Ripasso rimozione negli alberi BST
@@ -1484,7 +1493,7 @@ Indicando con $z$ il nodo che vogliamo rimuovere, definiamo i vari casi di rimoz
 - **Caso E**: $z$ nero con figlio nero
 	- il figlio prende il posto di $z$ e diventa *doppio nero*
 	- elimino $z$
-Gli due due casi creano delle configurazioni anomale, quindi sarà necessario creare una funzione **delete-fixup**
+Gli ultimi due  casi creano delle configurazioni anomale, quindi sarà necessario creare una funzione **delete-fixup**
 
 ###### Definizione delete-fixup
 Questa funzione va a risolvere i casi problematici dell'eliminazione, definiamo 3 casi:
@@ -1516,6 +1525,7 @@ Questa funzione va a risolvere i casi problematici dell'eliminazione, definiamo 
 **TIP Generali**: 
 - Se un nodo doppio-nero diventa la radice dell'interno albero possiamo scartare un grado di nero
 - Se dobbiamo togliere un grado di nero ad un nodo NIL questo si può fare ma resterà comunque nero
+
 # Programmazione dinamica 
 ### Introduzione
 ###### Definizione
@@ -1551,25 +1561,30 @@ F(n):
 ```
 ![[Pasted image 20251224100247.png|500]]
 Guardando l'albero di ricorsione si nota subito che alcuni sotto-problemi vengono risolti più volte, questo è ovviamente un problema che ci fa perdere tempo. Quello che facciamo è rendere un caso base ogni sotto-problema risolto
-```
-// Inizializzazione
-M = new Array(n) // array che contiene la soluzione
-M[1] = M[2] = 1
-for i = 3 to n DO M[i] <- NULL // inizializzazione
 
-F(n)
-    if M[n] != null then
-        return M[n]
-    
-    if M[n-1] == null then
-        M[n-1] <- F(n-1)
-    
-    if M[n-2] == null then
-        M[n-2] <- F(n-2)
-        
-    return M[n-1] + M[n-2]
 ```
+F(n)
+	// Inizializzazione
+	M = new Array(n) // array che contiene la soluzione
+	M[1] = M[2] = 1
+	for i = 3 to n DO M[i] <- NULL // inizializzazione
+	
+	F(n)
+	    if M[n] != null then
+	        return M[n]
+	    
+	    if M[n-1] == null then
+	        M[n-1] <- F(n-1)
+	    
+	    if M[n-2] == null then
+	        M[n-2] <- F(n-2)
+	        
+	    return M[n-1] + M[n-2]
+
+```
+
 Entrambe le soluzioni sono *top-down*, ma la seconda risulta più efficiente. Di seguito una soluzione *bottom-up*:
+
 ```
 F(n):
     M[1] <- M[2] <- 1
@@ -1671,6 +1686,15 @@ PRINT-CUT(n, K) //Funzione che stampa il taglio migliore dato n
         PRINT-CUT(n - K[n], K)
 ```
 
+
+###### Sottostruttura ottima
+Il problema del rodcut gode della proprietà della sottostruttura ottima di seguito la dimostrazione:
+1. Prendiamo una soluzione ottima $S^*$ del problema 
+2. Supponiamo che questa soluzione preveda il taglio dell'asta in due pezzi: uno di lunghezza $k$ e uno di lunghezza $n-k$, il valore di questa soluzione quindi è definito come $$p(S^*) = p(S_k) + p(S_{n-k})$$
+3. Supponendo per assurdo che $S_{n-k}$ non sia ottima, abbiamo quindi un'altra decomposizione $S'_{n-k}$ con valore più alto
+4. Quindi otteniamo una nuova soluzione ottima definita in questo modo: $$p(S^*_{migliore}) = p(S_k) + p(S'_{n-k})$$
+5. Visto che $p(S'_{n-k}) > p(S_{n-k})$ allora $p(S^*_{migliore})>p(S^*)$, questo rappresenta una contraddizione in quanto $S$ era già ottima
+
 ### Ottimizzazione della moltiplicazione tra matrici
 
 Questo è un problema di ottimizzazione basato sul prodotto riga per colonna delle matrici, visto che questa operazione gode della proprietà associativa associando i prodotti in maniera diversa è possibile ottenere lo stesso risultato ma con un numero di operazioni scalari minori
@@ -1705,7 +1729,7 @@ La complessità della parentesizzazione $(A_1 · A_2)·A_3$ sarà:
 $$10·100·5+10·5·50 = 5000+2500 = 7500$$
 La complessità della parentesizzazione $A_1 · (A_2·A_3)$ sarà:
 $$100·5·50+10·100·50 = 25000 + 50000 = 75000$$
-Associazioni differenti creano complessità molto differenti, la domande dalla quale nasce questo problema è:
+Associazioni differenti creano complessità molto differenti, la domanda che adesso ci poniamo è:
 *Come troviamo la parentesizzazione migliore per minimizzare il numero di operazioni scalari?*
 
 
@@ -1834,7 +1858,7 @@ PRINT-CHAIN(D, i, j)
 Mentre l'algoritmo che è rimasto essenzialmente lo stesso si occupa di esplorare e trovare tutti i possibili modi di parentesizzare la catena $k$, la matrice $D[i,j]$ salva esattamente quale indice $k$ ha prodotto la parentesizzazione migliore. La funzione print-chain serve per stampare la parentesizzazione migliore in base ai parametri passati.  
 ###### Complessità
 Avendo tre cicli annidati la complessità è $O(n^3)$, è una complessità molto alta, infatti questo algoritmo viene utilizzando quando si devono moltiplicare matrici molto grandi dove c'è un vero e proprio guadagno.
-### Distanza di Editing e LCS
+### Distanza di Editing
 ###### Introduzione al Problema
 
 Il problema fondamentale analizzato riguarda il calcolo della distanza tra due stringhe, $X$ e $Y$. Esistono diverse metriche per valutare questa distanza, come la **Distanza di Hamming** (che considera solo sostituzioni su stringhe di uguale lunghezza) o la più generale **Distanza di Editing** (o distanza di Levenshtein).
@@ -1933,50 +1957,149 @@ PRINT-EDT(ED, X, Y, n, m)
 
 ---
 
-###### Longest Common Substring
+### Longest Common Substring
+Date due stringhe X e Y devo cercare la più lunga stringa di caratteri **consecutivi** comune a entrambe le stringhe.
+Vediamo se questo problema può essere risolto tramite la prog dinamica
+Ricordiamo che dobbiamo dimostrare 2 cose:
+1) la soluzione ottima di un problema contiene al suo interno le soluzioni ottime dei suoi sotto problemi
+2) definire un approccio ricorsivo per risolvere il problema
+###### Sottostruttura ottima:
 
-Un problema correlato è trovare la più lunga stringa di caratteri _consecutivi_ comune a entrambe le stringhe.
+**Definizione del sotto problema:** Definiamo $L(i, j)$ come la lunghezza della più lunga sottostringa comune che **termina esattamente** agli indici $i$ di $X$ e $j$ di $Y$ (ovvero il "suffisso comune").
 
-**Definizione Ricorsiva (Suffissi)**
-Sia $LCS_{suffix}(i, j)$ la lunghezza del suffisso comune più lungo tra $X[1\dots i]$ e $Y[1\dots j]$.
-- Se $X[i] = Y[j]$: $LCS_{suffix}(i, j) = LCS_{suffix}(i-1, j-1) + 1$
-- Se $X[i] \neq Y[j]$: $LCS_{suffix}(i, j) = 0$ (la continuità si interrompe).
+**La Tesi:** Se i caratteri $X[i]$ e $Y[j]$ sono uguali, allora la lunghezza del suffisso comune che termina in $(i, j)$ dipende direttamente dalla lunghezza del suffisso comune che terminava in $(i-1, j-1)$.
 
-Durante il calcolo, è necessario mantenere una variabile globale `max_len` per tracciare il valore massimo trovato nella matrice, poiché la sottostringa più lunga può terminare in qualsiasi punto, non necessariamente alla fine delle stringhe.
+**La Dimostrazione (Logica):**
+Supponiamo che $X[i] == Y[j]$.
+Poiché stiamo cercando una **sottostringa** (caratteri _consecutivi_), il carattere corrente estende semplicemente ciò che c'era immediatamente prima.
+- Se la soluzione per $(i, j)$ è una stringa di lunghezza $K > 1$, significa che i caratteri $X[i]$ e $Y[j]$ sono l'ultimo carattere di questa stringa.
+- Se rimuoviamo questo ultimo carattere, rimaniamo con una sottostringa comune di lunghezza $K-1$ che termina agli indici $i-1$ e $j-1$.
+- Affinché la soluzione a $(i, j)$ sia **ottima** (massima), anche la soluzione a $(i-1, j-1)$ deve essere **ottima**. Se ci fosse un suffisso comune più lungo a $(i-1, j-1)$, potremmo aggiungerci $X[i]$ (che è uguale a $Y[j]$) ottenendo un risultato migliore per $(i, j)$, contraddicendo l'ipotesi iniziale.
+Longest 
+###### Definizione funzione ricorsiva:
+Dati due indici $i$ e $j$ (rispettivamente per le stringhe $X$ e $Y$) sfrutteremo una matrice per memorizzare i risultati e la soluzione sarà la casella con valore massimo della matrice:
+**Caso Base:** Se uno degli indici è 0 (stringa vuota o prima dell'inizio), non c'è nessuna stringa comune.
+$$L(i, 0) = 0, \quad L(0, j) = 0$$
 
-*Ottimizzazione Spaziale:*
-Poiché per calcolare la riga $i$ serve solo la riga $i-1$, è possibile utilizzare solo due array ("current" e "previous") invece di un'intera matrice, riducendo lo spazio.
+**Caso 1: I caratteri corrispondono ($X[i] == Y[j]$)** Poiché i caratteri sono uguali, estendiamo la sottostringa comune trovata nel passo precedente (la "diagonale" precedente nella matrice).
+$$L(i, j) = 1 + L(i-1, j-1)$$
+_Perché $i-1, j-1$?_ Perché per mantenere la **consecutività**, dobbiamo guardare i caratteri immediatamente precedenti in entrambe le stringhe.
 
-###### Longest Common Subsequence
-A differenza della sotto-stringa, una **sotto-sequenza** non richiede che i caratteri siano consecutivi, ma deve mantenere l'ordine relativo originale.
+**Caso 2: I caratteri NON corrispondono ($X[i] \neq Y[j]$)** Poiché una sottostringa deve essere consecutiva, se i caratteri attuali sono diversi, la catena si **spezza**. Non possiamo "saltare" un carattere.
+$$L(i, j) = 0$$
+Il suffisso comune che _termina_ in questi indici ha lunghezza 0.
 
-**Esempio**:
-$X = \text{ACTAAA}$
-$Y = \text{CCATAG}$
-LCS = "ATA" (lunghezza 3).
+Se dopo che la catena si spezza il contatore di caratteri torna a 0 e si ripete la procedura fino a quando non si raggiungono i casi base.
 
-**Relazione di Ricorrenza**
-Sia $LCS(i, j)$ la lunghezza della più lunga sotto-sequenza comune tra $X[1\dots i]$ e $Y[1\dots j]$.
-1. Se $X[i] = Y[j]$: Il carattere fa parte della LCS. $$LCS(i, j) = LCS(i-1, j-1) + 1$$
-2. Se $X[i] \neq Y[j]$: Il carattere corrente non può estendere una corrispondenza comune. La soluzione è il massimo tra ignorare il carattere di $X$ o ignorare il carattere di $Y$. $$LCS(i, j) = \max(LCS(i-1, j), \quad LCS(i, j-1))$$
+###### Soluzione con programmazione dinamica:
 
-**Ricostruzione e Stampa della LCS**
-Per stampare la sotto-sequenza, si utilizza una procedura ricorsiva partendo dalla fine della matrice calcolata ($L$).
+**Logica dell'algoritmo:**
+
+1. Creiamo una matrice `dp` di dimensione $(m+1) \times (n+1)$.
+2. Iteriamo sulle stringhe.
+3. Se $X[i] == Y[j]$, incrementiamo il valore della diagonale precedente ($dp[i-1][j-1] + 1$).
+4. Se $X[i] \neq Y[j]$, mettiamo $0$.
+5. Teniamo traccia di una variabile `max_len` durante il processo.
 
 ```
-PRINT-LCS(L, X, Y, i, j)
-  IF (L[i, j] == 0) RETURN
+dp[][]= new matrix(m+1,n+1)
+maxLength = 0
+endIndex = 0
 
-  IF (X[i] == Y[j]) THEN
-    // Trovato un carattere comune: stampa prima i precedenti (ordine inverso)
-    PRINT-LCS(L, X, Y, i-1, j-1)
-    STAMPA(X[i])
-  ELSE
-    // Segui la direzione del massimo valore
-    IF (L[i-1, j] >= L[i, j-1]) THEN
-      PRINT-LCS(L, X, Y, i-1, j)
-    ELSE
-      PRINT-LCS(L, X, Y, i, j-1)
+for i from 1 to m+1 do:
+	for j from 1 to n+1 do:
+		if X[i] == Y[j]:
+			dp[i][j] = dp[i-1][j-1] +1
+			if dp[i][j] > maxLength:
+				maxLength = dp[i][j]
+				endIndex = i
+		else:
+			dp[i][j] = 0
+
+LCS = X[endIndex - maxLenght : endIndex]
+
+return LCS
+```
+
+> [!TIP]
+> $$endIndex - maxLenght : endIndex$$ 
+> indica lo slicing della stringa da endIndex - maxLength a endIndex.
+> *Esempio*: endIndex = 5  maxLength = 2 ---> da  3 a 5
+### Longest Common Subsequence (LCS)
+Date due sequenze $X$ e $Y$, il problema consiste nel trovare la più lunga sottosequenza comune a entrambe. A differenza delle sottostringhe, una **sottosequenza** non richiede che gli elementi siano consecutivi nella sequenza originale, ma devono mantenere lo stesso ordine relativo. Ad esempio, data $X = \langle A, B, C, B, D, A, B \rangle$, la sequenza $\langle B, C, D, B \rangle$ è una sua sottosequenza. Vediamo come risolvere questo problema tramite la programmazione dinamica.
+###### Sottostruttura ottima
+**Sottostruttura ottima di una LCS**
+Siano $X = \langle x_1, x_2, \dots, x_m \rangle$ e $Y = \langle y_1, y_2, \dots, y_n \rangle$ le sequenze; sia $Z = \langle z_1, z_2, \dots, z_k \rangle$ una qualsiasi LCS di $X$ e $Y$.
+1. Se $x_m = y_n$, allora $z_k = x_m = y_n$ e $Z_{k-1}$ è una LCS di $X_{m-1}$ e $Y_{n-1}$. 
+2. Se $x_m \neq y_n$, allora $z_k \neq x_m$ implica che $Z$ è una LCS di $X_{m-1}$ e $Y$.
+3. Se $x_m \neq y_n$, allora $z_k \neq y_n$ implica che $Z$ è una LCS di $X$ e $Y_{n-1}$.
+
+> [!TIP]
+> In questa definizione partiamo dalla fine della nostra stringa, se le stringhe sono uguali allora quel carattere deve essere salvato nella sottostringa comune $z$ e quindi il problema si riduce di $1$, se le stringhe non sono uguali il problema resta quello di trovare la sottostringa comune ignorando quel carattere ecco perché: ($X_{m-1}$ e $Y$) o ($X$ e $Y_{n-1}$)
+
+**Dimostrazione** 
+1. Visto che deve essere $z_k = x_m = y_n$. Ora, il prefisso $Z_{k-1}$ è una sottosequenza comune di $X_{m-1}$ e $Y_{n-1}$ di lunghezza $k - 1$. Vogliamo dimostrare che questo prefisso è una LCS. Supponiamo per assurdo che ci sia una sottosequenza comune $W$ di $X_{m-1}$ e $Y_{n-1}$ di lunghezza maggiore di $k - 1$. Allora, accodando $x_m = y_n$ a $W$ si ottiene una sottosequenza comune di $X$ e $Y$ la cui lunghezza è maggiore di $k$, che è una contraddizione.
+2. Se $z_k \neq x_m$, allora $Z$ è una sottosequenza comune di $X_{m-1}$ e $Y$. Se esistesse una sottosequenza comune $W$ di $X_{m-1}$ e $Y$ di lunghezza maggiore di $k$, allora $W$ sarebbe anche una sottosequenza comune di $X_m$ e $Y$, contraddicendo l’ipotesi che $Z$ sia una LCS di $X$ e $Y$.
+3. La dimostrazione è simmetrica a quella del punto (2).
+
+###### Definizione funzione ricorsiva
+Definiamo $c[i, j]$ come la lunghezza di una LCS delle sequenze $X_i$ e $Y_j$.
+**Caso Base:** Se una delle sequenze ha lunghezza 0, la lunghezza della LCS è 0.
+$$c[i, j] = 0 \quad \text{se } i=0 \text{ oppure } j=0$$
+
+**Caso 1: I caratteri corrispondono ($x_i == y_j$):** Abbiamo trovato un elemento della LCS. Incrementiamo di 1 la lunghezza della LCS trovata nei prefissi precedenti ($i-1, j-1$).
+$$c[i, j] = c[i-1, j-1] + 1$$
+**Caso 2: I caratteri NON corrispondono ($x_i \neq y_j$):** Non possiamo estendere la sottosequenza con l'attuale coppia. Dobbiamo cercare la soluzione migliore risolvendo i due sottoproblemi possibili (ignorando l'ultimo carattere di $X$ o ignorando l'ultimo carattere di $Y$) e prendendo il massimo.
+$$c[i, j] = \max(c[i, j-1], c[i-1, j])$$
+###### Soluzione con programmazione dinamica
+**Logica dell'algoritmo:**
+1. Creiamo una tabella $c$ di dimensione $(m+1) \times (n+1)$ per memorizzare le lunghezze.
+2. Creiamo una tabella $b$ per memorizzare le "frecce" che indicano quale sottoproblema ha generato la soluzione ottima ($\nwarrow, \uparrow, \leftarrow$) .
+3. Inizializziamo la prima riga e la prima colonna a 0 .
+4. Iteriamo attraverso la tabella riga per riga (bottom-up).
+5. Se $x_i == y_j$, il valore deriva dalla diagonale in alto a sinistra + 1 (freccia $\nwarrow$).
+6. Se $x_i \neq y_j$, il valore è il massimo tra il vicino in alto (freccia $\uparrow$) e il vicino a sinistra (freccia $\leftarrow$) .
+7. Il valore in $c[m, n]$ è la lunghezza della LCS. Per ricostruire la stringa, seguiamo le frecce a ritroso partendo da $b[m, n]$ .
+
+```
+LCS-LENGTH(X, Y)
+	m = X.length
+	n = Y.length
+	Siano b[1..m, 1..n] e c[0..m, 0..n] nuove tabelle
+	
+	// Inizializzazione casi base
+	for i = 1 to m: c[i, 0] = 0
+	for j = 0 to n: c[0, j] = 0
+	
+	// Calcolo Bottom-up
+	for i = 1 to m:
+	    for j = 1 to n:
+	        if X[i] == Y[j]:
+	            c[i, j] = c[i-1, j-1] + 1
+	            b[i, j] = "↖"           // Corrisponde a diagonale
+	        elseif c[i-1, j] >= c[i, j-1]:
+	            c[i, j] = c[i-1, j]
+	            b[i, j] = "↑"           // Corrisponde a 'su'
+	        else:
+	            c[i, j] = c[i, j-1]
+	            b[i, j] = "←"           // Corrisponde a 'sinistra'
+	
+	return c, b
+```
+
+Per stampare la sequenza effettiva, si usa una procedura ricorsiva che segue la tabella $b$ a ritroso:
+
+```
+PRINT-LCS(b, X, i, j)
+	if i == 0 or j == 0:
+	    return
+	if b[i, j] == "↖":
+	    PRINT-LCS(b, X, i-1, j-1)
+	    print X[i]
+	elseif b[i, j] == "↑":
+	    PRINT-LCS(b, X, i-1, j)
+	else:
+	    PRINT-LCS(b, X, i, j-1)
 ```
 # Algoritmi golosi
 ### Introduzione
@@ -1985,7 +2108,7 @@ Un'altra strategia che possiamo sfruttare per risolvere problemi di ottimizzazio
 
 ### Problema dello zaino
 ###### Definizione
-Riprendendo il problema dello zaino presentato nella lezione precedente, ricordiamo che:
+Riprendendo il problema dello zaino presentato nella lezione 2, ricordiamo che:
 - $k$ capienza dello zaino
 - $A = \{a_1,a_2,\dots,a_n\}$
 - $P(a_i) =$ peso dell'oggetto
@@ -2102,6 +2225,89 @@ HUFFMAN(Σ, f)
     return extractMin(Q)        // Ritorna la radice dell'albero
 ```
 Il processo inizia inserendo tutti i caratteri dell'alfabeto in una coda di priorità, dove vengono trattati come nodi foglia ordinati in base alla loro frequenza di apparizione. L'algoritmo procede estraendo iterativamente i due nodi con la frequenza minore assoluta e unendoli per creare un nuovo nodo intermedio, il cui valore è dato dalla somma delle frequenze dei due figli. Questo nuovo nodo viene reinserito nella coda, e l'operazione si ripete ciclicamente fino a quando rimane un unico nodo che diventa la radice dell'albero. Il risultato è una struttura in cui i caratteri più frequenti si trovano più vicini alla radice (ottenendo codici binari più corti), mentre quelli più rari sono posizionati in profondità (con codici più lunghi).
+
+
+###### Scelta greedy
+**Teorema**: possiamo scegliere i due nodi con frequenza più bassa ad ogni passaggio e questa scelta localmente ottima è anche una scelta globalmente ottima
+**Dimostrazione**:
+1. Abbiamo $T$ che rappresenta una soluzione ottima, ma in cui la scelta greedy non è stat necessariamente rispettata, quindi $x$ e $y$ due nodi con la frequenza minima non sono fratelli e si trovano in una posizione qualsiasi
+2. Prendiamo $a$ e $b$ due nodi fratelli alla massima profondità dell'albero, su questi nodi possiamo dire che:
+	1. $f(x)\le f(a)$ e $f(x)\le f(b)$
+	2. $d_t(a) \ge d_t(x)$ e $d_t(b) \ge d_t(y)$
+3. Creaiamo un nuovo albero $T'$ uguale a $T$ ma con $x$ e $a$ scambiati (stessa cosa per $y$ e $b$). Ricordando che il costo di $T$ è deifnito come $$\sum f(c)*d_t(c)$$di seguito vediamo quanto ci è costato passare da $T$ a $T'$:
+   $$B(T)-B(T') = f(x)d_T(x)+f(a)d_T(a)-[f(x)d_T(a)+f(a)d_T(x)]$$$$B(T)-B(T') = f(x)(d_T(x)-d_T(a))+f(a)(d_T(a)-d_T(x))$$$$B(T)-B(T') = (f(a)-f(x))*(d_T(a)-d_T(x))$$Analizzando i segni
+   - le frequenze $f(a)-f(x) \ge 0$
+   - la profondità $d_T(a)-d_T(x)\ge 0$
+Poiché stiamo moltiplicando due numeri non negativi abbiamo che: $$B(T)-B(T') \ge 0 \Rightarrow B(T) \le B(T')$$ visto che $T$ e $T'$ sono uguali allora il loro costo sarà lo stesso. Questo dimostra che la scelta greedy è sicura.
+
+### Activity selector
+###### Definizione del Problema
+Il nostro primo esempio è il problema della programmazione di più attività in competizione che richiedono l’uso esclusivo di una risorsa comune, con l’obiettivo di selezionare il più grande insieme di attività mutuamente compatibili. Supponiamo di avere un insieme $S = \{a_1, a_2, ..., a_n\}$ di $n$ attività che devono utilizzare la stessa risorsa
+- Ogni attività $a_i$ ha un tempo di inizio $s_i$ e un tempo di fine $f_i$.
+- Il problema della selezione di attività consiste nel selezionare il sottoinsieme che contiene il maggior numero di attività mutuamente compatibili.
+- Supponiamo che le attività siano ordinate in modo monotonicamente crescente rispetto ai tempi di fine: $f_1 \le f_2 \le ... \le f_n$.
+###### Sottostruttura Ottima
+Possiamo facilmente verificare che il problema della selezione di attività presenta una sottostruttura ottima.
+Indichiamo con $S_{ij}$ l’insieme delle attività che iniziano dopo la fine dell’attività $a_i$ e finiscono prima dell’inizio dell’attività $a_j$.
+Supponiamo di voler trovare un insieme massimo di attività mutuamente compatibili in $S_{ij}$ e supponiamo che $A_{ij}$ sia un insieme massimo che include una certa attività $a_k$.
+Includendo $a_k$ in una soluzione ottima, restano due sottoproblemi:
+1. Trovare le attività mutuamente compatibili nell’insieme $S_{ik}$ (attività che iniziano dopo la fine di $a_i$ e finiscono prima dell’inizio di $a_k$).
+2. Trovare le attività mutuamente compatibili nell’insieme $S_{kj}$ (attività che iniziano dopo la fine di $a_k$ e finiscono prima dell’inizio di $a_j$).
+Siano $A_{ik} = A_{ij} \cap S_{ik}$ e $A_{kj} = A_{ij} \cap S_{kj}$.
+Ne deriva che $A_{ij} = A_{ik} \cup \{a_k\} \cup A_{kj}$ e, quindi, la dimensione dell'insieme massimo è:
+$$|A_{ij}| = |A_{ik}| + |A_{kj}| + 1$$
+**Ragionamento "taglia e incolla":**
+Se trovassimo un insieme $A'_{kj}$ di attività mutuamente compatibili in $S_{kj}$ tale che $|A'_{kj}| > |A_{kj}|$, allora potremmo utilizzare $A'_{kj}$ anziché $A_{kj}$ in una soluzione del sottoproblema per $S_{ij}$. Avremmo potuto costruire un insieme di $|A_{ik}| + |A'_{kj}| + 1 > |A_{ij}|$ attività, il che contraddice l’ipotesi che $A_{ij}$ sia una soluzione ottima. Un ragionamento simmetrico si applica a $S_{ik}$.
+###### La Scelta Golosa (Greedy Choice)
+Che cosa intendiamo con scelta golosa nel problema della selezione di attività? L’intuito ci dice di scegliere l’attività in $S$ che finisce per prima, perché così la risorsa resterebbe disponibile per il maggior numero possibile di attività successive. Poiché le attività sono ordinate per tempi di fine crescenti, la scelta golosa è l’attività $a_1$. Se facciamo la scelta golosa, resta un solo sottoproblema da risolvere: trovare le attività che iniziano dopo la fine di $a_1$. Sia $S_k = \{a_i \in S : s_i \ge f_k\}$ l’insieme delle attività che iniziano dopo la fine dell’attività $a_k$. Se scegliamo $a_1$, $S_1$ resta l’unico sottoproblema.
+
+**Teorema:** Consideriamo un sottoproblema non vuoto $S_k$ e sia $a_m$ l’attività in $S_k$ che ha il primo tempo di fine; allora l’attività $a_m$ è inclusa in qualche sottoinsieme massimo di attività mutuamente compatibili di $S_k$.
+**Dimostrazione:**
+Supponiamo che $A_k$ sia un sottoinsieme massimo di attività mutuamente compatibili di $S_k$ e sia $a_j$ l’attività in $A_k$ con il più piccolo tempo di fine.
+1. Se $a_j = a_m$, abbiamo finito (l'attività golosa è già nell'insieme ottimo).
+2. Se $a_j \neq a_m$, costruiamo l'insieme $A'_k = (A_k - \{a_j\}) \cup \{a_m\}$ (sostituiamo $a_j$ con $a_m$).
+    - Le attività in $A'_k$ sono disgiunte perché lo è anche $A_k$ e $f_m \le f_j$(poiché $a_m$ è la scelta golosa).
+    - All'inizio abbiamo detto che $a_j$ è l'attività con il più piccolo tempo di fine, allora $f_m = f_j$ e qui capiamo che
+    - Poiché $|A'_k| = |A_k|$, concludiamo che $A'_k$ è un sottoinsieme massimo che include $a_m$.
+
+###### Algoritmo Ricorsivo
+La procedura cerca la prima attività in $S_k$ compatibile con $a_k$.
+
+```
+RECURSIVE-ACTIVITY-SELECTOR(s, f, k, n)
+1  m = k + 1
+2  while m <= n and s[m] < f[k]    // Trova la prima attività in Sk
+3      m = m + 1
+4  if m <= n
+5      return {a_m} U RECURSIVE-ACTIVITY-SELECTOR(s, f, m, n)
+6  else
+       return Ø
+```
+
+**Analisi:**
+Il ciclo `while` (righe 2-3) cerca la prima attività $a_m$ compatibile con $a_k$ (ovvero $s_m \ge f_k$). Il tempo di esecuzione è $\Theta(n)$, poiché ogni attività viene esaminata una sola volta nel test del ciclo `while` attraverso tutte le chiamate ricorsive.
+
+---
+###### Algoritmo Iterativo
+Possiamo convertire la procedura ricorsiva in una iterativa. La procedura `GREEDY-ACTIVITY-SELECTOR` raccoglie le attività selezionate in un insieme $A$.
+```
+GREEDY-ACTIVITY-SELECTOR(s, f)
+1  n = s.length
+2  A = {a_1}
+3  k = 1
+4  for m = 2 to n
+5      if s[m] >= f[k]
+6          A = A U {a_m}
+7          k = m
+8  return A
+```
+
+**Funzionamento:**
+- Le righe 2-3 selezionano $a_1$ e inizializzano $A$.
+- La variabile $k$ indicizza l'ultima attività aggiunta ad $A$. Poiché le attività sono ordinate, $f_k$ è sempre il massimo tempo di fine in $A$.
+- Il ciclo `for` (righe 4-7) esamina ogni attività $a_m$. Se $a_m$ è compatibile ($s_m \ge f_k$), viene aggiunta ad $A$ e $k$ viene aggiornato.
+- Anche questo algoritmo impiega tempo $\Theta(n)$.
+
 # Grafi
 
 ### Proprietà dei grafi
@@ -2128,7 +2334,7 @@ Un grafo è detto aciclico quando non ha cicli
 *Se un grafo ha un ciclo allora ne ha infiniti*
 
 ###### Grafo pesato
-Un grafo è pesato se ad ogni arco diamo un peso una la funzione peso: $$w: E \rightarrow R$$quindi il costo totale di un eventuale cammino è: $$w(P) = \sum_{i=1}^{k-1}w(u_i,u_{i+1})$$*la maggior parte dei grafi pesati ha valori positivi negli archi*
+Un grafo è pesato se ad ogni arco diamo un peso usando la funzione peso: $$w: E \rightarrow R$$quindi il costo totale di un eventuale cammino è: $$w(P) = \sum_{i=1}^{k-1}w(u_i,u_{i+1})$$*la maggior parte dei grafi pesati ha valori positivi negli archi*
 
 ###### Ordinamento topologico
 Un ordinamento topologico è un ordinamento lineare dei nodi in modo che valga la relazione: $$\exists (u,v) \in R \Rightarrow u < v$$
@@ -2271,7 +2477,7 @@ Nel nostro grafo etichettiamo gli archi in base al ruolo che hanno durante l'esp
 - *C* archi trasversali: collegano nodi che non hanno relazione antenato-discendente
 
 ###### Per cosa usiamo la DFS
-**Ordinamento topologico**: dato il tempo di inizio e fine visita di ogni vertice del grafo otteniamo un ordinamento topologico valido se mettiamo i vertici in ordine rispetto a di fine visita:
+**Ordinamento topologico**: dato il tempo di inizio e fine visita di ogni vertice del grafo otteniamo un ordinamento topologico valido se mettiamo i vertici in ordine rispetto al tempo di fine visita:
 ![[Screenshot 2025-12-23 143622.png|500]]
 Dai tempi di fine visita otteniamo un ordinamento topologico: $D-G-B-A-E-F-C$
 **Identificazione delle componenti connesse**: per identificare le componenti connesse di un grafo facciamo uso della DFS nel seguente modo:
@@ -2324,6 +2530,7 @@ Il processo di *rilassamento di un arco* consiste nel verificare se passando per
 RELAX(u,v,w):
 	if(d[v]>d[u]+w(u,v))
 		d[v] = d[u]+w(u,v)
+		π[v] = u
 ```
 
 Alla creazione del nostro grafo tutti i valori del nostro array $d$ vengono inizializzati a $+\infty$. 
@@ -2363,7 +2570,7 @@ Rilassando gli archi di un dag (Directed Acyclic Graph) pesato $G = (V,E)$ secon
 ```
 DAG-SHORTEST-PATHS(G, w, s)
 	U = getTopologicalOrder(G);
-	foreach v in U:
+	foreach u in U:
 	  foreach v in G.Adj[u]
 		  RELAX(u, v, w)
 ```
