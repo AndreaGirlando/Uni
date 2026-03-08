@@ -221,9 +221,14 @@ Questa ipotesi si chiama **hashing uniforme**. Costruire funzioni hash per l'ind
 La nostra analisi dell'indirizzamento aperto è espressa in termini del fattore di carico $\alpha = \frac{n}{m}$. Supponiamo venga applicata l'hashing uniforme quindi la sequenza $$\langle h(k, 0), h(k, 1),..., h(k,m-1) \rangle$$utilizzata per inserire o ricercare una chiave $k$ ha la stessa probabilità di essere una qualsiasi permutazione di $\langle 0,1,\dots,m-1 \rangle$.  Analizziamo di seguito il numero atteso di ispezioni dell'hashing con indirizzamento aperto, facendo differenza tra una ricerca con e senza successo:
 **Ricerca senza successo**: data una tavola hash con un fattore di carico $\alpha = n/m < 1$ il numero atteso di ispezioni in una ricerca senza successo è al massimo $\frac{1}{1-\alpha}$
 *Dimostrazione*:  ![[Pasted image 20260307180342.png]]
+*Tips*: 
+- **Regola del valore atteso:** Il calcolo iniziale $E[X] = \sum_{i=1}^{\infty} P_r\{X \ge i\}$ si basa sulla regola statistica per cui il numero atteso di ispezioni equivale alla somma delle probabilità di farne _almeno_ $i$.
+- **Significato pratico degli eventi:** La lunga serie di probabilità condizionate calcola un evento molto specifico: la probabilità di eseguire $i-1$ ispezioni consecutive e di trovare _sempre_ slot già occupati nella tavola.
+- **Origine della disuguaglianza:** La serie di frazioni $\frac{n}{m} \ge \frac{n-1}{m-1} \ge \dots$ è strettamente decrescente. Poiché ogni termine è minore o uguale al primo ($\frac{n}{m}$), il prodotto di questi $i-1$ termini è matematicamente $\le \left(\frac{n}{m}\right)^{i-1}$.
+- **Conversione in serie geometrica:** Per risolvere la sommatoria $\sum_{i=1}^{\infty} \left(\frac{n}{m}\right)^{i-1}$, basta sostituire $\frac{n}{m}$ con $\alpha$ e far partire l'indice $i$ da $0$ anziché da $1$. Diventa così la serie geometrica standard $\sum_{i=0}^{\infty} \alpha^{i}$, che per $\alpha < 1$ converge a $\frac{1}{1-\alpha}$.
 
 **Ricerca con successo**: data una tavola hash con un fattore di carico $\alpha = n/m < 1$ il numero atteso di ispezioni in una ricerca senza successo è al massimo $\frac{1}{\alpha}\ln\frac{1}{1-\alpha}$
-*Dimostrazione*: ![[Pasted image 20251214181414.png|600]]
+*Dimostrazione*: ![[Screenshot_20260308_102714_Samsung capture.jpg|600]]
 ### Tecniche per creare una sequenza di ispezione
 
 ###### Ispezione lineare
