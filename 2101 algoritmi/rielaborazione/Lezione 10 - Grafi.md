@@ -29,7 +29,7 @@ Un grafo è pesato se ad ogni arco diamo un peso usando la funzione peso: $$w: E
 ###### Ordinamento topologico
 Un ordinamento topologico è un ordinamento lineare dei nodi in modo che valga la relazione: $$\exists (u,v) \in R \Rightarrow u < v$$
 *Ovviamente se c'è un ciclo questa caratteristica non può essere rispettata*
-![[Pasted image 20251222154733.png]]Un eventuale ordinamento di questo grafo è: $A-F-D-G-C-E-B$
+![[Pasted image 20260308100802.png|500]]Un eventuale ordinamento di questo grafo è: $A-F-D-G-C-E-B$
 
 ###### Componente connessa e fortemente connessa
 **Componente connessa**: dato un grafo $G = (V, E)$ diciamo che due vertici $u, v$ sono connessi se esiste un cammino da $u$ a $v$
@@ -158,7 +158,7 @@ DFS(G,s):
 			DFS-visit(s);
 ```
 Alla fine avremo alla fine di questo algoritmo negli array $d$ ed $F$ il tempo di inizio e fine, molto utile nell'utilizzo della DFS per scopi terzi. Di seguito un grafo con le informazioni ottenute dopo una DFS:
-![[Screenshot_20251223_142604_Samsung capture.jpg|500]]
+![[Pasted image 20260308092954.png|500]]
 ###### Etichette degli archi
 Nel nostro grafo etichettiamo gli archi in base al ruolo che hanno durante l'esplorazione del grafo, e sono:
 - *T* archi consecutivi: sono gli archi usati dalla DFS per scoprire nuovi nodi
@@ -168,13 +168,14 @@ Nel nostro grafo etichettiamo gli archi in base al ruolo che hanno durante l'esp
 
 ###### Per cosa usiamo la DFS
 **Ordinamento topologico**: dato il tempo di inizio e fine visita di ogni vertice del grafo otteniamo un ordinamento topologico valido se mettiamo i vertici in ordine rispetto al tempo di fine visita:
-![[Screenshot 2025-12-23 143622.png|500]]
+![[Pasted image 20260308101505.png|500]]
 Dai tempi di fine visita otteniamo un ordinamento topologico: $D-G-B-A-E-F-C$
 **Identificazione delle componenti connesse**: per identificare le componenti connesse di un grafo facciamo uso della DFS nel seguente modo:
 1. Faccio una DFS e metto in ordine rispetto al tempo di inizio visita
 2. Creo il grafo trasposto di quello dato in input (inverto le direzioni di tutti gli archi)
 3. Faccio la DFS sul grafo trasposto usando nel foreach principale la lista di nodi definita nel punto 1
-Otteniamo una foresta di alberi DFS, tanti alberi quanti sono le componenti connesse. Di seguito un esempio: ![[Pasted image 20251223144742.png|500]]
+Otteniamo una foresta di alberi DFS, tanti alberi quanti sono le componenti connesse. Di seguito un esempio: 
+![[Pasted image 20260308094717.png|500]]
 # Ricerca dei cammini minimi
 
 ### Introduzione
