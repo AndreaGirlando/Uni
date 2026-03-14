@@ -2,7 +2,7 @@
 | n.  | Denominazione                                                          | CFU | Propedeuticita                                                                |
 | --- | ---------------------------------------------------------------------- | --- | ----------------------------------------------------------------------------- |
 | 1   | Algebra lineare e Geometria                                            | 6   | Nessuna propedeuticita                                                        |
-| 2   | Algoritmi e Laboratorio                                                | 6   | Programmazione II e Laboratorio, Strutture Discrete                           |
+| 2   | Algoritmi e laboratorio                                                | 6   | Programmazione II e Laboratorio, Strutture Discrete                           |
 | 3   | Algoritmi Randomizzati e Approssimati                                  | 6   | Algoritmi e Laboratorio, Programmazione II e Laboratorio, Strutture Discrete  |
 | 4   | Architettura degli elaboratori e laboratorio                           | 6   | Nessuna propedeuticita                                                        |
 | 5   | Artificial Intelligence                                                | 9   | Algoritmi e Laboratorio                                                       |
