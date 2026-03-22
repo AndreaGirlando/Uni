@@ -1,5 +1,3 @@
-
-
 # Ricorsione
 
 ### Introduzione alla ricorsione
@@ -1301,8 +1299,7 @@ Questa ipotesi si chiama **hashing uniforme**. Costruire funzioni hash per l'ind
 ###### Analisi
 La nostra analisi dell'indirizzamento aperto è espressa in termini del fattore di carico $\alpha = \frac{n}{m}$. Supponiamo venga applicata l'hashing uniforme quindi la sequenza $$\langle h(k, 0), h(k, 1),..., h(k,m-1) \rangle$$utilizzata per inserire o ricercare una chiave $k$ ha la stessa probabilità di essere una qualsiasi permutazione di $\langle 0,1,\dots,m-1 \rangle$.  Analizziamo di seguito il numero atteso di ispezioni dell'hashing con indirizzamento aperto, facendo differenza tra una ricerca con e senza successo:
 **Ricerca senza successo**: data una tavola hash con un fattore di carico $\alpha = n/m < 1$ il numero atteso di ispezioni in una ricerca senza successo è al massimo $\frac{1}{1-\alpha}$
-*Dimostrazione*:  ![[Pasted image 20260307180342.png]]
-
+*Dimostrazione*:  ![[Pasted image 20260307180342.png||700]]
 **Ricerca con successo**: data una tavola hash con un fattore di carico $\alpha = n/m < 1$ il numero atteso di ispezioni in una ricerca senza successo è al massimo $\frac{1}{\alpha}\ln\frac{1}{1-\alpha}$
 *Dimostrazione*: ![[Pasted image 20251214181414.png|600]]
 ### Tecniche per creare una sequenza di ispezione
