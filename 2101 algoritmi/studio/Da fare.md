@@ -1,114 +1,98 @@
-- [x] Concetti base ricorsione
-- [x] Esempi classici ricorsione
-- [x] Problema dello zaino
-- [x] Equazioni di ricorrenza
-- [x] Notazione O
-- [x] Notazione $\Theta$ 
-- [x] Notazione $\Omega$
-- [x] Notazioni piccole
-- [x] Metodo Master
-- [x] Heapify (Min e max heapify)
-- [x] DecreaseKey
-- [x] heapInsert
-- [x] extractMax e Min
-- [x] BuildMinHeap/BuildMaxHeap
-- [x] Heapsort
-- [x] Fare esercizi sugli Heap
-- [x] Riscrivere gli pseudocodici sugli heap
-- [x] Albero di decisione e dimostrazione
-- [x] Counting sort
-- [x] Radix sort
-- [x] Introduzione alle tabelle hash
-- [x] Tabelle ad indirizzamento diretto
-- [x] Funzioni di hashing (divisione, moltiplicazione)
-- [x] Hashing con concatenazione e dimostrazione
-- [x] Hashing ad indirizzamento aperto
-- [x] Inserimento, ricerca e cancellazione (indirizzamento aperto)
-- [x] Requisiti di una buona funzione di hash ad indirizzamento aperto
-- [x] Teniche per la creazione di sequenze di ispezione
-- [x] Esercizi sulle sequenze di ispezione (ds/generale)
-- [x] Alberi bilanciati, degenere e ripasso proprietà BST
-- [x] Reppresentazione di un albero rosso nero e definizione altezza nera
-- [x] RBT: rotazioni
-- [x] RBT: inserimento (regole come ave maria)
-- [x] RBT: eliminazione (regole come ave maria)
-- [x] RBT: esercizi
-- [x] RBT: ignorare pseucodice
-- [x] Introduzione alla prog dinamica
-- [x] Fibonacc
-- [x] RodCut
-- [x] Moltiplicazione tra matrici
-- [x] Distanza di editing
-- [x] Longest Common Substring (Lezione 11)
-- [x] Longest Common Subsequence (libro + sottostruttura ottima gemini)
-- [x] Introduzione agli algoritmi greedy
-- [x] Problema dello zaino
-- [x] Activity Selector (appunti + libro) 
-- [x] Compressione di huffman
-- [x] Grafi
-- [x] Proprietà dei grafi
-- [x] Rappresentazione dei grafi
-- [x] BFS
-- [x] DFS
-- [x] Introduzione alla ricerca dei cammini minimi
-- [x] Proprietà dei cammini minimi
-- [x] Generic SSSP in un DAG
-- [x] Algoritmo di Bellam-Ford
-- [x] Algoritmo di Dijkstra
-- [x] Programmazione dinamica per la risoluzione dei cammini minimi tra tutte le coppie
-- [x] Algoritmo Floyd-Warshall
-- [x] Esercizi Floyd Warshall
-- [x] Esercizi Dijkstra
-- [x] Esercizi bellam ford
+- [ ] Concetti base ricorsione
+- [ ] Esempi classici ricorsione
+- [ ] Problema dello zaino
+- [ ] Equazioni di ricorrenza
+- [ ] Notazione O
+- [ ] Notazione $\Theta$ 
+- [ ] Notazione $\Omega$
+- [ ] Notazioni piccole
+- [ ] Metodo Master
+- [ ] Heapify (Min e max heapify)
+- [ ] DecreaseKey
+- [ ] heapInsert
+- [ ] extractMax e Min
+- [ ] BuildMinHeap/BuildMaxHeap
+- [ ] Heapsort
+- [ ] Fare esercizi sugli Heap
+- [ ] Riscrivere gli pseudocodici sugli heap
+- [ ] Albero di decisione e dimostrazione
+- [ ] Counting sort
+- [ ] Radix sort
+- [ ] Introduzione alle tabelle hash
+- [ ] Tabelle ad indirizzamento diretto
+- [ ] Funzioni di hashing (divisione, moltiplicazione)
+- [ ] Hashing con concatenazione e dimostrazione
+- [ ] Hashing ad indirizzamento aperto
+- [ ] Inserimento, ricerca e cancellazione (indirizzamento aperto)
+- [ ] Requisiti di una buona funzione di hash ad indirizzamento aperto
+- [ ] Teniche per la creazione di sequenze di ispezione
+- [ ] Esercizi sulle sequenze di ispezione (ds/generale)
+- [ ] Alberi bilanciati, degenere e ripasso proprietà BST
+- [ ] Reppresentazione di un albero rosso nero e definizione altezza nera
+- [ ] RBT: rotazioni
+- [ ] RBT: inserimento (regole come ave maria)
+- [ ] RBT: eliminazione (regole come ave maria)
+- [ ] RBT: esercizi
+- [ ] RBT: ignorare pseucodice
+- [ ] Introduzione alla prog dinamica
+- [ ] Fibonacc
+- [ ] RodCut
+- [ ] Moltiplicazione tra matrici
+- [ ] Distanza di editing
+- [ ] Longest Common Substring (Lezione 11)
+- [ ] Longest Common Subsequence (libro + sottostruttura ottima gemini)
+- [ ] Introduzione agli algoritmi greedy
+- [ ] Problema dello zaino
+- [ ] Activity Selector (appunti + libro) 
+- [ ] Compressione di huffman
+- [ ] Grafi
+- [ ] Proprietà dei grafi
+- [ ] Rappresentazione dei grafi
+- [ ] BFS
+- [ ] DFS
+- [ ] Introduzione alla ricerca dei cammini minimi
+- [ ] Proprietà dei cammini minimi
+- [ ] Generic SSSP in un DAG
+- [ ] Algoritmo di Bellam-Ford
+- [ ] Algoritmo di Dijkstra
+- [ ] Programmazione dinamica per la risoluzione dei cammini minimi tra tutte le coppie
+- [ ] Algoritmo Floyd-Warshall
+- [ ] Esercizi Floyd Warshall
+- [ ] Esercizi Dijkstra
+- [ ] Esercizi bellam ford
 
 ---
 
-- [ ] Esame 27/01/2025 a
-- [ ] Esame 27/01/2025 b
-- [x] Esame 17/02/2025
-- [ ] Esame 15/04/2025
-- [ ] Esame 14/05/2025
-- [x] Esame 16/06/2025
-- [ ] Esame 01/07/2025
-- [ ] Esame 01/09/2025
-- [ ] Esame 09/25/2025
-- [x] Esame 10/27/2025
-- [x] Esame 26/01/2026
-- [x] Esame 22/01/2026
-
-
-
-
 ### Dimostrazioni
-- [x] Dimostrazione ricerca con successo (hashing con concatenazione)
-- [x] Hashing con indirizzamento aperto (ricerca con successo e senza)
-- [x] Dimostrazione altezza nera (pagina 42)
-- [x] Dimostrazione sottostruttura ottima (RODCUT)
-- [x] Dimostrazione sottostruttura ottima LCS e LCS
-- [x] Dimostrazione sottostruttura ottima EDT
-- [x] Dimostrazione sottostruttura ottima Huffman
-- [x] Dimostrazione scelta greedy Huffman
-- [x] Dimostrazione sottostruttura ottima Activity Selector
-- [x] Dimostrazione scelta greedy Activity Selector
-- [x] Dimostrazione sottostruttura ottima Matrix Moltiplication
-- [x] Dimostrazione sottostruttura ottima cammini minimi 
+- [ ] Dimostrazione ricerca con successo (hashing con concatenazione)
+- [ ] Hashing con indirizzamento aperto (ricerca con successo e senza)
+- [ ] Dimostrazione altezza nera (pagina 42)
+- [ ] Dimostrazione sottostruttura ottima (RODCUT)
+- [ ] Dimostrazione sottostruttura ottima LCS e LCS
+- [ ] Dimostrazione sottostruttura ottima EDT
+- [ ] Dimostrazione sottostruttura ottima Huffman
+- [ ] Dimostrazione scelta greedy Huffman
+- [ ] Dimostrazione sottostruttura ottima Activity Selector
+- [ ] Dimostrazione scelta greedy Activity Selector
+- [ ] Dimostrazione sottostruttura ottima Matrix Moltiplication
+- [ ] Dimostrazione sottostruttura ottima cammini minimi 
 
 
 
 ### Da ricordare
-- [x] Pseudocodici RODCUT
-- [x] Pseudocodici MATRIX
-- [x] Pseudocodici LCS e LCS
-- [x] Pseudocodici EDT
-- [x] Pseudocodici HUFFMAN
-- [x] Pseudocodici CountingSort
-- [x] Pseudocodici heap
-- [x] Pseudocodici BFS
-- [x] Pseudocodici DFS
+- [ ] Pseudocodici RODCUT
+- [ ] Pseudocodici MATRIX
+- [ ] Pseudocodici LCS e LCS
+- [ ] Pseudocodici EDT
+- [ ] Pseudocodici HUFFMAN
+- [ ] Pseudocodici CountingSort
+- [ ] Pseudocodici heap
+- [ ] Pseudocodici BFS
+- [ ] Pseudocodici DFS
 - [ ] Pseudocodice SSSP DAG
-- [x] Pseudocodice Dijkstra
-- [x] Pseudocodice Bellam Ford
-- [x] Pseudocide Floyd Warshall
+- [ ] Pseudocodice Dijkstra
+- [ ] Pseudocodice Bellam Ford
+- [ ] Pseudocide Floyd Warshall
 - [ ] Pseudocodice APSP
 - [ ] Casi metodo Master
 - [ ] Casi rimozione (vengono richiesti anche gli esempi grafici)

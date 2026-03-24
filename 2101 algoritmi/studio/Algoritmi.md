@@ -251,6 +251,7 @@
 			2. [[#Funzione di cancellazione#Implementazione|Implementazione]]
 			3. [[#Funzione di cancellazione#Esempio|Esempio]]
 			4. [[#Funzione di cancellazione#Complessità|Complessità]]
+
 # Ricorsione
 
 ### Introduzione alla ricorsione
