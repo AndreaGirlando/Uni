@@ -1893,6 +1893,14 @@ $$ED(i, j) = \min(ED(i-1, j) + 1, ED(i, j-1) + 1,  ED(i-1, j-1) + \text{costo\_s
 
 (Nota: il costo di sostituzione è 1 se i caratteri sono diversi, 0 se uguali).
 
+###### Dimostrazione sottostruttura ottima
+**Tesi**: Sia $S$ una sequenza ottima di operazioni che trasforma il prefisso $X[1\dots i]$ nel prefisso $Y[1\dots j]$. Vogliamo dimostrare che la sottosequenza contenuta in $S$ che risolve i sottoproblemi deve essere a sua volta ottima. 
+
+**Dimostrazione**: analizziamo l'ultima operazione effettuata nella sequenza $S$, da qui distinguiamo 3 casi possibili
+1. L'utlima operazione è una sostituzione, allora $S$ è composta da una sottosequenza $S'$ e da un operazione di sostituzione, allora il suo costo totale è $$\text{costo(S) = Costo(S') + costo sostituzione}$$Se $S'$ per assurdo non è ottima allora esisterebbe $S''$ con un costo strettamente minore, questo significa che abbiamo trovato una soluzione $W$ con un costo minore di $S$, siamo arrivati ad una contraddizione
+2. Analoga ma con la cancellazione come ultima operazione
+3. Analoga ma con l'inserimento come ultima operazione
+
 ###### Programmazione Dinamica
 
 L'approccio ricorsivo puro ("top-down") è inefficiente a causa della ricalcolazione dei sottoproblemi sovrapposti. La soluzione ottimale utilizza la **Programmazione Dinamica** ("bottom-up"), costruendo una tabella (matrice) di dimensione $(n+1) \times (m+1)$.

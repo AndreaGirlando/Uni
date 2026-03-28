@@ -198,7 +198,7 @@ HUFFMAN(Σ, f)
         
     return extractMin(Q)        // Ritorna la radice dell'albero
 ```
-###### Longest commono substring
+###### Longest common substring
 ```
 LCS(X,Y, n, m)
 	dp[][]= new matrix(m+1,n+1)
