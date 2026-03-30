@@ -451,6 +451,17 @@ APSP(W)
 	for d = 2 to n - 1 do 
 		L_d = EXTEND-APSP(L_{d-1}, W) 
 	return L_{n-1}
+	
+Extend-APSP(L, W)
+	n = L.rows
+	L_new = new Matrix(n, n)
+	for i = 1 to n do
+	    for j = 1 to n do
+	        L_new[i, j] = infinity
+	        for k = 1 to n do
+	            if (L[i, k] + W[k, j] < L_new[i, j])
+	                L_new[i, j] = L[i, k] + W[k, j]
+	return L_new
 ```
 
 ###### SSSP DAG
