@@ -46,3 +46,5 @@ In base alla ragione $r$ della serie geometrica
 - **Serie Geometrica Finita ($r \neq 1$):** $\sum_{i=0}^{k} r^i = \frac{r^{k+1} - 1}{r - 1}$
 - **Serie Geometrica Infinita ($|r| < 1$):** $\sum_{i=0}^{\infty} r^i = \frac{1}{1 - r}$
 - **Proprietà Logaritmi:** $a^{\log_b n} = n^{\log_b a}$
+
+![[Screenshot_20260413_214156_Samsung capture.jpg]]
