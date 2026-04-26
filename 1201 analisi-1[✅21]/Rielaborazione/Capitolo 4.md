@@ -5,13 +5,13 @@ Questo è la rielaborazione del file [[AppuntiCap4.pdf]]
 
 ###### Rapporto incrementale
 ^47484b
-Dati una funzione $f: (a,b) \to R$ e un punto $c \in (a,b)$ abbiamo definito il [[Capitolo 1#^a17adb|rapporto incrementale]] di $f$ relativo al punto $c$ in queste 2 forme:
+Dati una funzione $f: (a,b) \to R$ e un punto $c \in (a,b)$ abbiamo definito il [[1201 analisi-1[✅21]/Rielaborazione/Capitolo 1#^a17adb|rapporto incrementale]] di $f$ relativo al punto $c$ in queste 2 forme:
 - $r(x) = \frac{f(x)-f(c)}{x-c}$ definito in $(a,b)\backslash\{c\}$
 - $R(h) = \frac{f(c+h)-f(c)}{h}$ definito in $(a-c, b-c)\backslash\{0\}$  
 
 e abbiamo visto che la funzione $f$ è crescente\decrescente nel punto $c$ se e solo se $r(x)>\backslash<0$ in un intorno di $c$. Ricordiamo che $r$ ed $R$ si ottengono per composizione l'uno dell'altro, e quindi: 
 - Per il [[Capitolo 3#^14df84|teorema sui limiti delle funzioni composte]] è del tutto equivalente calcolare il limite di $r$ al tendere di $x$ a $c$ o il limite di $R$ al tendere di $h$ a $0$. 
-- Se tale limite è positivo\negativo per il [[Capitolo 2#^4215e5|teorema della permanenza del segno]] la funzione risulterà crescente\decrescente nel punto $c$
+- Se tale limite è positivo\negativo per il [[1201 analisi-1[✅21]/Rielaborazione/Capitolo 2#^4215e5|teorema della permanenza del segno]] la funzione risulterà crescente\decrescente nel punto $c$
 ###### Definizione
 Si dice che $f$ è **derivabile** nel punto $c$ se il limite del rapporto incrementale ($\lim_{x\to c}r(x)$ oppure $\lim_{h\to 0}R(h)$) esiste ed è finito si dice che tale limite è detto derivata di $f$ in $c$ e si denota con $f'(c)$. Inoltre possiamo dire che: 
 - $f$ è derivabile in $(a,b)$ se lo è in ogni punto, e in tal caso si definisce una funzione $f': (a,b) \to R$ che ad ogni punto $x \in (a,b)$ associa la derivata di $f$ in $x$ 

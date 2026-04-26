@@ -51,7 +51,7 @@ In modo simile si definisce per una funzione $f: ]-\infty,a) \to R$ il limite di
 - $lim_{x \to +\infty} f(x) = l \in R \text { se } \forall\epsilon>0$ $\exists \bar{x}>a: x<\bar{x} \Rightarrow |f(x)-l|< \epsilon$ 
 Anche in questo caso valgono i teoremi dell'unicità del limite, di confronto, della permanenza del segno e il teorema ponte
 > [!TIP]
-> usando il teorema ponte si riescono a costruire tutte le operazioni come fatto nelle [[Capitolo 2#^2ac9a5|successioni]]
+> usando il teorema ponte si riescono a costruire tutte le operazioni come fatto nelle [[1201 analisi-1[✅21]/Rielaborazione/Capitolo 2#^2ac9a5|successioni]]
 
 ###### Limiti di funzioni elementari
 Vale la seguente **proposizione**: 
@@ -87,7 +87,7 @@ di seguito alcuni casi in cui non è vera questa condizione:
 		- $\alpha < 0$
 			- $\lim_{x \to +\infty}x^{\alpha} = 0$ 
 			- $\lim_{x\to 0}x^\alpha = +\infty$ 
-4. **Funzione polinomio**: consideriamo il polinomio $f(x) = a_0x^n+a_1x^{n-1}+\cdots+a_n$. con $x\to\pm\infty$ per determinare il suo limite riscriviamo il polinomio in questo modo: $f(x) = x^n(a_0+\frac{a_1}{x}+\cdots+\frac{a_n}{x^n})$ come dicevamo per le [[Capitolo 2#^78c31d|successioni]] la quantità tra partentesi tende a $a_0$ quindi ne segue che:
+4. **Funzione polinomio**: consideriamo il polinomio $f(x) = a_0x^n+a_1x^{n-1}+\cdots+a_n$. con $x\to\pm\infty$ per determinare il suo limite riscriviamo il polinomio in questo modo: $f(x) = x^n(a_0+\frac{a_1}{x}+\cdots+\frac{a_n}{x^n})$ come dicevamo per le [[1201 analisi-1[✅21]/Rielaborazione/Capitolo 2#^78c31d|successioni]] la quantità tra partentesi tende a $a_0$ quindi ne segue che:
 	- $\lim_{x \to +\infty} f(x) = +\infty$ se $a_0 > 0$;
 	- $\lim_{x \to +\infty} f(x) = -\infty$ se $a_0 < 0$;
 	- $\lim_{x \to -\infty} f(x) = +\infty$ se $a_0 > 0$, $n$ pari;
@@ -138,7 +138,7 @@ Utilizzando i limiti notevoli studiati per le successioni si ottiene che:
 ### Confronto fra infinitesimi e fra infiniti
 - Una funzione che tende a zero è detta infinitesima (o "infinitesimo")
 - Una funzione che diverge è detta infinitamente grande (o "un infinito")
-il confronto è uguale a quello per le [[Capitolo 2#^2e5731|successioni]]
+il confronto è uguale a quello per le [[1201 analisi-1[✅21]/Rielaborazione/Capitolo 2#^2e5731|successioni]]
 
 ### Asintoti
 ###### Definizione
@@ -179,7 +179,7 @@ Abbiamo diversi tipi di asintoto:
 ### Limiti delle funzioni monotone
 
 > [!CITE] 
-> Ricordiamo dal capitolo 1 che una funzione $f$ è detta [[Capitolo 1#^2bb6d6|monotona]] in un intervallo $(a,b)$ se in tale intervallo è crescente o decrescente (anche strettamente) 
+> Ricordiamo dal capitolo 1 che una funzione $f$ è detta [[1201 analisi-1[✅21]/Rielaborazione/Capitolo 1#^2bb6d6|monotona]] in un intervallo $(a,b)$ se in tale intervallo è crescente o decrescente (anche strettamente) 
 ###### Teorema
 Sia $f: (a,b)\to R$ una funzione strettamente crescente in $(a,b)$ allora possiamo dire che:
 - per ogni $c \in ]a,b[$ esistono i limiti destro e sinistro di $f$ al tendere di $x$ a $c$ e si ha che $$l^- = \lim_{x\to c^-} f(x) = \sup_{(a,c[} \text{ } f(x) \le f(c) \le l^+ = \lim_{x\to c^+} f(x) = \inf_{]c,b)}f(x)$$

@@ -34,7 +34,8 @@ Poiché l'accesso alla memoria è lento, la CPU utilizza memorie interne ad alti
 - **Program counter:** Contiene l'indirizzo di memoria della successiva istruzione da eseguire.
 - **Stack pointer:** Puntatore allo _stack_.
 - **PSW** (_Program Status Word_): Registro che contiene i bit di condizione, la priorità della CPU e il bit che controlla la modalità operativa (utente o kernel).
-_Nota Operativa:_ Quando il sistema operativo ferma un programma per farne partire un altro (multiplexing temporale), deve salvare lo stato di tutti i registri per poterli ricaricare al riavvio del programma sospeso.
+_Nota Operativa:_ Quando il sistema operativo ferma un programma per farne partire un altro (multiplexing temporale), deve salvare lo stato di tutti i registri per poterli ricaricare al riavvio del programma sospeso questo fenomeno si chiama **context switching**.
+
 **Chiamate di Sistema e Interruzioni**
 - **System Call** (Chiamata di sistema): Richiesta effettuata da un programma utente per ottenere servizi dal sistema operativo.
 - **TRAP:** Istruzione che cambia la modalità operativa da utente a kernel e avvia il sistema operativo. Le _trap_ possono anche essere generate dall'hardware per segnalare situazioni eccezionali (es. divisione per zero).
@@ -98,5 +99,3 @@ Nasce per garantire un'altissima stabilità. Il sistema è diviso in piccoli mod
 ### 1.7.5 Macchine virtuali
 Si basano su un **monitor di macchina virtuale** (oggi chiamato **hypervisor di tipo 1**) che gira direttamente sull'hardware e fornisce ai livelli superiori numerose **macchine virtuali**. Ogni macchina virtuale è identica all'hardware reale e può eseguire un proprio sistema operativo (_guest_).
 - **Hypervisor di tipo 2:** Strategia ibrida utilizzata comunemente sui PC (es. VMware Workstation). Non gira direttamente sull'hardware, ma ha bisogno di un sistema operativo _host_ preesistente per installare e avviare il sistema operativo _guest_ su un disco virtuale.
-
-# Capitolo 2: 

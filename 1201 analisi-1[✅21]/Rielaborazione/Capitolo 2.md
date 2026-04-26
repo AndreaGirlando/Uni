@@ -2,7 +2,7 @@ Questo è la rielaborazione del file [[Appunticap2.pdf]]
 # Successioni di numeri reali
 ### Successioni
 ###### Definizione
-Una successione di numeri reali è una funzione reale definita in $N$ ([[Capitolo 1#Simbologia insiemi numerici e operazioni in N|definizione di N]]) di questo tipo: $f: N \rightarrow R$.
+Una successione di numeri reali è una funzione reale definita in $N$ ([[1201 analisi-1[✅21]/Rielaborazione/Capitolo 1#Simbologia insiemi numerici e operazioni in N|definizione di N]]) di questo tipo: $f: N \rightarrow R$.
 
 > [!TIP]
 > In parole semplici: per ogni numero naturale $n$, la funzione ti dà un numero reale $a_n$​, che è il termine della successione in posizione $n$.

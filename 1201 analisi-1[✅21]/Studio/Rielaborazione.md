@@ -450,7 +450,7 @@ Questo è la rielaborazione del file [[Appunticap2.pdf]]
 # Successioni di numeri reali
 ### Successioni
 ###### Definizione
-Una successione di numeri reali è una funzione reale definita in $N$ ([[Capitolo 1#Simbologia insiemi numerici e operazioni in N|definizione di N]]) di questo tipo: $f: N \rightarrow R$.
+Una successione di numeri reali è una funzione reale definita in $N$ ([[1201 analisi-1[✅21]/Rielaborazione/Capitolo 1#Simbologia insiemi numerici e operazioni in N|definizione di N]]) di questo tipo: $f: N \rightarrow R$.
 
 > [!TIP]
 > In parole semplici: per ogni numero naturale $n$, la funzione ti dà un numero reale $a_n$​, che è il termine della successione in posizione $n$.
@@ -877,7 +877,7 @@ In modo simile si definisce per una funzione $f: ]-\infty,a) \to R$ il limite di
 - $lim_{x \to +\infty} f(x) = l \in R \text { se } \forall\epsilon>0$ $\exists \bar{x}>a: x<\bar{x} \Rightarrow |f(x)-l|< \epsilon$ 
 Anche in questo caso valgono i teoremi dell'unicità del limite, di confronto, della permanenza del segno e il teorema ponte
 > [!TIP]
-> usando il teorema ponte si riescono a costruire tutte le operazioni come fatto nelle [[Capitolo 2#^2ac9a5|successioni]]
+> usando il teorema ponte si riescono a costruire tutte le operazioni come fatto nelle [[1201 analisi-1[✅21]/Rielaborazione/Capitolo 2#^2ac9a5|successioni]]
 
 ###### Limiti di funzioni elementari
 Vale la seguente **proposizione**: 
@@ -913,7 +913,7 @@ di seguito alcuni casi in cui non è vera questa condizione:
 		- $\alpha < 0$
 			- $\lim_{x \to +\infty}x^{\alpha} = 0$ 
 			- $\lim_{x\to 0}x^\alpha = +\infty$ 
-4. **Funzione polinomio**: consideriamo il polinomio $f(x) = a_0x^n+a_1x^{n-1}+\cdots+a_n$. con $x\to\pm\infty$ per determinare il suo limite riscriviamo il polinomio in questo modo: $f(x) = x^n(a_0+\frac{a_1}{x}+\cdots+\frac{a_n}{x^n})$ come dicevamo per le [[Capitolo 2#^78c31d|successioni]] la quantità tra partentesi tende a $a_0$ quindi ne segue che:
+4. **Funzione polinomio**: consideriamo il polinomio $f(x) = a_0x^n+a_1x^{n-1}+\cdots+a_n$. con $x\to\pm\infty$ per determinare il suo limite riscriviamo il polinomio in questo modo: $f(x) = x^n(a_0+\frac{a_1}{x}+\cdots+\frac{a_n}{x^n})$ come dicevamo per le [[1201 analisi-1[✅21]/Rielaborazione/Capitolo 2#^78c31d|successioni]] la quantità tra partentesi tende a $a_0$ quindi ne segue che:
 	- $\lim_{x \to +\infty} f(x) = +\infty$ se $a_0 > 0$;
 	- $\lim_{x \to +\infty} f(x) = -\infty$ se $a_0 < 0$;
 	- $\lim_{x \to -\infty} f(x) = +\infty$ se $a_0 > 0$, $n$ pari;
@@ -964,7 +964,7 @@ Utilizzando i limiti notevoli studiati per le successioni si ottiene che:
 ### Confronto fra infinitesimi e fra infiniti
 - Una funzione che tende a zero è detta infinitesima (o "infinitesimo")
 - Una funzione che diverge è detta infinitamente grande (o "un infinito")
-il confronto è uguale a quello per le [[Capitolo 2#^2e5731|successioni]]
+il confronto è uguale a quello per le [[1201 analisi-1[✅21]/Rielaborazione/Capitolo 2#^2e5731|successioni]]
 
 ### Asintoti
 ###### Definizione
@@ -1005,7 +1005,7 @@ Abbiamo diversi tipi di asintoto:
 ### Limiti delle funzioni monotone
 
 > [!CITE] 
-> Ricordiamo dal capitolo 1 che una funzione $f$ è detta [[Capitolo 1#^2bb6d6|monotona]] in un intervallo $(a,b)$ se in tale intervallo è crescente o decrescente (anche strettamente) 
+> Ricordiamo dal capitolo 1 che una funzione $f$ è detta [[1201 analisi-1[✅21]/Rielaborazione/Capitolo 1#^2bb6d6|monotona]] in un intervallo $(a,b)$ se in tale intervallo è crescente o decrescente (anche strettamente) 
 ###### Teorema
 Sia $f: (a,b)\to R$ una funzione strettamente crescente in $(a,b)$ allora possiamo dire che:
 - per ogni $c \in ]a,b[$ esistono i limiti destro e sinistro di $f$ al tendere di $x$ a $c$ e si ha che $$l^- = \lim_{x\to c^-} f(x) = \sup_{(a,c[} \text{ } f(x) \le f(c) \le l^+ = \lim_{x\to c^+} f(x) = \inf_{]c,b)}f(x)$$
@@ -1101,13 +1101,13 @@ Questo è la rielaborazione del file [[AppuntiCap4.pdf]]
 
 ###### Rapporto incrementale
 ^47484b
-Dati una funzione $f: (a,b) \to R$ e un punto $c \in (a,b)$ abbiamo definito il [[Capitolo 1#^a17adb|rapporto incrementale]] di $f$ relativo al punto $c$ in queste 2 forme:
+Dati una funzione $f: (a,b) \to R$ e un punto $c \in (a,b)$ abbiamo definito il [[1201 analisi-1[✅21]/Rielaborazione/Capitolo 1#^a17adb|rapporto incrementale]] di $f$ relativo al punto $c$ in queste 2 forme:
 - $r(x) = \frac{f(x)-f(c)}{x-c}$ definito in $(a,b)\backslash\{c\}$
 - $R(h) = \frac{f(c+h)-f(c)}{h}$ definito in $(a-c, b-c)\backslash\{0\}$  
 
 e abbiamo visto che la funzione $f$ è crescente\decrescente nel punto $c$ se e solo se $r(x)>\backslash<0$ in un intorno di $c$. Ricordiamo che $r$ ed $R$ si ottengono per composizione l'uno dell'altro, e quindi: 
 - Per il [[Capitolo 3#^14df84|teorema sui limiti delle funzioni composte]] è del tutto equivalente calcolare il limite di $r$ al tendere di $x$ a $c$ o il limite di $R$ al tendere di $h$ a $0$. 
-- Se tale limite è positivo\negativo per il [[Capitolo 2#^4215e5|teorema della permanenza del segno]] la funzione risulterà crescente\decrescente nel punto $c$
+- Se tale limite è positivo\negativo per il [[1201 analisi-1[✅21]/Rielaborazione/Capitolo 2#^4215e5|teorema della permanenza del segno]] la funzione risulterà crescente\decrescente nel punto $c$
 ###### Definizione
 Si dice che $f$ è **derivabile** nel punto $c$ se il limite del rapporto incrementale ($\lim_{x\to c}r(x)$ oppure $\lim_{h\to 0}R(h)$) esiste ed è finito si dice che tale limite è detto derivata di $f$ in $c$ e si denota con $f'(c)$. Inoltre possiamo dire che: 
 - $f$ è derivabile in $(a,b)$ se lo è in ogni punto, e in tal caso si definisce una funzione $f': (a,b) \to R$ che ad ogni punto $x \in (a,b)$ associa la derivata di $f$ in $x$ 
