@@ -107,6 +107,6 @@ Nasce per garantire un'altissima stabilità. Il sistema è diviso in piccoli mod
 È una variazione del microkernel che distingue due classi di processi: i server (che forniscono i servizi) e i client (che li utilizzano). La comunicazione avviene tramite passaggio di messaggi (ottimizzabile se client e server risiedono sulla stessa macchina).
 
 ###### Macchine virtuali
-Si basano su un monitor di macchina virtuale (oggi chiamato hypervisor di tipo 1) che gira direttamente sull'hardware e fornisce ai livelli superiori numerose macchine virtuali. Ogni macchina virtuale è identica all'hardware reale e può eseguire un proprio sistema operativo (guest).
+Si basano su un monitor di macchina virtuale (oggi chiamato **hypervisor di tipo 1**) che gira direttamente sull'hardware e fornisce ai livelli superiori numerose macchine virtuali. Ogni macchina virtuale è identica all'hardware reale e può eseguire un proprio sistema operativo (guest).
 
 **Hypervisor di tipo 2:** Strategia ibrida utilizzata comunemente sui PC (es. VMware Workstation). Non gira direttamente sull'hardware, ma ha bisogno di un sistema operativo host preesistente per installare e avviare il sistema operativo guest su un disco virtuale.

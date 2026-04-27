@@ -190,24 +190,65 @@ Un'idea naturale è l'uso di una  **variabile di lock** (0 se libero, 1 se occup
 ###### Alternanza Stretta
 Questa soluzione software obbliga i processi a passarsi il turno tramite una variabile `turn`.
 - **Il limite:** È una soluzione troppo rigida. Se il turno è del Processo 0, ma il Processo 0 è impegnato in una lunga operazione fuori dalla sezione critica (o termina), il Processo 1 rimarrà bloccato all'infinito anche se la risorsa è libera. Questo viola la regola fondamentale secondo cui **un processo fuori dalla sezione critica non deve bloccare altri processi**.
-![[Pasted image 20260427121831.png|700]]
+```
+int N = 2 // numero di processi
+int turn
 
+function enter_region(int process):
+    while(turn != process):
+        do nothing // attende il proprio turno
+
+function leave_region(int process):
+    turn = 1 - process // passa il turno al prossimo
+```
 ###### L'Algoritmo di Peterson
 Sviluppato nel 1981, l'algoritmo di Peterson è una soluzione puramente software elegante che combina il concetto di "turno" con quello di "interesse". Un processo dichiara di voler entrare nella sezione critica (`interested[i] = true`) ma, per cortesia, cede il turno all'altro. Entra solo se l'altro non è interessato o se il turno è tornato a lui.
 - **Problemi moderni:** Nonostante la sua correttezza logica, l'algoritmo di Peterson spesso fallisce sulle CPU moderne. I processori attuali eseguono il cosiddetto **out-of-order execution** (riordino delle istruzioni) per ottimizzare le prestazioni.
-![[Pasted image 20260427122018.png|700]]
 
+```C
+int N = 2; // numero di processi
+int turn;
+bool interested[N]; // tutti a false di default
+
+// in entrata alla sezione critica
+void enter_region(int process) {
+    int other;
+    other = 1 - process;
+    interested[process] = true; // il processo in questione si dichiara "interessato"
+    turn = process;             // si imposta il turno al proprio numero di processo
+    
+    while (interested[other] == true && turn == process) {
+        /* do nothing*/
+    }
+}
+
+// in uscita dalla sezione critica
+void leave_region(int process) {
+    interested[process] = false;
+}
+```
 ###### Istruzione TSL e XCHG
 Per superare i limiti delle soluzioni software, le architetture moderne offrono istruzioni speciali che eseguono più operazioni come un unico blocco indivisibile (**atomico**). L'istruzione `TSL` legge il contenuto di una parola di memoria in un registro e, contemporaneamente, scrive un valore diverso da zero (solitamente 1) in quella stessa locazione. La CPU garantisce che, durante l'esecuzione di `TSL`, nessun altro processore possa accedere a quella parola di memoria (bloccando il bus di memoria).
 
-![[Pasted image 20260427121629.png|700]]
+```assembly
+enter_region:
+    TSL REGISTER, LOCK   // registro = lock, lock = 1
+    CMP REGISTER, #0     // se il registro è a 0, entra nella sezione critica
+    JNE enter_region     // altrimenti aspetta
+    RET
+
+leave_region:
+    MOVE LOCK, #0        // reimposta lock a 0
+    RET
+```
 
 Molte architetture Intel x86 utilizzano l'istruzione `XCHG`, che scambia atomicamente il contenuto di un registro con quello di una locazione di memoria. La logica è identica a quella della `TSL`.
-
 ###### Conclusioni su queste soluzioni
-Tutte le soluzioni basate su **busy waiting** sprecano cicli di _clock_ e possono causare il **Problema dell'Inversione della Priorità**.
-###### Inversione della priorità
-Si verifica quando un processo ad alta priorità ($P_H$) rimane bloccato in attesa di un _lock_ detenuto da un processo a bassa priorità ($P_L$). Se un processo a priorità media ($P_M$) viene eseguito, sottrae tempo di CPU a $P_L$, impedendogli di terminare la sezione critica e, di conseguenza, bloccando indirettamente anche $P_H$.
+Tutte le soluzioni basate su **busy waiting** sprecano cicli di _clock_ e possono causare il **problema dell'inversione della priorità**. 
+
+> [!TIP] Inversione della priorità
+> Si verifica quando un processo ad alta priorità ($P_H$) rimane bloccato in attesa di un _lock_ detenuto da un processo a bassa priorità ($P_L$). Se un processo a priorità media ($P_M$) viene eseguito, sottrae tempo di CPU a $P_L$, impedendogli di terminare la sezione critica e, di conseguenza, bloccando indirettamente anche $P_H$.
+
 ###### Primitive Sleep e Wakeup
 Per evitare questi sprechi, l'OS offre chiamate di sistema che gestiscono lo stato dei processi:
 - **Sleep:** Sospende il processo chiamante, portandolo nello stato **blocked**.
