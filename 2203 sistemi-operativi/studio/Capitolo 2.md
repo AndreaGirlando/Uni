@@ -156,6 +156,8 @@ I tre problemi principali da affrontare sono:
 2. **Sincronizzazione:** Evitare che due o più processi si accavallino su dati comuni.
 3. **Sequenzialità:** Gestire le dipendenze di ordine tra i processi.
 Questi problemi valgono anche per i **thread**, sebbene per essi il passaggio di informazioni sia facilitato dalla condivisione dello spazio di indirizzamento. Esistono diversi approcci per permettere ai processi di scambiare dati, ognuno con criticità specifiche.
+
+![[Pasted image 20260429175933.png|700]]
 ###### Il modello pipe
 È il modello più semplice e lineare, basato sull'unidirezionalità.
 - **Funzionamento:** Sfrutta i canali di input/output per concatenare i processi (es. `cmd1 | cmd2`).
@@ -168,15 +170,14 @@ Quando più processi operano su dati condivisi in modo non coordinato, si verifi
 - **Esempio pratico:** Se due processi eseguono simultaneamente un incremento $x = x+10$, il valore finale potrebbe essere inconsistente (es. 20 invece di 30) se entrambi leggono lo stesso valore iniziale prima che l'altro possa aggiornarlo.
 La parte di programma in cui si accede alla memoria condivisa e quindi dove si creano le race condition si chiama **sezione critica** è importante ricordare che è compito del programmatore individuare e circoscrivere queste sezioni. È buona norma definire sezioni critiche differenti per strutture dati indipendenti, così da non bloccare processi che non competono per la stessa risorsa.
 
+![[Pasted image 20260429180007.png|500]]
+
 ###### Condizioni per una soluzione efficace
 Per risolvere le **race condition** devono essere soddisfatte quattro condizioni:
 1. **Mutua esclusione:** Due processi non possono trovarsi contemporaneamente nelle loro sezioni critiche.
 2. **Indipendenza Hardware:** Nessun presupposto su velocità o numero di CPU.
 3. **Assenza di Blocchi Esterni:** Un processo fuori dalla sua sezione critica non deve bloccare altri processi.
 4. **Attesa Finita:** Nessun processo deve attendere all'infinito l'ingresso nella sezione critica; deve essere garantito un tempo massimo finito.
-
-> [!TIP] 
-> L'azione di testare continuamente una variabile finché non è valorizzata si chiama **busy waiting**. Andrebbe generalmente evitato, dato che consuma tempo di CPU. Il busy waiting è da utilizzare quando c'è la ragionevole aspettativa che l'attesa sia breve. Un lock che utilizza il busy waiting è chiamato **spin lock**.
 
 Di seguito le varie soluzioni proposte:
 ###### Inibizione degli interrupt
@@ -186,6 +187,10 @@ L'approccio più radicale consiste nel permettere a un processo, una volta entra
 ###### Variabili di lock
 Un'idea naturale è l'uso di una  **variabile di lock** (0 se libero, 1 se occupato). Il processo controlla il lock: se è 0, lo imposta a 1 ed entra.
 - **Il paradosso:** Il problema è che l'azione di "controllare e poi impostare" non è atomica. Se il Processo A legge il lock e vede 0, ma viene interrotto _un istante prima_ di impostarlo a 1, il Processo B potrebbe essere schedulato, leggere anche lui 0 e impostare il lock. Al ritorno di A, entrambi si ritroveranno nella sezione critica, causando proprio la race condition che volevamo evitare.
+
+
+> [!TIP] 
+> L'azione di testare continuamente una variabile finché non è valorizzata si chiama **busy waiting**. Andrebbe generalmente evitato, dato che consuma tempo di CPU. Il busy waiting è da utilizzare quando c'è la ragionevole aspettativa che l'attesa sia breve. Un lock che utilizza il busy waiting è chiamato **spin lock**.
 
 ###### Alternanza Stretta
 Questa soluzione software obbliga i processi a passarsi il turno tramite una variabile `turn`.
@@ -254,3 +259,409 @@ Per evitare questi sprechi, l'OS offre chiamate di sistema che gestiscono lo sta
 - **Sleep:** Sospende il processo chiamante, portandolo nello stato **blocked**.
 - **Wakeup:** Risveglia un processo specifico, riportandolo nello stato **ready**.
 Queste primitive permettono ai processi di non consumare CPU mentre attendono l'accesso a una risorsa condivisa.
+
+###### Prima soluzione al problema del Produttore-Consumatore
+Il **problema del produttore-consumatore** (noto anche come problema del _bounded-buffer_) è un classico esempio per illustrare le criticità della sincronizzazione.
+- **Scenario:** Due processi condividono un buffer di dimensioni fisse. Il **produttore** inserisce informazioni nel buffer, mentre il **consumatore** le preleva.
+- **Criticità:** Se il buffer è pieno, il produttore deve entrare in stato di _sleep_ (sospensione) ed essere risvegliato solo quando il consumatore libera spazio. Viceversa, se il buffer è vuoto, il consumatore entra in _sleep_ finché il produttore non inserisce un nuovo elemento.
+
+Per tenere traccia degli elementi, si usa una variabile `count`. Tuttavia, se l'accesso a questa variabile non è vincolato, si verificano gravi **race condition** (condizioni di competizione).
+
+```
+function producer():
+	while (true):
+		item = produce_item
+		if (count = N):
+			sleep()
+		insert_item (item)
+		count = count + 1
+		if (count = 1):
+			wakeup(consumer)
+
+function consumer():
+	while (true):
+		if (count = 0):
+			sleep()
+		item = remove_item()
+		count = count - 1
+		if (count = N - 1):
+			wakeup(consumer)
+		consume_item(item)
+```
+
+Immaginiamo la seguente sequenza di eventi:
+1. Il buffer è vuoto. Il consumatore legge `count = 0`, ma prima di entrare in _sleep_, lo scheduler interrompe la sua esecuzione e passa al produttore.
+2. Il produttore inserisce un elemento, porta `count` a 1 e, sapendo che prima era a 0, invia un segnale di _wakeup_ al consumatore.
+3. Il consumatore, non essendo ancora logicamente in _sleep_, perde il segnale. Quando riprenderà l'esecuzione, andrà in _sleep_ e ci rimarrà per sempre.
+
+**Soluzione temporanea (inefficace):** Aggiungere un **bit di attesa wakeup** (un "salvadanaio" per salvare i segnali). Funziona per due processi, ma fallisce non appena il sistema scala a tre o più processi, rendendo il problema persistente.
+
+###### Semafori
+Per risolvere definitivamente la perdita dei _wakeup_,  Dijkstra introdusse una nuova primitiva di sincronizzazione, chiamata **Semaforo** ovvero una variabile intera utilizzata per contare il numero di _wakeup_ salvati per uso futuro. 
+Può valere:
+- 0 (nessun _wakeup_ salvato) 
+- un numero positivo (uno o più _wakeup_ in attesa).
+
+I semafori operano tramite due azioni atomiche (garantisce il sistema operativo che lo siano):
+- **Down:** Generalizzazione dell'operazione di _sleep_. Verifica se il semaforo è $> 0$. Se sì, lo decrementa (consuma un _wakeup_) e prosegue. Se è 0, il processo viene messo in _sleep_ senza completare il _down_.
+- **Up:** Generalizzazione dell'operazione di _wakeup_. Incrementa il semaforo. Se ci sono processi in _sleep_ su quel semaforo, il sistema ne sceglie uno (es. casualmente) e gli permette di completare il suo _down_.
+
+I semafori inizializzati a 1 e usati da due o più processi, per assicurare che uno solo di loro possa entrare nella propria regione critica allo stesso tempo, sono chiamati **semafori binari**.
+###### Soluzione al Produttore-Consumatore con i semafori
+La soluzione richiede tre semafori implementati in maniera indivisibile (tramite chiamate di sistema che disabilitano brevemente gli interrupt):
+1. **Full:** Conta i posti pieni (inizializzato a 0).
+2. **Empty:** Conta i posti vuoti (inizializzato a N).
+3. **Mutex:** Semaforo binario per la mutua esclusione (inizializzato a 1).
+
+```
+#define N 100                           /* numero di posti nel buffer */
+typedef int semaphore;                  /* i semafori sono un tipo speciale di int */
+
+semaphore mutex = 1;                    /* controlla l'accesso alla regione critica */
+semaphore empty = N;                    /* conta i posti vuoti del buffer */
+semaphore full = 0;                     /* conta i posti pieni del buffer */
+
+void producer(void){
+    int item;
+    while (TRUE) {                      /* TRUE è la costante 1 */
+        item = produce_item();          /* genera qualcosa da mettere nel buffer */
+        down(&empty);                   /* decrementa il contatore empty */
+        down(&mutex);                   /* entra nella regione critica */
+        insert_item(item);              /* mette un nuovo elemento nel buffer */
+        up(&mutex);                     /* lascia la regione critica */
+        up(&full);                      /* incrementa il contatore dei posti pieni */
+    }
+}
+
+void consumer(void){
+    int item;
+    while (TRUE) {                      /* ciclo infinito */
+        down(&full);                    /* decrementa il contatore full */
+        down(&mutex);                   /* entra nella regione critica */
+        item = remove_item();           /* prende l'elemento dal buffer */
+        up(&mutex);                     /* lascia la regione critica */
+        up(&empty);                     /* incrementa il contatore dei posti vuoti */
+        consume_item(item);             /* fa qualcosa con l'elemento */
+    }
+}
+```
+
+###### Mutex
+I **Mutex** sono una versione semplificata dei semafori, utili unicamente per gestire la mutua esclusione di risorse o pezzi di codice.
+- **Stati:** Possono essere solo _locked_ (bloccato, solitamente > 0) o _unlocked_ (sbloccato, 0).
+- **Operazioni:**
+    - `mutex_lock`: Se _unlocked_, il thread entra nella regione critica. Se _locked_, il thread si blocca.
+    - `mutex_unlock`: Sblocca il mutex; se ci sono thread in attesa, ne viene scelto uno a caso per acquisire il lock.        
+
+Essendo semplici, i mutex possono essere realizzati nello spazio utente usando istruzioni hardware come `TSL` o `XCHG`. La differenza cruciale tra  `enter_regione` e `mutex_lock` è l'uso di `thread_yield`: se il lock fallisce, il thread cede immediatamente la CPU allo scheduler, evitando sprechi di risorse dovuti al busy waiting.
+
+###### Futex (Fast User Space Mutex)
+I classici _spin lock_ (attesa attiva) sono veloci ma sprecano CPU se l'attesa è lunga. Il blocco tramite kernel, d'altra parte, è oneroso se ci sono poche contese. La soluzione di Linux è il **Futex**.
+- **Funzionamento:** Opera interamente in spazio utente finché non ci sono contese. Condivide un intero a 32 bit come lock. Il thread tenta di prenderlo con un'istruzione atomica "decrement and test".
+- **In caso di contesa:** Se il lock è già detenuto, il futex effettua una chiamata di sistema per mettere il thread in una coda d'attesa nel kernel (giustificando l'overhead del kernel system call solo quando strettamente necessario).
+- **Rilascio:** Avviene con un'istruzione "increment and test". Se ci sono processi bloccati in coda, avvisa il kernel di sbloccarli.
+
+
+###### Monitor
+Poiché i mutex e i semafori sono difficili da usare correttamente, Brinch Hansen (1973) e Hoare (1974) hanno introdotto una primitiva di più alto livello ovvero i **Monitor:** una raccolta di procedure, variabili e strutture dati raggruppate in un modulo. I processi esterni possono chiamare le procedure, ma non possono accedere direttamente alle strutture dati interne. In un dato istante, **solo un processo può essere attivo all'interno di un monitor**, ed è il compilatore a gestire la mutua esclusione (di solito usando mutex o semafori binari dietro le quinte).
+
+**Variabili condizione:** Per permettere ai processi di bloccarsi quando non possono procedere, si usano due operazioni:
+- `wait`: Blocca il processo chiamante e consente l'ingresso nel monitor a un altro processo.
+- `signal`: Risveglia un processo in attesa su quella condizione.
+
+Per evitare di avere due processi attivi nel monitor contemporaneamente, abbiamo bisogno di una regola che indichi che cosa accade dopo una `signal`. Il libro propone di far sì che venga eseguito il processo appena svegliato, sospendendo l'altro.
+
+Ad una prima occhiata si può pensare che le operazioni `wait` e `signal` siano simili a `sleep` e `wakeup`. Sono in effetti molto simili, ma con una differenza cruciale: `sleep` e `wakeup` fallivano perché mentre un processo stava tentando di entrare in sleep, l'altro stava provando a svegliarlo. Con i monitor questo non può accadere, grazie alla gestione automatica della mutua esclusione. In questo modo la programmazione parallela diventa molto meno incline agli errori rispetto all'uso manuale dei semafori. 
+
+**Svantaggio**: problema principale di questa soluzione è che i monitor sono costrutti del linguaggio di programmazione, ma non tutti i compilatori li supportano (es. C e Pascal ne sono sprovvisti).
+
+###### Soluzione Produttore-Consumatore con i monitor
+```
+monitor pc_monitor
+  condition full, empty;
+  integer count = 0;
+
+  function insert(item)
+    if count = N then wait(full);
+    insert_item(item);
+    count = count + 1;
+    if count = 1 then signal(empty)
+
+  function remove()
+    if count = 0 then
+      wait(empty);
+    remove = remove_item()
+    count = count - 1;
+    if count = N-1 then signal(full)
+
+function producer()
+  while (true) do
+    item = produce_item()
+    pc_monitor.insert(item)
+
+function consumer()
+  while (true) do
+    item = pc_monitor.remove()
+    consume_item(item)
+```
+
+###### Scambio di messaggi
+Sia mutex che semafori sono stati pensati per essere utilizzati in sistemi che hanno una singola memoria pubblica collegata alle CPU, ma quando ci troviamo in sistemi distribuiti con memoria privata per ogni CPU, queste primitive diventano inutili, quindi si utilizza lo scambio di messaggi. Questo metodo si basa su due chiamate di sistema principali:
+- `send`: Invia un messaggio a una destinazione.
+- `receive`: Riceve un messaggio da una fonte.
+Questa soluzione ha delle criticità:
+1. **Messaggi persi:** Si risolve costringendo il destinatario a inviare un messaggio di _acknowledgment_ (conferma di ricezione). Se l'ack viene perso, si crea un nuovo problema di gestione delle ritrasmissioni.
+2. **Identificazione:** Come identificare il destinatario in modo non ambiguo.
+3. **Autenticazione:** Garantire che il client stia comunicando con il vero server e non con un impostore.
+Per indirizzare i messaggi si usano diverse tecniche:
+- **Indirizzamento Diretto:** Assegnazione di un indirizzo univoco a ciascun processo, alla quale la `send` invierà un messaggio
+- **Mailbox:** Una struttura dati usata come buffer che contiene un certo numero predefinito di messaggi. Se un processo tenta di inviare a una mailbox piena, viene sospeso finché non si libera spazio.
+- **Rendezvous (Zero Buffer):** La comunicazione avviene senza buffer intermedi. Se la `send` viene eseguita prima della `receive`, il mittente si blocca finché il destinatario non è pronto (e viceversa). È una strategia più rigida ma di semplice implementazione.
+
+###### Soluzione Produttore-Consumatore con i messaggi
+Il consumatore invia _N_ messaggi vuoti al produttore. Il produttore li preleva, li riempie e li rimanda al consumatore.
+
+```
+#define N 100               /* numero di posti nel buffer */
+
+void producer(void)
+{
+    int item;
+    message m;              /* buffer del messaggio */
+
+    while (TRUE) {
+        item = produce_item();          /* genera qualcosa da mettere nel buffer */
+        receive(consumer, &m);          /* aspetta che ne arrivi uno vuoto */
+        build_message(&m, item);        /* costruisci un messaggio da spedire */
+        send(consumer, &m);             /* manda l'elemento al consumatore */
+    }
+}
+
+void consumer(void)
+{
+    int item, i;
+    message m;
+
+    for (i = 0; i < N; i++) send(producer, &m); /* manda N vuoti */
+    while (TRUE) {
+        receive(producer, &m);          /* prende un messaggio che contiene un elemento */
+        item = extract_item(&m);        /* estrae l'elemento dal messaggio */
+        send(producer, &m);             /* ne manda indietro uno vuoto */
+        consume_item(item);             /* fa qualcosa con l'elemento */
+    }
+}
+```
+
+###### Problema dei filosofi a cena
+Il problema modella le sfide della concorrenza nell'accesso a risorse limitate.
+- **Lo Scenario:** Cinque filosofi sono seduti attorno a un tavolo circolare. Davanti a ciascuno c'è un piatto di spaghetti.
+- **Le Risorse (Forchette):** Tra un piatto e l'altro c'è una singola forchetta (5 forchette in totale). Gli spaghetti sono così scivolosi che per mangiare servono due forchette.
+- **L'Obiettivo:** Quando un filosofo ha fame, tenta di prendere la forchetta alla sua sinistra e quella alla sua destra (in qualsiasi ordine). Se ci riesce, mangia per un po', posa le forchette e torna a pensare. Dobbiamo scrivere un programma che assicuri che ogni filosofo riesca a mangiare senza che il sistema si blocchi mai.
+###### Tentativi di soluzione al problema dei filosofi a cena
+Nel cercare di risolvere il problema, si va incontro a diverse problematiche tipiche della programmazione concorrente.
+ 
+**Tentativo 1: La Soluzione "Ovvia" (Errata)**
+L'approccio più istintivo è far sì che ogni filosofo aspetti e prenda la forchetta sinistra, poi faccia lo stesso con la destra.
+
+```
+#define N 5
+
+void philosopher(int i){
+    while (TRUE) {
+        think();
+        take_fork(i);               /* Prende la sinistra */
+        take_fork((i+1) % N);       /* Prende la destra */
+        eat();
+        put_fork(i);                /* Posa la sinistra */
+        put_fork((i+1) % N);        /* Posa la destra */
+    }
+}
+```
+
+Questa soluzione è letale a causa del rischio di blocco totale. Supponiamo che tutti e cinque i filosofi prendano la loro forchetta sinistra contemporaneamente. Nessuno sarebbe in grado di prendere la sua forchetta destra e ci sarebbe un deadlock. 
+
+**Tentativo 2: Rilascio e Attesa (Tempo Fisso)**
+
+Per evitare il _deadlock_, il filosofo prende la sinistra, controlla la destra: se è occupata, posa la sinistra, aspetta un tempo predefinito e riprova. Anche questa proposta fallisce, sebbene per una diversa ragione. Con un poco di sfortuna, tutti i filosofi potrebbero iniziare il loro algoritmo contemporaneamente, prendendo la loro forchetta sinistra, verificando che la destra non è disponibile, riponendo la forchetta sinistra, aspettando, riprendendo di nuovo la sinistra e così via, per sempre. Una situazione di questo genere, in cui tutti i programmi continuano a essere eseguiti indefinitamente, ma senza alcun avanzamento, è detta **starvation**.
+
+**Tentativo 3: Attesa Casuale**
+Si potrebbe introdurre un tempo di attesa randomico anziché fisso. Sebbene riduca statisticamente il rischio di un blocco lungo, non offre una garanzia matematica. Nei sistemi critici, una soluzione deve funzionare sempre, non basarsi sulla fortuna.
+
+**Tentativo 4: Mutex globale**
+Un miglioramento alla Figura 2.46 che non ha deadlock e non ha starvation è quello di proteggere le cinque dichiarazioni che seguono la chiamata a _think_ da un semaforo binario. Prima di iniziare ad acquisire forchette un filosofo farebbe un down su _mutex_. Dopo aver riposto la forchetta, farebbe un up su _mutex_.  Dal punto di vista teorico è ideone. Dal punto di vista pratico ha un difetto di prestazione; ci sarebbe un solo filosofo per volta che potrebbe mangiare, ma con la disponibilità di 5 forchette dovrebberò essere in 2.
+
+**Tentativo 5: macro LEFT e RIGHT**
+Per evitare _deadlock_, eliminare la _starvation_ e al contempo **massimizzare il parallelismo** (permettendo a due filosofi di mangiare assieme), si utilizza una logica basata sul tracciamento degli stati. Si introduce un array `state` che tiene traccia della condizione di ogni filosofo (_THINKING_, _HUNGRY_, _EATING_). 
+
+Quindi si definisce una regola d'oro: Un filosofo può passare allo stato _EATING_ solo ed esclusivamente se **nessuno dei suoi due vicini** lo sta facendo in quel momento.
+
+
+```
+#define N           5           /* numero di filosofi */
+#define LEFT        (i+N-1)%N   /* numero del vicino alla sinistra di i */
+#define RIGHT       (i+1)%N     /* numero del vicino alla destra di i */
+#define THINKING    0           /* il filosofo sta pensando */
+#define HUNGRY      1           /* il filosofo tenta di prendere le forchette */
+#define EATING      2           /* il filosofo mangia */
+
+typedef int semaphore;          /* i semafori sono uno speciale tipo di int */
+int state[N];                   /* array per tener traccia dello stato di ciascuno */
+semaphore mutex = 1;            /* mutua esclusione per le regioni critiche */
+semaphore s[N];                 /* un semaforo per filosofo */
+
+void philosopher(int i)         /* i: numero del filosofo, da 0 a N-1 */
+{
+    while (TRUE) {              /* ripeti sempre */
+        think();                /* il filosofo sta pensando */
+        take_forks(i);          /* prende due forchette o si blocca */
+        eat();                  /* yum-yum, spaghetti */
+        put_forks(i);           /* ripone entrambe le forchette sul tavolo */
+    }
+}
+
+void take_forks(int i)          /* i: numero del filosofo da 0 a N-1 */
+{
+    down(&mutex);               /* entra nella regione critica */
+    state[i] = HUNGRY;          /* registra il fatto che il filosofo i ha fame */
+    test(i);                    /* prova a prendere due forchette */
+    up(&mutex);                 /* esce dalla regione critica */
+    down(&s[i]);                /* si blocca se non sono state prese le forchette */
+}
+
+void put_forks(int i)           /* i: numero del filosofo da 0 a N-1 */
+{
+    down(&mutex);               /* entra nella regione critica */
+    state[i] = THINKING;        /* il filosofo ha finito di mangiare */
+    test(LEFT);                 /* guarda se il vicino a sinistra adesso può mangiare */
+    test(RIGHT);                /* guarda se il vicino a destra adesso può mangiare */
+    up(&mutex);                 /* esce dalla regione critica */
+}
+
+void test(int i)                /* i: numero del filosofo da 0 a N-1 */
+{
+    /* Se ho fame e i miei vicini non stanno mangiando, inizio a mangiare */
+    if (state[i] == HUNGRY && state[LEFT] != EATING && state[RIGHT] != EATING) {
+        state[i] = EATING;
+        up(&s[i]);              /* Sblocca il semaforo personale del filosofo */
+    }
+}
+```
+
+###### Problema dei lettori-scrittori
+Un altro famoso problema è quello dei lettori e degli scrittori, che modella l'accesso a una base di dati. È accettabile avere molteplici processi che leggono il database contemporaneamente, ma se un processo sta aggiornando (scrivendo) il database, nessun altro processo può avere accesso al database, nemmeno i lettori. Come programmiamo i lettori e gli scrittori per seguire queste regole?
+
+###### Tentativi di soluzione al problema dei lettori-scrittori
+
+**Tentativo 1: Soluzione basata sui semafori (Priorità ai lettori)**
+L'approccio iniziale utilizza i semafori per gestire l'accesso. Si usa un semaforo `mutex` per proteggere la variabile contatore dei lettori (`rc`) e un semaforo `db` per garantire l'accesso esclusivo al database da parte degli scrittori. Il primo lettore che arriva blocca il database agli scrittori, e l'ultimo lettore che esce lo sblocca.
+```
+semaphore mutex = 1
+semaphore db = 1
+int rc = 0
+
+function reader()
+    while true do
+        down(mutex)
+        rc = rc + 1
+        if (rc == 1) down(db)   /* Il primo lettore blocca gli scrittori */
+        up(mutex)
+        
+        read_database()
+        
+        down(mutex)
+        rc = rc - 1
+        if (rc == 0) up(db)     /* L'ultimo lettore sblocca gli scrittori */
+        up(mutex)
+        use_data_read()
+
+function writer()
+    while true do
+        think_up_data()
+        down(db)                /* Richiede l'accesso esclusivo */
+        write_database()
+        up(db)
+```
+
+**Problema:** Questa soluzione è fortemente sbilanciata a favore dei lettori. Come evidenziato nella slide, **lo scrittore potrebbe attendere per un tempo indefinito** (starvation). Finché continua ad arrivare almeno un nuovo lettore prima che l'ultimo se ne sia andato, `rc` non scenderà mai a 0, il semaforo `db` non verrà rilasciato, e lo scrittore rimarrà bloccato per sempre.
+
+---
+
+**Tentativo 2: Soluzione n.1 basata sui monitor (Incapsulamento senza risolvere la starvation)**
+Per strutturare meglio il codice, si passa all'uso di un **monitor**. Si introducono le variabili di condizione (`read`, `write`), un contatore di lettori (`rc`) e un flag booleano (`busy_on_write`). In questa versione, un lettore aspetta solo se uno scrittore è attualmente in fase di scrittura (`busy_on_write == true`).
+```
+monitor rw_monitor
+    int rc = 0; boolean busy_on_write = false
+    condition read, write
+
+    function start_read()
+        if (busy_on_write) wait(read)
+        rc = rc + 1
+        signal(read)
+
+    function end_read()
+        rc = rc - 1
+        if (rc == 0) signal(write)
+
+    function start_write()
+        if (rc > 0 OR busy_on_write) wait(write)
+        busy_on_write = true
+
+    function end_write()
+        busy_on_write = false
+        if (in_queue(read))
+            signal(read)
+        else
+            signal(write)
+```
+
+**Problema:** Nonostante l'eleganza del monitor, la logica di base non cambia. I nuovi lettori continuano a entrare liberamente se non c'è uno scrittore _attivo_ (anche se c'è uno scrittore in _attesa_). Inoltre, quando uno scrittore finisce (`end_write`), controlla prima se ci sono lettori in coda e li risveglia, dando loro di nuovo la precedenza. La starvation per gli scrittori è ancora possibile.
+
+---
+
+**Tentativo 3: Soluzione n.2 basata sui monitor (Frenare i nuovi lettori)**
+Per mitigare la starvation degli scrittori, si introduce una piccola ma cruciale modifica nella funzione `start_read()`
+```
+function start_read()
+	/* Modifica: aspetta anche se c'è uno scrittore in coda */
+	if (busy_on_write OR in_queue(write)) wait(read)
+	rc = rc + 1
+	signal(read)
+```
+
+**Miglioramento e limite:** Adesso, se uno scrittore si mette in attesa, i **nuovi** lettori che arrivano vengono bloccati. Questo evita che un flusso continuo di lettori tenga in ostaggio il database. Tuttavia, c'è un'incoerenza: quando lo scrittore finisce di scrivere (`end_write`), la logica precedente risveglia ancora prima i lettori in coda rispetto ad altri scrittori in coda. Questo porta a un'alternanza poco efficiente se ci sono molte scritture pendenti.
+
+---
+
+**Tentativo 4: Soluzione n.3 basata sui monitor (Priorità agli scrittori)**
+Per risolvere definitivamente la latenza per gli scrittori, si inverte la logica di risveglio al termine di una scrittura.
+```
+monitor rw_monitor
+    int rc = 0; boolean busy_on_write = false
+    condition read, write
+
+    function start_read()
+        if (busy_on_write OR in_queue(write)) wait(read)
+        rc = rc + 1
+        signal(read)
+
+    function end_read()
+        rc = rc - 1
+        if (rc == 0) signal(write)
+
+    function start_write()
+        if (rc > 0 OR busy_on_write) wait(write)
+        busy_on_write = true
+
+    function end_write()
+        busy_on_write = false
+        /* Logica invertita: precedenza agli scrittori */
+        if (in_queue(write))
+            signal(write)
+        else
+            signal(read)
+```
+In questa soluzione definitiva, si garantisce che:
+1. I nuovi lettori si fermano se c'è uno scrittore in attesa.
+2. Quando uno scrittore termina, cede il passo immediatamente al **prossimo scrittore in coda**.
+
+### Scheduling
