@@ -23,7 +23,7 @@ La creazione di un nuovo processo avviene principalmente in quattro circostanze:
 1. **All'avvio del sistema (Boot):** Viene creato un processo radice (solitamente con Process ID = 1), che funge da capostipite per l'albero di tutti i processi successivi.
 2. **Tramite chiamate di sistema (_Syscall_):** Un processo padre ne crea uno figlio per delegare compiti o distribuire il carico di lavoro (utile specie nei multiprocessori per evitare blocchi).
 3. **Azione dell'utente:** Tipico dei sistemi interattivi (es. l'avvio di un'app).
-4. **Inizio di un job _batch_:** Lo _Scheduler_, in base alle risorse libere, seleziona un lavoro dalla coda e crea un processo per eseguirlo.
+4. **Inizio di un job batch:** Lo _Scheduler_, in base alle risorse libere, seleziona un lavoro dalla coda e crea un processo per eseguirlo.
 
 All'avvio del sistema vengono avviati diversi processi, tra questi quelli eseguiti in _background_ vengono chiamati **demoni**
 ###### Chiamate di Sistema per la Creazione
@@ -47,7 +47,7 @@ Il ciclo di vita può essere descritto da un automa a 5 stati (3 principali e 2 
 - **Bloccato (_Blocked_):** Il processo è parcheggiato in attesa di un evento esterno (spesso operazioni di Input/Output "lente").
 - **Terminated:** Fase finale di chiusura.
 
-![[Pasted image 20260426194444.png|00]]
+![[Pasted image 20260426194444.png|700]]
 
 Per passare da uno stato all'altro abbiamo dei meccanismi di transizione:
 - **Running $\rightarrow$ Blocked (Attesa di I/O):** Quando un processo effettua una _syscall_ "lenta" (che richiede tempi lunghi di risposta dal SO), si blocca volontariamente per non sprecare cicli di CPU.
@@ -85,8 +85,8 @@ Il **modello a thread multipli** permette di gestire l'esecuzione di un singolo 
 > - **Esempio di un Text Editor:** Senza thread, il rendering del file a schermo si bloccherebbe a ogni salvataggio, e il controllo ortografico impedirebbe la scrittura simultanea.
 > - **Esempio di un Web Server:** Senza thread, le richieste verrebbero gestite una ad una; una richiesta onerosa bloccherebbe le successive, creando code e abbattendo il _throughput_.
 ###### Thread con risorse esclusive o condivise
-Tutti i thread generati all'interno di un medesimo processo condividono lo stesso PID (Process ID). Per funzionare, ogni thread mantiene una divisione netta tra ciò che è strettamente personale e ciò che condivide con i "fratelli":
-- **Risorse esclusive (Dx):** Ogni thread possiede un proprio *program counter* (per sapere quale istruzione eseguire), propri *registri*, un proprio *stack* e un proprio stato* (es. ready, running, blocked).
+Tutti i thread generati all'interno di un medesimo processo condividono lo stesso PID (Process ID). Da qui distinguiamo due tipi di thread, classificati in base a come gestiscono le risorse:
+- **Risorse esclusive (Dx):** Ogni thread possiede un proprio *program counter* (per sapere quale istruzione eseguire), propri *registri*, un proprio *stack* e un proprio stato (es. ready, running, blocked).
 - **Risorse condivise (Sx):** Tutti i thread del processo condividono lo spazio di indirizzamento, l'*heap*, la memoria globale, il codice (o testo) e i file aperti.
 ![[Pasted image 20260317174247.png|500]]
 ###### Operazioni, Stati e Context Switch
@@ -118,7 +118,7 @@ La programmazione multi-core non è banale e richiede di gestire quattro critici
 ###### Thread a livello utente (modello 1-a-molti)
 Questo modello viene gestito interamente da librerie nello spazio utente, ed è utile per lavorare su _Kernel_ che non supportano nativamente i thread. Il sistema operativo vede solo un unico grande processo e un unico flusso di esecuzione. Lo scambio tra thread è gestito manualmente tramite la primitiva `thread_yield`, che salva i registri in una tabella locale nello spazio utente.
 - **Punti di forza:**
-    - **Scheduling personalizzato:** Permette priorità contestuali gestite dall'applicazione, molto più versatili rispetto a quelle asettiche dell'OS.
+    - **Scheduling personalizzato:** Permette priorità contestuali gestite dall'applicazione, molto più versatili rispetto a quelle generdell'OS.
     - **Dispatching senza trap:** Operando in modalità utente, si evitano le lentissime chiamate a sistema (_trap_), rendendo i thread estremamente veloci.
 - **Criticità:**
     - **Chiamate bloccanti:** Se un thread fa una chiamata lenta (es. I/O su disco), l'OS blocca l'intero processo, fermando di conseguenza _tutti_ i thread utente. Anche i _page-fault_ causano l'interruzione totale.
@@ -132,7 +132,7 @@ Questo modello viene gestito interamente da librerie nello spazio utente, ed è 
 È il modello nativamente supportato dai sistemi operativi moderni, associando a ogni thread utente un thread a livello _Kernel_. La tabella dei thread è mantenuta nel _Kernel_ ed è unica per tutti i processi.
 - **Punti di forza:** Una chiamata bloccante effettuata da un thread blocca **esclusivamente** quel thread, risolvendo il problema principale del modello utente.
 - **Svantaggi:**
-    - **Context switch più lento:** Passare da un thread all'altro richiede l'uso di costose _trap_ di sistema.
+    - **Context switch più lento:** Passare da un thread all'altro richiede l'uso di costose _trap_ di sistema (cambio di contesto simile a quello tra processi).
     - **Operazioni costose:** Creare e distruggere frequentemente thread _Kernel_ rallenta esponenzialmente l'intero sistema operativo.
 ###### Modello Ibrido (Molti-a-molti)
 Questo modello mira a combinare i punti di forza dell'approccio a livello utente (efficienza e flessibilità) con quelli dell'approccio a livello kernel (vero parallelismo e tolleranza ai blocchi), mitigando i difetti di entrambi.
@@ -145,7 +145,6 @@ In pratica, il sistema effettua un **multiplexing** di numerosi thread a livello
 ![[Pasted image 20260319163244.png|500]]
 ###### Librerie di Riferimento: pthreads
 Quasi tutti i sistemi operativi moderni implementano nativamente i thread _Kernel_. Per gestire invece i thread a livello utente, lo standard di riferimento è la libreria **pthreads**. **pthreads:** Basata sullo standard POSIX, fornisce un'interfaccia univoca e funzioni semplificate per la gestione dei thread. Il suo grande pregio è la portabilità: il codice sorgente è compilabile e funzionante su molteplici OS; pur cambiando ciò che avviene "dietro le quinte" in base al sistema, i risultati rimangono analoghi.
-
 
 ### Comunicazione tra processi
 ###### Introduzione e complessità dell'IPC
@@ -360,7 +359,6 @@ I classici _spin lock_ (attesa attiva) sono veloci ma sprecano CPU se l'attesa �
 - **Funzionamento:** Opera interamente in spazio utente finché non ci sono contese. Condivide un intero a 32 bit come lock. Il thread tenta di prenderlo con un'istruzione atomica "decrement and test".
 - **In caso di contesa:** Se il lock è già detenuto, il futex effettua una chiamata di sistema per mettere il thread in una coda d'attesa nel kernel (giustificando l'overhead del kernel system call solo quando strettamente necessario).
 - **Rilascio:** Avviene con un'istruzione "increment and test". Se ci sono processi bloccati in coda, avvisa il kernel di sbloccarli.
-
 
 ###### Monitor
 Poiché i mutex e i semafori sono difficili da usare correttamente, Brinch Hansen (1973) e Hoare (1974) hanno introdotto una primitiva di più alto livello ovvero i **Monitor:** una raccolta di procedure, variabili e strutture dati raggruppate in un modulo. I processi esterni possono chiamare le procedure, ma non possono accedere direttamente alle strutture dati interne. In un dato istante, **solo un processo può essere attivo all'interno di un monitor**, ed è il compilatore a gestire la mutua esclusione (di solito usando mutex o semafori binari dietro le quinte).
@@ -736,7 +734,7 @@ Gli obiettivi di uno _scheduler_ variano a seconda dell'ambiente operativo:
   
   Processi cooperanti possono, se lo desiderano, scambiarsi i biglietti. Per esempio, quando un processo client manda un messaggio a un processo server e poi si blocca, può elargire tutti i propri biglietti al server, per aumentare la possibilità che il server sia il prossimo a essere eseguito. Quando il server ha terminato, restituisce i biglietti al client, in modo che possa nuovamente essere eseguito. Di fatto, in assenza di client, ai server non serve alcun biglietto.
 
-- **Scheduling fair-share:** Finora abbiamo ipotizzato che ogni processo fosse schedulato per proprio conto, senza considerare a chi appartenesse. Di conseguenza, se l'utente 1 avvia 9 processi e l'utente 2 ne avvia 1, con il round-robin o le priorità uguali, l'utente 1 si prenderà il 90% della CPU e l'utente 2 ne prenderà solo il 10%. Per evitare questa situazione, prima di schedularlo, alcuni sistemi prendono in considerazione chi possiede un processo. In questo modello, a ogni utente viene assegnata una frazione di CPU e lo scheduler raccoglie i processi in modo tale da farla rispettare. Così se a due utenti è stato assegnato il 50% della CPU, l'avranno, indipendentemente da quanti processi abbiano attivi.
+- **Scheduling fair-share:** Finora abbiamo ipotizzato che ogni processo fosse schedulato per proprio conto, senza considerare a chi appartenesse. Di conseguenza, se l'utente $1$ avvia $9$ processi e l'utente $2$ ne avvia $1$, con il round-robin o le priorità uguali, l'utente $1$ si prenderà il $90\%$ della CPU e l'utente $2$ ne prenderà solo il $10\%$. Per evitare questa situazione, prima di schedularlo, alcuni sistemi prendono in considerazione chi possiede un processo. In questo modello, a ogni utente viene assegnata una frazione di CPU e lo scheduler raccoglie i processi in modo tale da farla rispettare. Così se a due utenti è stato assegnato il $50\%$ della CPU, l'avranno, indipendentemente da quanti processi abbiano attivi.
 
 ###### Scheduling nei sistemi Real-Time
 I sistemi real-time sono generalmente divisi in categorie come **hard real-time**, nel caso di scadenze assolute da assolvere, o **soft real-time** che implica un certo grado di tollerabilità. 
@@ -751,7 +749,7 @@ Lo scheduling in questi sistemi si differenzia sostanzialmente a seconda che sia
 
 *Consideriamo per primi i thread utente*. Dato che il kernel non è a conoscenza dell'esistenza dei thread, opera come fa sempre, prendendo un processo, diciamo A, e assegnando ad A il controllo per il suo quanto. Lo scheduler di thread interno ad A decide quale thread eseguire, diciamo A1. Poiché per questi thread non vi sono interrupt del clock, questo può continuare l'esecuzione quanto vuole. Se utilizza l'intero quanto del processo, il kernel selezionerà un altro processo da eseguire. La sola restrizione è l'assenza di interrupt del clock che interrompano un thread eseguito troppo a lungo.
 
-*Consideriamo adesso la situazione con i thread del kernel.* In questo caso il kernel preleva un particolare thread da eseguire. Non deve tener conto del processo cui appartiene il thread, ma può farlo, se vuole. Al thread è dato un quanto e se eccede quel quanto è sospeso forzatamente. Poiché il kernel sa che il passaggio da un thread nel processo A a un thread nel processo B è più costoso che eseguire un secondo thread nel processo A (dovuto al fatto di dover cambiare la mappa di memoria e dover svuotare la memoria cache), può tener conto di questa informazione quando deve prendere una decisione. Per esempio, dati due thread che sono ugualmente importanti, con uno di loro appartenente allo stesso processo del thread che si è bloccato e un altro appartenente a un diverso processo, la preferenza potrebbe essere assegnata al primo.
+*Consideriamo adesso la situazione con i thread del kernel.* In questo caso il kernel preleva un particolare thread da eseguire. Non deve tener conto del processo cui appartiene il thread, ma può farlo, se vuole. Al thread è dato un quanto e se eccede quel quanto è sospeso forzatamente. Poiché il kernel sa che il passaggio da un thread nel processo A a un thread nel processo B è più costoso che eseguire un secondo thread nel processo A (dovuto al fatto di dover cambiare la mappa di memoria e dover svuotare la memoria cache), può tener conto di questa informazione quando deve prendere una decisione. Per esempio, dati due thread che sono ugualmente importanti, con uno di loro appartenente allo stesso processo del thread che si è bloccato, la preferenza potrebbe essere assegnata a questo.
 
 Una differenza rilevante fra i thread utente e i thread del kernel sta nelle prestazioni. Fare uno scambio di thread utente richiede una manciata di istruzioni macchina. Con i thread del kernel richiede di fare uno scambio completo di contesto, il che è più lento di parecchi ordini di grandezza. D'altra parte, con i thread del kernel, un thread bloccato in attesa di I/O non sospende l'intero processo, come avviene con i thread utente.
 ###### Lo Scheduling su Sistemi Multiprocessore
