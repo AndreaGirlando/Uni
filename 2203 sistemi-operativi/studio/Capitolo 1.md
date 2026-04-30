@@ -70,7 +70,7 @@ Avviene tramite tre metodi principali:
 - **Interrupt:** Il driver avvia il dispositivo e si sospende. Al termine, il controller genera un interrupt (interruzione) per segnalare il completamento (il testo fa riferimento al vettore degli interrupt). La CPU può disabilitare temporaneamente gli interrupt per non essere interrotta in momenti inopportuni.
 - **DMA (Direct Memory Access):** Utilizza un hardware speciale che controlla il flusso di dati tra memoria e controller senza l'intervento costante della CPU. Al termine, il chip DMA genera un interrupt.
 ###### Panoramica dei vari sistemi operativi
-- **Sistemi operativi per mainframe:** Orientati all'esecuzione simultanea di numerosi lavori con massicce richieste di I/O. Offrono servizi batch, elaborazione di transazioni e timesharing.
+- **Sistemi operativi per mainframe**: Orientati all'esecuzione simultanea di numerosi lavori con massicce richieste di I/O. Offrono elaborazione di transazioni, timesharing e **servizi batch**, ossia l'esecuzione completamente automatica e sequenziale di grandi volumi di operazioni raggruppate in lotti (es. fatturazione o calcolo stipendi), senza necessità di interazione da parte dell'utente.
 - **Sistemi operativi per server:** Servono molteplici utenti in rete, permettendo la condivisione di risorse hardware e software.
 - **Sistemi operativi multiprocessore:** Varianti dei sistemi server ottimizzate per comunicazione e coerenza. Utilizzati sempre più spesso anche sui PC desktop dotati di chip multicore.
 - **Sistemi operativi per personal computer:** Progettati per supportare in modo ottimale un singolo utente.

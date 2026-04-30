@@ -1,4 +1,4 @@
-### I Processi
+### Processi
 
 Nei computer moderni è normale che vengano svolti molti compiti contemporaneamente, si consideri innanzitutto un Web server. Arrivano richieste per pagine web da ogni dove, quindi diventa necessario un qualche sistema per modellare e controllare tale concorrenza. Così nasce il modello dei processi. In questo modello, tutto il software eseguibile sul computer è organizzato in una serie di attività sequenziali detti *processi*.
 - **Processo:** È un'istanza di un programma in esecuzione. Rappresenta un'attività in corso dotata di un proprio programma, di input, di output e di uno stato interno. Due istanze dello stesso programma costituiscono due processi distinti.
@@ -457,6 +457,7 @@ Il problema modella le sfide della concorrenza nell'accesso a risorse limitate.
 - **Lo Scenario:** Cinque filosofi sono seduti attorno a un tavolo circolare. Davanti a ciascuno c'è un piatto di spaghetti.
 - **Le Risorse (Forchette):** Tra un piatto e l'altro c'è una singola forchetta (5 forchette in totale). Gli spaghetti sono così scivolosi che per mangiare servono due forchette.
 - **L'Obiettivo:** Quando un filosofo ha fame, tenta di prendere la forchetta alla sua sinistra e quella alla sua destra (in qualsiasi ordine). Se ci riesce, mangia per un po', posa le forchette e torna a pensare. Dobbiamo scrivere un programma che assicuri che ogni filosofo riesca a mangiare senza che il sistema si blocchi mai.
+![[Pasted image 20260430110713.png|500]]
 ###### Tentativi di soluzione al problema dei filosofi a cena
 Nel cercare di risolvere il problema, si va incontro a diverse problematiche tipiche della programmazione concorrente.
  
@@ -665,3 +666,107 @@ In questa soluzione definitiva, si garantisce che:
 2. Quando uno scrittore termina, cede il passo immediatamente al **prossimo scrittore in coda**.
 
 ### Scheduling
+
+###### Introduzione allo scheduling
+Quando un computer lavora in multiprogrammazione, si verifica spesso una competizione per l'utilizzo della CPU tra processi o _thread_ che si trovano contemporaneamente nello stato "pronto". Se il sistema dispone di una singola CPU, è necessario decidere a chi assegnarla.
+- **Scheduler:** La componente del sistema operativo incaricata di decidere quale processo eseguire.
+- **Algoritmo di scheduling:** La logica e le regole utilizzate dallo _scheduler_ per operare questa scelta.
+
+Effettuare il cambio di processo (o **_context switch_**) è un'attività estremamente onerosa in termini di prestazioni. Richiede il passaggio in modalità _kernel_, il salvataggio dei registri e della mappa di memoria, l'aggiornamento della _Memory Management Unit_ (MMU) e l'invalidazione della memoria _cache_, che dovrà poi essere ricaricata. Un numero eccessivo di scambi penalizza l'efficienza globale.
+
+Comprendere il comportamento dei processi è fondamentale per il design di un buon algoritmo:
+- **Processi CPU-bound:** Spendono la maggior parte del loro tempo eseguendo calcoli complessi (lunghi burst di CPU) con rare attese di I/O.
+- **Processi I/O-bound:** Spendono gran parte del loro tempo in attesa di terminare operazioni I/O (brevi burst di CPU). Si noti che la durata dell'I/O non c'entra: il punto è che non effettuano elaborazioni consistenti tra una richiesta e l'altra. Poiché le CPU evolvono più rapidamente dei dischi, la tendenza è che i processi diventino progressivamente sempre più _I/O-bound_.
+
+###### Quando effettuare lo scheduling
+Le decisioni di _scheduling_ si rendono necessarie in quattro momenti chiave:
+1. Alla **creazione di un processo**, lo _scheduler_ sceglie se eseguire prima il genitore o il figlio.
+2. Alla **terminazione di un processo**, per pescarne uno nuovo dalla coda dei pronti.
+3. Al **blocco di un processo** (es. attesa I/O, attesa su un semaforo), per non lasciare la CPU inattiva.
+4. Al verificarsi di un **interrupt di I/O** (un dispositivo ha terminato un'operazione, sbloccando potenzialmente un processo in attesa).
+
+###### Categorie di Algoritmi e Ambienti
+Il modo in cui gli algoritmi reagiscono agli _interrupt_ del clock definisce la loro natura:
+- **Algoritmo non preemptive:** Un processo selezionato mantiene il possesso della CPU ininterrottamente finché non si blocca volontariamente o termina. Non viene mai interrotto forzatamente per limiti di tempo.
+- **Algoritmo preemptive:** Al processo è assegnato un tempo massimo di esecuzione. Scaduto tale intervallo, un _interrupt_ del clock permette allo _scheduler_ di riprendere forzatamente il controllo della CPU e assegnarla a un altro processo.
+
+Gli obiettivi di uno _scheduler_ variano a seconda dell'ambiente operativo:
+- **Obiettivi universali:** Equità (giusta condivisione delle risorse), corretta applicazione delle policy stabilite e bilanciamento del sistema.
+- **Sistemi batch:** Massimizzare il _throughput_ (lavori/ora), ridurre il tempo di _turnaround_ (attesa dalla sottomissione al completamento) e mantenere la CPU sempre attiva.
+- **Sistemi interattivi:** Offrire tempi di risposta immediati per soddisfare le aspettative umane.
+- **Sistemi Real-Time**: Garantire il rispetto delle scadenze (_deadline_) ed evitare il degrado della qualità.
+
+###### Algoritmi per sistemi batch
+- **First-come first-served (FCFS):** Algoritmo _non preemptive_ basato su una singola coda. Assegna la CPU nell'ordine di arrivo delle richieste.
+    - _Pro:_ Facilissimo da implementare e comprendere.
+    - _Contro:_ Fortemente svantaggioso in ambienti misti. Un singolo processo _compute-bound_ può monopolizzare la CPU per un secondo intero, ritardando inutilmente centinaia di processi _I/O-bound_ che avrebbero impiegato pochi millisecondi.
+- **Shortest job first (SJF):** Algoritmo _non preemptive_ che preleva sempre il processo con il tempo stimato di esecuzione più breve. È matematicamente ottimale per ridurre il tempo medio di _turnaround_, ma solo se tutti i processi sono disponibili simultaneamente.
+- **Shortest remaining time next:** La variante _preemptive_ dell'SJF. Lo _scheduler_ subentra e cambia processo se ne arriva uno il cui tempo necessario alla conclusione è inferiore al tempo rimanente del processo attualmente in esecuzione.
+
+###### Algoritmi per sistemi interattivi
+- **Round-robin:** A ogni processo è assegnato un intervallo di tempo, chiamato **quanto**, durante il quale gli è consentito di essere eseguito. Se alla fine del quanto il processo è ancora in esecuzione, la CPU viene prelazionata e assegnata a un altro processo. Se il processo si blocca o termina prima che sia trascorso il quanto, viene fatto uno scambio di CPU, naturalmente, quando il processo si blocca. Il round-robin è facile da realizzare. Tutto quello che lo scheduler deve fare è mantenere una lista dei processi eseguibili
+  
+  *Come viene gestita la lunghezza di un quanto di tempo*
+  L'unica questione interessante che riguarda il round-robin è la durata del quanto. La gestione del passaggio da un processo a un altro richiede una certa quantità di tempo. 
+  
+  Supponete che questo scambio di contesto richieda $1 ms$, supponete anche che il quanto sia impostato a $4 ms$. Con questi parametri, dopo $4 ms$ di lavoro utile, la CPU deve spendere (cioè sprecare) $1 ms$ per lo scambio di processo. È evidente che è troppo.
+  
+  Per migliorare l'efficienza della CPU, potremmo, diciamo, impostare il quanto a $100 ms$. Il tempo sprecato è ora solo l'1%. Ma si consideri che cosa accade su un sistema server se arrivano $50$ richieste in un intervallo di tempo molto breve e con richieste di CPU molto diverse. Cinquanta processi saranno messi nell'elenco dei processi eseguibili. Se la CPU è inattiva, il primo partirà immediatamente, il secondo non potrà partire prima di $100 ms$ e così via.
+  
+  La conclusione può essere formulata come segue: impostare un quanto come troppo breve causa troppi scambi di processo e riduce l'efficienza della CPU, ma impostarlo come troppo alto può causare una risposta scadente alle richieste rapide interattive. Un quanto di circa 20-50 ms è spesso un compromesso ragionevole.
+  
+- **Scheduling a priorità:** A ciascun processo viene assegnato un valore di priorità statico (es. ruoli aziendali) o dinamico. La CPU va al processo eseguibile con priorità massima. 
+  
+  Per impedire che i processi ad alta priorità siano eseguiti indefinitamente, lo scheduler può abbassare la priorità del processo attualmente in esecuzione a ogni scatto del clock (cioè a ogni interrupt). Se questa azione fa sì che la sua priorità vada al di sotto di quella del processo successivo, avviene uno scambio di processo. In alternativa a ciascun processo può essere assegnato un quanto di tempo massimo in cui può essere eseguito. 
+  
+  Al fine di ottenere determinati obiettivi le priorità possono essere anche assegnate dinamicamente dal sistema. Per esempio, alcuni processi sono molto I/O bound e spendono gran parte del loro tempo aspettando che l'I/O termini. In qualunque momento un processo di questo tipo richieda la CPU, dovrebbe essergli data immediatamente, per consentirgli di far avviare la sua richiesta successiva di I/O, che può poi procedere in parallelo con un altro processo effettivamente in elaborazione.
+  
+  È spesso conveniente raggruppare i processi in classi di priorità e usare lo scheduling a priorità fra le classi, ma all'interno di ciascuna classe usare lo scheduling round-robin. L'algoritmo di scheduling è il seguente: finché vi sono processi eseguibili a priorità 4, eseguire ciascuno per un quanto, in stile round-robin, senza perder tempo con le classi di priorità basse. Se la priorità 4 è vuota, allora eseguire i processi a priorità 3 in round-robin e così via.
+  ![[Pasted image 20260430110220.png|500]]
+- **Code multiple**: astrazione dello scheduling con priorità provvisto di divisone in classi, in pratica qui scegliamo un algoritmo di **scheduling verticale** (che decide quale classe avviare prima) e uno di **scheduling orizzontale** che decide quale processo mettere in esecuzione in una specifica classe, si può avere un algoritmo di scheduling orizzontale diverso per ogni class. Il problema di questo modello puro a Code Multiple è il rischio di **Starvation** se le code "alte" si riempiono continuamente, le code più basse non otterranno mai la CPU. Per prevenire questo problema i Sistemi Operativi reali implementano una logica chiamata **Code Multiple con Retroazione**. In pratica, anziché ancorare un processo alla sua coda orizzontale in modo perpetuo, il sistema valuta il suo comportamento dinamico facendolo scivolare nelle code a priorità inferiore nel caso fosse necessario.
+  ![[Pasted image 20260430110643.png|500]]
+- **Shortest process next** (Sui sistemi interattivi): Tenta di applicare la logica SJF stimando la durata del prossimo comando tramite l'esperienza passata, con una tecnica chiamata **_aging_**. Un approccio è quello di fare delle stime basate sull'esperienza maturata ed eseguire il processo con il tempo di esecuzione stimato più breve. Supponiamo che il tempo stimato per un comando per un certo terminale sia $T_0​$. Supponiamo che la sua esecuzione successiva sia misurata come $T_1$​. Potremmo aggiornare la nostra stima facendo una somma pesata dei numeri, ossia:  $$aT_0 + (1 - a)T_1$$Tramite la scelta di a possiamo decidere se avere il processo di stima che dimentica in breve tempo le ultime esecuzioni o le ricorda a lungo. La tecnica di stimare il valore successivo di una serie prendendo la media pesata del valore attuale misurato e la stima precedente è talvolta detta **aging**.
+  ![[Pasted image 20260430105010.png|500]]
+  
+- **Scheduling garantito:** Il sistema fa una promessa all'utente (es. con $n$ processi, otterrai $1/n$ della potenza CPU). Per riuscire a mantenere questa promessa, il sistema deve tener traccia di quanta CPU ha ricevuto ogni processo dal momento della sua creazione. Poi calcola la quantità di CPU che ognuno ha diritto ad avere, cioè il tempo dalla creazione diviso n. Poiché è conosciuta la quantità di tempo di CPU ricevuto da ogni processo, è semplice calcolare il rapporto fra effettivo tempo di CPU consumato e tempo di CPU cui si ha diritto. Un rapporto di 0,5 significa che un processo ha avuto la metà di quanto avrebbe dovuto, un rapporto di 2,0 significa che il processo ha avuto il doppio di quanto aveva diritto. L'algoritmo **esegue poi il processo con il rapporto minore** finché il suo rapporto non supera quello del suo più vicino concorrente.
+  
+- **Scheduling a lotteria:** L'idea base è quella di dare ai processi un biglietto della lotteria per le diverse risorse del sistema, come il tempo di CPU. Ogni volta che deve essere presa una decisione di scheduling si pesca un biglietto della lotteria e il processo che ha quel biglietto si aggiudica la risorsa. 
+  
+  Ai processi più importanti possono essere assegnati dei biglietti extra, per aumentare le loro possibilità di vincere. Se ci sono 100 biglietti non estratti e un processo ne possiede 20, ha il 20% di possibilità di vincere ogni estrazione. A lungo termine si prenderà il 20% della CPU.
+  
+  Processi cooperanti possono, se lo desiderano, scambiarsi i biglietti. Per esempio, quando un processo client manda un messaggio a un processo server e poi si blocca, può elargire tutti i propri biglietti al server, per aumentare la possibilità che il server sia il prossimo a essere eseguito. Quando il server ha terminato, restituisce i biglietti al client, in modo che possa nuovamente essere eseguito. Di fatto, in assenza di client, ai server non serve alcun biglietto.
+
+- **Scheduling fair-share:** Finora abbiamo ipotizzato che ogni processo fosse schedulato per proprio conto, senza considerare a chi appartenesse. Di conseguenza, se l'utente 1 avvia 9 processi e l'utente 2 ne avvia 1, con il round-robin o le priorità uguali, l'utente 1 si prenderà il 90% della CPU e l'utente 2 ne prenderà solo il 10%. Per evitare questa situazione, prima di schedularlo, alcuni sistemi prendono in considerazione chi possiede un processo. In questo modello, a ogni utente viene assegnata una frazione di CPU e lo scheduler raccoglie i processi in modo tale da farla rispettare. Così se a due utenti è stato assegnato il 50% della CPU, l'avranno, indipendentemente da quanti processi abbiano attivi.
+
+###### Scheduling nei sistemi Real-Time
+I sistemi real-time sono generalmente divisi in categorie come **hard real-time**, nel caso di scadenze assolute da assolvere, o **soft real-time** che implica un certo grado di tollerabilità. 
+
+Gli eventi cui un sistema real-time può dover rispondere possono ulteriormente essere categorizzati come **periodici** (che avvengono a intervalli regolari) o **non periodici** (che avvengono imprevedibilmente). 
+
+Gli algoritmi di scheduling real-time possono essere statici e dinamici. I primi intraprendono le loro decisioni di scheduling prima che il sistema inizi l'esecuzione, i secondi durante l'esecuzione. Lo scheduling statico funziona solo dove esiste in anticipo la disponibilità di un'informazione perfetta riguardo al lavoro da svolgere e le scadenze da raggiungere.
+###### Scheduling a Thread
+Quando molti processi hanno ognuno molteplici thread, abbiamo due livelli di parallelismo presenti: **processi e thread**. 
+
+Lo scheduling in questi sistemi si differenzia sostanzialmente a seconda che siano supportati **thread utente o a livello kernel** (o entrambi). 
+
+*Consideriamo per primi i thread utente*. Dato che il kernel non è a conoscenza dell'esistenza dei thread, opera come fa sempre, prendendo un processo, diciamo A, e assegnando ad A il controllo per il suo quanto. Lo scheduler di thread interno ad A decide quale thread eseguire, diciamo A1. Poiché per questi thread non vi sono interrupt del clock, questo può continuare l'esecuzione quanto vuole. Se utilizza l'intero quanto del processo, il kernel selezionerà un altro processo da eseguire. La sola restrizione è l'assenza di interrupt del clock che interrompano un thread eseguito troppo a lungo.
+
+*Consideriamo adesso la situazione con i thread del kernel.* In questo caso il kernel preleva un particolare thread da eseguire. Non deve tener conto del processo cui appartiene il thread, ma può farlo, se vuole. Al thread è dato un quanto e se eccede quel quanto è sospeso forzatamente. Poiché il kernel sa che il passaggio da un thread nel processo A a un thread nel processo B è più costoso che eseguire un secondo thread nel processo A (dovuto al fatto di dover cambiare la mappa di memoria e dover svuotare la memoria cache), può tener conto di questa informazione quando deve prendere una decisione. Per esempio, dati due thread che sono ugualmente importanti, con uno di loro appartenente allo stesso processo del thread che si è bloccato e un altro appartenente a un diverso processo, la preferenza potrebbe essere assegnata al primo.
+
+Una differenza rilevante fra i thread utente e i thread del kernel sta nelle prestazioni. Fare uno scambio di thread utente richiede una manciata di istruzioni macchina. Con i thread del kernel richiede di fare uno scambio completo di contesto, il che è più lento di parecchi ordini di grandezza. D'altra parte, con i thread del kernel, un thread bloccato in attesa di I/O non sospende l'intero processo, come avviene con i thread utente.
+###### Lo Scheduling su Sistemi Multiprocessore
+1. **Multielaborazione asimmetrica:** Un processore assume il ruolo di **_master_** e concentra su di sé tutta la logica di scheduling, mentre gli altri fungono da **_slave_**.
+    - _Pro:_ Nessun problema di accesso concorrente alle code dei processi.
+    - _Contro:_ Scarsissima scalabilità. Il _master_ diventa presto un collo di bottiglia (_bottleneck_).
+2. **Multielaborazione simmetrica (SMP):** Architettura standard attuale. Tutti i processori hanno lo stesso ruolo e i medesimi diritti. La gestione concorrente delle code può avvenire in due modi:
+    - **Coda unificata:** Richiede meccanismi di sincronizzazione stretta (es. un **_lock_**). Quando uno _scheduler_ di un _core_ interroga la struttura dati, la blocca per tutti gli altri, che si metteranno in fila. Non c'è necessità di bilanciamento del carico.
+    - **Code separate:** Ciascun _core_ dispone di un proprio _scheduler_ e di una coda personale. È la via più utilizzata. Sviluppa enormemente la **prelidezione**, ovvero l'alta probabilità che un _core_ riprenda a elaborare un processo di cui si era già occupato, massimizzando il numero di **_cache hit_**.
+
+L'approccio a code separate necessita di gestire le discrepanze, affinché non ci sia un _core_ sovraccarico e uno inattivo. Esistono due metodologie:
+- **Migrazione guidata:** Un _core_ supervisiona periodicamente il sistema. Se rileva uno sbilanciamento, interviene spalmandone il carico in eccesso sulle code vuote. (Ecco perché, anche con code separate, serve implementare un sistema di _lock_).
+- **Migrazione spontanea:** È il _core_ inattivo a prendere l'iniziativa. Esplora le code dei _core_ intasati e "ruba" loro alcuni processi. Questo meccanismo abbatte il principio della prelidezione, ma è spesso affiancato da regole di **prelidezione forte**, che forzano certi _core_ a gestire specifici processi proprio per preservare e favorire i vantaggiosi **_cache hit_**.
+
+###### Lo Scheduling nei principali sistemi operativi
+- **Windows:** Utilizza uno scheduler basato su **code di priorità separate**. Fa largo uso di **euristiche** per favorire i processi interattivi in _foreground_ (tipici dei sistemi desktop) e per prevenire il problema dell'_inversione della priorità_.
+- **MacOS:** Molto simile a Windows, impiega un _Mach scheduler_ anch'esso basato su code di priorità ed euristiche.
+- **Linux:** Non distingue rigidamente processi e thread, ma gestisce una loro generalizzazione chiamata **task**. Utilizza il **Completely Fair Scheduler (CFS)**. Il CFS usa un albero rosso-nero per ordinare i task in base al loro **virtual run-time**. La CPU viene sempre assegnata al task con il tempo virtuale minore.
