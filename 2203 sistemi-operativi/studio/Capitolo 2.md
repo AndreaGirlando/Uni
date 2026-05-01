@@ -42,9 +42,9 @@ La chiusura di un processo avviene per:
 ###### Stati di un processo e ciclo di vita
 Il ciclo di vita può essere descritto da un automa a 5 stati (3 principali e 2 transitori):
 - **New:** Fase transitoria di predisposizione delle risorse all'avvio.
-- **Pronto (_Ready_):** Il processo è pronto a usare la CPU ed è in attesa in una speciale coda gestita dallo _Scheduler_.
-- **In Esecuzione (_Running_):** Il processo detiene l'unica CPU disponibile in quel momento.
-- **Bloccato (_Blocked_):** Il processo è parcheggiato in attesa di un evento esterno (spesso operazioni di Input/Output "lente").
+- **Pronto (Ready):** Il processo è pronto a usare la CPU ed è in attesa in una speciale coda gestita dallo _Scheduler_.
+- **In Esecuzione (Running):** Il processo detiene l'unica CPU disponibile in quel momento.
+- **Bloccato (Blocked):** Il processo è parcheggiato in attesa di un evento esterno (spesso operazioni di Input/Output "lente").
 - **Terminated:** Fase finale di chiusura.
 
 ![[Pasted image 20260426194444.png|700]]
@@ -165,7 +165,7 @@ Questi problemi valgono anche per i **thread**, sebbene per essi il passaggio di
 ###### Segmento di memoria condiviso
 Rappresenta l'approccio ideale. Sfrutta uno spazio di memoria comune dove i processi possono leggere e scrivere. Tuttavia, richiede un coordinamento rigoroso per evitare l'accavallamento delle operazioni, senno si ricade nel problema della race condition.
 ###### Il Problema delle race condition
-Quando più processi operano su dati condivisi in modo non coordinato, si verificano anomalie critiche come la: **race condition** situazione in cui il risultato finale dipende dall'ordine di esecuzione dei processi (ovvero da chi viene "scelto" per primo dallo _scheduler_).
+La **race condition** è la situazione in cui il risultato finale dipende dall'ordine di esecuzione dei processi (ovvero da chi viene "scelto" per primo dallo _scheduler_).
 - **Esempio pratico:** Se due processi eseguono simultaneamente un incremento $x = x+10$, il valore finale potrebbe essere inconsistente (es. 20 invece di 30) se entrambi leggono lo stesso valore iniziale prima che l'altro possa aggiornarlo.
 La parte di programma in cui si accede alla memoria condivisa e quindi dove si creano le race condition si chiama **sezione critica** è importante ricordare che è compito del programmatore individuare e circoscrivere queste sezioni. È buona norma definire sezioni critiche differenti per strutture dati indipendenti, così da non bloccare processi che non competono per la stessa risorsa.
 
@@ -683,7 +683,7 @@ Le decisioni di _scheduling_ si rendono necessarie in quattro momenti chiave:
 3. Al **blocco di un processo** (es. attesa I/O, attesa su un semaforo), per non lasciare la CPU inattiva.
 4. Al verificarsi di un **interrupt di I/O** (un dispositivo ha terminato un'operazione, sbloccando potenzialmente un processo in attesa).
 
-###### Categorie di Algoritmi e Ambienti
+###### Categorie di Algoritmi e ambienti
 Il modo in cui gli algoritmi reagiscono agli _interrupt_ del clock definisce la loro natura:
 - **Algoritmo non preemptive:** Un processo selezionato mantiene il possesso della CPU ininterrottamente finché non si blocca volontariamente o termina. Non viene mai interrotto forzatamente per limiti di tempo.
 - **Algoritmo preemptive:** Al processo è assegnato un tempo massimo di esecuzione. Scaduto tale intervallo, un _interrupt_ del clock permette allo _scheduler_ di riprendere forzatamente il controllo della CPU e assegnarla a un altro processo.
