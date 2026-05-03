@@ -95,7 +95,7 @@ Quando un processo termina la sua esecuzione, ha normalmente due vicini di memor
 ![[Pasted image 20260501170129.png|500]]
 
 ###### Algoritmi di allocazione
-il gestore della memoria per decidere come allocare un centro processo in RAM può utilizzare diversi algoritmi:
+il gestore della memoria per decidere come allocare un certo processo in RAM può utilizzare diversi algoritmi:
 - **First fit**: È l'algoritmo più semplice. Il gestore della memoria scorre la lista dei segmenti finché non trova il primo spazio vuoto abbastanza grande. Lo spazio individuato viene poi suddiviso in due parti: una per il processo e l'altra per la memoria residua inutilizzata.
 - **Next fit**: Variante minore del first fit. Lavora allo stesso modo, ma tiene traccia del posto esatto in cui ha trovato l'ultimo spazio adatto. Alla richiesta successiva, la ricerca riparte da quel punto anziché dall'inizio della lista.
 - **Best fit**: Algoritmo molto conosciuto e largamente utilizzato. Cerca all'interno dell'intera lista, dall'inizio alla fine, selezionando lo spazio più piccolo che sia comunque adatto a contenere il processo.
