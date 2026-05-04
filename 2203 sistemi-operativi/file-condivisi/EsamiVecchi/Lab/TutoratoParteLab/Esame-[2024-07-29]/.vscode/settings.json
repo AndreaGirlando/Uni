@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "*.rmd": "markdown",
+        "types.h": "c",
+        "libgen.h": "c",
+        "dirent.h": "c",
+        "fcntl.h": "c",
+        "unistd.h": "c",
+        "pthread.h": "c",
+        "stdlib.h": "c",
+        "semaphore.h": "c"
+    }
+}

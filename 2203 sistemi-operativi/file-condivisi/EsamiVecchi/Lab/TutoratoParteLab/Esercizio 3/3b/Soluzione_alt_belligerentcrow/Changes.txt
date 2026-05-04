@@ -1,0 +1,12 @@
+CHANGES compared to timeassassinRG's code:
+- Less comments about the behaviour of the code
+- I have put the lib-misc.h error handling library in a separate header
+- I open the first file, then create the fstat of it, then check if it is a regular file, then do the same with the second file, instead of checking both files simultaneously
+    - I wanted a more granular error handling + to do some practice
+- I have assigned 0700 as permission for each file individually
+- I allow the user not to insert a destination.txt and create it, if it is the case; I manage this case in a different if condition body based on argc 
+- I manage the files inside a folder called "files"
+    - Thus I needed to concatenate the names of the files given with snprintf
+    - I hardcoded the name of the folder with a define
+- Minor flow discrepancies 
+- Created a run.sh executable

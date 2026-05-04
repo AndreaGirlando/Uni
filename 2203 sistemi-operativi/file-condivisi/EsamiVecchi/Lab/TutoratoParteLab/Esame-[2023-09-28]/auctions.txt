@@ -1,0 +1,7 @@
+Cotta di Mithril,100,500
+Palantír,700,1000
+Anelli degli Uomini,50,600
+Fiala di Galadriel,90,200
+Unico Anello,9000,10000
+Anelli dei Nani,100,600
+Anelli degli Elfi,400,700
