@@ -9,7 +9,7 @@ Consideriamo lo scenario di congestione più semplice possibile: due host (A e B
 - I pacchetti convergono in un collegamento uscente condiviso che ha una capacità trasmissiva totale pari a **$R$**.
 
 Analizzando le prestazioni, si evincono due conseguenze:
-- **Limite sul _throughput_:** Finché il tasso di invio $\lambda_{in}$ non supera **$R/2$**, il _throughput_ per connessione (numero di byte per secondo al ricevente) equivale al tasso di invio del mittente. Se $\lambda_{in}$ supera $R/2$, il _throughput_ si blocca a $R/2$. Questo limite superiore è la conseguenza diretta della condivisione della capacità $R$ tra le due connessioni: il collegamento non può fisicamente consegnare a un tasso superiore.
+- **Limite sul throughput:** Finché il tasso di invio $\lambda_{in}$ non supera **$R/2$**, il _throughput_ per connessione (numero di byte per secondo al ricevente) equivale al tasso di invio del mittente. Se $\lambda_{in}$ supera $R/2$, il _throughput_ si blocca a $R/2$. Questo limite superiore è la conseguenza diretta della condivisione della capacità $R$ tra le due connessioni: il collegamento non può fisicamente consegnare a un tasso superiore.
 - **Crescita del ritardo:** Quando il tasso di invio si avvicina a $R/2$, il ritardo medio cresce progressivamente. Quando supera $R/2$, i pacchetti si accumulano nel _buffer_ (ipotizzato illimitato) e il **ritardo medio tra origine e destinazione tende all'infinito**.
 - **Conclusione:** Avere un _throughput_ aggregato vicino alla capacità $R$ sembra ideale, ma dal punto di vista del ritardo è disastroso.
 ![[Pasted image 20260514200456.png|600]]
@@ -55,7 +55,7 @@ Per farlo, il protocollo risponde a tre domande fondamentali:
     1. Scadenza di un **_timeout_**.
     2. Ricezione di **tre ACK duplicati** dal destinatario.
 Poiché l'_overflow_ dei _buffer_ causa l'eliminazione di un datagramma, il mittente considera questi eventi di perdita come il sintomo diretto della congestione, riducendo conseguentemente il tasso di invio.        
-- **Come TCP capisce che la rete è libera?** L'arrivo di _acknowledgment_ (ACK) non duplicati è considerato un segnale che i segmenti sono stati consegnati con successo. All'arrivo di questi ACK, TCP espande la _cwnd_. **Auto-temporizzazione (_Self-clocking_):** Se gli ACK arrivano lentamente, la _cwnd_ cresce lentamente; se arrivano velocemente, cresce rapidamente. TCP utilizza gli ACK stessi per scandire gli incrementi della finestra.
+- **Come TCP capisce che la rete è libera?** L'arrivo di _acknowledgment_ (ACK) non duplicati è considerato un segnale che i segmenti sono stati consegnati con successo. All'arrivo di questi ACK, TCP espande la _cwnd_. **Auto-temporizzazione (Self-clocking):** Se gli ACK arrivano lentamente, la _cwnd_ cresce lentamente; se arrivano velocemente, cresce rapidamente. TCP utilizza gli ACK stessi per scandire gli incrementi della finestra.
 
 **Rilevamento della larghezza di banda (Bandwidth Probing) e Princìpi Guida:**
 Il problema critico è determinare la velocità esatta: se tutti i TCP trasmettessero troppo velocemente si avrebbe il collasso, se fossero troppo cauti la rete sarebbe sottoutilizzata.
@@ -70,24 +70,24 @@ Questo meccanismo è gestito dal celebrato algoritmo di controllo della congesti
 Le prime due differiscono tra loro per il modo (la curva matematica) con cui aumentano la grandezza della _cwnd_ in risposta agli ACK ricevuti.
 ###### La fase di Slow Start (Partenza Lenta)
 All'apertura di una connessione, la rete potrebbe avere un'ampia banda disponibile, quindi il mittente ha l'obiettivo di scoprirla rapidamente.
-- **Inizializzazione:** Il valore di _cwnd_ viene inizializzato a **1 _MSS_** (_Maximum Segment Size_).
+- **Inizializzazione:** Il valore di _cwnd_ viene inizializzato a **1 MSS** (_Maximum Segment Size_).
     - _Esempio numerico:_ Se _MSS_ = 500 byte e _RTT_ (_Round Trip Time_) = 200 ms, la velocità iniziale (_MSS/RTT_) è di soli 20 kbps circa.
 - **Crescita Esponenziale:** Per ogni segmento che riceve un _acknowledgment_ (ACK), _cwnd_ viene incrementata di 1 _MSS_. Di conseguenza, la velocità di trasmissione raddoppia a ogni _RTT_ (es. da 1 _MSS_ passa a 2, poi a 4, e così via).
 - **Termine della fase:** La _slow start_ si interrompe in tre scenari:
-    1. **Evento di _timeout_ (Congestione grave):** TCP riporta _cwnd_ a 1 _MSS_ e ricomincia la _slow start_. Viene inoltre aggiornata la variabile di stato **_ssthresh_ (_Slow Start Threshold_ - Soglia di _slow start_)**, impostandola a metà del valore che _cwnd_ aveva al momento della perdita (ovvero _cwnd_/2).
+    1. **Evento di timeout (Congestione grave):** TCP riporta _cwnd_ a 1 _MSS_ e ricomincia la _slow start_. Viene inoltre aggiornata la variabile di stato **ssthresh (Slow Start Threshold - Soglia di slow start)**, impostandola a metà del valore che _cwnd_ aveva al momento della perdita (ovvero _cwnd_/2).
     2. **Raggiungimento della soglia:** Quando _cwnd_ raggiunge o supera il valore di _ssthresh_ (considerato il limite di sicurezza basato sull'ultima congestione nota), raddoppiare diventa temerario. TCP termina la _slow start_ ed entra in _congestion avoidance_.
     3. **Tre ACK duplicati:** Il mittente effettua una **ritrasmissione rapida** ed entra direttamente nello stato di _fast recovery_.
 
 ###### La fase di _Congestion Avoidance_ (Prevenzione della Congestione)
 Quando TCP entra in questo stato, il valore di _cwnd_ è circa la metà di quello che ha causato l'ultima congestione. L'approccio diventa conservativo.
-- **Crescita Lineare:** Invece di raddoppiare, TCP incrementa _cwnd_ di **1 _MSS_ ogni _RTT_**.
+- **Crescita Lineare:** Invece di raddoppiare, TCP incrementa _cwnd_ di **1 MSS ogni RTT**.
 - **Implementazione pratica:** Il mittente aumenta _cwnd_ di una frazione per ogni singolo ACK ricevuto, usando la formula: `Incremento = MSS × (MSS/cwnd) byte`.
     - _Esempio:_ Se _MSS_ = 1460 byte e _cwnd_ = 14.600 byte (10 segmenti), ogni ACK incrementa la finestra di 1/10 di _MSS_. Ricevuti tutti e 10 gli ACK, la finestra sarà cresciuta esattamente di 1 _MSS_.
 - **Termine della fase:** 
-    1. **Evento di _timeout_:** Esattamente come in _slow start_, _cwnd_ torna a 1 _MSS_ e _ssthresh_ viene dimezzata (_cwnd_/2).
+    1. **Evento di timeout:** Esattamente come in _slow start_, _cwnd_ torna a 1 _MSS_ e _ssthresh_ viene dimezzata (_cwnd_/2).
     2. **Tre ACK duplicati:** L'evento è considerato meno drastico del _timeout_. TCP dimezza il valore di _cwnd_ (aggiungendovi 3 _MSS_ per compensare i 3 duplicati ricevuti), imposta _ssthresh_ alla metà del valore di _cwnd_ precedente, ed entra in _fast recovery_
 ![[Pasted image 20260514200339.png|700]]
-###### La fase di _Fast Recovery_ (Recupero Rapido) e le Varianti TCP
+###### La fase di Fast Recovery (Recupero Rapido) e le Varianti TCP
 
 Il _fast recovery_ è un componente raccomandato ma non obbligatorio (definito nella RFC 5681). Durante questa fase:
 - _cwnd_ viene incrementato di 1 _MSS_ per ogni ACK duplicato ricevuto relativo al segmento perso.
@@ -103,8 +103,8 @@ Esistono differenze storiche nella gestione degli errori:
 ![[Pasted image 20260514200238.png|700]]
 ###### Retrospettiva: AIMD e _Throughput_ Macroscopico
 Ignorando le anomalie (_timeout_ e le _slow start_ iniziali), il controllo di TCP è guidato dalla ricezione dei 3 ACK duplicati e si basa su un principio matematico:
-- **AIMD (_Additive-Increase Multiplicative-Decrease_):** TCP incrementa in modo additivo e lineare la finestra (+1 _MSS_ per _RTT_) e la decrementa in modo moltiplicativo (dimezzandola) in caso di perdita. Questo genera il caratteristico grafico a "**dente di sega**" (_saw tooth_). ![[Pasted image 20260514200300.png|600]]
-- **Modello Macroscopico del _Throughput_:** Se $W$ è la dimensione della finestra quando si verifica la perdita, la velocità di trasmissione oscilla costantemente tra $\frac{W}{2 \cdot RTT}$ e $\frac{W}{RTT}$. Poiché la crescita tra i due estremi è lineare, si ottiene la formula: $$ \text{Throughput medio di una connessione} = \frac{0.75 \cdot W}{RTT} $$
+- **AIMD (Additive-Increase Multiplicative-Decrease):** TCP incrementa in modo additivo e lineare la finestra (+1 _MSS_ per _RTT_) e la decrementa in modo moltiplicativo (dimezzandola) in caso di perdita. Questo genera il caratteristico grafico a "**dente di sega**" (_saw tooth_). ![[Pasted image 20260514200300.png|600]]
+- **Modello Macroscopico del Throughput:** Se $W$ è la dimensione della finestra quando si verifica la perdita, la velocità di trasmissione oscilla costantemente tra $\frac{W}{2 \cdot RTT}$ e $\frac{W}{RTT}$. Poiché la crescita tra i due estremi è lineare, si ottiene la formula: $$ \text{Throughput medio di una connessione} = \frac{0.75 \cdot W}{RTT} $$
 ###### Notifica Esplicita di Congestione (ECN)
 Estensioni recenti di IP e TCP (RFC 3168) permettono un controllo assistito dalla rete:
 - **ECN (Explicit Congestion Notification):** Utilizza due bit nel campo _Tipo di Servizio_ dell'intestazione IP. 
@@ -113,9 +113,8 @@ Estensioni recenti di IP e TCP (RFC 3168) permettono un controllo assistito dall
 - **Reazione:** Il mittente TCP reagisce dimezzando la _cwnd_ (come in una ritrasmissione rapida) e imposta il bit **CWR** (_Congestion Window Reduced_) nel successivo segmento inviato al ricevente per confermare la presa visione.
 
 ###### La Fairness (Equità) in TCP
-Un meccanismo di controllo si dice _fair_ (equo) se $K$ connessioni che condividono un collo di bottiglia con capacità $R$ (assumendo assenza di traffico UDP) ottengono ciascuna una velocità media pari a **$R/K$**.
-- **Dinamica dell'equità AIMD:** _(Inserire qui le Figure 3.56 e 3.57)_. Immaginiamo 2 connessioni TCP con identici _MSS_ e _RTT_, sempre in _congestion avoidance_.
-    - All'aumentare della _cwnd_ (+1 _MSS_), il _throughput_ congiunto cresce lungo una semiretta a 45°.
-    - Quando la somma delle velocità supera $R$, i pacchetti vengono persi. Entrambe le connessioni dimezzano la loro _cwnd_ (il grafico decresce verso l'origine).
-    - Riprendendo a crescere a 45° e dimezzando ciclicamente, le connessioni convergono inevitabilmente verso la bisettrice del piano, ovvero la **linea di equa condivisione della banda**.
-- **Il peso dell'_RTT_:** Le ipotesi di base quasi mai si verificano nella realtà (le applicazioni _client/server_ ottengono porzioni assai diverse). Nello specifico, a parità di condizioni, le connessioni con un **RTT inferiore** riescono ad aprire le proprie finestre di congestione molto più rapidamente, accaparrandosi _throughput_ superiori a discapito di quelle con _RTT_ più alto.
+Un meccanismo di controllo si dice _fair_ (equo) se $K$ connessioni che condividono un collo di bottiglia con capacità $R$ (assumendo assenza di traffico UDP) ottengono ciascuna una velocità media pari a **$R/K$**. Immaginiamo 2 connessioni TCP con identici _MSS_ e _RTT_, sempre in _congestion avoidance_.
+![[Pasted image 20260514212511.png|600]]
+All'aumentare della _cwnd_ (+1 _MSS_), il _throughput_ congiunto cresce lungo una semiretta a 45°. Quando la somma delle velocità supera $R$, i pacchetti vengono persi. Entrambe le connessioni dimezzano la loro _cwnd_ (il grafico decresce verso l'origine). Riprendendo a crescere a 45° e dimezzando ciclicamente, le connessioni convergono inevitabilmente verso la bisettrice del piano, ovvero la **linea di equa condivisione della banda**.
+![[Pasted image 20260514212625.png|600]]
+**Il peso dell'RTT:** Le ipotesi di base quasi mai si verificano nella realtà (le applicazioni _client/server_ ottengono porzioni assai diverse). Nello specifico, a parità di condizioni, le connessioni con un **RTT inferiore** riescono ad aprire le proprie finestre di congestione molto più rapidamente, accaparrandosi _throughput_ superiori a discapito di quelle con _RTT_ più alto.
