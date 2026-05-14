@@ -380,36 +380,53 @@ Per capire l'architettura di TCP, è utile confrontarlo con i protocolli classic
 Esiste una modifica proposta per il TCP chiamata _acknowledgment selettivo_, che consente al destinatario di confermare esplicitamente e singolarmente i segmenti non in ordine, senza limitarsi all'approccio cumulativo sull'ultimo segmento corretto. Se uniamo questa opzione alla ritrasmissione selettiva (che evita di ritrasmettere i pacchetti singolarmente confermati), il TCP diventa estremamente simile a un generico protocollo SR (_Selective Repeat_). Per questo motivo, il meccanismo di ripristino dagli errori di TCP è classificabile come un **ibrido tra i protocolli GBN e SR**.
 
 ###### Servizio di Controllo di Flusso
-Oltre all'affidabilità, TCP offre un fondamentale **servizio di controllo di flusso**. Non va confuso con il _controllo di congestione_ (che serve a non sovraccaricare la rete IP); il controllo di flusso serve per non sovraccaricare l'host di destinazione.
-
-Gli host agli estremi della connessione riservano dei **buffer di ricezione**. Quando il TCP riceve byte corretti e in sequenza, li posiziona in questo buffer. Il processo applicativo legge i dati dal buffer, ma i tempi possono variare: se l'applicazione è impegnata in un altro compito, potrebbe leggere i dati molto tempo dopo il loro arrivo. Se il mittente inviasse dati troppo rapidamente, il buffer di ricezione andrebbe in _overflow_. Il controllo di flusso è quindi un servizio di **confronto sulla velocità**, che bilancia la frequenza di invio del mittente con la frequenza di lettura dell'applicazione ricevente.
-
-**Come funziona matematicamente il controllo di flusso:**
-TCP fa mantenere al mittente una variabile chiamata **finestra di ricezione (_rwnd_, receive window)**, che gli fornisce costantemente l'indicazione dello spazio libero rimasto nel buffer del destinatario. Essendo una comunicazione full-duplex, i due mittenti mantengono finestre di ricezione distinte.
+Oltre all'affidabilità, TCP offre un fondamentale **servizio di controllo di flusso**. Non va confuso con il _controllo di congestione_ (che serve a non sovraccaricare la rete IP); il controllo di flusso serve per non sovraccaricare l'host di destinazione. Gli host agli estremi della connessione riservano dei **buffer di ricezione**. Quando il TCP riceve byte corretti e in sequenza, li posiziona in questo buffer. Il processo applicativo legge i dati dal buffer, ma i tempi possono variare: se l'applicazione è impegnata in un altro compito, potrebbe leggere i dati molto tempo dopo il loro arrivo. Se il mittente inviasse dati troppo rapidamente, il buffer di ricezione andrebbe in _overflow_. Il controllo di flusso è quindi un servizio di **confronto sulla velocità**, che bilancia la frequenza di invio del mittente con la frequenza di lettura dell'applicazione ricevente. Per affrontare questo problema quello che fa TCP è far mantenere al mittente una variabile chiamata **finestra di ricezione (rwnd, receive window)**, che gli fornisce costantemente l'indicazione dello spazio libero rimasto nel buffer del destinatario. Essendo una comunicazione full-duplex, i due mittenti mantengono finestre di ricezione distinte.
 
 Se l'Host A sta inviando un file all'Host B, B alloca un buffer di ricezione di dimensione $RcvBuffer$. Si definiscono due variabili su B:
 - _LastByteRead:_ il numero dell'ultimo byte del flusso letto dal processo applicativo.
 - _LastByteRcvd:_ il numero dell'ultimo byte arrivato dalla rete e copiato nel buffer.
 Per non mandare in overflow il buffer, deve valere la relazione: $LastByteRcvd - LastByteRead \le RcvBuffer$
-La finestra di ricezione $rwnd$ (che è dinamica) indica lo spazio residuo calcolato come: $rwnd = RcvBuffer - [LastByteRcvd - LastByteRead]$
-
-**La comunicazione della finestra:**
+La finestra di ricezione $rwnd$ (che è dinamica) indica lo spazio residuo calcolato come: $$rwnd = RcvBuffer - [LastByteRcvd - LastByteRead]$$**La comunicazione della finestra:**
 L'Host B inizializza $rwnd$ con il valore intero di $RcvBuffer$ e inserisce il valore aggiornato di $rwnd$ nell'apposito campo (Finestra di ricezione) dei segmenti che manda ad A, tenendo traccia di variabili specifiche per ogni connessione attiva.
 Sull'altro fronte, l'Host A tiene traccia di altre due variabili:
 - _LastByteSent:_ l'ultimo byte mandato.
 - _LastByteAcked:_ l'ultimo byte per cui ha ricevuto conferma.
 La differenza tra queste due variabili ($LastByteSent - LastByteAcked$) esprime la quantità esatta di dati "in volo" inviati da A per i quali non c'è ancora riscontro. Mantenendo rigorosamente questa quantità sotto il valore di $rwnd$ fornito da B, l'Host A si assicura matematicamente di non causare mai un overflow nel buffer di ricezione di B.
 
-**Il problema della Finestra a Zero:**
-Cosa succede se il buffer di B si riempie completamente ($rwnd = 0$) e B non ha più dati da inviare ad A? 
+> [!TIP] Cosa succede in caso di buffer pieno?
+> Cosa succede se il buffer di B si riempie completamente ($rwnd = 0$) e B non ha più dati da inviare ad A?  
+> Quando il processo applicativo di B finalmente svuota il buffer, TCP _non genera_ un segmento spontaneo per inviare un nuovo valore di $rwnd$. Questo accade perché TCP fa inviare segmenti all'Host A solo in caso di ack urgenti o nuovi dati, di conseguenza, l'Host A rimarrebbe totalmente bloccato, non sapendo che in B si è liberato spazio. 
+> 
+> Per prevenire questo stallo, le specifiche impongono che **l'Host A continui a inviare segmenti "sonda" contenenti 1 solo byte di dati** anche quando la finestra di ricezione vale zero. L'Host B sarà costretto a inviare un acknowledgment in risposta a questo byte, e prima o poi quell'ACK conterrà un valore di $rwnd$ diverso da zero, permettendo la ripresa regolare della trasmissione.
+> 
 
-Quando il processo applicativo di B finalmente svuota il buffer, TCP _non genera_ un segmento spontaneo per inviare un nuovo valore di $rwnd$. Questo accade perché TCP fa pervenire segmenti all'Host A solo se ha nuovi dati o acknowledgment urgenti da inviare. Di conseguenza, l'Host A rimarrebbe totalmente bloccato, non sapendo che in B si è liberato spazio!
+###### Algoritmo di Nagle
+Tecnica utilizzata nei protocolli di trasporto, in particolar modo nel protocollo TCP, sviluppata per ridurre l'_overhead_ generato dall'invio di piccoli pacchetti. Alla base di questa necessità c'è l'**RTT** (_Round Trip Time_), ovvero il tempo di latenza che viene atteso a ogni trasmissione di dati sulla rete. L'algoritmo risulta essere particolarmente utile per quelle applicazioni che generano molteplici trasmissioni di dati di dimensioni ridotte. Un esempio emblematico è _Telnet_, un'applicazione che invia costantemente pacchetti di dimensioni minime (tipicamente di **1 byte**). L'obiettivo principale del meccanismo è **aggregare dati di piccole dimensioni** all'interno del _buffer_ di trasmissione. Questi frammenti vengono poi inseriti in pacchetti più grandi prima dell'invio effettivo, ottimizzando le prestazioni specialmente quando l'RTT della rete è alto.
 
-Per prevenire questo stallo, le specifiche impongono che **l'Host A continui a inviare segmenti "sonda" contenenti 1 solo byte di dati** anche quando la finestra di ricezione vale zero. L'Host B sarà costretto a inviare un acknowledgment in risposta a questo byte, e prima o poi quell'ACK conterrà un valore di $rwnd$ diverso da zero, permettendo la ripresa regolare della trasmissione.
+**Le fasi dell'algoritmo**
+Il processo decisionale su quando trasmettere o quando accodare i dati si articola nei seguenti step sequenziali:
+- **Fase 1:** Verificare se ci sono dati da trasmettere. Se sì, si procede allo Step 2; altrimenti, si salta allo Step 3.
+- **Fase 2:** Verificare le condizioni dimensionali, controllando se la finestra di ricezione (**rwnd**) è $\ge$ **MSS** (_Maximum Segment Size_) e, contemporaneamente, se i dati disponibili sono $\ge$ **MSS**. Se entrambe le verifiche sono positive, si salta all'invio diretto (Step 5); altrimenti si passa allo Step 3.
+- **Fase 3:** Verificare se si sta aspettando la ricezione di un **ACK** (_Acknowledgment_). In caso affermativo, si passa alla fase di accodamento (Step 4); in caso negativo, si procede all'invio (Step 5).
+- **Fase 4:** Accodare i dati da mandare nel _buffer_ e attendere fino all'effettiva ricezione dell'ACK. Una volta ricevuto, procedere allo Step 5.
+- **Fase 5:** Mandare i dati e terminare l'esecuzione (_end_).
+**Pseudocodice**: La logica procedurale appena descritta può essere sintetizzata fedelmente in questo blocco di pseudocodice:
 
-###### Ciclo di Vita della Connessione: Handshake e Chiusura
-Approfondiamo infine le procedure di apertura e chiusura del "circuito logico".
-**Apertura della Connessione: L'Handshake a tre vie (Three-way handshake)**
+```
+if available_data > 0:
+    if window_size >= MSS AND available_data >= MSS:
+        send_a_MSS_segment
+    else:
+        if waiting_for_an_ack == true:
+            enqueue_data_in_buffer    /* until an acknowledge is received */
+        else:
+            send_data
+```
+
+- In specifici programmi che richiedono rigorosamente **bassa latenza** e **alta reattività**, l'attesa forzata introdotta dall'algoritmo per aggregare i dati può risultare un effetto indesiderato.    
+- Per far fronte a questa esigenza, alcuni sistemi operativi offrono la possibilità di **disabilitare** totalmente l'algoritmo di Nagle. Questa operazione viene effettuata impostando la specifica opzione **TCP_NODELAY** direttamente all'interno delle _socket API_.
+
+###### Apertura della connessione attraverso il Three-way handshake
 Supponiamo che un processo client voglia inizializzare una comunicazione con un processo server.
 - **Passo 1 (SYN):** Il TCP lato client invia uno speciale segmento al TCP server. Questo segmento è privo di dati a livello applicativo, ma ha il **bit SYN impostato a 1** nell'intestazione (viene pertanto detto _segmento SYN_). Il client sceglie casualmente un proprio numero di sequenza iniziale (_client_isn_) e lo pone nel campo corrispondente. Il segmento è inviato all'interno di un datagramma IP.
 - **Passo 2 (SYNACK):** Se il pacchetto arriva, il server estrae il segmento, alloca all'istante i buffer e le variabili TCP per la connessione, e invia in risposta un segmento di approvazione (detto _segmento SYNACK_). Anche questo non contiene dati, ma possiede tre informazioni vitali:
@@ -419,7 +436,7 @@ Supponiamo che un processo client voglia inizializzare una comunicazione con un 
 - **Passo 3 (ACK e Dati):** Alla ricezione del SYNACK, anche il client alloca i propri buffer e variabili alla connessione. Risponde al server ponendo il valore $server\_isn + 1$ nel campo ACK. In questo momento la connessione è formalmente stabilita, quindi il **bit SYN viene posto a zero**. Una particolarità fondamentale di questo terzo passo è che il campo dati di questo segmento **può già contenere informazioni utili** inviate dall'applicazione client al server.
 ![[Pasted image 20260511212701.png|700]]
 
-**Chiusura della Connessione TCP**
+###### Chiusura della Connessione TCP
 Ciascuno dei due processi può decidere di terminare la connessione (nella nostra ipotesi, il client). Le "risorse" (buffer e variabili) di entrambi gli host dovranno essere deallocate.
 1. Il processo applicativo client invia un comando di chiusura, costringendo il proprio TCP a generare un segmento speciale con il **bit FIN impostato a 1**.
 2. Il server riceve questo segmento FIN e risponde inviando un normale acknowledgment di conferma al client.
@@ -427,7 +444,7 @@ Ciascuno dei due processi può decidere di terminare la connessione (nella nostr
 4. Il client risponde inviando l'acknowledgment definitivo al segmento FIN del server. A questo punto tutte le risorse sono deallocate.
 ![[Pasted image 20260511212636.png|700]]
 
-**Gli Stati della Connessione TCP:**
+###### Gli Stati della Connessione TCP
 Nel suo ciclo di vita, i protocolli TCP attraversano diversi stati formali:
 - **Stati visitati dal Client:** Si parte da `CLOSED`. L'inizializzazione spinge il client in `SYN_SENT`. Ricevuto il SYNACK, si entra in `ESTABLISHED` (in cui fluiscono i dati utili). Quando il client chiede la chiusura inviando il FIN, passa in `FIN_WAIT_1`. Ricevuto l'ACK dal server, entra in `FIN_WAIT_2` (in attesa del FIN del server). Ricevuto il FIN, invia il suo ultimo ACK ed entra in un particolare stato detto **`TIME_WAIT`**.
 - **A cosa serve il TIME_WAIT?** Permette al TCP client di inviare nuovamente l'ultimo acknowledgment nel caso disgraziato in cui questo andasse perduto e il server rimandasse il suo FIN. Il tempo di permanenza in `TIME_WAIT` è definito dall'implementazione (tipicamente 30 secondi, 1 minuto o 2 minuti). Scaduto questo tempo, la connessione è totalmente chiusa e la porta viene rilasciata, tornando allo stato `CLOSED`.
@@ -435,3 +452,4 @@ Nel suo ciclo di vita, i protocolli TCP attraversano diversi stati formali:
 
 **Cosa accade se le porte sono errate o chiuse?**
 Se la fase di handshake fallisce perché il server riceve un segmento TCP destinato a una porta su cui non è in ascolto (es. riceve un SYN sulla porta 80 ma non ha processi web attivi), il server risponde immediatamente con un segmento speciale di reset, caratterizzato dal **bit RST impostato a 1**. Questo comunica alla sorgente: "Non ho una socket attiva per quel segmento, non tentare di rimandarlo".
+
