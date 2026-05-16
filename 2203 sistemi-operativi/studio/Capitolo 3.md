@@ -36,10 +36,9 @@ Esporre la memoria fisica presenta due gravi inconvenienti:
 1. I programmi utente possono distruggere il sistema operativo.
 2. È difficile gestire l'esecuzione contemporanea di più programmi.
 
-Per risolvere i problemi di **protezione** e **riposizionamento**, è stata introdotta l'astrazione dello **spazio degli indirizzi**. Lo **spazio degli indirizzi:** è l'insieme degli indirizzi che un processo può utilizzare per indirizzare la memoria. Questa è un astrazione virtuale e per essere effettuata vengono usate diverse tecniche.
-
+Per risolvere i problemi di **protezione** e **riposizionamento**, è stata introdotta l'astrazione dello **spazio degli indirizzi**. Lo **spazio degli indirizzi:** è l'insieme degli indirizzi che un processo può utilizzare per indirizzare la memoria. Per rendere possibile questa astrazione virtuale in prima battuta facciamo uso della tecnica della rilocazione dinamica
 ###### Rilocazione dinamica: registri base e limite
-Una di queste tecniche, definita come **rilocazione dinamica**, mappa lo spazio degli indirizzi di ogni processo su porzioni diverse di memoria fisica tramite hardware speciale. Questa cosa viene fatta usando due registri della CPU:
+La **rilocazione dinamica**, mappa lo spazio degli indirizzi di ogni processo su porzioni diverse di memoria fisica tramite hardware speciale ovvero attraverso due registri della CPU:
 - **Registro Base:** Contiene l'indirizzo fisico di partenza del programma in memoria.
 - **Registro Limite:** Contiene la lunghezza del programma.
 Quando un processo accede alla memoria, l'hardware esegue due passaggi automatici:
@@ -50,73 +49,80 @@ Su questa soluzione possiamo dire che:
 - **Svantaggi:** Ogni riferimento alla memoria richiede una somma e un confronto, il che può rappresentare un onere computazionale.
 
 ![[Pasted image 20260501163345.png|700]]
-
-
 ###### Gestione del sovraccarico di memoria
-Spesso la RAM totale richiesta dai processi supera la memoria fisica disponibile. Per gestire questo scenario si utilizzano due strategie:
-- **Swapping:** Consiste nel caricare ciascun processo nella sua interezza in memoria, eseguirlo per un certo tempo e poi riportarlo su disco per far posto ad altri. Questo processo si ripete nel tempo ("copiare" il processo tra disco e RAM).
-- **Memoria virtuale:** Consente l'esecuzione di programmi anche quando sono presenti solo parzialmente nella memoria principale.
-![[Pasted image 20260501112621.png|500]]
+Spesso la quantità totale di RAM richiesta dai processi in esecuzione supera la memoria fisica effettivamente disponibile. Per gestire questo scenario, i sistemi operativi hanno storicamente adottato due strategie principali:
+1. **Swapping:** Consiste nello spostare interamente su disco i processi temporaneamente inattivi per fare spazio ad altri.
+2. **Memoria virtuale:** Un'evoluzione successiva (che vedremo dopo) che consente l'esecuzione di programmi caricandone in RAM solo le parti strettamente necessarie.
+Analizziamo prima l'approccio storico: lo Swapping.
 
-###### Allocazione e gestione dello spazio
-Quando lo _swapping_ crea frammentazione (molteplici spazi vuoti sparsi), si utilizza la **Memory Compaction**: i processi vengono spostati il più in basso possibile per combinare tutti i buchi in un unico grande spazio libero. Si cerca di evitare quanto possibile questa procedura perché molto lenta.
+###### Lo Swapping e la Frammentazione
+Immaginiamo di avere due programmi, $P_1$ e $P_2$. Attualmente $P_1$ è in esecuzione, ma vogliamo eseguire anche $P_2$. Purtroppo, la memoria centrale (RAM) è piena. A questo punto interviene il componente del sistema operativo chiamato **swapper**: esso esegue uno _swap-out_ (sposta $P_1$ dalla RAM al disco) e uno _swap-in_ (carica $P_2$ dal disco alla RAM).
 
-L'allocazione è semplice se i processi hanno dimensioni fisse. Tuttavia, se i dati crescono (es. tramite lo _heap_), sorgono difficoltà, qui definiamo due soluzioni:
-- **Soluzione 1:** Se un processo non ha spazio per crescere e l'area di _swap_ è piena, il processo deve essere sospeso.
-- **Soluzione 2:** Una strategia preventiva consiste nell'allocare una quantità di memoria extra ogni volta che un processo viene creato o spostato, prevedendone la crescita futura. Ma è inefficiente.
+Il disco viene quindi usato come "memoria secondaria" di appoggio. Il processo $P_1$, finché si trova su disco, è penalizzato poiché non riceve risorse dalla CPU.
 
-Per processi con due segmenti dinamici (lo _heap_ per i dati e lo _stack_ per variabili locali e indirizzi di ritorno), la sistemazione ottimale prevede:
-1. **Segmento Dati:** Posizionato subito dopo il testo del programma, cresce verso l'alto.
-2. **Segmento Stack:** Posizionato in cima alla memoria allocata, cresce verso il basso.
+Sebbene sembri una soluzione perfetta, lo swapping continuo di programmi di dimensioni diverse crea un grave problema: la **frammentazione della memoria** . Ne esistono due tipi:
+- **Frammentazione Interna:** Si verifica quando a un processo viene assegnata un'area di memoria leggermente più grande delle sue reali esigenze. Lo spazio extra all'interno di quell'area allocata rimane inutilizzato e sprecato.
+- **Frammentazione Esterna:** Si verifica quando la memoria totale libera sarebbe sufficiente per ospitare un nuovo processo, ma è suddivisa in tanti piccoli blocchi non contigui (buchi). Poiché il processo necessita di memoria contigua, non può essere caricato. L'unica soluzione è la **Memory Compaction** (Compattazione della memoria): il S.O. sposta fisicamente tutti i processi attivi verso il fondo della memoria per unire tutti i "buchi" in un unico grande spazio libero in cima. È una procedura estremamente lenta e si cerca di evitarla il più possibile.
+###### Il problema dell'Allocazione con Dimensione Dinamica
+La gestione della frammentazione è ulteriormente complicata dal fatto che i processi non hanno sempre dimensioni fisse. Durante l'esecuzione, i dati di un programma possono crescere (ad esempio, allocando memoria dinamicamente).
+
+La struttura ottimale per gestire la crescita dinamica all'interno di un processo prevede due segmenti mobili:
+- **Segmento Dati (Heap):** Posizionato subito dopo il codice statico del programma, cresce verso l'alto.
+- **Segmento Stack (per variabili locali e ritorni):** Posizionato in cima all'area di memoria allocata per il processo, cresce verso il basso.
 ![[Pasted image 20260501112958.png|500]]
-Quando la memoria è assegnata dinamicamente, il sistema operativo deve gestirla. In termini generali, ci sono due modalità di tener traccia dell'utilizzo della memoria: bitmap e liste.
+Se questi due segmenti crescono fino a scontrarsi, il processo ha finito lo spazio. Come interviene il S.O.?
+- _Soluzione 1 (Sospensione):_ Se non c'è spazio adiacente in RAM per far crescere il processo e l'area di swap su disco è piena, il processo deve essere sospeso o terminato.
+- _Soluzione 2 (Pre-allocazione):_ Una strategia preventiva. Quando il S.O. carica o sposta un processo, gli assegna preventivamente un "cuscinetto" di memoria extra, prevedendone la crescita. Tuttavia, se la crescita non avviene, questa memoria extra rimane sprecata (causando frammentazione interna).
 
-###### Gestione della memoria con bitmap
-La memoria viene divisa in unità di allocazione che possono essere piccole come qualche parola o grandi come molti _kilobyte_.
-- **Bitmap:** Mappa in cui a ogni unità di allocazione corrisponde un bit. Questo bit assume il valore 0 se l'unità è libera e 1 se è utilizzata (o viceversa).
-- **Dimensione dell'unità di allocazione:** È un importante parametro di progettazione. Un'unità di allocazione più piccola genera una bitmap più grande. Tuttavia, anche con un'unità di allocazione piccola di 4 _byte_, 32 _bit_ di memoria richiederanno un solo _bit_ della mappa.
-- **Vantaggio:** Poiché la dimensione della bitmap dipende esclusivamente dalla dimensione totale della memoria e dalla dimensione dell'unità di allocazione, questo strumento fornisce un modo semplice per tener traccia della memoria impiegando una quantità fissa di spazio.
-- **Svantaggio:** La ricerca dentro la bitmap per una locazione di memoria (quando allochiamo un nuovo processo) è estremamente lenta
+###### Tenere traccia della memoria: Bitmaps e Liste
+A causa dello swapping e delle dimensioni variabili dei processi, la memoria fisica diventa rapidamente un puzzle disordinato di "blocchi occupati" alternati a "buchi liberi". **Il Sistema Operativo ha quindi bisogno di strumenti per ricordarsi esattamente quali parti di RAM sono occupate e quali sono libere.** Utilizza principalmente due tecniche:
+
+**A. Gestione con Bitmap**
+La memoria viene idealmente divisa in "unità di allocazione" (che possono andare da pochi byte a vari kilobyte). La **Bitmap** è una lunga mappa in cui ogni bit rappresenta un'unità: `0` significa libera, `1` significa occupata (o viceversa).
+- _Il parametro cruciale:_ La dimensione dell'unità di allocazione. Se scegliamo unità molto piccole (es. 4 byte), avremo una mappa enorme (per mappare 32 bit di memoria ci vorrà 1 bit di mappa).
+- _Vantaggi:_ La dimensione della bitmap è fissa e dipende solo dalla quantità totale di RAM e dalla dimensione scelta per l'unità.
+- _Svantaggi:_ Quando bisogna caricare un nuovo processo che richiede _k_ unità contigue, il S.O. deve scansionare la lunghissima sequenza di bit per cercare una stringa ininterrotta di _k_ zeri. Questa ricerca è estremamente lenta.
 ![[Pasted image 20260501170015.png|500]]
-###### Gestione della memoria con liste collegate
-Un altro sistema consiste nel mantenere delle liste collegate di segmenti, dove ogni segmento indica se uno specifico range di indirizzi è occupato o meno:
-- **Struttura della lista:** ogni segmento della lista specifica:
-    1. Il tipo di occupazione (spazio vuoto H o processo P).
-    2. L'indirizzo di partenza.
-    3. La lunghezza.        
-    4. Il puntatore alla voce successiva.
-- In questo modello, la lista dei segmenti è **ordinata per indirizzo**. (La figura sottostante fa riferimento alla stessa situazione di indirizzamento dell'esempio della bitmap)
+**B. Gestione con Liste Collegate**
+Invece di mappare ogni singolo blocco, il S.O. mantiene una lista dinamica (Linked List) che mappa interi segmenti . Ogni nodo (voce) della lista descrive un blocco contiguo, specificando:
+1. Il tipo: Processo occupato (`P`) o Buco vuoto (`H` - _Hole_).
+2. L'indirizzo fisico di partenza.
+3. La lunghezza del blocco.
+4. Il puntatore al segmento successivo.
+La lista è ordinata in base all'indirizzo fisico crescente. 
 ![[Pasted image 20260501170052.png|500]]
-
-Quando un processo termina la sua esecuzione, ha normalmente due vicini di memoria (fatta eccezione per quando si trova esattamente in cima o in fondo alla memoria). Questi vicini possono essere sia altri processi sia spazi vuoti. Questo scenario porta a quattro possibili combinazioni, illustrate nella figura sottostante:
-- **(a):** Aggiornare la lista porta semplicemente a rimpiazzare una voce P con una H.
-- **(b) e (c):** Due voci adiacenti vengono fuse insieme e la lista si accorcia di una voce
-- **(d):** Tre voci adiacenti vengono fuse in un unico grande spazio vuoto e due elementi vengono rimossi dalla lista.
+Il momento più delicato in questo sistema è **quando un processo termina** o viene "swappato". Il suo segmento `P` diventa un segmento `H`. A questo punto, il S.O. deve guardare i segmenti vicini per evitare la frammentazione, potendo incontrare 4 casistiche:
+- _(a) Nessun vicino vuoto:_ Si aggiorna semplicemente il nodo da `P` ad `H`.
+- _(b) Vicino vuoto sopra:_ Il nuovo buco e quello precedente vengono fusi. La lista si accorcia di una voce.
+- _(c) Vicino vuoto sotto:_ Il nuovo buco e quello successivo vengono fusi. La lista si accorcia di una voce.
+- _(d) Entrambi i vicini vuoti:_ Si fondono tre buchi adiacenti in un unico grande spazio vuoto. Vengono eliminati due elementi dalla lista.
 ![[Pasted image 20260501170129.png|500]]
 
-###### Algoritmi di allocazione
-il gestore della memoria per decidere come allocare un certo processo in RAM può utilizzare diversi algoritmi:
-- **First fit**: È l'algoritmo più semplice. Il gestore della memoria scorre la lista dei segmenti finché non trova il primo spazio vuoto abbastanza grande. Lo spazio individuato viene poi suddiviso in due parti: una per il processo e l'altra per la memoria residua inutilizzata.
-- **Next fit**: Variante minore del first fit. Lavora allo stesso modo, ma tiene traccia del posto esatto in cui ha trovato l'ultimo spazio adatto. Alla richiesta successiva, la ricerca riparte da quel punto anziché dall'inizio della lista.
-- **Best fit**: Algoritmo molto conosciuto e largamente utilizzato. Cerca all'interno dell'intera lista, dall'inizio alla fine, selezionando lo spazio più piccolo che sia comunque adatto a contenere il processo.
-    - **Svantaggi:** È più lento del **_first fit_** (dovendo cercare ogni volta in tutta la lista) e, in maniera sorprendente, genera un maggiore spreco di memoria perché tende a riempire il sistema di spazi minuscoli e inutili.        
-- **Worst fit**: Creato per aggirare il problema del best fit, questo algoritmo prende sempre lo spazio disponibile più grande in assoluto, facendo in modo che la porzione di memoria residua sia grande abbastanza da risultare ancora utile per altri processi.
+###### Algoritmi di Allocazione: Come scegliere il "buco" giusto?
+Quando arriva un nuovo processo, il gestore della memoria deve scorrere la lista collegata per trovargli un buco adeguato. Ma quale sceglie se ce n'è più di uno? Usa degli specifici algoritmi:
+1. **First fit (Primo incastro):** È il più semplice e veloce. Scorre la lista dall'inizio e prende il _primo_ buco abbastanza grande. Se il buco è più grande del processo, viene diviso in due: una parte per il processo e una per il buco residuo.
+2. **Next fit (Incastro successivo):** Identico al First fit, ma "si ricorda" dove aveva trovato l'ultimo spazio. La ricerca successiva riparte da quel punto invece che dall'inizio. Previene l'accumulo di piccoli buchi tutti all'inizio della memoria.
+3. **Best fit (Miglior incastro):** Cerca in _tutta_ la lista e sceglie il buco più piccolo tra quelli in grado di contenere il processo.
+    - _Svantaggio:_ È più lento (deve scorrere tutta la lista) e paradossalmente genera un enorme spreco di memoria: crea tantissimi microscopici "buchini" residui, inutilizzabili per qualsiasi altro processo.
+4. **Worst fit (Peggior incastro):** Nasce per risolvere i difetti del Best fit. Cerca in tutta la lista e sceglie intenzionalmente il buco _più grande in assoluto_. L'idea è che il buco residuo che avanzerà sarà ancora abbastanza grande da poter ospitare altri processi in futuro.
 
-> [!TIP] Miglioramenti
-> Tutti e quattro gli algoritmi descritti possono essere velocizzati separando le liste:
-> - **Liste separate:** Mantenendo liste separate per i processi e per gli spazi vuoti, gli algoritmi possono dedicare le loro risorse esclusivamente alla ricerca degli spazi.
-> - **Ordinamento per dimensione:** La lista degli spazi può essere ordinata dal più piccolo al più grande. In questo modo il **_best fit_** diventa estremamente veloce: appena trova uno spazio idoneo, sa già che è il più piccolo possibile per quel compito, risultando quindi la scelta migliore.
-> 	- *Svantaggio*: Rallenta la fase di deallocazione per due motivi. Primo, il sistema perde tempo per reinserire lo spazio appena liberato nella giusta posizione per mantenere la lista ordinata per dimensione. Secondo, cercare i suoi vicini fisici per unire gli spazi liberi risulta molto più complesso.
+> [!TIP]
+> Per velocizzare queste ricerche, i progettisti hanno ideato tre strategie di ottimizzazione:
+> - **Liste separate:** Invece di una lista mista, si usano due liste distinte: una solo per i processi e una solo per i buchi vuoti. Così gli algoritmi scansionano solo i buchi, risparmiando tempo.
+> - **Ordinamento per dimensione:** La lista dei buchi viene ordinata dal più piccolo al più grande. Questo trasforma il _Best fit_ in un algoritmo velocissimo: il primo buco utile che incontra è per forza di cose il più piccolo adatto (quindi il migliore).
+>     - _Svantaggio dell'ordinamento:_ Quando un processo termina, ritrovare i suoi vicini "fisici" per unire i buchi (le casistiche a,b,c,d viste prima) diventa un incubo computazionale, perché la lista non è più ordinata per posizione.
 
-**Quick fit:** Questo algoritmo mantiene liste separate in base ad alcune delle dimensioni di memoria richieste più comunemente. Ad esempio, utilizza una tabella in cui la prima voce è un puntatore a una lista di spazi di 4 KB, la seconda a una lista di 8 KB, la terza di 12 KB, e così via.
- - **Vantaggi e Svantaggi:** La ricerca di uno spazio della dimensione esatta è molto veloce. Tuttavia presenta lo stesso svantaggio di tutti gli schemi ordinati per dimensione: quando un processo finisce o ne viene fatto lo _swapping_ su disco, trovare i suoi vicini fisici per verificare se sia possibile unire gli spazi liberi risulta un'operazione complessa e dispendiosa.
+5. **Quick fit:** Usa array o tabelle che puntano a liste di buchi di dimensioni standardizzate e molto richieste (es. una lista solo per buchi da 4 KB, un'altra per buchi da 8 KB, ecc.).
+    - _Vantaggio:_ Allocazione praticamente istantanea se il processo richiede una misura standard.
+    - _Svantaggio:_ Come per l'ordinamento per dimensione, la deallocazione e la fusione dei buchi adiacenti restano operazioni molto dispendiose.
+###### La Memoria Virtuale
+Come abbiamo visto, gestire "buchi" di memoria di dimensioni variabili (tramite liste e algoritmi di allocazione) è complesso e non risolve mai del tutto il problema della frammentazione. Per eliminare definitivamente questo ostacolo, l'informatica ha introdotto un'astrazione rivoluzionaria: la **memoria virtuale**.
 
-###### Il Problema del Software Bloat e la Nascita della Memoria Virtuale
-Mentre da un lato l'utilizzo dei registri base e limite può essere sfruttato per creare l'astrazione degli spazi degli indirizzi, dall'altro lato nell'informatica moderna sorge un nuovo problema fondamentale: la gestione del **software bloat** (software di grosse dimensioni). Questo fenomeno si verifica perché, nonostante le dimensioni della memoria fisica aumentino rapidamente con lo sviluppo tecnologico, le dimensioni dei software aumentano a una velocità ancora maggiore. Il metodo che fu escogitato nel 1961 da Fotheringham per risolvere questa limitazione sarebbe diventato noto come **memoria virtuale**. Questa tecnica prevede che ogni programma abbia il proprio spazio degli indirizzi personale, suddiviso a sua volta in pezzi chiamati **pagine**.
+L'obiettivo di questa astrazione è creare un'illusione perfetta: far credere a ogni programma in esecuzione di disporre di un'intera memoria centrale privata, continua e protetta. Con questa tecnica, lo spazio di memoria originario diventa uno **spazio di indirizzamento virtuale**, il quale viene suddiviso in piccoli blocchi di dimensione fissa chiamati **pagine**.
 
-Queste pagine sono mappate sulla memoria fisica, ma la caratteristica cruciale è che **non tutte le pagine devono stare contemporaneamente nella memoria fisica per poter eseguire il programma**.
-- Quando il programma fa riferimento a una parte del proprio spazio degli indirizzi che è attualmente caricata nella memoria fisica, l'hardware esegue il mapping direttamente. 
-- Quando, al contrario, il programma fa riferimento a una parte del proprio spazio degli indirizzi che _non_ è presente nella memoria fisica, il sistema operativo viene allertato per andare a prendere il pezzo mancante e rieseguire l'istruzione che era fallita.
+La caratteristica cruciale della memoria virtuale è che **non tutte le pagine di un programma devono risiedere contemporaneamente nella memoria fisica (RAM)** per poterne permettere l'esecuzione. Le pagine virtuali vengono mappate sulla memoria fisica in modo dinamico:
+- **Accesso diretto:** Quando il programma fa riferimento a un indirizzo che fa parte di una pagina attualmente caricata nella memoria fisica, l'hardware esegue il mapping in modo diretto e istantaneo.
+- **Recupero dal disco:** Quando, al contrario, il programma fa riferimento a uno spazio degli indirizzi che non è al momento presente nella memoria fisica, l'hardware genera un'interruzione. Il sistema operativo viene allertato per andare a recuperare il "pezzo" mancante dal disco (memoria secondaria), caricarlo in RAM, e infine rieseguire l'istruzione che era fallita.
 
 ###### La Paginazione (Paging) e la MMU
 La paginazione ci permette quindi di suddividere la memoria fisica da quella virtuale associata ad ogni processo infatti quando un programma esegue un'istruzione come:
@@ -146,7 +152,6 @@ La maggior parte delle volte abbiamo **molte più pagine virtuali che pagine fis
 > 3. *Swap-Out*: Il Sistema Operativo libera spazio in RAM: prende un _frame_ usato poco e lo copia su disco.
 > 4. *Swap-In*: Il Sistema Operativo preleva la Pagina 8 dal disco e la scrive nel _frame_ appena liberato in RAM, e aggiorna la usata dall'MMU.
 > 5. *Riavvio*: La CPU ripete l'istruzione `MOV REG, 32780`. Questa volta la MMU trova la pagina e l'operazione va a buon fine.
-
 
 ###### Il processo di traduzione 
 Per tradurre un indirizzo virtuale in indirizzo fisico la CPU esegue uno specifico processo, prendendo in esame l'istruzione:
@@ -225,13 +230,42 @@ Dal punto di vista concettuale, esistono due approcci estremi:
 ###### Il Translation Lookaside Buffer (TLB)
 Per bilanciare velocità e dimensioni, la soluzione escogitata è stata quella di equipaggiare i computer di un piccolo dispositivo *hardware* dedicato esclusivamente a mappare gli indirizzi virtuali sugli indirizzi fisici senza dover passare ogni volta dalla tabella delle pagine in memoria.
 **TLB:** Acronimo di **Translation Lookaside Buffer**, talvolta chiamato anche **memoria associativa**.
-- **Capacità e Struttura:** Contiene solitamente poche voci (otto in alcuni casi, ma raramente più di 256). Ciascuna voce contiene informazioni cruciali riguardo una pagina, tra cui: il numero di pagina virtuale, un dirty bit, il codice di protezione (i permessi di lettura, scrittura ed esecuzione) e il frame fisico in cui si trova la pagina.
+- **Capacità e Struttura:** Contiene solitamente poche voci, ciascuna voce contiene informazioni cruciali riguardo una pagina, tra cui: 
+	- *il numero di pagina virtuale*
+	- *un dirty bit*: quando avviene una modifica ad un record questo viene macchiato come dirty, quando questo succede e quel record deve essere eliminato dalla TLB la modifica deve essere riportata alla tabella delle pagine.
+	- *il codice di protezione* (i permessi di lettura, scrittura ed esecuzione) 
+	- *il frame fisico*
 - **Funzionamento:** Quando un indirizzo virtuale viene presentato alla MMU per la traduzione, l'hardware per prima cosa guarda se il suo numero di pagina virtuale è presente nel TLB, confrontandolo simultaneamente (cioè in parallelo) con tutte le voci.
     - **TLB hit (successo di TLB):** Il numero di pagina viene trovato e la traduzione avviene istantaneamente.
     - **TLB miss (fallimento di TLB):** Avviene quando il numero di pagina virtuale non è nel TLB. In questo caso, la MMU rileva il miss e fa una normale ricerca sulla tabella delle pagine in memoria. Quindi sfratta una delle voci dal TLB e la rimpiazza con la voce della tabella delle pagine appena cercata e recuperata. In questo modo, se quella stessa pagina è riusata a breve termine, la seconda volta si avrà un successo (TLB hit).
 
-###### Gestione TLB via Software nelle architetture RISC
+###### Effective Access Time (EAT)
+L'**Effective Access Time (EAT)**, o tempo di accesso effettivo, è una metrica fondamentale per valutare le prestazioni di un sistema di memoria con paginazione che utilizza un **Translation Lookaside Buffer (TLB)**. L'EAT ci permette di calcolare il tempo _medio_ ponderato di accesso alla memoria, tenendo conto del **TLB Hit Ratio** ($\varepsilon$), ovvero la percentuale di volte in cui la traduzione viene trovata con successo all'interno della TLB.
 
+> [!EXAMPLE] Facciamo un esempio
+> - tempo di accesso alla memoria: $\alpha = 100 \text{ ns}$
+> - Tempo di accesso alla TLB: $\beta = 20 \text{ ns}$
+> 
+> I tempi effettivi?
+> - Con un TLB hit abbiamo $100 + 20 = 120 \text{ ns}$.
+> - Con un TLB miss abbiamo $2 \cdot 100 + 20 = 220 \text{ ns}$.
+> 
+> Con un ratio TLB = $\varepsilon$, tempo di accesso alla TLB = $\beta$ e tempo di accesso alla memoria $\alpha$ abbiamo
+> $$\text{EAT} = \varepsilon(\alpha + \beta) + (1 - \varepsilon)(2\alpha + \beta)$$
+
+###### Osservazioni importanti sulla TLB
+Di seguito alcune osservazioni importanti sulla TLB:
+- Alcuni attributi dei record delle tabelle delle pagine non sono presenti, come il bit di referenzialmento o di validità di allocazione. Osserviamo che, se un record è presente nella TLB, dev'essere per forza valido e referenziato.
+- La TLB conterrà sempre record relativi a pagine utili per il programma attuale. Inoltre, quando avviene una TLB miss, si andrà ad aggiornare il valore sulla TLB.
+- Alcuni voci possono essere vincolate ad essere nella TLB, migliorando le tempistiche.
+
+Le tabelle delle pagine sono una per processo: ne consegue che gli stessi indirizzi virtuali possono essere riutilizzati per rifarsi a indirizzi fisici differenti. Tuttavia, la TLB è unica per la CPU (o il core). Detto ciò, a causa del riutilizzo degli indirizzi virtuali, bisogna avere un modo per disambiguare i record riguardanti ogni processo. Di seguito vediamo due strategie:
+- **Flush totale della TLB a ogni context-switch:** Non ideale, favorisce un alto numero di cache miss iniziali.
+- **Address-space ID:** Aggiungendo un identificatore, chiamato ASID, è possibile disambiguare le voci delle TLB con lo stesso indirizzo virtuale, ma appartenenti a processi differenti, favorendo cache hit ad ogni context switch.
+
+La strategia migliore è la seconda. Complica un po' la ricerca, aggiungendo gli ASID alla ricerca del record nella TLB, ma è molto efficiente in ambienti multithread. È un ottimo compromesso.
+
+###### Gestione TLB via Software nelle architetture RISC
 Finora si è supposto che ogni macchina con memoria virtuale paginata abbia delle tabelle delle pagine riconosciute direttamente dall'hardware, più un TLB. Nel passato questo assunto era valido. Tuttavia, molte macchine ad architettura RISC moderne eseguono quasi tutta questa gestione delle pagine tramite software.
 
 Nella gestione del TLB via software, è fondamentale capire la differenza fra due tipi di miss:
@@ -258,3 +292,15 @@ Un'alternativa al continuo aumento della gerarchia della paginazione è nota con
 - **Svantaggio:** Presentano un grosso problema: la traduzione da indirizzo virtuale a indirizzo fisico diventa molto difficile. Quando il processo _n_ referenzia la pagina virtuale _p_, l'hardware non può più trovare la pagina fisica usando semplicemente _p_ come indice diretto nella tabella delle pagine. Deve cercare invece l'esatta voce o coppia (_n, p_) esplorando l'intera tabella delle pagine invertite.
 
 **Soluzione al problema della ricerca:** La lentezza della traduzione si risolve mediante l'impiego massiccio del TLB. Se il TLB può contenere tutte le pagine più usate dal sistema, la traduzione può avvenire velocemente esattamente come con le normali tabelle delle pagine. Nel caso sfortunato in cui si verifichi una _TLB miss_, deve essere comunque fatta una ricerca nella grande tabella invertita. Un modo possibile ed efficiente di realizzare questa ricerca è di avere una **hash table** sull'indirizzo virtuale.
+
+###### Cache della memoria vs Memoria virtuale
+La cache della memoria può essere basata sugli indirizzi fisici, o sugli indirizzi virtuali. Ciò dipenderà rispettivamente, se posizioniamo l’MMU prima o dopo la cache.
+- *Indirizzi fisici*:
+  Pro: non servirà invalidare la cache sul context-switch. Avendo indirizzi fisici già tradotti nella cache, non si avranno problemi di ambiguità.
+  Contro: l’MMU diventa un collo di bottiglia per la cache.
+- *Indirizzi virtuali*.
+  Pro: più veloce ed efficace 
+  Contro: servono gli ASID per non invalidare la cache
+![[Pasted image 20260516091408.png|700]]
+Soluzione effettiva:
+approccio ibrido La cache $L1$ basata su indirizzi virtuali, si pone prima dell’MMU, basandosi sugli indirizzi virtuali. La cache $L2$ e successive dopo l’MMU, basate su indirizzi fisici.
