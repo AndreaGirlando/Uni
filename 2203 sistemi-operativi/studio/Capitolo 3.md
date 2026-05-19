@@ -17,12 +17,10 @@ In assenza di astrazione, non è possibile eseguire due programmi contemporaneam
 3. **Modello Ibrido:** I driver dei dispositivi risiedono nella ROM in cima alla memoria, mentre il resto del sistema è nella RAM sottostante. Questo modello è tipico dei primi PC con MS-DOS, dove la parte in ROM è nota come **BIOS (Basic Input Output System)**.
 ![[Pasted image 20260501104611.png|500]]
 ###### Esecuzione di molteplici programmi senza astrazione
-
 È possibile ottenere un certo grado di parallelismo anche senza astrazione, seguendo diverse strategie:
-
 - **Programmazione con thread**: Un metodo per avere parallelismo è utilizzare molteplici _thread_ all'interno dello stesso contesto di memoria. Essendo thread fanno parte dello stesso processo, quindi non è una vera esecuzione di più programmi.
 - **Swapping (Versione primitiva)**: Un'altra possibilità è eseguire un programma alla volta, salvando l'intero contenuto della memoria su disco quando si passa al processo successivo. Finché risiede un solo programma in memoria, non si verificano conflitti.
-- **Protezione tramite chiavi (IBM 360):** Con l'ausilio di hardware speciale, è possibile far risiedere più programmi contemporaneamente. L'IBM 360 utilizzava una **chiave di protezione** di 4 bit per ogni cella di memoria. La PWS di un processo conteneva conteneva una chiave di 4 bit che gli permetteva di interagire con la locazione di memoria a lui assegnata. L'hardware intercettava ogni tentativo di accesso alla memoria: se il codice di protezione del processo non coincideva con la chiave nella PSW, l'accesso veniva bloccato.
+- **Protezione tramite chiavi (IBM 360):** Con l'ausilio di hardware speciale, è possibile far risiedere più programmi contemporaneamente. L'IBM 360 utilizzava una **chiave di protezione** di 4 bit per ogni cella di memoria. La PSW di un processo conteneva conteneva una chiave di 4 bit che gli permetteva di interagire con la locazione di memoria a lui assegnata. L'hardware intercettava ogni tentativo di accesso alla memoria: se il codice di protezione del processo non coincideva con la chiave nella PSW, l'accesso veniva bloccato.
 
 ###### Il problema della rilocazione
 Anche se i programmi sono protetti dalle chiavi, sorge il problema degli indirizzi assoluti. Se due programmi da 16 KB vengono caricati uno sopra l'altro, il secondo (caricato all'indirizzo 16.384) fallirà se tenta di eseguire un salto relativo al proprio inizio (es. `JMP 28`), poiché finirà per saltare a un indirizzo nel primo programma invece che nel proprio. In questo esempio vediamo esattamente questa cosa, dopo aver caricato il processo a e b in memoria (c) possiamo notare che:
@@ -30,8 +28,9 @@ Anche se i programmi sono protetti dalle chiavi, sorge il problema degli indiriz
 - *processo B*: il jump 28 cercherà di saltare ma entra nella memoria del primo processo e andrà in errore
 ![[Pasted image 20260501105311.png|500]]
 
-Una soluzione a questo problema è la **rilocazione statica:** consiste nel modificare il programma direttamente durante il caricamento in memoria, aggiungendo l'indirizzo di partenza (es. 16.384) a ogni indirizzo del programma.
-##### L'astrazione della memoria: lo spazio degli indirizzi
+Una soluzione a questo problema è la **rilocazione statica:** consiste nel modificare il programma direttamente durante il caricamento in memoria, aggiungendo l'indirizzo di partenza (es. 16.384) a ogni indirizzo del programma. Funzionava in questo modo: quando un programma era caricato all'indirizzo 16.384, la costante 16.384 era aggiunta a ogni indirizzo del programma durante il processo di caricamento. Anche se questo meccanismo funziona bene se eseguito in modo corretto, ma non è una
+soluzione in generale e rallenta il caricamento.
+### L'astrazione della memoria: lo spazio degli indirizzi
 Esporre la memoria fisica presenta due gravi inconvenienti:
 1. I programmi utente possono distruggere il sistema operativo.
 2. È difficile gestire l'esecuzione contemporanea di più programmi.
@@ -98,7 +97,7 @@ Il momento più delicato in questo sistema è **quando un processo termina** o v
 - _(d) Entrambi i vicini vuoti:_ Si fondono tre buchi adiacenti in un unico grande spazio vuoto. Vengono eliminati due elementi dalla lista.
 ![[Pasted image 20260501170129.png|500]]
 
-###### Algoritmi di Allocazione: Come scegliere il "buco" giusto?
+###### Algoritmi di allocazione: Come scegliere il "buco" giusto?
 Quando arriva un nuovo processo, il gestore della memoria deve scorrere la lista collegata per trovargli un buco adeguato. Ma quale sceglie se ce n'è più di uno? Usa degli specifici algoritmi:
 1. **First fit (Primo incastro):** È il più semplice e veloce. Scorre la lista dall'inizio e prende il _primo_ buco abbastanza grande. Se il buco è più grande del processo, viene diviso in due: una parte per il processo e una per il buco residuo.
 2. **Next fit (Incastro successivo):** Identico al First fit, ma "si ricorda" dove aveva trovato l'ultimo spazio. La ricerca successiva riparte da quel punto invece che dall'inizio. Previene l'accumulo di piccoli buchi tutti all'inizio della memoria.
@@ -115,7 +114,7 @@ Quando arriva un nuovo processo, il gestore della memoria deve scorrere la lista
 5. **Quick fit:** Usa array o tabelle che puntano a liste di buchi di dimensioni standardizzate e molto richieste (es. una lista solo per buchi da 4 KB, un'altra per buchi da 8 KB, ecc.).
     - _Vantaggio:_ Allocazione praticamente istantanea se il processo richiede una misura standard.
     - _Svantaggio:_ Come per l'ordinamento per dimensione, la deallocazione e la fusione dei buchi adiacenti restano operazioni molto dispendiose.
-###### La Memoria Virtuale
+### La Memoria Virtuale
 Come abbiamo visto, gestire "buchi" di memoria di dimensioni variabili (tramite liste e algoritmi di allocazione) è complesso e non risolve mai del tutto il problema della frammentazione. Per eliminare definitivamente questo ostacolo, l'informatica ha introdotto un'astrazione rivoluzionaria: la **memoria virtuale**.
 
 L'obiettivo di questa astrazione è creare un'illusione perfetta: far credere a ogni programma in esecuzione di disporre di un'intera memoria centrale privata, continua e protetta. Con questa tecnica, lo spazio di memoria originario diventa uno **spazio di indirizzamento virtuale**, il quale viene suddiviso in piccoli blocchi di dimensione fissa chiamati **pagine**.
@@ -206,7 +205,7 @@ Scendendo nel dettaglio di cosa fa l'MMU possiamo dire che: il processo di tradu
 > 
 > $$2^9byte \cdot 2^8 \text{ (numero di frame)} = 128kb$$
 
-###### La Tabella delle Pagine
+###### La tabella delle Pagine
 La tabella delle pagine è una tabella utilizzata dall'MMU insieme al sistema operativo per tradurre da indirizzi virtuali a fisici, l'esatto layout di una voce di una singola tabella della pagina dipende molto dalla macchina su cui si opera. Tuttavia, il tipo di informazioni presenti è più o meno lo stesso per tutte le architetture. Di seguito una rassegna dei campi contenuti in una voce:
 - **Numero del frame (frame number):** È il campo più importante in assoluto, in quanto indica l'indirizzo fisico in cui si trova la pagina.
 - **Bit Presente/Assente:** Se questo bit è 1, la voce è valida e può essere utilizzata normalmente. Se è 0, significa che la pagina virtuale cui appartiene la voce non è effettivamente in memoria in quel momento.
@@ -227,9 +226,8 @@ Dal punto di vista concettuale, esistono due approcci estremi:
 - **Soluzione 1 (Registri hardware):** Avere una sola tabella delle pagine che consiste di un array di registri hardware estremamente veloci, con una sola voce per ogni pagina virtuale. All'avvio di un processo, il sistema operativo carica i registri con la tabella delle pagine del processo, prendendola da una copia che tiene in memoria. Durante l'esecuzione del processo, non sono necessari altri riferimenti alla memoria per la tabella delle pagine, garantendo grande velocità (ma con costi di context switch immensi se la tabella è grande).
 - **Soluzione 2 (Tabella in Memoria e PTBR):** Nella situazione opposta, la tabella delle pagine può essere interamente caricata nella memoria RAM. Tutto ciò di cui necessita l'hardware in questo caso è un singolo registro dedicato che punti all'inizio della tabella delle pagine in memoria, noto come **PTBR (Page Table Base Register)**.
 
-###### Il Translation Lookaside Buffer (TLB)
-Per bilanciare velocità e dimensioni, la soluzione escogitata è stata quella di equipaggiare i computer di un piccolo dispositivo *hardware* dedicato esclusivamente a mappare gli indirizzi virtuali sugli indirizzi fisici senza dover passare ogni volta dalla tabella delle pagine in memoria.
-**TLB:** Acronimo di **Translation Lookaside Buffer**, talvolta chiamato anche **memoria associativa**.
+### Translation Lookaside Buffer (TLB)
+Per bilanciare velocità e dimensioni, la soluzione escogitata è stata quella di equipaggiare i computer di un piccolo dispositivo *hardware* dedicato esclusivamente a mappare gli indirizzi virtuali sugli indirizzi fisici senza dover passare ogni volta dalla tabella delle pagine in memoria. **TLB:** Acronimo di **Translation Lookaside Buffer**, talvolta chiamato anche **memoria associativa**.
 - **Capacità e Struttura:** Contiene solitamente poche voci, ciascuna voce contiene informazioni cruciali riguardo una pagina, tra cui: 
 	- *il numero di pagina virtuale*
 	- *un dirty bit*: quando avviene una modifica ad un record questo viene macchiato come dirty, quando questo succede e quel record deve essere eliminato dalla TLB la modifica deve essere riportata alla tabella delle pagine.
@@ -302,5 +300,119 @@ La cache della memoria può essere basata sugli indirizzi fisici, o sugli indiri
   Pro: più veloce ed efficace 
   Contro: servono gli ASID per non invalidare la cache
 ![[Pasted image 20260516091408.png|700]]
-Soluzione effettiva:
+**Soluzione effettiva**:
 approccio ibrido La cache $L1$ basata su indirizzi virtuali, si pone prima dell’MMU, basandosi sugli indirizzi virtuali. La cache $L2$ e successive dopo l’MMU, basate su indirizzi fisici.
+
+### Gestione della memoria virtuale e algoritmi di sostituzione delle pagine
+Quando si verifica un **page fault**, il sistema operativo deve fare spazio alla pagina entrante scegliendo una pagina residente da sfrattare (rimuovere dalla memoria). Se la pagina scelta è stata modificata durante la sua permanenza, deve essere prima riscritta sul disco per mantenerne la copia aggiornata. Le prestazioni del sistema risultano ottimali se si sceglie di rimuovere una pagina non particolarmente utilizzata.
+
+###### Algoritmo di Sostituzione Ottimale
+Il miglior algoritmo di sostituzione delle pagine è puramente teorico. L'idea è etichettare ciascuna pagina in memoria con il numero di istruzioni da eseguire prima che venga referenziata nuovamente. Al momento del **page fault**, l'algoritmo rimuove la pagina con l'etichetta più alta. Questo approccio è irrealizzabile, poiché il sistema operativo non ha modo di sapere in anticipo quando le pagine verranno referenziate la volta successiva.
+
+###### Not Recently Used (NRU)
+Per raccogliere statistiche sull'uso delle pagine, l'hardware mette a disposizione due bit di stato associati a ciascuna voce della tabella delle pagine:
+- **Bit R (_Referenced_):** Impostato a 1 quando si fa riferimento alla pagina (in lettura o scrittura).
+- **Bit M (_Modified_):** Impostato a 1 solo quando la pagina viene scritta (modificata).
+
+All'avvio, questi bit sono azzerati. Periodicamente (es. a ogni interrupt del clock), il **Bit R** viene ripulito per distinguere le pagine usate di recente da quelle inattive. Al verificarsi di un **page fault**, l'algoritmo NRU divide le pagine in quattro categorie in base ai valori attuali dei bit:
+- Classe 0: non referenziato, non modificato.
+- Classe 1: non referenziato, modificato.
+- Classe 2: referenziato, non modificato.
+- Classe 3: referenziato, modificato.
+
+L'algoritmo rimuove una pagina a caso dalla classe non vuota con il numero più basso. È infatti preferibile rimuovere una pagina modificata ma non usata di recente, piuttosto che una pagina pulita ma usata frequentemente.
+###### First-in, First-out (FIFO) e Seconda Chance
+L'algoritmo **FIFO** tiene una lista delle pagine in memoria ordinandole per tempo di arrivo. A un **page fault**, rimuove semplicemente la pagina più vecchia in testa. Questo approccio rigido rischia di eliminare pagine vecchie ma ancora usate intensamente.
+Per evitare questo problema, l'algoritmo della **Seconda Chance** controlla il **Bit R** della pagina più vecchia prima di rimuoverla:
+- Se **R = 0**: La pagina è vecchia e inutilizzata, quindi viene sostituita immediatamente.
+- Se **R = 1**: Il bit viene azzerato, la pagina viene spostata in fondo alla lista (rinnovando il suo tempo di caricamento) e la ricerca continua. Se tutte le pagine sono state referenziate, degenera in un FIFO puro.
+
+###### Algoritmo Clock
+L'algoritmo della Seconda Chance è inefficiente perché sposta continuamente le pagine lungo la lista. L'algoritmo **Clock** migliora la struttura mantenendo i frame su una lista circolare a forma di orologio. Una lancetta indica la pagina vecchia. Quando avviene un **page fault**, si esamina la pagina indicata: se **R = 0**, la pagina viene sfrattata e la lancetta avanza; se **R = 1**, il bit viene azzerato e la lancetta passa alla pagina successiva finché non ne trova una sacrificabile. Se tutti i valori di R sono uguali a 1 nel momento in cui si verifica un page fault, la lancetta dell'algoritmo Clock farà un **giro completo dell'orologio (360 gradi)**. Al termine di questo giro, la pagina che era inizialmente indicata dalla lancetta verrà sfrattata. ![[Pasted image 20260519113550.png|700]]
+###### Least Recently Used (LRU)
+L'algoritmo **Least Recently Used (LRU)** rappresenta un'eccellente approssimazione dell'algoritmo ottimale teorico.  Per realizzare un **LRU hardware puro**, i progettisti dovrebbero dotare il sistema di un contatore a 64 bit capace di incrementarsi automaticamente a ogni singola istruzione eseguita dalla CPU. Parallelamente, ogni voce della tabella delle pagine dovrebbe possedere uno spazio dedicato per memorizzare questo valore. In questo scenario, ogni volta che la memoria viene referenziata, il valore attuale del contatore globale viene copiato istantaneamente nella voce della tabella corrispondente alla pagina appena utilizzata. Al verificarsi di un **page fault**, il sistema operativo è costretto a esaminare tutti i contatori presenti nella tabella delle pagine per individuare il valore assoluto più basso. Quella cifra identifica matematicamente la pagina usata meno recentemente, che diventa la candidata perfetta per la rimozione. Questa implementazione, per quanto teoricamente ineccepibile, si scontra duramente con la realtà ingegneristica. Aggiornare un contatore nella memoria a ogni singola istruzione, per poi dover scansionare l'intera tabella a ogni errore di pagina, richiederebbe un hardware dedicato estremamente complesso e costoso. Trovare una pagina, aggiornarla e riordinarla in tempo reale comporta un dispendio di tempo e risorse che rende l'LRU puro impraticabile per la quasi totalità dei computer commerciali.
+
+###### Not Frequently Used (NFU)
+Proprio per superare gli ostacoli fisici ed economici dell'LRU, i progettisti hanno ideato delle simulazioni implementabili via software. La prima e più intuitiva di queste è l'algoritmo **Not Frequently Used (NFU)**.
+
+Il suo funzionamento si basa sull'associazione di un contatore software a ciascuna pagina residente in memoria, rigorosamente inizializzato a zero al momento del caricamento. Invece di agire a ogni singola istruzione, l'NFU sfrutta l'interrupt periodico del clock. A ogni "tic" del clock, il sistema operativo effettua una rapida scansione e somma il valore del **Bit R** (il bit di riferimento, che vale 1 se la pagina è stata usata in quel ciclo, 0 altrimenti) al contatore di ciascuna pagina. In questo modo, i contatori accumulano punteggio, tenendo una traccia sommaria di quante volte ogni singola pagina è stata utilizzata durante la sua permanenza in memoria. Al momento di un **page fault**, la scelta della "vittima" da sfrattare ricade semplicemente sulla pagina che possiede il contatore numericamente più basso.
+
+Tuttavia, l'NFU nasconde un difetto strutturale critico che lo rende imperfetto rispetto all'LRU: è dotato di una memoria infallibile, ovvero **non dimentica mai il passato**. Per comprendere il problema, possiamo immaginare l'esecuzione di un compilatore strutturato a passaggi multipli. Durante il primo passaggio, il programma utilizzerà intensamente un gruppo specifico di pagine, facendo schizzare i loro contatori a valori altissimi. Quando il programma passa alla seconda fase, quelle pagine del primo passaggio non gli serviranno più; tuttavia, il loro punteggio storico le proteggerà ostinatamente dalla rimozione. Di conseguenza, il sistema operativo finirà paradossalmente per rimpiazzare le pagine nuove e realmente utili della fase in corso (che partono inevitabilmente da un contatore basso), salvando invece le pagine vecchie e inattive. L'NFU fallisce quindi nel cogliere il vero concetto di "recente", limitandosi a premiare un generico utilizzo totale.
+
+Per risolvere questo limite si usa l'algoritmo di **Aging**, illustrato nella figura sottostante. A ogni ciclo, i contatori vengono spostati a sinistra di un bit e il **Bit R** viene inserito nella posizione più a sinistra. L'algoritmo rimuove la pagina con il contatore più basso. Rispetto all'LRU puro, l'Aging non distingue l'ordine esatto dei riferimenti nello stesso ciclo di clock e ha un orizzonte temporale limitato dai bit del contatore. ![[Pasted image 20260519113533.png|700]]
+
+###### Il Modello Working Set
+Il ciclo di vita della memoria di un processo inizia generalmente con la strategia del **Demand Paging** (paginazione su richiesta). Nella sua forma più pura, un processo viene avviato senza che nessuna delle sue pagine sia presente in memoria fisica. Appena la CPU tenta di prelevare la prima istruzione, genera inevitabilmente un **page fault**. Questo innesca il caricamento della pagina iniziale. Subito dopo, seguiranno a raffica altri page fault per caricare lo stack, le variabili globali e le istruzioni successive. Dopo questa fase di assestamento iniziale, il processo disporrà delle pagine fondamentali e inizierà a girare in modo fluido. Le pagine vengono quindi caricate letteralmente "su richiesta", senza alcun pre-caricamento.
+
+Ma perché, dopo una raffica iniziale di errori, il processo si stabilizza? Questo accade grazie a una proprietà fondamentale del software nota come **Località di Riferimento**. I processi non accedono al loro spazio di indirizzamento in modo casuale o uniforme; al contrario, tendono a concentrare le loro letture e scritture su una frazione relativamente piccola e ristretta di pagine in ogni specifica fase della loro esecuzione. Ad esempio, un ciclo `for` continuerà a richiamare sempre le stesse istruzioni e le stesse variabili per migliaia di iterazioni prima di passare ad altro.
+
+Questo specifico sottoinsieme di pagine attivamente referenziate in un dato istante prende il nome di **Working Set** (o insieme di lavoro). Finché l'intero working set del processo riesce a risiedere fisicamente in memoria, il programma verrà eseguito in modo efficiente. Ma cosa succede se la RAM è troppo piccola o troppo frammentata per contenerlo tutto? Il processo inizierà a scartare pagine che gli serviranno di nuovo pochissimi millisecondi dopo, generando un page fault ogni poche istruzioni. Questa condizione catastrofica di perenne blocco e caricamento prende il nome di **Thrashing**. Quando un sistema entra in thrashing, l'intero computer rallenta fino a bloccarsi, poiché la CPU spende più tempo a gestire i page fault che a eseguire calcoli utili.
+
+Per scongiurare il thrashing, i sistemi operativi moderni adottano il "modello working set". L'obiettivo è tenere traccia attivamente del working set di ogni processo e assicurarsi che questo sia interamente pre-caricato in memoria _prima_ di consentirne l'esecuzione. Questa tecnica di caricamento anticipato prende il nome di **Prepaginazione** (_prepaging_) e abbatte drasticamente il numero di page fault a runtime.
+
+###### L'Algoritmo di Sostituzione basato sul Working Set
+Per tradurre questa teoria in un algoritmo pratico, il sistema operativo deve definire in modo misurabile cos'è il working set. Invece di contare gli ultimi "k" riferimenti alla memoria (metodo teorico impossibile da tracciare), si utilizza il **Tempo virtuale attuale**, ovvero la quantità di tempo di CPU _effettivamente_ consumata da quel processo dal momento del suo avvio. Si stabilisce poi una determinata soglia temporale massima, indicata con $\tau$.
+
+> [!TIP] Tempo virtuale attuale 
+> l **tempo virtuale attuale** (o _current virtual time_) di un processo rappresenta la quantità esatta di tempo di CPU che quello specifico processo ha _effettivamente_ consumato dal momento in cui è stato avviato.
+> 
+> A differenza del tempo reale (quello del mondo fisico scandito dall'orologio del computer), il tempo virtuale di un processo avanza solo ed esclusivamente quando il processo si trova in esecuzione attiva sulla CPU. Se il sistema operativo decide di sospendere il processo, ad esempio per metterlo in attesa del completamento di un'operazione di I/O o per dare spazio a un altro programma, il suo tempo virtuale si "congela" istantaneamente, per poi riprendere a scorrere non appena il processo torna in esecuzione.
+
+Quando si verifica un page fault, l'algoritmo deve scansionare la tabella delle pagine alla ricerca di una vittima al di fuori del working set. Analizzando ogni pagina, il sistema controlla prima di tutto il **Bit R** (Referenziato):
+- Se **R = 1**: La pagina è stata usata di recente, quindi fa indiscutibilmente parte del working set. Non può essere rimossa. Il sistema operativo si limita ad aggiornare il suo "tempo di ultimo utilizzo" scrivendovi il tempo virtuale attuale.
+- Se **R = 0**: La pagina non è stata usata nell'ultimo ciclo. Per capire se sia davvero "vecchia", l'algoritmo calcola la sua età (sottraendo il tempo di ultimo utilizzo dal tempo virtuale attuale) e la confronta con la soglia $\tau$.
+    - Se l'**età è maggiore di $\tau$**: La pagina è matematicamente uscita dal working set. Viene scelta come vittima e rimossa istantaneamente.
+    - Se l'**età è minore o uguale a $\tau$**: La pagina si è "salvata" per un pelo; è temporaneamente inattiva ma appartiene ancora al working set. L'algoritmo non la rimuove, ma ne prende nota nel caso in cui non si trovi nient'altro di meglio.
+
+Se, terminata l'ispezione di tutta la tabella, non viene trovata nessuna pagina con età maggiore di $\tau$, significa che tutto ciò che è in memoria fa parte del working set. A questo punto, costretto a liberare spazio, il sistema operativo rimuoverà la pagina con R = 0 che risulta avere l'età in assoluto maggiore tra quelle presenti. Se persino questo tentativo fallisce (perché tutte le pagine hanno miracolosamente R = 1), sceglierà a caso una pagina pulita da sacrificare.
+![[Pasted image 20260519113508.png|700]]
+###### WSClock
+L'algoritmo base del working set è lento per via della scansione dell'intera tabella. Il **WSClock**, illustrato nella **Figura 3.20**, unisce la lista circolare del Clock alle informazioni del working set. ![[Pasted image 20260519113442.png|400]]
+La lancetta analizza le pagine: se **R = 0** e l'età supera $\tau$, si valuta la pagina. Se è pulita, viene rimossa; se è sporca, si schedula la sua scrittura su disco e la lancetta avanza senza bloccare il processo. Se la lancetta fa un giro completo e torna al punto di partenza, si presentano due casi:
+- È stata schedulata almeno una scrittura: la lancetta continua a scorrere cercando la prima pagina pulita disponibile.
+- Non ci sono scritture schedulate: tutte le pagine sono nel working set, quindi si sceglie una pagina pulita qualunque, o in mancanza si sacrifica la pagina attuale.
+
+### Problemi di progettazione dei sistemi di paginazione
+
+###### Politiche di Allocazione: Globali e Locali a Confronto
+Nei paragrafi precedenti abbiamo analizzato gli algoritmi che scelgono _quale_ pagina sostituire al momento di un page fault. Tuttavia, in un sistema multiprogrammato, i progettisti devono affrontare un'altra questione fondamentale: come dovrebbe essere ripartita la memoria fisica totale fra tutti i processi concorrenti in esecuzione? Per comprendere il problema, possiamo fare riferimento alla **Figura 3.22** ![[Pasted image 20260519113418.png|600]]Immaginiamo una situazione in cui i processi A, B e C si trovano in memoria. A un certo punto, il processo A genera un **page fault**. L'algoritmo di sostituzione deve ora prendere una decisione cruciale: cercare la pagina da sfrattare considerando solo l'insieme di pagine attualmente allocate ad A, oppure valutare tutte le pagine presenti nell'intera memoria, a prescindere da chi le stia usando?
+
+- **Algoritmi di Sostituzione Locale**: Se l'algoritmo decide di confinare la sua ricerca alle sole pagine del processo A (scegliendo, ad esempio, la sua pagina più vecchia per fare spazio a quella nuova), stiamo applicando un **Algoritmo di sostituzione locale**. Questo approccio assegna a ogni processo una frazione rigida e fissa di memoria. Tuttavia, presenta dei gravi difetti prestazionali legati all'imprevedibilità dei programmi. Se il **working set** di un processo si restringe durante l'esecuzione, l'algoritmo locale continuerà a tenergli assegnata la stessa quantità di memoria, sprecando preziosi frame che rimarranno inutilizzati. Al contrario, se il working set del processo aumenta improvvisamente, l'algoritmo lo costringerà a sostituire continuamente le proprie pagine in un circolo vizioso, portandolo al **thrashing** pur in presenza di frame liberi e disponibili nel resto della memoria.
+- **Algoritmi di Sostituzione Globale**: Se invece l'algoritmo, al verificarsi dell'errore di A, valuta tutte le pagine del sistema e decide, ad esempio, di sottrarre la pagina meno utilizzata in assoluto (magari appartenente al processo B) per assegnarla ad A, in questo caso, il numero di frame assegnato a ciascun processo varia dinamicamente nel tempo. 
+
+In generale, gli algoritmi globali funzionano nettamente meglio di quelli locali proprio perché riescono ad assecondare le naturali variazioni di dimensione dei working set. Scegliendo una politica globale, il sistema deve però stabilire quanti frame assegnare all'avvio. Dividere la memoria in parti uguali ha poco senso, perché tratterebbe allo stesso modo un piccolo processo da 10 KB e uno enorme da 300 KB. L'approccio più saggio è avviare ogni processo assegnandogli un numero di pagine strettamente proporzionale alla sua dimensione totale (garantendo comunque un limite minimo a tutti per poter funzionare), per poi aggiornare questa assegnazione dinamicamente mentre i programmi girano.
+
+###### L'Algoritmo Page Fault Frequency (PFF)
+Il metodo più efficace per gestire questa "assegnazione dinamica" dei frame è l'algoritmo **Page Fault Frequency (PFF)**, il cui grafico di funzionamento è illustrato nella **Figura 3.23** ![[Pasted image 20260519113406.png|500]]
+È importante precisare che il PFF non sceglie _quale_ pagina sostituire (quello è compito di algoritmi come Clock o WSClock), ma indica solo _quando_ è il caso di aumentare o diminuire il numero totale di pagine allocate a un determinato processo. Il funzionamento si basa sulla misurazione costante della frequenza degli errori, calcolando i **page fault per secondo** di ogni processo (spesso calcolati facendo una media tra i page fault del secondo appena trascorso e la media attuale di esecuzione, divisa per due). Il sistema operativo stabilisce dei limiti di accettabilità per questa frequenza:
+- **Limite Superiore (Linea tratteggiata A):** Se la frequenza di paginazione di un processo supera questa soglia, significa che il tasso di errore è troppo alto. Il processo è "in sofferenza" per mancanza di spazio, quindi il sistema interviene aumentandogli la quota di frame assegnati.
+- **Limite Inferiore (Linea tratteggiata B):** Se la frequenza di paginazione scende al di sotto di questa soglia, significa che il processo sta girando con un numero di errori così basso da far supporre che abbia troppa memoria a disposizione rispetto al necessario. In questo caso, il sistema operativo può tranquillamente sottrargli dei frame per riassegnarli a processi più bisognosi.
+In questo modo, il PFF lavora costantemente in background cercando di mantenere la frequenza di paginazione di tutti i processi all'interno di una fascia sicura e ottimale.
+
+###### Controllo del Carico
+Se i working set combinati superano la capacità di memoria, il PFF indicherà che tutti i processi necessitano di memoria, portando inesorabilmente al **thrashing**. L'unica soluzione è lo **Swapping**, scaricando quanti più processi sul disco. La scelta di chi scaricare dipende dal grado di multiprogrammazione e dalle caratteristiche del processo (I/O bound o CPU bound).
+
+###### Dimensione delle Pagine
+La scelta della dimensione della pagina di base è importante. Al crescere o decrescere della dimensione delle pagine, otteniamo effetti positivi e negativi.
+**Pro delle pagine più grandi**
+* *Tabella delle pagine più piccole.*
+  Il numero di record della tabella delle pagine è pari al numero di pagine. Il numero di pagine, a parità di memoria, è inversamente proporzionale alla dimensione delle pagine.
+* *Migliore efficienza nel trasferimento I/O.*
+  Utilizzando pagine più grandi, un input/output potrà essere effettuato su pagine più grandi, e quindi un numero minore di pagine a cui accedere. Questi vantaggi si sentono di più all’interno di memorie di tipo elettromeccanico.
+* *Minori page fault (e conseguente minor overhead).*
+  Pagine più grosse $\Rightarrow$ meno pagine $\Rightarrow$ meno page fault. Non sempre ne vale la pena, ma è un fatto da tenere in considerazione.
+
+**Pro delle pagine più piccole**
+* *Minore frammentazione interna.*
+  Pagine più grandi causano più spreco. Pagine
+* *Migliore risoluzione nel definire il working set. Meno memoria sprecata!*
+  Le approssimazioni saranno più precise. Le pagine sono di dimensione fissa: blocchi più piccoli permettono di rispondere alle nostre esigenze in maniera migliore.
+
+I pro di uno, sono i contro dell’altro. Per bilanciare gli svantaggi, i sistemi operativi utilizzano a volte pagine di dimensioni diverse per le diverse parti del sistema: per esempio, pagine grandi per il kernel e più piccole per | processi utente.
+
+###### Istruzioni Separate e Spazi dei Dati
+In passato, i computer utilizzavano un unico spazio degli indirizzi per contenere sia le istruzioni del programma sia i dati su cui operare, scontrandosi rapidamente con i limiti di capacità della memoria (come illustrato nella **Figura 3.24**). Per superare questo ostacolo, si è adottata la geniale soluzione di separare fisicamente e logicamente questi due elementi.
+
+Si definiscono così un **I-space** (_Instruction space_), dedicato esclusivamente a contenere il codice del programma, e un **D-space** (_Data space_), riservato ai dati operativi come le variabili. Il grande vantaggio di questa architettura è che l'I-space e il D-space vengono paginati in modo totalmente indipendente. Poiché ciascuno possiede la propria tabella delle pagine dedicata, il sistema operativo riesce di fatto a raddoppiare la memoria virtuale disponibile per un singolo processo, con l'hardware che instrada automaticamente le richieste verso lo spazio corretto.
+
+Sebbene oggi l'avvento dei 64 bit abbia reso quasi inesauribile lo spazio degli indirizzi, questa netta separazione architettonica non è scomparsa. Al contrario, è diventata lo standard per ottimizzare la velocissima memoria **Cache di primo livello (L1)** all'interno delle CPU moderne. Suddividere la cache in L1-Dati e L1-Istruzioni permette infatti al processore di leggere codice e dati in parallelo, evitando colli di bottiglia e massimizzando le prestazioni.
