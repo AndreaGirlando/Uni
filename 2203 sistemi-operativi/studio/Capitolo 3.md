@@ -263,7 +263,7 @@ Le tabelle delle pagine sono una per processo: ne consegue che gli stessi indiri
 
 La strategia migliore è la seconda. Complica un po' la ricerca, aggiungendo gli ASID alla ricerca del record nella TLB, ma è molto efficiente in ambienti multithread. È un ottimo compromesso.
 
-###### Gestione TLB via Software nelle architetture RISC
+###### Gestione TLB via software nelle architetture RISC
 Finora si è supposto che ogni macchina con memoria virtuale paginata abbia delle tabelle delle pagine riconosciute direttamente dall'hardware, più un TLB. Nel passato questo assunto era valido. Tuttavia, molte macchine ad architettura RISC moderne eseguono quasi tutta questa gestione delle pagine tramite software.
 
 Nella gestione del TLB via software, è fondamentale capire la differenza fra due tipi di miss:
@@ -284,7 +284,7 @@ Inoltre, se il sistema ha bisogno di liberare spazio, le tabelle secondarie non 
 ![[Pasted image 20260503161749.png|500]]
 - **Meccanismo a due livelli:** Quando viene presentato un indirizzo virtuale alla MMU, l'hardware per prima cosa estrae il primo campo (chiamato _PT1_) e usa questo valore come indice nella tabella delle pagine di livello più alto. Il secondo campo, _PT2_, adesso è usato come un indice nella tabella delle pagine di secondo livello (selezionata dal passo precedente) per cercare il numero di frame della pagina stessa.
 - **Espansione dei livelli:** Possiamo aumentare il numero di livelli per supportare indirizzi molto grandi; questo ci permette di risparmiare memoria (tenendo su disco i livelli non usati) a discapito però della velocità, poiché sarà richiesto un accesso in più alla memoria RAM per ogni livello aggiunto alla gerarchia.
-###### Tabelle delle Pagine Invertite
+###### Tabelle delle pagine invertite
 Un'alternativa al continuo aumento della gerarchia della paginazione è nota con il termine di **tabelle delle pagine invertite**. In questa particolare progettazione c'è **una sola voce per frame** presente nella memoria reale, piuttosto che una voce per pagina dello spazio virtuale degli indirizzi (come avviene nei metodi classici).
 - **Vantaggio:** Le tabelle delle pagine invertite risparmiano una gran quantità di spazio, in particolar modo quando lo spazio virtuale degli indirizzi è molto superiore rispetto alla memoria fisica disponibile.
 - **Svantaggio:** Presentano un grosso problema: la traduzione da indirizzo virtuale a indirizzo fisico diventa molto difficile. Quando il processo _n_ referenzia la pagina virtuale _p_, l'hardware non può più trovare la pagina fisica usando semplicemente _p_ come indice diretto nella tabella delle pagine. Deve cercare invece l'esatta voce o coppia (_n, p_) esplorando l'intera tabella delle pagine invertite.
@@ -371,7 +371,25 @@ L'algoritmo base del working set è lento per via della scansione dell'intera ta
 La lancetta analizza le pagine: se **R = 0** e l'età supera $\tau$, si valuta la pagina. Se è pulita, viene rimossa; se è sporca, si schedula la sua scrittura su disco e la lancetta avanza senza bloccare il processo. Se la lancetta fa un giro completo e torna al punto di partenza, si presentano due casi:
 - È stata schedulata almeno una scrittura: la lancetta continua a scorrere cercando la prima pagina pulita disponibile.
 - Non ci sono scritture schedulate: tutte le pagine sono nel working set, quindi si sceglie una pagina pulita qualunque, o in mancanza si sacrifica la pagina attuale.
+###### Confronti prestazionali dei vari algoritmi di sostituzione delle pagine
+Per valutare e confrontare oggettivamente l'efficienza dei vari algoritmi di sostituzione delle pagine, si utilizza come metrica fondamentale il numero di **page fault** generati. Le valutazioni standard vengono effettuate simulando una memoria RAM limitata, ad esempio con 3 frame disponibili , e sottoponendo il sistema a una specifica sequenza compatta di accessi in memoria (come la stringa 7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1). In queste sequenze di test, le ripetizioni immediate dello stesso numero vengono omesse poiché non influenzano il verificarsi dei page fault.
 
+###### Valutazione dei Modelli Base
+Sottoponendo la sequenza di riferimento ai tre algoritmi principali, emergono chiare differenze prestazionali: Il modello **OPT (Ottimale)** funge da termine di paragone assoluto. Genera il minimo storico di soli 9 page fault. Resta tuttavia un algoritmo puramente teorico, poiché per prendere le sue decisioni necessita di informazioni impossibili da ottenere sui riferimenti futuri a breve termine.  ![[Pasted image 20260519160201.png|700]]*(ogni quadrato grigio indica un page fault, in alto troviamo le pagine richieste, e in basso dentro i quadratini quelle che ci sono in memoria)*
+Passando alle implementazioni reali, l'algoritmo **FIFO** si dimostra molto meno efficiente, registrando ben 15 page fault
+![[Pasted image 20260519160425.png|700]]
+Questo algoritmo soffre del problema noto come *anomalia di Belady*. L'algoritmo **LRU (Least-Recently Used)** invece si posiziona nel mezzo registrando 12 page fault. Oltre alle buone prestazioni, inoltre quest'ultimo è immune a l'anomalia di Belady.
+![[Pasted image 20260519160531.png|700]]
+###### Anomalia di Belady e Proprietà di Inclusione
+Testando determinati algoritmi, i progettisti si sono scontrati con un fenomeno matematico imprevisto.
+**Anomalia di Belady:** È un'anomalia controintuitiva che associa un inaspettato aumento dei page fault a un aumento della memoria RAM fisica disponibile. Questa anomalia si verifica solo di fronte a specifiche sequenze di accesso. Ad esempio, sottoponendo a un sistema la sequenza $[1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5]$, si può osservare un peggioramento delle prestazioni passando da 3 a 4 frame di memoria.
+![[Pasted image 20260519160909.png|500]]
+L'algoritmo LRU non presenta questa anomalia perché il suo modello matematico soddisfa un requisito stringente.
+
+**Proprietà di Inclusione:** È una proprietà matematica secondo cui, in ogni istante di tempo $t$ e con una memoria di $n$ frame, l'insieme dei frame caricati è sempre un sottoinsieme di quelli che verrebbero caricati avendo a disposizione $n+1$ frame. In formula: $B_{t}(n)\subseteq B_{t}(n+1)$. Qualsiasi algoritmo che rispetti questa proprietà è matematicamente immune all'anomalia di Belady.
+
+###### Comportamento degli algoritmi derivati
+Comprendere l'anomalia di Belady e la proprietà di inclusione permette di classificare anche l'efficienza e i difetti di tutti gli algoritmi derivati impiegati nei sistemi operativi reali: Tutti gli algoritmi che si basano sul principio temporale del FIFO, ovvero **Seconda Chance**, **Clock** e anche la rozza approssimazione **NRU**, soffrono dell'anomalia di Belady e possono peggiorare le loro prestazioni all'aumentare della memoria. Al contrario, gli algoritmi che nascono per approssimare l'LRU, ovvero **NFU** e **Aging**, ereditano e godono della proprietà di inclusione, risultando stabili e sicuri. In particolare, l'Aging si distingue come una buona approssimazione dell'LRU, vantando anche un'implementazione software altamente efficiente. ![[Pasted image 20260519161110.png|500]]
 ### Problemi di progettazione dei sistemi di paginazione
 
 ###### Politiche di Allocazione: Globali e Locali a Confronto
@@ -388,6 +406,9 @@ Il metodo più efficace per gestire questa "assegnazione dinamica" dei frame è 
 - **Limite Superiore (Linea tratteggiata A):** Se la frequenza di paginazione di un processo supera questa soglia, significa che il tasso di errore è troppo alto. Il processo è "in sofferenza" per mancanza di spazio, quindi il sistema interviene aumentandogli la quota di frame assegnati.
 - **Limite Inferiore (Linea tratteggiata B):** Se la frequenza di paginazione scende al di sotto di questa soglia, significa che il processo sta girando con un numero di errori così basso da far supporre che abbia troppa memoria a disposizione rispetto al necessario. In questo caso, il sistema operativo può tranquillamente sottrargli dei frame per riassegnarli a processi più bisognosi.
 In questo modo, il PFF lavora costantemente in background cercando di mantenere la frequenza di paginazione di tutti i processi all'interno di una fascia sicura e ottimale.
+
+###### Politica di Pulitura e Gestione dei Frame Liberi
+Il meccanismo di risoluzione dei **page fault** è davvero efficiente e rapido solo se ci sono **frame liberi** sempre disponibili in memoria. Quando i frame scarseggiano e si è costretti a rimuovere una pagina, la gestione diventa lenta, soprattutto se la pagina è "sporca" (modificata), poiché richiede una preventiva e pesante scrittura su disco. Per evitare questo collo di bottiglia, sistemi operativi come Linux e Windows utilizzano il **paging daemon**, un processo di servizio che monitora costantemente l'occupazione globale della RAM. Questo daemon agisce d'anticipo: individua le pagine che presume non saranno utili nel breve periodo, le seleziona e le rende disponibili, mantenendo così un **pool di frame liberi** sempre pronti all'uso. La caratteristica chiave di questo pool è che i dati non vengono cancellati subito, lasciando aperta la possibilità di un **ripescaggio** istantaneo: se un processo richiede quella pagina prima che il frame venga effettivamente sovrascritto, il sistema la recupera immediatamente senza dover scatenare un vero e proprio page fault, riducendo drasticamente l'overhead generale.
 
 ###### Controllo del Carico
 Se i working set combinati superano la capacità di memoria, il PFF indicherà che tutti i processi necessitano di memoria, portando inesorabilmente al **thrashing**. L'unica soluzione è lo **Swapping**, scaricando quanti più processi sul disco. La scelta di chi scaricare dipende dal grado di multiprogrammazione e dalle caratteristiche del processo (I/O bound o CPU bound).
@@ -416,3 +437,4 @@ In passato, i computer utilizzavano un unico spazio degli indirizzi per contener
 Si definiscono così un **I-space** (_Instruction space_), dedicato esclusivamente a contenere il codice del programma, e un **D-space** (_Data space_), riservato ai dati operativi come le variabili. Il grande vantaggio di questa architettura è che l'I-space e il D-space vengono paginati in modo totalmente indipendente. Poiché ciascuno possiede la propria tabella delle pagine dedicata, il sistema operativo riesce di fatto a raddoppiare la memoria virtuale disponibile per un singolo processo, con l'hardware che instrada automaticamente le richieste verso lo spazio corretto.
 
 Sebbene oggi l'avvento dei 64 bit abbia reso quasi inesauribile lo spazio degli indirizzi, questa netta separazione architettonica non è scomparsa. Al contrario, è diventata lo standard per ottimizzare la velocissima memoria **Cache di primo livello (L1)** all'interno delle CPU moderne. Suddividere la cache in L1-Dati e L1-Istruzioni permette infatti al processore di leggere codice e dati in parallelo, evitando colli di bottiglia e massimizzando le prestazioni.
+
