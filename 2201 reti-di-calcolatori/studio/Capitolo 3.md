@@ -552,9 +552,15 @@ Estensioni recenti di IP e TCP (RFC 3168) permettono un controllo assistito dall
 - **Funzionamento:** Se un router rileva una congestione persistente, imposta questi bit e inoltra il pacchetto. Il destinatario riceve il pacchetto e informa il mittente impostando il bit **ECE** (_Explicit Congestion Notification Echo_) all'interno di un segmento ACK.
 - **Reazione:** Il mittente TCP reagisce dimezzando la _cwnd_ (come in una ritrasmissione rapida) e imposta il bit **CWR** (_Congestion Window Reduced_) nel successivo segmento inviato al ricevente per confermare la presa visione.
 
-###### La Fairness (Equità) in TCP
-Un meccanismo di controllo si dice _fair_ (equo) se $K$ connessioni che condividono un collo di bottiglia con capacità $R$ (assumendo assenza di traffico UDP) ottengono ciascuna una velocità media pari a **$R/K$**. Immaginiamo 2 connessioni TCP con identici _MSS_ e _RTT_, sempre in _congestion avoidance_.
-![[Pasted image 20260514212511.png|600]]
-All'aumentare della _cwnd_ (+1 _MSS_), il _throughput_ congiunto cresce lungo una semiretta a 45°. Quando la somma delle velocità supera $R$, i pacchetti vengono persi. Entrambe le connessioni dimezzano la loro _cwnd_ (il grafico decresce verso l'origine). Riprendendo a crescere a 45° e dimezzando ciclicamente, le connessioni convergono inevitabilmente verso la bisettrice del piano, ovvero la **linea di equa condivisione della banda**.
-![[Pasted image 20260514212625.png|600]]
-**Il peso dell'RTT:** Le ipotesi di base quasi mai si verificano nella realtà (le applicazioni _client/server_ ottengono porzioni assai diverse). Nello specifico, a parità di condizioni, le connessioni con un **RTT inferiore** riescono ad aprire le proprie finestre di congestione molto più rapidamente, accaparrandosi _throughput_ superiori a discapito di quelle con _RTT_ più alto.
+###### La Fairness in TCP
+Un meccanismo di controllo si dice fair (equo) se K connessioni che condividono un collo di bottiglia con capacità R (assumendo assenza di traffico UDP) ottengono ciascuna una velocità media pari a R/K. Immaginiamo 2 connessioni TCP (che chiameremo A e B) con identici MSS e RTT, sempre in fase di _congestion avoidance_.
+
+Rappresentando la situazione su un piano cartesiano (con le velocità di A e B sugli assi), possiamo tracciare la **linea dell'efficienza**, data dall'equazione **A + B = R** (ovvero $Y = -X + R$), e la **linea dell'equità**, rappresentata dalla bisettrice del quadrante. All'aumentare della _cwnd_ (+1 MSS), il throughput congiunto cresce per entrambe le connessioni della stessa quantità, disegnando una traiettoria con pendenza a 45°.
+
+Continuando a incrementare, se la somma delle velocità supera la linea dell'efficienza ($A+B>R$), si verifica una congestione (perdita di pacchetti). Di conseguenza, entrambe le connessioni subiscono un dimezzamento della finestra, passando dalle coordinate $(x, y)$ a $(\frac{x}{2}, \frac{y}{2})$.
+
+Dal punto di vista geometrico, spostarsi da un punto $(x, y)$ a uno $(\frac{x}{2}, \frac{y}{2})$ equivale a muoversi lungo la retta passante per l'origine e per il punto stesso. Dimezzando i valori, **il nuovo punto di partenza risulta matematicamente più vicino alla linea dell'equità**. Riprendendo a crescere a 45° e subendo ciclicamente questi dimezzamenti verso l'origine, le connessioni convergono inevitabilmente verso l'intersezione tra la linea dell'efficienza e la linea dell'equità (la bisettrice), raggiungendo l'equa condivisione 
+della banda.
+![[Pasted image 20260519105038.png|700]]
+
+**Il peso dell'RTT:** Le ipotesi di base quasi mai si verificano nella realtà (le applicazioni client/server ottengono porzioni assai diverse). Nello specifico, a parità di condizioni, le connessioni con un RTT inferiore riescono ad aprire le proprie finestre di congestione molto più rapidamente, accaparrandosi throughput superiori a discapito di quelle con RTT più alto.
