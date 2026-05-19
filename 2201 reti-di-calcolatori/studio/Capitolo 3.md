@@ -1,5 +1,5 @@
 ### Introduzione al livello trasporto
-###### Introduzione e Funzioni Principali
+###### Introduzione e funzioni principali
 Posto tra il livello di applicazione e quello di rete, il livello di trasporto costituisce una parte centrale dell’architettura stratificata delle reti. La sua funzione critica è fornire servizi di comunicazione direttamente ai processi applicativi in esecuzione su host differenti.
 - **Comunicazione logica** (_logical communication_): Dal punto di vista dell'applicazione, il livello di trasporto fa in modo che tutto proceda come se gli host comunicanti fossero direttamente connessi, anche se fisicamente si trovano agli antipodi del pianeta e sono separati da numerosi router.
 - **Posizionamento:** I protocolli a livello di trasporto sono implementati esclusivamente nei sistemi periferici (host) e **non** nei router della rete.
@@ -7,7 +7,7 @@ Posto tra il livello di applicazione e quello di rete, il livello di trasporto c
     - **Lato mittente:** Il livello di trasporto converte i messaggi ricevuti dal processo applicativo in **segmenti** (_transport-layer segment_). Questo avviene spezzando i messaggi (se necessario) e aggiungendo un'intestazione di trasporto. Il segmento viene poi passato al livello di rete, dove viene incapsulato in un **datagramma** (pacchetto a livello di rete) e inviato. I router intermedi esaminano solo i campi a livello di rete, ignorando il segmento incapsulato.
     - **Lato ricevente:** Il livello di rete estrae il segmento dal datagramma e lo passa al livello superiore (il trasporto).
 
-###### L'Analogia del Servizio Postale
+###### L'Analogia del servizio postale
 Per comprendere la differenza tra livello di trasporto e livello di rete, si può utilizzare l'analogia di due condomini (uno a Milano e uno a Roma) abitati da cugini che si scrivono lettere.
 - **Processi:** I cugini.
 - **Host (sistemi periferici):** I condomini.
@@ -16,17 +16,15 @@ Per comprendere la differenza tra livello di trasporto e livello di rete, si pu�
 - **Messaggi dell'applicazione:** Le lettere nelle buste.
 I protocolli di trasporto (Anna e Andrea) lavorano solo ai bordi della rete, trasferendo i messaggi dai processi al livello di rete, ma non sono coinvolti nello smistamento intermedio. Inoltre, i servizi che il livello di trasporto può offrire sono fortemente vincolati dal modello di servizio del protocollo sottostante (il livello di rete). Se il servizio postale non garantisce tempi massimi di consegna, Anna e Andrea non possono garantire ai cugini un limite di ritardo.
 
-###### I Protocolli di Trasporto in Internet
-A livello di rete usiamo **IP (Internet Protocol)** fornisce comunicazione logica tra host con un modello di servizio chiamato **best-effort delivery service** (massimo sforzo). IP fa del suo meglio per consegnare i segmenti, ma non offre garanzie: per questo è un servizio **non affidabile** (_unreliable service_). Ogni host possiede un indirizzo IP a livello di rete;
-In una rete TCP/IP, il livello di trasporto offre due protocolli principali alle applicazioni:
-
+###### I protocolli di trasporto in internet
+A livello di rete usiamo **IP (Internet Protocol)** fornisce comunicazione logica tra host con un modello di servizio chiamato **best-effort delivery service** (massimo sforzo). IP fa del suo meglio per consegnare i segmenti, ma non offre garanzie: per questo è un servizio **non affidabile** (_unreliable service_). Ogni host possiede un indirizzo IP a livello di rete; In una rete TCP/IP, il livello di trasporto offre due protocolli principali alle applicazioni:
 - **UDP (User Datagram Protocol):** Fornisce un servizio non affidabile e **non orientato alla connessione**. UDP offre solo due servizi minimi: la consegna dei dati da processo a processo e un basilare controllo degli errori.
 - **TCP (Transmission Control Protocol):** Offre un servizio affidabile e **orientato alla connessione**. questo è un protocollo complesso che fornisce servizi aggiuntivi fondamentali:
     - **Trasferimento dati affidabile:** Tramite controllo di flusso, numeri di sequenza, _acknowledgment_ e timer.
     - **Controllo di congestione** (_congestion control_): Evita che le connessioni TCP intasino i collegamenti e i router tra gli host con un traffico eccessivo.
 
-###### Multiplexing e Demultiplexing
-Questi due processi permettono di estendere il servizio di consegna da host-a-host (di IP) a un servizio di consegna processo-a-processo. Quello che ci permette di inviare i dati ai processi sono i **Socket**, quello che fai il livello di trasporto è trasferire i dati alla socket specifica piuttosto che semplicemente all'host ![[Pasted image 20260511095905.png|700]]
+###### Multiplexing e demultiplexing
+Questi due processi permettono di estendere il servizio di consegna da host-a-host (di IP) a un servizio di consegna processo-a-processo. Quello che ci permette di inviare i dati ai processi sono i **socket**. Praticamente quello che fai il livello di trasporto è trasferire i dati alla socket specifica piuttosto che semplicemente all'host ![[Pasted image 20260511095905.png|700]]
 - **Multiplexing (Lato mittente):** Il compito di radunare frammenti di dati da diverse socket sull'host di origine, incapsulare ognuno con un'intestazione a livello di trasporto per creare segmenti, e passarli al livello di rete (come Anna che raccoglie e imbuca le lettere).
 - **Demultiplexing (Lato ricevente):** Il compito di trasportare i dati dei segmenti in arrivo verso la giusta socket esaminando l'intestazione (come Andrea che legge il nome sulla busta e consegna la lettera al destinatario corretto).
 
@@ -115,23 +113,16 @@ Questo protocollo presenta un problema critico: non prende in considerazione la 
 La soluzione al problema dei pacchetti duplicati è elegante e semplice: aggiungere un **numero di sequenza** (_sequence number_) ai pacchetti dati.
 - **Numero di sequenza:** Un campo aggiuntivo nel pacchetto. Per un protocollo _stop-and-wait_ è sufficiente 1 singolo bit (che si alterna tra 0 e 1), in quanto permette al destinatario di distinguere un pacchetto nuovo (numero di sequenza diverso dal precedente) da una ritrasmissione (stesso numero di sequenza del pacchetto appena ricevuto).
 
-Nel protocollo **rdt2.1**, i pacchetti di ACK e NAK non necessitano di includere il numero di sequenza, perché non possono andare smarriti: il mittente sa sempre che il feedback ricevuto fa riferimento all'ultimo e unico pacchetto che ha trasmesso. L'introduzione dei numeri di sequenza costringe le FSM del mittente e del ricevente a raddoppiare i propri stati (devono tenere traccia se stanno processando un pacchetto con sequenza 0 oppure 1).
-
-![[2.1.png]]
-
-Il protocollo **rdt2.2** rappresenta un'evoluzione che elimina la necessità dei pacchetti NAK.
-
-Anziché inviare un NAK per segnalare un errore, il ricevente invia semplicemente un ACK relativo al **pacchetto più recente ricevuto correttamente**, specificando all'interno dell'ACK il numero di sequenza. Se il mittente riceve due ACK identici per lo stesso pacchetto, deduce automaticamente che il ricevente non ha ricevuto correttamente il pacchetto successivo a quello appena confermato. Questo innesca la ritrasmissione senza il bisogno di un NAK esplicito.
-
-![[2.2.png]]
+Nel protocollo **rdt2.1**, i pacchetti di ACK e NAK non necessitano di includere il numero di sequenza, perché non possono andare smarriti: il mittente sa sempre che il feedback ricevuto fa riferimento all'ultimo e unico pacchetto che ha trasmesso. L'introduzione dei numeri di sequenza costringe le FSM del mittente e del ricevente a raddoppiare i propri stati (devono tenere traccia se stanno processando un pacchetto con sequenza 0 oppure 1). ![[2.1.png|800]]
+Il protocollo **rdt2.2** rappresenta un'evoluzione che elimina la necessità dei pacchetti NAK. Anziché inviare un NAK per segnalare un errore, il ricevente invia semplicemente un ACK relativo al **pacchetto più recente ricevuto correttamente**, specificando all'interno dell'ACK il numero di sequenza. Se il mittente riceve due ACK identici per lo stesso pacchetto, deduce automaticamente che il ricevente non ha ricevuto correttamente il pacchetto successivo a quello appena confermato. Questo innesca la ritrasmissione senza il bisogno di un NAK esplicito. ![[2.2.png|800]]
 ###### rdt3.0: Gestione della perdita di pacchetti
 Le reti reali (inclusa Internet) non si limitano a danneggiare i bit, ma possono smarrire interi pacchetti. Se il pacchetto dati o l'ACK vanno perduti, in un protocollo come rdt2.2 il mittente rimarrebbe bloccato per sempre in attesa di un feedback che non arriverà mai. Per risolvere il problema, il protocollo **rdt3.0** implementa un meccanismo di ritrasmissione basato sul tempo utilizzando un **contatore** (_countdown timer_). Il mittente attende un tempo prestabilito (sufficiente a coprire il ritardo di andata e ritorno più il tempo di elaborazione). Se il timer scade (_interrupt_) senza che sia arrivato un ACK, il mittente assume prudentemente che il pacchetto sia andato perso e **lo ritrasmette**. Se il pacchetto o l'ACK non erano persi ma solo in forte ritardo, questa azione genererà sul canale dei pacchetti duplicati, ma questi saranno gestiti agilmente grazie ai numeri di sequenza ereditati da rdt2.2. Dato che i numeri di sequenza si alternano costantemente tra 0 e 1, il protocollo rdt3.0 è noto anche come **protocollo ad alternanza di bit**.
 
 ![[Pasted image 20260511103713.png|700]]
 ###### Le performance e i Protocolli con Pipelining
 Pur essendo funzionalmente ineccepibile, il protocollo rdt3.0 basato sulla logica _stop-and-wait_ risulta inaccettabile in termini di prestazioni, specialmente su reti ad alta velocità. Il collo di bottiglia è lo scarso **utilizzo del canale** (_utilization_).
-- **Utilizzo:** Definito come la frazione di tempo in cui il mittente è attivamente impegnato a iniettare bit nel canale di trasmissione, rispetto al tempo totale impiegato ad attendere la risposta.
 
+**Utilizzo:** Definito come la frazione di tempo in cui il mittente è attivamente impegnato a iniettare bit nel canale di trasmissione, rispetto al tempo totale impiegato ad attendere la risposta.
 
 > [!EXAMPLE] Il calcolo delle prestazioni (Stop-and-wait)
 > ![[Pasted image 20260511103604.png|700]]
@@ -166,7 +157,7 @@ L'implementazione del pipelining ha un profondo impatto sull'architettura del pr
 Le due soluzioni principali per la gestione degli errori e la risoluzione dei pacchetti smarriti in regime di pipelining sono il protocollo **Go-Back-N** e la **Ripetizione Selettiva** (_selective repeat_).
 
 ### Gestione degli errori
-###### Il Protocollo Go-Back-N (GBN)
+###### Il protocollo Go-Back-N (GBN)
 In un protocollo **Go-Back-N (GBN)** il mittente può trasmettere più pacchetti consecutivamente senza dover attendere alcun riscontro, ma non può mantenere nella pipeline un numero di pacchetti non ancora riscontrati superiore a un valore massimo consentito, definito come $N$.
 ![[Pasted image 20260511163217.png|700]]
 Analizzando l'intervallo dei numeri di sequenza dal punto di vista del mittente, possiamo definire due variabili fondamentali:
@@ -210,7 +201,7 @@ In questo esempio, il protocollo opera con una finestra di ampiezza pari a 4. Il
 
 Il protocollo GBN contiene molte delle tecniche impiegate dal TCP, permettendo al mittente di "riempire la tubatura" e risolvendo il problema dello scarso utilizzo del canale tipico dei protocolli _stop-and-wait_. Tuttavia, presenta un grave limite prestazionale: se l'ampiezza della finestra e il prodotto banda-ritardo sono molto elevati, la perdita di un singolo pacchetto genera una valanga di ritrasmissioni inutili.
 
-###### Il Protocollo a Ripetizione Selettiva (SR)
+###### Il Protocollo a ripetizione selettiva (SR)
 Per ovviare alle inefficienze del GBN, nascono i **Protocolli a ripetizione selettiva** (_Selective-Repeat Protocol_, SR). Questi evitano le ritrasmissioni superflue obbligando il mittente a ritrasmettere esclusivamente i pacchetti che si sospetta siano andati persi o danneggiati. Questo approccio richiede che il destinatario confermi in modo specifico e individuale (non cumulativo) ogni pacchetto ricevuto correttamente.
 - Il ricevente SR genera un acknowledgment per i pacchetti intatti, indipendentemente dal fatto che arrivino in ordine o fuori sequenza.
 - I pacchetti fuori sequenza vengono memorizzati in un apposito buffer fino all'arrivo dei pacchetti mancanti (quelli con numeri di sequenza inferiori). Solo a quel punto, l'intero blocco di pacchetti riordinato viene consegnato al livello superiore.
@@ -553,14 +544,16 @@ Estensioni recenti di IP e TCP (RFC 3168) permettono un controllo assistito dall
 - **Reazione:** Il mittente TCP reagisce dimezzando la _cwnd_ (come in una ritrasmissione rapida) e imposta il bit **CWR** (_Congestion Window Reduced_) nel successivo segmento inviato al ricevente per confermare la presa visione.
 
 ###### La Fairness in TCP
-Un meccanismo di controllo si dice fair (equo) se K connessioni che condividono un collo di bottiglia con capacità R (assumendo assenza di traffico UDP) ottengono ciascuna una velocità media pari a R/K. Immaginiamo 2 connessioni TCP (che chiameremo A e B) con identici MSS e RTT, sempre in fase di _congestion avoidance_.
+In una rete, un meccanismo di controllo della congestione soddisfa il criterio di **equità** (_fairness_) se $K$ connessioni omogenee, che condividono un unico collegamento critico di capacità $R$ in assenza di traffico esogeno, convergono nel lungo periodo verso un throughput medio equamente ripartito e pari a $R/K$. Il protocollo **TCP** persegue questo obiettivo allocando la banda dinamicamente tramite l'algoritmo **AIMD** durante la fase di _Congestion Avoidance_. L'evoluzione dinamica del sistema può essere modellata geometricamente su un piano cartesiano i cui assi rappresentano i throughput delle singole connessioni, definendo lo spazio di stato tramite due rette fondamentali: la **linea di pieno utilizzo dell'ampiezza di banda** (Linea dell'Efficienza, $A + B = R$), che possiede pendenza negativa poiché il vincolo fisico impone che l'incremento di banda di un flusso corrisponda a una contrazione simmetrica del secondo, e la **linea di equa condivisione dell'ampiezza di banda** (Linea dell'Equità, $A = B$), coincidente con la bisettrice del quadrante. L'obiettivo del controllo di congestione è la convergenza asintotica verso il punto di intersezione tra queste due rette. ![[Pasted image 20260519105038.png|700]]
+Per analizzare la dinamica microscopica, facendo riferimento alla figura, si parte da uno **stato iniziale arbitrario**, (punto **A**), in cui la connessione 2 gode di un throughput superiore. Poiché la rete non è satura, entrambe le connessioni aumentano linearmente la propria finestra di congestione della stessa quantità fissa per ogni RTT (+1 MSS); sul piano cartesiano, questo _incremento additivo_ genera uno spostamento lineare con una **pendenza geometrica di esattamente 45 gradi** (traiettoria da **A** a **B**), sviluppandosi in modo strettamente parallelo alla linea di equa condivisione e mantenendo così inalterato il divario assoluto tra le connessioni.
 
-Rappresentando la situazione su un piano cartesiano (con le velocità di A e B sugli assi), possiamo tracciare la **linea dell'efficienza**, data dall'equazione **A + B = R** (ovvero $Y = -X + R$), e la **linea dell'equità**, rappresentata dalla bisettrice del quadrante. All'aumentare della _cwnd_ (+1 MSS), il throughput congiunto cresce per entrambe le connessioni della stessa quantità, disegnando una traiettoria con pendenza a 45°.
+Intersecando e superando la linea di pieno utilizzo (punto **B**), i buffer dei router si saturano causando perdita di pacchetti l'algoritmo AIMD impone il **dimezzamento immediato** della finestra di entrambi i flussi, operazione che geometricamente equivale a far arretrare il sistema lungo una linea retta orientata verso l'origine degli assi (traiettoria da **B** a **C**). Essendo il taglio proporzionale (percentuale), la connessione 2 subisce una **riduzione quantitativa assoluta molto più severa** rispetto alla connessione 1, forzando il punto **C** a posizionarsi matematicamente più vicino alla linea della bisettrice rispetto alla traiettoria precedente.
 
-Continuando a incrementare, se la somma delle velocità supera la linea dell'efficienza ($A+B>R$), si verifica una congestione (perdita di pacchetti). Di conseguenza, entrambe le connessioni subiscono un dimezzamento della finestra, passando dalle coordinate $(x, y)$ a $(\frac{x}{2}, \frac{y}{2})$.
+Riprendendo la fase di crescita (traiettoria da **C** a **D**) e subendo ciclicamente questi dimezzamenti, si produce un caratteristico andamento geometrico a **dente di sega** che restringe progressivamente le oscillazioni attorno all'intersezione ottimale, garantendo l'equa ripartizione.
 
-Dal punto di vista geometrico, spostarsi da un punto $(x, y)$ a uno $(\frac{x}{2}, \frac{y}{2})$ equivale a muoversi lungo la retta passante per l'origine e per il punto stesso. Dimezzando i valori, **il nuovo punto di partenza risulta matematicamente più vicino alla linea dell'equità**. Riprendendo a crescere a 45° e subendo ciclicamente questi dimezzamenti verso l'origine, le connessioni convergono inevitabilmente verso l'intersezione tra la linea dell'efficienza e la linea dell'equità (la bisettrice), raggiungendo l'equa condivisione 
-della banda.
-![[Pasted image 20260519105038.png|700]]
+Tuttavia, è fondamentale precisare che questa equità perfetta si realizza _solo_ sotto la condizione di totale omogeneità dei flussi; nella realtà delle reti Internet, l'ipotesi di identità dei **tempi di andata e ritorno** (RTT) non si verifica quasi mai. Le connessioni caratterizzate da un **RTT inferiore**, infatti, riescono ad eseguire la fase di incremento additivo molto più rapidamente, deviando la traiettoria di crescita a proprio favore e introducendo un'**asimmetria intrinseca** che penalizza fortemente le connessioni a lungo raggio, comprimendone il throughput a vantaggio dei flussi locali.
 
-**Il peso dell'RTT:** Le ipotesi di base quasi mai si verificano nella realtà (le applicazioni client/server ottengono porzioni assai diverse). Nello specifico, a parità di condizioni, le connessioni con un RTT inferiore riescono ad aprire le proprie finestre di congestione molto più rapidamente, accaparrandosi throughput superiori a discapito di quelle con RTT più alto.
+> [!TIP] Formale
+> **Definizione:** In una rete a commutazione di pacchetto, un meccanismo di controllo della congestione garantisce l'**equità** (_fairness_) se $K$ connessioni omogenee, che condividono un unico collo di bottiglia con capacità $R$ in assenza di traffico esogeno, convergono nel lungo periodo verso un throughput medio equamente ripartito e pari a $R/K$.
+> 
+> **Dimostrazione:** L'equità del protocollo **TCP** viene dimostrata geometricamente analizzando le dinamiche dell'algoritmo **AIMD** su un piano cartesiano. Tracciando la **linea dell'efficienza** ($A + B = R$) e la **linea dell'equità** ($A = B$), si osserva che l'_incremento additivo_ fa crescere i throughput in modo strettamente parallelo alla linea dell'equità (con pendenza a 45 gradi), mantenendo inalterato il divario assoluto tra i flussi. Al momento della congestione, il _decremento moltiplicativo_ dimezza le coordinate del punto, facendolo arretrare lungo una retta passante per l'origine; poiché il taglio è percentuale, il flusso che occupava più banda subisce una riduzione quantitativa assoluta molto più severa. La ripetizione ciclica di queste asimmetrie crea un andamento a **dente di sega** che dimostra visivamente e matematicamente come il sistema sia intrinsecamente costretto a convergere verso il punto di intersezione delle due rette, raggiungendo la perfetta ripartizione della risorsa.
