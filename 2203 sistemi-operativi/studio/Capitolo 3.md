@@ -5,13 +5,8 @@ I moderni sistemi informatici adottano una **gerarchia della memoria** per bilan
 - **Memoria di medio costo:** Qualche gigabyte, abbastanza veloce e volatile (RAM).
 - **Memoria su disco:** Alcuni terabyte, non volatile, lenta ma a basso costo.
 **Gestore della memoria:** È la componente del sistema operativo incaricata di gestire questa gerarchia.
-###### Assenza di astrazione della memoria
-Storicamente, dai primi _mainframe_ (prima del 1960) fino ai primi _personal computer_ (prima del 1980), non esisteva alcuna astrazione della memoria. Ogni programma interagiva direttamente con la **memoria fisica**.
-###### Il modello di memoria fisica
-In questo scenario, il modello presentato al programmatore è un insieme di indirizzi che vanno da 0 a un limite massimo. Ogni indirizzo corrisponde a una cella (solitamente di 8 bit). Un'operazione tipica consisteva, ad esempio, nel muovere il contenuto della locazione fisica 1000 in un registro (_REGISTER1_).
 
-###### Limitazioni e varianti strutturali
-In assenza di astrazione, non è possibile eseguire due programmi contemporaneamente: se un programma scrivesse in una posizione usata da un altro, ne cancellerebbe i dati. Esistono tre varianti principali per l'organizzazione del sistema operativo in questo modello:
+Storicamente, dai primi _mainframe_ (prima del 1960) fino ai primi _personal computer_ (prima del 1980), non esisteva alcuna astrazione della memoria. Ogni programma interagiva direttamente con la **memoria fisica**. In questo scenario, il modello presentato al programmatore è un insieme di indirizzi che vanno da 0 a un limite massimo. In assenza di astrazione, non è possibile eseguire due programmi contemporaneamente: se un programma scrivesse in una posizione usata da un altro, ne cancellerebbe i dati. Esistono tre varianti principali per l'organizzazione del sistema operativo in questo modello:
 1. **S.O. in RAM:** Il sistema operativo risiede nel fondo della memoria nella **RAM (Random Access Memory)**.
 2. **S.O. in ROM:** Il sistema operativo si trova in cima alla memoria nella **ROM (Read Only Memory)**.
 3. **Modello Ibrido:** I driver dei dispositivi risiedono nella ROM in cima alla memoria, mentre il resto del sistema è nella RAM sottostante. Questo modello è tipico dei primi PC con MS-DOS, dove la parte in ROM è nota come **BIOS (Basic Input Output System)**.
@@ -28,16 +23,15 @@ Anche se i programmi sono protetti dalle chiavi, sorge il problema degli indiriz
 - *processo B*: il jump 28 cercherà di saltare ma entra nella memoria del primo processo e andrà in errore
 ![[Pasted image 20260501105311.png|500]]
 
-Una soluzione a questo problema è la **rilocazione statica:** consiste nel modificare il programma direttamente durante il caricamento in memoria, aggiungendo l'indirizzo di partenza (es. 16.384) a ogni indirizzo del programma. Funzionava in questo modo: quando un programma era caricato all'indirizzo 16.384, la costante 16.384 era aggiunta a ogni indirizzo del programma durante il processo di caricamento. Anche se questo meccanismo funziona bene se eseguito in modo corretto, ma non è una
-soluzione in generale e rallenta il caricamento.
+Una soluzione a questo problema è la **rilocazione statica:** consiste nel modificare il programma direttamente durante il caricamento in memoria, aggiungendo l'indirizzo di partenza (es. 16.384) a ogni indirizzo del programma. Funzionava in questo modo: quando un programma era caricato all'indirizzo 16.384, la costante 16.384 era aggiunta a ogni indirizzo del programma durante il processo di caricamento. Anche se questo meccanismo funziona bene se eseguito in modo corretto, ma non è una soluzione in generale e rallenta il caricamento.
 ### L'astrazione della memoria: lo spazio degli indirizzi
 Esporre la memoria fisica presenta due gravi inconvenienti:
 1. I programmi utente possono distruggere il sistema operativo.
 2. È difficile gestire l'esecuzione contemporanea di più programmi.
 
-Per risolvere i problemi di **protezione** e **riposizionamento**, è stata introdotta l'astrazione dello **spazio degli indirizzi**. Lo **spazio degli indirizzi:** è l'insieme degli indirizzi che un processo può utilizzare per indirizzare la memoria. Per rendere possibile questa astrazione virtuale in prima battuta facciamo uso della tecnica della rilocazione dinamica
+Per risolvere i problemi di **protezione** e **riposizionamento**, è stata introdotta l'astrazione chiamata **spazio degli indirizzi**. Lo **spazio degli indirizzi:** è l'insieme degli indirizzi che un processo può utilizzare per indirizzare la memoria. Per rendere possibile questa astrazione virtuale in prima battuta facciamo uso della tecnica della rilocazione dinamica
 ###### Rilocazione dinamica: registri base e limite
-La **rilocazione dinamica**, mappa lo spazio degli indirizzi di ogni processo su porzioni diverse di memoria fisica tramite hardware speciale ovvero attraverso due registri della CPU:
+La **rilocazione dinamica**, mappa lo spazio degli indirizzi di ogni processo su porzioni diverse di memoria fisica tramite hardware speciale, ovvero attraverso due registri della CPU:
 - **Registro Base:** Contiene l'indirizzo fisico di partenza del programma in memoria.
 - **Registro Limite:** Contiene la lunghezza del programma.
 Quando un processo accede alla memoria, l'hardware esegue due passaggi automatici:
@@ -51,21 +45,13 @@ Su questa soluzione possiamo dire che:
 ###### Gestione del sovraccarico di memoria
 Spesso la quantità totale di RAM richiesta dai processi in esecuzione supera la memoria fisica effettivamente disponibile. Per gestire questo scenario, i sistemi operativi hanno storicamente adottato due strategie principali:
 1. **Swapping:** Consiste nello spostare interamente su disco i processi temporaneamente inattivi per fare spazio ad altri.
-2. **Memoria virtuale:** Un'evoluzione successiva (che vedremo dopo) che consente l'esecuzione di programmi caricandone in RAM solo le parti strettamente necessarie.
-Analizziamo prima l'approccio storico: lo Swapping.
-
+2. **Memoria virtuale:** Un'evoluzione successiva che consente l'esecuzione di programmi caricandone in RAM solo le parti strettamente necessarie.
 ###### Lo Swapping e la Frammentazione
-Immaginiamo di avere due programmi, $P_1$ e $P_2$. Attualmente $P_1$ è in esecuzione, ma vogliamo eseguire anche $P_2$. Purtroppo, la memoria centrale (RAM) è piena. A questo punto interviene il componente del sistema operativo chiamato **swapper**: esso esegue uno _swap-out_ (sposta $P_1$ dalla RAM al disco) e uno _swap-in_ (carica $P_2$ dal disco alla RAM).
-
-Il disco viene quindi usato come "memoria secondaria" di appoggio. Il processo $P_1$, finché si trova su disco, è penalizzato poiché non riceve risorse dalla CPU.
-
-Sebbene sembri una soluzione perfetta, lo swapping continuo di programmi di dimensioni diverse crea un grave problema: la **frammentazione della memoria** . Ne esistono due tipi:
+Immaginiamo di avere due programmi, $P_1$ e $P_2$. Attualmente $P_1$ è in esecuzione, ma vogliamo eseguire anche $P_2$. Purtroppo, la memoria centrale (RAM) è piena. A questo punto interviene il componente del sistema operativo chiamato **swapper**: esso esegue uno _swap-out_ (sposta $P_1$ dalla RAM al disco) e uno _swap-in_ (carica $P_2$ dal disco alla RAM). Il disco viene quindi usato come "memoria secondaria" di appoggio. Il processo $P_1$, finché si trova su disco, è penalizzato poiché non riceve risorse dalla CPU. Sebbene sembri una soluzione perfetta, lo swapping continuo di programmi di dimensioni diverse crea un grave problema: la **frammentazione della memoria** . Ne esistono due tipi:
 - **Frammentazione Interna:** Si verifica quando a un processo viene assegnata un'area di memoria leggermente più grande delle sue reali esigenze. Lo spazio extra all'interno di quell'area allocata rimane inutilizzato e sprecato.
 - **Frammentazione Esterna:** Si verifica quando la memoria totale libera sarebbe sufficiente per ospitare un nuovo processo, ma è suddivisa in tanti piccoli blocchi non contigui (buchi). Poiché il processo necessita di memoria contigua, non può essere caricato. L'unica soluzione è la **Memory Compaction** (Compattazione della memoria): il S.O. sposta fisicamente tutti i processi attivi verso il fondo della memoria per unire tutti i "buchi" in un unico grande spazio libero in cima. È una procedura estremamente lenta e si cerca di evitarla il più possibile.
 ###### Il problema dell'Allocazione con Dimensione Dinamica
-La gestione della frammentazione è ulteriormente complicata dal fatto che i processi non hanno sempre dimensioni fisse. Durante l'esecuzione, i dati di un programma possono crescere (ad esempio, allocando memoria dinamicamente).
-
-La struttura ottimale per gestire la crescita dinamica all'interno di un processo prevede due segmenti mobili:
+La gestione della frammentazione è ulteriormente complicata dal fatto che i processi non hanno sempre dimensioni fisse. Durante l'esecuzione, i dati di un programma possono crescere (ad esempio, allocando memoria dinamicamente). La struttura ottimale per gestire la crescita dinamica all'interno di un processo prevede due segmenti mobili:
 - **Segmento Dati (Heap):** Posizionato subito dopo il codice statico del programma, cresce verso l'alto.
 - **Segmento Stack (per variabili locali e ritorni):** Posizionato in cima all'area di memoria allocata per il processo, cresce verso il basso.
 ![[Pasted image 20260501112958.png|500]]
@@ -83,7 +69,7 @@ La memoria viene idealmente divisa in "unità di allocazione" (che possono andar
 - _Svantaggi:_ Quando bisogna caricare un nuovo processo che richiede _k_ unità contigue, il S.O. deve scansionare la lunghissima sequenza di bit per cercare una stringa ininterrotta di _k_ zeri. Questa ricerca è estremamente lenta.
 ![[Pasted image 20260501170015.png|500]]
 **B. Gestione con Liste Collegate**
-Invece di mappare ogni singolo blocco, il S.O. mantiene una lista dinamica (Linked List) che mappa interi segmenti . Ogni nodo (voce) della lista descrive un blocco contiguo, specificando:
+Invece di mappare ogni singolo blocco, il S.O. mantiene una lista dinamica (Linked List) che mappa interi segmenti . Ogni nodo (voce) della lista descrive un blocco contiguo, e contiene:
 1. Il tipo: Processo occupato (`P`) o Buco vuoto (`H` - _Hole_).
 2. L'indirizzo fisico di partenza.
 3. La lunghezza del blocco.
@@ -128,7 +114,7 @@ La paginazione ci permette quindi di suddividere la memoria fisica da quella vir
 ```
 MOV REG,1000 // muove quello che c'è all'indirizzo 1000 dentro REG
 ```
- Per eseguirla deve accedere prima alla memoria e lo fa generando degli indirizzi detti **indirizzi virtuali** l'insieme di questi indirizzi forma lo **spazio virtuale degli indirizzi** (l'insieme degli indirizzi a disposizione di un processo). Gli indirizzi virtuali generati dalla CPU non vanno direttamente al bus di memoria. passano prima attraverso un componente hardware dedicato chiamato **MMU (Memory Management Unit)** che consiste in un unità di gestione della memoria che ha il compito di mappare gli indirizzi virtuali sugli indirizzi di memoria fisica.
+ Per eseguirla deve accedere prima alla memoria e lo fa generando degli indirizzi detti **indirizzi virtuali** (l'insieme di questi indirizzi forma lo **spazio virtuale degli indirizzi** che sarebbero l'insieme degli indirizzi a disposizione di un processo). Gli indirizzi virtuali generati dalla CPU non vanno direttamente al bus di memoria ma passano prima attraverso un componente hardware dedicato chiamato **MMU (Memory Management Unit)** che consiste in un unità di gestione della memoria che ha il compito di mappare gli indirizzi virtuali sugli indirizzi di memoria fisica.
 ![[Pasted image 20260503161434.png|500]]
 ###### Pagine e frame
 Le unità base della gestione della paginazione sono:
@@ -205,7 +191,7 @@ Scendendo nel dettaglio di cosa fa l'MMU possiamo dire che: il processo di tradu
 > 
 > $$2^9byte \cdot 2^8 \text{ (numero di frame)} = 128kb$$
 
-###### La tabella delle Pagine
+###### La tabella delle pagine
 La tabella delle pagine è una tabella utilizzata dall'MMU insieme al sistema operativo per tradurre da indirizzi virtuali a fisici, l'esatto layout di una voce di una singola tabella della pagina dipende molto dalla macchina su cui si opera. Tuttavia, il tipo di informazioni presenti è più o meno lo stesso per tutte le architetture. Di seguito una rassegna dei campi contenuti in una voce:
 - **Numero del frame (frame number):** È il campo più importante in assoluto, in quanto indica l'indirizzo fisico in cui si trova la pagina.
 - **Bit Presente/Assente:** Se questo bit è 1, la voce è valida e può essere utilizzata normalmente. Se è 0, significa che la pagina virtuale cui appartiene la voce non è effettivamente in memoria in quel momento.
@@ -215,19 +201,14 @@ La tabella delle pagine è una tabella utilizzata dall'MMU insieme al sistema op
 - **Disabilitazione della cache:** L'ultimo bit consente di disabilitare la cache per la specifica pagina. Questo è fondamentale per l'I/O: fa in modo che la macchina debba prelevare la parola direttamente da quel dispositivo hardware, senza rischiare di usare una vecchia parola non aggiornata messa precedentemente in cache.
 
 ###### Problemi principali della paginazione
-Dopo aver visto le basi, è il momento di analizzare in maggior dettaglio le implementazioni. In ogni sistema di paginazione devono essere affrontate due questioni principali e molto critiche:
-1. **Il mapping dall'indirizzo virtuale all'indirizzo fisico deve essere veloce.** Questo punto deriva dal fatto che il mapping virtuale-fisico deve avvenire in modo sistematico per _ogni_ singolo riferimento alla memoria.
-2. **Se lo spazio virtuale degli indirizzi è grande, la tabella delle pagine sarà grande.** Questo punto deriva dal fatto che tutti i computer moderni usano indirizzi virtuali di almeno 64bit.
-
-La necessità di avere un mapping delle pagine che sia simultaneamente grande e veloce rappresenta un limite significativo, dovuto specificamente al modo in cui sono costruiti i computer. I progettisti hanno dovuto affrontare questo problema per anni.
-
-###### Le 2 Soluzioni Base per la Tabella delle Pagine
-Dal punto di vista concettuale, esistono due approcci estremi:
-- **Soluzione 1 (Registri hardware):** Avere una sola tabella delle pagine che consiste di un array di registri hardware estremamente veloci, con una sola voce per ogni pagina virtuale. All'avvio di un processo, il sistema operativo carica i registri con la tabella delle pagine del processo, prendendola da una copia che tiene in memoria. Durante l'esecuzione del processo, non sono necessari altri riferimenti alla memoria per la tabella delle pagine, garantendo grande velocità (ma con costi di context switch immensi se la tabella è grande).
-- **Soluzione 2 (Tabella in Memoria e PTBR):** Nella situazione opposta, la tabella delle pagine può essere interamente caricata nella memoria RAM. Tutto ciò di cui necessita l'hardware in questo caso è un singolo registro dedicato che punti all'inizio della tabella delle pagine in memoria, noto come **PTBR (Page Table Base Register)**.
-
+Nei sistemi operativi, la gestione della memoria tramite paginazione impone due sfide architetturali critiche e diametralmente opposte:
+- **Velocità di traduzione:** La mappatura dall'indirizzo virtuale a quello fisico deve essere quasi istantanea. Poiché questa operazione avviene per _ogni singolo_ riferimento alla memoria, un minimo ritardo genera un collo di bottiglia per l'intero sistema.
+- **Dimensione delle tabelle:** Con i moderni spazi di indirizzamento a 64 bit, il numero di pagine virtuali è immenso, rendendo le relative Tabelle delle Pagine (Page Table) enormi e ingombranti.
+La necessità di avere un meccanismo che sia **contemporaneamente gigantesco e ultra-veloce** rappresenta un ostacolo storico per i progettisti. Dal punto di vista concettuale, il problema si scontra con due approcci estremi, nessuno dei quali è praticabile da solo.
+1. Nel **primo approccio (basato sull'hardware)**, l'intera tabella delle pagine viene memorizzata in un array di registri interni alla CPU. Durante l'esecuzione le prestazioni sono eccellenti, poiché il processore non deve mai accedere alla RAM per tradurre gli indirizzi. Tuttavia, i costi architetturali sono proibitivi: con le dimensioni delle tabelle moderne, i tempi e le risorse necessarie per aggiornare milioni di registri a ogni _context switch_ paralizzerebbero il sistema.
+2. All'**estremo opposto (approccio in memoria)**, l'intera tabella viene mantenuta esclusivamente nella RAM. In questo scenario all'hardware basta un singolo registro dedicato, il **PTBR** (_Page Table Base Register_), che punta all'inizio della tabella del processo in esecuzione. Se da un lato il _context switch_ diventa istantaneo (è sufficiente aggiornare il valore del PTBR) e si risolvono i limiti di spazio, dall'altro la lentezza diventa inaccettabile: ogni singola istruzione richiederebbe un accesso extra alla RAM solo per consultare la tabella, dimezzando di fatto le prestazioni del computer.
 ### Translation Lookaside Buffer (TLB)
-Per bilanciare velocità e dimensioni, la soluzione escogitata è stata quella di equipaggiare i computer di un piccolo dispositivo *hardware* dedicato esclusivamente a mappare gli indirizzi virtuali sugli indirizzi fisici senza dover passare ogni volta dalla tabella delle pagine in memoria. **TLB:** Acronimo di **Translation Lookaside Buffer**, talvolta chiamato anche **memoria associativa**.
+Per bilanciare velocità e dimensioni, la soluzione escogitata è stata quella di equipaggiare i computer di un piccolo dispositivo *hardware* dedicato esclusivamente a mappare gli indirizzi virtuali sugli indirizzi fisici senza dover passare ogni volta dalla tabella delle pagine in memoria, questo dispositivo si chiama **TLB** Acronimo di **Translation Lookaside Buffer**, talvolta chiamato anche **memoria associativa**.
 - **Capacità e Struttura:** Contiene solitamente poche voci, ciascuna voce contiene informazioni cruciali riguardo una pagina, tra cui: 
 	- *il numero di pagina virtuale*
 	- *un dirty bit*: quando avviene una modifica ad un record questo viene macchiato come dirty, quando questo succede e quel record deve essere eliminato dalla TLB la modifica deve essere riportata alla tabella delle pagine.
@@ -236,6 +217,7 @@ Per bilanciare velocità e dimensioni, la soluzione escogitata è stata quella d
 - **Funzionamento:** Quando un indirizzo virtuale viene presentato alla MMU per la traduzione, l'hardware per prima cosa guarda se il suo numero di pagina virtuale è presente nel TLB, confrontandolo simultaneamente (cioè in parallelo) con tutte le voci.
     - **TLB hit (successo di TLB):** Il numero di pagina viene trovato e la traduzione avviene istantaneamente.
     - **TLB miss (fallimento di TLB):** Avviene quando il numero di pagina virtuale non è nel TLB. In questo caso, la MMU rileva il miss e fa una normale ricerca sulla tabella delle pagine in memoria. Quindi sfratta una delle voci dal TLB e la rimpiazza con la voce della tabella delle pagine appena cercata e recuperata. In questo modo, se quella stessa pagina è riusata a breve termine, la seconda volta si avrà un successo (TLB hit).
+- **Caratteristiche**: è importante dire che questa memoria hardware è comparabile ad una cache e la ricerca viene fatta su tutte le sue celle in modo parallelo, quindi è molto veloce.
 
 ###### Effective Access Time (EAT)
 L'**Effective Access Time (EAT)**, o tempo di accesso effettivo, è una metrica fondamentale per valutare le prestazioni di un sistema di memoria con paginazione che utilizza un **Translation Lookaside Buffer (TLB)**. L'EAT ci permette di calcolare il tempo _medio_ ponderato di accesso alla memoria, tenendo conto del **TLB Hit Ratio** ($\varepsilon$), ovvero la percentuale di volte in cui la traduzione viene trovata con successo all'interno della TLB.
@@ -270,7 +252,6 @@ Nella gestione del TLB via software, è fondamentale capire la differenza fra du
 - **Soft miss:** Avviene quando la pagina di riferimento non è nel TLB, ma si trova comunque all'interno della memoria RAM. La risoluzione è rapida.
 - **Hard miss:** All'opposto, avviene quando la pagina stessa non è in memoria (e ovviamente nemmeno nel TLB). Per prendere la pagina serve un accesso al disco, il che comporta tempistiche di parecchi millisecondi. Questa situazione può esitare in un errore di **segmentazione (segmentation fault)**.
 
-
 I TLB possono essere usati per velocizzare la traduzione dell'indirizzo virtuale nell'indirizzo fisico rispetto allo schema originale della "tabella-delle-pagine-in-memoria". Rimane però un altro problema aperto: *quale comportamento assumere con spazi degli indirizzi virtuali molto grandi?*
 
 ###### Tabelle delle pagine multilivello
@@ -282,29 +263,32 @@ Questa directory contiene semplicemente dei puntatori a svariate tabelle seconda
 
 Inoltre, se il sistema ha bisogno di liberare spazio, le tabelle secondarie non consultate da tempo possono essere temporaneamente spostate sul disco fisso, lasciando in memoria solo la essenziale directory principale.
 ![[Pasted image 20260503161749.png|500]]
-- **Meccanismo a due livelli:** Quando viene presentato un indirizzo virtuale alla MMU, l'hardware per prima cosa estrae il primo campo (chiamato _PT1_) e usa questo valore come indice nella tabella delle pagine di livello più alto. Il secondo campo, _PT2_, adesso è usato come un indice nella tabella delle pagine di secondo livello (selezionata dal passo precedente) per cercare il numero di frame della pagina stessa.
+- **Meccanismo a due livelli:** Quando viene presentato un indirizzo virtuale alla MMU, l'hardware sa che è composto da due sotto-indirizzi quindi per prima cosa estrae il primo campo (chiamato _PT1_) e usa questo valore come indice nella tabella delle pagine di livello più alto. Il secondo campo, _PT2_, adesso è usato come un indice nella tabella delle pagine di secondo livello (selezionata dal passo precedente) per cercare il numero di frame della pagina stessa.
 - **Espansione dei livelli:** Possiamo aumentare il numero di livelli per supportare indirizzi molto grandi; questo ci permette di risparmiare memoria (tenendo su disco i livelli non usati) a discapito però della velocità, poiché sarà richiesto un accesso in più alla memoria RAM per ogni livello aggiunto alla gerarchia.
 ###### Tabelle delle pagine invertite
-Un'alternativa al continuo aumento della gerarchia della paginazione è nota con il termine di **tabelle delle pagine invertite**. In questa particolare progettazione c'è **una sola voce per frame** presente nella memoria reale, piuttosto che una voce per pagina dello spazio virtuale degli indirizzi (come avviene nei metodi classici).
-- **Vantaggio:** Le tabelle delle pagine invertite risparmiano una gran quantità di spazio, in particolar modo quando lo spazio virtuale degli indirizzi è molto superiore rispetto alla memoria fisica disponibile.
-- **Svantaggio:** Presentano un grosso problema: la traduzione da indirizzo virtuale a indirizzo fisico diventa molto difficile. Quando il processo _n_ referenzia la pagina virtuale _p_, l'hardware non può più trovare la pagina fisica usando semplicemente _p_ come indice diretto nella tabella delle pagine. Deve cercare invece l'esatta voce o coppia (_n, p_) esplorando l'intera tabella delle pagine invertite.
+Un'alternativa al continuo aumento dei livelli nella paginazione gerarchica è rappresentata dalle **tabelle delle pagine invertite**. In questa architettura, il paradigma classico viene ribaltato: anziché mantenere una voce per ogni pagina dello spazio virtuale, la tabella contiene **una singola voce per ogni frame fisico** effettivamente presente nella memoria RAM.
+Questo approccio comporta due conseguenze contrapposte:
+- **Enorme risparmio di spazio:** La dimensione della tabella dipende unicamente dalla quantità di memoria fisica installata e non da quella virtuale. Questo è un vantaggio cruciale nei sistemi moderni, dove lo spazio di indirizzamento virtuale è enormemente più vasto della RAM disponibile.
+- **Traduzione complessa e lenta**: Nelle tabelle tradizionali, la pagina virtuale _p_ funziona esattamente come l'indice di un array, consentendo un accesso diretto e immediato alla riga corrispondente per leggere il frame fisico. Nella tabella invertita, invece, la struttura cambia: le righe rappresentano i frame fisici e al loro interno viene annotato quale processo (_n_) (tramite ASID) e quale pagina virtuale (_p_) vi sono ospitati in quel momento. Di conseguenza, quando l'hardware ha bisogno di tradurre l'indirizzo, si ritrova in mano la coppia _(n, p)_ ma non sa a priori in quale riga sia scritta. Non potendo usare l'accesso diretto, è costretto a effettuare una vera e propria **ricerca per contenuto**, scansionando la tabella finché non trova la riga con l'esatta corrispondenza (il cui indice indica finalmente il frame fisico). Senza strutture aggiuntive, questa ricerca si tradurrebbe in innumerevoli e lenti accessi sequenziali alla RAM, paralizzando le prestazioni.
 
-**Soluzione al problema della ricerca:** La lentezza della traduzione si risolve mediante l'impiego massiccio del TLB. Se il TLB può contenere tutte le pagine più usate dal sistema, la traduzione può avvenire velocemente esattamente come con le normali tabelle delle pagine. Nel caso sfortunato in cui si verifichi una _TLB miss_, deve essere comunque fatta una ricerca nella grande tabella invertita. Un modo possibile ed efficiente di realizzare questa ricerca è di avere una **hash table** sull'indirizzo virtuale.
+Per aggirare questo ostacolo prestazionale, il sistema fa un **impiego massiccio del TLB** (_Translation Lookaside Buffer_). Finché le pagine utilizzate più di frequente si trovano in questa memoria cache ultra-veloce, la traduzione avviene in modo istantaneo, esattamente come nelle architetture tradizionali. 
+
+Il problema si pone in caso di _TLB miss_ (quando la pagina cercata non è nella cache), evento che costringe l'hardware a interrogare la grande tabella invertita in RAM. Per evitare di doverla scandire linearmente dall'inizio alla fine, la ricerca viene ottimizzata strutturando la tabella come una **hash table** basata sull'indirizzo virtuale, riducendo così drasticamente i tempi necessari per localizzare il frame fisico.
 
 ###### Cache della memoria vs Memoria virtuale
 La cache della memoria può essere basata sugli indirizzi fisici, o sugli indirizzi virtuali. Ciò dipenderà rispettivamente, se posizioniamo l’MMU prima o dopo la cache.
 - *Indirizzi fisici*:
-  Pro: non servirà invalidare la cache sul context-switch. Avendo indirizzi fisici già tradotti nella cache, non si avranno problemi di ambiguità.
-  Contro: l’MMU diventa un collo di bottiglia per la cache.
+  **Pro**: non servirà invalidare la cache sul context-switch. Avendo indirizzi fisici già tradotti nella cache, non si avranno problemi di ambiguità.
+  **Contro**: l’MMU diventa un collo di bottiglia per la cache.
 - *Indirizzi virtuali*.
-  Pro: più veloce ed efficace 
-  Contro: servono gli ASID per non invalidare la cache
+  **Pro**: più veloce ed efficace 
+  **Contro**: servono gli ASID per non invalidare la cache
 ![[Pasted image 20260516091408.png|700]]
 **Soluzione effettiva**:
 approccio ibrido La cache $L1$ basata su indirizzi virtuali, si pone prima dell’MMU, basandosi sugli indirizzi virtuali. La cache $L2$ e successive dopo l’MMU, basate su indirizzi fisici.
 
 ### Gestione della memoria virtuale e algoritmi di sostituzione delle pagine
-Quando si verifica un **page fault**, il sistema operativo deve fare spazio alla pagina entrante scegliendo una pagina residente da sfrattare (rimuovere dalla memoria). Se la pagina scelta è stata modificata durante la sua permanenza, deve essere prima riscritta sul disco per mantenerne la copia aggiornata. Le prestazioni del sistema risultano ottimali se si sceglie di rimuovere una pagina non particolarmente utilizzata.
+Quando si verifica un **page fault**, il sistema operativo deve fare spazio alla pagina entrante scegliendo una pagina residente da sfrattare. Se la pagina scelta è stata modificata durante la sua permanenza, deve essere prima riscritta sul disco per mantenerne la copia aggiornata. Le prestazioni del sistema risultano ottimali se si sceglie di rimuovere una pagina non particolarmente utilizzata.
 
 ###### Algoritmo di Sostituzione Ottimale
 Il miglior algoritmo di sostituzione delle pagine è puramente teorico. L'idea è etichettare ciascuna pagina in memoria con il numero di istruzioni da eseguire prima che venga referenziata nuovamente. Al momento del **page fault**, l'algoritmo rimuove la pagina con l'etichetta più alta. Questo approccio è irrealizzabile, poiché il sistema operativo non ha modo di sapere in anticipo quando le pagine verranno referenziate la volta successiva.
