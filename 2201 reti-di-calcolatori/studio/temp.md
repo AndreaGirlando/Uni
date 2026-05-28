@@ -1,6 +1,7 @@
 Ci sono cose da vedere da riassunto:
 - IPV4 header
 - cose in più dopo questa linea
+- ARP
 ### Funzioni fondamentali del livello di rete
 
 Nel precedente capitolo abbiamo visto come il livello di trasporto garantisca la comunicazione tra processi, appoggiandosi ai servizi sottostanti senza preoccuparsi di come vengano realizzati. Ora ci addentriamo nel livello di rete per capire esattamente come venga fornito questo servizio di comunicazione _host-to-host_.
