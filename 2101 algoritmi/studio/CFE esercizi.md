@@ -27,7 +27,7 @@ Usi questa logica quando il problema ti permette di fare **salti** tra un elemen
   
   
 Nel caso di problemi complessi che chiedono di ottimizzare qualcosa (max/min) rispettando una certa condizione bisogna seguire un pattern logico per evitare di perdersi:
-  
+	  
 ## Il Pattern Universale dell'Ottimizzazione Vincolata
 **1. L'Obiettivo Globale (La Ricorsione)** La funzione principale non si preoccupa dei dettagli intermedi, ma punta dritta al problema grande: _"Qual è il minimo assoluto per questo input?"_. Restituisce sempre un numero (il costo, il numero di tagli, il valore massimo).
 **2. L'Esplorazione (Il ciclo `for`)** Siccome non hai la palla di vetro e non sai a priori _dove_ convenga fare il taglio (o quale elemento scegliere), deleghi il dubbio a un ciclo `for`. Il `for` dice: _"Non so quale sia la scelta giusta, quindi le provo sistematicamente **tutte**"_.
