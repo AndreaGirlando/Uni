@@ -1,0 +1,10 @@
+HR 178 is a probable binary star in the constellation Andromeda. Located approximately 124 parsecs (400 ly) distant, it is an evolved Am star[4] with a combined apparent magnitude of 6.06, meaning that it can only be seen with the naked eye on dark, clear nights.
+The star is suspected of variability, possibly varying between magnitudes 6.04 and 6.06.
+The variable magnitude period of HD 3883 is about 9.17 min.
+The spectrum of HR 178 has been extensively studied for establishing element abundances in the evolved Am stars. 
+It is given a spectral class of kA5hF1mF2, meaning its spectral type is A5, F1, or F2, depending on the particular spectral lines examined. 
+It is very close to the end of its main sequence evolution and the margin of error in its mass is only about 0.1 M☉.
+HR 178 has been suspected of being a binary star since 1938 when its spectrum was interpreted as being composite.
+The pair were resolved using speckle interferometry in 1983.
+The companion is modelled to be between 1.5 and 3 magnitudes fainter than the primary star.
+Although there have since been several failed attempts to resolve the pair, a tentative orbit has been calculated with a period of 21.26 years and an eccentricity of 0.5.

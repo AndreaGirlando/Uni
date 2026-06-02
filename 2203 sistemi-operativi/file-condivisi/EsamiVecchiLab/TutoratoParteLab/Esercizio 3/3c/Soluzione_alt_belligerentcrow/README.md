@@ -1,0 +1,11 @@
+This solution :
+- Checks the given arguments
+- If the character is a letter, it finds the opposite case of the letter (es: a->A, A->a), and it sets a boolean as true.
+- It opens the file by file descriptor with the open() function
+- I then create a stat structure to store file metadata
+  - used to check if the file is regular, and for the size of the file
+- I map the file with mmap in read mode and with MAP_PRIVATE since changes to the files aren't needed
+- I check if the given character is a letter or not. By that condition, there are two possible (exclusive) loops. 
+  - One looks for both cases of a letter, the other one is only entered if a character is not a letter, and only looks for the given character (for example, punctuation, or a bracket).
+- The program unmaps the mapped file, cleans up, and exits.
+- Inside the run.sh file there are two examples, the program will look for a letter and a punctuaton mark.
