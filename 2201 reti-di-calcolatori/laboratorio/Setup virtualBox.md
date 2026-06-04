@@ -46,3 +46,10 @@ Da VirtualBox tocca creare 2 cavi dentro la tab rete dello switch e poi collegar
 
 **NODO 1**: `ip route add default via 192.168.1.254`
 **NODO 2**: `ip route add default via 192.168.1.254`
+
+---
+
+### Setup Automatico
+Un modo per inserire queste impostazioni all'avvio del pc è quello di configurare un file .sh che fa i vari comandi, di seguito un esempio fatto con i comandi dello switch
+![[WhatsApp Image 2026-05-28 at 10.55.42.jpeg]]
+![[WhatsApp Image 2026-05-28 at 10.55.46.jpeg]]

@@ -1,0 +1,180 @@
+## Posizionamento della Cache
+
+La Cache è posta tra MMU e RAM o tra CPU e MMU?
+
+La Cache può:
+
+- **Lavorare per INDIRIZZI FISICI (tra MMU e RAM):** In questo caso non è necessario fare un _flush_ della cache quando si passa da un processo all'altro poiché lavoriamo con indirizzi fisici. Qui però la MMU e la TLB saranno un collo di bottiglia (pochè si deve aspettare che la MMU traduca l'indirizzo virtuale).
+
+- **Lavorare per INDIRIZZI VIRTUALI (tra CPU e MMU):** Qui non vi è il collo di bottiglia ma bisognerà effettuare un _flush_ quando cambio processo poiché ci sono indirizzi virtuali ambigui. Qui si può evitare il flush tramite **ASID** ovvero chiave (PID, P) [_Address Space IDentifier_].
+
+In pratica si usa un mix dei due:
+
+- **Cache L1** per indirizzi virtuali.
+
+- **Cache L2** per indirizzi fisici.
+
+Quando la CPU cerca l'indirizzo virtuale inoltra la richiesta sia alla Cache L1 (che è attaccata alla CPU) sia alla MMU. Se in L1 ho un _cache hit_ la richiesta alla MMU viene annullata.
+
+---
+## Gestione dei Page Fault
+
+Cosa bisogna fare in caso di **PAGE FAULT**?
+
+- Se avviene un page fault e c'è spazio in RAM la soluzione è banale.
+
+- Se però tutti i frame in RAM sono pieni, devo scegliere una **pagina vittima** che verrà spostata su disco.
+
+**Quale pagina scelgo?**
+
+Questo viene deciso dagli **ALGORITMI DI SOSTITUZIONE PAGINA**. Dobbiamo cercare di ridurre i tempi morti in RAM.
+
+### 1. Algoritmo Ottimale (OPT)
+
+- È un algoritmo **impraticabile**.
+
+- Deve riuscire a vedere tutte le pagine in RAM e scegliere la pagina che verrà referenziata più lontano possibile nel futuro.
+
+- _Problema:_ Dovrei sapere in anticipo quando verrà usata ogni pagina.
+
+- _Scopo:_ È utile solo come termine di paragone per valutare le prestazioni degli altri algoritmi.
+
+### 2. Algoritmo NRU (Not Recently Used)
+
+Raccoglie una statistica basata su due bit di stato aggiornati in hardware:
+
+- **Bit di Referenziamento (R):** Pagina letta/scritta.
+
+- **Bit di Modifica (M):** Pagina scritta/sporca (dirty).
+
+Periodicamente il Sistema Operativo azzera tutti i bit di Referenziamento, per distinguere le pagine usate di recente da quelle non usate di recente.
+
+Da queste statistiche divido le pagine in **4 classi**:
+
+- **Classe 0:** R = 0, M = 0 (Non referenziata, non modificata)
+
+- **Classe 1:** R = 0, M = 1 (Non referenziata, modificata) - _Succede quando R viene azzerato dal SO ma la pagina era sporca._
+
+- **Classe 2:** R = 1, M = 0 (Referenziata, non modificata)
+
+- **Classe 3:** R = 1, M = 1 (Referenziata, modificata)
+
+L'algoritmo sceglie una pagina da scartare partendo dalla classe 0 fino alla 3, e prende le pagine a caso all'interno della classe più bassa (di numero) disponibile.
+
+Una pagina di classe 0 è preferibile perché magari il processo non ha più bisogno di quella pagina. Se nella classe c'è più di un candidato posso inserire le pagine in una coda per ogni classe e usare un criterio FIFO.
+
+### 3. Algoritmo FIFO (First-In, First-Out)
+
+- La coda viene costruita mettendo le pagine in base all'ordine di arrivo. (vi è un'unica coda per tutte le pagine)
+
+- Viene rimossa la pagina che sta in testa (la più vecchia).
+
+- _Problema:_ L'età non è un buon criterio di valutazione poiché potrebbe esserci una pagina vecchia ma che viene usata sempre (es. variabili globali molto usate).
+
+### 4. Algoritmo della SECONDA CHANCE
+
+Sistema il problema dell'algoritmo FIFO considerando anche lo stato del **Bit di Referenziamento (R)**.
+
+- Se il bit R è a **0**: La pagina viene scartata (era vecchia e non usata di recente).
+
+- Se il bit R è a **1**: La pagina **non** viene scartata. Le viene data una "seconda chance". Viene estratta, messa in fondo alla coda (come se fosse appena arrivata), e il suo bit R viene settato a 0.
+
+- _(Se ho tutte le pagine con bit R=1, tutti i bit vengono portati a 0 e avviene una normale FIFO)._
+
+### 5. Algoritmo dell'Orologio (Clock)
+
+_(Appunto: "Fare sempre l'estrazione e inserimento ha un suo costo. Per evitare questo posso creare una coda circolare...")_
+
+> 💡 **Completamento: L'Algoritmo Clock**
+> 
+> Spostare gli elementi all'interno di una coda in memoria (come fa la Seconda Chance) costa tempo CPU. L'Algoritmo Clock ottimizza la Second Chance tenendo le pagine in una **lista circolare** (come il quadrante di un orologio).
+> 
+> Invece di spostare le pagine fisicamente, un **puntatore** (la lancetta) scorre l'anello:
+> 
+> - Quando serve un frame, si guarda la pagina indicata dalla lancetta.
+>    
+> - Se R=0, la pagina viene scartata, il nuovo frame prende il suo posto e la lancetta avanza.
+>    
+> - Se R=1, il bit viene messo a R=0 e la lancetta avanza alla pagina successiva, continuando a cercare.
+
+---
+## Definizioni Fondamentali
+
+**Località di un processo (Principio di Località):**
+
+Insieme di dati e istruzioni che sono utili al processo in un determinato lasso di tempo. I processi tendono a richiedere accessi a memoria molto concentrati in piccole aree logiche. Un buon algoritmo sfrutta la località per tenere in RAM solo ciò che serve in quel momento.
+
+---
+### 6. Algoritmo LRU (Least Recently Used)
+
+_Si basa fortemente sul principio di località: se una pagina è stata usata di recente, è probabile che venga usata di nuovo a breve._
+
+- Questo algoritmo tiene traccia dei timestamp di utilizzo delle pagine. Quindi nella tabella delle pagine vi sarà un record che conta quante volte (o quando) si è avuto accesso alla pagina.
+
+- L'algoritmo sceglie le pagine **meno usate di recente**.
+
+- Il tracciamento andrebbe fatto via hardware.
+
+
+> 💡 **Approfondimento: Perché LRU richiede supporto hardware?**
+> 
+> Mantenere una lista aggiornata delle pagine per ogni singolo accesso in memoria (spostando la pagina appena letta in testa alla lista) richiederebbe troppo tempo se fatto via software, rallentando enormemente la CPU.
+> 
+> Per implementare il "vero" LRU servono soluzioni hardware dedicate:
+> 
+> 1. **Contatore Hardware:** Un registro a 64 bit che si incrementa a ogni istruzione. Ogni voce nella tabella delle pagine deve avere un campo per questo contatore. Ad ogni accesso in memoria, il valore del registro viene copiato nella pagina. Quando c'è un page fault, si cerca la pagina col valore più basso (la più vecchia).
+>    
+> 2. **Matrice di bit ($n \times n$):** Se ci sono $n$ frame di pagina, l'hardware mantiene una matrice. Quando si accede alla pagina $k$, la riga $k$ viene riempita di 1, e la colonna $k$ viene riempita di 0. La riga col valore binario più basso indica la pagina meno usata di recente.
+>    
+>     _Visto il costo di questo hardware, i Sistemi Operativi preferiscono usare algoritmi che **approssimano** LRU via software, come NFU e Aging._
+
+### 7. Algoritmi che approssimano LRU
+
+#### Algoritmo NFU (Not Frequently Used)
+
+> 💡 **Ripasso e Approfondimento: Algoritmo NFU**
+> 
+> Il Not Frequently Used richiede un contatore software per ogni pagina, inizialmente a 0. Ad ogni _interrupt di clock_ (un segnale periodico del sistema), il Sistema Operativo analizza tutte le pagine e **somma il bit R (Referenced)** al contatore di ciascuna pagina.
+> 
+> - Se la pagina è stata usata di recente, il bit R sarà 1, e il contatore sale.
+>    
+> - In caso di Page Fault, si sceglie la pagina col contatore più basso.
+> 
+> **Il grave difetto di NFU:** NFU "non dimentica mai". Se una pagina viene usata tantissimo durante l'avvio di un programma ma poi non viene mai più usata, il suo contatore resterà comunque altissimo. NFU non la scarterà mai, preferendo magari scartare pagine utili aperte di recente ma che hanno avuto meno tempo per accumulare "punti". Per risolvere questo problema nasce l'Aging.
+
+#### Algoritmo di AGING
+
+Risolve il problema di NFU dando più peso agli accessi recenti. Ha due fasi principali ad ogni interrupt di clock:
+
+1. Prendo il contatore software e faccio uno shift a destra di 1 bit.
+
+2. Aggiungo (colloco) il bit di referenziamento (R) a sinistra, in modo che prenda il posto del bit più significativo. Questo fa sì che il bit scartato a destra sia quello meno significativo (il più vecchio nel tempo).
+
+In caso di page fault, si sceglie la pagina con il contatore più piccolo, scelta coerente con il principio della LRU. L'1 aggiunto a sinistra ha il contributo maggiore, pesando di più degli accessi passati.
+
+**💡 Limiti dell'Algoritmo di Aging rispetto a LRU:**
+
+- **Memoria limitata del contatore:** L'Aging ha una "memoria" limitata dal numero di bit del contatore (es. 64 bit). Se due pagine hanno lo stesso contatore, significa che hanno avuto la stessa storia recente, ma la LRU vera sarebbe capace di guardare ancora più indietro per spareggiare. In caso di _ex aequo_ tra due contatori pessimi, si ripiega solitamente su una scelta FIFO.
+
+- **Mancanza di granularità nel singolo ciclo:** All'interno di un singolo ciclo di clock (span temporale), dietro a un bit '1' ci può essere stato un solo referenziamento così come un milione. L'Aging segna solo che c'è stato un accesso, mentre una LRU hardware saprebbe distinguere l'esatto istante di ogni singolo accesso.
+
+---
+### Nota sulle Prestazioni e Confronto degli Algoritmi
+
+Per confrontare le prestazioni dei vari algoritmi, si utilizza una metrica basata sulla media del numero di page fault provocati all'interno di esempi "giocattolo" (simulazioni).
+
+**Regole e Assunzioni della Simulazione:**
+
+- **Capienza Fissa:** A parità di condizioni, si fissa un numero limitato di frame disponibili (es. 3 frame). All'aumentare della RAM disponibile, ci si aspetta sempre che il numero di page fault diminuisca.
+
+- **Filtro degli Indirizzi:** Della sequenza di indirizzi virtuali generati dalla CPU, interessa esclusivamente il numero di pagina, ignorando il resto dell'indirizzo.
+
+- **Rimozione delle Ripetizioni:** Se nella conversione in numeri di pagina si presentano sequenze di accessi ripetuti alla stessa pagina, questi vengono rimossi dalla simulazione. Questo perché la semplice esecuzione sequenziale su una pagina già in RAM non scatena l'algoritmo di sostituzione e non ha alcun effetto.
+
+**Analisi dei Page Fault:**
+
+- **Cold Misses iniziali:** All'inizio dell'esecuzione si verificheranno inevitabilmente dei page fault perché i frame in memoria sono vuoti. Questi vengono contati, ma l'algoritmo di sostituzione vero e proprio scatta solo quando la memoria è completamente piena e si deve scegliere una vittima.
+
+- **Termine di Paragone (OPT):** L'Algoritmo Ottimale funge da limite inferiore. In un dato esempio pratico, se l'OPT garantisce 9 page fault, significa che a parità di sequenza e capienza non è possibile fare di meglio. Raggiungere questo numero nella realtà è improbabile.
+
+- **Valutazione del Trade-off:** Raggiungere, per esempio, 12 page fault utilizzando un algoritmo implementabile via software (che approssima l'LRU) rappresenta un ottimo compromesso tra efficienza teorica e costi di implementazione.
