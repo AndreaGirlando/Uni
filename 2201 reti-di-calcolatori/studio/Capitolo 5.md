@@ -373,3 +373,90 @@ Gli algoritmi LS e DV adottano approcci diversi per calcolare i percorsi.
     - Con LS, un router può dichiarare costi errati solo per i propri collegamenti o alterare i pacchetti ricevuti. Tuttavia, ogni nodo calcola autonomamente la propria tabella, limitando la propagazione degli errori.
     - Con DV, un nodo può comunicare percorsi errati verso tutte le destinazioni. Poiché le informazioni vengono propagate tra vicini, un errore può diffondersi nell’intera rete.
 Nessuno dei due approcci è sempre migliore: sia LS sia DV sono utilizzati in Internet.
+
+### Routing in internet
+
+Per facilitare il routing in Internet, quest’ultimo è organizzato in **sistemi autonomi** (AS). Ogni sistema autonomo è trattato come una singola entità amministrativa.
+- All’interno di sistema autonomo, tutti i router eseguono lo stesso algoritmo di routing, chiamato **protocollo di instradamento intra-AS**.
+- Per l’instradamento tra AS distinti si usano invece **protocolli di instradamento inter-AS**.
+
+Questa organizzazione in sistemi autonomi, garantisce una maggiore **autonomia amministrativa** e migliore **scalabilità**. Ogni sistema autonomo è identificato da un **numero di sistema autonomo** (ASN).
+###### RIP - Routing Information Protocol (intra-AS)
+È un protocollo di routing basato sull'algoritmo **Distance Vector** per il routing interno ai sistemi autonomi. La sua metrica è il **numero di hop**, ovvero il numero di router da attraversare per raggiungere una determinata destinazione.
+- Supporta al più 15 hop. Una destinazione $x$ con $\text{ distanza }.x=16$ hop è irraggiungibile.
+- I router scambiano informazioni relative alle tabelle di routing ogni 30 secondi.
+- Un percorso non aggiornato per 180 secondi è marcato come irraggiungibile.
+- Dopo altri 120 secondi viene rimosso dalla tabella (garbage collection).
+
+Sfrutta inoltre due tipi di messaggi:
+- `REQUEST` per richiedere informazioni di routing ai router vicini.
+- `RESPONSE` per fornire aggiornamenti sulla propria tabella di routing.
+
+Visto che è basato su distance vector soffre del problema del count to infinity
+###### Tabelle di routing RIP
+Contengono:
+- Indirizzo $x$ di destinazione.
+- Distanza minima (in hop) verso $x$.
+- Prossimo hop per arrivare a $x$.
+- Un timeout.
+- Un timer per la garbage collection.
+
+###### Versioni di RIP
+- **RIP v1** supporta solo indirizzamento classful senza subnet. Il campo next hop non è esplicito, e non supporta autenticazione.
+- **RIP v2** supporta CIDR, Poison Reverse, autenticazione e next hop esplicito nel messaggio.
+- **RIPng** (next generation) per IPv6, basata su RIP v2. Non supporta l’autenticazione.
+
+###### OSPF - Open Shortest Path First (intra-AS)
+È un protocollo di routing intra-AS di tipo **Link State** usato soprattutto nei contesti di rete medio-grandi e nei **backbone degli ISP**. È molto scalabile e robusto. Ogni router OSPF:
+- Costruisce una **mappa topologica completa** del sistema autonomo usando il flooding. Costruisce un grafo della rete.
+- Esegue localmente l’algoritmo di Dijkstra e determina l’albero dei cammini minimi da se stesso.
+- Mantiene un Link-State Database con informazioni sui collegamenti noti.
+- Manda aggiornamenti periodici tramite dei Link-State Advertisements, rendendo il protocollo molto robusto.
+
+> [!TIP]
+> Il **backbone di un ISP** è la sua **rete dorsale principale**, cioè l’infrastruttura ad alta capacità che trasporta grandi quantità di traffico Internet tra città, regioni, data center e altre reti.
+> In pratica:
+> - tu ti colleghi alla rete di accesso dell’ISP tramite fibra, rame o rete mobile;
+> - il traffico viene raccolto e inoltrato verso il **backbone**;
+> - dal backbone passa poi verso altri ISP, servizi online o punti di interscambio Internet.
+
+I messaggi sono del tipo:
+- `HELLO`, trasmissione periodica per Neighbor Discovery.
+- `Database Description`, per condividere le informazioni link-state tra i vari router
+- `LS Request`, per richiedere parti specifiche del link-state database di un vicino.
+- `LS Update`, per effettuare il flooding.
+- `LS ACK`, dei segnali di ACK relativi al Link-State update.
+
+E ogni nodo effettua questi passaggi:
+1. **Scoperta dei vicini**, in cui i router scoprono i nodi adiacenti inviando messaggi `HELLO`.
+2. **Sincronizzazione dei database**, `EXCHANGE`, con scambio e confronto delle informazioni Link-State.
+3. **Aggiornamento dei database**, `FLOODING`, con messaggi tramite cui i cambiamenti dei cammini minimi sono propagati.
+
+###### BGP - Border Gateway Protocol
+È un protocollo di routing **inter-AS**, e quindi tra sistemi autonomi. È fondamentale per il funzionamento di Internet, tanto quanto IP, in quanto è il **collante tra tutti i vari AS**.
+- **Comunicare la raggiungibilità delle sotto reti:** Permettendo a ciascun sistema di rendersi visibile rispetto i **prefissi di rete** che gestisce. È tramite BGP che tutti i router conoscono le sottoreti vicine.
+- **Determinare i percorsi ottimali verso le sottoreti:** Un router può apprendere più percorsi verso un **determinato prefisso** (ovvero una sottorete). La selezione del percorso migliore avviene in base alle politiche del sistema autonomo e alle informazioni di raggiungibilità fornite da BGP.
+###### Funzionamento di BGP
+Un router che esegue il protocollo BGP è detto **BGP speaker**. Due BGP speaker configurati per scambiarsi informazioni di routing sono detti **BGP peer** o **BGP neighbors** e comunicano attraverso una sessione **TCP**, normalmente sulla porta 179. Le sessioni possono essere di due tipi:
+- **eBGP - External BGP**, tra router appartenenti a sistemi autonomi differenti. Serve a scambiare informazioni sulla raggiungibilità dei prefissi tra AS diversi.
+- **iBGP - Internal BGP**, tra router appartenenti allo stesso sistema autonomo. Serve a distribuire all’interno dell’AS le rotte esterne apprese tramite eBGP.
+
+iBGP non sostituisce un protocollo intra-AS come OSPF o RIP: iBGP comunica quale prefisso esterno è raggiungibile e quale next hop utilizzare, mentre OSPF o RIP determinano il percorso interno necessario per raggiungere quel next hop.
+
+![[Pasted image 20260605195557.png|700]]
+
+Supponiamo che un AS voglia **dichiarare la raggiungibilità del prefisso (x)**. Un router BGP invia l’annuncio ai propri peer, che possono accettarlo, modificarne alcuni attributi e propagarlo ulteriormente secondo le politiche del proprio AS. L’insieme formato dal prefisso e dai relativi attributi è detto **route BGP**, cioè rotta BGP. Tra le informazioni principali di una rotta troviamo:
+- il **prefisso (x)**, cioè la rete resa raggiungibile;
+- **AS-PATH**, la sequenza degli AS attraversati dall’annuncio;
+- **NEXT-HOP**, l’indirizzo IP del router verso cui inoltrare i pacchetti per utilizzare quella rotta.
+
+Quando un annuncio viene propagato tramite eBGP, ogni AS aggiunge normalmente il proprio ASN all’AS-PATH. Questo attributo descrive quindi il percorso tra sistemi autonomi e permette anche di evitare i loop: se un AS riceve un annuncio nel cui AS-PATH compare già il proprio ASN, scarta la rotta. Nelle comunicazioni iBGP, invece, l’AS-PATH normalmente non viene modificato, perché l’annuncio resta all’interno dello stesso AS.
+
+Il NEXT-HOP non rappresenta necessariamente l’intero percorso, ma il prossimo router da raggiungere per utilizzare la rotta. Affinché la rotta sia valida, il NEXT-HOP deve essere raggiungibile tramite il protocollo di routing interno dell’AS.
+
+Un router può apprendere più rotte verso lo stesso prefisso. BGP non sceglie il percorso migliore mediante una sola metrica, ma attraverso un **processo decisionale** basato sulle politiche dell’AS e su diversi attributi, tra cui:
+- **LOCAL_PREF**, che esprime la preferenza interna per una rotta;
+- lunghezza dell’**AS-PATH**;
+- **MED**, che può suggerire il punto di ingresso preferito in un AS;
+- preferenza di una rotta eBGP rispetto a una iBGP;
+- costo del percorso interno necessario per raggiungere il NEXT-HOP.
