@@ -509,10 +509,12 @@ Il meccanismo può risultare poco equo, perché i nodi con ID binari più elevat
 
 ###### Taking Turns Protocol
 
-Nel **Taking Turns Protocol**, i nodi che vogliono trasmettere segnalano la richiesta inviando $1$ sul canale e vengono inseriti in un anello logico.
+Nel **Taking Turns Protocol**, i nodi accedono al canale a turno, evitando così le collisioni.
 
-Il primo nodo dell’anello trasmette e, dopo un intervallo $T$, passa un **token** al nodo successivo. Solo il nodo che possiede il token può utilizzare il canale, quindi non si verificano collisioni.
+Una possibile implementazione è il **token passing**: i nodi sono organizzati in un anello logico e un **token** viene passato da un nodo al successivo. Solo il nodo che possiede il token può utilizzare il canale e, dopo aver terminato la trasmissione oppure dopo un intervallo massimo $T$, deve cederlo al nodo seguente.
 
-Il protocollo presenta però due problemi: il guasto di un nodo può interrompere il passaggio del token e tutti i nodi della sottorete devono essere inclusi correttamente nell’anello logico per poter trasmettere.
+Un’altra implementazione è il **polling**, nella quale un nodo centrale interroga a turno gli altri nodi e concede loro il permesso di trasmettere.
+
+Il protocollo presenta però alcuni problemi: il guasto di un nodo può interrompere il passaggio del token, il token può andare perso e tutti i nodi devono essere inseriti correttamente nell’anello logico. Per questo motivo, le implementazioni reali prevedono meccanismi di controllo e recupero.
 
 ### Ethernet
