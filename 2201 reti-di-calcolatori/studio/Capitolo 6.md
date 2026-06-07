@@ -333,7 +333,7 @@ Il valore di ciascun bit di controllo si calcola eseguendo lo XOR, indicato con 
 > [!TIP] Curiosità
 > Un’applicazione pratica dei codici di correzione è la **ECC RAM — Error Correction Code RAM**, che utilizza bit di controllo aggiuntivi per rilevare e correggere eventuali errori nei dati memorizzati, aumentando l’affidabilità della memoria.
 
-### Protocolli di accesso multiplo nei canali broadcast
+### Accesso multiplo nei canali broadcast
 
 ###### Collegamenti punto a punto e broadcast
 I collegamenti di rete possono essere **punto a punto** o **broadcast**. Un collegamento punto a punto connette un trasmittente a un unico ricevente, mentre un **collegamento broadcast** è un canale condiviso al quale sono connessi più nodi in grado di trasmettere e ricevere. Quando un nodo invia un frame, tutti gli altri nodi collegati al canale ne ricevono una copia. **Ethernet** e le **Wireless LAN** utilizzano collegamenti di questo tipo.
@@ -518,3 +518,365 @@ Un’altra implementazione è il **polling**, nella quale un nodo centrale inter
 Il protocollo presenta però alcuni problemi: il guasto di un nodo può interrompere il passaggio del token, il token può andare perso e tutti i nodi devono essere inseriti correttamente nell’anello logico. Per questo motivo, le implementazioni reali prevedono meccanismi di controllo e recupero.
 
 ### Ethernet
+
+###### Diffusione ed evoluzione di Ethernet
+**Ethernet** ha pressoché conquistato il mercato delle reti cablate è diventata di gran lunga la tecnologia più diffusa per le **LAN cablate**, situazione che sembra destinata a perdurare anche nel prossimo futuro. Si potrebbe affermare che Ethernet è stata per le reti locali ciò che Internet è stata per la rete globale.
+
+Alla fine degli anni ’90, la maggior parte delle aziende e delle università aveva sostituito le proprie LAN con installazioni Ethernet basate su una **topologia a stella con hub**. In queste installazioni, gli host e i router erano collegati direttamente a un hub.
+
+**Hub:** dispositivo di livello fisico che agisce sui singoli bit anziché sui frame. Quando un bit, rappresentato da 0 o 1, arriva a una delle sue interfacce, l’hub lo rigenera, ne amplifica la potenza e lo trasmette attraverso tutte le altre interfacce.
+
+Una rete Ethernet con topologia a stella basata su hub è quindi una **LAN broadcast**, poiché ogni volta che l’hub riceve un bit da una delle sue interfacce ne invia una copia a tutte le altre. Se l’hub riceve contemporaneamente frame provenienti da due interfacce differenti, si verifica una **collisione** e i nodi che hanno generato i frame devono ritrasmetterli.
+
+Successivamente, le installazioni Ethernet continuarono a utilizzare una topologia a stella, ma l’hub centrale venne sostituito da uno **switch**. Lo switch non solo consente di realizzare una rete priva di collisioni, ma è anche un vero e proprio commutatore di pacchetti **store-and-forward**. A differenza dei router, che operano fino al livello 3, gli switch si limitano normalmente al livello 2.
+
+###### Struttura del frame Ethernet
+Sebbene il payload di un frame Ethernet sia normalmente un datagramma IP, Ethernet può trasportare anche altri tipi di pacchetti appartenenti al livello di rete.
+
+Si supponga che la scheda di rete trasmittente $A$ abbia indirizzo MAC `AA-AA-AA-AA-AA-AA` e che la scheda ricevente $B$ abbia indirizzo MAC `BB-BB-BB-BB-BB-BB`. La scheda di rete $A$ incapsula il datagramma IP in un frame Ethernet e lo passa al livello fisico. La scheda di rete $B$ riceve il frame dal livello fisico, estrae il datagramma IP e lo trasferisce al livello di rete.
+
+![[Pasted image 20260607103822.png|700]]
+Il frame Ethernet comprende sei campi.
+
+- **Campo dati, da 46 a 1500 byte:** contiene il datagramma IP. L’unità massima di trasmissione di Ethernet, indicata come **MTU — Maximum Transfer Unit**, è pari a 1500 byte. Se un datagramma IP supera tale valore, l’host deve frammentarlo. Se invece il datagramma IP è più piccolo della dimensione minima del campo dati, pari a 46 byte, il campo deve essere riempito fino a raggiungere tale dimensione. I dati trasferiti al livello di rete contengono quindi sia il datagramma IP sia gli eventuali byte di riempimento, che vengono rimossi utilizzando il campo Lunghezza dell’intestazione del datagramma IP.
+- **Indirizzo di destinazione, 6 byte:** contiene l’indirizzo MAC della scheda di rete destinataria, nell'esempio `BB-BB-BB-BB-BB-BB`. Quando la scheda di rete $B$ riceve un frame Ethernet contenente il proprio indirizzo oppure l’indirizzo MAC broadcast, trasferisce il contenuto del campo dati al livello di rete.
+- **Indirizzo sorgente, 6 byte:** contiene l’indirizzo MAC della scheda che trasmette il frame, nell'esempio `AA-AA-AA-AA-AA-AA`.
+- **Tipo:** consente a Ethernet di supportare diversi protocolli di rete. Oltre a IP, gli host possono infatti supportare altri protocolli di rete e utilizzare protocolli differenti per applicazioni differenti. La scheda di rete ricevente deve quindi sapere a quale protocollo di rete consegnare il contenuto del campo dati di ogni frame ricevuto. IP e gli altri protocolli di rete dispongono ciascuno di un proprio numero di tipo standardizzato. Lo stesso principio si applica ad **ARP**: un frame ARP presenta nel campo Tipo il valore esadecimale `0806`.
+- **CRC - Controllo a ridondanza ciclica, 4 byte:** consente alla scheda di rete ricevente di rilevare la presenza di errori nei bit del frame, secondo il meccanismo richiamato nel Paragrafo 6.2.3.
+- **Preambolo, 8 byte:** i frame Ethernet iniziano con un campo formato da otto byte. I primi sette presentano la sequenza di bit `10101010`, mentre l’ultimo presenta la sequenza `10101011`. I primi sette byte servono a risvegliare le schede di rete riceventi e a sincronizzarne il clock con quello della scheda trasmittente.
+
+La sincronizzazione è necessaria perché, a seconda del tipo di LAN Ethernet, la scheda di rete $A$ tenta di trasmettere il frame a 10 Mbps, 100 Mbps oppure 1 Gbps, ma il tasso effettivo presenta sempre una variazione rispetto al valore esatto previsto. Tale variazione non è nota a priori alle altre schede della LAN. Il ricevente utilizza quindi i primi sette byte del preambolo per sincronizzarsi con il clock della scheda di rete $A$. Gli ultimi due bit del preambolo, corrispondenti ai primi due 1 consecutivi, avvisano la scheda di rete $B$ che stanno per iniziare i campi significativi del frame.
+
+###### Servizio senza connessione e non affidabile
+Tutte le tecnologie Ethernet forniscono al livello di rete un **servizio senza connessione**. Quando una scheda di rete vuole inviare un datagramma a un host della rete, lo incapsula semplicemente in un frame Ethernet e lo immette nella LAN, senza effettuare alcun handshake preventivo con il destinatario. Tale servizio è analogo al servizio senza connessione offerto dai datagrammi IP al livello 3 e da UDP al livello 4.
+
+Ethernet fornisce inoltre al livello di rete un **servizio non affidabile**. Quando la scheda di rete $B$ riceve un frame proveniente da $A$, esegue il controllo CRC, ma non invia alcun acknowledgement, né quando il frame supera il controllo né quando viene rilevato un errore. In quest’ultimo caso il frame viene semplicemente scartato. Di conseguenza, $A$ non sa se il frame trasmesso abbia superato il controllo CRC.
+
+L’assenza di un servizio affidabile al livello di collegamento contribuisce a mantenere Ethernet semplice ed economica, ma comporta la possibilità che il flusso dei datagrammi consegnati al livello di rete presenti delle lacune.
+
+Il modo in cui l’applicazione dell’host $B$ rileva tali lacune dipende dall’uso di **TCP** o **UDP**. Se l’applicazione utilizza UDP, vedrà direttamente le lacune nei dati. Se invece utilizza TCP, l’host $B$ non invia un acknowledgement per i dati contenuti nei frame scartati.
+
+###### Cavi
+La trasmissione attraverso un cavo è influenzata dal modo in cui questo è stato realizzato. Tra i principali fattori da considerare vi sono il passaggio della corrente e la lunghezza del cavo.
+
+Il passaggio di corrente induce un **campo magnetico**, che genera a sua volta una **corrente indotta**. Questa scorre in verso opposto rispetto al flusso di corrente iniziale, esercitando quindi una vera e propria opposizione. Anche i cavi adiacenti possono generare campi magnetici e, di conseguenza, flussi opposti: questo fenomeno prende il nome di **diafonia**.
+
+La **lunghezza del cavo** è direttamente proporzionale alla sua **resistenza**. Per coprire grandi distanze è quindi necessario utilizzare dei **ripetitori**.
+
+I cavi di rame sono costituiti dalle seguenti parti:
+- **Conduttore:** elemento attraverso il quale avviene la trasmissione.
+- **Jacket:** materiale isolante esterno.
+- **Shield:** schermatura complessiva applicata a tutti i cavi.
+- **Foil:** schermatura applicata a una coppia di cavi.
+
+In base alla schermatura utilizzata, si distinguono diverse tipologie di cavo:
+- **UTP - Unshielded Twisted Pair**;
+- **STP - Shielded Twisted Pair**;
+- **FTP - Foiled Twisted Pair**;
+- **SFTP - Shielded Foiled Twisted Pair**.
+
+Si distinguono anche diversi tipologie di cavo di rame in base alla velocità e frequenza:
+- **Cat5:** supporta una velocità massima di 100 Mbps e opera a una frequenza di 100 MHz.
+- **Cat5e — Cat5 enhanced:** segue maggiormente gli standard IEE, supporta una velocità massima di 1 Gbps e opera a una frequenza di 100 MHz.
+- **Cat6:** supporta una velocità massima di 10 Gbps e opera a una frequenza di 250 MHz.
+- **Cat6a:** supporta una velocità massima di 10 Gbps, consente di coprire distanze maggiori rispetto alla Cat6 e opera a una frequenza di 500 MHz.
+
+###### Connettore RJ-45
+Il **connettore RJ-45** costituisce la terminazione dei cavi utilizzati nelle reti Ethernet. È un connettore di tipo **8P8C**, ossia formato da otto posizioni e otto contatti.
+
+Esistono due schemi di cablaggio, **T568A** e **T568B**, che differiscono per l’inversione delle coppie 2 e 3. Il T568B è lo schema preferito nei sistemi più recenti, secondo lo standard **ANSI/TIA**, definito dall’American National Standards Institute e dalla Telecommunications Industry Association.
+
+![[Pasted image 20260607110236.png|700]]
+
+La disposizione dei pin nello schema T568B è la seguente:
+
+|Pin|Colore|Polarità|Utilizzo|
+|--:|---|:-:|---|
+|1|bianco/arancione|$+$|Trasmissione (Tx)|
+|2|arancione|$-$|Trasmissione (Tx)|
+|3|bianco/verde|$+$|Ricezione dati (Rx)|
+|4|blu|$-$|Dati bidirezionali (Bi3)|
+|5|bianco/blu|$+$|Dati bidirezionali (Bi3)|
+|6|verde|$-$|Ricezione dati (Rx)|
+|7|bianco/marrone|$+$|Dati bidirezionali (Bi4)|
+|8|marrone|$-$|Dati bidirezionali (Bi4)|
+La polarità opposta dei segnali trasmessi nei cavi **twisted pair** permette di ridurre facilmente gli effetti del rumore. Si supponga che un bit venga trasmesso mediante due segnali con polarità opposta: sul primo cavo, indicato con $A$, viene trasmesso $+1,\mathrm{V}$, mentre sul secondo, indicato con $B$, viene trasmesso $-1,\mathrm{V}$.
+
+Nei **sistemi differenziali**, l’informazione è rappresentata dalla differenza tra i due segnali. Il valore risultante è quindi:
+
+$$1,\mathrm{V}-(-1,\mathrm{V})=1,\mathrm{V}+1,\mathrm{V}=2,\mathrm{V}$$
+
+Si supponga ora di introdurre un rumore di $+0.5,\mathrm{V}$ sul cavo, e quindi su entrambi i conduttori della coppia. Il primo segnale assume il valore $1.5,\mathrm{V}$, mentre il secondo assume il valore $-0.5,\mathrm{V}$. Calcolando nuovamente la differenza si ottiene:
+
+$$(1,\mathrm{V}+0.5,\mathrm{V})-(0.5,\mathrm{V}-1,\mathrm{V})=1.5,\mathrm{V}-(-0.5,\mathrm{V})=1.5,\mathrm{V}+0.5,\mathrm{V}=2,\mathrm{V}$$
+
+Il rumore, essendo presente nello stesso modo su entrambi i segnali, viene eliminato dalla sottrazione. Il valore differenziale rimane quindi pari a $2,\mathrm{V}$.
+
+![[Pasted image 20260607110258.png|700]]
+###### Standard e mezzi fisici Ethernet
+Ethernet non è un singolo standard di protocollo, ma comprende numerose tecnologie con denominazioni differenti, tra cui:
+- **10BASE-T**;
+- **10BASE-2**;
+- **100BASE-T**;
+- **1000BASE-LX**;
+- **10GBASE-T**.
+- ...
+
+Queste e molte altre tecnologie Ethernet sono standardizzate dai gruppi di lavoro **IEEE 802.3 CSMA/CD** (CSMA/CD viene usato per gestire l'accesso al canale condiviso).
+
+Le tecnologie standardizzate Ethernet presentano una denominazione fissa:
+- *Velocità*: un numero che indica la velocità dello standard.
+- *Tipologia di traffico*: BASE in quanto trasferisce solo traffico Ethernet.
+- *Mezzo fisico*: un’etichetta che ne specifica il mezzo fisico
+
+![[Pasted image 20260607105753.png|700]]
+###### Codifica e decodifica di Manchester
+La **codifica di Manchester** nasce per risolvere alcune criticità relative alla trasmissione dei dati:
+- **Ambiguità delle lunghe sequenze:** la codifica di Manchester impone transizioni obbligatorie durante la trasmissione dei bit. In questo modo diventa più semplice riconoscere eventuali malfunzionamenti e interruzioni della trasmissione.
+- **Sincronizzazione precaria:** ogni bit contiene al proprio interno una transizione, impedendo la perdita della sincronizzazione.
+
+La codifica viene realizzata mediante un’operazione di **XOR** tra il segnale di clock e il segnale dati. Ogni bit viene codificato mediante un fronte di salita per il valore 1 oppure un fronte di discesa per il valore 0. In questo modo, il bitstream e il segnale di clock vengono, in un certo senso, trasmessi contemporaneamente.
+
+![[Pasted image 20260607110915.png|700]]
+
+La codifica di Manchester è tuttavia influenzata dalla polarità del segnale trasmesso. Se il segnale codificato viene invertito, anche la sua decodifica risulta invertita. Questo problema può essere risolto mediante la **codifica di Manchester differenziale**.
+
+La **codifica di Manchester differenziale** rende la codifica insensibile alla polarità del segnale. Ogni bit presenta almeno una transizione a metà del periodo di clock. Il valore del bit dipende invece dalla presenza o dall’assenza di una transizione, in particolare di un fronte di salita, all’inizio del periodo di clock:
+- **Bit 0:** presenza di una transizione.
+- **Bit 1:** assenza di una transizione.
+
+![[Pasted image 20260607110928.png|700]]
+
+### Gigabit Ethernet
+
+Il **Gigabit Ethernet** raggiunge una velocità di $1000\ \text{Mbit/s}$, cioè $1\ \text{Gbit/s}$. Lo standard **1000BASE-T** è progettato per utilizzare il cablaggio Ethernet in rame già presente negli edifici, costituito da quattro coppie di fili intrecciati, dette **doppini**. L’aumento di velocità non viene ottenuto semplicemente aumentando la frequenza, perché ciò renderebbe il collegamento più sensibile ad attenuazione, rumore e interferenze; vengono invece combinate trasmissione parallela, segnalazione multilivello, funzionamento full-duplex ed elaborazione digitale.
+
+###### Varianti del Gigabit Ethernet
+
+| Standard        | Mezzo trasmissivo  | Segmento massimo | Caratteristiche                                                                     |
+| --------------- | ------------------ | ---------------: | ----------------------------------------------------------------------------------- |
+| **1000BASE-SX** | Fibra ottica       |  $550\ \text{m}$ | Fibra multimodale da $50$ o $62{,}5\ \mu\text{m}$                                   |
+| **1000BASE-LX** | Fibra ottica       | $5000\ \text{m}$ | Fibra monomodale da $10\ \mu\text{m}$ o multimodale da $50$ e $62{,}5\ \mu\text{m}$ |
+| **1000BASE-CX** | Due coppie STP     |   $25\ \text{m}$ | Doppino intrecciato schermato                                                       |
+| **1000BASE-T**  | Quattro coppie UTP |  $100\ \text{m}$ | Cablaggio Ethernet in rame                                                          |
+###### Passaggio da 100 Mbit/s a 1 Gbit/s
+Il percorso verso 1000BASE-T viene schematizzato attraverso cinque scelte principali:
+1. **Rimozione della codifica 4B5B.** Eliminando questo overhead, la capacità simbolica considerata passa da $100$ a $125\ \text{Mbit/s}$.
+2. **Utilizzo simultaneo dei quattro doppini.** I quattro canali portano la capacità complessiva da $125$ a $4\cdot125=500\ \text{Mbit/s}$ (possibile grazie alla cancellazione dell'eco).
+3. **Trasmissione full-duplex.** Ogni coppia viene usata contemporaneamente per trasmettere e ricevere.
+4. **Cinque livelli** Al posto dei tre livelli della codifica MLT-3 vengono impiegati cinque livelli di segnale usando PAM-5.
+5. **Forward Error Correction.** La ridondanza introdotta attraverso permette di migliorare la resistenza agli errori (attraverso Trellis Coded Modulation)
+
+###### Intervalli simbolici e velocità
+1000BASE-T divide la trasmissione in **125 milioni di intervalli al secondo**. Ogni intervallo dura quindi:
+
+$$  
+T=\frac{1}{125\cdot10^6}=8\ \text{ns}  
+$$
+
+Durante ciascun intervallo vengono inviati contemporaneamente quattro livelli elettrici, uno su ogni doppino. Questi quattro livelli non rappresentano quattro dati separati, ma vengono interpretati insieme come un’unica combinazione.
+
+Ogni combinazione permette di rappresentare un byte, cioè otto bit. Di conseguenza, il sistema trasferisce un byte ogni 8 nanosecondi: $$125\cdot10^6\ \text{intervalli/s}\cdot8\ \text{bit/intervallo} 10^9\ \text{bit/s}$$
+La velocità complessiva è quindi pari a un miliardo di bit al secondo. Poiché ogni doppino può assumere cinque livelli differenti, le combinazioni teoricamente disponibili sono:$$5^4=625$$
+Per rappresentare tutti i possibili valori di un byte ne sarebbero sufficienti 256, perché: $$2^8=256$$
+
+Le combinazioni disponibili in più non corrispondono a un ulteriore bit di dati. Vengono invece utilizzate dal sistema di codifica per scegliere sequenze di segnali più facilmente riconoscibili e più resistenti agli errori causati dal rumore.
+
+###### PAM-5 e rappresentazione a quattro dimensioni
+tecnica di modulazione che consente a ogni doppino di assumere uno tra cinque livelli logici, rappresentabili come $-2$, $-1$, $0$, $+1$ e $+2$. Questi valori identificano livelli del segnale e non devono necessariamente essere interpretati come tensioni espresse in volt.
+
+Poiché vengono usati quattro doppini, il simbolo trasmesso può essere rappresentato mediante una quadrupla:
+
+$$(s_1,s_2,s_3,s_4)$$
+
+Ogni componente identifica il livello presente su uno dei quattro canali. Una possibile combinazione è, per esempio, $(-1,+2,0,+1)$. Non si tratta di quattro messaggi separati, ma di un unico simbolo complessivo descritto da quattro coordinate; per questo si parla di segnalazione **a quattro dimensioni**.
+
+Il numero teorico di combinazioni è: $$5^4=625$$
+
+Lo spazio dei simboli corrisponde a una capacità teorica di $\log_2(625)\approx9$ bit. Non tutte le 625 combinazioni rappresentano dati: parte dello spazio viene utilizzata per controllo, ridondanza e protezione dagli errori.
+
+###### Utilizzo dei quattro doppini e full-duplex
+Nel Fast Ethernet vengono normalmente impiegate due coppie: una per la trasmissione e una per la ricezione. In 1000BASE-T vengono invece utilizzati contemporaneamente tutti e quattro i doppini.
+Su ogni coppia viaggiano nello stesso momento:
+- il segnale trasmesso dal dispositivo locale;
+- il segnale proveniente dal dispositivo remoto;
+- l’eco prodotta dal segnale locale;
+- rumore e interferenze presenti sul collegamento.
+
+**Cancellazione dell’eco:** procedimento con cui il ricevitore, conoscendo il segnale generato localmente, ne stima l’effetto sul cavo e lo sottrae dal segnale complessivamente osservato:
+$$\text{segnale ricevuto}=\text{segnale remoto}+\text{eco locale}+\text{rumore}$$
+L’eco stimata viene rimossa per ricostruire il segnale remoto. La stima deve essere aggiornata continuamente, perché le caratteristiche del collegamento dipendono dalla lunghezza del cavo, dai connettori, dalla temperatura e dalle interferenze ambientali.
+
+###### Sincronizzazione del collegamento
+Il ricevitore deve riconoscere con precisione gli intervalli simbolici, ciascuno della durata di: $8\ \text{ns}$
+
+Per mantenere stabile il riferimento temporale, il collegamento non rimane completamente inattivo quando non vengono trasmessi frame. I dispositivi continuano infatti a scambiarsi simboli **Idle**, che permettono al ricevitore di mantenere il sincronismo, controllare la qualità del collegamento e riconoscere rapidamente l’arrivo di nuovi dati.
+
+La sincronizzazione viene facilitata anche dallo **scrambling**. Prima della trasmissione, la sequenza dei dati viene rielaborata in modo da evitare successioni troppo regolari o lunghi periodi con poche variazioni del segnale. In questo modo il ricevitore dispone di un numero sufficiente di cambiamenti elettrici per ricostruire correttamente il ritmo della trasmissione. Lo scrambling non modifica l’informazione originale, perché il ricevitore applica il procedimento inverso per recuperare i dati.
+
+Infine, uno dei due dispositivi assume il ruolo di riferimento temporale, detto **Master**, mentre l’altro, detto **Slave**, adatta il proprio clock al segnale ricevuto. Questa organizzazione evita che i due apparati utilizzino riferimenti temporali indipendenti e contribuisce a mantenere stabile la comunicazione.
+
+###### Filtro DuoBinary
+Il **filtro DuoBinary** interviene sulla codifica del segnale. Il bit $x_k$ viene distribuito su più percorsi; gli elementi indicati con $D$ introducono ritardi pari a un byte, cioè circa $8\ \text{ns}$, mentre i sommatori combinano il valore corrente con valori ritardati, producendo le due uscite $y_k^{(1)}$ e $y_k^{(2)}$.
+
+Il procedimento:
+1. sdoppia il segnale in ingresso;
+2. introduce un ritardo su uno dei percorsi;
+3. combina simboli correnti e precedenti;
+4. rappresenta un simbolo mediante due simboli codificati;
+5. restringe lo spettro occupato dal segnale.
+
+![[Pasted image 20260607115527.png|700]]
+Il prezzo della riduzione dello spettro è l’introduzione di memoria: il simbolo prodotto non dipende soltanto dal bit corrente, ma anche dai bit elaborati negli intervalli precedenti. Raddoppiando il numero di bit per rappresentare un bit d’informazione, gli errori peseranno meno sull'informazione complessiva
+
+###### Trellis Coded Modulation
+La **Trellis Coded Modulation** introduce ridondanza e limita le successioni di simboli ammesse. in questo esempio un bit informativo produce due bit codificati e il codificatore viene descritto mediante un automa a quattro stati: $0$, $1$, $2$ e $3$.
+
+Le etichette delle transizioni hanno la forma **ingresso/uscita**: ![[Pasted image 20260607120354.png|700]]
+Poiché da ogni stato sono possibili soltanto alcune transizioni, non tutte le sequenze di coppie di bit costituiscono una codifica valida. Il ricevitore può quindi sfruttare sia i simboli osservati sia la coerenza dell’intera sequenza per individuare eventuali errori. La distanza di Hamming tra le coppie ricevute e quelle associate ai diversi percorsi fornisce la metrica utilizzata nella decodifica.
+
+###### Decodifica mediante algoritmo di Viterbi
+L’**algoritmo di Viterbi** usa l'automa a stati finiti della Trellis per decodificare, per ogni ramo viene calcolata la **distanza di Hamming**, cioè il numero di bit differenti. Tale distanza viene sommata alla metrica del percorso precedente. Quando più percorsi raggiungono lo stesso stato, viene conservato soltanto quello con metrica cumulativa minore, detto **percorso superstite**. Al termine viene scelto il percorso complessivamente meno distante dalla sequenza ricevuta. ![[Pasted image 20260607125701.png|700]]
+- la sequenza informativa è: $011001$
+- Il codificatore produce: $00\ 11\ 01\ 01\ 11\ 11$
+- Dopo la trasmissione viene ricevuta la sequenza: $01\ 11\ 01\ 11\ 11\ 11$
+La prima e la quarta coppia differiscono dalla sequenza codificata. Partendo dallo stato $0$, le metriche superstiti evolvono nel seguente modo:
+![[Pasted image 20260607131803.png|500]]
+La metrica finale minima è $D=2$ nello stato $2$. Il percorso corrispondente ricostruisce la sequenza iniziale $011001$, nonostante le due alterazioni introdotte durante la trasmissione. 
+![[Pasted image 20260607131843.png|500]]
+Questa codifica migliora l’affidabilità, ma non garantisce la correzione di qualsiasi errore. Se il disturbo è troppo elevato, il frame può risultare comunque danneggiato; il controllo finale del frame permette di rilevarlo e l’eventuale ritrasmissione può essere gestita dai protocolli dei livelli superiori.
+
+
+### Switch, Hub, Bridge, router e VLAN
+###### Funzionamento del bridge
+Il **bridge** riceve una trama su una delle proprie porte, ne esamina gli indirizzi **MAC sorgente** e **MAC destinazione** e consulta una tabella che associa ciascun indirizzo MAC alla porta attraverso cui il dispositivo corrispondente è raggiungibile. La tabella viene costruita dinamicamente mediante **autoapprendimento**: ogni volta che il bridge riceve una trama, registra l’indirizzo MAC sorgente e la porta di ingresso. In questo modo apprende progressivamente la posizione dei dispositivi senza richiedere una configurazione manuale.
+
+Dopo aver appreso l’indirizzo sorgente, il bridge decide come trattare la trama in base all’indirizzo destinazione. Se la destinazione è presente nella tabella e si trova su una porta diversa da quella di ingresso, la trama viene inoltrata esclusivamente su quella porta. Se sorgente e destinazione appartengono allo stesso segmento, il bridge filtra la trama e non la inoltra sulle altre porte. Se, invece, l’indirizzo destinazione non è ancora conosciuto, la trama viene replicata su tutte le porte tranne quella da cui è arrivata. Lo stesso comportamento viene adottato per le trame broadcast.
+
+Nell’esempio mostrato, quando il nodo $A$ invia inizialmente una trama al nodo $H$, i bridge apprendono progressivamente su quali porte è raggiungibile $A$; poiché la posizione di $H$ non è ancora nota, la trama viene inoltrata sui diversi segmenti della rete.
+
+![[Pasted image 20260607132744.png|400]]
+![[Pasted image 20260607132804.png|400]]
+![[Pasted image 20260607132818.png|400]]
+![[Pasted image 20260607132831.png|400]]
+Quando $H$ risponde, i bridge apprendono anche la sua posizione e possono inoltrare la risposta soltanto lungo il percorso necessario per raggiungere $A$.
+
+![[Pasted image 20260607132855.png|400]]
+![[Pasted image 20260607132904.png|400]]
+![[Pasted image 20260607132918.png|400]]
+La presenza di collegamenti ridondanti può tuttavia provocare la duplicazione e la circolazione delle trame tra i bridge, poiché una rete Ethernet non impedisce autonomamente la formazione di percorsi ciclici.
+
+![[Pasted image 20260607132953.png|400]]
+![[Pasted image 20260607133002.png|400]]
+![[Pasted image 20260607133014.png|400]]
+###### Funzionamento degli switch
+Il ruolo di uno **switch** è ricevere i frame in ingresso e inoltrarli sui collegamenti in uscita. Lo switch è trasparente ai nodi: un nodo indirizza il frame a un altro nodo e lo immette nella LAN senza sapere che uno switch riceverà il frame e provvederà a inoltrarlo.
+
+La velocità con cui i frame raggiungono una determinata interfaccia di uscita può temporaneamente superare la capacità del collegamento associato a quell'interfaccia. Per questo motivo lo switch utilizza buffer nei quali conservare temporaneamente i frame.
+
+**Filtraggio:** funzionalità mediante la quale lo switch determina se un frame debba essere inoltrato attraverso una determinata interfaccia oppure scartato.
+
+**Inoltro:** operazione con cui lo switch individua l’interfaccia verso cui il frame deve essere diretto e lo invia attraverso tale interfaccia.
+
+Le operazioni di filtraggio e inoltro vengono eseguite utilizzando una **tabella di commutazione**. La tabella contiene voci relative ad alcuni nodi della LAN, ma non necessariamente a tutti. Ogni voce comprende:
+1. l’indirizzo MAC del nodo;
+2. l’interfaccia dello switch che conduce al nodo;
+3. il momento in cui la voce relativa al nodo è stata inserita nella tabella.
+
+Si consideri un frame con indirizzo MAC di destinazione `DD-DD-DD-DD-DD-DD`, ricevuto dallo switch attraverso l’interfaccia $x$. Lo switch cerca tale indirizzo nella propria tabella di commutazione. Possono verificarsi tre casi.
+1. **L’indirizzo non è presente nella tabella.** Lo switch invia una copia del frame ai buffer di uscita di tutte le interfacce, eccetto l’interfaccia $x$ dalla quale il frame è arrivato. In altre parole, se non esiste una voce per l’indirizzo di destinazione, lo switch trasmette il frame in broadcast.
+2. **La tabella associa l’indirizzo `DD-DD-DD-DD-DD-DD` all’interfaccia $x$.** Il frame proviene dallo stesso segmento di rete nel quale si trova la scheda di destinazione. Non è quindi necessario inoltrarlo verso un’altra interfaccia e lo switch esegue il filtraggio scartando il frame.
+3. **La tabella associa l’indirizzo `DD-DD-DD-DD-DD-DD` a un’interfaccia $y$, con $y \neq x$.** Il frame deve essere inoltrato al segmento di LAN collegato all’interfaccia $y$. Lo switch esegue quindi l’inoltro inserendo il frame nel buffer dell’interfaccia $y$.
+
+###### Autoapprendimento e aging delle tabelle
+Uno switch può costruire automaticamente, dinamicamente e autonomamente la propria tabella, senza l’intervento di un operatore o di un protocollo di configurazione. Per questo motivo si afferma che gli switch sono dispositivi ad **autoapprendimento**.
+Il processo avviene nel modo seguente:
+1. inizialmente la tabella di commutazione è vuota;
+2. per ogni frame ricevuto, lo switch registra l’indirizzo MAC contenuto nel campo Indirizzo sorgente, l’interfaccia dalla quale il frame è arrivato e il momento dell’arrivo;
+3. in questo modo lo switch individua il segmento LAN nel quale si trova il nodo trasmittente;
+4. quando tutti i nodi della LAN hanno trasmesso almeno un frame, la tabella può contenere le relative associazioni.
+
+Quando lo switch non riceve frame da un determinato indirizzo sorgente per un certo intervallo, chiamato **aging time** o tempo di invecchiamento, elimina la relativa voce dalla tabella. Se un computer viene sostituito con un altro dotato di una diversa scheda di rete, l’indirizzo MAC del computer precedente viene quindi rimosso automaticamente.
+
+Gli switch sono dispositivi **plug-and-play**, perché non richiedono interventi da parte dell’amministratore di rete o dell’utente. È sufficiente collegare i segmenti di LAN alle interfacce dello switch, senza configurare manualmente le tabelle al momento dell’installazione o quando un host viene rimosso da un segmento.
+
+###### Vantaggi delle LAN commutate
+L’utilizzo degli switch presenta diversi vantaggi rispetto ai collegamenti broadcast, come i bus o le topologie a stella basate su hub.
+- **Eliminazione delle collisioni:** in una LAN composta da switch e priva di hub non si verifica uno spreco di banda dovuto alle collisioni. Gli switch inseriscono i frame nei buffer e non trasmettono più di un frame alla volta su ciascun segmento di LAN.
+- **Collegamenti eterogenei:** poiché lo switch isola un collegamento dagli altri, i vari collegamenti della LAN possono operare a velocità differenti e utilizzare mezzi trasmissivi diversi.
+- **Gestione:** oltre a fornire maggiore sicurezza, uno switch facilita la gestione della rete. Se una scheda di rete presenta un malfunzionamento e trasmette continuamente frame Ethernet, lo switch può individuare il problema e disconnettere internamente la scheda non funzionante.
+
+###### Confronto tra switch e router
+I **router** sono commutatori di pacchetti store-and-forward che inoltrano i pacchetti utilizzando indirizzi del livello di rete. Anche gli switch sono commutatori store-and-forward, ma si distinguono dai router perché inoltrano i frame utilizzando gli indirizzi MAC.
+
+I router sono quindi commutatori di pacchetto di **livello 3**, mentre gli switch sono commutatori di pacchetto di **livello 2**. I moderni switch che operano secondo la modalità **match-action** possono tuttavia essere impiegati sia per inoltrare frame di livello 2 sulla base dell’indirizzo MAC di destinazione, sia per inoltrare datagrammi di livello 3 utilizzando l’indirizzo IP di destinazione.
+
+Gli switch sono dispositivi plug-and-play e possono offrire capacità elevate di filtraggio e inoltro. Devono inoltre elaborare i pacchetti soltanto fino al livello 2, mentre i router devono elaborarli fino al livello 3.
+
+![[Pasted image 20260607105202.png|700]]
+
+Inoltre, gli switch non offrono protezione contro le **tempeste di broadcast**: se un host iniziasse a trasmettere un flusso ininterrotto di pacchetti broadcast, gli switch continuerebbero a inoltrarli, provocando il collasso della rete.
+
+Gli indirizzi di rete utilizzati dai router sono spesso gerarchici, a differenza degli indirizzi MAC, descritti nel testo come lineari. Generalmente i pacchetti non percorrono cicli attraverso i router, anche quando la rete dispone di percorsi ridondanti. I cicli possono comunque verificarsi se le tabelle dei router sono configurate in modo errato. IP utilizza uno specifico campo dell’intestazione del datagramma per limitare la percorrenza di tali cicli.
+
+Poiché i router non sono soggetti alle restrizioni imposte dalla topologia ad albero, Internet può utilizzare una topologia più ricca, comprendente, per esempio, collegamenti multipli tra Europa e Nord America. A differenza degli switch, i router proteggono dalle tempeste di broadcast di livello 2. Non sono però dispositivi plug-and-play: il loro indirizzo IP e quello degli host a essi collegati devono essere configurati.
+
+Nelle reti composte al massimo da alcune centinaia di host e da pochi segmenti, gli switch sono generalmente sufficienti. Essi localizzano il traffico e incrementano il throughput aggregato senza richiedere la configurazione degli indirizzi IP.
+
+Le reti più grandi, composte da migliaia di host, comprendono invece tipicamente sia switch sia router. I router forniscono un isolamento più efficace del traffico, evitano le tempeste di broadcast e utilizzano percorsi più funzionali tra gli host della rete.
+
+###### Problemi delle LAN gerarchiche
+![[Pasted image 20260607105240.png|700]]
+
+Le LAN istituzionali moderne sono spesso configurate in modo gerarchico: ogni gruppo dispone di una propria LAN commutata, collegata alle LAN degli altri gruppi mediante una gerarchia di switch. Questa configurazione funziona bene in un ambiente ideale, ma presenta alcuni inconvenienti nelle reti reali.
+- **Mancanza di isolamento del traffico:** sebbene la gerarchia localizzi il traffico interno di un gruppo su un singolo switch, il traffico broadcast, come i frame che trasportano messaggi ARP e DHCP, deve comunque attraversare l’intera rete istituzionale. Le prestazioni della LAN migliorerebbero se il campo di diffusione del traffico broadcast potesse essere limitato. Tale limitazione è importante anche per ragioni di sicurezza e riservatezza.
+- **Uso inefficiente degli switch:** se l’istituzione fosse composta da 10 gruppi anziché da 3, sarebbero necessari 10 switch di primo livello, ossia gli switch che raccolgono i gruppi di host. Se ciascun gruppo comprendesse meno di 10 persone, un unico switch a 96 porte potrebbe essere sufficiente dal punto di vista della capacità, ma non fornirebbe isolamento del traffico.
+- **Gestione degli utenti:** se un dipendente si spostasse da un gruppo a un altro, sarebbe necessario modificare la posa della rete per collegarlo a un diverso switch della Figura 6.15. La presenza di dipendenti appartenenti contemporaneamente a più gruppi renderebbe il problema ancora più complesso.
+
+###### VLAN basate sulle porte
+Le difficoltà delle LAN gerarchiche possono essere superate utilizzando uno switch che supporti una **VLAN - Virtual Local Area Network**, realizzata su una singola infrastruttura fisica di rete locale.
+
+Gli host appartenenti a una VLAN comunicano tra loro come se fossero tutti collegati allo stesso switch. In una **VLAN basata sulle porte**, il gestore di rete divide le porte dello switch in gruppi. Ciascun gruppo costituisce una VLAN e le sue porte formano un dominio broadcast separato.
+
+![[Pasted image 20260607111247.png|700]]
+
+La Figura 6.25 mostra uno switch dotato di 16 porte. Le porte dalla 2 alla 8 appartengono alla VLAN del dipartimento di Ingegneria elettronica, mentre le porte dalla 9 alla 15 appartengono alla VLAN del dipartimento di Informatica.
+Questa configurazione risolve i problemi precedentemente descritti:
+- i frame delle due VLAN sono isolati;
+- i due switch della Figura 6.15 vengono sostituiti da un singolo switch fisico;
+- se l’utente collegato alla porta 8 entra a far parte del dipartimento di Informatica, il gestore di rete può riconfigurare il software della VLAN e associare la porta 8 alla VLAN di Informatica, senza modificare fisicamente il cablaggio.
+
+###### Comunicazione tra VLAN
+
+L’isolamento completo delle VLAN introduce un nuovo problema: permettere la trasmissione del traffico dal dipartimento di Ingegneria elettronica a quello di Informatica.
+
+Una possibile soluzione consiste nel collegare una porta dello switch VLAN, per esempio la porta 1 della Figura 6.25, a un router esterno e configurarla in modo che appartenga a entrambe le VLAN. Anche se i due dipartimenti condividono lo stesso switch fisico, dal punto di vista logico la configurazione appare come due switch separati collegati tramite un router.
+
+Un datagramma IP diretto dal dipartimento di Ingegneria elettronica a quello di Informatica attraversa prima la VLAN di Ingegneria per raggiungere il router. Il router inoltra quindi il datagramma all’host di destinazione appartenente alla VLAN di Informatica.
+
+I produttori di switch semplificano questa configurazione offrendo dispositivi che comprendono sia le funzioni di uno switch sia quelle di un router, evitando così la necessità di installare un router esterno separato..
+
+###### Interconnessione di switch VLAN e trunking
+![[Pasted image 20260607105334.png|700]]
+La Figura 6.26 mostra un secondo switch con 8 porte, ciascuna configurata come appartenente alla VLAN di Ingegneria elettronica oppure alla VLAN di Informatica.
+
+Una soluzione semplice per collegare i due switch consiste nel configurare su ciascuno di essi una porta appartenente alla VLAN di Informatica e nel collegare direttamente le due porte, come mostrato nella Figura 6.26(a). Lo stesso procedimento dovrebbe essere ripetuto per ciascuna VLAN.
+
+Questa soluzione non è scalabile: con $N$ VLAN sarebbero necessarie $N$ porte su ciascuno switch soltanto per realizzare l’interconnessione tra i due dispositivi.
+
+Un approccio più scalabile è il **VLAN trunking**. Come mostrato nella Figura 6.26(b), su ogni switch viene configurata una porta speciale, detta **porta di trunking**, utilizzata per interconnettere gli switch VLAN. Una singola connessione di trunk può quindi trasportare frame appartenenti a VLAN differenti.
+
+Il trunking introduce però la necessità di determinare a quale VLAN appartenga ciascun frame ricevuto sulla porta di trunk. A questo scopo IEEE ha definito nello standard **802.1Q** un formato Ethernet esteso per i frame che attraversano un trunk VLAN.
+
+###### Formato Ethernet IEEE 802.1Q
+Il frame 802.1Q è costituito dal frame Ethernet standard, al quale viene aggiunta nell'intestazione un’**etichetta VLAN**, o **VLAN tag**, lunga quattro byte. L’etichetta trasporta l’identità della VLAN alla quale appartiene il frame.
+
+![[Pasted image 20260607105427.png|700]]
+
+L’etichetta VLAN viene aggiunta al frame dallo switch sul lato trasmittente del trunk. Sul lato ricevente, lo switch esamina l’etichetta per determinare la VLAN del frame e successivamente la rimuove.
+
+L’etichetta VLAN comprende:
+- un campo **TPID - Tag Protocol Identifier** di due byte, con valore esadecimale fisso `81-00`;
+- un campo **Tag Control Information** di due byte;
+- all’interno del Tag Control Information, un campo di identificazione della VLAN lungo 12 bit;
+- un campo di priorità lungo 3 bit, simile al campo TOS del datagramma IP.
