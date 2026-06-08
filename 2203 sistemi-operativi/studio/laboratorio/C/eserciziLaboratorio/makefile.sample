@@ -1,0 +1,12 @@
+# variabili
+CC = gcc
+FLAGS = -lm -lphtread
+
+programma : main.o file1.o file2.o                          # dipendenza
+    $(CC) $(FLAGS) –o eseguibile main.o file1.o file2.o     # comando
+main.o : main.c
+    $(CC) $(FLAGS) –c main.c
+file1.o : file1.c
+    $(CC) $(FLAGS) –c file1.c
+file2.o : file2.c
+    $(CC) $(FLAGS) –c file2.c
