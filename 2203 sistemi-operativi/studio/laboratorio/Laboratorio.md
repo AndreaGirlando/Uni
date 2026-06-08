@@ -11,6 +11,15 @@ Sorgente da più file: gcc -o nome-eseguibile file1.o file2.o
 Aggiunta di librerie esterne: gcc -l pthread -o nome-eseguibile file1.o
 ```
 
+###### Costanti imporatnti
+```
+#include <unistd.h>
+/* Standard file descriptors. */
+#define STDIN_FILENO 0 /* Standard input. *
+#define STDOUT_FILENO 1 /* Standard output. */
+#define STDERR_FILENO 2 /* Standard error output. */
+```
+
 ###### Gestione degli errori
 Includendo l'header *errno.h* viene definita una variabile *errno* dove vengono inseriti i codici di errore
 - *strerror(errno)* passando errno questa ci ritorna delle stringhe in linguaggio umano, utili per debbuggare. 
@@ -103,4 +112,29 @@ Quando scriviamo e lasciamo un buco tra una scritta e l'altra il file system cre
 il primo comando ci indica la dimensione apparente del nostro file (con i byte nulli), il secondo comando invece ci mostra la dimensione reale nel nostro disco (in quanto i byte nulli non vengono allocati)
 ![[Pasted image 20260608121917.png|700]]
 
-###### Condibisione di file e strutture dati di supporto
+###### Condivisione di file e strutture dati di supporto
+Ragionando in uno scenario multi-thread, più processi potrebberò aprire lo stesso file e avere problemi di letture e scritture concorrenti, quindi nascono le funzioni *pread* e *pwrite* che sono omonime a read e write ma sono atomiche.
+
+Può essere utile creare dei duplicati degli identificatori dei file per fare qeusta cosa usiamo:
+- *int dup(int fd);* prende il *FileId* in input e ne ritorna un nuovo ma che punta allo stesso file
+```
+// Questi write scrivono nello stesso file
+write(FileId, buffer1, sizeof(buffer1) - 1);
+write(newFileID, buffer1, sizeof(buffer1) - 1);
+```
+- *int dup2(int fd, int fd2);* sovrascrive la voce `fd2` rimpiazzandola con una copia esatta di `fd`. Se `fd2` era già aperta, il sistema la chiude automaticamente prima di sostituirla.
+```
+int standardOutput = dup(STDOUT_FILENO); // mi salvo il backup di stdout
+dup2(FileId, STDOUT_FILENO); // l'id di stdout diventa quello del file
+printf("\n Sto scrivendo nel file usando printf \n"); // scrivo sul file
+fflush(stdout); // forzo la scrittura reale nel file 
+dup2(standardOutput, STDOUT_FILENO); // resetto stdout con il riferimento salvato
+printf("\n Sto scrivendo nella console \n"); //scrivo nella consoel
+```
+
+Il Sistema Operativo usa la RAM libera come cache del disco, anche in scrittura questo ritarda le scritture per ragioni di efficienza (in genere per massimo 30 s) questo può creare problemi indesiderati è sempre possibile forzare il sistem operativo tramite *0_SYNC* in fase di apertura di una file o anche attraverso le seguenti chiamate di sistema:
+- *int fsync(int fd);* 
+- *void sync(void);*
+
+![[Pasted image 20260608194514.png|500]]
+###### Lettura e scrittura sugli stream
