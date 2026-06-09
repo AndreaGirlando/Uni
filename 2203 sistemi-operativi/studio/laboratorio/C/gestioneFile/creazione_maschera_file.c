@@ -7,7 +7,7 @@
  * > ls -l test1.txt test2.txt
  */
 
-#include "eserciziLaboratorio/lib-misc.h"
+#include "../FattiInAula/lib-misc.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>

@@ -4,7 +4,7 @@
  * efficienti per ottenere questa informazione (vedi `stat`)
 */
 
-#include "../eserciziLaboratorio/lib-misc.h"
+#include "../FattiInAula/lib-misc.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>

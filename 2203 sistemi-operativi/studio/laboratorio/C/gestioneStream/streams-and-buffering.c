@@ -4,7 +4,7 @@
  * lo standard error (unbuffered)
  */
 
-#include "lib-misc.h"
+#include "../FattiInAula/lib-misc.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,11 +16,11 @@
 
 void print_phrases(FILE *channel) {
     char phrase[] = PHRASE;
-    struct timespec pause = {0, 100 * 1000000};
+    struct timespec pause = {0, 100 * 1000000}; // secondi, nanosecondi
 
     for (int i = 0; i < LINES; i++) {
         for (int j = 0; j < strlen(phrase); j++) {
-            nanosleep(&pause, NULL);
+            nanosleep(&pause, NULL); // prende un timespec struc in input
             fputc(phrase[j], channel);
         }
         fputc('\n', channel);

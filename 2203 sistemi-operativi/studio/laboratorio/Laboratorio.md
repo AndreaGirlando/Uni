@@ -18,6 +18,9 @@ Aggiunta di librerie esterne: gcc -l pthread -o nome-eseguibile file1.o
 #define STDIN_FILENO 0 /* Standard input. *
 #define STDOUT_FILENO 1 /* Standard output. */
 #define STDERR_FILENO 2 /* Standard error output. */
+
+
+BUFSIZ \\definita in stdio.h e viene usata per i buffer interni alla libreria (come la scrittura negli stream)
 ```
 
 ###### Gestione degli errori
@@ -137,4 +140,32 @@ Il Sistema Operativo usa la RAM libera come cache del disco, anche in scrittura 
 - *void sync(void);*
 
 ![[Pasted image 20260608194514.png|500]]
-###### Lettura e scrittura sugli stream
+![[2203 sistemi-operativi/file-condivisi/git/eserciziLaboratorio/redirect.c|redirect]]
+###### Apri e chiudi stream
+C fornisce una libreria per l'I\O bufferizzato basato su stream, questo per ridurre il numero di chiamate di sistema *read/write* è sempre possibile forzare scritture pendenti nel buffer con fflush. Per creare uno stream aprendo un file specificato usiamo: 
+- *FILE \*fopen(const char \*pathname, const char \*type);* 
+- *FILE \*fdopen(int fd, const char \*type);* 
+- *int fclose(FILE \*fp);*
+![[apri_chiudi_stream.c]]
+
+###### Leggi e scrivi sugli stream
+Per leggere dagli stream abbiamo diversi comandi
+- *int fgetc(FILE \*fp);*  legge un carattere, ritorna la costante *EOF* in caso di errore o fine file
+- *int fputc(int c, FILE \*fp);*  scrive un carattere sullo stream
+in combinazione con fgetc possiamo usare i due metodi sotto per disambiguare il caso di errore dalla fine del file
+- *int ferror(FILE \*fp);* 
+- *int feof(FILE \*fp);*
+
+I buffer degli stream possono essere di tre tipi:
+- *Unbuffered*: i dati vengono scritti subito sul canale, senza passare da un buffer. È il caso tipico di `stderr`.    
+- *Line-buffered*: i dati vengono accumulati nel buffer e scritti quando viene incontrato `\n`. È il caso tipico di `stdout` quando stampa sul terminale.
+- *Fully-buffered*: i dati vengono accumulati nel buffer e scritti solo quando il buffer si riempie, oppure quando chiamiamo `fflush()` o `fclose()`. È il caso tipico dei file.
+
+Il buffering riduce il numero di chiamate al sistema operativo, rendendo le operazioni di I/O più efficienti. Possiamo disabilitare il buffering con:
+```c
+setbuf(fp, NULL);
+```
+
+![[2203 sistemi-operativi/file-condivisi/git/eserciziLaboratorio/streams-and-buffering.c|streams-and-buffering]]
+
+![[2203 sistemi-operativi/file-condivisi/git/eserciziLaboratorio/copy.c|copy]]
