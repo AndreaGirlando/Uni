@@ -7,7 +7,7 @@
  * > ./fork slow-child
  */
 
-#include "lib-misc.h"
+#include "../FattiInAula/lib-misc.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,7 +17,7 @@
 
 int main(int argc, char *argv[]) {
     pid_t pid;
-    char *process_name = "P";
+    char *process_name = "Padre";
     int X = 5;
     int pause_father, pause_child;
 
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 
     if (pid == 0) {
         // questo codice viene eseguito solo dentro il figlio
-        process_name = "F";
+        process_name = "Figlio";
         printf("[%s] X++\n", process_name);
         X++;
 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
         }
     } else {
         // questo codice viene eseguito solo dentro il padre
-        process_name = "P";
+        process_name = "Padre";
         printf("[%s] X--\n", process_name);
         X--;
 
@@ -64,6 +64,6 @@ int main(int argc, char *argv[]) {
     printf("[%s] pid=%d ppid=%d X=%d\n", process_name, getpid(), getppid(), X);
 
     printf("[%s] terminato\n", process_name);
-    
+
     exit(EXIT_SUCCESS);
 }

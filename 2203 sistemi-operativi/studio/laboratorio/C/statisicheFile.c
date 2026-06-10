@@ -3,7 +3,7 @@
  *  un oggetto del file-system specificato sulla riga di comando
  */
 
-#include "lib-misc.h"
+#include "FattiInAula/lib-misc.h"
 #include <grp.h>
 #include <pwd.h>
 #include <stdio.h>

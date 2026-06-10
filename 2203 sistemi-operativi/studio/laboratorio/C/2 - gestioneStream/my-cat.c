@@ -1,9 +1,11 @@
 /**
  * reimplementa il comando `cat`: legge un file di testo specificato
  * (o, altrimenti, lo standard input) e lo manda sullo standard output
+ *
+ * per provarlo bisogna eseguirlo in questo modo: cat test1.txt | ./a.ou
  */
 
-#include "lib-misc.h"
+#include "../FattiInAula/lib-misc.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -20,7 +22,7 @@ int main(int argc, char *argv[]) {
 
     // copia i dati dalla sorgente alla destinazione una riga alla volta
     while ((fgets(buffer, sizeof(buffer), in)) != NULL)
-        printf("%s", buffer); // fputs(buffer, stdout);
+        fputs(buffer, stdout);
 
     // chiude lo stream
     fclose(in);

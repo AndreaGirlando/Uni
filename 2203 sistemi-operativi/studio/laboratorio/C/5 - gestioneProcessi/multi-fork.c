@@ -12,7 +12,7 @@
  * (essendo associato ad un file)
  */
 
-#include "lib-misc.h"
+#include "../FattiInAula/lib-misc.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -53,11 +53,11 @@ int main(int argc, char *argv[]) {
     // creazione degli `num_children` figli
     for (int i = 1; i <= num_children; i++) {
         if (fork() == 0) {
-            workload_function("F", i);
+            workload_function("Figlio", i);
             // NB: la funzione precedente non ritornerà mai per l'exit finale
         }
     }
 
     // anche il padre eseguirà gli stessi passi
-    workload_function("P", 0);
+    workload_function("Padre", 0);
 }

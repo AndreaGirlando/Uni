@@ -1,8 +1,11 @@
 /**
  * duplica un file utilizzando 'mmap' per operare sui file
+ *
+ *
+ * ./a.out meme.txt testo.txt
  */
 
-#include "lib-misc.h"
+#include "../FattiInAula/lib-misc.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>

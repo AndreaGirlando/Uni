@@ -22,9 +22,7 @@ int main(int argc, char *argv[]) {
         printf("[P] disabilito il buffering sullo standard output...\n");
     }
 
-    printf(
-        "[P] sono il padre e sono appena partito... (*)"); // NB: manca il
-                                                           // ritorno a capo...
+    printf("[P] sono il padre e sono appena partito... \n(*)");
 
     if (fork() == 0) {
         // codice eseguito solo dal figlio

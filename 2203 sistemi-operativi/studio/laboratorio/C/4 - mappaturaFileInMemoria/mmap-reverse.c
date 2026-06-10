@@ -3,7 +3,7 @@
  * byte-per-byte usando la mappatura in memoria come metodo d'accesso
  */
 
-#include "lib-misc.h"
+#include "../FattiInAula/lib-misc.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
