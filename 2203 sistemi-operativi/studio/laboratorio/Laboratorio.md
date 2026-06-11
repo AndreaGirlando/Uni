@@ -403,3 +403,12 @@ La struttura di riferimento è *pthread_rwlock_t*
 - *pthread_rwlock_{init,destroy}* sono simili agli analoghi visti prima per i mutex
 - *pthread_rwlock_\[try]{rd|wr}lock* acquisiscono il lock condiviso o esclusivo
 - *pthread_rwlock_unlock* rilascia il lock precedentemente acquisito 
+
+###### Monitor
+![[Pasted image 20260611172515.png|700]]
+La struttura di riferimento è *pthread_cond_t*
+- *pthread_cond_init()* passiamo la condizione da far rispettare tramite il monitor - *attr* non lo usiamo
+- *pthread_cond_destroy()*: distrugge il monitor
+- *pthread_cond_wait()*: se la condizione associata è false allora dobbiamo richiamare *pthread_cond_wait()*
+- *pthread_cond_{signal, broadcast}()*: risveglia uno (non si sa quale,  non possiamo fare affidamento che questa cosa accada in modo sequenziale) o più thread bloccati
+Dopo che un thread viene risvegliato deve necessariamente ricontrollare la condizione tramite la *...wait*. 
