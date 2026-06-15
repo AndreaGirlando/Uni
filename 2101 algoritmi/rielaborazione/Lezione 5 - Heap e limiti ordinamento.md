@@ -112,7 +112,7 @@ Si applica a un nodo $i$ assumendo che i sottoalberi sinistro e destro siano gi�
 **Analisi della complessità di Heapify:**
 L'equazione di ricorrenza (nel caso peggiore su un albero quasi completo) è approssimabile dal Teorema Master (Caso 2):
 $$ T(n) \le T(2/3 n) + \Theta(1) \implies T(n) = \Theta(\log n) $$
-Il fattore $2/3$ deriva dal fatto che, in un albero non perfettamente bilanciato nell'ultimo livello, il sottoalbero più grande può contenere circa i 2/3 dei nodi totali. Tuttavia, la complessità rimane legata all'altezza: **$O(\log n)$**.
+Il fattore $2/3$ deriva dal fatto che, in un albero non perfettamente bilanciato nell'ultimo livello, il sottoalbero più grande può contenere circa i $2/3$ dei nodi totali. Tuttavia, la complessità rimane legata all'altezza: **$O(\log n)$**.
 
 ```
 HEAPIFY(H,x) 
