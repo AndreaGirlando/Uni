@@ -299,7 +299,7 @@ il campo *flag* serve a specificare **che tipo di mappatura vuoi creare**. I pri
 
 questa funzione ritorna *MAP_FAILED* in caso di errore l'indirizzo di mappatura altrimenti.
 
-- *int msync(void \*addr, size_t len, int flag);* : forza il sistema oeprativo a scrivere su disco eventuali modifiche in sospeso, i flag che possiamo usare specificano solo il tipo di richiesta che possiamo fare:
+- *int msync(void \*addr, size_t len, int flag);* : forza il sistema operativo a scrivere su disco eventuali modifiche in sospeso, i flag che possiamo usare specificano solo il tipo di richiesta che possiamo fare:
 	- *MS_ASYNC*: richiesta asincrona
 	- *MS_SYNC*: richiesta sincrona (bloccante)
 - *int munmap(void \*addr, size_t len);* annulla la mappatura del file salvando le evntuali modifiche in caso di mappatura condivisa (effetti comunque applicati alla terminazione del processo)
