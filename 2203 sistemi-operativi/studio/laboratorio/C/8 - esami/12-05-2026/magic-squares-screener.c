@@ -31,14 +31,22 @@ bool isMagic(int* matrix){
     return sum1 == sum2;
 }
 
+void printArray(int* array, int n){
+    for(int j = 0; j<n; j++){
+        if(j == 0 || j == 3 || j == 6) printf("(");
+        printf(" %d ", array[j]);
+        if(j == 2 || j == 5 || j == 8) printf(")");
+    }
+}
+
 void printValue(int** codaInter, int n){
     for(int i = 0; i < n; i++){
-        for(int j = 0; j<9; j++){
-            printf("\t è magica? %d", isMagic(codaInter[i]));
-        }
+        printArray(codaInter[i], 9);
         printf("\n\n");
     }
 }
+
+
 
 void *producer(void* arg){
     struct threadData* data = (struct threadData*)arg;
@@ -56,14 +64,22 @@ void *producer(void* arg){
             count++;
             sliced = strtok(NULL, ",");
         }
+
+        printf("[%lu|Producer] Matrice candidata:", data->id);
+        printArray(record, 9);
+        printf("\n");
+
+
         pthread_mutex_lock(&(data->shared->lockInter));
         data->shared->codaInter[data->shared->countInter] = record;
         data->shared->countInter++;
         pthread_mutex_unlock(&(data->shared->lockInter));
-        break; //! TODO
+
+        //TODO questo break deve essere eliminato
+        break;
     }
 
-    printf("[%lu|Producer] Ho finito di leggere: %s\n", data->id, data->path);
+    // printf("[%lu|Producer] Ho finito di leggere: %s\n", data->id, data->path);
 
     return 0;
 }
@@ -71,17 +87,27 @@ void *producer(void* arg){
 void *consumer(void* arg){
     struct threadData* data = (struct threadData*)arg;
     unsigned long return_value = rand() % 255;
-    printf("[%lu|Consumer] Thread\n", data->id);
+    printf("[%lu|Consumer] Sto per iniziare a leggere\n", data->id);
 
     int *record = malloc(sizeof(int)*9);
     while(true){
+
         pthread_mutex_lock(&(data->shared->lockInter));
         if(data->shared->countInter>0){
             data->shared->countInter--;
             memcpy(record, data->shared->codaInter[data->shared->countInter], 9*sizeof(int));
-            printf("[%lu|Consumer] la matrice analizzata è magica: %d\n ", data->id, isMagic(record));
+            pthread_mutex_lock(&(data->shared->lockFinale));
+            if(isMagic(record)){
+                data->shared->codaFinale[data->shared->countFinale] = record;
+                data->shared->countFinale++;
+            }
+            pthread_mutex_unlock(&(data->shared->lockFinale));
         }
         pthread_mutex_unlock(&(data->shared->lockInter));
+
+
+
+        //TODO questo break deve essere eliminato
         break;
     }
 
@@ -128,7 +154,9 @@ int main(int argc, char* argv[]){
         printf("[main] Thread %d: ha terminato con %lu\n", i, (unsigned long)ret_val);
     }
 
-    printValue(cond.codaInter, cond.countInter);
+    //Dovrei fare un main consumer della coda finale
+
+    printValue(cond.codaFinale, cond.countFinale);
 
     return 0;
 }
