@@ -72,7 +72,8 @@ void codaInit(struct coda* q, int N){
 void codaEnqueue(struct coda* q, struct record* r){
     sem_wait(&(q->empty));
     pthread_mutex_lock(&(q->mutex));
-    q->records[q->tail++] = r;
+    q->records[q->tail] = r;
+    q->tail = (q->tail+1)%RECORDSLEN;
     pthread_mutex_unlock(&(q->mutex));
     sem_post(&(q->full));
 }
@@ -81,10 +82,7 @@ struct record* codaDequeue(struct coda* q){
     sem_wait(&(q->full));
     pthread_mutex_lock(&(q->mutex));
     struct record* temp = q->records[q->head];
-    for(int i = 0; i < q->tail-1; i++){
-        q->records[i] = q->records[i+1];
-    }
-    q->tail--;
+    q->head = (q->head+1)%RECORDSLEN;
     pthread_mutex_unlock(&(q->mutex));
     sem_post(&(q->empty));
 
@@ -198,15 +196,20 @@ int main(int argc, char* argv[]){
 
     pthread_t thRip[R];
     for(int i = 0; i < R; i++){
-        struct threadData dataThread = {i, N, T, R, &cond};
-        pthread_create(&thRip[i], NULL, riparatore, ((void*)&dataThread));
+        struct threadData* dataThread = malloc(sizeof(struct threadData));
+        dataThread->id = i;
+        dataThread->N = N;
+        dataThread->T = T;
+        dataThread->R = R;
+        dataThread->shared = &cond;
+        pthread_create(&thRip[i], NULL, riparatore, ((void*)dataThread));
     }
+    pthread_join(thGen, NULL);
+    pthread_join(thVer, NULL);
     for(int i = 0; i < R; i++){
         pthread_join(thRip[i], NULL);
     }
 
-    pthread_join(thGen, NULL);
-    pthread_join(thVer, NULL);
 
 
     return 0;
