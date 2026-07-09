@@ -206,13 +206,13 @@ BEGIN
     DECLARE v_data_emissione DATE;
     DECLARE v_data_scadenza DATE;
 
-    SELECT DataEmissione, DataScadenza 
+    SELECT DataEmissione, DataScadenza
     INTO v_data_emissione, v_data_scadenza
     FROM TitoloViaggio
     WHERE Id = NEW.IdTitoloViaggio;
 
     IF DATE(NEW.Data) < v_data_emissione OR DATE(NEW.Data) > v_data_scadenza THEN
-        SIGNAL SQLSTATE '45000' 
+        SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Errore: Data validazione fuori dal periodo del Titolo di Viaggio.';
     END IF;
 END $$
@@ -230,7 +230,7 @@ BEGIN
         WHERE Id = NEW.IdAutista;
 
         IF DATE(NEW.DataInizio) > v_scadenza_patente OR DATE(NEW.DataFine) > v_scadenza_patente THEN
-            SIGNAL SQLSTATE '45000' 
+            SIGNAL SQLSTATE '45000'
             SET MESSAGE_TEXT = 'Errore: Impossibile assegnare turno. Patente scaduta.';
         END IF;
     END IF;
@@ -248,7 +248,7 @@ BEGIN
     WHERE Id = NEW.IdAutista;
 
     IF NEW.Data > v_scadenza_patente THEN
-        SIGNAL SQLSTATE '45000' 
+        SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Errore: Impossibile assegnare la corsa. Patente scaduta.';
     END IF;
 END $$
@@ -265,7 +265,7 @@ BEGIN
     WHERE Id = NEW.IdMezzo;
 
     IF NEW.KmAttuali > v_km_totali THEN
-        SIGNAL SQLSTATE '45000' 
+        SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Errore: I KmAttuali nel rifornimento superano i KmTotali del Mezzo.';
     END IF;
 END $$
@@ -281,22 +281,22 @@ BEGIN
 END $$
 
 -- Stored procedure: operazione 8 come stored procedure
-CREATE PROCEDURE ReportRitardiMensili(
-    IN p_mese INT,
-    IN p_anno INT
-)
-BEGIN
-    SELECT 
-        L.NomeDescrittivo AS NomeLinea,
-        COUNT(CE.Id) AS TotaleCorseEffettuate,
-        ROUND(AVG(TIMESTAMPDIFF(MINUTE, CP.OraPartenza, CE.OraPartenzaReale)), 2) AS RitardoMedioMinuti
-    FROM CorsaEffettiva CE
-    JOIN CorsaPianificata CP ON CE.IdCorsaPianificata = CP.Id
-    JOIN Linea L ON CP.IdLinea = L.Id
-    WHERE MONTH(CE.Data) = p_mese AND YEAR(CE.Data) = p_anno
-    GROUP BY L.Id, L.NomeDescrittivo
-    ORDER BY RitardoMedioMinuti DESC;
-END $$
+    CREATE PROCEDURE ReportRitardiMensili(
+        IN p_mese INT,
+        IN p_anno INT
+    )
+    BEGIN
+        SELECT
+            L.NomeDescrittivo AS NomeLinea,
+            COUNT(CE.Id) AS TotaleCorseEffettuate,
+            ROUND(AVG(TIMESTAMPDIFF(MINUTE, CP.OraPartenza, CE.OraPartenzaReale)), 2) AS RitardoMedioMinuti
+        FROM CorsaEffettiva CE
+        JOIN CorsaPianificata CP ON CE.IdCorsaPianificata = CP.Id
+        JOIN Linea L ON CP.IdLinea = L.Id
+        WHERE MONTH(CE.Data) = p_mese AND YEAR(CE.Data) = p_anno
+        GROUP BY L.Id, L.NomeDescrittivo
+        ORDER BY RitardoMedioMinuti DESC;
+    END $$
 
 
 DELIMITER ;
