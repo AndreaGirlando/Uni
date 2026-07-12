@@ -211,7 +211,7 @@ Associazioni differenti creano complessità molto differenti, la domanda che ade
 - abbiamo un vettore di interi $P = P_0, P_1, P_2, P_3, \dots P_n$
 Le dimensioni della matrice $A_i$ sono $P_{i-1} \text{ e } P_i$
 
-**1. Ricerca della sottostruttura ottima**
+**1. Ricserca della sottostruttura ottima**
 Presa la nostra sequenza di matrici $A_1, A_2, \dots A_n$ supponiamo che una parentesizzazione ottima di quest'ultima suddivida il prodotto in questo modo$$(A_1 \dots A_k)·(A_{k+1} \dots A_n)$$ovviamente anche entrambe le sotto sequenze devono essere parentesizzate in modo ottimo e quindi avremo che: $$S^*_{1,n} = S^*_{1,k}+S^*_{k+1,n} + P_0P_KP_n$$dove $P_0P_KP_n$ sono il numero di moltiplicazioni per $A_{1,k}·A_{k+1,n}$. 
 
 **Dimostrazione**: 
