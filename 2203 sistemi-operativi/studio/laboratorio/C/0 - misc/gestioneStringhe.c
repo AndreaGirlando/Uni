@@ -27,6 +27,7 @@ int main(){
     printf("Contiene 'Andrea': %d\n", strstr(string, "Andrea")!=NULL);
     printf("Uguale ad 'Andrea': %d\n", strcmp(dividedString[0], "Andrea"));
     printf("Uguale ad 'Github': %d\n", strcmp(dividedString[0], "Github"));
+    printf("Lughezza stringa dividedString[0]: %d", strlen(dividedString[0]));
 
     char string2[] = "Andrea;Girlando;Github";
     struct data* values = malloc(sizeof(struct data));
