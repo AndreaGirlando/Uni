@@ -110,15 +110,16 @@ void* lettore(void* arg){
     printf("[Lettore-%d]: inizio a leggere il file: %s\n", th->id, th->path);
 
     int fd = open(th->path, O_RDONLY);
-    struct stat sb; fstat(fd, &sb);
+    struct stat sb;
+    fstat(fd, &sb);
     unsigned char *p = mmap(NULL, sb.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
 
     int itemInMatrix = th->M*th->M;
-    int counter = sb.st_size/(itemInMatrix);
+    int counter = sb.st_size/(itemInMatrix); // con matrici 5x5 dovrò creare st_size/25 matrici diverse
     for(int i = 0; i < counter; i++){
         int *mx = malloc(sizeof(int) * itemInMatrix);
         for(int j = 0; j < itemInMatrix; j++){
-            mx[j] = p[i*itemInMatrix+j];
+            mx[j] = p[i*itemInMatrix+j]; //indice dove i*itemInMatrix è l'inizio della matrice i-esima e j è l'offset dello specifico elemento
         }
         enqueue(th->shared->codaIntermedia, mx);
     }

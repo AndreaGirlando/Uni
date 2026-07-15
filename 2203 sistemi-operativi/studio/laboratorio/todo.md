@@ -1,0 +1,8 @@
+- [x] Stack come struttura dati condivisa
+- [x] Strtok
+- [x] Mmap
+- [x] Mutex e semafori
+- [x] Variabili condizione
+- [x] Strutture varie
+- [ ] Terminazione
+- [ ] 
