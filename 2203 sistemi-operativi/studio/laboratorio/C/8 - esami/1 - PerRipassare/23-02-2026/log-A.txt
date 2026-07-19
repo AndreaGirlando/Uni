@@ -1,0 +1,150 @@
+2026-02-11 08:00:24|INFO|richiesta ricevuta da 10.0.0.1
+2026-02-11 08:00:29|DEBUG|inizializzazione cache completata
+2026-02-11 08:00:32|WARNING|risposta dal servizio esterno lenta (2.3s)
+2026-02-11 08:00:33|INFO|richiesta ricevuta da 10.0.0.1
+2026-02-11 08:00:50|DEBUG|inizializzazione cache completata
+2026-02-11 08:00:57|INFO|servizio in ascolto sulla porta 443
+2026-02-11 08:01:11|WARNING|risposta dal servizio esterno lenta (2.3s)
+2026-02-11 08:01:20|DEBUG|avvio garbage collector schedulato
+2026-02-11 08:01:45|WARNING|timeout sulla richiesta n.4421
+2026-02-11 08:01:56|WARNING|numero massimo di connessioni quasi raggiunto
+2026-02-11 08:02:21|DEBUG|inizializzazione cache completata
+2026-02-11 08:02:34|DEBUG|connessione al pool di thread stabilita
+2026-02-11 08:02:54|DEBUG|allocazione buffer di 4096 byte
+2026-02-11 08:03:18|DEBUG|avvio del modulo di autenticazione
+2026-02-11 08:03:48|INFO|utente 'admin' autenticato con successo
+2026-02-11 08:03:58|INFO|servizio in ascolto sulla porta 443
+2026-02-11 08:04:27|WARNING|spazio su disco al 78 percento
+2026-02-11 08:04:34|ERROR|processo worker terminato inaspettatamente con codice 137
+2026-02-11 08:04:56|WARNING|timeout sulla richiesta n.4421
+2026-02-11 08:04:59|DEBUG|verifica parametri di avvio in corso
+2026-02-11 08:05:12|ERROR|impossibile scrivere sul file di log /var/log/app.log
+2026-02-11 08:05:18|DEBUG|allocazione buffer di 4096 byte
+2026-02-11 08:05:40|INFO|nuovo worker avviato con PID 3421
+2026-02-11 08:06:00|DEBUG|connessione al pool di thread stabilita
+2026-02-11 08:06:24|INFO|servizio in ascolto sulla porta 443
+2026-02-11 08:06:37|DEBUG|lettura variabili d'ambiente completata
+2026-02-11 08:06:45|DEBUG|registrazione handler per SIGTERM
+2026-02-11 08:06:53|WARNING|timeout sulla richiesta n.4421
+2026-02-11 08:07:06|WARNING|latenza media superiore a 500ms
+2026-02-11 08:07:36|DEBUG|inizializzazione cache completata
+2026-02-11 08:07:43|ERROR|parsing del file XML fallito alla riga 142
+2026-02-11 08:08:12|WARNING|numero massimo di connessioni quasi raggiunto
+2026-02-11 08:08:17|ERROR|risposta HTTP 503 dal servizio upstream
+2026-02-11 08:08:41|DEBUG|inizializzazione cache completata
+2026-02-11 08:09:05|INFO|sessione utente 'marco' terminata regolarmente
+2026-02-11 08:09:18|INFO|migrazione dello schema completata
+2026-02-11 08:09:35|INFO|backup giornaliero completato in 12s
+2026-02-11 08:10:03|INFO|richiesta ricevuta da 10.0.0.1
+2026-02-11 08:10:29|DEBUG|caricamento configurazione da /etc/app.conf
+2026-02-11 08:10:32|WARNING|spazio su disco al 78 percento
+2026-02-11 08:10:47|INFO|migrazione dello schema completata
+2026-02-11 08:11:15|INFO|servizio in ascolto sulla porta 443
+2026-02-11 08:11:37|ERROR|impossibile scrivere sul file di log /var/log/app.log
+2026-02-11 08:12:02|ERROR|servizio di posta non raggiungibile
+2026-02-11 08:12:12|INFO|utente 'admin' autenticato con successo
+2026-02-11 08:12:13|INFO|connessione al database stabilita
+2026-02-11 08:12:22|CRITICAL|esaurimento memoria: OOM killer attivato
+2026-02-11 08:12:28|CRITICAL|perdita di connettivita' di rete su tutte le interfacce
+2026-02-11 08:12:56|INFO|utente 'admin' autenticato con successo
+2026-02-11 08:13:16|INFO|servizio in ascolto sulla porta 443
+2026-02-11 08:13:41|DEBUG|allocazione buffer di 4096 byte
+2026-02-11 08:14:11|DEBUG|registrazione handler per SIGTERM
+2026-02-11 08:14:27|DEBUG|allocazione buffer di 4096 byte
+2026-02-11 08:14:56|DEBUG|allocazione buffer di 4096 byte
+2026-02-11 08:15:06|CRITICAL|perdita di connettivita' di rete su tutte le interfacce
+2026-02-11 08:15:35|DEBUG|inizializzazione cache completata
+2026-02-11 08:15:38|INFO|utente 'admin' autenticato con successo
+2026-02-11 08:16:03|WARNING|utilizzo memoria al 85 percento
+2026-02-11 08:16:08|INFO|backup giornaliero completato in 12s
+2026-02-11 08:16:14|WARNING|risposta dal servizio esterno lenta (2.3s)
+2026-02-11 08:16:28|DEBUG|avvio garbage collector schedulato
+2026-02-11 08:16:53|CRITICAL|servizio principale non risponde da 300 secondi
+2026-02-11 08:17:16|WARNING|tentativo di accesso con credenziali scadute
+2026-02-11 08:17:31|DEBUG|allocazione buffer di 4096 byte
+2026-02-11 08:17:35|ERROR|risposta HTTP 503 dal servizio upstream
+2026-02-11 08:17:46|DEBUG|connessione al pool di thread stabilita
+2026-02-11 08:17:54|DEBUG|registrazione handler per SIGTERM
+2026-02-11 08:17:57|INFO|richiesta ricevuta da 10.0.0.1
+2026-02-11 08:18:05|WARNING|timeout sulla richiesta n.4421
+2026-02-11 08:18:33|DEBUG|avvio del modulo di autenticazione
+2026-02-11 08:18:41|DEBUG|registrazione handler per SIGTERM
+2026-02-11 08:18:48|DEBUG|lettura variabili d'ambiente completata
+2026-02-11 08:19:07|INFO|migrazione dello schema completata
+2026-02-11 08:19:33|INFO|connessione al database stabilita
+2026-02-11 08:19:37|INFO|utente 'admin' autenticato con successo
+2026-02-11 08:19:51|WARNING|latenza media superiore a 500ms
+2026-02-11 08:20:13|INFO|richiesta ricevuta da 10.0.0.1
+2026-02-11 08:20:15|WARNING|utilizzo memoria al 85 percento
+2026-02-11 08:20:41|INFO|aggiornamento indice di ricerca completato
+2026-02-11 08:20:48|ERROR|query SQL terminata con errore: deadlock rilevato
+2026-02-11 08:20:53|DEBUG|lettura variabili d'ambiente completata
+2026-02-11 08:21:08|INFO|sessione utente 'marco' terminata regolarmente
+2026-02-11 08:21:23|DEBUG|connessione al pool di thread stabilita
+2026-02-11 08:21:27|WARNING|risposta dal servizio esterno lenta (2.3s)
+2026-02-11 08:21:54|DEBUG|registrazione handler per SIGTERM
+2026-02-11 08:22:24|DEBUG|connessione al pool di thread stabilita
+2026-02-11 08:22:30|WARNING|tentativo di accesso con credenziali scadute
+2026-02-11 08:22:37|INFO|connessione al database stabilita
+2026-02-11 08:22:43|ERROR|connessione al database fallita
+2026-02-11 08:22:52|INFO|report giornaliero generato con successo
+2026-02-11 08:23:02|ERROR|risposta HTTP 503 dal servizio upstream
+2026-02-11 08:23:24|INFO|servizio in ascolto sulla porta 443
+2026-02-11 08:23:31|WARNING|certificato SSL in scadenza tra 7 giorni
+2026-02-11 08:23:50|DEBUG|avvio del modulo di autenticazione
+2026-02-11 08:24:14|WARNING|timeout sulla richiesta n.4421
+2026-02-11 08:24:33|DEBUG|avvio del modulo di autenticazione
+2026-02-11 08:24:39|INFO|servizio in ascolto sulla porta 443
+2026-02-11 08:24:42|DEBUG|registrazione handler per SIGTERM
+2026-02-11 08:25:02|ERROR|impossibile scrivere sul file di log /var/log/app.log
+2026-02-11 08:25:15|DEBUG|inizializzazione cache completata
+2026-02-11 08:25:23|DEBUG|avvio garbage collector schedulato
+2026-02-11 08:25:43|INFO|richiesta ricevuta da 10.0.0.1
+2026-02-11 08:26:02|DEBUG|avvio garbage collector schedulato
+2026-02-11 08:26:09|INFO|sessione utente 'marco' terminata regolarmente
+2026-02-11 08:26:17|WARNING|latenza media superiore a 500ms
+2026-02-11 08:26:39|DEBUG|caricamento configurazione da /etc/app.conf
+2026-02-11 08:26:50|INFO|connessione al database stabilita
+2026-02-11 08:26:51|ERROR|impossibile scrivere sul file di log /var/log/app.log
+2026-02-11 08:26:55|INFO|migrazione dello schema completata
+2026-02-11 08:27:12|DEBUG|inizializzazione cache completata
+2026-02-11 08:27:41|DEBUG|allocazione buffer di 4096 byte
+2026-02-11 08:27:53|DEBUG|inizializzazione cache completata
+2026-02-11 08:28:20|DEBUG|lettura variabili d'ambiente completata
+2026-02-11 08:28:40|INFO|sessione utente 'marco' terminata regolarmente
+2026-02-11 08:29:01|CRITICAL|perdita di connettivita' di rete su tutte le interfacce
+2026-02-11 08:29:11|INFO|servizio in ascolto sulla porta 443
+2026-02-11 08:29:40|ERROR|impossibile scrivere sul file di log /var/log/app.log
+2026-02-11 08:30:09|DEBUG|connessione al pool di thread stabilita
+2026-02-11 08:30:14|DEBUG|registrazione handler per SIGTERM
+2026-02-11 08:30:21|DEBUG|avvio garbage collector schedulato
+2026-02-11 08:30:43|WARNING|tentativo di accesso con credenziali scadute
+2026-02-11 08:31:00|INFO|sessione utente 'marco' terminata regolarmente
+2026-02-11 08:31:03|INFO|richiesta ricevuta da 10.0.0.1
+2026-02-11 08:31:05|INFO|sessione utente 'marco' terminata regolarmente
+2026-02-11 08:31:26|DEBUG|caricamento configurazione da /etc/app.conf
+2026-02-11 08:31:50|CRITICAL|kernel panic: impossibile montare filesystem root
+2026-02-11 08:32:08|INFO|report giornaliero generato con successo
+2026-02-11 08:32:37|DEBUG|connessione al pool di thread stabilita
+2026-02-11 08:32:55|WARNING|certificato SSL in scadenza tra 7 giorni
+2026-02-11 08:33:14|DEBUG|allocazione buffer di 4096 byte
+2026-02-11 08:33:19|INFO|report giornaliero generato con successo
+2026-02-11 08:33:48|DEBUG|allocazione buffer di 4096 byte
+2026-02-11 08:34:17|ERROR|connessione al database fallita
+2026-02-11 08:34:39|INFO|nuovo worker avviato con PID 3421
+2026-02-11 08:35:08|DEBUG|registrazione handler per SIGTERM
+2026-02-11 08:35:32|ERROR|processo worker terminato inaspettatamente con codice 137
+2026-02-11 08:36:00|DEBUG|inizializzazione cache completata
+2026-02-11 08:36:29|DEBUG|caricamento configurazione da /etc/app.conf
+2026-02-11 08:36:53|INFO|backup giornaliero completato in 12s
+2026-02-11 08:37:19|ERROR|permesso negato per operazione su /etc/shadow
+2026-02-11 08:37:28|WARNING|tentativo di accesso con credenziali scadute
+2026-02-11 08:37:41|DEBUG|connessione al pool di thread stabilita
+2026-02-11 08:37:49|ERROR|risposta HTTP 503 dal servizio upstream
+2026-02-11 08:38:01|DEBUG|lettura variabili d'ambiente completata
+2026-02-11 08:38:09|DEBUG|inizializzazione cache completata
+2026-02-11 08:38:22|DEBUG|inizializzazione cache completata
+2026-02-11 08:38:47|DEBUG|connessione al pool di thread stabilita
+2026-02-11 08:39:00|DEBUG|registrazione handler per SIGTERM
+2026-02-11 08:39:11|WARNING|risposta dal servizio esterno lenta (2.3s)
+2026-02-11 08:39:40|ERROR|impossibile scrivere sul file di log /var/log/app.log

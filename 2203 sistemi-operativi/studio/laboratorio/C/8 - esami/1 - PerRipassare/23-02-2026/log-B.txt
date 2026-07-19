@@ -1,0 +1,120 @@
+2026-02-11 09:00:19|CRITICAL|kernel panic: impossibile montare filesystem root
+2026-02-11 09:00:21|CRITICAL|violazione di sicurezza: accesso non autorizzato rilevato
+2026-02-11 09:00:33|DEBUG|apertura socket su porta 8080
+2026-02-11 09:00:47|WARNING|latenza media superiore a 500ms
+2026-02-11 09:00:51|INFO|servizio in ascolto sulla porta 443
+2026-02-11 09:00:58|INFO|migrazione dello schema completata
+2026-02-11 09:00:59|DEBUG|apertura socket su porta 8080
+2026-02-11 09:01:21|INFO|servizio in ascolto sulla porta 443
+2026-02-11 09:01:33|WARNING|tentativo di accesso con credenziali scadute
+2026-02-11 09:01:53|INFO|aggiornamento indice di ricerca completato
+2026-02-11 09:02:17|DEBUG|connessione al pool di thread stabilita
+2026-02-11 09:02:27|ERROR|overflow del buffer circolare
+2026-02-11 09:02:40|WARNING|latenza media superiore a 500ms
+2026-02-11 09:02:45|WARNING|risposta dal servizio esterno lenta (2.3s)
+2026-02-11 09:03:07|DEBUG|apertura socket su porta 8080
+2026-02-11 09:03:27|WARNING|certificato SSL in scadenza tra 7 giorni
+2026-02-11 09:03:45|INFO|report giornaliero generato con successo
+2026-02-11 09:03:55|ERROR|servizio di posta non raggiungibile
+2026-02-11 09:04:15|DEBUG|avvio garbage collector schedulato
+2026-02-11 09:04:30|WARNING|file di configurazione non trovato, uso valori predefiniti
+2026-02-11 09:04:47|INFO|nuovo worker avviato con PID 3421
+2026-02-11 09:05:09|INFO|backup giornaliero completato in 12s
+2026-02-11 09:05:31|DEBUG|registrazione handler per SIGTERM
+2026-02-11 09:05:34|INFO|aggiornamento indice di ricerca completato
+2026-02-11 09:05:56|WARNING|tentativo di accesso con credenziali scadute
+2026-02-11 09:06:01|DEBUG|inizializzazione cache completata
+2026-02-11 09:06:17|DEBUG|inizializzazione cache completata
+2026-02-11 09:06:32|INFO|utente 'admin' autenticato con successo
+2026-02-11 09:06:39|INFO|migrazione dello schema completata
+2026-02-11 09:06:55|WARNING|numero massimo di connessioni quasi raggiunto
+2026-02-11 09:07:16|INFO|backup giornaliero completato in 12s
+2026-02-11 09:07:41|WARNING|utilizzo memoria al 85 percento
+2026-02-11 09:08:07|INFO|backup giornaliero completato in 12s
+2026-02-11 09:08:22|CRITICAL|servizio principale non risponde da 300 secondi
+2026-02-11 09:08:52|DEBUG|inizializzazione cache completata
+2026-02-11 09:08:57|ERROR|risposta HTTP 503 dal servizio upstream
+2026-02-11 09:09:15|WARNING|risposta dal servizio esterno lenta (2.3s)
+2026-02-11 09:09:35|INFO|connessione al database stabilita
+2026-02-11 09:09:49|WARNING|risposta dal servizio esterno lenta (2.3s)
+2026-02-11 09:10:04|ERROR|overflow del buffer circolare
+2026-02-11 09:10:19|ERROR|risposta HTTP 503 dal servizio upstream
+2026-02-11 09:10:46|DEBUG|inizializzazione cache completata
+2026-02-11 09:11:02|INFO|servizio in ascolto sulla porta 443
+2026-02-11 09:11:17|INFO|sessione utente 'marco' terminata regolarmente
+2026-02-11 09:11:25|DEBUG|verifica parametri di avvio in corso
+2026-02-11 09:11:54|DEBUG|allocazione buffer di 4096 byte
+2026-02-11 09:11:59|INFO|backup giornaliero completato in 12s
+2026-02-11 09:12:22|DEBUG|caricamento configurazione da /etc/app.conf
+2026-02-11 09:12:36|DEBUG|apertura socket su porta 8080
+2026-02-11 09:12:50|DEBUG|lettura variabili d'ambiente completata
+2026-02-11 09:13:03|DEBUG|apertura socket su porta 8080
+2026-02-11 09:13:26|ERROR|processo worker terminato inaspettatamente con codice 137
+2026-02-11 09:13:39|DEBUG|avvio garbage collector schedulato
+2026-02-11 09:13:49|INFO|aggiornamento indice di ricerca completato
+2026-02-11 09:14:07|WARNING|numero massimo di connessioni quasi raggiunto
+2026-02-11 09:14:33|WARNING|risposta dal servizio esterno lenta (2.3s)
+2026-02-11 09:14:49|INFO|nuovo worker avviato con PID 3421
+2026-02-11 09:15:05|DEBUG|apertura socket su porta 8080
+2026-02-11 09:15:27|DEBUG|allocazione buffer di 4096 byte
+2026-02-11 09:15:51|WARNING|numero massimo di connessioni quasi raggiunto
+2026-02-11 09:16:21|DEBUG|lettura variabili d'ambiente completata
+2026-02-11 09:16:39|DEBUG|avvio garbage collector schedulato
+2026-02-11 09:16:58|DEBUG|apertura socket su porta 8080
+2026-02-11 09:17:01|INFO|richiesta ricevuta da 10.0.0.1
+2026-02-11 09:17:29|INFO|backup giornaliero completato in 12s
+2026-02-11 09:17:38|INFO|richiesta ricevuta da 10.0.0.1
+2026-02-11 09:17:53|INFO|nuovo worker avviato con PID 3421
+2026-02-11 09:18:02|DEBUG|apertura socket su porta 8080
+2026-02-11 09:18:11|WARNING|numero massimo di connessioni quasi raggiunto
+2026-02-11 09:18:12|ERROR|risposta HTTP 503 dal servizio upstream
+2026-02-11 09:18:24|WARNING|timeout sulla richiesta n.4421
+2026-02-11 09:18:49|DEBUG|connessione al pool di thread stabilita
+2026-02-11 09:19:14|CRITICAL|disco pieno su /dev/sda1
+2026-02-11 09:19:21|DEBUG|inizializzazione cache completata
+2026-02-11 09:19:26|ERROR|processo worker terminato inaspettatamente con codice 137
+2026-02-11 09:19:48|DEBUG|lettura variabili d'ambiente completata
+2026-02-11 09:20:03|DEBUG|inizializzazione cache completata
+2026-02-11 09:20:09|WARNING|latenza media superiore a 500ms
+2026-02-11 09:20:34|INFO|utente 'admin' autenticato con successo
+2026-02-11 09:20:38|WARNING|coda messaggi quasi piena (92 percento)
+2026-02-11 09:20:57|INFO|sessione utente 'marco' terminata regolarmente
+2026-02-11 09:21:10|WARNING|numero massimo di connessioni quasi raggiunto
+2026-02-11 09:21:13|ERROR|query SQL terminata con errore: deadlock rilevato
+2026-02-11 09:21:17|INFO|nuovo worker avviato con PID 3421
+2026-02-11 09:21:45|WARNING|coda messaggi quasi piena (92 percento)
+2026-02-11 09:22:11|WARNING|utilizzo memoria al 85 percento
+2026-02-11 09:22:13|CRITICAL|perdita di connettivita' di rete su tutte le interfacce
+2026-02-11 09:22:35|DEBUG|apertura socket su porta 8080
+2026-02-11 09:22:56|INFO|servizio in ascolto sulla porta 443
+2026-02-11 09:23:23|DEBUG|apertura socket su porta 8080
+2026-02-11 09:23:35|INFO|report giornaliero generato con successo
+2026-02-11 09:23:58|INFO|connessione al database stabilita
+2026-02-11 09:24:22|DEBUG|caricamento configurazione da /etc/app.conf
+2026-02-11 09:24:42|INFO|sessione utente 'marco' terminata regolarmente
+2026-02-11 09:25:07|WARNING|risposta dal servizio esterno lenta (2.3s)
+2026-02-11 09:25:34|INFO|report giornaliero generato con successo
+2026-02-11 09:25:45|WARNING|coda messaggi quasi piena (92 percento)
+2026-02-11 09:25:54|ERROR|impossibile scrivere sul file di log /var/log/app.log
+2026-02-11 09:26:19|ERROR|query SQL terminata con errore: deadlock rilevato
+2026-02-11 09:26:41|INFO|migrazione dello schema completata
+2026-02-11 09:26:57|INFO|richiesta ricevuta da 10.0.0.1
+2026-02-11 09:27:13|ERROR|autenticazione fallita per utente 'root' da 192.168.1.50
+2026-02-11 09:27:24|DEBUG|verifica parametri di avvio in corso
+2026-02-11 09:27:47|DEBUG|avvio garbage collector schedulato
+2026-02-11 09:27:48|ERROR|overflow del buffer circolare
+2026-02-11 09:27:51|INFO|nuovo worker avviato con PID 3421
+2026-02-11 09:28:07|DEBUG|apertura socket su porta 8080
+2026-02-11 09:28:30|INFO|nuovo worker avviato con PID 3421
+2026-02-11 09:28:45|INFO|connessione al database stabilita
+2026-02-11 09:28:55|WARNING|utilizzo memoria al 85 percento
+2026-02-11 09:29:05|DEBUG|inizializzazione cache completata
+2026-02-11 09:29:21|WARNING|latenza media superiore a 500ms
+2026-02-11 09:29:35|INFO|aggiornamento indice di ricerca completato
+2026-02-11 09:29:46|CRITICAL|servizio principale non risponde da 300 secondi
+2026-02-11 09:29:55|INFO|connessione al database stabilita
+2026-02-11 09:29:59|DEBUG|inizializzazione cache completata
+2026-02-11 09:30:03|WARNING|latenza media superiore a 500ms
+2026-02-11 09:30:10|WARNING|certificato SSL in scadenza tra 7 giorni
+2026-02-11 09:30:19|DEBUG|lettura variabili d'ambiente completata
+2026-02-11 09:30:39|WARNING|risposta dal servizio esterno lenta (2.3s)
