@@ -24,7 +24,7 @@ struct threadData {
 };
 
 
-bool isMagic(int* matrix){
+int isMagic(int* matrix){
     int sum1 = matrix[0] + matrix[4] + matrix[8];
     int sum2 = matrix[2] + matrix[4] + matrix[6];
 
@@ -90,7 +90,7 @@ void *consumer(void* arg){
     printf("[%lu|Consumer] Sto per iniziare a leggere\n", data->id);
 
     int *record = malloc(sizeof(int)*9);
-    while(true){
+    while(1){
 
         pthread_mutex_lock(&(data->shared->lockInter));
         if(data->shared->countInter>0){
