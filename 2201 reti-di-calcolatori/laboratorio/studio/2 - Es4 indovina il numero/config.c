@@ -1,0 +1,2 @@
+#define SERVER_PORT 8082
+#define SERVER_ADDRS "127.0.0.1"

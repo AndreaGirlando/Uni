@@ -1,0 +1,12 @@
+
+- [x] **Es3 – Impiccato** 
+- [x] **Es6 – Telemetria UDP** 
+- [x] **Es4 – Indovina il numero**  
+- [ ] **Es5 – Rifornimento razzi con mutex**
+- [ ] **Es1 – Sensore**
+- [ ] **Es2 – Carta forbice sasso**
+- [ ] **Es9 – Messagistica**
+- [ ] **Es7 – Telemetria F1 TCP/UDP**
+- [ ] **Esame vecchio – Gestione risorse UDP**  
+- [ ] **Esame giugno 2026 – Rete ad anello UDP**
+- [ ] **Es8 – Sensori TCP Thapsos**

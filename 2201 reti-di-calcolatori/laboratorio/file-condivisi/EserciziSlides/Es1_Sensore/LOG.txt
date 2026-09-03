@@ -1,0 +1,532 @@
+Temperatura: 30.18, Qualità aria: 14, ID sensore: 100
+---------------------------
+Temperatura: 8.82, Qualità aria: 4, ID sensore: 100
+---------------------------
+Temperatura: 32.40, Qualità aria: 6, ID sensore: 100
+---------------------------
+Temperatura: 23.17, Qualità aria: 3, ID sensore: 100
+---------------------------
+Temperatura: 18.62, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 31.91, Qualità aria: 11, ID sensore: 100
+---------------------------
+Temperatura: 27.39, Qualità aria: 0, ID sensore: 101
+---------------------------
+Temperatura: 22.86, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 12.85, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 10.41, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 9.55, Qualità aria: 5, ID sensore: 102
+---------------------------
+Temperatura: 34.65, Qualità aria: 14, ID sensore: 101
+---------------------------
+Temperatura: 26.13, Qualità aria: 2, ID sensore: 101
+---------------------------
+Temperatura: 1.48, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 23.60, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 17.26, Qualità aria: 4, ID sensore: 101
+---------------------------
+Temperatura: 26.24, Qualità aria: 2, ID sensore: 102
+---------------------------
+Temperatura: 12.00, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 26.86, Qualità aria: 0, ID sensore: 102
+---------------------------
+Temperatura: 34.09, Qualità aria: 14, ID sensore: 101
+---------------------------
+Temperatura: 16.35, Qualità aria: 1, ID sensore: 100
+---------------------------
+Temperatura: 34.80, Qualità aria: 1, ID sensore: 102
+---------------------------
+Temperatura: 30.66, Qualità aria: 6, ID sensore: 100
+---------------------------
+Temperatura: 28.93, Qualità aria: 3, ID sensore: 100
+---------------------------
+Temperatura: 26.90, Qualità aria: 1, ID sensore: 102
+---------------------------
+Temperatura: 0.02, Qualità aria: 0, ID sensore: 101
+---------------------------
+Temperatura: 13.93, Qualità aria: 2, ID sensore: 102
+---------------------------
+Temperatura: 30.82, Qualità aria: 18, ID sensore: 101
+---------------------------
+Temperatura: 33.45, Qualità aria: 19, ID sensore: 101
+---------------------------
+Temperatura: 11.71, Qualità aria: 2, ID sensore: 102
+---------------------------
+Temperatura: 22.25, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 32.92, Qualità aria: 10, ID sensore: 102
+---------------------------
+Temperatura: 33.96, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 34.69, Qualità aria: 13, ID sensore: 100
+---------------------------
+Temperatura: 2.67, Qualità aria: 5, ID sensore: 102
+---------------------------
+Temperatura: 7.96, Qualità aria: 4, ID sensore: 101
+---------------------------
+Temperatura: 22.10, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 27.50, Qualità aria: 2, ID sensore: 101
+---------------------------
+Temperatura: 32.97, Qualità aria: 3, ID sensore: 100
+---------------------------
+Temperatura: 20.68, Qualità aria: 4, ID sensore: 102
+---------------------------
+Temperatura: 24.25, Qualità aria: 0, ID sensore: 102
+---------------------------
+Temperatura: 3.98, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 19.71, Qualità aria: 3, ID sensore: 101
+---------------------------
+Temperatura: 32.45, Qualità aria: 1, ID sensore: 100
+---------------------------
+Temperatura: 29.83, Qualità aria: 1, ID sensore: 102
+---------------------------
+Temperatura: 30.31, Qualità aria: 2, ID sensore: 101
+---------------------------
+Temperatura: 8.39, Qualità aria: 2, ID sensore: 101
+---------------------------
+Temperatura: 17.61, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 28.68, Qualità aria: 2, ID sensore: 102
+---------------------------
+Temperatura: 15.72, Qualità aria: 0, ID sensore: 101
+---------------------------
+Temperatura: 18.60, Qualità aria: 3, ID sensore: 102
+---------------------------
+Temperatura: 1.55, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 34.83, Qualità aria: 15, ID sensore: 100
+---------------------------
+Temperatura: 27.85, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 5.55, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 34.86, Qualità aria: 11, ID sensore: 102
+---------------------------
+Temperatura: 20.99, Qualità aria: 4, ID sensore: 101
+---------------------------
+Temperatura: 4.42, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 31.71, Qualità aria: 10, ID sensore: 101
+---------------------------
+Temperatura: 27.11, Qualità aria: 1, ID sensore: 100
+---------------------------
+Temperatura: 20.51, Qualità aria: 0, ID sensore: 101
+---------------------------
+Temperatura: 8.38, Qualità aria: 0, ID sensore: 102
+---------------------------
+Temperatura: 31.53, Qualità aria: 9, ID sensore: 101
+---------------------------
+Temperatura: 1.44, Qualità aria: 2, ID sensore: 101
+---------------------------
+Temperatura: 34.51, Qualità aria: 18, ID sensore: 101
+---------------------------
+Temperatura: 21.01, Qualità aria: 3, ID sensore: 100
+---------------------------
+Temperatura: 0.79, Qualità aria: 1, ID sensore: 102
+---------------------------
+Temperatura: 15.01, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 13.86, Qualità aria: 1, ID sensore: 100
+---------------------------
+Temperatura: 32.52, Qualità aria: 13, ID sensore: 101
+---------------------------
+Temperatura: 22.24, Qualità aria: 3, ID sensore: 100
+---------------------------
+Temperatura: 15.12, Qualità aria: 1, ID sensore: 101
+---------------------------
+Temperatura: 1.85, Qualità aria: 0, ID sensore: 101
+---------------------------
+Temperatura: 31.36, Qualità aria: 7, ID sensore: 102
+---------------------------
+Temperatura: 31.71, Qualità aria: 10, ID sensore: 102
+---------------------------
+Temperatura: 12.48, Qualità aria: 0, ID sensore: 102
+---------------------------
+Temperatura: 32.43, Qualità aria: 1, ID sensore: 101
+---------------------------
+Temperatura: 5.95, Qualità aria: 3, ID sensore: 100
+---------------------------
+Temperatura: 29.59, Qualità aria: 0, ID sensore: 101
+---------------------------
+Temperatura: 14.63, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 19.44, Qualità aria: 1, ID sensore: 101
+---------------------------
+Temperatura: 10.87, Qualità aria: 0, ID sensore: 102
+---------------------------
+Temperatura: 33.87, Qualità aria: 10, ID sensore: 100
+---------------------------
+Temperatura: 10.58, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 32.38, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 31.71, Qualità aria: 13, ID sensore: 102
+---------------------------
+Temperatura: 34.59, Qualità aria: 12, ID sensore: 101
+---------------------------
+Temperatura: 10.79, Qualità aria: 5, ID sensore: 100
+---------------------------
+Temperatura: 14.42, Qualità aria: 0, ID sensore: 102
+---------------------------
+Temperatura: 32.26, Qualità aria: 17, ID sensore: 100
+---------------------------
+Temperatura: 28.35, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 33.88, Qualità aria: 14, ID sensore: 100
+---------------------------
+Temperatura: 23.93, Qualità aria: 3, ID sensore: 102
+---------------------------
+Temperatura: 32.09, Qualità aria: 3, ID sensore: 101
+---------------------------
+Temperatura: 5.90, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 31.45, Qualità aria: 11, ID sensore: 101
+---------------------------
+Temperatura: 21.82, Qualità aria: 5, ID sensore: 100
+---------------------------
+Temperatura: 14.89, Qualità aria: 4, ID sensore: 102
+---------------------------
+Temperatura: 24.61, Qualità aria: 5, ID sensore: 102
+---------------------------
+Temperatura: 17.40, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 21.30, Qualità aria: 4, ID sensore: 102
+---------------------------
+Temperatura: 25.60, Qualità aria: 1, ID sensore: 100
+---------------------------
+Temperatura: 16.52, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 33.24, Qualità aria: 3, ID sensore: 101
+---------------------------
+Temperatura: 32.28, Qualità aria: 12, ID sensore: 102
+---------------------------
+Temperatura: 33.68, Qualità aria: 14, ID sensore: 101
+---------------------------
+Temperatura: 6.38, Qualità aria: 4, ID sensore: 102
+---------------------------
+Temperatura: 33.26, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 33.42, Qualità aria: 6, ID sensore: 101
+---------------------------
+Temperatura: 7.13, Qualità aria: 4, ID sensore: 100
+---------------------------
+Temperatura: 30.30, Qualità aria: 10, ID sensore: 102
+---------------------------
+Temperatura: 1.12, Qualità aria: 4, ID sensore: 100
+---------------------------
+Temperatura: 25.17, Qualità aria: 0, ID sensore: 102
+---------------------------
+Temperatura: 28.23, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 31.63, Qualità aria: 15, ID sensore: 100
+---------------------------
+Temperatura: 34.14, Qualità aria: 10, ID sensore: 100
+---------------------------
+Temperatura: 30.52, Qualità aria: 8, ID sensore: 101
+---------------------------
+Temperatura: 0.14, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 30.59, Qualità aria: 3, ID sensore: 101
+---------------------------
+Temperatura: 11.93, Qualità aria: 1, ID sensore: 100
+---------------------------
+Temperatura: 1.73, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 32.99, Qualità aria: 5, ID sensore: 102
+---------------------------
+Temperatura: 30.63, Qualità aria: 14, ID sensore: 102
+---------------------------
+Temperatura: 32.14, Qualità aria: 19, ID sensore: 101
+---------------------------
+Temperatura: 10.74, Qualità aria: 1, ID sensore: 100
+---------------------------
+Temperatura: 33.88, Qualità aria: 13, ID sensore: 102
+---------------------------
+Temperatura: 34.08, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 34.03, Qualità aria: 2, ID sensore: 102
+---------------------------
+Temperatura: 9.46, Qualità aria: 2, ID sensore: 101
+---------------------------
+Temperatura: 26.71, Qualità aria: 0, ID sensore: 101
+---------------------------
+Temperatura: 5.31, Qualità aria: 5, ID sensore: 100
+---------------------------
+Temperatura: 14.15, Qualità aria: 0, ID sensore: 102
+---------------------------
+Temperatura: 1.97, Qualità aria: 2, ID sensore: 102
+---------------------------
+Temperatura: 31.19, Qualità aria: 15, ID sensore: 100
+---------------------------
+Temperatura: 33.36, Qualità aria: 10, ID sensore: 100
+---------------------------
+Temperatura: 33.30, Qualità aria: 5, ID sensore: 102
+---------------------------
+Temperatura: 30.58, Qualità aria: 15, ID sensore: 101
+---------------------------
+Temperatura: 8.26, Qualità aria: 1, ID sensore: 102
+---------------------------
+Temperatura: 22.60, Qualità aria: 0, ID sensore: 101
+---------------------------
+Temperatura: 12.05, Qualità aria: 4, ID sensore: 100
+---------------------------
+Temperatura: 32.86, Qualità aria: 5, ID sensore: 102
+---------------------------
+Temperatura: 26.72, Qualità aria: 4, ID sensore: 102
+---------------------------
+Temperatura: 16.96, Qualità aria: 3, ID sensore: 101
+---------------------------
+Temperatura: 33.10, Qualità aria: 1, ID sensore: 100
+---------------------------
+Temperatura: 18.49, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 30.94, Qualità aria: 6, ID sensore: 101
+---------------------------
+Temperatura: 31.54, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 17.86, Qualità aria: 1, ID sensore: 102
+---------------------------
+Temperatura: 32.49, Qualità aria: 16, ID sensore: 101
+---------------------------
+Temperatura: 18.75, Qualità aria: 1, ID sensore: 100
+---------------------------
+Temperatura: 3.44, Qualità aria: 4, ID sensore: 102
+---------------------------
+Temperatura: 24.89, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 16.31, Qualità aria: 4, ID sensore: 100
+---------------------------
+Temperatura: 31.55, Qualità aria: 11, ID sensore: 102
+---------------------------
+Temperatura: 20.38, Qualità aria: 1, ID sensore: 101
+---------------------------
+Temperatura: 19.09, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 33.74, Qualità aria: 0, ID sensore: 102
+---------------------------
+Temperatura: 21.85, Qualità aria: 4, ID sensore: 101
+---------------------------
+Temperatura: 30.44, Qualità aria: 10, ID sensore: 100
+---------------------------
+Temperatura: 34.38, Qualità aria: 19, ID sensore: 102
+---------------------------
+Temperatura: 34.33, Qualità aria: 18, ID sensore: 100
+---------------------------
+Temperatura: 18.59, Qualità aria: 4, ID sensore: 102
+---------------------------
+Temperatura: 22.24, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 33.52, Qualità aria: 13, ID sensore: 102
+---------------------------
+Temperatura: 11.82, Qualità aria: 4, ID sensore: 100
+---------------------------
+Temperatura: 28.52, Qualità aria: 3, ID sensore: 100
+---------------------------
+Temperatura: 3.68, Qualità aria: 5, ID sensore: 102
+---------------------------
+Temperatura: 17.64, Qualità aria: 1, ID sensore: 102
+---------------------------
+Temperatura: 8.74, Qualità aria: 5, ID sensore: 102
+---------------------------
+Temperatura: 7.20, Qualità aria: 3, ID sensore: 102
+---------------------------
+Temperatura: 33.78, Qualità aria: 15, ID sensore: 101
+---------------------------
+Temperatura: 19.00, Qualità aria: 3, ID sensore: 102
+---------------------------
+Temperatura: 15.66, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 19.69, Qualità aria: 5, ID sensore: 102
+---------------------------
+Temperatura: 9.36, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 31.90, Qualità aria: 7, ID sensore: 101
+---------------------------
+Temperatura: 1.49, Qualità aria: 3, ID sensore: 100
+---------------------------
+Temperatura: 26.90, Qualità aria: 0, ID sensore: 102
+---------------------------
+Temperatura: 33.67, Qualità aria: 8, ID sensore: 100
+---------------------------
+Temperatura: 9.45, Qualità aria: 4, ID sensore: 102
+---------------------------
+Temperatura: 4.75, Qualità aria: 3, ID sensore: 101
+---------------------------
+Temperatura: 31.81, Qualità aria: 11, ID sensore: 101
+---------------------------
+Temperatura: 3.50, Qualità aria: 1, ID sensore: 100
+---------------------------
+Temperatura: 32.13, Qualità aria: 12, ID sensore: 102
+---------------------------
+Temperatura: 3.85, Qualità aria: 3, ID sensore: 101
+---------------------------
+Temperatura: 31.08, Qualità aria: 16, ID sensore: 100
+---------------------------
+Temperatura: 31.36, Qualità aria: 14, ID sensore: 101
+---------------------------
+Temperatura: 1.45, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 32.24, Qualità aria: 15, ID sensore: 102
+---------------------------
+Temperatura: 9.24, Qualità aria: 1, ID sensore: 100
+---------------------------
+Temperatura: 32.87, Qualità aria: 10, ID sensore: 102
+---------------------------
+Temperatura: 23.86, Qualità aria: 4, ID sensore: 100
+---------------------------
+Temperatura: 12.02, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 26.01, Qualità aria: 3, ID sensore: 101
+---------------------------
+Temperatura: 31.87, Qualità aria: 6, ID sensore: 100
+---------------------------
+Temperatura: 24.17, Qualità aria: 5, ID sensore: 100
+---------------------------
+Temperatura: 23.63, Qualità aria: 3, ID sensore: 102
+---------------------------
+Temperatura: 6.04, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 3.00, Qualità aria: 0, ID sensore: 102
+---------------------------
+Temperatura: 31.03, Qualità aria: 16, ID sensore: 101
+---------------------------
+Temperatura: 7.88, Qualità aria: 2, ID sensore: 102
+---------------------------
+Temperatura: 6.75, Qualità aria: 3, ID sensore: 102
+---------------------------
+Temperatura: 28.89, Qualità aria: 4, ID sensore: 102
+---------------------------
+Temperatura: 5.90, Qualità aria: 3, ID sensore: 102
+---------------------------
+Temperatura: 29.27, Qualità aria: 5, ID sensore: 100
+---------------------------
+Temperatura: 17.56, Qualità aria: 5, ID sensore: 102
+---------------------------
+Temperatura: 14.71, Qualità aria: 0, ID sensore: 101
+---------------------------
+Temperatura: 25.32, Qualità aria: 4, ID sensore: 101
+---------------------------
+Temperatura: 30.50, Qualità aria: 3, ID sensore: 100
+---------------------------
+Temperatura: 34.89, Qualità aria: 10, ID sensore: 100
+---------------------------
+Temperatura: 16.62, Qualità aria: 2, ID sensore: 102
+---------------------------
+Temperatura: 28.78, Qualità aria: 1, ID sensore: 101
+---------------------------
+Temperatura: 29.03, Qualità aria: 3, ID sensore: 100
+---------------------------
+Temperatura: 8.74, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 5.35, Qualità aria: 2, ID sensore: 102
+---------------------------
+Temperatura: 30.84, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 18.89, Qualità aria: 2, ID sensore: 102
+---------------------------
+Temperatura: 34.20, Qualità aria: 15, ID sensore: 101
+---------------------------
+Temperatura: 4.06, Qualità aria: 1, ID sensore: 100
+---------------------------
+Temperatura: 3.70, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 0.25, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 5.66, Qualità aria: 3, ID sensore: 102
+---------------------------
+Temperatura: 22.47, Qualità aria: 0, ID sensore: 102
+---------------------------
+Temperatura: 7.91, Qualità aria: 2, ID sensore: 101
+---------------------------
+Temperatura: 27.20, Qualità aria: 2, ID sensore: 102
+---------------------------
+Temperatura: 0.67, Qualità aria: 2, ID sensore: 101
+---------------------------
+Temperatura: 30.59, Qualità aria: 18, ID sensore: 101
+---------------------------
+Temperatura: 30.35, Qualità aria: 9, ID sensore: 101
+---------------------------
+Temperatura: 19.75, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 17.40, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 33.17, Qualità aria: 7, ID sensore: 102
+---------------------------
+Temperatura: 8.32, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 34.89, Qualità aria: 17, ID sensore: 101
+---------------------------
+Temperatura: 12.03, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 11.32, Qualità aria: 5, ID sensore: 101
+---------------------------
+Temperatura: 8.29, Qualità aria: 2, ID sensore: 102
+---------------------------
+Temperatura: 21.53, Qualità aria: 1, ID sensore: 100
+---------------------------
+Temperatura: 31.18, Qualità aria: 7, ID sensore: 101
+---------------------------
+Temperatura: 4.93, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 32.99, Qualità aria: 3, ID sensore: 101
+---------------------------
+Temperatura: 29.95, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 34.60, Qualità aria: 8, ID sensore: 102
+---------------------------
+Temperatura: 14.34, Qualità aria: 1, ID sensore: 101
+---------------------------
+Temperatura: 30.88, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 34.80, Qualità aria: 3, ID sensore: 100
+---------------------------
+Temperatura: 3.24, Qualità aria: 5, ID sensore: 102
+---------------------------
+Temperatura: 16.23, Qualità aria: 3, ID sensore: 102
+---------------------------
+Temperatura: 28.14, Qualità aria: 4, ID sensore: 101
+---------------------------
+Temperatura: 5.83, Qualità aria: 5, ID sensore: 102
+---------------------------
+Temperatura: 30.78, Qualità aria: 2, ID sensore: 100
+---------------------------
+Temperatura: 32.45, Qualità aria: 4, ID sensore: 100
+---------------------------
+Temperatura: 11.38, Qualità aria: 3, ID sensore: 100
+---------------------------
+Temperatura: 6.00, Qualità aria: 1, ID sensore: 101
+---------------------------
+Temperatura: 18.44, Qualità aria: 2, ID sensore: 101
+---------------------------
+Temperatura: 14.54, Qualità aria: 4, ID sensore: 100
+---------------------------
+Temperatura: 31.52, Qualità aria: 19, ID sensore: 102
+---------------------------
+Temperatura: 32.18, Qualità aria: 0, ID sensore: 101
+---------------------------
+Temperatura: 3.87, Qualità aria: 2, ID sensore: 101
+---------------------------
+Temperatura: 2.10, Qualità aria: 4, ID sensore: 102
+---------------------------
+Temperatura: 10.22, Qualità aria: 5, ID sensore: 100
+---------------------------
+Temperatura: 31.53, Qualità aria: 17, ID sensore: 100
+---------------------------
+Temperatura: 20.61, Qualità aria: 4, ID sensore: 102
+---------------------------
+Temperatura: 31.78, Qualità aria: 0, ID sensore: 100
+---------------------------
+Temperatura: 1.74, Qualità aria: 2, ID sensore: 102
+---------------------------
+Temperatura: 14.42, Qualità aria: 4, ID sensore: 101
+---------------------------
+Temperatura: 15.09, Qualità aria: 0, ID sensore: 101
+---------------------------
