@@ -1,0 +1,4 @@
+stampante#2
+proiettore#1
+tablet#4
+cavo_hdmi#3
