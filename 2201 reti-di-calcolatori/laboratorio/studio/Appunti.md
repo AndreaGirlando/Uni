@@ -7,3 +7,6 @@ per consentire la connessione di più client mi basta salvare le seguenti inform
 Anche nel client idealmente avrò un thread per inviare i dati e uno per riceverli - nel caso in cui sia necessario che queste due azioni siano asicrone
 
 La comunicazione con più client diventa più semplice in udp - posso fare tutto usando una singola socket (per quanto riguardo il lato server)
+
+
+Per vedere un esempio di un semplice protocollo dove si ci scambiano strutture e cose di questo tipo basta guardare: [[2201 reti-di-calcolatori/laboratorio/studio/04 - Server concorrente/README|SERVER CONCORRENTE]]
