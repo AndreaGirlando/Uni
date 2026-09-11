@@ -9,14 +9,13 @@ typedef struct threadData{
 }threadData;
 
 void* gestioneAnello(void* args){
-    flockfile(stdout);
+    // flockfile(stdout);
     // printf("[DEBUG] il thread per la gestione dell'anello è stato avviato\n");
-    funlockfile(stdout);
+    // funlockfile(stdout);
     threadData* th = (threadData*)args;
     int porta = th->id + BASELINE_PORT;
 
-    while (1)
-    {
+    while (1){
         struct sockaddr_in socketClient;
         socklen_t socketClientLen = sizeof(socketClient);
 
@@ -39,7 +38,6 @@ void* gestioneAnello(void* args){
         msgReceived.src = ntohl(msgReceived.src);
         msgReceived.type = ntohl(msgReceived.type);
         msgReceived.value = ntohl(msgReceived.value);
-
 
         msgToSend.dst = htonl(msgReceived.dst);
         msgToSend.src = htonl(msgReceived.src);
@@ -133,7 +131,6 @@ int main(int argc, char* argv[]){
         }
     }
 
-
     pthread_join(th, NULL);
-    return NULL;
+    return 0;
 }

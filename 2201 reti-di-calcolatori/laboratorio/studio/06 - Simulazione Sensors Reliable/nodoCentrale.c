@@ -104,7 +104,7 @@ int main(){
     if(connect(socketControlloFd, (struct sockaddr*)&socketControllo, socketClientLen)<0){
         perror("connect");
     }
-    printf("Connessione avvenuta con il server di controllo avvenuta con successo");
+    printf("Connessione con il server di controllo avvenuta con successo");
 
 
     while(1){
