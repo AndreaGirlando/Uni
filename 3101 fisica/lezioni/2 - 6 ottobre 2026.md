@@ -1,3 +1,4 @@
+link: https://antoninofurnari.github.io/fad-2627/notes/01_key_concepts.html
 ### Sistema di riferimento 1.1.2
 fissato un punto O in un retta potremmo definire un qualsiasi punto della retta specificando la sua distanza da O, quando il sistema di riferimento diventa a più dimensioni allora una singola coordinata non basta sarà necessario definire più coordinate (*più grandezze*)![[Pasted image 20261006102421.png|500]]chiamiamo *gradi di libertà* il numero di grandezze da specificare per individuare un punto materiale nello spazio (nella retta abbiamo un grado di libertà, nel piano cartesiano invece diventano 2, ecc...). 
 ES: un cerchio con centro in 0,0 e di raggio R ha sempre due gradi di libertà perché per individuare la lunghezza di R abbiamo comunque bisogno di 2 coordinate
