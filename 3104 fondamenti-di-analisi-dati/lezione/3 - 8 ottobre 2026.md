@@ -8,20 +8,23 @@ Le frequenze assolute sono il numero di volte in un cui appare uno specifico val
 #### Data visualization
 Direttamente usando pandas possiamo creare dei veri e propri grafici interattivi, internamente userà mathplot.lib ma ci sono diverse metologie che ci fanno risparmiare tempo
 
-![[Pasted image 20261008152319.png|500]]Dato questo semplice grafico sono in grado di capire che alcune cose hanno più frequenza di altre
+![[Pasted image 20261008152319.png|500]]
+Dato questo semplice grafico sono in grado di capire che alcune cose hanno più frequenza di altre
 
 #### Frequenze relative
 Frequenze che servono per mettere in relazione dei "conteggi" tra di loro, la formula è questa: 
 ![[Pasted image 20261008152900.png|350]]
 
-#### Continuo data visualization
+### Continuo data visualization
 
-### Grafico a barre
+#### Grafico a barre
 ![[Pasted image 20261008153704.png|500]]
 in semplice grafico vediamo due plot, quello degli uomini in blu e quello delle donne in rosso, sempre nello stesso grafico, già da qui riusciamo a carpire diverse cose: 
 - Mediamente le donne sono più basse degli uomini (le barre arancioni sono quelle più a sinistra)
 - Ecc..
+
 Ci sono altri modi di usare il grafico a barre:
+
 ![[Pasted image 20261008153937.png|500]]![[Pasted image 20261008153947.png|500]]Contiamo il numero di uomini e donne nel totale, nel secondo abbiamo più un evidenza percentuale (frequenza relativa) piuttosto che il conteggio del primo (frequenza assoluta)
 
 #### Pie Charts
@@ -30,7 +33,9 @@ Usare dei grafici a torta non è ottimale sopratutto per questo tipo di cose, si
 #### Empirical Cumulative Distribution Function
 
 Nel caso in cui il campione non fosse discreto le differenze tra i valori diventano piccole e sono soggette a rumore. Andando a creare grafici di questo tipo: 
-![[Pasted image 20261008155418.png|500]]ovvero dei grafici molto difficili da leggere. Ci sono diversi modi come per risolvere questi problemi come l'ECDF: ![[Pasted image 20261008155531.png|200]]
+![[Pasted image 20261008155418.png|500]]
+ovvero dei grafici molto difficili da leggere. Ci sono diversi modi come per risolvere questi problemi come l'ECDF:
+![[Pasted image 20261008155531.png|200]]
 
 ```
 a = pd.Series([1, 5, 2, 6, 5, 4, 3, 5, 4, 2, 4, 5, 6, 4, 4, 3])
@@ -59,23 +64,21 @@ In pratica mi dice in modo relativo la percentuale di elementi minore o uguale a
 ![[Pasted image 20261008160323.png|500]]
 - il 65% circa degli uomini (linea blu) pesa al massimo 40kg
 - le donne pesano mediamente meno degli uomini
-
 Questo grafico è si utile ma non è facile da leggere, il confronto è complicato, per il peso usando il bar chart era più semplice. 
-
 #### istogramma
 Per risolvere questo problema possiamo semplicemente raggruppare il valori che sono più simili tra di loro "quantizziamo"
-
 ```
 heights_quantized = pd.cut(heights, bins=10) #crea 10 gruppo usando tutte le altezze
 heights_quantized.value_counts().sort_index().plot.bar(figsize=(18,6))
 plt.grid()
 plt.show()
 ```
-Otteniamo questo grafico![[Pasted image 20261008160944.png|500]]Molti casi sono stati raggrupati è i grandi spike sono diventati degli spike medi
 
-è importante scegliere un numero di bins sensato:
-- pochi bin: ho una perdita di dettaglio
-- tanti bin: ho troppo dettaglio, aumenta la confusione e soffro dello stesso problema iniziale
+Otteniamo questo grafico
+![[Pasted image 20261008160944.png|500]]
+Molti casi sono stati raggrupati è i grandi spike sono diventati degli spike medi, è importante scegliere un numero di bins sensato:
+- **pochi bin**: ho una perdita di dettaglio
+- **tanti bin**: ho troppo dettaglio, aumenta la confusione e soffro dello stesso problema iniziale
 esitono delle erustiche per risolvere il problema
 ![[Pasted image 20261008161314.png|200]]
 In generale queste formule hanno senso quando disegnare il grafico è difficile (come in passato) ora la creazione del graifico è istantanea quindi ci basta provare il numero giusto di bin fino a quando non otteniamo un risultato consono.
@@ -152,4 +155,4 @@ Contengono diverse informazioni:
 - i "baffi" rappresentano i dati che vanno da A a B (A e B vengono definiti in base al boxplot)
 - i punti sopra e sotto i "baffi" sono gli outlier, punti che cadono fuori dai range definiti dai "baffi"
 anche attraverso i boxplot possiamo confrontare i pesi degli uomini e delle donne nei campioni analizzati anche precedemente
-![[Pasted image 20261008175309.png]]
+
