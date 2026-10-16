@@ -22,3 +22,5 @@ Di seguito l'evoluzione dei vari usi del machine learning
 funzione di loss
 
 **Discesa del gradiente**
+
+Si è fermato prima della regressione polinomiale
