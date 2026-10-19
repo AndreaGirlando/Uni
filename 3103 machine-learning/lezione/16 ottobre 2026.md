@@ -110,24 +110,18 @@ Se le feature hanno scale molto diverse, la discesa del gradiente può essere le
 Media, deviazione standard, minimo e massimo si calcolano **solo sul training set** e si riusano su validation/test, senza ricalcolarli, per evitare *data leakage*.
 
 ##### Discesa del gradiente
+L’obiettivo è scegliere $ϑ$ che minimizza $J(ϑ)$ funzione di loss. La discesa del gradiente è un metodo iterativo che aggiorna i parametri nella direzione di massima diminuzione di $J$.
 
-È un algoritmo iterativo che modifica i pesi per diminuire la loss. Possiamo immaginare di partire da un punto sulla superficie di $J$ e muoverci verso il basso.
+Partiremo da dei valori casuali dei parametri, in questo caso $ϑ1$, in quanto $ϑ0$ è già fissata a 0 per semplicità. Osserveremo il coefficiente angolare della retta tangente alla funzione di loss, ossia la sua derivata. Quando questa è:
 
 Se consideriamo un solo parametro:
 - quando la derivata è positiva, diminuiamo il parametro
 - quando la derivata è negativa, aumentiamo il parametro
-
-Con più parametri usiamo il *gradiente*, cioè il vettore delle derivate parziali. Il gradiente indica la direzione di massima crescita: per diminuire la loss ci muoviamo nella direzione opposta.
-
 ###### Aggiornamento dei parametri
 La regola di aggiornamento è:
-
 $$w_j \leftarrow w_j - \alpha\frac{\partial J(w)}{\partial w_j}$$
-
 Per la loss quadratica della regressione lineare abbiamo:
-
 $$\frac{\partial J(w)}{\partial w_j} = \frac{1}{N}\sum_{i=1}^{N}\bigl(h_w(x^{(i)}) - y^{(i)}\bigr)x_j^{(i)}, \qquad j = 0, \dots, n$$
-
 Quindi l'algoritmo consiste nel:
 1. inizializzare i pesi
 2. calcolare le predizioni e le derivate della loss sui dati di training
