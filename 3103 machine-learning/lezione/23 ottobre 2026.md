@@ -1,4 +1,4 @@
-# Polinomial Regression
+##### Polinomial Regression
 Un regressore può tracciare solo delle linee nel grafico, ma potremmo avere la necessità di gestire lo spazio delle feature in modo non lineare. Ovvero usare la *polinomial regression*, che definiamo in questo modo:
 $$
  \phi: x \to \text{ nuovo spazio polinomiale } \\

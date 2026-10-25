@@ -1,84 +1,83 @@
-Materiale di riferimento: [[3104 fondamenti-di-analisi-dati/file-condivisi/sitoWeb/01_Modulo_1/01_key_concepts.pdf|01_key_concepts.pdf]].
+Materiale di riferimento: 
+- [[3104 fondamenti-di-analisi-dati/file-condivisi/sitoWeb/appunti/Modulo-1/01_key_concepts.pdf|01_key_concepts.pdf]]
+- [[3104 fondamenti-di-analisi-dati/file-condivisi/sitoWeb/slide/Modulo-1/01_key_concepts.pdf |slide]]
 
+### Concetti chiave
 #### Definizioni iniziali
-I **dati** sono un insieme di valori raccolti per descrivere un fenomeno. Ad esempio, per studiare una classe possiamo registrare, per ogni studente, età, altezza e voti.
+Di seguito delle definizioni:
 
-- **Osservazione (observation)**: l'unità che studiamo, ad esempio uno studente, un'automobile o un evento. Lo studente è l'osservazione; la sua altezza è uno dei valori che registriamo.
-- **Popolazione (population)**: l'insieme completo delle unità che ci interessano, definito dalla domanda di ricerca.
-  - Esempio: tutti gli studenti di informatica in Italia, se vogliamo studiare le loro età.
-- **Campione (sample)**: la parte della popolazione sulla quale raccogliamo effettivamente i dati.
-  - Esempio: 500 studenti selezionati da diverse università italiane.
-  - Un campione **non è automaticamente rappresentativo**: per estendere le conclusioni alla popolazione dobbiamo considerare come è stato selezionato. Un campione grande, ma selezionato male, può comunque dare risultati distorti.
+- *Dati* sono un insieme di valori raccolti per descrivere un fenomeno
+- *Osservazione (observation)*: unità elementare con la quale misuriamo i dati, ogni osservazione è unica (possiamo pensare ad un'osservazione come alla singola riga di uno spreedsheet)
+- *Popolazione (population)*: l'insieme con tutte le possibili osservazioni (anche quelle che non useremo), in pratica l'insieme universo
+- *Campione (sample)*: sottoinsieme della popolazione dalla quale prendiamo i dati, usiamo un sottoinsieme perché usare l'intera popolazione è molto spesso impossibile o troppo difficile
+
+> [!EXAMPLE]
+> Immaginiamo di voler studiare la salute degli alberi nella black forest, vediamo come i concetti di prima calzano in questa analisi:
+> - *Osservazione*: un singolo albero della foresta con diverse caratteristiche (altezza, diametro, ecc...)
+> - *Popolazione*: tutti gli alberi della foresta 
+> - *Campione*: insieme di 500 alberi scelti casualmente tra le diverse aree della foresta
 
 #### Variabile
-Una **variabile**, detta anche *feature* o *caratteristica*, indica quale informazione registriamo per ogni osservazione: altezza, età, colore degli occhi, ecc.
+Una **variabile**, detta anche *feature* o *caratteristica*, indica quale informazione registriamo per ogni osservazione. Formalmente è una funzione che associa a ogni osservazione un valore: $$X : \Omega \to S, \qquad \omega \mapsto X(\omega)=x.$$
+- $\Omega$ è la popolazione.
+- $S$ è l'insieme dei valori possibili della variabile
+- $\omega$ è una particolare osservazione
+- $x$ è il valore che la funzione $X$ ci ritorna con input la variabile $\omega$.
 
-Formalmente è una funzione che associa a ogni osservazione un valore:
+> [!EXAMPLE]
+> Dato $\Omega = \text{ tutta la popolazione del mondo }$, possiamo definire la variabile $H$ come una funzione che data in input la persona $\omega$ ci ritorna la sua altezza in centimetri, in pratica $H(\omega) = 180 cm$ 
 
-$$X : \Omega \to S, \qquad \omega \mapsto X(\omega)=x.$$
+##### Classificazione delle variabili
+Le variabili possono essere classificate secondo aspetti diversi:
+- *Qualitativa*: descrive una categoria, non una quantità. 
+	- Esempi: colore degli occhi, città di nascita.
+- *Quantitativa*: esprime una quantità misurabile o un conteggio. 
+	- Esempi: altezza, peso, numero di fratelli.
+- *Discreta*: assume valori separati, in numero finito oppure infinito numerabile, un tipo di variabile discreta particolare è quello *binario* che ha due valori possibili spesso codificati come 1/0.
+	- Esempi: il numero di fratelli può essere 0, 1, 2, ecc., ma non 1,5.
+- *Continua*: può assumere qualsiasi valore in un intervallo, almeno nel modello teorico. 
+	- Esempi: un'altezza può essere 175 cm, 175,2 cm, 175,23 cm, ecc.
+- *Scalare*: associa a ogni osservazione un solo valore
+	- Esempi: il peso di una persona
+- *Multidimensionale*: associa più componenti ad ogni osservazione
+	- Esempi: latitudine e longitudine per una posizione, oppure i tre canali RGB per un colore.
 
-- $\Omega$ è la **popolazione**.
-- $\omega$ è una particolare osservazione, ad esempio uno studente.
-- $S$ è l'insieme dei **valori possibili** della variabile.
-- $X$ è la variabile, ad esempio «altezza in centimetri».
-- $x$ è il valore registrato per quello studente, ad esempio 175.
+> [!WARNING]
+> usare numeri per rappresentare una categoria non la rende quantitativa. Un codice studente come 102 è un identificatore: non ha senso dire che lo studente 102 è «il doppio» dello studente 51.
 
-In altre parole: **studente → misuriamo l'altezza → otteniamo 175 cm**. La variabile è la regola di misurazione; 175 è uno dei suoi valori.
+Un'altro modo per classificare le variabili è usando la **scala di misura**, che ci indica quali confronti o operazioni hanno significato: 
 
-![[Pasted image 20261006153721.png]]
-
-Le variabili possono essere classificate secondo aspetti diversi. Queste classificazioni non si escludono: l'altezza, ad esempio, è quantitativa, continua e scalare.
-
-- **Qualitativa**: descrive una categoria, non una quantità. Esempi: colore degli occhi, città di nascita.
-- **Quantitativa**: esprime una quantità misurabile o un conteggio. Esempi: altezza, peso, numero di fratelli.
-- **Discreta**: assume valori separati, in numero finito oppure infinito numerabile. Esempio: il numero di fratelli può essere 0, 1, 2, ecc., ma non 1,5. Anche una variabile qualitativa con poche categorie ha un insieme discreto di valori.
-  - **Binaria**: caso particolare con due valori possibili, ad esempio sì/no, spesso codificati come 1/0.
-- **Continua**: può assumere qualsiasi valore in un intervallo, almeno nel modello teorico. Esempio: un'altezza può essere 175 cm, 175,2 cm, 175,23 cm, ecc. Arrotondare la misura non rende discreta la grandezza fisica.
-- **Scalare**: associa a ogni osservazione un solo valore, ad esempio il peso.
-- **Multidimensionale**: associa più componenti, ad esempio latitudine e longitudine per una posizione, oppure i tre canali RGB per un colore.
-
-**Attenzione:** usare numeri per rappresentare una categoria non la rende quantitativa. Un codice studente come 102 è un identificatore: non ha senso dire che lo studente 102 è «il doppio» dello studente 51.
-
-Le **scale di misura** indicano quali confronti e operazioni hanno significato:
-
-| Scala | Che cosa possiamo confrontare? | Esempio |
-| --- | --- | --- |
-| **Nominale** | Uguaglianza e differenza tra categorie; non esiste un ordine naturale. | Colore degli occhi: verde non è «maggiore» di marrone. |
-| **Ordinale** | I valori sono ordinabili, ma le distanze tra livelli non sono definite come quantità uguali. | Principiante < intermedio < esperto: il salto tra livelli non è una distanza misurabile. |
-| **A intervalli (interval)** | Ordine e differenze hanno significato, ma lo zero è convenzionale. | Temperatura in °C: tra 10 e 20 °C ci sono 10 gradi, ma 20 °C non significa «il doppio della temperatura» di 10 °C. |
-| **A rapporti (ratio)** | Hanno significato anche i rapporti, perché lo zero indica assenza della quantità. | Lunghezza: 0 cm indica lunghezza nulla e 180 cm è il doppio di 90 cm. |
-
-La differenza tra **intervalli** e **rapporti** è quindi il significato dello zero. Non basta che i dati siano numeri: un voto 8, ad esempio, non indica necessariamente una competenza doppia rispetto a un voto 4.
+- *Nominale*: Uguaglianza e differenza tra categorie; non esiste un ordine naturale.
+	- Esempio: colore degli occhi: verde non è "maggiore" di marrone.
+- *Ordinale*: I valori sono ordinabili, ma le distanze tra livelli non sono definite come quantità uguali.
+	- Esempio: Principiante < intermedio < esperto: il salto tra livelli non è una distanza misurabile.
+- *Interval*: Ordine e differenze hanno significato, ma lo zero è convenzionale.
+	- Esempio: tra 10 e 20 °C ci sono 10 gradi, ma 20 °C non significa "il doppio della temperatura" di 10 °C e 0°C non significa assenza di temperatura
+- *Ratio*: i rapporti hanno significato e lo zero indica assenza della quantità.
+	- Esempio: Lunghezza: 0 cm indica lunghezza nulla e 180 cm è il doppio di 90 cm.
 
 ##### Dataset
-Un **dataset** è una raccolta di dati. Nel formato tabellare più comune:
-- Ogni **riga** rappresenta un'osservazione.
-- Ogni **colonna** rappresenta una variabile.
-- Ogni **cella** contiene il valore di quella variabile per quella osservazione.
+Un **dataset** è una raccolta di dati relativi ad uno specifico fenomeno, viene rappresentata in formato tabellare seguendo queste convenzioni:
+- Ogni *riga* rappresenta un'osservazione.
+- Ogni *colonna* rappresenta una variabile.
+- Ogni *cella* contiene il valore di quella variabile per quella osservazione.
+	- Una cella vuota o un valore come *NaN* segnala un dato mancante, non uno zero, nel caso di dati mancanti possiamo trovare codici speciali come -1, quando accade troviamo queste specifiche nella documentazione legata al dataset
+- Questo tipo di tabella può anche essere chiamata *design matrix*
+Prima di combinare le colonne (es: fare la media) è importante portare tutto alla stessa scala
 
-Ad esempio, nella riga di uno studente possiamo leggere i suoi voti nelle diverse materie.
+> [!EXAMPLE]
+> Ad esempio, nella riga di uno studente possiamo leggere i suoi voti nelle diverse materie.
+> ![[Pasted image 20261006155130.png]]
+> 
 
-![[Pasted image 20261006155130.png]]
-
-La tabella è detta anche **matrice dei dati**: con $n$ osservazioni e $p$ variabili ha $n$ righe e $p$ colonne. Nei modelli, la *design matrix* contiene le caratteristiche usate come input; un identificatore non è automaticamente una caratteristica utile.
-
-Una cella vuota o un valore come **NaN** segnala un **dato mancante**, non uno zero. Un voto mancante può significare che lo studente non ha ancora sostenuto la prova. Codici speciali come -1 possono indicare dati mancanti, ma solo se la documentazione lo specifica.
-
-Prima di combinare colonne bisogna verificarne le scale: se una materia ha voti su 30 e un'altra su 10, farne direttamente la media darebbe più peso alla prima.
 
 #### Metodi principali per raccogliere i dati
-- **Questionari (surveys)**: domande standardizzate per raccogliere opinioni, preferenze o caratteristiche. Esempio: soddisfazione degli studenti.
-- **Esperimenti**: il ricercatore modifica una condizione e osserva gli effetti, cercando di controllare gli altri fattori. L'assegnazione casuale ai gruppi aiuta a renderli confrontabili.
-- **Osservazione**: registriamo ciò che accade senza assegnare o modificare le condizioni studiate. Esempio: temperatura e precipitazioni.
-- **Fonti online**: dataset già disponibili, archivi pubblici o API. Bisogna verificarne provenienza, significato delle colonne e modalità di raccolta.
+- *Questionari (surveys)*: domande standardizzate per raccogliere opinioni, preferenze o caratteristiche.
+- *Esperimenti*: il ricercatore modifica una condizione e osserva gli effetti, cercando di controllare gli altri fattori. L'assegnazione casuale ai gruppi aiuta a renderli confrontabili.
+- *Osservazione*: registriamo ciò che accade senza assegnare o modificare le condizioni studiate. Esempio: temperatura e precipitazioni.
+- *Fonti online*: dataset già disponibili, archivi pubblici o API. Bisogna verificarne provenienza, significato delle colonne e modalità di raccolta.
 
-**Selection bias (distorsione di selezione)**: il modo in cui raccogliamo le osservazioni può far sì che alcune categorie siano troppo presenti e altre poco presenti o assenti. Per studiare tutti gli studenti universitari, ad esempio, intervistare soltanto quelli presenti in biblioteca escluderebbe molti studenti con abitudini diverse. Il problema non è semplicemente «selezione non casuale»: anche un invito casuale può produrre un campione distorto se rispondono soprattutto certe persone. Un campionamento casuale ben progettato aiuta, ma vanno considerate anche copertura e mancate risposte.
-
-**Campionamento casuale e assegnazione casuale non sono la stessa cosa:**
-- Il **campionamento** riguarda chi entra nello studio e aiuta a rappresentare la popolazione.
-- L'**assegnazione** riguarda a quale gruppo sperimentale vengono destinati i partecipanti e aiuta a confrontare gli effetti delle condizioni.
-
-Nei **dati osservazionali**, due variabili possono essere associate senza che una causi l'altra: entrambe potrebbero dipendere da un terzo fattore. Confrontare gruppi con età molto diverse, ad esempio, può mescolare l'effetto dell'età con quello della condizione che vogliamo studiare: questo è un problema di **confondimento**, distinto dal selection bias.
+il modo in cui raccogliamo le osservazioni può far sì che alcune categorie siano troppo presenti e altre poco presenti o assenti. Per studiare tutti gli studenti universitari, ad esempio, intervistare soltanto quelli presenti in biblioteca escluderebbe molti studenti con abitudini diverse. Il problema non è semplicemente "selezione non casuale": anche un invito casuale può produrre un campione distorto se rispondono soprattutto certe persone. Un campionamento casuale ben progettato aiuta, ma vanno considerate anche copertura e mancate risposte, questo problema è chiamato *selection bias*
 
 ##### Laboratorio
 [[01_key_concepts.ipynb]]

@@ -8,4 +8,4 @@ sito: https://www.dmi.unict.it/farinella/ML/
 2 prove in itinere (18 Dicembre 2026, 11 Gennaio 2026)
 credenziali: 
 - username: studente
-- pw: corsoml
+- pw: z
