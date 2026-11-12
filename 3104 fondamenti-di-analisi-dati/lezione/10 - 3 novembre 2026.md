@@ -5,8 +5,6 @@ Materiale di riferimento:
 ### Regressione logistica
 I modelli parametrici descrivono la relazione tra le variabili attraverso un insieme di coefficienti. Una volta stimati questi coefficienti, possiamo effettuare nuove previsioni senza conservare tutti i dati di addestramento: il modello è quindi *compatto* e la previsione è *veloce*.
 
-Questo comportamento si distingue da quello di *K-NN*, che richiede di conservare il training set e cercare i vicini ogni volta che viene classificata una nuova osservazione. Tuttavia, per utilizzare un modello parametrico dobbiamo scegliere una forma adatta alla relazione da rappresentare.
-
 La regressione lineare permette di prevedere una risposta quantitativa a partire da regressori quantitativi o qualitativi. Quando invece la risposta è qualitativa, come una diagnosi con due possibili esiti, dobbiamo costruire un modello adatto a un problema di *classificazione*. La *regressione logistica* affronta questo problema modellando la probabilità che un'osservazione appartenga a una delle due classi.
 
 #### Risposta binaria e limiti della regressione lineare
@@ -18,7 +16,7 @@ Inizialmente utilizziamo un solo regressore, `radius1`, che rappresenta una misu
 - Per valori grandi di `radius1` sono più frequenti i casi maligni.
 
 Un primo tentativo consiste nell'applicare una regressione lineare alla risposta codificata: $$\widehat Y=\widehat\beta_0+\widehat\beta_1\,radius1$$
-![[10 - 3 novembre 2026-1.png]]
+![[10 - 3 novembre 2026-1.png|center|361]]
 La retta segue la tendenza generale dei dati, ma non rappresenta adeguatamente una risposta binaria. Il modello lineare restituisce valori reali, mentre le classi possibili sono soltanto 0 e 1: $$f:\mathbb R\rightarrow\mathbb R\qquad\text{invece di}\qquad f:\mathbb R\rightarrow\{0,1\}$$
 Inoltre, la retta può produrre valori inferiori a 0 o superiori a 1.
 
@@ -30,10 +28,10 @@ Nell'esempio questa quantità è la probabilità di una diagnosi maligna dato il
 La risposta osservata rimane binaria, mentre il modello restituisce un valore nell'intervallo $[0,1]$, che esprime la probabilità assegnata alla classe 1.
 
 Non possiamo però utilizzare direttamente una combinazione lineare come probabilità: $$p(x)=\beta_0+\beta_1x$$
-Il problema è che la combinazione lineare può ancora assumere valori esterni a $[0,1]$. Serve quindi una trasformazione che mantenga l'uscita nell'intervallo delle probabilità e che si avvicini a 0 o a 1 per valori estremi.
+perché la combinazione lineare può ancora assumere valori esterni a $[0,1]$. Serve quindi una trasformazione che mantenga l'uscita nell'intervallo delle probabilità e che si avvicini a 0 o a 1 per valori estremi.
 
 Nel caso considerato vogliamo una curva che assegni probabilità basse di malignità ai raggi piccoli e probabilità alte ai raggi grandi, con una transizione graduale tra le due situazioni.
-![[10 - 3 novembre 2026-2.png]]
+![[10 - 3 novembre 2026-2.png|center|353]]
 
 #### Funzione logistica
 La *funzione logistica*, o *sigmoide*, è definita come: $$\sigma(z)=\frac{1}{1+e^{-z}}$$
@@ -76,32 +74,20 @@ Gli odds non coincidono con una probabilità: confrontano il verificarsi dell'ev
 Per esempio, odds uguali a 3 indicano che l'evento è tre volte più probabile del suo complemento.
 
 #### Collegamento tra sigmoide e odds
-Partiamo dalla probabilità logistica e indichiamo con $z$ il predittore lineare: $$p=\frac{1}{1+e^{-z}}$$
+Partiamo dalla probabilità logistica e indichiamo con $z$ il regressore lineare multiplo: $$p=\frac{1}{1+e^{-z}}$$
 Moltiplicando per il denominatore e isolando il termine esponenziale otteniamo: $$p(1+e^{-z})=1\;\Longrightarrow\;p+pe^{-z}=1\;\Longrightarrow\;pe^{-z}=1-p$$
-Dividendo per $p$ e prendendo il reciproco ricaviamo: $$e^{-z}=\frac{1-p}{p}\;\Longrightarrow\;e^z=\frac{p}{1-p}$$
-Gli odds della classe 1 sono quindi l'esponenziale del predittore lineare: $$\frac{P(Y=1\mid\mathbf x)}{1-P(Y=1\mid\mathbf x)}=e^{\beta_0+\beta_1x_1+\cdots+\beta_nx_n}$$
-![[10 - 3 novembre 2026-3.png]]
+Dividendo per $p$ e prendendo il reciproco ricaviamo: $$e^{-z}=\frac{1-p}{p} \;\Longrightarrow\; \underbrace{e^z=\frac{p}{1-p}}_{\text{Odds della classe 1}}$$
+Gli odds della classe 1 sono quindi l'esponenziale del regressore lineare multiplo: $$\frac{P(Y=1\mid\mathbf x)}{1-P(Y=1\mid\mathbf x)}=e^{\beta_0+\beta_1x_1+\cdots+\beta_nx_n}$$
+Diciamo che sono della classe 1 perché abbiamo definito $p$ in questo modo: $p=P(Y=1\mid\mathbf{x})$
 
 #### Logit come funzione lineare dei regressori
-Applicando il logaritmo naturale a entrambi i membri otteniamo: $$\log\left(\frac{P(Y=1\mid\mathbf x)}{1-P(Y=1\mid\mathbf x)}\right)=\beta_0+\beta_1x_1+\cdots+\beta_nx_n$$
+Applicando il logaritmo naturale a entrambi i membri (perché avere la forma esponenziale è scomodo) otteniamo: $$\log\left(\frac{P(Y=1\mid\mathbf x)}{1-P(Y=1\mid\mathbf x)}\right)=\beta_0+\beta_1x_1+\cdots+\beta_nx_n$$
 Il logaritmo degli odds si chiama *log-odds* o *logit*: $$\operatorname{logit}(p)=\log\left(\frac{p}{1-p}\right)$$
-La regressione logistica può quindi essere scritta come un modello lineare per il logit: $$\operatorname{logit}(p)=\boldsymbol\beta^T\mathbf x$$
-Le tre quantità descrivono lo stesso modello su scale diverse:
-
-| Quantità | Espressione | Relazione con i regressori |
-| --- | --- | --- |
-| Logit | $\log\left(\frac{p}{1-p}\right)=\boldsymbol\beta^T\mathbf x$ | Lineare |
-| Odds | $\frac{p}{1-p}=e^{\boldsymbol\beta^T\mathbf x}$ | Esponenziale |
-| Probabilità | $p=\sigma(\boldsymbol\beta^T\mathbf x)$ | Logistica |
-
-La linearità riguarda quindi i *log-odds*, non la probabilità.
-
+Di seguito la forma lineare della regressione logistica:  $$\operatorname{logit}(p)=\boldsymbol\beta^T\mathbf x$$
 ### Stima dei coefficienti
 Per utilizzare il modello dobbiamo stimare i coefficienti $\boldsymbol\beta$ a partire dai dati.
 
-Anche se il logit è lineare nei regressori, non possiamo applicare direttamente la regressione lineare ai logit delle probabilità osservate: nel campione non conosciamo le vere probabilità $p$. Per ogni osservazione conosciamo soltanto i regressori e la classe effettivamente osservata, cioè una coppia $(\mathbf x^{(i)},y^{(i)})$ con $y^{(i)}\in\{0,1\}$.
-
-Serve quindi un criterio che valuti i coefficienti attraverso le probabilità assegnate alle classi osservate.
+Anche se il logit è lineare nei regressori, non possiamo applicare direttamente la regressione lineare ai logit delle probabilità osservate: questo perché nel nostro campione abbiamo solo solo la classe di appartenza (in specifico una coppia $(\mathbf x^{(i)},y^{(i)})$ con $y^{(i)}\in\{0,1\}$) ma non sappiamo a causa di quale probabilità quel campione è in quella classe. Serve quindi un criterio che valuti i *coefficienti attraverso le probabilità assegnate alle classi osservate*.
 
 #### Probabilità della risposta osservata
 Dato un vettore di coefficienti, il modello assegna alla classe 1 la probabilità: $$P(Y=1\mid\mathbf x;\boldsymbol\beta)=f_{\boldsymbol\beta}(\mathbf x)$$
@@ -112,14 +98,19 @@ Gli esponenti selezionano la probabilità corrispondente alla risposta osservata
 - Se $y=0$, il primo fattore vale 1 e rimane $1-f_{\boldsymbol\beta}(\mathbf x)$.
 
 #### Massima verosimiglianza
-Consideriamo un campione di $m$ osservazioni e assumiamo che gli esempi siano indipendenti. La *verosimiglianza* è il prodotto delle probabilità assegnate dal modello alle risposte osservate: $$L(\boldsymbol\beta)=\prod_{i=1}^{m}P\left(Y=y^{(i)}\mid\mathbf x^{(i)};\boldsymbol\beta\right)$$
+Consideriamo un campione di $m$ osservazioni e assumiamo che gli esempi siano indipendenti. La *verosimiglianza* è il prodotto delle probabilità assegnate dal modello alle risposte osservate: $$(\boldsymbol\beta)=\prod_{i=1}^{m} \underbrace{P\left(Y=y^{(i)}\mid\mathbf x^{(i)};\boldsymbol\beta\right)}_{\substack{\text{Probabilità che il modello assegna alla classe }y^{(i)}\\ \text{dell'osservazione }i\text{-esima, dati i suoi regressori }\mathbf x^{(i)}}}$$
 Sostituendo la formula precedente otteniamo: $$L(\boldsymbol\beta)=\prod_{i=1}^{m}\left[f_{\boldsymbol\beta}(\mathbf x^{(i)})\right]^{y^{(i)}}\left[1-f_{\boldsymbol\beta}(\mathbf x^{(i)})\right]^{1-y^{(i)}}$$
 Il metodo di *massima verosimiglianza*, o *Maximum Likelihood Estimation* (*MLE*), sceglie i coefficienti che rendono più probabili le risposte effettivamente osservate: $$\widehat{\boldsymbol\beta}=\operatorname*{arg\,max}_{\boldsymbol\beta}L(\boldsymbol\beta)$$
 Un modello che assegna probabilità alte alle classi corrette produce una verosimiglianza maggiore di un modello che assegna loro probabilità basse.
 
 #### Log-verosimiglianza e funzione di costo
+
+> [!Quote] Ricordiamo
+> Il logaritmo trasforma un prodotto in una somma grazie a una delle sue proprietà fondamentali: $$\boxed{\log(a\cdot b)=\log(a)+\log(b)}$$
+> Questa proprietà si estende anche a un prodotto di molti fattori: $$\boxed{\log\left(\prod_{i=1}^{m}a_i\right)=\sum_{i=1}^{m}\log(a_i)}$$
+
 Il logaritmo è una funzione crescente, quindi massimizzare la verosimiglianza equivale a massimizzarne il logaritmo. Inoltre, il logaritmo trasforma il prodotto in una somma: $$\ell(\boldsymbol\beta)=\log L(\boldsymbol\beta)=\sum_{i=1}^{m}\left[y^{(i)}\log f_{\boldsymbol\beta}(\mathbf x^{(i)})+(1-y^{(i)})\log\left(1-f_{\boldsymbol\beta}(\mathbf x^{(i)})\right)\right]$$
-Per formulare un problema di minimizzazione cambiamo il segno e definiamo la *negative log-likelihood*: $$J(\boldsymbol\beta)=-\ell(\boldsymbol\beta)=-\sum_{i=1}^{m}\left[y^{(i)}\log f_{\boldsymbol\beta}(\mathbf x^{(i)})+(1-y^{(i)})\log\left(1-f_{\boldsymbol\beta}(\mathbf x^{(i)})\right)\right]$$
+Per formulare un problema di minimizzazione (preferiamo sempre i problemi di minimizzazione) cambiamo il segno e definiamo la *negative log-likelihood*: $$J(\boldsymbol\beta)=-\ell(\boldsymbol\beta)=-\sum_{i=1}^{m}\left[y^{(i)}\log f_{\boldsymbol\beta}(\mathbf x^{(i)})+(1-y^{(i)})\log\left(1-f_{\boldsymbol\beta}(\mathbf x^{(i)})\right)\right]$$
 Questa funzione di costo è chiamata anche *log-loss* o *binary cross-entropy*. Esplicitando la dipendenza dai coefficienti attraverso la sigmoide otteniamo: $$J(\boldsymbol\beta)=-\sum_{i=1}^{m}\left[y^{(i)}\log\sigma(\boldsymbol\beta^T\mathbf x^{(i)})+(1-y^{(i)})\log\left(1-\sigma(\boldsymbol\beta^T\mathbf x^{(i)})\right)\right]$$
 Il problema di stima diventa: $$\widehat{\boldsymbol\beta}=\operatorname*{arg\,min}_{\boldsymbol\beta}J(\boldsymbol\beta)$$
 Per comprendere il significato della funzione di costo, indichiamo con $p_i=f_{\boldsymbol\beta}(\mathbf x^{(i)})$ la probabilità assegnata alla classe 1. Il contributo di una singola osservazione è: $$J_i=\begin{cases}-\log p_i & \text{se }y^{(i)}=1,\\-\log(1-p_i) & \text{se }y^{(i)}=0.\end{cases}$$
@@ -158,14 +149,12 @@ La quantità $e^{\beta_1}$ è un *odds ratio*: indica il fattore per cui vengono
 
 Nel modello multiplo, $e^{\beta_j}$ ha la stessa interpretazione per un incremento unitario di $x_j$, *mantenendo costanti tutti gli altri regressori*.
 
-| Coefficiente | Odds ratio | Effetto di un incremento unitario del regressore |
-| --- | --- | --- |
-| $\beta_j>0$ | $e^{\beta_j}>1$ | Gli odds della classe 1 aumentano. |
-| $\beta_j=0$ | $e^{\beta_j}=1$ | Gli odds non cambiano. |
-| $\beta_j<0$ | $0<e^{\beta_j}<1$ | Gli odds della classe 1 diminuiscono. |
+| Coefficiente | Odds ratio        | Effetto di un incremento unitario del regressore                               |
+| ------------ | ----------------- | ------------------------------------------------------------------------------ |
+| $\beta_j>0$  | $e^{\beta_j}>1$   | Gli odds della classe 1 aumentano (aumenta la probabilità che sia di classe 1) |
+| $\beta_j=0$  | $e^{\beta_j}=1$   | Gli odds non cambiano.                                                         |
+| $\beta_j<0$  | $0<e^{\beta_j}<1$ | Gli odds della classe 1 diminuiscono.                                          |
 
-La variazione percentuale degli odds si calcola attraverso: $$\Delta_{\%}\operatorname{odds}=100\left(e^{\beta_j}-1\right)$$
-L'effetto moltiplicativo riguarda gli *odds*, non direttamente la probabilità. La probabilità si ottiene trasformando il predittore lineare con la sigmoide.
 
 ### Valutazione del modello logistico
 Anche nella regressione logistica distinguiamo la *goodness of fit*, che descrive l'adattamento ai dati utilizzati per la stima, dalla *valutazione predittiva*, che riguarda la capacità di classificare nuove osservazioni.
@@ -176,11 +165,11 @@ La log-verosimiglianza misura quanto il modello rende probabili le risposte osse
 Il modello viene stimato massimizzando la log-verosimiglianza, oppure, in modo equivalente, minimizzandone l'opposto.
 
 #### Pseudo coefficiente di determinazione di McFadden
-Nella regressione lineare il coefficiente di determinazione confronta la somma dei residui quadratici del modello con quella del modello che prevede sempre la media: $$R^2=1-\frac{RSS}{TSS}$$
-Nella regressione logistica il criterio di stima è invece la verosimiglianza. Per valutare il miglioramento rispetto a un modello di riferimento utilizziamo uno *pseudo $R^2$*.
+Nella *regressione lineare* il coefficiente di determinazione confronta la somma dei residui quadratici del modello con quella del modello che prevede sempre la media: $$R^2=1-\frac{RSS}{TSS}$$
+Nella *regressione logistica invece* il criterio di stima è invece la verosimiglianza. Per valutare il miglioramento rispetto a un modello di riferimento utilizziamo uno *pseudo $R^2$*.
 
 Lo *pseudo $R^2$ di McFadden*, riportato da `statsmodels`, confronta:
-- $LL_{\mathrm{Model}}$: la log-verosimiglianza del modello con i regressori.
+- $LL_{\mathrm{Model}}$: la log-verosimiglianza del modello con i regressori (sarebbe la funzione costo vista prima)
 - $LL_{\mathrm{Null}}$: la log-verosimiglianza del modello con la sola intercetta, che assegna la stessa probabilità a tutte le osservazioni.
 
 La definizione è: $$R^2_{\mathrm{McFadden}}=1-\frac{LL_{\mathrm{Model}}}{LL_{\mathrm{Null}}}$$
