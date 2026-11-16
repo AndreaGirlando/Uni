@@ -114,7 +114,7 @@ plt.show()
 L'ECDF è utile per leggere quote cumulative e confrontare distribuzioni
 
 #### Istogramma
-Possiamo raggruppare i valori vicini in intervalli detti **bin**: ogni osservazione viene assegnata al proprio intervallo (*discretizzazione* o *quantizzazione*).
+Possiamo raggruppare i valori vicini in intervalli detti **bin**: ogni osservazione viene assegnata al proprio intervallo (*discretizzazione* o *quantizzazione*)
 
 ```python
 heights_quantized = pd.cut(heights, bins=10) # Crea 10 intervalli
@@ -183,7 +183,7 @@ Le misure di dispersione indicano quanto i valori sono distanti tra loro o dal c
 ##### Interquartile range
 Questa è una misura di dispersione che indica quanto sono distribuiti i valori nella parte centrale di un insieme di dati, considerando il 50% delle osservazioni centrali, si calcola nel seguente modo
 $$IQR = Q_3-Q_1.$$
-L'IQR è una misura robusta rispetto ai valori anomali (outlier) perché non dipende direttamente da quest'ultimi (come fa il range), base al risultato che otteniamo possiamo fare le seguenti condiserazioni:
+L'IQR è una misura robusta rispetto ai valori anomali (outlier) perché non dipende direttamente da quest'ultimi (come fa il range), in base al risultato che otteniamo possiamo fare le seguenti condiserazioni:
 - *IQR piccolo*: i valori centrali sono concentrati in un intervallo ristretto.
 - *IQR grande*: i valori centrali sono più dispersi.
 

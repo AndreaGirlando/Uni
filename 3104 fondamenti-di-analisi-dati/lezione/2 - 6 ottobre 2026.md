@@ -79,7 +79,7 @@ Prima di combinare le colonne (es: fare la media) è importante portare tutto al
 
 il modo in cui raccogliamo le osservazioni può far sì che alcune categorie siano troppo presenti e altre poco presenti o assenti. Per studiare tutti gli studenti universitari, ad esempio, intervistare soltanto quelli presenti in biblioteca escluderebbe molti studenti con abitudini diverse. Il problema non è semplicemente "selezione non casuale": anche un invito casuale può produrre un campione distorto se rispondono soprattutto certe persone. Un campionamento casuale ben progettato aiuta, ma vanno considerate anche copertura e mancate risposte, questo problema è chiamato *selection bias*
 
-##### Laboratorio
+#### Laboratorio
 [[01_key_concepts.ipynb]]
 
 **Caricamento e ispezione**
@@ -109,8 +109,7 @@ Con `index_col='PassengerId'` usiamo l'identificatore come **indice**: resta dis
 
 Il **tipo informatico** non coincide necessariamente con il significato statistico: Pclass contiene gli interi 1, 2 e 3, ma indica le classi del biglietto, cioè categorie **ordinali**, non quantità da sommare.
 
-**Data wrangling**
-
+##### Data wrangling
 È l'insieme delle operazioni per rendere i dati adatti all'analisi: gestione dei valori mancanti, conversione dei tipi, rinomina delle colonne, nuove variabili, filtri e cambi di formato.
 
 Per i **valori mancanti** possiamo:
@@ -147,8 +146,7 @@ selezione = titanic2[['Age', 'Cabin', 'Fare']] # Selezione di colonne
 
 Qui FamilySize conta i familiari **escluso il passeggero**: per includerlo bisogna aggiungere 1. Il filtro sugli adulti è applicato dopo l'imputazione: per le età mancanti, la selezione dipende quindi dal valore inserito, non da un'età conosciuta.
 
-**Wide e long format**
-
+##### Wide e long format
 Sono due modi di organizzare gli stessi dati, non due tipi di grafico:
 - **Wide format**: una riga per studente e una colonna per materia. Il voto di Alice in matematica sta nella riga Alice, colonna Math.
 - **Long format**: una riga per ogni coppia **studente–materia**, con colonne Student, Subject e Score. Alice compare più volte, una per ciascuna materia.
